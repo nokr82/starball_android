@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+    >
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+        <ImageView
+                android:paddingLeft="9.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/comm_arrow_left"/>
+
+        <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textSize="21sp"
+                android:textColor="#333333"
+                android:layout_centerInParent="true"
+                android:text="안전인증 확인"/>
+
+    </RelativeLayout>
+    <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+    <TextView
+            android:layout_marginTop="29dp"
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:text="안전 인증에 가입되어 있습니다."
+            />
+
+
+    <TextView
+            android:layout_marginTop="23.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#333333"
+            android:text="안전 인증제도란, 불성실한 회원 (변태, working girl, 언어폭력 기타) 을\n
+가려내기 위하여 도입된 제도로써, 공탁금을 걸고 회원활동을 하는 것을\n
+말합니다.\n
+정상적인 활동을 할 경우 공탁금이 없어지지 아니하며, 탈퇴나 휴면계정\n
+전환시 관리비를 제한 금액 전액 환불됩니다.\n
+\n
+만약 불성실한 사유 적발, 및 누적으로 신고될 경우 해당 공탁금은 돌려\n
+받을 수 없습니다."/>
+
+
+
+
+
+    <TextView
+            android:layout_marginTop="221dp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="#333333"
+            android:text="인증 취소를 원하십니까?"
+            />
+
+
+    <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+        <TextView
+                android:layout_marginRight="15dp"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:textSize="18sp"
+                android:textColor="#545454"
+                android:background="@drawable/background_border_strock2"
+                android:gravity="center"
+                android:text="예. 좋아요."
+                />
+        <TextView
+                android:layout_marginLeft="15dp"
+                android:textStyle="bold"
+                android:layout_gravity="right"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:background="#923b9f"
+                android:gravity="center"
+                android:text="아니오. 괜찮습니다."
+                />
+
+    </LinearLayout>
+    <TextView
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="9sp"
+            android:textColor="#333333"
+            android:text="* 관리비: 시스템 운영비10%+ 앱스토어 인앱결제수수료 30%"
+            />
+    </LinearLayout>
+
+</LinearLayout>

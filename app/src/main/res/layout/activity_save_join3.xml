@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+    >
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+        <ImageView
+                android:paddingLeft="9.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/comm_arrow_left"/>
+
+        <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textSize="21sp"
+                android:textColor="#333333"
+                android:layout_centerInParent="true"
+                android:text="인증 취소"/>
+
+    </RelativeLayout>
+
+
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+    <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+        <TextView
+                android:textStyle="bold"
+                android:layout_marginTop="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#555555"
+                android:text="예상 반환 Cash "
+                />
+
+        <LinearLayout
+                android:layout_marginTop="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <TextView
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="19.5sp"
+                    android:textColor="#000000"
+                    android:gravity="end"
+                    android:padding="3dp"
+                    android:text="$ 100,000"
+                    />
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000"/>
+
+        </LinearLayout>
+
+        <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#555555"
+                android:text="앱스토어 결제비용(30%)와 시스템비용(10%)을 공제한 금액으로 환산\n
+되어 송금됩니다.\n
+페이팔 송금수수료 약 3% 공제 됩니다."
+                />
+
+        <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#555555"
+                android:text="환율에 따라 금액은 최종 달라질 수 있습니다.\n
+요청일 기준 2~3일 소요될 수 있습니다."
+                />
+        <TextView
+                android:layout_marginTop="19.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#555555"
+                android:text="페이팔 연동 e-mail을 적어 주세요."
+                />
+
+        <TextView
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#555555"
+                android:text="입금요청 e-mail :"
+                />
+        <EditText
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent" android:layout_height="40dp"
+                android:hint="입력해주세요"
+                android:textColorHint="#bbbbbb"
+                android:paddingLeft="10dp"
+                android:gravity="center_vertical"
+                android:textSize="14sp"
+                android:background="@drawable/background_border_strock1"/>
+
+
+
+
+    <LinearLayout
+
+            android:layout_marginTop="122dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+        <TextView
+                android:layout_marginRight="15dp"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:textSize="18sp"
+                android:textColor="#545454"
+                android:background="@drawable/background_border_strock2"
+                android:gravity="center"
+                android:text="예. 좋아요."
+                />
+        <TextView
+                android:layout_marginLeft="15dp"
+                android:textStyle="bold"
+                android:layout_gravity="right"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:background="#923b9f"
+                android:gravity="center"
+                android:text="아니오. 괜찮습니다."
+                />
+
+    </LinearLayout>
+    <TextView
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="9sp"
+            android:textColor="#333333"
+            android:text="* 관리비: 시스템 운영비10%+ 앱스토어 인앱결제수수료 30%"
+            />
+    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

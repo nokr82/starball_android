@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+    >
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+        <ImageView
+                android:paddingLeft="9.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/comm_arrow_left"/>
+
+        <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textSize="21sp"
+                android:textColor="#333333"
+                android:layout_centerInParent="true"
+                android:text="내 e-mail 계정 연결하기"/>
+
+    </RelativeLayout>
+
+
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+    <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+        <TextView
+                android:layout_marginTop="23dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:gravity="center_horizontal"
+                android:text="연결할 e-mail를 입력하세요"
+                />
+
+        <EditText
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent" android:layout_height="40dp"
+                android:hint="입력해주세요"
+                android:textColorHint="#bbbbbb"
+                android:paddingLeft="10dp"
+                android:gravity="center_vertical"
+                android:textSize="14sp"
+                android:background="@drawable/background_border_strock1"/>
+
+
+        <TextView
+                android:layout_marginTop="114.5dp"
+                android:id="@+id/nextTV"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/background_border_strock10_d4d4d4"
+                android:text="확인 메일 보내기"
+                android:gravity="center"
+                android:textSize="20.5sp"
+                android:textColor="#333333"/>
+        <TextView
+                android:layout_marginTop="12.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#333333"
+                android:text="회원님의 정보는 인증 목적으로만 사용됩니다.\n
+저희는 이 정보를 그 누구와도 공유하지 않습니다."
+                />
+
+    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
