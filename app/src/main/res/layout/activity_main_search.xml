@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:background="@mipmap/main_pic_bg"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical">
+
+        
+        
+        
+        <ImageView
+                android:paddingLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/main_left"/>
+<ImageView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/main_logo"/>
+        <ImageView
+                android:paddingRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/main_right"/>
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="19.5dp"
+            android:layout_marginBottom="35dp"
+            android:layout_alignParentBottom="true">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <ImageView
+                    android:layout_marginRight="1.25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/mark_here"/>
+            <ImageView
+                    android:layout_marginLeft="1.25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/mark_safe"/>
+            
+            
+        </LinearLayout>
+        
+        
+        
+        <TextView
+               android:paddingTop="15dp"
+               android:paddingBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#99040000"
+                android:shadowRadius="3"
+                android:textSize="14sp"
+                android:textColor="#ffffff"
+                android:text="Korea,   1,200Km"
+                />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+        <ImageView
+                android:paddingRight="7.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/main_info"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#99040000"
+                android:shadowRadius="3"
+                android:textStyle="bold"
+                android:textSize="21sp"
+                android:textColor="#ffffff"
+                android:text="Alex   28"
+                />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="#99040000"
+                    android:shadowRadius="3"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:textColor="#ffffff"
+                    android:text="  78%"
+            />
+        </LinearLayout>
+        <TextView
+                android:paddingTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#ffffff"
+                android:text="CJ제일제당 영업관리 지원자 홍길동입니다. 안녕하십니까! 저를 대표
+하는 두 단어는 &quot;조화&quot; &quot;도전&quot;입니다.\n
+먼저, 대학시절 10회가 넘는 팀 프로젝트를 경험하며 개인적인 편안함\n
+보다는 조직생활에 필요한 팀원 간의 조화에 힘썼습니다. "
+                />
+
+    </LinearLayout>
+
+
+
+
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/profile_pre_super_like"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="9.5dp"
+            android:layout_marginBottom="116dp"/>
+    
+    
+
+
+
+
+
+</RelativeLayout>

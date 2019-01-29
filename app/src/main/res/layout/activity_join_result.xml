@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+<ScrollView
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_height="match_parent">
+    <LinearLayout
+            android:orientation="vertical"
+            android:background="#fbfbfb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:layout_marginTop="72dp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20.5sp"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:text="Filippo Chiumiento님.
+축하 드립니다."
+                />
+        <TextView
+                android:paddingTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:gravity="center_horizontal"
+                android:text="Starball에 가입이 완료되었습니다."
+                />
+        <TextView
+                android:paddingTop="42dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#555555"
+                android:gravity="center_horizontal"
+                android:text="이제 회원님에게 한국과 글로벌의\n
+매력적인 친구들을 소개해 드릴께요.\n
+이 공간은 문화와 생각과 사람들이 연결되는\n
+최상의 소셜 네트워크 입니다."
+                />
+        <TextView
+                android:paddingTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:gravity="center"
+                android:text="Filippo Chiumiento님.\n
+매너있게 행동해 주세요"/>
+        <TextView
+                android:paddingTop="8dp"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="#555555"
+                android:text="Starball은 가지고만 있어도 모든 소원을 들어준다는 신화 속 구슬입니다."/>
+
+
+
+        <TextView
+                android:paddingTop="49.5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:gravity="center"
+                android:text="Starball이\n"
+                />
+
+        <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:text="드리는 소중한 가치는,"
+                />
+
+        <TextView
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:letterSpacing="-0.03"
+                android:text="회원님 존재에 대한 존중,\n
+만나게 될 친구들에 대한 배려,\n
+회원님 미래를 위한 환원 입니다."
+                />
+
+        <TextView
+                android:id="@+id/checkTV"
+                android:layout_marginTop="42.5dp"
+                android:layout_gravity="center"
+                android:layout_width="120dp"
+                android:textStyle="bold"
+                android:layout_height="30dp"
+                android:textSize="14sp"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:text="예. 좋아요"
+                />
+        <LinearLayout
+                android:layout_marginTop="24.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+        <TextView
+             
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="#333333"
+                android:letterSpacing="-0.05"
+                android:text="아니오. 다시 생각해볼게요."
+                />
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/profile_ribon"/>
+</RelativeLayout>

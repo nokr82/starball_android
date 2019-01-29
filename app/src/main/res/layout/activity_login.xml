@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+>
+
+    <TextView
+            android:layout_marginTop="15.5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="회원가입"
+            android:textSize="21sp"
+            android:textColor="#333333"
+            android:gravity="center"/>
+    <ScrollView
+            android:scrollbars="none"
+            android:layout_marginTop="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                  android:orientation="vertical">
+        <LinearLayout android:layout_width="match_parent"
+                      android:gravity="center_vertical|center"
+                      android:layout_height="wrap_content"
+                      android:layout_marginBottom="43dp">
+
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                       android:src="@mipmap/vector_smart_object"/>
+            <TextView
+                    android:layout_marginLeft="7.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="#80444444"
+                    android:shadowRadius="9"
+                    android:textSize="21.8sp"
+                    android:textColor="#333333"
+                    android:gravity="center_horizontal"
+                    android:text="Starball"
+            />
+
+        </LinearLayout>
+
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:gravity="center">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                       android:src="@mipmap/join_fb"/>
+
+            <TextView
+                    android:gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#333333"
+                    android:letterSpacing="-0.03"
+                    android:lineSpacingExtra="-3sp"
+                    android:text="Or"
+            />
+
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                       android:src="@mipmap/join_google"/>
+
+        </LinearLayout>
+
+        <TextView
+                android:layout_marginTop="22.5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:textColor="#333333"
+                android:text="없다면,"/>
+
+
+        <EditText
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="E-mail 주소를 입력해주세요"
+                android:textColorHint="#bbbbbb"
+                android:paddingLeft="10dp"
+                android:gravity="center_vertical"
+                android:textSize="14sp"
+                android:background="@drawable/background_border_strock1"/>
+
+
+        <TextView
+                android:id="@+id/joinTV"
+                android:layout_width="match_parent" android:layout_height="50dp"
+                  android:layout_marginTop="35dp"
+                  android:background="@drawable/background_border_strock2"
+                  android:textSize="20.5sp"
+                  android:textColor="#ffffff"
+                  android:gravity="center"
+                  android:text="회원가입"
+        />
+
+        <LinearLayout
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="73.5dp"
+                android:orientation="horizontal">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#999999"
+                    android:text="페이스북 가입 또는 구글로 가입을 클릭 하거나  이메일을 입력함으로써, 당사의 이용약관과 쿠키를 포함해 개인정보보호 방침에 동의하며, 서비스를 윈하지 않을 경우 언제든지 해지할 수 있음을 이해합니다."
+            />
+
+
+        </LinearLayout>
+
+
+        <TextView
+                android:layout_marginTop="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:gravity="center_horizontal"
+                android:text="기존회원이시면 Log-in"
+        />
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

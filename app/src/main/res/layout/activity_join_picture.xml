@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+    >
+<ScrollView android:layout_width="match_parent" android:layout_height="0dp"
+            android:layout_weight="1"
+android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+            android:layout_marginTop="65dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="#333333"
+            android:text="인물 외 사진은 자동 삭제됩니다.\n
+세로화면에 최적화 되어 있습니다.\n
+최소 3장의 동영상 또는 사진을 등록해 주세요.\n
+동영상을 추천합니다."/>
+
+        <GridView
+                android:layout_marginTop="17.5dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:numColumns="3"
+
+        ></GridView>
+
+<LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+android:orientation="vertical">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:textStyle="bold"
+            android:text="현재 등급"
+    />
+    <ProgressBar android:layout_width="match_parent" android:layout_height="wrap_content"
+                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+    <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="#555555"
+            android:gravity="center_horizontal"
+            android:text="Basic"
+    />
+    <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="#555555"
+            android:gravity="center_horizontal"
+            android:text="Plus"
+    />
+    <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="#555555"
+            android:gravity="center_horizontal"
+            android:text="Premium"
+    />
+    <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="#555555"
+            android:gravity="center_horizontal"
+            android:text="VVIP"
+    />
+
+</LinearLayout>
+
+</LinearLayout>
+
+    <LinearLayout
+            android:paddingBottom="36.5dp"
+            android:layout_marginTop="25dp"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:orientation="vertical">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:text="소개 등급"
+        />
+        <ProgressBar android:layout_width="match_parent" android:layout_height="wrap_content"
+                     style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="#555555"
+                    android:gravity="center_horizontal"
+                    android:text="Basic"
+            />
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="#555555"
+                    android:gravity="center_horizontal"
+                    android:text="Plus"
+            />
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="#555555"
+                    android:gravity="center_horizontal"
+                    android:text="Premium"
+            />
+            <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textColor="#555555"
+                    android:gravity="center_horizontal"
+                    android:text="VVIP"
+            />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+    <TextView
+            android:id="@+id/nextTV"
+            android:layout_marginBottom="40dp"
+            android:layout_width="match_parent"
+              android:layout_height="50dp"
+                 android:background="#000000"
+              android:text="다음"
+            android:textStyle="bold"
+              android:gravity="center"
+              android:textSize="20.5sp"
+              android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+</ScrollView>
+</LinearLayout>
