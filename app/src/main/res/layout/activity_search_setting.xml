@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+    >
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+        <ImageView
+                android:paddingLeft="9.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/comm_arrow_left"/>
+
+        <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textSize="21sp"
+                android:textColor="#333333"
+                android:layout_centerInParent="true"
+                android:text="검색설정"/>
+
+    </RelativeLayout>
+
+
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+    <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+        <TextView
+                android:layout_marginTop="15dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textColor="#333333"
+                android:text="검색설정은,"
+                />
+
+        <TextView
+                android:paddingTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:letterSpacing="-0.05"
+                android:text="노출설정에도 동일하게 적용됩니다.\n
+인기을 얻고 싶으시면 검색범위를 넓게 조정하세요."
+                />
+
+        <TextView
+                android:layout_marginTop="25.5dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#333333"
+                android:text="성별"
+                />
+        <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/comm_check_off"/>
+            <TextView
+                    android:textStyle="bold"
+                    android:paddingLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#333333"
+                    android:text="남자"
+                    />
+            <ImageView
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/comm_check_on"/>
+            <TextView
+                    android:textStyle="bold"
+                    android:paddingLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#333333"
+                    android:text="여자"
+                    />
+
+
+
+
+
+
+        </LinearLayout>
+
+        <TextView
+                android:layout_marginTop="25dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#333333"
+                android:text="나이"
+                />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#555555"
+                android:gravity="end"
+                android:text="22 ~ 35"
+                />
+
+        <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+
+        <TextView
+                android:layout_marginTop="25dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#333333"
+                android:text="거리"
+                />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#555555"
+                android:gravity="end"
+                android:text="0~100km"
+                />
+
+        <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+        <TextView
+                android:layout_marginTop="25dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#333333"
+                android:text="키"
+                />
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#555555"
+                android:gravity="end"
+                android:text="140~175cm"
+                />
+
+        <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+
+        <TextView
+                android:layout_marginTop="83.5dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#333333"
+                android:text="당신의 선호하는 언어를 알려 주세요."
+                />
+
+        <RelativeLayout
+                android:layout_marginTop="11.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp">
+            <Spinner android:layout_width="match_parent"
+                     android:layout_height="40dp"
+                     android:background="@null">
+            </Spinner>
+            <ImageView
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:src="@mipmap/op_drop"/>
+            <View
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000"/>
+        </RelativeLayout>
+
+
+        <LinearLayout
+                android:layout_marginTop="30.5dp"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+            <ImageView android:layout_width="wrap_content"
+
+                       android:layout_height="wrap_content"
+                       android:src="@mipmap/plus_op"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#333333"
+                    android:text="언어 추가"
+                    />
+        </LinearLayout>
+
+
+        <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/comm_check_off"/>
+        <TextView
+                android:textStyle="bold"
+                android:paddingLeft="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:text="같은 국적 사람에게는 관심이 없습니다."
+                />
+
+    </LinearLayout>
+
+
+        <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/comm_check_on"/>
+            <TextView
+                    android:textStyle="bold"
+                    android:paddingLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#333333"
+                    android:text="안전인증 회원만 봅니다."
+                    />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/comm_check_off"/>
+            <TextView
+                    android:textStyle="bold"
+                    android:paddingLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#333333"
+                    android:text="VVIP 회원만 봅니다."
+                    />
+
+        </LinearLayout>
+
+        <TextView
+
+                android:layout_marginTop="34.5dp"
+                android:id="@+id/nextTV"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#000000"
+                android:text="확인"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="20.5sp"
+                android:textColor="#ffffff"/>
+
+
+
+    </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

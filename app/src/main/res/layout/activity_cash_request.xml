@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+    >
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+        <ImageView
+                android:paddingLeft="9.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/comm_arrow_left"/>
+
+        <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textSize="21sp"
+                android:textColor="#333333"
+                android:layout_centerInParent="true"
+                android:text="Cash 요청"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+   <LinearLayout
+           android:layout_marginTop="16dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+       <android.support.v4.widget.CircleImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@mipmap/comm_profile_pic"/>
+
+       <LinearLayout
+               android:layout_marginLeft="17dp"
+               android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+               android:orientation="vertical">
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+           <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="15sp"
+                   android:textColor="#333333"
+                   android:text="보유 Starball : "
+                   />
+           <TextView
+                   android:textStyle="bold"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="15sp"
+                   android:textColor="#333333"
+                   android:text="190"
+                   />
+</LinearLayout>
+
+           <TextView
+                   android:layout_marginTop="20dp"
+                   android:paddingTop="6dp"
+                   android:paddingBottom="6dp"
+                   android:paddingLeft="13dp"
+                   android:paddingRight="13dp"
+                   android:background="@drawable/background_border_strock9_333333"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textSize="15sp"
+                   android:textColor="#333333"
+                   android:text="보유내역"
+                   />
+
+
+       </LinearLayout>
+
+
+
+   </LinearLayout>
+
+        <View
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#1f1f1f"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#333333"
+                    android:text="Cash 가능 Starball 갯수: "
+                    />
+            <TextView
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#333333"
+                    android:text="30"
+                    />
+        </LinearLayout>
+
+
+        <TextView
+                android:layout_marginTop="9dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#555555"
+                android:letterSpacing="-0.03"
+                android:text="무료지급된 Starball은 Cash 대상에서 제외됩니다."
+                />
+
+        <TextView
+                android:layout_marginTop="19dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#555555"
+                android:textStyle="bold"
+                android:text="Cash 요청 Starball 갯수"
+                />
+        <EditText
+                android:layout_marginTop="9.5dp"
+                android:layout_width="match_parent" android:layout_height="40dp"
+                android:hint="입력해주세요"
+                android:textColorHint="#bbbbbb"
+                android:paddingLeft="10dp"
+                android:gravity="center_vertical"
+                android:textSize="14sp"
+                android:background="@drawable/background_border_strock1"/>
+        <TextView
+                android:textStyle="bold"
+                android:layout_marginTop="14.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#555555"
+                android:text="예상 Cash "
+                />
+
+        <LinearLayout
+                android:layout_marginTop="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            <TextView
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="19.5sp"
+                    android:textColor="#000000"
+                    android:gravity="end"
+                    android:padding="3dp"
+                    android:text="$ 100,000"
+                    />
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000"/>
+
+        </LinearLayout>
+        <TextView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#555555"
+                android:letterSpacing="-0.03"
+                android:text="앱스토어 결제비용과 시스템비용을 공제한 금액이 송금됩니다.\n
+페이팔 송금수수료 약 3% 공제 됩니다."
+                />
+        <TextView
+                android:layout_marginTop="13.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#555555"
+                android:text="환율에 따라 금액은 최종 달라질 수 있습니다.\n
+요청일 기준 2~3일 소요될 수 있습니다."
+                />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#555555"
+                android:text="페이팔 연동 e-mail을 적어 주세요."
+                />
+
+        <TextView
+                android:layout_marginTop="22.5dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="#555555"
+                android:text="입금요청 e-mail :"
+                />
+        <EditText
+                android:layout_marginTop="9.5dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="입력해주세요"
+                android:textColorHint="#bbbbbb"
+                android:paddingLeft="10dp"
+                android:gravity="center_vertical"
+                android:textSize="14sp"
+                android:background="@drawable/background_border_strock1"/>
+
+        <TextView
+                android:layout_marginTop="34dp"
+                android:id="@+id/nextTV"
+                android:layout_marginBottom="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#000000"
+                android:text="요청합니다"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="20.5sp"
+                android:textColor="#ffffff"/>
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
