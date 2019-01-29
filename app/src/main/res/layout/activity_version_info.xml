@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+    >
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+        <ImageView
+                android:paddingLeft="9.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/comm_arrow_left"/>
+
+        <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textSize="21sp"
+                android:textColor="#333333"
+                android:layout_centerInParent="true"
+                android:text="버전정보"/>
+
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+            android:layout_marginTop="76dp"
+            android:layout_width = "wrap_content"
+                  android:layout_height = "wrap_content"
+                  android:background="@drawable/background_border_strock10_d4d4d4"
+                  android:layout_gravity="center"
+    android:padding="13dp">
+
+                  <ImageView android:layout_width = "wrap_content" android:layout_height = "wrap_content"
+                  android:src="@mipmap/settung_ver_bi"/>
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_gravity="center"
+            android:layout_marginTop="28dp"
+            android:layout_width = "164dp"
+                  android:layout_height = "wrap_content"
+                  android:orientation="horizontal"
+                    >
+
+
+
+
+    <TextView
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#333333"
+            android:text="내  버전_"/>
+        <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#0095dc"
+                android:text="version. 1.00.00"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:paddingTop="6dp"
+            android:gravity="center"
+            android:layout_width = "match_parent"
+            android:layout_height = "wrap_content"
+            android:orientation="horizontal"
+    >
+
+
+
+
+        <TextView
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#333333"
+                android:text="최신 버전_"/>
+        <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#0095dc"
+                android:text="version. 1.00.00"/>
+
+
+    </LinearLayout>
+    <TextView
+            android:layout_marginTop="27dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="#555555"
+            android:letterSpacing="-0.02"
+            android:gravity="center_horizontal"
+            android:text="Copyright 2018 starball all rights reserved\n
+(모든 저작권 보유)"
+    />
+
+
+    <TextView
+            android:layout_marginTop="70dp"
+            android:id="@+id/nextTV"
+            android:layout_marginLeft="90dp"
+            android:layout_marginRight="90dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#000000"
+            android:text="최신 버전입니다."
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="20.5sp"
+            android:textColor="#ffffff"/>
+
+
+
+
+</LinearLayout>

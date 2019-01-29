@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+    >
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+        <ImageView
+                android:paddingLeft="9.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/comm_arrow_left"/>
+
+        <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textSize="21sp"
+                android:textColor="#333333"
+                android:layout_centerInParent="true"
+                android:text="VVIP 가입"/>
+
+    </RelativeLayout>
+
+
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+
+
+        <ImageView
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/vvip_dia"/>
+
+
+
+
+
+
+        <LinearLayout
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"
+                android:id="@+id/addelLL"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="205dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:background="@drawable/background_gradient3">
+
+            <ImageView
+                    android:layout_marginTop="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/vvip_lock"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:gravity="center_horizontal"
+                    android:text="원천차단"
+                    />
+            <TextView
+                    android:paddingTop="13dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:letterSpacing="-0.03"
+                    android:gravity="center_horizontal"
+                    android:text="신고된 회원은 원천적으로 검색에 노출되거나\n
+더 이상 추천되지 않습니다"
+                    />
+
+            <LinearLayout
+                    android:id="@+id/covalLL"
+                    android:layout_marginTop="14dp"
+                    android:layout_width="115dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:layout_marginRight="5dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="10dp"
+                        android:background="@drawable/circle_background1"/>
+                <ImageView
+                        android:layout_marginRight="5dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="10dp"
+                        android:background="@drawable/circle_background2"/>
+                <ImageView
+                        android:layout_marginRight="5dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="10dp"
+                        android:background="@drawable/circle_background2"/>
+                <ImageView
+                        android:layout_marginRight="5dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="10dp"
+                        android:background="@drawable/circle_background2"/>
+                <ImageView
+                        android:layout_marginRight="5dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="10dp"
+                        android:background="@drawable/circle_background2"/>
+                <ImageView
+                        android:layout_marginRight="5dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="10dp"
+                        android:background="@drawable/circle_background2"/>
+                <ImageView
+                        android:layout_marginRight="5dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="10dp"
+                        android:background="@drawable/circle_background2"/>
+                <ImageView
+                        android:layout_marginRight="5dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="10dp"
+                        android:background="@drawable/circle_background2"/>
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <TextView
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"
+                android:paddingTop="9.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:textColor="#333333"
+                android:text="본 회원권은 사전 공지 없이 가입신청이 불가 하거나,\n
+금액이 상향 조정될 수 있습니다. "
+        />
+
+        <TextView
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"
+                android:textStyle="bold"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="#333333"
+                android:text="서두르세요!"
+        />
+
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/vvip_coupon"
+        />
+
+
+        <TextView
+                android:layout_marginTop="25dp"
+                android:id="@+id/nextTV"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#000000"
+                android:text="예.좋아요"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="20.5sp"
+                android:textColor="#ffffff"/>
+
+        <TextView
+                android:layout_marginTop="11.5dp"
+                android:layout_marginBottom="25dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#333333"
+                android:gravity="center_horizontal"
+                android:text="아니오, 괜찮습니다."
+        />
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+    </ScrollView>
+
+</LinearLayout>

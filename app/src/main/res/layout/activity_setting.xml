@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android = "http://schemas.android.com/apk/res/android"
+        android:layout_width = "match_parent"
+        android:layout_height = "match_parent"
+        android:orientation = "vertical"
+>
+    <RelativeLayout
+            android:layout_width = "match_parent"
+            android:layout_height = "50dp">
+
+        <ImageView
+                android:paddingLeft = "9.5dp"
+                android:layout_width = "wrap_content"
+                android:layout_height = "match_parent"
+                android:src = "@mipmap/comm_arrow_left"/>
+
+        <TextView
+                android:textStyle = "bold"
+                android:layout_width = "wrap_content"
+                android:layout_height = "match_parent"
+                android:gravity = "center_vertical"
+                android:textSize = "21sp"
+                android:textColor = "#333333"
+                android:layout_centerInParent = "true"
+                android:text = "환경설정"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+            android:layout_width = "match_parent"
+            android:layout_height = "0dp"
+            android:layout_weight = "1"
+            android:fillViewport = "true">
+
+        <LinearLayout
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content"
+                android:orientation = "vertical">
+            <View
+                    android:layout_marginTop = "10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+            <LinearLayout
+                    android:layout_width = "match_parent"
+                    android:layout_height = "50dp"
+                    android:gravity = "center_vertical"
+                    android:background = "#e2e2e2">
+
+                <TextView
+                        android:textStyle = "bold"
+                        android:paddingLeft = "9.5dp"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:textSize = "16sp"
+                        android:textColor = "#7b818d"
+                        android:text = "알림설정"
+                />
+
+
+            </LinearLayout>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+            <LinearLayout android:layout_width = "match_parent"
+                          android:layout_height = "wrap_content"
+                          android:orientation = "vertical">
+
+                <LinearLayout
+                        android:layout_width = "match_parent"
+                        android:layout_height = "50dp"
+                        android:gravity = "center_vertical"
+                        android:background = "#ffffff">
+
+                    <TextView
+                            android:paddingLeft = "15dp"
+                            android:textStyle = "bold"
+                            android:layout_width = "0dp"
+                            android:layout_weight = "1"
+                            android:layout_height = "wrap_content"
+                            android:textSize = "15sp"
+                            android:textColor = "#333333"
+                            android:text = "메시지 온/오프"
+                    />
+                    <ImageView android:layout_width = "wrap_content"
+                               android:layout_height = "wrap_content"
+                               android:layout_marginRight="10dp"
+                               android:src = "@mipmap/setting_toggle_on"/>
+
+
+                </LinearLayout>
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#1f1f1f"/>
+                <LinearLayout
+                        android:layout_width = "match_parent"
+                        android:layout_height = "50dp"
+                        android:gravity = "center_vertical"
+                        android:background = "#ffffff">
+
+                    <TextView
+                            android:paddingLeft = "15dp"
+                            android:textStyle = "bold"
+                            android:layout_width = "0dp"
+                            android:layout_weight = "1"
+                            android:layout_height = "wrap_content"
+                            android:textSize = "15sp"
+                            android:textColor = "#333333"
+                            android:text = "매치 온/오프"
+                    />
+                    <ImageView android:layout_width = "wrap_content"
+                               android:layout_height = "wrap_content"
+                               android:layout_marginRight="10dp"
+                               android:src = "@mipmap/off"/>
+
+
+                </LinearLayout>
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#1f1f1f"/>
+                <LinearLayout
+                        android:layout_width = "match_parent"
+                        android:layout_height = "50dp"
+                        android:gravity = "center_vertical"
+                        android:background = "#ffffff">
+
+                    <TextView
+                            android:paddingLeft = "15dp"
+                            android:textStyle = "bold"
+                            android:layout_width = "0dp"
+                            android:layout_weight = "1"
+                            android:layout_height = "wrap_content"
+                            android:textSize = "15sp"
+                            android:textColor = "#333333"
+                            android:text = "나에게 호감 보낸 회원 온/오프"
+                    />
+                    <ImageView android:layout_width = "wrap_content"
+                               android:layout_height = "wrap_content"
+                               android:layout_marginRight="10dp"
+                               android:src = "@mipmap/off"/>
+
+
+                </LinearLayout>
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#1f1f1f"/>
+                <LinearLayout
+                        android:layout_width = "match_parent"
+                        android:layout_height = "50dp"
+                        android:gravity = "center_vertical"
+                        android:background = "#ffffff">
+
+                    <TextView
+                            android:paddingLeft = "15dp"
+                            android:textStyle = "bold"
+                            android:layout_width = "0dp"
+                            android:layout_weight = "1"
+                            android:layout_height = "wrap_content"
+                            android:textSize = "15sp"
+                            android:textColor = "#333333"
+                            android:text = "프로포즈 이벤트 발생 온/오프"
+                    />
+                    <ImageView android:layout_width = "wrap_content"
+                               android:layout_height = "wrap_content"
+                               android:layout_marginRight="10dp"
+                               android:src = "@mipmap/setting_toggle_on"/>
+
+
+                </LinearLayout>
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#1f1f1f"/>
+                <LinearLayout
+                        android:layout_width = "match_parent"
+                        android:layout_height = "50dp"
+                        android:gravity = "center_vertical"
+                        android:background = "#ffffff">
+
+                    <TextView
+                            android:paddingLeft = "15dp"
+                            android:textStyle = "bold"
+                            android:layout_width = "0dp"
+                            android:layout_weight = "1"
+                            android:layout_height = "wrap_content"
+                            android:textSize = "15sp"
+                            android:textColor = "#333333"
+                            android:text = "Daily moment등록 한 회원 온/오프"
+                    />
+                    <ImageView android:layout_width = "wrap_content"
+                               android:layout_height = "wrap_content"
+                               android:layout_marginRight="10dp"
+                               android:src = "@mipmap/setting_toggle_on"/>
+
+
+                </LinearLayout>
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#1f1f1f"/>
+                <LinearLayout
+                        android:layout_width = "match_parent"
+                        android:layout_height = "50dp"
+                        android:gravity = "center_vertical"
+                        android:background = "#ffffff">
+
+                    <TextView
+                            android:paddingLeft = "15dp"
+                            android:textStyle = "bold"
+                            android:layout_width = "0dp"
+                            android:layout_weight = "1"
+                            android:layout_height = "wrap_content"
+                            android:textSize = "15sp"
+                            android:textColor = "#333333"
+                            android:text = "Starball 받았을 때 알림 온/오프"
+                    />
+                    <ImageView android:layout_width = "wrap_content"
+                               android:layout_height = "wrap_content"
+                               android:layout_marginRight="10dp"
+                               android:src = "@mipmap/setting_toggle_on"/>
+
+
+                </LinearLayout>
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#1f1f1f"/>
+                <LinearLayout
+                        android:layout_width = "match_parent"
+                        android:layout_height = "50dp"
+                        android:gravity = "center_vertical"
+                        android:background = "#ffffff">
+
+                    <TextView
+                            android:paddingLeft = "15dp"
+                            android:textStyle = "bold"
+                            android:layout_width = "0dp"
+                            android:layout_weight = "1"
+                            android:layout_height = "wrap_content"
+                            android:textSize = "15sp"
+                            android:textColor = "#333333"
+                            android:text = "앱 진동 온/오프"
+                    />
+                    <ImageView android:layout_width = "wrap_content"
+                               android:layout_height = "wrap_content"
+                               android:layout_marginRight="10dp"
+                               android:src = "@mipmap/setting_toggle_on"/>
+
+
+                </LinearLayout>
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#1f1f1f"/>
+                <LinearLayout
+                        android:layout_width = "match_parent"
+                        android:layout_height = "50dp"
+                        android:gravity = "center_vertical"
+                        android:background = "#ffffff">
+
+                    <TextView
+                            android:paddingLeft = "15dp"
+                            android:textStyle = "bold"
+                            android:layout_width = "0dp"
+                            android:layout_weight = "1"
+                            android:layout_height = "wrap_content"
+                            android:textSize = "15sp"
+                            android:textColor = "#333333"
+                            android:text = "사운드 온/오프"
+                    />
+                    <ImageView android:layout_width = "wrap_content"
+                               android:layout_height = "wrap_content"
+                               android:layout_marginRight="10dp"
+                               android:src = "@mipmap/setting_toggle_on"/>
+
+
+                </LinearLayout>
+                <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#1f1f1f"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:layout_width = "match_parent"
+                    android:layout_height = "50dp"
+                    android:gravity = "center_vertical"
+                    android:background = "#e2e2e2">
+
+                <TextView
+                        android:textStyle = "bold"
+                        android:paddingLeft = "9.5dp"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:textSize = "16sp"
+                        android:textColor = "#7b818d"
+                        android:text = "도움말"
+                />
+
+
+            </LinearLayout>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+            <LinearLayout
+                    android:layout_width = "match_parent"
+                    android:layout_height = "50dp"
+                    android:gravity = "center_vertical"
+                    android:background = "#e2e2e2">
+
+                <TextView
+                        android:textStyle = "bold"
+                        android:paddingLeft = "9.5dp"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:textSize = "16sp"
+                        android:textColor = "#7b818d"
+                        android:text = "구매내역 복원"
+                />
+
+
+            </LinearLayout>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+            <LinearLayout
+                    android:layout_width = "match_parent"
+                    android:layout_height = "50dp"
+                    android:gravity = "center_vertical"
+                    android:background = "#e2e2e2">
+
+                <TextView
+                        android:textStyle = "bold"
+                        android:paddingLeft = "9.5dp"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:textSize = "16sp"
+                        android:textColor = "#7b818d"
+                        android:text = "개인정보 취급 방침"
+                />
+
+
+            </LinearLayout>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+            <LinearLayout
+                    android:layout_width = "match_parent"
+                    android:layout_height = "50dp"
+                    android:gravity = "center_vertical"
+                    android:background = "#e2e2e2">
+
+                <TextView
+                        android:textStyle = "bold"
+                        android:paddingLeft = "9.5dp"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:textSize = "16sp"
+                        android:textColor = "#7b818d"
+                        android:text = "개선 및 사업 제안"
+                />
+
+
+            </LinearLayout>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+            <LinearLayout
+                    android:layout_width = "match_parent"
+                    android:layout_height = "50dp"
+                    android:gravity = "center_vertical"
+                    android:background = "#e2e2e2">
+
+                <TextView
+                        android:textStyle = "bold"
+                        android:paddingLeft = "9.5dp"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:textSize = "16sp"
+                        android:textColor = "#7b818d"
+                        android:text = "로그아웃"
+                />
+
+
+            </LinearLayout>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+            <LinearLayout
+                    android:layout_width = "match_parent"
+                    android:layout_height = "50dp"
+                    android:gravity = "center_vertical"
+                    android:background = "#e2e2e2">
+
+                <TextView
+                        android:textStyle = "bold"
+                        android:paddingLeft = "9.5dp"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:textSize = "16sp"
+                        android:textColor = "#7b818d"
+                        android:text = "계정 삭제"
+                />
+
+
+            </LinearLayout>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+            <LinearLayout
+                    android:layout_width = "match_parent"
+                    android:layout_height = "50dp"
+                    android:gravity = "center_vertical"
+                    android:background = "#e2e2e2">
+
+                <TextView
+                        android:textStyle = "bold"
+                        android:paddingLeft = "9.5dp"
+                        android:layout_width = "wrap_content"
+                        android:layout_height = "wrap_content"
+                        android:textSize = "16sp"
+                        android:textColor = "#7b818d"
+                        android:text = "버전정보"
+                />
+
+
+            </LinearLayout>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

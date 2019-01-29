@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+    >
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+        <ImageView
+                android:paddingLeft="9.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/comm_arrow_left"/>
+
+        <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textSize="21sp"
+                android:textColor="#333333"
+                android:layout_centerInParent="true"
+                android:text="나의 매력포인트는"/>
+
+    </RelativeLayout>
+
+
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+    <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+        <TextView
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="#333333"
+                android:text="최대 4개를 선택해주세요."
+        />
+
+
+        <LinearLayout
+                android:layout_marginTop="35dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_923b9f"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:textColor="#ffffff"
+                    android:text="큰눈이 매력적이에요."/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_923b9f"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:textColor="#ffffff"
+                    android:text="섹시한 두뇌"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_d4d4d4"
+                    android:textColor="#555555"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="솔직해요"/>
+
+
+        </LinearLayout>
+
+        <TextView
+                android:layout_marginTop="31.5dp"
+                android:id="@+id/nextTV"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#000000"
+                android:text="다음"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="20.5sp"
+                android:textColor="#ffffff"/>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+    </ScrollView>
+
+</LinearLayout>
