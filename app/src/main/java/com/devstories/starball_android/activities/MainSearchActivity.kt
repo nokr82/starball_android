@@ -8,7 +8,7 @@ import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
 import kotlinx.android.synthetic.main.activity_main_search.*
 
-class Main_Search_Activity : RootActivity() {
+class MainSearchActivity : RootActivity() {
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+    >
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+        <ImageView
+                android:paddingLeft="9.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/comm_arrow_left"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textSize="21sp"
+                android:textColor="#333333"
+                android:layout_centerInParent="true"
+                android:text="신고하기"/>
+
+    </RelativeLayout>
+
+    <TextView
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="#333333"
+            android:text="신고를 원하시나요?"
+            />
+
+
+    <RelativeLayout
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+    <Spinner android:layout_width="match_parent"
+             android:layout_height="40dp"
+    android:background="@drawable/background_border_strock1">
+
+
+    </Spinner>
+        <ImageView
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:src="@mipmap/op_drop"/>
+    </RelativeLayout>
+
+<LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+    <TextView
+            android:id="@+id/nextTV"
+            android:layout_marginBottom="25dp"
+            android:layout_width="match_parent"
+              android:layout_height="50dp"
+                 android:background="#000000"
+              android:text="증빙 사진 첨부"
+            android:textStyle="bold"
+              android:gravity="center"
+              android:textSize="20.5sp"
+              android:textColor="#ffffff"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:letterSpacing="-0.03"
+            android:text="주의사항"
+            />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="#555555"
+            android:text="회원님의 정보 및 자세한 신고내용은 공개되지 않습니다.\n
+신고내용에 대해 반드시 조치를 취한다는 보장은 하지 않습니다.\n
+타 서비스상에서 발생한 피해신고는 접수되지 않습니다."
+            />
+    <TextView
+            android:paddingTop="11dp"
+            android:paddingBottom="11dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="#555555"
+            android:text="허위 혹은 보복성 신고, 동일 회원을 여러번 신고하실 경우 신고 내\n
+용에 대한 신뢰성이 떨어질 수 있습니다."
+            />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="#555555"
+            android:letterSpacing="-0.03"
+            android:lineSpacingExtra="5sp"
+            android:text="회원님이 일상생활에서 피해를 볼 가능성이 있는 경우, 실제로 피해\n
+를 본 경우, 범죄의 근거가 되는 정보를 가진 경우에는 즉시 경찰과\n
+상담하시기 바랍니다."
+            />
+</LinearLayout>
+
+
+
+</LinearLayout>

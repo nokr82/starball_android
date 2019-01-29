@@ -47,7 +47,7 @@
         <ImageView android:layout_width="0dp"
                    android:layout_weight="1"
                    android:layout_height="wrap_content"
-                   android:src="@mipmap/profile_gallery"/>
+                   android:src="@mipmap/profile_fb"/>
         <ImageView android:layout_width="0dp"
                    android:layout_weight="1"
                    android:layout_height="wrap_content"

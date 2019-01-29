@@ -72,7 +72,7 @@
                 android:theme="@style/NoTitleDialog"
                 android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
-                android:name=".activities.Main_Search_Activity"
+                android:name=".activities.MainSearchActivity"
                 android:theme="@style/NoTitleDialog"
                 android:windowSoftInputMode="adjustResize|stateHidden"/>
 
