@@ -307,12 +307,14 @@ At Freepik we use a freemium business model which means, the majority of the res
                      android:background="@null">
             </Spinner>
             <ImageView
+                    android:layout_marginBottom="5dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:src="@mipmap/op_drop"/>
             <View
+                    android:layout_marginTop="5dp"
                     android:layout_alignParentBottom="true"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"

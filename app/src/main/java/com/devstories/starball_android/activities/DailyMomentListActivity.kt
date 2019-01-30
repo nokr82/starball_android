@@ -16,7 +16,7 @@ class DailyMomentListActivity : RootActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_search)
+        setContentView(R.layout.activity_daily_mement_list)
         this.context = this
         progressDialog = ProgressDialog(context)
 
