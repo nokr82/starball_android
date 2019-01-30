@@ -163,19 +163,19 @@
                 android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
                 android:name=".activities.DlgCharInfoActivity"
-                android:screenOrientation="portrait"
+                android:screenOrientation="unspecified"
                 android:theme="@style/full_screen_dialog1"/>
         <activity
                 android:name=".activities.DlgCrushActivity"
-                android:screenOrientation="portrait"
+                android:screenOrientation="unspecified"
                 android:theme="@style/full_screen_dialog1"/>
         <activity
                 android:name=".activities.DlgStarballHistoryActivity"
-                android:screenOrientation="portrait"
+                android:screenOrientation="unspecified"
                 android:theme="@style/full_screen_dialog1"/>
         <activity
                 android:name=".activities.DlgStarballLackActivity"
-                android:screenOrientation="portrait"
+                android:screenOrientation="unspecified"
                 android:theme="@style/full_screen_dialog1"/>
 
 

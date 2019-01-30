@@ -6,17 +6,26 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_height="match_parent">
 
-    <com.devstories.starball_android.base.RationalLinearLayout
+    <com.devstories.starball_android.base.RationalRelativeLayout
             android:id="@+id/popup"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
+            android:background="@drawable/background_round_ffffff"
             app:ratio="330:519">
 
+<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:fillViewport="true">
+
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
-
-<android.support.v4.widget.CircleImageView
+<ImageView
         android:layout_marginTop="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -85,7 +94,7 @@
                 android:background="@drawable/background_border_strock4"
                 android:textColor="#ffffff"
                 android:gravity="center"
-                android:text="구매히가"
+                android:text="구매하기"
                 />
 
     </LinearLayout>
@@ -380,6 +389,7 @@
             />
 
     <TextView
+            android:layout_marginBottom="15dp"
             android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
@@ -388,8 +398,11 @@
             android:textColor="#333333"
             android:text="아니오. 다시 생각해볼게요."
             />
-    
-    </com.devstories.starball_android.base.RationalLinearLayout>
+
+</LinearLayout>
+</ScrollView>
+
+    </com.devstories.starball_android.base.RationalRelativeLayout>
     
     
     

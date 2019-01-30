@@ -8,6 +8,7 @@
 
     <com.devstories.starball_android.base.RationalLinearLayout
             android:id="@+id/popup"
+            android:background="@drawable/background_round_ffffff"
             android:layout_width="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -18,7 +19,7 @@
 
 
 
-        <android.support.v4.widget.CircleImageView
+        <ImageView
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
