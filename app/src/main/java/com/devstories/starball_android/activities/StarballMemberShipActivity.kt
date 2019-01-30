@@ -22,6 +22,11 @@ class StarballMemberShipActivity : RootActivity() {
 
 
 
+        vipTV.setOnClickListener {
+            val intent = Intent(context, VVIPJoinActivity::class.java)
+            startActivity(intent)
+        }
+
 
 
 

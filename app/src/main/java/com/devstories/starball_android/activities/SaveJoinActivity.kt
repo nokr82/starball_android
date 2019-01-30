@@ -26,6 +26,14 @@ class SaveJoinActivity : RootActivity() {
         }
 
 
+        yesTV.setOnClickListener {
+            val intent = Intent(context, SaveJoinOverActivity::class.java)
+            startActivity(intent)
+        }
+        noTV.setOnClickListener {
+            val intent = Intent(context, SaveJoinCancleActivity::class.java)
+            startActivity(intent)
+        }
 
 
 

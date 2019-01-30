@@ -20,7 +20,9 @@ class VersionActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
-
+        backIV.setOnClickListener {
+            finish()
+        }
 
 
 

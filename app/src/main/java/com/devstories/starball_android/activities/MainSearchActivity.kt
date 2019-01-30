@@ -20,6 +20,11 @@ class MainSearchActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
+        safeIV.setOnClickListener {
+            val intent = Intent(context, SaveJoinActivity::class.java)
+            startActivity(intent)
+        }
+
 
         charmIV.setOnClickListener {
             val intent = Intent(context, DlgCrushActivity::class.java)

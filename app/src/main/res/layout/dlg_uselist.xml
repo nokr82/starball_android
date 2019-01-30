@@ -14,7 +14,7 @@
             app:ratio="330:336.5">
 
 <RelativeLayout
-        android:paddingTop="11.5dp"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="46.5dp">
         <TextView
@@ -207,6 +207,7 @@
         </LinearLayout>
 </ScrollView>
         <RelativeLayout
+                android:layout_marginBottom="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">

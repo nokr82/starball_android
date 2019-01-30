@@ -86,6 +86,7 @@
 
 
         <TextView
+                android:id="@+id/payTV"
                 android:layout_width="63dp"
                 android:layout_height="23.5dp"
                 android:textSize="13dp"
@@ -375,6 +376,7 @@
 
 
     <TextView
+            android:id="@+id/giftTV"
             android:layout_marginTop="23dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

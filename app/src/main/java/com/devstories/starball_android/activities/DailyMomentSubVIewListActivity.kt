@@ -22,8 +22,10 @@ class DailyMomentSubVIewListActivity : RootActivity() {
 
 
 
-        DaillyAdapter = DaillyAdapter(context,R.layout.item_view_daily_list, 6)
+        DaillyAdapter = DaillyAdapter(context,R.layout.item_view_daily_sub_list, 6)
         dailyGV.adapter = DaillyAdapter
+
+
         backIV.setOnClickListener {
             finish()
         }

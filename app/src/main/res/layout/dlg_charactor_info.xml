@@ -23,35 +23,29 @@
                 android:text="Character info."
                 />
 
-        <LinearLayout
-                android:paddingTop="27.5dp"
-                android:layout_width="match_parent"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="60dp"
-                android:orientation="horizontal"
-                android:layout_height="342.5dp">
+
             <GridView
+                    android:id="@+id/infoGV"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
                     android:numColumns="2"
-                    >
-
-
-            </GridView>
+                   />
 
 
 
 
-        </LinearLayout>
+
+
 <LinearLayout
         android:paddingTop="23dp"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:textSize="13sp"
                 android:textColor="#333333"
                 android:textStyle="bold"
