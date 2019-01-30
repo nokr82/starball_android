@@ -1,36 +1,46 @@
 package com.devstories.starball_android.activities
 
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
+import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.activity_join_result.*
+import com.devstories.starball_android.base.Utils
+import com.loopj.android.http.JsonHttpResponseHandler
+import com.loopj.android.http.RequestParams
+import cz.msebera.android.httpclient.Header
+import org.json.JSONArray
+import org.json.JSONException
+import org.json.JSONObject
 
-class JoinResultActivity : RootActivity() {
+class DlgCharInfoActivity : RootActivity() {
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
+    private val _active = true
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_join_result)
+        setContentView(R.layout.dlg_crush)
+
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        checkTV.setOnClickListener {
-            val intent = Intent(context, MainSearchActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-        }
+
+
 
 
 
 
     }
-
 
 
 }

@@ -27,6 +27,7 @@
                 android:layout_height="wrap_content">
 
             <ImageView
+                    android:id="@+id/searchIV"
                     android:paddingLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -55,9 +56,11 @@
                 android:src="@mipmap/setting_profile_picture"/>
 
         <ImageView
+                android:id="@+id/editIV"
                 android:layout_centerInParent="true"
                 android:paddingLeft="57.5dp"
-                android:paddingTop="140dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/setting_profile_edit"/>
@@ -78,6 +81,7 @@
                 />
 
             <ImageView
+                    android:id="@+id/settingIV"
                     android:layout_marginLeft="12.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -140,6 +144,7 @@
             android:layout_height="wrap_content">
 
         <LinearLayout
+                android:id="@+id/starballLL"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -518,6 +523,7 @@
 
 
         <TextView
+                android:id="@+id/moreTV"
                 android:layout_centerInParent="true"
                 android:layout_alignParentBottom="true"
                 android:gravity="center"
@@ -542,6 +548,7 @@
 
 
     <LinearLayout
+            android:id="@+id/payLL"
             android:layout_marginTop="50dp"
             android:layout_marginBottom="15dp"
             android:layout_marginLeft="20dp"

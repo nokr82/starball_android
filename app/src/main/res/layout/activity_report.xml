@@ -22,7 +22,6 @@
                 android:gravity="center_vertical"
                 android:textSize="21sp"
                 android:textColor="#333333"
-                android:layout_centerInParent="true"
                 android:text="신고하기"/>
 
     </RelativeLayout>

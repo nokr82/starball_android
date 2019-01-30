@@ -21,6 +21,26 @@ class MainSearchActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
+        charmIV.setOnClickListener {
+            val intent = Intent(context, DlgCrushActivity::class.java)
+            startActivity(intent)
+        }
+        infoIV.setOnClickListener {
+            val intent = Intent(context, DlgCharInfoActivity::class.java)
+            startActivity(intent)
+        }
+
+        chatIV.setOnClickListener {
+            val intent = Intent(context, ChattingActivity::class.java)
+            startActivity(intent)
+        }
+
+        charIV.setOnClickListener {
+            val intent = Intent(context, SettingMainActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
 
 

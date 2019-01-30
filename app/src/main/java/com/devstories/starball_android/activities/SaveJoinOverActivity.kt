@@ -6,9 +6,9 @@ import android.content.Intent
 import android.os.Bundle
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.activity_join_result.*
+import kotlinx.android.synthetic.main.activity_main_search.*
 
-class JoinResultActivity : RootActivity() {
+class SaveJoinOverActivity : RootActivity() {
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
@@ -16,15 +16,12 @@ class JoinResultActivity : RootActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_join_result)
+        setContentView(R.layout.activity_main_search)
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        checkTV.setOnClickListener {
-            val intent = Intent(context, MainSearchActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-        }
+
+
 
 
 

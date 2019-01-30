@@ -2,35 +2,34 @@ package com.devstories.starball_android.activities
 
 import android.app.ProgressDialog
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.activity_join_result.*
 
-class JoinResultActivity : RootActivity() {
+
+class DlgCrushActivity : RootActivity() {
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
+    private val _active = true
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_join_result)
+        setContentView(R.layout.dlg_crush)
+
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        checkTV.setOnClickListener {
-            val intent = Intent(context, MainSearchActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-        }
+
+
 
 
 
 
     }
-
 
 
 }

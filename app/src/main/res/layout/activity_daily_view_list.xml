@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:layout_weight="1">
+    
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <RelativeLayout
+            android:background="@mipmap/lounge_daily_top_bg"
+            android:layout_width="match_parent"
+            android:layout_height="360dp">
+        
+        <LinearLayout
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:paddingLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_arrow_back"/>
+
+            <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:visibility="invisible"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/setting_center"/>
+
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:background="@drawable/background_border_strock5_0c040000"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:textColor="#ffff"
+                    android:text="친구초대"/>
+
+        </LinearLayout>
+
+        <android.support.v4.widget.CircleImageView
+                android:id="@+id/profileIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/setting_profile_picture"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="50dp"
+                android:paddingLeft="40dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/mark_subscribe_need"/>
+
+
+        <RelativeLayout
+                android:id="@+id/infoRL"
+                android:layout_marginTop="7dp"
+                android:layout_below="@+id/profileIV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="#ffffff"
+                    android:text="Vahan Hovhannisyan\n
+KOREA     25"
+                    />
+
+            <ImageView
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/bi"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:id="@+id/likeRL"
+                android:layout_marginTop="7dp"
+                android:layout_below="@+id/infoRL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="#ededed"
+                    android:gravity="center_horizontal"
+                    android:text="2018.12.24에 좋아요를 보냈습니다."
+                    />
+
+
+
+        </RelativeLayout>
+<LinearLayout
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/likeRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+            android:background="@drawable/background_border_strock5_0c040000"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30dp"
+            android:textSize="15sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:text="TimeLine"
+            android:layout_marginRight="5dp"
+            />
+    <TextView
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/background_border_strock5_0c040000"
+            android:textStyle="bold"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30dp"
+            android:textSize="15sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:text="Secret"
+            />
+
+
+
+
+</LinearLayout>
+
+    </RelativeLayout>
+
+
+
+    <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_border_strock10_ededed">
+
+
+
+    </ListView>
+
+
+    
+
+
+    </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>
