@@ -26,7 +26,9 @@ class DlgCrushActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
-
+        noTV.setOnClickListener {
+            finish()
+        }
         payTV.setOnClickListener {
             val intent = Intent(context, StarballPayActivity::class.java)
             startActivity(intent)

@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.dlg_crush.*
+import kotlinx.android.synthetic.main.dlg_album_pay.*
 
 
 class DlgAlbumPayActivity : RootActivity() {
@@ -27,15 +27,12 @@ class DlgAlbumPayActivity : RootActivity() {
 
 
 
-        payTV.setOnClickListener {
-            val intent = Intent(context, StarballPayActivity::class.java)
-            startActivity(intent)
+        noTV.setOnClickListener {
+            finish()
         }
 
-        giftTV.setOnClickListener {
-            val intent = Intent(context, StarballPayActivity::class.java)
-            startActivity(intent)
-        }
+
+
 
 
 
