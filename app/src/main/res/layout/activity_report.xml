@@ -13,9 +13,11 @@
                 android:paddingLeft="9.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@mipmap/comm_arrow_left"/>
+                android:src="@mipmap/comm_arrow_left"
+                android:id="@+id/backIV"/>
 
         <TextView
+                android:layout_marginLeft="10dp"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"

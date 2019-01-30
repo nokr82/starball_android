@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.activity_main_search.*
+import kotlinx.android.synthetic.main.activity_version_info.*
 
 class VersionActivity : RootActivity() {
 
@@ -16,7 +16,7 @@ class VersionActivity : RootActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_search)
+        setContentView(R.layout.activity_version_info)
         this.context = this
         progressDialog = ProgressDialog(context)
 

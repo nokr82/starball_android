@@ -4,12 +4,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:fillViewport="true"
-            android:scrollbars="none"
-            android:layout_weight="1">
+    <!--<ScrollView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:fillViewport="true"-->
+            <!--android:scrollbars="none"-->
+            <!--android:layout_weight="1">-->
     
 <LinearLayout
         android:layout_width="match_parent"
@@ -30,7 +30,8 @@
                     android:paddingLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/lounge_arrow_back"/>
+                    android:src="@mipmap/lounge_arrow_back"
+                    android:id="@+id/backIV"/>
 
             <ImageView
                     android:layout_width="0dp"
@@ -177,7 +178,8 @@ already dragged card into that plate looks like.
     <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/background_border_strock10_ededed">
+            android:background="@drawable/background_border_strock10_ededed"
+            android:id="@+id/dailyLV">
 
 
 
@@ -190,6 +192,6 @@ already dragged card into that plate looks like.
     </LinearLayout>
 
 
-    </ScrollView>
+    <!--</ScrollView>-->
 
 </LinearLayout>

@@ -24,6 +24,7 @@ android:fillViewport="true">
 동영상을 추천합니다."/>
 
         <GridView
+                android:id="@+id/profileGV"
                 android:layout_marginTop="17.5dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

@@ -13,7 +13,8 @@
                 android:paddingLeft="9.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@mipmap/comm_arrow_left"/>
+                android:src="@mipmap/comm_arrow_left"
+                android:id="@+id/backIV"/>
 
         <ImageView
                 android:layout_width="wrap_content"
@@ -448,8 +449,10 @@
                     android:layout_marginTop="24.5dp"/>
 
             <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
+                    android:id="@+id/groupLV"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    >
 
             </com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView>
 
@@ -484,7 +487,8 @@
 
             <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:id="@+id/talkLV">
 
             </com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView>
 

@@ -30,7 +30,8 @@
                     android:paddingLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/lounge_arrow_back"/>
+                    android:src="@mipmap/lounge_arrow_back"
+                    android:id="@+id/backIV"/>
 
             <ImageView
                     android:layout_width="0dp"
@@ -151,6 +152,7 @@ KOREA     25"
 
 
     <GridView
+            android:id="@+id/dailyGV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:numColumns="2"
