@@ -177,6 +177,10 @@
                 android:name=".activities.DlgStarballLackActivity"
                 android:screenOrientation="unspecified"
                 android:theme="@style/full_screen_dialog1"/>
+        <activity
+                android:name=".activities.DlgAlbumPayActivity"
+                android:screenOrientation="unspecified"
+                android:theme="@style/full_screen_dialog1"/>
 
 
     </application>

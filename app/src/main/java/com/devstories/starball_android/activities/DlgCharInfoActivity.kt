@@ -2,6 +2,7 @@ package com.devstories.starball_android.activities
 
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.infoAdapter
@@ -30,6 +31,12 @@ class DlgCharInfoActivity : RootActivity() {
 
         infoAdapter = infoAdapter(context,R.layout.item_char_info, 12)
         infoGV.adapter = infoAdapter
+
+
+        reportTV.setOnClickListener {
+            val intent = Intent(context, ReportActivity::class.java)
+            startActivity(intent)
+        }
 
 
 

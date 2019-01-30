@@ -14,7 +14,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@mipmap/comm_arrow_left"
-                android:id="@+id/backIV"/>
+            />
 
         <TextView
                 android:layout_width="wrap_content"
@@ -30,7 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@mipmap/comm_arrow_left"
-                android:id="@+id/backIV"/>
+                android:id="@+id/backIV"
+                />
 
     </RelativeLayout>
 
@@ -54,13 +55,15 @@
             />
 
 
-    <com.devstories.starball_android.base.ExpandableHeightGridView
+    <GridView
+            android:padding="10dp"
+            android:id="@+id/profileGV"
             android:layout_marginTop="17.5dp"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:scrollbars="none"
+            android:layout_height="350dp"
             android:numColumns="3"
-            ></com.devstories.starball_android.base.ExpandableHeightGridView>
+            ></GridView>
 
 
         <TextView
