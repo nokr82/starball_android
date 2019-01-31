@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:textSize="21sp"
+                android:textSize="21dp"
                 android:textColor="#333333"
                 android:layout_centerInParent="true"
                 android:text="Cash 요청"/>
@@ -61,7 +61,7 @@
            <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:textSize="15sp"
+                   android:textSize="15dp"
                    android:textColor="#333333"
                    android:text="보유 Starball : "
                    />
@@ -69,7 +69,7 @@
                    android:textStyle="bold"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:textSize="15sp"
+                   android:textSize="15dp"
                    android:textColor="#333333"
                    android:text="190"
                    />
@@ -84,7 +84,7 @@
                    android:background="@drawable/background_border_strock9_333333"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:textSize="15sp"
+                   android:textSize="15dp"
                    android:textColor="#333333"
                    android:text="보유내역"
                    />
@@ -107,7 +107,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textColor="#333333"
                     android:text="Cash 가능 Starball 갯수: "
                     />
@@ -115,7 +115,7 @@
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textColor="#333333"
                     android:text="30"
                     />
@@ -126,7 +126,7 @@
                 android:layout_marginTop="9dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#555555"
                 android:letterSpacing="-0.03"
                 android:text="무료지급된 Starball은 Cash 대상에서 제외됩니다."
@@ -136,7 +136,7 @@
                 android:layout_marginTop="19dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#555555"
                 android:textStyle="bold"
                 android:text="Cash 요청 Starball 갯수"
@@ -148,14 +148,14 @@
                 android:textColorHint="#bbbbbb"
                 android:paddingLeft="10dp"
                 android:gravity="center_vertical"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:background="@drawable/background_border_strock1"/>
         <TextView
                 android:textStyle="bold"
                 android:layout_marginTop="14.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#555555"
                 android:text="예상 Cash "
                 />
@@ -169,7 +169,7 @@
                     android:textStyle="bold"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="19.5sp"
+                    android:textSize="19.5dp"
                     android:textColor="#000000"
                     android:gravity="end"
                     android:padding="3dp"
@@ -186,7 +186,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#555555"
                 android:letterSpacing="-0.03"
                 android:text="앱스토어 결제비용과 시스템비용을 공제한 금액이 송금됩니다.\n
@@ -196,7 +196,7 @@
                 android:layout_marginTop="13.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#555555"
                 android:text="환율에 따라 금액은 최종 달라질 수 있습니다.\n
 요청일 기준 2~3일 소요될 수 있습니다."
@@ -204,7 +204,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#555555"
                 android:text="페이팔 연동 e-mail을 적어 주세요."
                 />
@@ -214,7 +214,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#555555"
                 android:text="입금요청 e-mail :"
                 />
@@ -226,7 +226,7 @@
                 android:textColorHint="#bbbbbb"
                 android:paddingLeft="10dp"
                 android:gravity="center_vertical"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:background="@drawable/background_border_strock1"/>
 
         <TextView
@@ -239,7 +239,7 @@
                 android:text="요청합니다"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:textSize="20.5sp"
+                android:textSize="20.5dp"
                 android:textColor="#ffffff"/>
 
 

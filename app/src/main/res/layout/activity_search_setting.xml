@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:textSize="21sp"
+                android:textSize="21dp"
                 android:textColor="#333333"
                 android:layout_centerInParent="true"
                 android:text="검색설정"/>
@@ -46,7 +46,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
+                android:textSize="24dp"
                 android:textColor="#333333"
                 android:text="검색설정은,"
                 />
@@ -55,7 +55,7 @@
                 android:paddingTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textColor="#333333"
                 android:letterSpacing="-0.05"
                 android:text="노출설정에도 동일하게 적용됩니다.\n
@@ -67,7 +67,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#333333"
                 android:text="성별"
                 />
@@ -86,7 +86,7 @@
                     android:paddingLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="남자"
                     />
@@ -100,7 +100,7 @@
                     android:paddingLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="여자"
                     />
@@ -117,7 +117,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#333333"
                 android:text="나이"
                 />
@@ -125,7 +125,7 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#555555"
                 android:gravity="end"
                 android:text="22 ~ 35"
@@ -141,7 +141,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#333333"
                 android:text="거리"
                 />
@@ -149,7 +149,7 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#555555"
                 android:gravity="end"
                 android:text="0~100km"
@@ -164,7 +164,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#333333"
                 android:text="키"
                 />
@@ -172,7 +172,7 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#555555"
                 android:gravity="end"
                 android:text="140~175cm"
@@ -188,7 +188,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#333333"
                 android:text="당신의 선호하는 언어를 알려 주세요."
                 />
@@ -229,7 +229,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="18dp"
                     android:textStyle="bold"
                     android:textColor="#333333"
                     android:text="언어 추가"
@@ -252,7 +252,7 @@
                 android:paddingLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textColor="#333333"
                 android:text="같은 국적 사람에게는 관심이 없습니다."
                 />
@@ -275,7 +275,7 @@
                     android:paddingLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="안전인증 회원만 봅니다."
                     />
@@ -297,7 +297,7 @@
                     android:paddingLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="VVIP 회원만 봅니다."
                     />
@@ -317,7 +317,7 @@
                 android:text="확인"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:textSize="20.5sp"
+                android:textSize="20.5dp"
                 android:textColor="#ffffff"/>
 
 

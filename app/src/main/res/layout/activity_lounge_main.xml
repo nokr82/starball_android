@@ -52,7 +52,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:gravity="center_vertical"
                 android:background="@drawable/background_border_strock10_ededed">
 
@@ -169,7 +169,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:background="@drawable/background_border_strock10_ededed">
 
 
@@ -180,7 +180,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:textSize="21sp"
+                        android:textSize="21dp"
                         android:textColor="#333333"
                         android:text="모든 EVENT"/>
 
@@ -210,7 +210,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:background="@drawable/background_border_strock10_ededed">
 
 
@@ -229,7 +229,7 @@
                         android:layout_weight="1"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:textSize="21sp"
+                        android:textSize="21dp"
                         android:textColor="#333333"
                         android:text="대화"/>
 
@@ -242,7 +242,7 @@
                         android:layout_width="wrap_content"
                         android:gravity="center_vertical"
                         android:layout_height="match_parent"
-                        android:textSize="15sp"
+                        android:textSize="15dp"
                         android:textColor="#555555"
                         android:text="일상의 행복"
                         />
@@ -265,7 +265,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:background="@drawable/background_border_strock10_ededed">
 
 
@@ -284,7 +284,7 @@
                         android:layout_weight="1"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:textSize="21sp"
+                        android:textSize="21dp"
                         android:textColor="#333333"
                         android:text="매치"/>
 
@@ -295,7 +295,7 @@
                         android:paddingRight="44.5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp"
+                        android:textSize="15dp"
                         android:textColor="#555555"
                         android:text="진실의 순간"
                         />
@@ -318,7 +318,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:background="@drawable/background_border_strock10_ededed">
 
 
@@ -337,7 +337,7 @@
                         android:layout_weight="1"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:textSize="21sp"
+                        android:textSize="21dp"
                         android:textColor="#333333"
                         android:text="받은 호감"/>
 
@@ -348,7 +348,7 @@
                         android:paddingRight="44.5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp"
+                        android:textSize="15dp"
                         android:textColor="#555555"
                         android:text="존재의 재발견"
                         />
@@ -370,7 +370,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:background="@drawable/background_border_strock10_ededed">
 
 
@@ -389,7 +389,7 @@
                         android:layout_weight="1"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:textSize="21sp"
+                        android:textSize="21dp"
                         android:textColor="#333333"
                         android:text="보낸 호감"/>
 
@@ -400,7 +400,7 @@
                         android:paddingRight="44.5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="15sp"
+                        android:textSize="15dp"
                         android:textColor="#555555"
                         android:text="인연의 기회"
                         />
@@ -448,7 +448,7 @@
                     android:textColorHint="#bbbbbb"
                     android:paddingLeft="40dp"
                     android:gravity="center_vertical"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     />
 
         </RelativeLayout>

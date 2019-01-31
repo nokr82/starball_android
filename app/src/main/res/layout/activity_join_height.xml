@@ -13,7 +13,7 @@
             android:layout_marginTop="66dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:textSize="24dp"
             android:textColor="#333333"
             android:text="당신의 키는,"
     />
@@ -29,7 +29,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:inputType="number"
-                  android:textSize="24sp"
+                  android:textSize="24dp"
                   android:textColor="#9b9ca0"
                   android:gravity="center"
                   android:layout_marginRight="10dp"
@@ -40,7 +40,7 @@
                   android:inputType="number"
                   android:layout_height="match_parent"
                   android:layout_weight="1"
-                  android:textSize="24sp"
+                  android:textSize="24dp"
                   android:textColor="#9b9ca0"
                   android:gravity="center"
                   android:background="@drawable/background_border_strock3"
@@ -49,7 +49,7 @@
                   android:inputType="number"
                   android:layout_height="match_parent"
                   android:layout_weight="1"
-                  android:textSize="24sp"
+                  android:textSize="24dp"
                   android:textColor="#9b9ca0"
                   android:layout_marginLeft="10dp"
                   android:gravity="center"
@@ -71,7 +71,7 @@ android:layout_weight="1"/>
               android:text="다음"
             android:textStyle="bold"
               android:gravity="center"
-              android:textSize="20.5sp"
+              android:textSize="20.5dp"
               android:textColor="#ffffff"/>
 
 

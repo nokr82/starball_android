@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:textColor="#646464"
             android:text="15명이 호감을 보냈습니다."/>
 
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:textStyle="bold"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textColor="#333333"
                 android:text="보유한 Starball : "
                 />
@@ -71,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:textStyle="bold"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textColor="#0056cd"
                 android:text="10"
                 />
@@ -79,7 +79,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textColor="#333333"
                 android:text="개"
                 />
@@ -118,7 +118,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textColor="#333333"
                 android:text="무료로 +1 Starball 받기"
                 />
@@ -135,7 +135,7 @@
                     android:layout_height="23.5dp"
                     android:layout_weight="1"
                     android:background="@drawable/background_border_strock5"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     android:gravity="center"
                     android:textColor="#5c5c5c"
                     android:text="광고시청"/>
@@ -150,7 +150,7 @@
                     android:layout_height="23.5dp"
                     android:layout_weight="1"
                     android:background="@drawable/background_border_strock5"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     android:gravity="center"
                     android:textColor="#5c5c5c"
                     android:text="친구초대"/>
@@ -182,7 +182,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textColor="#4a4a4a"
                 android:gravity="center_horizontal"
                 android:text="보낼 Starball은 "
@@ -191,7 +191,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textColor="#013e92"
                 android:gravity="center_horizontal"
                 android:text="상대방이 수락해야만, 차감"
@@ -200,7 +200,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textColor="#4a4a4a"
                 android:gravity="center_horizontal"
                 android:text="됩니다"
@@ -227,7 +227,7 @@
                 android:paddingTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textStyle="bold"
                 android:textColor="#333333"
                 android:text="보낼 starball"
@@ -251,7 +251,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:textSize="14dp"
                         android:textColor="#333333"
                         android:text="2개"
                         />
@@ -269,7 +269,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:textSize="14dp"
                         android:textColor="#333333"
                         android:text="5개"
                         />
@@ -287,7 +287,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:textSize="14dp"
                         android:textColor="#333333"
                         android:text="10개"
                         />
@@ -305,7 +305,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:textSize="14dp"
                         android:textColor="#333333"
                         android:text="30개"
                         />
@@ -323,7 +323,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="14sp"
+                        android:textSize="14dp"
                         android:textColor="#333333"
                         android:text="50개"
                         />
@@ -344,7 +344,7 @@
                    android:paddingLeft="10.5dp"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
-                   android:textSize="14sp"
+                   android:textSize="14dp"
                    android:textStyle="bold"
 
                    android:textColor="#333333"
@@ -397,7 +397,7 @@
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="10sp"
+            android:textSize="10dp"
             android:textColor="#333333"
             android:text="아니오. 다시 생각해볼게요."
             />

@@ -21,7 +21,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#333333"
                 android:text="인도네시아 친구"
                 />
@@ -30,7 +30,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#c8c8c8"
                 android:text="6"
                 />
@@ -63,7 +63,7 @@
                 android:paddingLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textColor="#333333"
                 android:text="참여자"
                 />
@@ -95,9 +95,8 @@
                     android:layout_alignParentBottom="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     android:textColor="#333333"
-                    android:letterSpacing="-0.03"
                     android:text="Sabdo"
                     />
 
@@ -179,7 +178,7 @@
                 android:paddingLeft="10dp"
                 android:background="@null"
                 android:gravity="center_vertical"
-                android:textSize="14sp"
+                android:textSize="14dp"
                />
 
         <LinearLayout
@@ -242,9 +241,8 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     android:textColor="#333333"
-                    android:letterSpacing="-0.03"
                     android:gravity="center_horizontal"
                     android:text="이모티콘"
                     />
@@ -272,7 +270,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     android:textColor="#333333"
                     android:gravity="center_horizontal"
                     android:text="상용어구"
@@ -324,7 +322,7 @@
                 android:text="상용어구를 등록하세요"
                 android:paddingLeft="20dp"
                 android:gravity="center_vertical"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 />
 
     </RelativeLayout>
@@ -346,7 +344,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:textSize="11sp"
+                        android:textSize="11dp"
                         android:textColor="#ffff"
                         android:background="@drawable/background_border_strock4_923b9f"
                         android:text="Good Night"
@@ -362,7 +360,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#ffff"
                     android:background="@drawable/background_border_strock4_923b9f"
                     android:text="Good Night"
@@ -378,7 +376,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#ffff"
                     android:background="@drawable/background_border_strock4_923b9f"
                     android:text="Good Night"
@@ -394,7 +392,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#ffff"
                     android:background="@drawable/background_border_strock4_923b9f"
                     android:text="Good Night"

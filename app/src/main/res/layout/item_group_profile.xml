@@ -41,7 +41,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textColor="#555555"
                 android:text="Oswald Cobblepot     25"
                 />

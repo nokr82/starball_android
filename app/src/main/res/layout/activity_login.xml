@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:text="회원가입"
-            android:textSize="21sp"
+            android:textSize="21dp"
             android:textColor="#333333"
             android:gravity="center"/>
     <ScrollView
@@ -33,14 +33,14 @@
                       android:layout_marginBottom="43dp">
 
             <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                       android:src="@mipmap/vector_smart_object"/>
+                       android:src="@mipmap/bi"/>
             <TextView
                     android:layout_marginLeft="7.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:shadowColor="#80444444"
                     android:shadowRadius="9"
-                    android:textSize="21.8sp"
+                    android:textSize="21.8dp"
                     android:textColor="#333333"
                     android:gravity="center_horizontal"
                     android:text="Starball"
@@ -60,10 +60,8 @@
                     android:layout_marginRight="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="18dp"
                     android:textColor="#333333"
-                    android:letterSpacing="-0.03"
-                    android:lineSpacingExtra="-3sp"
                     android:text="Or"
             />
 
@@ -90,7 +88,7 @@
                 android:textColorHint="#bbbbbb"
                 android:paddingLeft="10dp"
                 android:gravity="center_vertical"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:background="@drawable/background_border_strock1"/>
 
 
@@ -99,7 +97,7 @@
                 android:layout_width="match_parent" android:layout_height="50dp"
                   android:layout_marginTop="35dp"
                   android:background="@drawable/background_border_strock2"
-                  android:textSize="20.5sp"
+                  android:textSize="20.5dp"
                   android:textColor="#ffffff"
                   android:gravity="center"
                   android:text="회원가입"
@@ -113,7 +111,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#999999"
                     android:text="페이스북 가입 또는 구글로 가입을 클릭 하거나  이메일을 입력함으로써, 당사의 이용약관과 쿠키를 포함해 개인정보보호 방침에 동의하며, 서비스를 윈하지 않을 경우 언제든지 해지할 수 있음을 이해합니다."
             />
@@ -128,7 +126,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 android:textColor="#333333"
                 android:gravity="center_horizontal"
                 android:text="기존회원이시면 Log-in"

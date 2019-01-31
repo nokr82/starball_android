@@ -32,7 +32,7 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textColor="#555555"
                 android:gravity="center_horizontal"
                 android:text="축하합니다.!\nVicky님께서 프로포즈하셨습니다."
@@ -42,9 +42,8 @@
                 android:layout_marginTop="17dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="16dp"
                 android:textColor="#013e92"
-                android:letterSpacing="-0.03"
                 android:gravity="center_horizontal"
                 android:text="수락 하시겠습니까?"
                 />
@@ -55,7 +54,7 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textColor="#555555"
                 android:text="수락시 회원님에게 200 Starall을 선물 드리며, 1주일간\n
 오직 신청하신 회원님만 대화하실 수 있습니다."
@@ -68,7 +67,7 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#555555"
                     android:text=" (다른 회원과 호감/ 채팅불가)"
                     />
@@ -100,7 +99,7 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
+                android:textSize="10dp"
                 android:textColor="#333333"
                 android:text="아니오. 괜찮습니다."
                 />

@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:textSize="21sp"
+                android:textSize="21dp"
                 android:textColor="#333333"
                 android:layout_centerInParent="true"
                 android:text="버전정보"/>
@@ -65,14 +65,14 @@
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:textColor="#333333"
             android:text="내  버전_"/>
         <TextView
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textColor="#0095dc"
                 android:text="version. 1.00.00"/>
 
@@ -95,14 +95,14 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textColor="#333333"
                 android:text="최신 버전_"/>
         <TextView
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textColor="#0095dc"
                 android:text="version. 1.00.00"/>
 
@@ -114,9 +114,8 @@
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
+            android:textSize="12dp"
             android:textColor="#555555"
-            android:letterSpacing="-0.02"
             android:gravity="center_horizontal"
             android:text="Copyright 2018 starball all rights reserved\n
 (모든 저작권 보유)"
@@ -135,7 +134,7 @@
             android:text="최신 버전입니다."
             android:textStyle="bold"
             android:gravity="center"
-            android:textSize="20.5sp"
+            android:textSize="20.5dp"
             android:textColor="#ffffff"/>
 
 

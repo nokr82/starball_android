@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:textSize="21sp"
+                android:textSize="21dp"
                 android:textColor="#333333"
                 android:text="신고하기"/>
 
@@ -34,7 +34,7 @@
             android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textColor="#333333"
             android:text="신고를 원하시나요?"
             />
@@ -76,22 +76,21 @@
               android:text="증빙 사진 첨부"
             android:textStyle="bold"
               android:gravity="center"
-              android:textSize="20.5sp"
+              android:textSize="20.5dp"
               android:textColor="#ffffff"/>
 
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textStyle="bold"
             android:textColor="#333333"
-            android:letterSpacing="-0.03"
             android:text="주의사항"
             />
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="13sp"
+            android:textSize="13dp"
             android:textColor="#555555"
             android:text="회원님의 정보 및 자세한 신고내용은 공개되지 않습니다.\n
 신고내용에 대해 반드시 조치를 취한다는 보장은 하지 않습니다.\n
@@ -102,7 +101,7 @@
             android:paddingBottom="11dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="13sp"
+            android:textSize="13dp"
             android:textColor="#555555"
             android:text="허위 혹은 보복성 신고, 동일 회원을 여러번 신고하실 경우 신고 내\n
 용에 대한 신뢰성이 떨어질 수 있습니다."
@@ -110,10 +109,8 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="13sp"
+            android:textSize="13dp"
             android:textColor="#555555"
-            android:letterSpacing="-0.03"
-            android:lineSpacingExtra="5sp"
             android:text="회원님이 일상생활에서 피해를 볼 가능성이 있는 경우, 실제로 피해\n
 를 본 경우, 범죄의 근거가 되는 정보를 가진 경우에는 즉시 경찰과\n
 상담하시기 바랍니다."

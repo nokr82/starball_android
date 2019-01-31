@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:textSize="21sp"
+                android:textSize="21dp"
                 android:textColor="#333333"
                 android:layout_centerInParent="true"
                 android:text="프로필수정"/>
@@ -49,7 +49,7 @@
             android:paddingTop="9.5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:textColor="#555555"
             android:text="동영상 또는 사진을 삭제하거나 끌여당겨 수순을 조정하세요"
             />
@@ -70,7 +70,7 @@
                 android:paddingBottom="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#333333"
                 android:textStyle="bold"
                 android:text="자기 소개"
@@ -87,7 +87,7 @@ At Freepik we use a freemium business model which means, the majority of the res
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#333333"
                 android:textStyle="bold"
                 android:text="언어"
@@ -106,7 +106,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="한국어"/>
             <ImageView
@@ -125,7 +125,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textColor="#333333"
                 android:text="영어(초급)"/>
         <ImageView
@@ -144,7 +144,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textColor="#333333"
                 android:text="태국어(중급)"/>
         <ImageView
@@ -180,7 +180,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:layout_marginTop="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="#333333"
                 android:text="국적"
@@ -213,7 +213,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:padding="5dp"
                 android:layout_height="wrap_content"
                 android:background="#f1f1f1"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#555555"
                 android:letterSpacing="-0.03"
                 android:text="국적 및 생년월일의 편집은 불가합니다.\n
@@ -262,7 +262,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#ffffff"
                     android:text="한사람만 봐요"/>
             <TextView
@@ -271,7 +271,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#ffffff"
                     android:text="솔직해요"/>
             <TextView
@@ -280,7 +280,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#ffffff"
                     android:text="큰눈이 매력적이에요."/>
             <TextView
@@ -289,7 +289,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#ffffff"
                     android:text="섹시한 두뇌"/>
 
@@ -337,7 +337,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#ffffff"
                     android:text="한사람만 봐요"/>
             <TextView
@@ -346,7 +346,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#ffffff"
                     android:text="솔직해요"/>
             <TextView
@@ -355,7 +355,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#ffffff"
                     android:text="큰눈이 매력적이에요."/>
             <TextView
@@ -364,7 +364,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#ffffff"
                     android:text="섹시한 두뇌"/>
 
@@ -410,7 +410,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#ffffff"
                     android:text="한사람만 봐요"/>
             <TextView
@@ -419,7 +419,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#ffffff"
                     android:text="솔직해요"/>
             <TextView
@@ -428,7 +428,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#ffffff"
                     android:text="큰눈이 매력적이에요."/>
             <TextView
@@ -437,7 +437,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#ffffff"
                     android:text="섹시한 두뇌"/>
 
@@ -473,7 +473,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="키는"
                     />
@@ -516,7 +516,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="종교"
                     />
@@ -559,7 +559,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="정치관"
                     />
@@ -603,7 +603,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="자녀"
                     />
@@ -647,7 +647,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="반려동물"
                     />
@@ -691,7 +691,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="흡연"
                     />
@@ -734,7 +734,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="음주"
                     />
@@ -778,7 +778,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="운동"
                     />
@@ -822,7 +822,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="최근하는 운동"
                     />
@@ -866,7 +866,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="수입"
                     />
@@ -898,7 +898,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:layout_marginTop="74.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#333333"
                 android:text="계정 인증 설정"
                 />
@@ -917,7 +917,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textStyle="bold"
                     android:textColor="#333333"
                     android:text="전화 번호 인증"
@@ -927,7 +927,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="20dp"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#999999"
                     android:gravity="end"
                     android:text="인증되지 않았습니다."
@@ -957,7 +957,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textStyle="bold"
                     android:textColor="#333333"
                     android:text="안전 인증"
@@ -967,7 +967,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="20dp"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#999999"
                     android:gravity="end"
                     android:text="인증되지 않았습니다."
@@ -985,7 +985,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:layout_marginTop="14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="12sp"
+                android:textSize="12dp"
                 android:textColor="#333333"
                 android:text="계정인증이 다 완료되지 않을 경우, 만약의 사태에 저희가 회원님을 보호\n
 및 조치 할 수 없을 수 있습니다.\n
@@ -999,7 +999,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:layout_marginTop="103dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#333333"
                 android:text="연결된 계정"
                 />
@@ -1018,7 +1018,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textStyle="bold"
                     android:textColor="#333333"
                     android:text="이메일 인증"
@@ -1028,7 +1028,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:paddingRight="13.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#923b9f"
                     android:letterSpacing="-0.05"
                     android:gravity="end"
@@ -1057,7 +1057,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textStyle="bold"
                     android:textColor="#333333"
                     android:text="Facebook 연결"
@@ -1067,7 +1067,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="20dp"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#999999"
                     android:gravity="end"
                     android:text="인증되지 않았습니다."
@@ -1095,7 +1095,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textStyle="bold"
                     android:textColor="#333333"
                     android:text="instagram 연결"
@@ -1105,7 +1105,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="20dp"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#999999"
                     android:text="인증되지 않았습니다."
                     />
@@ -1131,7 +1131,7 @@ At Freepik we use a freemium business model which means, the majority of the res
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="14sp"
+                android:textSize="14dp"
                 android:textColor="#333333"
                 android:textStyle="bold"
                 android:text="현재 상태"
@@ -1152,7 +1152,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:paddingLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="정상"
                     />
@@ -1166,7 +1166,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:paddingLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="유령모드"
                     />
@@ -1180,7 +1180,7 @@ At Freepik we use a freemium business model which means, the majority of the res
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="13sp"
+                android:textSize="13dp"
                 android:textColor="#555555"
                 android:text="유령모드일 경우 검색에 나타나지 않습니다.\n
 또한 가상으로 탈퇴된 것으로 처리 됩니다."
@@ -1200,7 +1200,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="크로스 필터링"
                     />
@@ -1210,7 +1210,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="19dp"
-                android:textSize="13sp"
+                android:textSize="13dp"
                 android:textColor="#555555"
                 android:text="(나랑 동일한 검색조건을 한 사람에게만 노출됩니다.)"/>
         <LinearLayout
@@ -1228,7 +1228,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="나를 보는 회원을 제한합니다."
                     />
@@ -1238,7 +1238,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="19dp"
-                android:textSize="13sp"
+                android:textSize="13dp"
                 android:textColor="#555555"
                 android:text="(내가 호감보낸 회원만 볼 수 있습니다.)"/>
         <LinearLayout
@@ -1256,7 +1256,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="안전인증 회원에게만 보입니다."
                     />
@@ -1278,7 +1278,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="VVIP 회원에게만 보입니다."
                     />
@@ -1288,7 +1288,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="19dp"
-                android:textSize="13sp"
+                android:textSize="13dp"
                 android:textColor="#555555"
                 android:text="(1%의 최상 Premium 회원에게만 보입니다.)"/>
         <LinearLayout
@@ -1306,7 +1306,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#333333"
                     android:text="아는 사람에게 노출되지 않습니다."
                     />
@@ -1316,7 +1316,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="19dp"
-                android:textSize="13sp"
+                android:textSize="13dp"
                 android:textColor="#555555"
                 android:text="(전화번호에 등록된 사람은 서로 노출 되지 않습니다.)"/>
 
@@ -1334,7 +1334,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textColor="#333333"
                 android:text="가는 나라를 알려 주세요."
                 />
@@ -1364,7 +1364,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:textSize="15dp"
                 android:textColor="#333333"
                 android:text="일정을 알려 주세요"
                 />
@@ -1401,7 +1401,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:text="확인"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:textSize="20.5sp"
+                android:textSize="20.5dp"
                 android:textColor="#ffffff"/>
 
     </LinearLayout>

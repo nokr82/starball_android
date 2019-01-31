@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
-                android:textSize="21sp"
+                android:textSize="21dp"
                 android:textColor="#333333"
                 android:layout_centerInParent="true"
                 android:text="안전인증 확인"/>
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:textStyle="bold"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:textColor="#333333"
             android:text="안전 인증에 가입되어 있습니다."
             />
@@ -48,7 +48,7 @@
             android:layout_marginTop="23.5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
+            android:textSize="12dp"
             android:textColor="#333333"
             android:text="안전 인증제도란, 불성실한 회원 (변태, working girl, 언어폭력 기타) 을\n
 가려내기 위하여 도입된 제도로써, 공탁금을 걸고 회원활동을 하는 것을\n
@@ -68,7 +68,7 @@
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="13sp"
+            android:textSize="13dp"
             android:textColor="#333333"
             android:text="인증 취소를 원하십니까?"
             />
@@ -87,7 +87,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="50dp"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#545454"
                 android:background="@drawable/background_border_strock2"
                 android:gravity="center"
@@ -100,7 +100,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="50dp"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#ffffff"
                 android:background="#923b9f"
                 android:gravity="center"
@@ -113,7 +113,7 @@
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="9sp"
+            android:textSize="9dp"
             android:textColor="#333333"
             android:text="* 관리비: 시스템 운영비10%+ 앱스토어 인앱결제수수료 30%"
             />

@@ -13,7 +13,7 @@
             android:layout_marginTop="66dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:textSize="24dp"
             android:textColor="#333333"
             android:text="당신의 이름은,"
     />
@@ -25,13 +25,13 @@
             android:textColorHint="#bbbbbb"
             android:paddingLeft="10dp"
             android:gravity="center_vertical"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:background="@drawable/background_border_strock1"/>
     <TextView
             android:paddingTop="16.5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:textColor="#555555"
             android:text="아래와 같이 표시 됩니다."
     />
@@ -40,7 +40,7 @@
             android:paddingTop="46dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:textColor="#797979"
             android:gravity="center"
     />
@@ -58,7 +58,7 @@ android:layout_weight="1"/>
               android:text="다음"
             android:textStyle="bold"
               android:gravity="center"
-              android:textSize="20.5sp"
+              android:textSize="20.5dp"
               android:textColor="#ffffff"/>
 
 

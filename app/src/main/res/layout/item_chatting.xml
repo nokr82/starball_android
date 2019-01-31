@@ -31,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#000000"
                     android:background="@drawable/background_border_strock7ffffff"
                     android:text="차이 안나는거같은데..."
@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:textSize="11sp"
+                android:textSize="11dp"
                 android:textColor="#000000"
                 android:background="@drawable/background_border_strock10_e2e2e2"
                 android:text="나와 취미가 같아 님에게 관심이 \n

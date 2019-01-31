@@ -13,7 +13,7 @@
             android:layout_marginTop="66dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:textSize="24dp"
             android:textColor="#333333"
             android:text="당신의 생년월일은,"
     />
@@ -26,7 +26,7 @@
 
         <EditText android:layout_width="0dp" android:layout_height="match_parent"
         android:layout_weight="1"
-                  android:textSize="24sp"
+                  android:textSize="24dp"
                   android:inputType="number"
                   android:gravity="center"
                   android:layout_marginRight="5dp"
@@ -38,7 +38,7 @@
                 android:inputType="number"
                 android:layout_width="0dp" android:layout_height="match_parent"
                   android:layout_weight="1"
-                  android:textSize="24sp"
+                  android:textSize="24dp"
                   android:layout_marginRight="5dp"
                   android:gravity="center"
                   android:textColorHint="#9b9ca0"
@@ -50,7 +50,7 @@
                   android:inputType="number"
                   android:layout_height="match_parent"
                   android:layout_weight="1"
-                  android:textSize="24sp"
+                  android:textSize="24dp"
                   android:gravity="center"
                   android:layout_marginRight="5dp"
                   android:textColorHint="#9b9ca0"
@@ -61,7 +61,7 @@
                   android:inputType="number"
                   android:layout_height="match_parent"
                   android:layout_weight="1"
-                  android:textSize="24sp"
+                  android:textSize="24dp"
                   android:layout_marginRight="5dp"
                   android:textColorHint="#9b9ca0"
                   android:gravity="center"
@@ -72,7 +72,7 @@
                   android:inputType="number"
                   android:layout_height="match_parent"
                   android:layout_weight="1"
-                  android:textSize="24sp"
+                  android:textSize="24dp"
                   android:layout_marginRight="5dp"
                   android:textColorHint="#9b9ca0"
                   android:gravity="center"
@@ -83,7 +83,7 @@
                   android:inputType="number"
                   android:layout_height="match_parent"
                   android:layout_weight="1"
-                  android:textSize="24sp"
+                  android:textSize="24dp"
                   android:layout_marginRight="5dp"
                   android:textColorHint="#9b9ca0"
                   android:gravity="center"
@@ -94,7 +94,7 @@
                   android:inputType="number"
                   android:layout_height="match_parent"
                   android:layout_weight="1"
-                  android:textSize="24sp"
+                  android:textSize="24dp"
                   android:gravity="center"
                   android:layout_marginLeft="5dp"
                   android:layout_marginRight="5dp"
@@ -106,7 +106,7 @@
                   android:inputType="number"
                   android:layout_height="match_parent"
                   android:layout_weight="1"
-                  android:textSize="24sp"
+                  android:textSize="24dp"
                   android:textColorHint="#9b9ca0"
                   android:layout_marginRight="5dp"
                   android:hint="D"
@@ -136,7 +136,7 @@
                     android:layout_width="match_parent" android:layout_height="0dp"
                     android:text=""
                     android:gravity="center"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     android:textColor="#555555"
                     android:layout_weight="1"/>
             
@@ -149,7 +149,7 @@
                  android:layout_width="match_parent" android:layout_height="0dp"
                       android:text="년"
                       android:gravity="center"
-                      android:textSize="12sp"
+                      android:textSize="12dp"
                       android:textColor="#555555"
                       android:layout_weight="1"/>
         </LinearLayout>
@@ -164,7 +164,7 @@
                     android:layout_width="match_parent" android:layout_height="0dp"
                     android:text=""
                     android:gravity="center"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     android:textColor="#555555"
                     android:layout_weight="1"/>
 
@@ -177,7 +177,7 @@
                     android:layout_width="match_parent" android:layout_height="0dp"
                       android:text="월"
                       android:gravity="center"
-                      android:textSize="12sp"
+                      android:textSize="12dp"
                       android:textColor="#555555"
                       android:layout_weight="1"/>
         </LinearLayout>
@@ -190,7 +190,7 @@
                     android:layout_width="match_parent" android:layout_height="0dp"
                     android:text=""
                     android:gravity="center"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     android:textColor="#555555"
                     android:layout_weight="1"/>
 
@@ -203,7 +203,7 @@
                     android:layout_width="match_parent" android:layout_height="0dp"
                       android:text="일"
                       android:gravity="center"
-                      android:textSize="12sp"
+                      android:textSize="12dp"
                       android:textColor="#555555"
                       android:layout_weight="1"/>
 
@@ -230,7 +230,7 @@ android:layout_weight="1"/>
               android:text="다음"
             android:textStyle="bold"
               android:gravity="center"
-              android:textSize="20.5sp"
+              android:textSize="20.5dp"
               android:textColor="#ffffff"/>
 
 

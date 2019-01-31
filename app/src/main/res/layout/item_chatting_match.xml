@@ -31,7 +31,7 @@
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
-                            android:textSize="14sp"
+                            android:textSize="14dp"
                             android:textColor="#333333"
                             android:text="Bakhtiyar Sattarov  25"
                             />
@@ -44,7 +44,7 @@
                     android:shadowDx="1.2246467991473532e-16"
                     android:shadowDy="2"
                     android:shadowRadius="5"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#f91212"
                     android:text="13시간 28분 남음"
                     />
@@ -78,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/background_border_strock10_000000"
-            android:textSize="12sp"
+            android:textSize="12dp"
             android:paddingLeft="9dp"
             android:paddingRight="9dp"
             android:paddingTop="3dp"
@@ -145,14 +145,14 @@
                             android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12sp"
+                            android:textSize="12dp"
                             android:textColor="#4e3b9f"
                             android:text="남자가 먼저 인사해야 합니다."
                             />
                     <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12sp"
+                            android:textSize="12dp"
                             android:textColor="#c2c2c2"
                             android:text="인사가 수락되어야만 대화창이 생깁니다"
                             />

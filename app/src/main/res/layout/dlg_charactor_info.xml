@@ -26,7 +26,7 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="18dp"
                 android:textColor="#333333"
                 android:text="Character info."
                 />
@@ -59,7 +59,7 @@
                 android:id="@+id/reportTV"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textSize="13sp"
+                android:textSize="13dp"
                 android:textColor="#333333"
                 android:textStyle="bold"
                 android:text="차단 및 신고"

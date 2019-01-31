@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:padding="8dp"
                     android:background="@drawable/background_border_strock5_0c040000"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     android:gravity="center"
                     android:textColor="#ffff"
                     android:text="친구초대"/>
@@ -64,7 +64,7 @@
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
+                    android:textSize="18dp"
                     android:textColor="#333333"
                     android:text="힙합둘리"
                     />
@@ -72,9 +72,8 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
+                    android:textSize="12dp"
                     android:textColor="#bebebe"
-                    android:lineSpacingExtra="3sp"
                     android:gravity="center_horizontal"
                     android:text="Would be interesting to see how an
 already dragged card into that plate looks like.
@@ -102,7 +101,7 @@ already dragged card into that plate looks like.
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textColor="#555555"
                     android:textStyle="bold"
                     android:gravity="center_horizontal"
@@ -120,7 +119,7 @@ already dragged card into that plate looks like.
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textColor="#555555"
                     android:textStyle="bold"
                     android:gravity="center_horizontal"
@@ -136,7 +135,7 @@ already dragged card into that plate looks like.
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textColor="#555555"
                     android:textStyle="bold"
                     android:gravity="center_horizontal"
@@ -145,7 +144,7 @@ already dragged card into that plate looks like.
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textColor="#adadad"
                     android:textStyle="bold"
                     android:gravity="center_horizontal"
@@ -154,7 +153,7 @@ already dragged card into that plate looks like.
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:textSize="15dp"
                     android:textColor="#555555"
                     android:textStyle="bold"
                     android:gravity="center_horizontal"

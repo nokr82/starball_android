@@ -50,7 +50,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
+                    android:textSize="14dp"
                     android:textColor="#555555"
                     android:text="일본여자  3"
                     />
@@ -64,7 +64,7 @@
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="11sp"
+                    android:textSize="11dp"
                     android:textColor="#bebebe"
                     android:text="차이 안나는거같은데...
 "
@@ -78,7 +78,7 @@
                 android:paddingRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="8sp"
+                android:textSize="8dp"
                 android:textColor="#bebebe"
                 android:gravity="end"
                 android:text="18.12.29     23:47"

@@ -13,7 +13,7 @@
             android:layout_marginTop="66dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
+            android:textSize="24dp"
             android:textColor="#333333"
             android:text="당신의 성별은,"
     />
@@ -26,7 +26,7 @@
         <TextView android:layout_width="0dp" android:layout_height="match_parent"
         android:layout_weight="1"
                   android:gravity="center"
-                  android:textSize="18sp"
+                  android:textSize="18dp"
                   android:textColor="#555555"
                   android:textStyle="bold"
                   android:text="남자"
@@ -54,7 +54,7 @@ android:layout_weight="1"/>
               android:text="다음"
             android:textStyle="bold"
               android:gravity="center"
-              android:textSize="20.5sp"
+              android:textSize="20.5dp"
               android:textColor="#ffffff"/>
 
 
