@@ -30,7 +30,7 @@ class ChattingActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        GroupAdapter = GroupAdapter(context, R.layout.item_chat_profile, 1)
+        GroupAdapter = GroupAdapter(context, R.layout.item_chat_profile, 2)
         groupLV.adapter = GroupAdapter
         TalkAdapter = TalkAdapter(context, R.layout.item_chat_profile, 1)
         talkLV.adapter = TalkAdapter
@@ -62,6 +62,8 @@ class ChattingActivity : RootActivity() {
 
 
 
+
+
         eventLV.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(context, DlgCrushActivity::class.java)
             startActivity(intent)
@@ -83,6 +85,7 @@ class ChattingActivity : RootActivity() {
 
         }
 
+
         moreIV.setOnClickListener {
             menuLL.visibility = View.GONE
             eventLL.visibility = View.VISIBLE
@@ -94,7 +97,14 @@ class ChattingActivity : RootActivity() {
             eventLV.visibility = View.GONE
         }
 
-        storyIV.setOnClickListener {
+
+        storymoreIV.setOnClickListener {
+            menuLL.visibility = View.VISIBLE
+            eventLL.visibility = View.GONE
+            friendLL.visibility = View.VISIBLE
+            eventLV.visibility = View.GONE
+        }
+        storyRL.setOnClickListener {
             setmenu()
             menuLL.visibility = View.GONE
             storyTV.visibility = View.GONE
@@ -103,13 +113,36 @@ class ChattingActivity : RootActivity() {
             friendLL.visibility = View.GONE
             eventLV.visibility = View.VISIBLE
         }
-        storymoreIV.setOnClickListener {
-            menuLL.visibility = View.VISIBLE
-            eventLL.visibility = View.GONE
-            friendLL.visibility = View.VISIBLE
-            eventLV.visibility = View.GONE
+
+
+        reciveRL.setOnClickListener {
+            setmenu()
+            menuLL.visibility = View.GONE
+            storyTV.visibility = View.GONE
+            eventLL.visibility = View.VISIBLE
+            reciveLL.visibility = View.VISIBLE
+            friendLL.visibility = View.GONE
+            eventLV.visibility = View.VISIBLE
         }
 
+        sendRL.setOnClickListener {
+            setmenu()
+            menuLL.visibility = View.GONE
+            storyTV.visibility = View.GONE
+            eventLL.visibility = View.VISIBLE
+            sendLL.visibility = View.VISIBLE
+            friendLL.visibility = View.GONE
+            eventLV.visibility = View.VISIBLE
+        }
+        matchRL.setOnClickListener {
+            setmenu()
+            menuLL.visibility = View.GONE
+            storyTV.visibility = View.GONE
+            eventLL.visibility = View.VISIBLE
+            matchLL.visibility = View.VISIBLE
+            friendLL.visibility = View.GONE
+            eventLV.visibility = View.VISIBLE
+        }
 
     }
 

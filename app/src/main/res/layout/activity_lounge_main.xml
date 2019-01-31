@@ -11,6 +11,7 @@
 
         <ImageView
                 android:paddingLeft="9.5dp"
+                android:paddingRight="50dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@mipmap/comm_arrow_left"
@@ -22,6 +23,7 @@
                 android:layout_centerInParent="true"
                android:src="@mipmap/lounge_center"/>
         <ImageView
+                android:paddingLeft="50dp"
                 android:id="@+id/timeIV"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -51,17 +53,17 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:textSize="14dp"
                 android:gravity="center_vertical"
                 android:background="@drawable/background_border_strock10_ededed">
 
             <RelativeLayout
+                    android:id="@+id/storyRL"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent">
             <ImageView
-                    android:id="@+id/storyIV"
                     android:layout_centerInParent="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -80,6 +82,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                    android:id="@+id/matchRL"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent">
@@ -101,6 +104,7 @@
 
             </RelativeLayout>
             <RelativeLayout
+                    android:id="@+id/reciveRL"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent">
@@ -122,6 +126,7 @@
 
             </RelativeLayout>
             <RelativeLayout
+                    android:id="@+id/sendRL"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="match_parent">

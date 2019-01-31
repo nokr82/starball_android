@@ -20,6 +20,12 @@ class SettingMainActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
+
+
+        finishIV.setOnClickListener {
+            finish()
+        }
+
         centerIV.setOnClickListener {
             val intent = Intent(context, DailyMomentListActivity::class.java)
             startActivity(intent)

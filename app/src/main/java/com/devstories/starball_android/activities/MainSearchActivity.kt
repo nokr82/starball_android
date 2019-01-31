@@ -7,6 +7,7 @@ import android.os.Bundle
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
 import kotlinx.android.synthetic.main.activity_main_search.*
+import kotlinx.android.synthetic.main.activity_setting_main.*
 
 class MainSearchActivity : RootActivity() {
 
@@ -27,7 +28,7 @@ class MainSearchActivity : RootActivity() {
 
 
         charmIV.setOnClickListener {
-            val intent = Intent(context, DlgCrushActivity::class.java)
+            val intent = Intent(context, DlgStarballLackActivity::class.java)
             startActivity(intent)
         }
         infoIV.setOnClickListener {
@@ -39,6 +40,8 @@ class MainSearchActivity : RootActivity() {
             val intent = Intent(context, ChattingActivity::class.java)
             startActivity(intent)
         }
+
+
 
         charIV.setOnClickListener {
             val intent = Intent(context, SettingMainActivity::class.java)
