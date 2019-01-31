@@ -32,6 +32,12 @@ class FriendChattingActivity : RootActivity() {
             startActivity(intent)
         }
 
+        groupLV.setOnItemLongClickListener { parent, view, position, id ->
+
+
+            return@setOnItemLongClickListener true
+        }
+
         starballIV.setOnClickListener {
             val intent = Intent(context, DlgSendProposeActivity::class.java)
             startActivity(intent)

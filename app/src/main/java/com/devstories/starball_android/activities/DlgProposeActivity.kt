@@ -23,7 +23,9 @@ class DlgProposeActivity : RootActivity() {
 
         this.context = this
         progressDialog = ProgressDialog(context)
-
+        noTV.setOnClickListener {
+            finish()
+        }
 
 
 
