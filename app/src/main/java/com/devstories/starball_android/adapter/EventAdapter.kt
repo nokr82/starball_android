@@ -39,13 +39,13 @@ open class EventAdapter (context: Context, view:Int, data:Int,type:Int) : ArrayA
 
         if (type==1){
             item.sendIV.visibility = View.VISIBLE
-            item.sendLL.visibility = View.VISIBLE
+            item.menuLL.visibility = View.VISIBLE
         }else if (type == 2){
             item.heartIV.visibility = View.VISIBLE
-            item.sendLL.visibility = View.GONE
+            item.menuLL.visibility = View.GONE
         }else if (type == 3){
             item.starIV.visibility = View.VISIBLE
-            item.sendLL.visibility = View.GONE
+            item.menuLL.visibility = View.GONE
         }
 
 
