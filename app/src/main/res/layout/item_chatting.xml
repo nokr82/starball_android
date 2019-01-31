@@ -84,6 +84,50 @@
 
 
 
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical|right"
+            android:layout_height="wrap_content">
+
+
+
+
+
+
+
+        <RelativeLayout
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginTop="23.5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="11dp"
+                    android:textColor="#ffffff"
+                    android:background="@drawable/background_border_strock4_a24dc6"
+                    android:text="With little more than a hello
+                    , I began to reread the
+letter that was in my hand."
+                    />
+        </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
 
 
 </LinearLayout>

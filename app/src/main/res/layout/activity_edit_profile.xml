@@ -59,7 +59,7 @@
             android:padding="10dp"
             android:id="@+id/profileGV"
             android:layout_marginTop="17.5dp"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:scrollbars="none"
             android:layout_height="430dp"
             android:numColumns="3"
@@ -93,6 +93,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:text="언어"
                 />
 <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 

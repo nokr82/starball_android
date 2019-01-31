@@ -25,6 +25,10 @@ class VVIPJoinActivity : RootActivity() {
         }
 
 
+        noTV.setOnClickListener {
+            finish()
+        }
+
 
 
 

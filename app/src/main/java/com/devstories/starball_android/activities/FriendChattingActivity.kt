@@ -60,6 +60,8 @@ class FriendChattingActivity : RootActivity() {
         }
 
 
+
+
         plusLL.setOnClickListener {
             it.isSelected = !it.isSelected
             if (it.isSelected) {
@@ -71,8 +73,10 @@ class FriendChattingActivity : RootActivity() {
         languageIV.setOnClickListener {
             it.isSelected = !it.isSelected
             if (it.isSelected) {
+                languageIV.setImageResource(R.mipmap.bubble_on)
                 languageLL.visibility = View.VISIBLE
             } else {
+                languageIV.setImageResource(R.mipmap.bubble)
                 languageLL.visibility = View.GONE
             }
         }

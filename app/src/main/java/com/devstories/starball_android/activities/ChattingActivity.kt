@@ -55,7 +55,7 @@ class ChattingActivity : RootActivity() {
         backIV.setOnClickListener {
             finish()
         }
-        EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 6)
+        EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3)
         eventLV.adapter = EventAdapter
 
 
@@ -94,6 +94,7 @@ class ChattingActivity : RootActivity() {
             eventLL.visibility = View.VISIBLE
         }
         more2IV.setOnClickListener {
+            setmenu()
             menuLL.visibility = View.VISIBLE
             eventLL.visibility = View.GONE
             friendLL.visibility = View.VISIBLE
@@ -103,18 +104,21 @@ class ChattingActivity : RootActivity() {
 
 
         sendmoreIV.setOnClickListener {
+            setmenu()
             menuLL.visibility = View.VISIBLE
             eventLL.visibility = View.GONE
             friendLL.visibility = View.VISIBLE
             eventLV.visibility = View.GONE
         }
         recivemoreIV.setOnClickListener {
+            setmenu()
             menuLL.visibility = View.VISIBLE
             eventLL.visibility = View.GONE
             friendLL.visibility = View.VISIBLE
             eventLV.visibility = View.GONE
         }
         matchmoreTV.setOnClickListener {
+            setmenu()
             menuLL.visibility = View.VISIBLE
             eventLL.visibility = View.GONE
             friendLL.visibility = View.VISIBLE
