@@ -19,8 +19,9 @@
         <ListView
                 android:id="@+id/eventLV"
                 android:visibility="visible"
+                android:divider="@null"
                 android:layout_width="match_parent"
-                android:background="#ffffff"
+                android:background="@drawable/background_border_strock10_ededed"
                 android:layout_height="match_parent">
 
 

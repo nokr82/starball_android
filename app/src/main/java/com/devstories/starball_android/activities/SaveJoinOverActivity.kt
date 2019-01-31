@@ -23,7 +23,10 @@ class SaveJoinOverActivity : RootActivity() {
         backIV.setOnClickListener {
             finish()
         }
-
+        noTV.setOnClickListener {
+            val intent = Intent(context, SaveJoinCancleActivity::class.java)
+            startActivity(intent)
+        }
 
 
 

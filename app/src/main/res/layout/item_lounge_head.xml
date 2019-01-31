@@ -3,6 +3,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
         android:layout_width="match_parent"
+        android:background="#ffffff"
         android:layout_height="match_parent">
     <RelativeLayout
             android:layout_width="match_parent"
@@ -451,6 +452,7 @@
     <LinearLayout
             android:id="@+id/recive2LL"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
             android:visibility="gone"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -482,6 +484,7 @@
     </LinearLayout>
     <LinearLayout
             android:id="@+id/send2LL"
+            android:layout_marginBottom="15dp"
             android:layout_marginTop="10dp"
             android:visibility="gone"
             android:layout_marginLeft="10dp"
@@ -592,7 +595,14 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="14dp"
                                 android:textColor="#555555"
-                                android:text="일본여자  3"
+                                android:text="일본여자  "
+                                />
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#969696"
+                                android:text="3"
                                 />
 
                         <ImageView
@@ -618,7 +628,7 @@
                         android:paddingRight="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="8dp"
+                        android:textSize="11dp"
                         android:textColor="#bebebe"
                         android:gravity="end"
                         android:text="18.12.29     23:47"
@@ -645,7 +655,7 @@
                             android:paddingLeft="10dp"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
-                            android:src="@mipmap/comm_profile_pic"/>
+                            android:src="@mipmap/pic"/>
 
                     <ImageView
                             android:paddingTop="25dp"
@@ -678,14 +688,21 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="14dp"
                                 android:textColor="#555555"
-                                android:text="일본여자  3"
+                                android:text="한국남자  "
+                                />
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#969696"
+                                android:text="3"
                                 />
 
                         <ImageView
                                 android:layout_marginLeft="9dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@mipmap/lounge_message_recie"/>
+                                android:src="@mipmap/lounge_message_send"/>
                     </LinearLayout>
                     <TextView
                             android:layout_width="wrap_content"
@@ -704,7 +721,7 @@
                         android:paddingRight="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="8dp"
+                        android:textSize="11dp"
                         android:textColor="#bebebe"
                         android:gravity="end"
                         android:text="18.12.29     23:47"
@@ -786,7 +803,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="14dp"
                                 android:textColor="#555555"
-                                android:text="일본여자  3"
+                                android:text="로렌   25"
                                 />
 
                         <ImageView
@@ -812,7 +829,7 @@
                         android:paddingRight="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="8dp"
+                        android:textSize="11dp"
                         android:textColor="#bebebe"
                         android:gravity="end"
                         android:text="18.12.29     23:47"
@@ -872,7 +889,7 @@
                                 android:layout_height="wrap_content"
                                 android:textSize="14dp"
                                 android:textColor="#555555"
-                                android:text="일본여자  3"
+                                android:text="진선이  30"
                                 />
 
                         <ImageView
@@ -898,7 +915,7 @@
                         android:paddingRight="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="8dp"
+                        android:textSize="11dp"
                         android:textColor="#bebebe"
                         android:gravity="end"
                         android:text="18.12.29     23:47"

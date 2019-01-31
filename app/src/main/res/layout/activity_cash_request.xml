@@ -81,7 +81,7 @@
                    android:paddingBottom="6dp"
                    android:paddingLeft="13dp"
                    android:paddingRight="13dp"
-                   android:background="@drawable/background_border_strock9_333333"
+                   android:background="@drawable/background_border_strock3_cash"
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
                    android:textSize="15dp"

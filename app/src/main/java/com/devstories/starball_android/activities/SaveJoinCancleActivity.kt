@@ -21,6 +21,11 @@ class SaveJoinCancleActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
+        noTV.setOnClickListener {
+            val intent = Intent(context, MainSearchActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
         backIV.setOnClickListener {
             finish()
         }

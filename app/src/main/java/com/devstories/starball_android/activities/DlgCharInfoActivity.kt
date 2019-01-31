@@ -29,8 +29,8 @@ class DlgCharInfoActivity : RootActivity() {
 
 
 
-        infoAdapter = infoAdapter(context,R.layout.item_char_info, 12)
-        infoGV.adapter = infoAdapter
+    /*    infoAdapter = infoAdapter(context,R.layout.item_char_info, 12)
+        infoGV.adapter = infoAdapter*/
 
 
         reportTV.setOnClickListener {

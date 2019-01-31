@@ -24,6 +24,12 @@ class DlgStarballHistoryActivity : RootActivity() {
 
         this.context = this
         progressDialog = ProgressDialog(context)
+
+        cashTV.setOnClickListener {
+            val intent = Intent(context, CashRequestActivity::class.java)
+            startActivity(intent)
+        }
+
         closeTV.setOnClickListener {
             finish()
         }

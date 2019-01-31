@@ -50,6 +50,35 @@
                 android:src="@mipmap/vvip_dia"/>
 
 
+        <TextView
+                android:layout_marginTop="13.5dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16.5dp"
+                android:textColor="#333333"
+                android:layout_gravity="center"
+                android:text="보다, 특별한 대우를 원하시는 군요."
+                />
+        <TextView
+                android:layout_marginTop="6dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#555555"
+                android:gravity="center_horizontal"
+                android:text="기존 혜택과 더불어,"
+                />
+        <TextView
+                android:layout_marginTop="8.5dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#333333"
+                android:text="오직 1%에게만 허락된 특권은,"
+                />
 
 
 
