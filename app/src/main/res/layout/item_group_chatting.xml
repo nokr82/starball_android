@@ -49,7 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textSize="11dp"
+                    android:textSize="16dp"
                     android:textColor="#000000"
                     android:background="@drawable/background_border_strock7ffffff"
                     android:text="this is so dope. love messaging concepts!."
@@ -72,8 +72,8 @@
 
 
     <LinearLayout
-            android:visibility="gone"
-            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:visibility="visible"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:gravity="center_vertical|right"
@@ -113,9 +113,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textSize="11dp"
+                    android:textSize="16dp"
                     android:textColor="#ffff"
-                    android:background="@drawable/background_border_strock4_923b9f"
+                    android:background="@drawable/background_border_strock4_a24dc6"
                     android:text="this is so dope. love messaging concepts!."
                     />
         </RelativeLayout>

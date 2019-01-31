@@ -109,8 +109,8 @@
                     android:textSize="11dp"
                     android:textColor="#ffffff"
                     android:background="@drawable/background_border_strock4_a24dc6"
-                    android:text="With little more than a hello
-                    , I began to reread the
+                    android:text="With little more than a hello\n
+, I began to reread the\n
 letter that was in my hand."
                     />
         </RelativeLayout>

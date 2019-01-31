@@ -24,12 +24,19 @@ class GroupChattingActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
-        GroupAdapter = GroupAdapter(context, R.layout.item_group_chatting, 30)
+        GroupAdapter = GroupAdapter(context, R.layout.item_group_chatting, 5)
         groupLV.adapter = GroupAdapter
+
         groupLV.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(context, DlgProposeActivity::class.java)
             startActivity(intent)
         }
+
+        cancelIV.setOnClickListener {
+            cancelTV.visibility = View.VISIBLE
+        }
+
+
         starballIV.setOnClickListener {
             val intent = Intent(context, DlgSendProposeActivity::class.java)
             startActivity(intent)
