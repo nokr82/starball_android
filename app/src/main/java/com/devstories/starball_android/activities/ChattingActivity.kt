@@ -32,7 +32,7 @@ class ChattingActivity : RootActivity() {
 
         GroupAdapter = GroupAdapter(context, R.layout.item_chat_profile, 2)
         groupLV.adapter = GroupAdapter
-        TalkAdapter = TalkAdapter(context, R.layout.item_chat_profile, 1)
+        TalkAdapter = TalkAdapter(context, R.layout.item_chat_profile, 2)
         talkLV.adapter = TalkAdapter
 
         groupLV.setOnItemClickListener { parent, view, position, id ->
@@ -60,29 +60,32 @@ class ChattingActivity : RootActivity() {
 
 
 
-
-
-
-
-        eventLV.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(context, DlgCrushActivity::class.java)
-            startActivity(intent)
-        }
-
         storyLL.setOnClickListener {
+            setmenu()
+            storyLL.visibility = View.VISIBLE
+            friendLL.visibility = View.VISIBLE
+            eventLV.visibility = View.GONE
+
+        }
+        matchLL.setOnClickListener {
             setmenu()
             storyLL.visibility = View.VISIBLE
             friendLL.visibility = View.GONE
             eventLV.visibility = View.VISIBLE
         }
-        matchLL.setOnClickListener {
-
-        }
         reciveLL.setOnClickListener {
-
+            setmenu()
+            reciveLL.visibility = View.VISIBLE
+            friendLL.visibility = View.GONE
+            eventLV.visibility = View.VISIBLE
+            recive2LL.visibility = View.VISIBLE
         }
         sendLL.setOnClickListener {
-
+            setmenu()
+            sendLL.visibility = View.VISIBLE
+            friendLL.visibility = View.GONE
+            eventLV.visibility = View.VISIBLE
+            send2LL.visibility = View.VISIBLE
         }
 
 
@@ -91,6 +94,27 @@ class ChattingActivity : RootActivity() {
             eventLL.visibility = View.VISIBLE
         }
         more2IV.setOnClickListener {
+            menuLL.visibility = View.VISIBLE
+            eventLL.visibility = View.GONE
+            friendLL.visibility = View.VISIBLE
+            eventLV.visibility = View.GONE
+        }
+
+
+
+        sendmoreIV.setOnClickListener {
+            menuLL.visibility = View.VISIBLE
+            eventLL.visibility = View.GONE
+            friendLL.visibility = View.VISIBLE
+            eventLV.visibility = View.GONE
+        }
+        recivemoreIV.setOnClickListener {
+            menuLL.visibility = View.VISIBLE
+            eventLL.visibility = View.GONE
+            friendLL.visibility = View.VISIBLE
+            eventLV.visibility = View.GONE
+        }
+        matchmoreTV.setOnClickListener {
             menuLL.visibility = View.VISIBLE
             eventLL.visibility = View.GONE
             friendLL.visibility = View.VISIBLE
@@ -110,8 +134,8 @@ class ChattingActivity : RootActivity() {
             storyTV.visibility = View.GONE
             eventLL.visibility = View.VISIBLE
             storyLL.visibility = View.VISIBLE
-            friendLL.visibility = View.GONE
-            eventLV.visibility = View.VISIBLE
+            friendLL.visibility = View.VISIBLE
+            eventLV.visibility = View.GONE
         }
 
 
@@ -123,6 +147,7 @@ class ChattingActivity : RootActivity() {
             reciveLL.visibility = View.VISIBLE
             friendLL.visibility = View.GONE
             eventLV.visibility = View.VISIBLE
+            recive2LL.visibility = View.VISIBLE
         }
 
         sendRL.setOnClickListener {
@@ -133,6 +158,7 @@ class ChattingActivity : RootActivity() {
             sendLL.visibility = View.VISIBLE
             friendLL.visibility = View.GONE
             eventLV.visibility = View.VISIBLE
+            send2LL.visibility = View.VISIBLE
         }
         matchRL.setOnClickListener {
             setmenu()
@@ -144,9 +170,14 @@ class ChattingActivity : RootActivity() {
             eventLV.visibility = View.VISIBLE
         }
 
+
+
+
     }
 
     fun setmenu(){
+        recive2LL.visibility = View.GONE
+        send2LL.visibility = View.GONE
         event2LL.visibility = View.GONE
         storyLL.visibility = View.GONE
         matchLL.visibility = View.GONE

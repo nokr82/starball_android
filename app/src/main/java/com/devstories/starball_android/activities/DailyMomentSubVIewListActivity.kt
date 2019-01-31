@@ -26,10 +26,18 @@ class DailyMomentSubVIewListActivity : RootActivity() {
         DaillyAdapter = DaillyAdapter(context,R.layout.item_view_daily_sub_list, 6)
         dailyGV.adapter = DaillyAdapter
 
+
         timelineTV.setOnClickListener {
-            val intent = Intent(context, DailyMomentListActivity::class.java)
+            val intent = Intent(context, DailyMomentViewListActivity::class.java)
             startActivity(intent)
         }
+
+        secretTV.setOnClickListener {
+
+        }
+
+
+
         backIV.setOnClickListener {
             finish()
         }

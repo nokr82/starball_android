@@ -11,6 +11,7 @@ import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.DaillyAdapter
 import com.devstories.starball_android.base.RootActivity
 import kotlinx.android.synthetic.main.activity_daily_view_list.*
+import kotlinx.android.synthetic.main.item_daily_moment_view_head.*
 
 class DailyMomentViewListActivity : RootActivity() {
 
@@ -22,8 +23,9 @@ class DailyMomentViewListActivity : RootActivity() {
     lateinit var header: View
     lateinit var backIV: ImageView
     lateinit var timelineTV: TextView
+    lateinit var secretTV: TextView
     lateinit var profileIV: ImageView
-
+    lateinit var starballIV: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily_view_list)
@@ -38,14 +40,26 @@ class DailyMomentViewListActivity : RootActivity() {
         header = View.inflate(this, R.layout.item_daily_moment_view_head, null)
         backIV = header.findViewById(R.id.backIV)
         timelineTV = header.findViewById(R.id.timelineTV)
+        secretTV = header.findViewById(R.id.secretTV)
         profileIV= header.findViewById(R.id.profileIV)
+        starballIV =  header.findViewById(R.id.starballIV)
         dailyLV.addHeaderView(header)
         timelineTV.setOnClickListener {
             val intent = Intent(context, DailyMomentListActivity::class.java)
             startActivity(intent)
         }
-        profileIV.setOnClickListener {
+
+        starballIV.setOnClickListener {
+            val intent = Intent(context, DlgCrushActivity::class.java)
+            startActivity(intent)
+        }
+
+        secretTV.setOnClickListener {
             val intent = Intent(context, DailyMomentSubVIewListActivity::class.java)
+            startActivity(intent)
+        }
+        profileIV.setOnClickListener {
+            val intent = Intent(context, DlgAlbumPayActivity::class.java)
             startActivity(intent)
         }
 

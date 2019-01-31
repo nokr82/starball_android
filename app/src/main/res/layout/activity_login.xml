@@ -33,18 +33,9 @@
                       android:layout_marginBottom="43dp">
 
             <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                       android:src="@mipmap/bi"/>
-            <TextView
-                    android:layout_marginLeft="7.5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:shadowColor="#80444444"
-                    android:shadowRadius="9"
-                    android:textSize="21.8dp"
-                    android:textColor="#333333"
-                    android:gravity="center_horizontal"
-                    android:text="Starball"
-            />
+                       android:src="@mipmap/join_bi"/>
+
+
 
         </LinearLayout>
 

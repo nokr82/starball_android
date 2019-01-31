@@ -27,6 +27,7 @@
                 android:text="Hasan Sibakhi  25"
                 />
         <ImageView
+                android:id="@+id/globalIV"
                 android:paddingLeft="9.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"

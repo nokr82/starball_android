@@ -34,7 +34,14 @@ class GroupChattingActivity : RootActivity() {
             val intent = Intent(context, DlgSendProposeActivity::class.java)
             startActivity(intent)
         }
-
+        globalIV.setOnClickListener {
+            it.isSelected = !it.isSelected
+            if (it.isSelected) {
+                globalIV.setImageResource(R.mipmap.global_on)
+            } else {
+                globalIV.setImageResource(R.mipmap.global)
+            }
+        }
         plusLL.setOnClickListener {
             it.isSelected = !it.isSelected
             if (it.isSelected) {
