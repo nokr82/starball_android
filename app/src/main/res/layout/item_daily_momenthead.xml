@@ -86,6 +86,7 @@ already dragged card into that plate looks like.
     </RelativeLayout>
 
     <LinearLayout
+            android:layout_marginBottom="25dp"
             android:layout_marginTop="25.5dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -93,8 +94,10 @@ already dragged card into that plate looks like.
             android:layout_height="50dp">
 
         <LinearLayout
+                android:layout_marginRight="5dp"
                 android:id="@+id/photoLL"
                 android:layout_width="0dp"
+                android:background="@drawable/background_border_moment"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="1">
@@ -112,7 +115,9 @@ already dragged card into that plate looks like.
 
         <LinearLayout
                 android:id="@+id/videoLL"
+                android:layout_marginRight="5dp"
                 android:layout_width="0dp"
+                android:background="@drawable/background_border_moment"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="1">
@@ -129,6 +134,7 @@ already dragged card into that plate looks like.
         </LinearLayout>
         <LinearLayout
                 android:layout_width="0dp"
+                android:background="@drawable/background_border_moment"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="1">

@@ -19,6 +19,7 @@
                 android:id="@+id/backIV"/>
 
         <TextView
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
@@ -56,7 +57,7 @@
     <LinearLayout
             android:background="#f8f8f8"
             android:layout_width="match_parent"
-            android:layout_height="85dp"
+            android:layout_height="95dp"
             android:orientation="vertical">
 
         <TextView
@@ -72,7 +73,7 @@
 
         <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="65dp">
 
 
         <RelativeLayout
@@ -92,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:src="@mipmap/profile_pic_bg_del"/>
             <TextView
-                    android:layout_marginLeft="17dp"
+                    android:layout_marginLeft="15dp"
                     android:layout_alignParentBottom="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -134,7 +135,7 @@
 
     <TextView
             android:id="@+id/cancelTV"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="12sp"
@@ -337,7 +338,7 @@
             android:orientation="vertical">
 
         <ImageView
-
+                android:padding="7dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/lounge_picture_add"

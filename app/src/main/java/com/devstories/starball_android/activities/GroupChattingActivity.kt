@@ -24,7 +24,7 @@ class GroupChattingActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
-        GroupAdapter = GroupAdapter(context, R.layout.item_group_chatting, 5)
+        GroupAdapter = GroupAdapter(context, R.layout.item_group_chatting, 1)
         groupLV.adapter = GroupAdapter
 
         groupLV.setOnItemClickListener { parent, view, position, id ->

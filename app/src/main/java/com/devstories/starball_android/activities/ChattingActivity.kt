@@ -24,6 +24,9 @@ class ChattingActivity : RootActivity() {
     lateinit var TalkAdapter: TalkAdapter
 
     lateinit var EventAdapter: EventAdapter
+
+    var type = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lounge_main)
@@ -55,8 +58,7 @@ class ChattingActivity : RootActivity() {
         backIV.setOnClickListener {
             finish()
         }
-        EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3)
-        eventLV.adapter = EventAdapter
+
 
 
 
@@ -145,6 +147,9 @@ class ChattingActivity : RootActivity() {
 
         reciveRL.setOnClickListener {
             setmenu()
+            type = 2
+            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3,type)
+            eventLV.adapter = EventAdapter
             menuLL.visibility = View.GONE
             storyTV.visibility = View.GONE
             eventLL.visibility = View.VISIBLE
@@ -156,6 +161,9 @@ class ChattingActivity : RootActivity() {
 
         sendRL.setOnClickListener {
             setmenu()
+            type = 3
+            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3,type)
+            eventLV.adapter = EventAdapter
             menuLL.visibility = View.GONE
             storyTV.visibility = View.GONE
             eventLL.visibility = View.VISIBLE
@@ -166,6 +174,9 @@ class ChattingActivity : RootActivity() {
         }
         matchRL.setOnClickListener {
             setmenu()
+            type = 1
+            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3,type)
+            eventLV.adapter = EventAdapter
             menuLL.visibility = View.GONE
             storyTV.visibility = View.GONE
             eventLL.visibility = View.VISIBLE

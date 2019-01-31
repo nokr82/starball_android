@@ -11,11 +11,12 @@ import com.devstories.starball_android.activities.DlgAlbumPayActivity
 import com.devstories.starball_android.activities.DlgCrushActivity
 
 
-open class EventAdapter (context: Context, view:Int, data:Int) : ArrayAdapter<Int>(context, view, data) {
+open class EventAdapter (context: Context, view:Int, data:Int,type:Int) : ArrayAdapter<Int>(context, view, data) {
 
     private lateinit var item: ViewHolder
     var view:Int = view
     var data: Int = data
+    var type: Int = type
     lateinit var MatchAdapter: MatchAdapter
 
     override fun getView(position: Int, convertView: View?, parent : ViewGroup?): View {
@@ -36,6 +37,16 @@ open class EventAdapter (context: Context, view:Int, data:Int) : ArrayAdapter<In
             }
         }
 
+        if (type==1){
+            item.sendIV.visibility = View.VISIBLE
+            item.sendLL.visibility = View.VISIBLE
+        }else if (type == 2){
+            item.heartIV.visibility = View.VISIBLE
+            item.sendLL.visibility = View.GONE
+        }else if (type == 3){
+            item.starIV.visibility = View.VISIBLE
+            item.sendLL.visibility = View.GONE
+        }
 
 
         MatchAdapter = MatchAdapter(context,R.layout.item_match, 1)
@@ -83,9 +94,13 @@ open class EventAdapter (context: Context, view:Int, data:Int) : ArrayAdapter<In
         var starballIV: ImageView
         var chattingLV: ListView
         var menuLL: LinearLayout
-
+        var starIV: ImageView
+        var heartIV: ImageView
 
         init {
+
+            starIV=  v.findViewById(R.id.starIV) as ImageView
+            heartIV=  v.findViewById(R.id.heartIV) as ImageView
             chattingLV =  v.findViewById(R.id.chattingLV) as ListView
             micLL =  v.findViewById(R.id.micLL) as LinearLayout
             menuLL =  v.findViewById(R.id.menuLL) as LinearLayout

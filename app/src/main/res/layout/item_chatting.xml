@@ -6,6 +6,11 @@
         android:layout_height="match_parent">
 
 
+<LinearLayout
+        android:layout_marginBottom="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     <LinearLayout
             android:orientation="horizontal"
@@ -26,21 +31,33 @@
         <RelativeLayout
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
+                android:background="@drawable/background_border_strock7ffffff"
                 android:layout_height="wrap_content">
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textSize="11dp"
+                    android:textSize="16dp"
                     android:textColor="#000000"
-                    android:background="@drawable/background_border_strock7ffffff"
-                    android:text="차이 안나는거같은데..."
+                    android:text="God bless you and I got It\n
+go now"
+                    />
+            <TextView
+                    android:paddingTop="20dp"
+                    android:paddingLeft="90dp"
+                   android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="9dp"
+                    android:textColor="#666666"
+                    android:text=" 08/25 03:45 PM"
                     />
         </RelativeLayout>
 
         <LinearLayout
                 android:id="@+id/loveIV"
                 android:layout_marginLeft="5dp"
+                android:background="@drawable/circle_backgroundgroup"
                 android:layout_width="30dp"
                 android:gravity="center"
                 android:layout_height="30dp">
@@ -70,12 +87,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         <TextView
+                android:layout_marginTop="3.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:textSize="11dp"
+                android:textSize="16dp"
                 android:textColor="#000000"
-                android:background="@drawable/background_border_strock10_e2e2e2"
+                android:background="@drawable/background_border_strock10_profile"
                 android:text="나와 취미가 같아 님에게 관심이 \n
 갑니다."
                 />
@@ -106,13 +124,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:textSize="11dp"
+                    android:textSize="16dp"
                     android:textColor="#ffffff"
                     android:background="@drawable/background_border_strock4_a24dc6"
-                    android:text="With little more than a hello\n
-, I began to reread the\n
-letter that was in my hand."
+                    android:text="With little more than a hello, I began to reread the letter that was in my hand."
                     />
+
+            <TextView
+                    android:paddingTop="45dp"
+                    android:paddingRight="40dp"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="9dp"
+                    android:textColor="#ffffff"
+                    android:text=" 08/25 03:45 PM"
+                    />
+
         </RelativeLayout>
 
 
@@ -129,5 +158,6 @@ letter that was in my hand."
 
     </LinearLayout>
 
+</LinearLayout>
 
 </LinearLayout>
