@@ -20,7 +20,9 @@ class StarballMemberShipActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
-
+        backIV.setOnClickListener {
+            finish()
+        }
 
         vipTV.setOnClickListener {
             val intent = Intent(context, VVIPJoinActivity::class.java)

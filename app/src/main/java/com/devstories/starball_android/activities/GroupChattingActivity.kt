@@ -8,9 +8,9 @@ import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.DaillyAdapter
 import com.devstories.starball_android.adapter.GroupAdapter
 import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.activity_group_make.*
+import kotlinx.android.synthetic.main.activity_friend_chatting.*
 
-class GrouptMakeActivity : RootActivity() {
+class GroupChattingActivity : RootActivity() {
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
@@ -18,15 +18,24 @@ class GrouptMakeActivity : RootActivity() {
     lateinit var GroupAdapter: GroupAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_group_make)
+        setContentView(R.layout.activity_group_chatting)
         this.context = this
         progressDialog = ProgressDialog(context)
 
 
-        GroupAdapter = GroupAdapter(context, R.layout.item_group_profile, 12)
+        GroupAdapter = GroupAdapter(context, R.layout.item_group_chatting, 30)
         groupLV.adapter = GroupAdapter
         groupLV.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(context, GroupChattingActivity::class.java)
+            val intent = Intent(context, DlgProposeActivity::class.java)
+            startActivity(intent)
+        }
+
+        reportIV.setOnClickListener {
+            val intent = Intent(context, ReportActivity::class.java)
+            startActivity(intent)
+        }
+        starballIV.setOnClickListener {
+            val intent = Intent(context, DlgCrushActivity::class.java)
             startActivity(intent)
         }
 

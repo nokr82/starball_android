@@ -110,6 +110,10 @@
                 android:theme="@style/NoTitleDialog"
                 android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
+                android:name=".activities.GroupChattingActivity"
+                android:theme="@style/NoTitleDialog"
+                android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity
                 android:name=".activities.PhoneCertiActivity"
                 android:theme="@style/NoTitleDialog"
                 android:windowSoftInputMode="adjustResize|stateHidden"/>
