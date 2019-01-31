@@ -242,18 +242,17 @@
                     android:src="@mipmap/lounge_picture_add"
                     android:layout_centerInParent="true"
                     android:layout_alignParentRight="true"
-                   />
+                    android:paddingLeft="10dp"/>
 
 
-            <TextView
-
+            <EditText
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@null"
                     android:textColor="#666666"
-                    android:text="상용어구를 등록하세요"
+                    android:hint="상용어구를 등록하세요"
                     android:paddingLeft="20dp"
                     android:gravity="center_vertical"
                     android:textSize="14dp"
@@ -272,7 +271,8 @@
 
             <RelativeLayout
                     android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
+                    android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_height="wrap_content">
                 <TextView
                         android:layout_width="wrap_content"
@@ -280,15 +280,23 @@
                         android:padding="5dp"
                         android:textSize="11dp"
                         android:textColor="#ffff"
-                        android:background="@drawable/background_border_strock4_923b9f"
+
                         android:text="Good Night"
                         />
 
+                <ImageView
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="10dp"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/close_lang"/>
 
             </RelativeLayout>
             <RelativeLayout
                     android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
+                    android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_height="wrap_content">
                 <TextView
                         android:layout_width="wrap_content"
@@ -296,15 +304,23 @@
                         android:padding="5dp"
                         android:textSize="11dp"
                         android:textColor="#ffff"
-                        android:background="@drawable/background_border_strock4_923b9f"
+
                         android:text="Good Night"
                         />
 
+                <ImageView
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="10dp"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/close_lang"/>
 
             </RelativeLayout>
             <RelativeLayout
                     android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
+                    android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_height="wrap_content">
                 <TextView
                         android:layout_width="wrap_content"
@@ -312,15 +328,23 @@
                         android:padding="5dp"
                         android:textSize="11dp"
                         android:textColor="#ffff"
-                        android:background="@drawable/background_border_strock4_923b9f"
+
                         android:text="Good Night"
                         />
 
+                <ImageView
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="10dp"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/close_lang"/>
 
             </RelativeLayout>
             <RelativeLayout
                     android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="90dp"
+                    android:background="@drawable/background_border_strock4_923b9f"
                     android:layout_height="wrap_content">
                 <TextView
                         android:layout_width="wrap_content"
@@ -328,10 +352,17 @@
                         android:padding="5dp"
                         android:textSize="11dp"
                         android:textColor="#ffff"
-                        android:background="@drawable/background_border_strock4_923b9f"
+
                         android:text="Good Night"
                         />
 
+                <ImageView
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="10dp"
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/close_lang"/>
 
             </RelativeLayout>
 

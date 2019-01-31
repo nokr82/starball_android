@@ -2,6 +2,7 @@ package com.devstories.starball_android.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.support.v4.content.ContextCompat.startActivity
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,7 @@ open class EventAdapter (context: Context, view:Int, data:Int,type:Int) : ArrayA
         }
 
         if (type==1){
-            item.sendIV.visibility = View.VISIBLE
+            item.sendIV.visibility = View.GONE
             item.menuLL.visibility = View.VISIBLE
         }else if (type == 2){
             item.heartIV.visibility = View.VISIBLE
@@ -60,6 +61,8 @@ open class EventAdapter (context: Context, view:Int, data:Int,type:Int) : ArrayA
         item.sendLL.setOnClickListener {
             item.chattingLV.visibility = View.VISIBLE
             item.menuLL.visibility = View.GONE
+            item.imgIV.visibility = View.VISIBLE
+
         }
         item.sendIV.setOnClickListener {
 
@@ -96,9 +99,10 @@ open class EventAdapter (context: Context, view:Int, data:Int,type:Int) : ArrayA
         var menuLL: LinearLayout
         var starIV: ImageView
         var heartIV: ImageView
+        var imgIV: ImageView
 
         init {
-
+            imgIV=  v.findViewById(R.id.imgIV) as ImageView
             starIV=  v.findViewById(R.id.starIV) as ImageView
             heartIV=  v.findViewById(R.id.heartIV) as ImageView
             chattingLV =  v.findViewById(R.id.chattingLV) as ListView

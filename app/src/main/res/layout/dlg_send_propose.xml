@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@drawable/background_round_ffffff"
-            app:ratio="330:540">
+            app:ratio="330:470">
 
 <ScrollView
         android:layout_width="match_parent"

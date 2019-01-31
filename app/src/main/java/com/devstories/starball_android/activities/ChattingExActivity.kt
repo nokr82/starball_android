@@ -272,7 +272,7 @@ class ChattingExActivity : RootActivity() {
             setmenu()
             eventLV.removeFooterView(footer)
             type = 1
-            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3,type)
+            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 1,type)
             eventLV.adapter = EventAdapter
             menuLL.visibility = View.GONE
             storyTV.visibility = View.GONE

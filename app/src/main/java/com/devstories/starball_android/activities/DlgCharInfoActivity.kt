@@ -38,6 +38,16 @@ class DlgCharInfoActivity : RootActivity() {
             startActivity(intent)
         }
 
+        emailLL.setOnClickListener {
+            val intent = Intent(context, EmailConnectActivity::class.java)
+            startActivity(intent)
+        }
+
+        phoneLL.setOnClickListener {
+            val intent = Intent(context, PhoneCertiActivity::class.java)
+            startActivity(intent)
+        }
+
 
 
     }

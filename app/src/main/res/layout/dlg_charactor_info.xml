@@ -36,24 +36,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:gravity="center_vertical"
                     android:orientation="vertical">
 
                 <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                <LinearLayout
-                        android:layout_marginTop="20dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content">
+                        android:gravity="center_vertical"
+                        android:layout_height="match_parent">
+                    <LinearLayout
+                            android:id="@+id/phoneLL"
+                            android:layout_marginLeft="50dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical"
+                            android:layout_height="match_parent">
 
 
                         <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
                                 android:src="@mipmap/main_char_phone"/>
 
                         <TextView
+                                android:paddingLeft="10dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textSize="13dp"
@@ -65,13 +70,508 @@
 
 
 
-                </LinearLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:id="@+id/emailLL"
+                            android:layout_width="0dp"
+                            android:gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent">
+
+
+                        <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@mipmap/main_char_mail"/>
+
+                        <TextView
+                                android:paddingLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textColor="#333333"
+                                android:letterSpacing="-0.03"
+                                android:text=": 미인증"
+                                />
+
+
+
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
 
 
             </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+
+                        <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@mipmap/main_char_religion"/>
+
+                        <TextView
+                                android:paddingLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textColor="#333333"
+                                android:letterSpacing="-0.03"
+                                android:text=": 기독교"
+                                />
+
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_marginTop="20dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+
+                        <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@mipmap/main_char_politics"/>
+
+                        <TextView
+                                android:paddingLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textColor="#333333"
+                                android:letterSpacing="-0.03"
+                                android:text=": 진보"
+                                />
+
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/main_char_baby"/>
+
+                        <TextView
+                                android:paddingLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textColor="#333333"
+                                android:letterSpacing="-0.03"
+                                android:text=": 없음"
+                                />
+
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_marginTop="20dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+
+                        <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@mipmap/main_char_animal"/>
+
+                        <TextView
+                                android:paddingLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textColor="#333333"
+                                android:letterSpacing="-0.03"
+                                android:text=": 강아지"
+                                />
+
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+
+                        <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@mipmap/main_char_smoke"/>
+
+                        <TextView
+                                android:paddingLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textColor="#333333"
+                                android:letterSpacing="-0.03"
+                                android:text=": 싫어함"
+                                />
+
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_marginTop="20dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+
+                        <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@mipmap/main_char_alcohol"/>
+
+                        <TextView
+                                android:paddingLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textColor="#333333"
+                                android:letterSpacing="-0.03"
+                                android:text=": 사교적음주"
+                                />
+
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+
+                        <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@mipmap/main_char_exercise"/>
+
+                        <TextView
+                                android:paddingLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textColor="#333333"
+                                android:letterSpacing="-0.03"
+                                android:text=": 안함"
+                                />
+
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_marginTop="20dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/main_char_sports"/>
+
+                        <TextView
+                                android:paddingLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textColor="#333333"
+                                android:letterSpacing="-0.03"
+                                android:text=": 골프"
+                                />
+
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+
+                        <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@mipmap/main_char_height"/>
+
+                        <TextView
+                                android:paddingLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textColor="#333333"
+                                android:letterSpacing="-0.03"
+                                android:text=": 178cm"
+                                />
+
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+
+                        <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@mipmap/main_char_fb"/>
+
+                        <TextView
+                                android:paddingLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textColor="#333333"
+                                android:letterSpacing="-0.03"
+                                android:text=": 연동"
+                                />
+
+
+
+
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_marginTop="20dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+
+                        <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@mipmap/main_char_ins"/>
+
+                        <TextView
+                                android:paddingLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textColor="#333333"
+                                android:letterSpacing="-0.03"
+                                android:text=": 연동안됨"
+                                />
+
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+
+                        <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@mipmap/main_char_dollar"/>
+
+                        <TextView
+                                android:paddingLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textColor="#333333"
+                                android:letterSpacing="-0.03"
+                                android:text=": $ 10,000~30,000 per month"
+                                />
+
+
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:layout_marginLeft="50dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+
+
+                        <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@mipmap/main_char_airplan"/>
+
+                        <TextView
+                                android:paddingLeft="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textColor="#333333"
+                                android:letterSpacing="-0.03"
+                                android:text=": 2018.08.15~09.16. Thailand"
+                                />
+
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
 
 
 

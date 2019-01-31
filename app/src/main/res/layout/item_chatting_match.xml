@@ -10,6 +10,7 @@
 
         <LinearLayout
                 android:background="#ffffff"
+                android:paddingBottom="10dp"
                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:orientation="vertical"
@@ -52,11 +53,12 @@
 <RelativeLayout
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
+        android:background="@drawable/background_border_strock7ffffff"
         android:layout_marginRight="10dp"
         android:layout_height="350dp">
-
     <ImageView
             android:scaleType="fitXY"
+            android:background="#000000"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@mipmap/lounge_daily_photo"/>
@@ -70,6 +72,13 @@
             android:src="@mipmap/setting_pur_starball_06"
             />
 
+
+    <ImageView
+            android:id="@+id/imgIV"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#40000000"/>
     <TextView
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="15dp"
@@ -92,6 +101,8 @@
             android:divider="@null"
             android:scrollbars="none"
             android:layout_centerInParent="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="80dp"
             android:layout_width="match_parent"
             android:layout_height="100dp">
     </ListView>
@@ -134,6 +145,7 @@
 </RelativeLayout>
 
             <LinearLayout
+                    android:visibility="gone"
                     android:background="#efefef"
                     android:id="@+id/menuLL"
                     android:layout_marginRight="10dp"
