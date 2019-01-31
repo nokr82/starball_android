@@ -5,6 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <RelativeLayout
+            android:id="@+id/headRL"
             android:background="@mipmap/setting_top_bg"
             android:layout_width="match_parent"
             android:layout_height="340dp">
@@ -93,6 +94,7 @@ already dragged card into that plate looks like.
             android:layout_height="50dp">
 
         <LinearLayout
+                android:id="@+id/photoLL"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -110,6 +112,7 @@ already dragged card into that plate looks like.
         </LinearLayout>
 
         <LinearLayout
+                android:id="@+id/videoLL"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"

@@ -218,6 +218,7 @@
 
 
         <TextView
+                android:id="@+id/closeTV"
                 android:textStyle="bold"
                 android:layout_marginLeft="15dp"
                 android:layout_width="120dp"
@@ -229,6 +230,7 @@
                 android:text="닫기"
                 />
         <TextView
+                android:id="@+id/payTV"
                 android:layout_marginRight="15dp"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"

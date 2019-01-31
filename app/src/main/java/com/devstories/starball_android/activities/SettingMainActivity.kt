@@ -20,6 +20,11 @@ class SettingMainActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
+        centerIV.setOnClickListener {
+            val intent = Intent(context, DailyMomentListActivity::class.java)
+            startActivity(intent)
+        }
+
 
         starballLL.setOnClickListener {
             val intent = Intent(context, DlgStarballHistoryActivity::class.java)

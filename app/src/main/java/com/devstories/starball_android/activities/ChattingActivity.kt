@@ -36,7 +36,7 @@ class ChattingActivity : RootActivity() {
         talkLV.adapter = TalkAdapter
 
         groupLV.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(context, DailyMomentViewListActivity::class.java)
+            val intent = Intent(context, GroupChattingActivity::class.java)
             startActivity(intent)
         }
         talkLV.setOnItemClickListener { parent, view, position, id ->

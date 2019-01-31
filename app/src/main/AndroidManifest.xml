@@ -178,6 +178,10 @@
                 android:screenOrientation="unspecified"
                 android:theme="@style/full_screen_dialog1"/>
         <activity
+                android:name=".activities.DlgSendProposeActivity"
+                android:screenOrientation="unspecified"
+                android:theme="@style/full_screen_dialog1"/>
+        <activity
                 android:name=".activities.DlgCrushActivity"
                 android:screenOrientation="unspecified"
                 android:theme="@style/full_screen_dialog1"/>

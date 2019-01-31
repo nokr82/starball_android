@@ -11,7 +11,7 @@
             android:background="@drawable/background_round_ffffff"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:ratio="330:500">
+            app:ratio="330:515">
 
 <LinearLayout
         android:layout_marginLeft="10dp"

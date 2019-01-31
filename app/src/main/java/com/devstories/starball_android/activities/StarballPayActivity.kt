@@ -25,7 +25,10 @@ class StarballPayActivity : RootActivity() {
             val intent = Intent(context, DlgStarballLackActivity::class.java)
             startActivity(intent)
         }
-
+        starball500LL.setOnClickListener {
+            val intent = Intent(context, CashRequestActivity::class.java)
+            startActivity(intent)
+        }
 
         backIV.setOnClickListener {
             finish()

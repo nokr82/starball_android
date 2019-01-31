@@ -4,11 +4,13 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.DaillyAdapter
 import com.devstories.starball_android.adapter.GroupAdapter
 import com.devstories.starball_android.base.RootActivity
 import kotlinx.android.synthetic.main.activity_friend_chatting.*
+
 
 class FriendChattingActivity : RootActivity() {
 
@@ -30,6 +32,12 @@ class FriendChattingActivity : RootActivity() {
             startActivity(intent)
         }
 
+        starballIV.setOnClickListener {
+            val intent = Intent(context, DlgSendProposeActivity::class.java)
+            startActivity(intent)
+        }
+
+
         reportIV.setOnClickListener {
             val intent = Intent(context, ReportActivity::class.java)
             startActivity(intent)
@@ -37,6 +45,23 @@ class FriendChattingActivity : RootActivity() {
         starballIV.setOnClickListener {
             val intent = Intent(context, DlgCrushActivity::class.java)
             startActivity(intent)
+        }
+
+        plusLL.setOnClickListener {
+            it.isSelected = !it.isSelected
+            if (it.isSelected) {
+                emoLL.visibility = View.VISIBLE
+            } else {
+                emoLL.visibility = View.GONE
+            }
+        }
+        languageIV.setOnClickListener {
+            it.isSelected = !it.isSelected
+            if (it.isSelected) {
+                languageLL.visibility = View.VISIBLE
+            } else {
+                languageLL.visibility = View.GONE
+            }
         }
 
         backIV.setOnClickListener {

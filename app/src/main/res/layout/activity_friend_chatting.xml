@@ -56,12 +56,17 @@
     </ListView>
 
 
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#1f1f1f"/>
     <LinearLayout
             android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="70dp">
 
         <LinearLayout
+                android:id="@+id/plusLL"
                 android:layout_marginLeft="10dp"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
@@ -91,45 +96,45 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/chatting_camera"/>
-<RelativeLayout
-        android:layout_marginRight="10dp"
-        android:layout_width="0dp"
-        android:background="@drawable/background_border_strock13"
-        android:layout_weight="1"
-        android:layout_height="wrap_content">
-        <EditText
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:textColorHint="#bbbbbb"
-                android:paddingLeft="10dp"
-                android:background="@null"
-                android:gravity="center_vertical"
-                android:textSize="14sp"
-               />
+        <RelativeLayout
+                android:layout_marginRight="10dp"
+                android:layout_width="0dp"
+                android:background="@drawable/background_border_strock13"
+                android:layout_weight="1"
+                android:layout_height="wrap_content">
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:textColorHint="#bbbbbb"
+                    android:paddingLeft="10dp"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:textSize="14sp"
+                    />
 
-        <LinearLayout
-                android:layout_marginRight="5dp"
-                android:layout_centerInParent="true"
-                android:layout_alignParentRight="true"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:gravity="center"
-                android:background="@drawable/circle_background4">
+            <LinearLayout
+                    android:layout_marginRight="5dp"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:gravity="center"
+                    android:background="@drawable/circle_background4">
 
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/paper_op"/>
-
-
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/paper_op"/>
 
 
 
-        </LinearLayout>
+
+
+            </LinearLayout>
 
 
 
-</RelativeLayout>
+        </RelativeLayout>
 
         <ImageView
                 android:id="@+id/starballIV"
@@ -139,6 +144,197 @@
                 android:src="@mipmap/bi"/>
 
 
+    </LinearLayout>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#1f1f1f"/>
+    <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/emoLL"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+        <LinearLayout
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/emoticon"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="#333333"
+                    android:letterSpacing="-0.03"
+                    android:gravity="center_horizontal"
+                    android:text="이모티콘"
+                    />
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/languageIV"
+                android:layout_marginLeft="30dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="left"
+                >
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/bubble"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="#333333"
+                    android:gravity="center_horizontal"
+                    android:text="상용어구"
+                    />
+
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/languageLL"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+        <RelativeLayout
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:visibility="visible"
+                android:layout_marginTop="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/background_border_strock10_ededed"
+                android:orientation="vertical">
+
+            <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_picture_add"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:paddingLeft="10dp"/>
+
+
+            <TextView
+
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@null"
+                    android:textColor="#666666"
+                    android:text="상용어구를 등록하세요"
+                    android:paddingLeft="20dp"
+                    android:gravity="center_vertical"
+                    android:textSize="14sp"
+                    />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+                android:layout_marginTop="12.5dp"
+                android:layout_marginBottom="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+            <RelativeLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:textSize="11sp"
+                        android:textColor="#ffff"
+                        android:background="@drawable/background_border_strock4_923b9f"
+                        android:text="Good Night"
+                        />
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:textSize="11sp"
+                        android:textColor="#ffff"
+                        android:background="@drawable/background_border_strock4_923b9f"
+                        android:text="Good Night"
+                        />
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:textSize="11sp"
+                        android:textColor="#ffff"
+                        android:background="@drawable/background_border_strock4_923b9f"
+                        android:text="Good Night"
+                        />
+
+
+            </RelativeLayout>
+            <RelativeLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:textSize="11sp"
+                        android:textColor="#ffff"
+                        android:background="@drawable/background_border_strock4_923b9f"
+                        android:text="Good Night"
+                        />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
     </LinearLayout>
 
 

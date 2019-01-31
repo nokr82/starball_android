@@ -34,9 +34,10 @@
                     android:src="@mipmap/setting_left"/>
 
             <ImageView
+                    android:id="@+id/centerIV"
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@mipmap/setting_center"/>
 
             <ImageView

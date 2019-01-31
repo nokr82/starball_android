@@ -230,7 +230,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:text="나의 매력포인트는"
                 />
         <RelativeLayout
-                android:id="@+id/charmRL"
+
                 android:layout_marginTop="11.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp">
@@ -239,6 +239,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                      android:background="@null">
             </Spinner>
             <ImageView
+                    android:id="@+id/charmRL"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"

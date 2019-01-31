@@ -15,24 +15,24 @@
         <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-        <ImageView
-                android:paddingLeft="10dp"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@mipmap/comm_profile_pic"/>
-        
-        <ImageView
-                android:paddingTop="25dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/lounge_pic_pin"/>
-        
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/lounge_dot"
-                android:paddingTop="10dp"
-                android:paddingLeft="43dp"/>
+            <ImageView
+                    android:paddingLeft="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/comm_profile_pic"/>
+
+            <ImageView
+                    android:paddingTop="25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_pic_pin"/>
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_dot"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="43dp"/>
 
         </RelativeLayout>
         

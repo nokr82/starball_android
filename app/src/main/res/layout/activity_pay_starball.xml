@@ -541,6 +541,7 @@
                         android:background="#1f1f1f"/>
 
                 <LinearLayout
+                        android:id="@+id/starball500LL"
                         android:paddingBottom="20.5dp"
                         android:layout_width="0dp"
                         android:layout_weight="1"

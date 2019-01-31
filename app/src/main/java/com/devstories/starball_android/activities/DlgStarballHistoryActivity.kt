@@ -1,22 +1,13 @@
 package com.devstories.starball_android.activities
 
-import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.TextView
-import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
-import com.devstories.starball_android.base.Utils
-import com.loopj.android.http.JsonHttpResponseHandler
-import com.loopj.android.http.RequestParams
-import cz.msebera.android.httpclient.Header
-import org.json.JSONArray
-import org.json.JSONException
-import org.json.JSONObject
+import kotlinx.android.synthetic.main.dlg_uselist.*
+
 
 class DlgStarballHistoryActivity : RootActivity() {
 
@@ -33,6 +24,13 @@ class DlgStarballHistoryActivity : RootActivity() {
 
         this.context = this
         progressDialog = ProgressDialog(context)
+        closeTV.setOnClickListener {
+            finish()
+        }
+        payTV.setOnClickListener {
+            val intent = Intent(context, StarballPayActivity::class.java)
+            startActivity(intent)
+        }
 
 
 
