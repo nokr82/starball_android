@@ -29,7 +29,7 @@ class DlgStarballLackActivity : RootActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.dlg_crush)
+        setContentView(R.layout.dlg_starball_lack)
 
         this.context = this
         progressDialog = ProgressDialog(context)

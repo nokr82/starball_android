@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
-            app:ratio="330:361">
+            app:ratio="330:400">
 
         <LinearLayout
                 android:layout_width="match_parent"

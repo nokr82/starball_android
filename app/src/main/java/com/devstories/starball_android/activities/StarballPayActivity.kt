@@ -21,6 +21,12 @@ class StarballPayActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
+        payTV.setOnClickListener {
+            val intent = Intent(context, DlgStarballLackActivity::class.java)
+            startActivity(intent)
+        }
+
+
         backIV.setOnClickListener {
             finish()
         }

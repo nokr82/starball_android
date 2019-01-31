@@ -30,6 +30,10 @@ class EditProfileActivity : RootActivity() {
             finish()
         }
 
+        charmRL.setOnClickListener {
+            val intent = Intent(context, CharmPointActivity::class.java)
+            startActivity(intent)
+        }
 
 
 

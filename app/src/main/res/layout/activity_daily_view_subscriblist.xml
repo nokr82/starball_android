@@ -154,6 +154,7 @@ KOREA     25"
 
 
     <GridView
+            android:paddingLeft="10dp"
             android:id="@+id/dailyGV"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -22,6 +22,8 @@ class DailyMomentViewListActivity : RootActivity() {
     lateinit var header: View
     lateinit var backIV: ImageView
     lateinit var timelineTV: TextView
+    lateinit var profileIV: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily_view_list)
@@ -36,12 +38,17 @@ class DailyMomentViewListActivity : RootActivity() {
         header = View.inflate(this, R.layout.item_daily_moment_view_head, null)
         backIV = header.findViewById(R.id.backIV)
         timelineTV = header.findViewById(R.id.timelineTV)
-
+        profileIV= header.findViewById(R.id.profileIV)
         dailyLV.addHeaderView(header)
         timelineTV.setOnClickListener {
             val intent = Intent(context, DailyMomentListActivity::class.java)
             startActivity(intent)
         }
+        profileIV.setOnClickListener {
+            val intent = Intent(context, DailyMomentSubVIewListActivity::class.java)
+            startActivity(intent)
+        }
+
         backIV.setOnClickListener {
             finish()
         }
