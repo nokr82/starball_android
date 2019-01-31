@@ -219,7 +219,7 @@
 
     <LinearLayout
             android:id="@+id/languageLL"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="wrap_content">
@@ -234,13 +234,13 @@
                 android:orientation="vertical">
 
             <ImageView
-
+                    android:padding="7dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/lounge_picture_add"
                     android:layout_centerInParent="true"
                     android:layout_alignParentRight="true"
-                    android:paddingLeft="10dp"/>
+                   />
 
 
             <TextView

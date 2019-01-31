@@ -903,6 +903,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:text="계정 인증 설정"
                 />
         <LinearLayout
+                android:id="@+id/phoneLL"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
@@ -951,6 +952,7 @@ At Freepik we use a freemium business model which means, the majority of the res
 
 
             <TextView
+                    android:id="@+id/saveLL"
                     android:paddingLeft="10dp"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -1002,6 +1004,7 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:text="연결된 계정"
                 />
         <LinearLayout
+                android:id="@+id/emailLL"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"

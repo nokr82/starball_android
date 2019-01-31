@@ -42,10 +42,7 @@ class FriendChattingActivity : RootActivity() {
             val intent = Intent(context, ReportActivity::class.java)
             startActivity(intent)
         }
-        starballIV.setOnClickListener {
-            val intent = Intent(context, DlgCrushActivity::class.java)
-            startActivity(intent)
-        }
+
 
         plusLL.setOnClickListener {
             it.isSelected = !it.isSelected

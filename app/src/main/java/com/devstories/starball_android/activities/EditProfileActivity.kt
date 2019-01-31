@@ -36,6 +36,21 @@ class EditProfileActivity : RootActivity() {
         }
 
 
+        phoneLL.setOnClickListener {
+            val intent = Intent(context, PhoneCertiActivity::class.java)
+            startActivity(intent)
+        }
+        saveLL.setOnClickListener {
+            val intent = Intent(context, SaveJoinActivity::class.java)
+            startActivity(intent)
+        }
+        emailLL.setOnClickListener {
+            val intent = Intent(context, EmailConnectActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
 
 
     }

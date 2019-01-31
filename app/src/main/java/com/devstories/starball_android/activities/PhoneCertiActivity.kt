@@ -20,6 +20,12 @@ class PhoneCertiActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
+
+        okTV.setOnClickListener {
+            val intent = Intent(context, PhoneCerti2Activity::class.java)
+            startActivity(intent)
+        }
+
         backIV.setOnClickListener {
             finish()
         }
