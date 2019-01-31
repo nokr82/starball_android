@@ -17,6 +17,7 @@
                 android:id="@+id/backIV"/>
 
         <TextView
+                android:layout_centerInParent="true"
                 android:layout_marginLeft="10dp"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"

@@ -158,7 +158,15 @@
                 android:theme="@style/NoTitleDialog"
                 android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
+                android:name=".activities.GrouptMakeActivity"
+                android:theme="@style/NoTitleDialog"
+                android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity
                 android:name=".activities.StarballPayActivity"
+                android:theme="@style/NoTitleDialog"
+                android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity
+                android:name=".activities.FriendChattingActivity"
                 android:theme="@style/NoTitleDialog"
                 android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
@@ -179,6 +187,10 @@
                 android:theme="@style/full_screen_dialog1"/>
         <activity
                 android:name=".activities.DlgAlbumPayActivity"
+                android:screenOrientation="unspecified"
+                android:theme="@style/full_screen_dialog1"/>
+        <activity
+                android:name=".activities.DlgProposeActivity"
                 android:screenOrientation="unspecified"
                 android:theme="@style/full_screen_dialog1"/>
 

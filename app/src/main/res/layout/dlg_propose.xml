@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent">
+
+    <com.devstories.starball_android.base.RationalLinearLayout
+            android:id="@+id/popup"
+            android:background="@drawable/background_round_ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:ratio="330:361">
+
+
+
+
+        <ImageView
+                android:layout_marginTop="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/comm_profile_pic"/>
+
+        <TextView
+                android:layout_marginTop="18.5dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#555555"
+                android:gravity="center_horizontal"
+                android:text="축하합니다.!\nVicky님께서 프로포즈하셨습니다."
+                />
+        <TextView
+                android:layout_gravity="center"
+                android:layout_marginTop="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#013e92"
+                android:letterSpacing="-0.03"
+                android:gravity="center_horizontal"
+                android:text="수락 하시겠습니까?"
+                />
+
+
+        <TextView
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="#555555"
+                android:text="수락시 회원님에게 200 Starall을 선물 드리며, 1주일간\n
+오직 신청하신 회원님만 대화하실 수 있습니다.\n
+(다른 회원과 호감/ 채팅불가)"
+                />
+
+
+
+
+
+
+
+
+
+
+        <TextView
+                android:layout_marginLeft="90dp"
+                android:layout_marginRight="90dp"
+                android:layout_marginTop="61dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:textSize="14dp"
+                android:textColor="#ffffff"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:background="@drawable/background_border_strock4"
+                android:gravity="center"
+                android:text="네, 기쁩니다"
+               />
+
+        <TextView
+                android:id="@+id/noTV"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textColor="#333333"
+                android:text="아니오. 괜찮습니다."
+                />
+
+    </com.devstories.starball_android.base.RationalLinearLayout>
+
+
+
+</LinearLayout>
+
+

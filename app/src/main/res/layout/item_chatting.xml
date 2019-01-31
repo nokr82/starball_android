@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                    android:paddingLeft="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/comm_profile_pic"/>
+
+
+
+
+        <RelativeLayout
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="11sp"
+                    android:textColor="#000000"
+                    android:background="@drawable/background_border_strock7ffffff"
+                    android:text="차이 안나는거같은데..."
+                    />
+        </RelativeLayout>
+
+        <LinearLayout
+                android:id="@+id/loveIV"
+                android:layout_marginLeft="5dp"
+                android:layout_width="30dp"
+                android:gravity="center"
+                android:layout_height="30dp">
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_heart_like"/>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+    <RelativeLayout
+            android:layout_marginLeft="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textSize="11sp"
+                android:textColor="#000000"
+                android:background="@drawable/background_border_strock10_e2e2e2"
+                android:text="나와 취미가 같아 님에게 관심이 \n
+갑니다."
+                />
+    </RelativeLayout>
+
+
+
+
+
+
+</LinearLayout>
