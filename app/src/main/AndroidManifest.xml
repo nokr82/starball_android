@@ -52,6 +52,10 @@
                 android:theme="@style/NoTitleDialog"
                 android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
+                android:name=".activities.ChattingExActivity"
+                android:theme="@style/NoTitleDialog"
+                android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity
                 android:name=".activities.JoinStep8Activity"
                 android:theme="@style/NoTitleDialog"
                 android:windowSoftInputMode="adjustResize|stateHidden"/>

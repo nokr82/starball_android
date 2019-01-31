@@ -37,7 +37,7 @@ class MainSearchActivity : RootActivity() {
         }
 
         chatIV.setOnClickListener {
-            val intent = Intent(context, ChattingActivity::class.java)
+            val intent = Intent(context, ChattingExActivity::class.java)
             startActivity(intent)
         }
 

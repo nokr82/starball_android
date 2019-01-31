@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+        <ImageView
+                android:paddingLeft="9.5dp"
+                android:paddingRight="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/comm_arrow_left"
+                android:id="@+id/backIV"/>
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/lounge_center"/>
+        <ImageView
+                android:paddingLeft="50dp"
+                android:id="@+id/timeIV"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:paddingRight="10dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/lounge_right_timelime"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+            android:id="@+id/menuLL"
+            android:layout_marginTop="10dp"
+            android:visibility="visible"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="14dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/background_border_strock10_ededed">
+
+        <RelativeLayout
+                android:id="@+id/storyRL"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+            <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_menu_chat"/>
+
+            <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="20dp"
+                    android:paddingTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_dot"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/matchRL"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+            <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_menu_match"/>
+
+            <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="25dp"
+                    android:paddingTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_dot"/>
+
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:id="@+id/reciveRL"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+            <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_menu_send"/>
+
+            <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="25dp"
+                    android:paddingTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_dot"/>
+
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:id="@+id/sendRL"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent">
+            <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_menu_rece"/>
+
+            <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="25dp"
+                    android:paddingTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_dot"/>
+
+
+        </RelativeLayout>
+        <ImageView
+                android:id="@+id/moreIV"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/op_drop"/>
+
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+            android:id="@+id/eventLL"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+        <RelativeLayout
+                android:id="@+id/event2LL"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:textSize="14dp"
+                android:background="@drawable/background_border_strock10_ededed">
+
+
+
+            <TextView
+                    android:layout_centerInParent="true"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textSize="21dp"
+                    android:textColor="#333333"
+                    android:text="모든 EVENT"/>
+
+
+
+
+
+            <ImageView
+                    android:id="@+id/more2IV"
+                    android:paddingRight="15dp"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/op_drop"/>
+
+
+
+
+
+        </RelativeLayout>
+        <LinearLayout
+                android:id="@+id/storyLL"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:textSize="14dp"
+                android:background="@drawable/background_border_strock10_ededed">
+
+
+            <ImageView
+                    android:paddingLeft="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/lounge_menu_chat"/>
+
+
+
+            <TextView
+                    android:paddingLeft="13.5dp"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textSize="21dp"
+                    android:textColor="#333333"
+                    android:text="대화"/>
+
+
+
+
+            <TextView
+                    android:id="@+id/storyTV"
+                    android:paddingRight="44.5dp"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:textSize="15dp"
+                    android:textColor="#555555"
+                    android:text="일상의 행복"
+                    />
+            <ImageView
+                    android:id="@+id/storymoreIV"
+                    android:paddingRight="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/op_drop"/>
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/matchLL"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:textSize="14dp"
+                android:background="@drawable/background_border_strock10_ededed">
+
+
+            <ImageView
+                    android:paddingLeft="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/lounge_menu_match"/>
+
+
+
+            <TextView
+                    android:paddingLeft="13.5dp"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textSize="21dp"
+                    android:textColor="#333333"
+                    android:text="매치"/>
+
+
+
+
+            <TextView
+                    android:paddingRight="44.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:textColor="#555555"
+                    android:text="진실의 순간"
+                    />
+            <ImageView
+                    android:id="@+id/matchmoreTV"
+                    android:paddingRight="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/op_drop"/>
+
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/reciveLL"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:textSize="14dp"
+                android:background="@drawable/background_border_strock10_ededed">
+
+
+            <ImageView
+                    android:paddingLeft="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/lounge_menu_send"/>
+
+
+
+            <TextView
+                    android:paddingLeft="13.5dp"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textSize="21dp"
+                    android:textColor="#333333"
+                    android:text="받은 호감"/>
+
+
+
+
+            <TextView
+                    android:paddingRight="44.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:textColor="#555555"
+                    android:text="존재의 재발견"
+                    />
+
+            <ImageView
+                    android:id="@+id/recivemoreIV"
+                    android:paddingRight="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/op_drop"/>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+                android:id="@+id/sendLL"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:textSize="14dp"
+                android:background="@drawable/background_border_strock10_ededed">
+
+
+            <ImageView
+                    android:paddingLeft="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/lounge_menu_rece"/>
+
+
+
+            <TextView
+                    android:paddingLeft="13.5dp"
+                    android:textStyle="bold"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:textSize="21dp"
+                    android:textColor="#333333"
+                    android:text="보낸 호감"/>
+
+
+
+
+            <TextView
+                    android:paddingRight="44.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:textColor="#555555"
+                    android:text="인연의 기회"
+                    />
+
+            <ImageView
+                    android:id="@+id/sendmoreIV"
+                    android:paddingRight="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/op_drop"/>
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:visibility="visible"
+            android:layout_marginTop="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/background_border_strock10_ededed"
+            android:orientation="vertical">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/lounge_search"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:paddingLeft="10dp"/>
+
+
+        <EditText
+
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Search"
+                android:background="@null"
+                android:textColorHint="#bbbbbb"
+                android:paddingLeft="40dp"
+                android:gravity="center_vertical"
+                android:textSize="14dp"
+                />
+
+    </RelativeLayout>
+
+    <LinearLayout
+            android:id="@+id/recive2LL"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="14dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/background_border_strock10_ededed">
+
+        <ImageView
+                android:paddingLeft="11dp"
+                android:paddingRight="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/recive_star"/>
+
+        <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#555555"
+                android:letterSpacing="-0.03"
+                android:text="받은 Starball"
+                />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+            android:id="@+id/send2LL"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="14dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/background_border_strock10_ededed">
+
+        <ImageView
+                android:paddingLeft="11dp"
+                android:paddingRight="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/recive_star"/>
+
+        <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#555555"
+                android:letterSpacing="-0.03"
+                android:text="보낸 Starball"
+                />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+            android:id="@+id/friendLL"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+        <LinearLayout
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/background_border_strock10_ededed">
+            <TextView
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="6.5dp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="#333333"
+                    android:text="그룹발송"
+                    />
+
+            <ImageView
+                    android:id="@+id/plusIV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_picture_add"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginTop="24.5dp"/>
+
+
+            <LinearLayout
+                    android:id="@+id/groupLL"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_height="70dp">
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    <ImageView
+                            android:paddingLeft="10dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@mipmap/comm_profile_pic"/>
+
+                    <ImageView
+                            android:paddingTop="25dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/lounge_pic_pin"/>
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/lounge_dot"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="43dp"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                        android:paddingLeft="15dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_height="40dp">
+
+                    <LinearLayout
+                            android:gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#555555"
+                                android:text="일본여자  3"
+                                />
+
+                        <ImageView
+                                android:layout_marginLeft="9dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/lounge_message_recie"/>
+                    </LinearLayout>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="11dp"
+                            android:textColor="#bebebe"
+                            android:text="차이 안나는거같은데...
+"
+                            />
+
+
+                </LinearLayout>
+
+
+                <TextView
+                        android:paddingRight="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="8dp"
+                        android:textColor="#bebebe"
+                        android:gravity="end"
+                        android:text="18.12.29     23:47"
+                        />
+
+
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/group2LL"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_height="70dp">
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    <ImageView
+                            android:paddingLeft="10dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@mipmap/comm_profile_pic"/>
+
+                    <ImageView
+                            android:paddingTop="25dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/lounge_pic_pin"/>
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/lounge_dot"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="43dp"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                        android:paddingLeft="15dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_height="40dp">
+
+                    <LinearLayout
+                            android:gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#555555"
+                                android:text="일본여자  3"
+                                />
+
+                        <ImageView
+                                android:layout_marginLeft="9dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/lounge_message_recie"/>
+                    </LinearLayout>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="11dp"
+                            android:textColor="#bebebe"
+                            android:text="차이 안나는거같은데...
+"
+                            />
+
+
+                </LinearLayout>
+
+
+                <TextView
+                        android:paddingRight="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="8dp"
+                        android:textColor="#bebebe"
+                        android:gravity="end"
+                        android:text="18.12.29     23:47"
+                        />
+
+
+
+
+
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+            <TextView
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="6.5dp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="#333333"
+                    android:text="대화"
+                    />
+
+            <LinearLayout
+                    android:id="@+id/story_opLL"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_height="70dp">
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    <ImageView
+                            android:paddingLeft="10dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@mipmap/comm_profile_pic"/>
+
+                    <ImageView
+                            android:paddingTop="25dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/lounge_pic_pin"/>
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/lounge_dot"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="43dp"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                        android:paddingLeft="15dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_height="40dp">
+
+                    <LinearLayout
+                            android:gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#555555"
+                                android:text="일본여자  3"
+                                />
+
+                        <ImageView
+                                android:layout_marginLeft="9dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/lounge_message_recie"/>
+                    </LinearLayout>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="11dp"
+                            android:textColor="#bebebe"
+                            android:text="차이 안나는거같은데...
+"
+                            />
+
+
+                </LinearLayout>
+
+
+                <TextView
+                        android:paddingRight="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="8dp"
+                        android:textColor="#bebebe"
+                        android:gravity="end"
+                        android:text="18.12.29     23:47"
+                        />
+
+
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/story_op2LL"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_height="70dp">
+
+                <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    <ImageView
+                            android:paddingLeft="10dp"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@mipmap/comm_profile_pic"/>
+
+                    <ImageView
+                            android:paddingTop="25dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/lounge_pic_pin"/>
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/lounge_dot"
+                            android:paddingTop="10dp"
+                            android:paddingLeft="43dp"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                        android:paddingLeft="15dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_height="40dp">
+
+                    <LinearLayout
+                            android:gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#555555"
+                                android:text="일본여자  3"
+                                />
+
+                        <ImageView
+                                android:layout_marginLeft="9dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/lounge_message_recie"/>
+                    </LinearLayout>
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="11dp"
+                            android:textColor="#bebebe"
+                            android:text="차이 안나는거같은데...
+"
+                            />
+
+
+                </LinearLayout>
+
+
+                <TextView
+                        android:paddingRight="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="8dp"
+                        android:textColor="#bebebe"
+                        android:gravity="end"
+                        android:text="18.12.29     23:47"
+                        />
+
+
+
+
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
