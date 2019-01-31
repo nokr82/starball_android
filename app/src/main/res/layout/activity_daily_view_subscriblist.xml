@@ -119,6 +119,7 @@ KOREA     25"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     <TextView
+            android:id="@+id/timelineTV"
             android:background="@drawable/background_border_strock5_0c040000"
             android:textStyle="bold"
             android:layout_width="0dp"

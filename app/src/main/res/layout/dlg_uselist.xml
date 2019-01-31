@@ -5,7 +5,7 @@
         android:orientation="vertical"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_height="match_parent">
-    <com.devstories.starball_android.base.RationalLinearLayout
+    <com.devstories.starball_android.base.RationalRelativeLayout
             android:id="@+id/popup"
             android:background="@drawable/background_border_strock8"
             android:layout_width="match_parent"
@@ -13,6 +13,10 @@
             android:orientation="vertical"
             app:ratio="330:336.5">
 
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 <RelativeLayout
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
@@ -239,7 +243,9 @@
                 />
 
         </RelativeLayout>
-    </com.devstories.starball_android.base.RationalLinearLayout>
+        </LinearLayout>
+
+    </com.devstories.starball_android.base.RationalRelativeLayout>
     
     
 

@@ -6,7 +6,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_height="match_parent">
 
-    <com.devstories.starball_android.base.RationalLinearLayout
+    <com.devstories.starball_android.base.RationalRelativeLayout
             android:id="@+id/popup"
             android:background="@drawable/background_round_ffffff"
             android:layout_width="match_parent"
@@ -14,7 +14,10 @@
             android:orientation="vertical"
             app:ratio="330:361">
 
-
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
 
         <ImageView
@@ -55,13 +58,20 @@
                 android:textSize="14sp"
                 android:textColor="#555555"
                 android:text="수락시 회원님에게 200 Starall을 선물 드리며, 1주일간\n
-오직 신청하신 회원님만 대화하실 수 있습니다.\n
-(다른 회원과 호감/ 채팅불가)"
+오직 신청하신 회원님만 대화하실 수 있습니다."
                 />
 
 
 
 
+            <TextView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#555555"
+                    android:text=" (다른 회원과 호감/ 채팅불가)"
+                    />
 
 
 
@@ -94,8 +104,10 @@
                 android:textColor="#333333"
                 android:text="아니오. 괜찮습니다."
                 />
+        </LinearLayout>
 
-    </com.devstories.starball_android.base.RationalLinearLayout>
+
+    </com.devstories.starball_android.base.RationalRelativeLayout>
 
 
 

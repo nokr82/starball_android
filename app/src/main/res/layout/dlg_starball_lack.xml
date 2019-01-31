@@ -6,13 +6,18 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_height="match_parent">
 
-    <com.devstories.starball_android.base.RationalLinearLayout
+    <com.devstories.starball_android.base.RationalRelativeLayout
             android:id="@+id/popup"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@drawable/background_round_ffffff"
             android:orientation="vertical"
             app:ratio="330:435">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -241,9 +246,10 @@
                 android:text="9,900원"
                 />
 
+        </LinearLayout>
 
-    
-    </com.devstories.starball_android.base.RationalLinearLayout>
+
+    </com.devstories.starball_android.base.RationalRelativeLayout>
     
     
     

@@ -6,16 +6,20 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_height="match_parent">
 
-    <com.devstories.starball_android.base.RationalLinearLayout
+    <com.devstories.starball_android.base.RationalRelativeLayout
             android:id="@+id/popup"
             android:background="@drawable/background_round_ffffff"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
             app:ratio="330:380">
 
-
-
+<LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
 
         <ImageView
                 android:layout_marginTop="15dp"
@@ -25,6 +29,7 @@
                 android:src="@mipmap/comm_profile_pic"/>
 
         <TextView
+                android:layout_marginTop="18dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
@@ -38,7 +43,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="#333333"
-                android:text="구매시 3 Starball이 소모되며, 구매일시로 부터 1주일간\n앨범을 보실 수 있습니다."
+                android:text="구매시 3 Starball이 소모되며, 구매일시로 부터 1주일간\n
+                앨범을 보실 수 있습니다."
                 />
 
 
@@ -100,8 +106,9 @@
                 android:textColor="#333333"
                 android:text="아니오. 괜찮습니다."
                 />
+</LinearLayout>
 
-    </com.devstories.starball_android.base.RationalLinearLayout>
+    </com.devstories.starball_android.base.RationalRelativeLayout>
 
 
 

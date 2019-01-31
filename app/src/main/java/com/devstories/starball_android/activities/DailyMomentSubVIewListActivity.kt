@@ -2,6 +2,7 @@ package com.devstories.starball_android.activities
 
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.DaillyAdapter
@@ -25,7 +26,10 @@ class DailyMomentSubVIewListActivity : RootActivity() {
         DaillyAdapter = DaillyAdapter(context,R.layout.item_view_daily_sub_list, 6)
         dailyGV.adapter = DaillyAdapter
 
-
+        timelineTV.setOnClickListener {
+            val intent = Intent(context, DailyMomentListActivity::class.java)
+            startActivity(intent)
+        }
         backIV.setOnClickListener {
             finish()
         }
