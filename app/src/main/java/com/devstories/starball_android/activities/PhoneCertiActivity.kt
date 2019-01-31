@@ -30,11 +30,6 @@ class PhoneCertiActivity : RootActivity() {
             finish()
         }
 
-
-
-
-
-
     }
 
 
