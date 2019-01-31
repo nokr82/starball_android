@@ -58,6 +58,15 @@ class ChattingActivity : RootActivity() {
         EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 6)
         eventLV.adapter = EventAdapter
 
+
+
+
+
+        eventLV.setOnItemClickListener { parent, view, position, id ->
+            val intent = Intent(context, DlgCrushActivity::class.java)
+            startActivity(intent)
+        }
+
         storyLL.setOnClickListener {
             setmenu()
             storyLL.visibility = View.VISIBLE
