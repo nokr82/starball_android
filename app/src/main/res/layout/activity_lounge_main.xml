@@ -61,6 +61,7 @@
                     android:layout_weight="1"
                     android:layout_height="match_parent">
             <ImageView
+                    android:id="@+id/storyIV"
                     android:layout_centerInParent="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -163,6 +164,7 @@
 
 
             <RelativeLayout
+                    android:id="@+id/event2LL"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_width="match_parent"
@@ -235,6 +237,7 @@
 
 
                 <TextView
+                        android:id="@+id/storyTV"
                         android:paddingRight="44.5dp"
                         android:layout_width="wrap_content"
                         android:gravity="center_vertical"
@@ -244,6 +247,7 @@
                         android:text="일상의 행복"
                         />
                 <ImageView
+                        android:id="@+id/storymoreIV"
                         android:paddingRight="15dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"

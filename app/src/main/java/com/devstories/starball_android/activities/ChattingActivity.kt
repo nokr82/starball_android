@@ -30,9 +30,9 @@ class ChattingActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        GroupAdapter = GroupAdapter(context, R.layout.item_chat_profile, 2)
+        GroupAdapter = GroupAdapter(context, R.layout.item_chat_profile, 1)
         groupLV.adapter = GroupAdapter
-        TalkAdapter = TalkAdapter(context, R.layout.item_chat_profile, 2)
+        TalkAdapter = TalkAdapter(context, R.layout.item_chat_profile, 1)
         talkLV.adapter = TalkAdapter
 
         groupLV.setOnItemClickListener { parent, view, position, id ->
@@ -94,10 +94,27 @@ class ChattingActivity : RootActivity() {
             eventLV.visibility = View.GONE
         }
 
+        storyIV.setOnClickListener {
+            setmenu()
+            menuLL.visibility = View.GONE
+            storyTV.visibility = View.GONE
+            eventLL.visibility = View.VISIBLE
+            storyLL.visibility = View.VISIBLE
+            friendLL.visibility = View.GONE
+            eventLV.visibility = View.VISIBLE
+        }
+        storymoreIV.setOnClickListener {
+            menuLL.visibility = View.VISIBLE
+            eventLL.visibility = View.GONE
+            friendLL.visibility = View.VISIBLE
+            eventLV.visibility = View.GONE
+        }
+
 
     }
 
     fun setmenu(){
+        event2LL.visibility = View.GONE
         storyLL.visibility = View.GONE
         matchLL.visibility = View.GONE
         reciveLL.visibility = View.GONE

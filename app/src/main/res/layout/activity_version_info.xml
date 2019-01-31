@@ -47,13 +47,16 @@
     </LinearLayout>
 
     <LinearLayout
-            android:layout_gravity="center"
             android:layout_marginTop="28dp"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+    <LinearLayout
             android:layout_width = "164dp"
                   android:layout_height = "wrap_content"
                   android:orientation="horizontal"
                     >
-
 
 
 
@@ -74,12 +77,12 @@
                 android:text="version. 1.00.00"/>
 
 
+
     </LinearLayout>
 
     <LinearLayout
             android:paddingTop="6dp"
-            android:gravity="center"
-            android:layout_width = "match_parent"
+            android:layout_width = "wrap_content"
             android:layout_height = "wrap_content"
             android:orientation="horizontal"
     >
@@ -104,6 +107,7 @@
                 android:text="version. 1.00.00"/>
 
 
+    </LinearLayout>
     </LinearLayout>
     <TextView
             android:layout_marginTop="27dp"

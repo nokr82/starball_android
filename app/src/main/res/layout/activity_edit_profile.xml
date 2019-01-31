@@ -61,7 +61,7 @@
             android:layout_marginTop="17.5dp"
             android:layout_width="match_parent"
             android:scrollbars="none"
-            android:layout_height="350dp"
+            android:layout_height="430dp"
             android:numColumns="3"
             ></GridView>
 

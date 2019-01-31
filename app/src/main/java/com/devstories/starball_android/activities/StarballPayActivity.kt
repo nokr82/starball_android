@@ -21,6 +21,10 @@ class StarballPayActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
+        backIV.setOnClickListener {
+            finish()
+        }
+
 
 
 

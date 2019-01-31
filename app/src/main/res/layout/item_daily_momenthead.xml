@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <RelativeLayout
+            android:background="@mipmap/setting_top_bg"
+            android:layout_width="match_parent"
+            android:layout_height="340dp">
+
+        <LinearLayout
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:paddingLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_arrow_back"
+                    android:id="@+id/backIV"/>
+
+            <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:visibility="invisible"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/setting_center"/>
+
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:background="@drawable/background_border_strock5_0c040000"
+                    android:textSize="12sp"
+                    android:gravity="center"
+                    android:textColor="#ffff"
+                    android:text="친구초대"/>
+
+        </LinearLayout>
+
+        <ImageView
+                android:id="@+id/profileIV"
+                android:paddingTop="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/setting_profile_picture"/>
+
+
+        <LinearLayout
+                android:layout_marginTop="7dp"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_below="@+id/profileIV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#333333"
+                    android:text="힙합둘리"
+                    />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:textColor="#bebebe"
+                    android:lineSpacingExtra="3sp"
+                    android:gravity="center_horizontal"
+                    android:text="Would be interesting to see how an
+already dragged card into that plate looks like.
+"
+                    />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+            android:layout_marginTop="25.5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#555555"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:text="Photo +"
+                    />
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#555555"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:text="Video +"
+                    />
+
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_weight="1">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#555555"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:text="Secret"
+                    />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#adadad"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:text="(0/30)"
+                    />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:textColor="#555555"
+                    android:textStyle="bold"
+                    android:gravity="center_horizontal"
+                    android:text="+"
+                    />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
