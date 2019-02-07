@@ -39,7 +39,7 @@
             android:layout_gravity="center"
             android:textSize="14dp"
             android:textColor="#646464"
-            android:text="15명이 호감을 보냈습니다."/>
+            android:text="@string/dlg_crush_content"/>
 
     <View
             android:layout_marginTop="23dp"
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
                 android:textColor="#333333"
-                android:text="보유한 Starball : "
+                android:text="@string/left_starball2"
                 />
         <TextView
                 android:layout_width="wrap_content"
@@ -95,7 +95,7 @@
                 android:background="@drawable/background_border_strock4"
                 android:textColor="#ffffff"
                 android:gravity="center"
-                android:text="구매하기"
+                android:text="@string/pay"
                 />
 
     </LinearLayout>
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
                 android:textColor="#333333"
-                android:text="무료로 +1 Starball 받기"
+                android:text="@string/dlg_crush_content2"
                 />
 
         <LinearLayout
@@ -185,7 +185,7 @@
                 android:textSize="15dp"
                 android:textColor="#4a4a4a"
                 android:gravity="center_horizontal"
-                android:text="보낼 Starball은 "
+                android:text="@string/dlg_crush_content3"
                 />
         <TextView
                 android:textStyle="bold"
@@ -194,7 +194,7 @@
                 android:textSize="15dp"
                 android:textColor="#013e92"
                 android:gravity="center_horizontal"
-                android:text="상대방이 수락해야만, 차감"
+                android:text="@string/dlg_crush_content4"
                 />
         <TextView
                 android:textStyle="bold"
@@ -203,7 +203,7 @@
                 android:textSize="15dp"
                 android:textColor="#4a4a4a"
                 android:gravity="center_horizontal"
-                android:text="됩니다"
+                android:text="@string/dlg_crush_content5"
                 />
         
 
@@ -253,7 +253,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
                         android:textColor="#333333"
-                        android:text="2개"
+                        android:text="@string/amount_2"
                         />
             </LinearLayout>
             <LinearLayout
@@ -271,7 +271,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
                         android:textColor="#333333"
-                        android:text="5개"
+                        android:text="@string/amount_5"
                         />
             </LinearLayout>
             <LinearLayout
@@ -289,7 +289,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
                         android:textColor="#333333"
-                        android:text="10개"
+                        android:text="@string/amount_10"
                         />
             </LinearLayout>
             <LinearLayout
@@ -307,7 +307,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
                         android:textColor="#333333"
-                        android:text="30개"
+                        android:text="@string/amount_30"
                         />
             </LinearLayout>
             <LinearLayout
@@ -325,7 +325,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
                         android:textColor="#333333"
-                        android:text="50개"
+                        android:text="@string/amount_50"
                         />
             </LinearLayout>
 
@@ -348,7 +348,7 @@
                    android:textStyle="bold"
 
                    android:textColor="#333333"
-                   android:text="직접입력"
+                   android:text="@string/direct_input"
                    />
            
            <EditText
@@ -387,7 +387,7 @@
             android:padding="8dp"
             android:background="@drawable/background_border_strock4"
             android:gravity="center"
-            android:text="네. Starball 선물합니다."
+            android:text="@string/dlg_crush_gift"
             />
 
     <TextView
@@ -399,7 +399,7 @@
             android:layout_height="wrap_content"
             android:textSize="10dp"
             android:textColor="#333333"
-            android:text="아니오. 다시 생각해볼게요."
+            android:text="@string/dlg_crush_no"
             />
 
 </LinearLayout>

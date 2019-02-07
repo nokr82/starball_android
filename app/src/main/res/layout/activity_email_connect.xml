@@ -24,7 +24,7 @@
                 android:textSize="21dp"
                 android:textColor="#333333"
                 android:layout_centerInParent="true"
-                android:text="내 e-mail 계정 연결하기"/>
+                android:text="@string/e_mail_connct_title"/>
 
     </RelativeLayout>
 
@@ -50,13 +50,13 @@
                 android:textSize="14dp"
                 android:textColor="#333333"
                 android:gravity="center_horizontal"
-                android:text="연결할 e-mail를 입력하세요"
+                android:text="@string/email_input"
                 />
 
         <EditText
                 android:layout_marginTop="25dp"
                 android:layout_width="match_parent" android:layout_height="40dp"
-                android:hint="입력해주세요"
+                android:hint="@string/ex_input"
                 android:textColorHint="#bbbbbb"
                 android:paddingLeft="10dp"
                 android:gravity="center_vertical"
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/background_border_strock10_d4d4d4"
-                android:text="확인 메일 보내기"
+                android:text="@string/check_email"
                 android:gravity="center"
                 android:textSize="20.5dp"
                 android:textColor="#333333"/>
@@ -80,8 +80,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="12dp"
                 android:textColor="#333333"
-                android:text="회원님의 정보는 인증 목적으로만 사용됩니다.\n
-저희는 이 정보를 그 누구와도 공유하지 않습니다."
+                android:text="@string/email_content"
                 />
 
     </LinearLayout>

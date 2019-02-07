@@ -28,7 +28,7 @@
                 android:textSize="21dp"
                 android:textColor="#ffffff"
                 android:gravity="center_horizontal"
-                android:text="Profile 미리보기"
+                android:text="@string/profile_preview"
                 />
 
         <ImageView
@@ -54,7 +54,7 @@
                 android:textSize="19dp"
                 android:textStyle="bold"
                 android:textColor="#ffffff"
-                android:text="좌우로 화면을 쓸어주세요"
+                android:text="@string/sliding_display"
                 />
 
     </LinearLayout>

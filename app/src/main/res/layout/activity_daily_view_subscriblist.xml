@@ -49,7 +49,7 @@
                     android:textSize="12dp"
                     android:gravity="center"
                     android:textColor="#ffff"
-                    android:text="친구초대"/>
+                    android:text="@string/friend_invite"/>
 
         </LinearLayout>
 
@@ -128,7 +128,7 @@ KOREA     25"
             android:textSize="15dp"
             android:textColor="#ffffff"
             android:gravity="center"
-            android:text="TimeLine"
+            android:text="@string/timeline"
             android:layout_marginRight="5dp"
             />
     <TextView
@@ -142,7 +142,7 @@ KOREA     25"
             android:textSize="15dp"
             android:textColor="#ffffff"
             android:gravity="center"
-            android:text="Secret"
+            android:text="@string/secret"
             />
 
 

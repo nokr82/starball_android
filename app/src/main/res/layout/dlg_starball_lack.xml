@@ -12,7 +12,7 @@
             android:layout_height="0dp"
             android:background="@drawable/background_round_ffffff"
             android:orientation="vertical"
-            app:ratio="330:450">
+            app:ratio="330:500">
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -32,7 +32,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="24dp"
                     android:textColor="#ffffff"
-                    android:text="Starball이 부족합니다."
+                    android:text="@string/starball_lack"
                     />
             <TextView
                     android:visibility="gone"
@@ -55,7 +55,7 @@
                     android:textSize="14dp"
                     android:textColor="#ffffff"
                     android:layout_gravity="center"
-                    android:text="8:50분 남음"
+                    android:text="@string/left_time"
                     />
 
 
@@ -93,7 +93,7 @@
                             android:textSize="19dp"
                             android:textColor="#1f1f1f"
                             android:gravity="center_horizontal"
-                            android:text="2 Starball"
+                            android:text="@string/_2_starball"
                             />
 
                 </LinearLayout>
@@ -151,7 +151,7 @@
                             android:textSize="19dp"
                             android:textColor="#1f1f1f"
                             android:gravity="center_horizontal"
-                            android:text="20 Starball"
+                            android:text="@string/_20_starball"
                             />
 
                 </LinearLayout>
@@ -191,7 +191,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
                     android:textColor="#333333"
-                    android:text="무료로 +1 Starball 받기"
+                    android:text="@string/free_1_starball"
                     />
             <TextView
                     android:layout_marginRight="20dp"
@@ -202,7 +202,7 @@
                     android:textSize="12dp"
                     android:gravity="center"
                     android:textColor="#5c5c5c"
-                    android:text="친구초대"/>
+                    android:text="@string/friend_invite"/>
 
         </LinearLayout>
         <View
@@ -218,7 +218,7 @@
                 android:textSize="21dp"
                 android:textColor="#282828"
                 android:gravity="center_horizontal"
-                android:text="24시간 무제한 ‘좋아요’"
+                android:text="@string/hour_24_like"
                 />
         <TextView
                 android:paddingTop="8dp"
@@ -229,7 +229,7 @@
                 android:textSize="18dp"
                 android:textColor="#ff0000"
                 android:gravity="center"
-                android:text="Booster Mode"
+                android:text="@string/booster_mode"
                 />
         <TextView
                 android:layout_marginTop="12dp"

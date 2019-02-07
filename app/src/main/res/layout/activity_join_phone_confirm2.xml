@@ -26,7 +26,7 @@
                 android:textSize="21dp"
                 android:textColor="#333333"
                 android:layout_centerInParent="true"
-                android:text="번호를 입력하세요"/>
+                android:text="@string/phone_confirm_title"/>
 
     </RelativeLayout>
 
@@ -103,8 +103,7 @@
             android:layout_height="wrap_content"
             android:textSize="14dp"
             android:textColor="#333333"
-            android:text="인증번호를 받지 못하셨나요?\n
-받지 못하셨다면, 번호를 다시 확인하신 후"
+            android:text="@string/phone_confirm_content"
             />
     <TextView
             android:textStyle="bold"
@@ -112,7 +111,7 @@
             android:layout_height="wrap_content"
             android:textSize="14dp"
             android:textColor="#000000"
-            android:text="이 링크를 눌러 주세요"
+            android:text="@string/push_link"
             />
 
     <TextView
@@ -122,8 +121,7 @@
             android:textSize="14dp"
             android:textColor="#333333"
             android:letterSpacing="-0.03"
-            android:text="회원님의 정보는 인증 목적으로만 사용됩니다.\n
-저희는 이 정보를 그 누구와도 공유하지 않습니다."
+            android:text="@string/phone_certi_no_share"
             />
 
 
@@ -136,7 +134,7 @@ android:layout_weight="1"/>
             android:layout_width="match_parent"
               android:layout_height="50dp"
                  android:background="#000000"
-              android:text="확인"
+            android:text="@string/check"
             android:textStyle="bold"
               android:gravity="center"
               android:textSize="20.5dp"

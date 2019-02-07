@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:background="@mipmap/main_pic_02"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+            android:id="@+id/ckLL"
+            android:background="@mipmap/main_top_gra"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical">
+
+
+        <ImageView
+                android:id="@+id/charIV"
+                android:paddingLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/main_left"/>
+
+        <ImageView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/main_logo"/>
+
+        <ImageView
+                android:id="@+id/chatIV"
+                android:paddingRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/main_right"/>
+    </LinearLayout>
+
+    <ImageView
+            android:paddingTop="28dp"
+            android:layout_below="@id/ckLL"
+            android:paddingLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/back_op"
+            android:layout_marginTop="0dp"
+           />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="19.5dp"
+            android:layout_marginBottom="35dp"
+            android:layout_alignParentBottom="true">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:layout_marginRight="1.25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/mark_here"/>
+
+            <ImageView
+                    android:id="@+id/safeIV"
+                    android:layout_marginLeft="1.25dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/mark_safe"/>
+
+
+        </LinearLayout>
+
+
+        <TextView
+                android:paddingTop="15dp"
+                android:paddingBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#99040000"
+                android:shadowRadius="3"
+                android:textSize="14dp"
+                android:textColor="#ffffff"
+                android:text="Korea,   1,200Km"
+                />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:id="@+id/infoIV"
+                    android:paddingRight="7.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/main_info"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="#99040000"
+                    android:shadowRadius="3"
+                    android:textStyle="bold"
+                    android:textSize="21dp"
+                    android:textColor="#ffffff"
+                    android:text="Alex   28"
+                    />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:shadowColor="#99040000"
+                    android:shadowRadius="3"
+                    android:textStyle="bold"
+                    android:textSize="14dp"
+                    android:textColor="#ffffff"
+                    android:text="  78%"
+                    />
+        </LinearLayout>
+
+        <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#99040000"
+                android:shadowRadius="6"
+                android:textSize="12sp"
+                android:textColor="#ffffff"
+                android:text="@string/iam"
+                />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11dp"
+                    android:background="@drawable/background_border_strock4_78678b"
+                    android:textColor="#ffffff"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_78678b"
+                    android:textColor="#ffffff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11dp"
+                    android:text="솔직해요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_78678b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11dp"
+                    android:textColor="#ffffff"
+                    android:text="큰눈이 매력적이에요."/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_78678b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11dp"
+                    android:textColor="#ffffff"
+                    android:text="대화를 잘해요"/>
+
+
+        </LinearLayout>
+
+        <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#99040000"
+                android:shadowRadius="6"
+                android:textSize="12sp"
+                android:textColor="#ffffff"
+                android:text="@string/we_meet"
+                />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11dp"
+                    android:background="@drawable/background_border_strock4_78678b"
+                    android:textColor="#ffffff"
+                    android:text="맛집 투어"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_78678b"
+                    android:textColor="#ffffff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11dp"
+                    android:text="도시락 나들이"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_78678b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11dp"
+                    android:textColor="#ffffff"
+                    android:text="함께 산책하기."/>
+
+
+        </LinearLayout>
+        <TextView
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#99040000"
+                android:shadowRadius="6"
+                android:textSize="12sp"
+                android:textColor="#ffffff"
+                android:text="@string/want_people"
+                />
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11dp"
+                    android:background="@drawable/background_border_strock4_78678b"
+                    android:textColor="#ffffff"
+                    android:text="한사람만 봐요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_78678b"
+                    android:textColor="#ffffff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11dp"
+                    android:text="솔직해요"/>
+            <TextView
+                    android:layout_marginRight="10dp"
+                    android:padding="5dp"
+                    android:background="@drawable/background_border_strock4_78678b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11dp"
+                    android:textColor="#ffffff"
+                    android:text="유머러스한 사람"/>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <ImageView
+            android:id="@+id/charmIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/profile_pre_super_like"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="9.5dp"
+            android:layout_marginBottom="178dp"/>
+
+
+</RelativeLayout>

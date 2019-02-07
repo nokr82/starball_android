@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textColor="#333333"
-                android:text="Character info."
+                android:text="@string/characcter_info"
                 />
 
 
@@ -593,7 +593,7 @@
                 android:textSize="13dp"
                 android:textColor="#333333"
                 android:textStyle="bold"
-                android:text="차단 및 신고"
+                android:text="@string/report_blcok"
                 />
             <View
             android:layout_width="60dp"

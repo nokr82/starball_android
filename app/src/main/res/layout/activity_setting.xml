@@ -24,7 +24,7 @@
                 android:textSize = "21dp"
                 android:textColor = "#333333"
                 android:layout_centerInParent = "true"
-                android:text = "환경설정"/>
+                android:text = "@string/setting_title"/>
 
     </RelativeLayout>
 
@@ -57,7 +57,7 @@
                         android:layout_height = "wrap_content"
                         android:textSize = "16dp"
                         android:textColor = "#7b818d"
-                        android:text = "알림설정"
+                        android:text = "@string/alram_setting"
                 />
 
 
@@ -87,7 +87,7 @@
                             android:layout_height = "wrap_content"
                             android:textSize = "15dp"
                             android:textColor = "#333333"
-                            android:text = "메시지 온/오프"
+                            android:text = "@string/alram_message"
                     />
                     <ImageView android:layout_width = "wrap_content"
                                android:layout_height = "wrap_content"
@@ -114,7 +114,7 @@
                             android:layout_height = "wrap_content"
                             android:textSize = "15dp"
                             android:textColor = "#333333"
-                            android:text = "매치 온/오프"
+                            android:text = "@string/alram_match"
                     />
                     <ImageView android:layout_width = "wrap_content"
                                android:layout_height = "wrap_content"
@@ -141,7 +141,7 @@
                             android:layout_height = "wrap_content"
                             android:textSize = "15dp"
                             android:textColor = "#333333"
-                            android:text = "나에게 호감 보낸 회원 온/오프"
+                            android:text = "@string/alram_send_crush"
                     />
                     <ImageView android:layout_width = "wrap_content"
                                android:layout_height = "wrap_content"
@@ -168,7 +168,7 @@
                             android:layout_height = "wrap_content"
                             android:textSize = "15dp"
                             android:textColor = "#333333"
-                            android:text = "프로포즈 이벤트 발생 온/오프"
+                            android:text = "@string/alram_propose_event"
                     />
                     <ImageView android:layout_width = "wrap_content"
                                android:layout_height = "wrap_content"
@@ -195,7 +195,7 @@
                             android:layout_height = "wrap_content"
                             android:textSize = "15dp"
                             android:textColor = "#333333"
-                            android:text = "Daily moment등록 한 회원 온/오프"
+                            android:text = "@string/alram_daily_moment"
                     />
                     <ImageView android:layout_width = "wrap_content"
                                android:layout_height = "wrap_content"
@@ -222,7 +222,7 @@
                             android:layout_height = "wrap_content"
                             android:textSize = "15dp"
                             android:textColor = "#333333"
-                            android:text = "Starball 받았을 때 알림 온/오프"
+                            android:text = "@string/alram_recive_starball"
                     />
                     <ImageView android:layout_width = "wrap_content"
                                android:layout_height = "wrap_content"
@@ -249,7 +249,7 @@
                             android:layout_height = "wrap_content"
                             android:textSize = "15dp"
                             android:textColor = "#333333"
-                            android:text = "앱 진동 온/오프"
+                            android:text = "@string/alram_vibe"
                     />
                     <ImageView android:layout_width = "wrap_content"
                                android:layout_height = "wrap_content"
@@ -276,7 +276,7 @@
                             android:layout_height = "wrap_content"
                             android:textSize = "15dp"
                             android:textColor = "#333333"
-                            android:text = "사운드 온/오프"
+                            android:text = "@string/alram_sound"
                     />
                     <ImageView android:layout_width = "wrap_content"
                                android:layout_height = "wrap_content"
@@ -306,7 +306,7 @@
                         android:layout_height = "wrap_content"
                         android:textSize = "16dp"
                         android:textColor = "#7b818d"
-                        android:text = "도움말"
+                        android:text = "@string/setting_help"
                 />
 
 
@@ -328,7 +328,7 @@
                         android:layout_height = "wrap_content"
                         android:textSize = "16dp"
                         android:textColor = "#7b818d"
-                        android:text = "구매내역 복원"
+                        android:text = "@string/setting_payback"
                 />
 
 
@@ -350,7 +350,7 @@
                         android:layout_height = "wrap_content"
                         android:textSize = "16dp"
                         android:textColor = "#7b818d"
-                        android:text = "개인정보 취급 방침"
+                        android:text = "@string/setting_solo_method"
                 />
 
 
@@ -372,7 +372,7 @@
                         android:layout_height = "wrap_content"
                         android:textSize = "16dp"
                         android:textColor = "#7b818d"
-                        android:text = "개선 및 사업 제안"
+                        android:text = "@string/setting_improving"
                 />
 
 
@@ -395,7 +395,7 @@
                         android:layout_height = "wrap_content"
                         android:textSize = "16dp"
                         android:textColor = "#7b818d"
-                        android:text = "로그아웃"
+                        android:text = "@string/setting_logout"
                 />
 
 
@@ -417,7 +417,7 @@
                         android:layout_height = "wrap_content"
                         android:textSize = "16dp"
                         android:textColor = "#7b818d"
-                        android:text = "계정 삭제"
+                        android:text = "@string/setting_account_del"
                 />
 
 
@@ -440,7 +440,7 @@
                         android:layout_height = "wrap_content"
                         android:textSize = "16dp"
                         android:textColor = "#7b818d"
-                        android:text = "버전정보"
+                        android:text = "@string/setting_version"
                 />
 
 

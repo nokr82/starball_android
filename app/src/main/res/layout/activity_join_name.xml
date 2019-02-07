@@ -15,13 +15,13 @@
             android:layout_height="wrap_content"
             android:textSize="24dp"
             android:textColor="#333333"
-            android:text="당신의 이름은,"
+            android:text="@string/name_title"
     />
 
     <EditText
             android:layout_marginTop="70dp"
             android:layout_width="match_parent" android:layout_height="40dp"
-            android:hint="입력해주세요"
+            android:hint="@string/ex_input"
             android:textColorHint="#bbbbbb"
             android:paddingLeft="10dp"
             android:gravity="center_vertical"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:textSize="14dp"
             android:textColor="#555555"
-            android:text="아래와 같이 표시 됩니다."
+            android:text="@string/name_display"
     />
 
     <TextView
@@ -55,7 +55,7 @@ android:layout_weight="1"/>
             android:layout_width="match_parent"
               android:layout_height="50dp"
                  android:background="#000000"
-              android:text="다음"
+            android:text="@string/next"
             android:textStyle="bold"
               android:gravity="center"
               android:textSize="20.5dp"

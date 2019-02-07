@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
                 android:textColor="#333333"
-                android:text="보유 Starball"
+                android:text="@string/left_starball"
                 />
         </LinearLayout>
 
@@ -137,7 +137,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
                     android:textColor="#333333"
-                    android:text="인기도"
+                    android:text="@string/popular"
                     />
         </LinearLayout>
 
@@ -201,7 +201,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
                 android:textColor="#333333"
-                android:text="현재 등급"
+                android:text="@string/current_rating"
                 />
 
         <LinearLayout
@@ -311,7 +311,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
                 android:textColor="#333333"
-                android:text="소개 등급"
+                android:text="@string/introduce_rating"
                 />
 
         <LinearLayout
@@ -417,8 +417,7 @@
             android:textSize="15dp"
             android:textColor="#333333"
             android:gravity="center_horizontal"
-            android:text="Starball이 드리는 가치는\n
-존중, 배려, 환원 입니다."/>
+            android:text="@string/setting_main_content"/>
 
 
     <RelativeLayout
@@ -448,8 +447,9 @@
                     android:textStyle="bold"
                     android:textColor="#ffffff"
                     android:gravity="center_horizontal"
-                    android:text="광고제거"
+                    android:text="@string/setting_main_adver_del"
                     />
+
             <TextView
                     android:paddingTop="13dp"
                     android:layout_width="wrap_content"
@@ -458,8 +458,7 @@
                     android:textStyle="bold"
                     android:textColor="#ffffff"
                     android:gravity="center_horizontal"
-                    android:text="더 이상 검색이나 리스트에서 광고가 표시되지 않습니다.\n
-쾌적한 활동이 가능해집니다."
+                    android:text="@string/setting_main_adver_content"
                     />
 
             <LinearLayout
@@ -541,7 +540,7 @@
                 android:textSize="20.5dp"
                 android:textStyle="bold"
                 android:textColor="#ffffff"
-                android:text="네. 좀 더 알고 싶습니다."
+                android:text="@string/setting_main_yes"
                 />
 
 
@@ -573,7 +572,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20.5dp"
                 android:textColor="#ffffff"
-                android:text="구매 하기"
+                android:text="@string/pay"
                 />
 
     </LinearLayout>

@@ -39,7 +39,7 @@
             android:textSize="16dp"
             android:textColor="#013e92"
             android:gravity="center"
-            android:text="프로포즈 하시겠습니까?"
+            android:text="@string/dlg_send_prose"
             />
 
 
@@ -57,9 +57,7 @@
             android:layout_height="wrap_content"
             android:textSize="14dp"
             android:textColor="#333333"
-            android:text="Cedrica님께서 수락시 1주일간  오직 회원님하고만 대화\n
-하실 수 있습니다. \n
-(다른 회원에게서 호감/ 채팅불가)"
+            android:text="@string/dlg_send_prose_content"
             />
 
 
@@ -86,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
                 android:textColor="#333333"
-                android:text="보유한 Starball : "
+                android:text="@string/left_starball2"
                 />
         <TextView
                 android:layout_width="wrap_content"
@@ -116,7 +114,7 @@
                 android:background="@drawable/background_border_strock4"
                 android:textColor="#ffffff"
                 android:gravity="center"
-                android:text="구매하기"
+                android:text="@string/pay"
                 />
 
     </LinearLayout>
@@ -139,7 +137,7 @@
                 android:textSize="15dp"
                 android:textStyle="bold"
                 android:textColor="#333333"
-                android:text="선물할 Star"
+                android:text="@string/dlg_send_prose_content2"
                 />
     </LinearLayout>
 
@@ -178,7 +176,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
                         android:textColor="#333333"
-                        android:text="2개"
+                        android:text="@string/amount_2"
                         />
             </LinearLayout>
             <LinearLayout
@@ -196,7 +194,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
                         android:textColor="#333333"
-                        android:text="5개"
+                        android:text="@string/amount_5"
                         />
             </LinearLayout>
             <LinearLayout
@@ -214,7 +212,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
                         android:textColor="#333333"
-                        android:text="10개"
+                        android:text="@string/amount_10"
                         />
             </LinearLayout>
             <LinearLayout
@@ -232,7 +230,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
                         android:textColor="#333333"
-                        android:text="30개"
+                        android:text="@string/amount_30"
                         />
             </LinearLayout>
             <LinearLayout
@@ -250,7 +248,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="14dp"
                         android:textColor="#333333"
-                        android:text="50개"
+                        android:text="@string/amount_50"
                         />
             </LinearLayout>
 
@@ -273,7 +271,7 @@
                    android:textStyle="bold"
 
                    android:textColor="#333333"
-                   android:text="직접입력"
+                   android:text="@string/direct_input"
                    />
            
            <EditText
@@ -307,7 +305,7 @@
             android:padding="8dp"
             android:background="@drawable/background_border_strock4"
             android:gravity="center"
-            android:text="네. Starball 선물합니다."
+            android:text="@string/dlg_crush_gift"
             />
 
     <TextView
@@ -319,7 +317,7 @@
             android:layout_height="wrap_content"
             android:textSize="10dp"
             android:textColor="#333333"
-            android:text="아니오. 다시 생각해볼게요."
+            android:text="@string/dlg_prose_no"
             />
 
 </LinearLayout>

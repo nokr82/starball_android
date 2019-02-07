@@ -24,7 +24,7 @@
                 android:textSize="21dp"
                 android:textColor="#333333"
                 android:layout_centerInParent="true"
-                android:text="버전정보"/>
+                android:text="@string/version_info"/>
 
     </RelativeLayout>
 
@@ -67,7 +67,7 @@
             android:layout_height="wrap_content"
             android:textSize="14dp"
             android:textColor="#333333"
-            android:text="내  버전_"/>
+            android:text="@string/my_version"/>
         <TextView
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
                 android:textColor="#333333"
-                android:text="최신 버전_"/>
+                android:text="@string/new_version"/>
         <TextView
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
@@ -117,8 +117,7 @@
             android:textSize="12dp"
             android:textColor="#555555"
             android:gravity="center_horizontal"
-            android:text="Copyright 2018 starball all rights reserved\n
-(모든 저작권 보유)"
+            android:text="@string/version_content"
     />
 
 
@@ -131,7 +130,7 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#000000"
-            android:text="최신 버전입니다."
+            android:text="@string/new_version_is"
             android:textStyle="bold"
             android:gravity="center"
             android:textSize="20.5dp"

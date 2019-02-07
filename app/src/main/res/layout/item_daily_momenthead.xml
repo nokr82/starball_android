@@ -39,7 +39,7 @@
                     android:textSize="12dp"
                     android:gravity="center"
                     android:textColor="#ffff"
-                    android:text="친구초대"/>
+                    android:text="@string/friend_invite"/>
 
         </LinearLayout>
 
@@ -108,7 +108,7 @@ already dragged card into that plate looks like.
                     android:textColor="#555555"
                     android:textStyle="bold"
                     android:gravity="center_horizontal"
-                    android:text="Photo +"
+                    android:text="@string/photo"
                     />
 
         </LinearLayout>
@@ -128,7 +128,7 @@ already dragged card into that plate looks like.
                     android:textColor="#555555"
                     android:textStyle="bold"
                     android:gravity="center_horizontal"
-                    android:text="Video +"
+                    android:text="@string/video"
                     />
 
         </LinearLayout>
@@ -145,7 +145,7 @@ already dragged card into that plate looks like.
                     android:textColor="#555555"
                     android:textStyle="bold"
                     android:gravity="center_horizontal"
-                    android:text="Secret"
+                    android:text="@string/secret"
                     />
             <TextView
                     android:layout_width="wrap_content"

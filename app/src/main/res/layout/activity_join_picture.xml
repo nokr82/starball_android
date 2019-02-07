@@ -18,10 +18,7 @@ android:fillViewport="true">
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:textColor="#333333"
-            android:text="인물 외 사진은 자동 삭제됩니다.\n
-세로화면에 최적화 되어 있습니다.\n
-최소 3장의 동영상 또는 사진을 등록해 주세요.\n
-동영상을 추천합니다."/>
+            android:text="@string/picture_content"/>
 
         <GridView
                 android:padding="10dp"
@@ -236,7 +233,7 @@ android:orientation="vertical">
             android:layout_width="match_parent"
               android:layout_height="50dp"
                  android:background="#000000"
-              android:text="다음"
+            android:text="@string/next"
             android:textStyle="bold"
               android:gravity="center"
               android:textSize="20.5dp"

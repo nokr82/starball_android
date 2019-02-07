@@ -4,24 +4,36 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.devstories.starball_android.R
-import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.activity_main_search.*
+import kotlinx.android.synthetic.main.activity_main2_search.*
 
-class MainSearchActivity : RootActivity() {
 
-    lateinit var context: Context
+
+class MainSearchEx2Activity : Fragment() {
+
     private var progressDialog: ProgressDialog? = null
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main_search)
-        this.context = this
-        progressDialog = ProgressDialog(context)
+    lateinit var myContext: Context
 
 
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        this.myContext = container!!.context
+        progressDialog = ProgressDialog(myContext)
+
+        return inflater.inflate(R.layout.activity_main2_search, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         safeIV.setOnClickListener {
             val intent = Intent(context, SaveJoinActivity::class.java)
             startActivity(intent)
@@ -49,11 +61,8 @@ class MainSearchActivity : RootActivity() {
             startActivity(intent)
         }
 
+        }
 
-
-
-
-    }
 
 
 

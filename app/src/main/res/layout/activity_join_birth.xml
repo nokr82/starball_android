@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:textSize="24dp"
             android:textColor="#333333"
-            android:text="당신의 생년월일은,"
+            android:text="@string/birthday_title"
     />
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="50dp"
@@ -147,7 +147,7 @@
             <TextView
                     android:layout_marginTop="10dp"
                  android:layout_width="match_parent" android:layout_height="0dp"
-                      android:text="년"
+                      android:text="@string/year"
                       android:gravity="center"
                       android:textSize="12dp"
                       android:textColor="#555555"
@@ -175,7 +175,7 @@
             <TextView
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent" android:layout_height="0dp"
-                      android:text="월"
+                      android:text="@string/month"
                       android:gravity="center"
                       android:textSize="12dp"
                       android:textColor="#555555"
@@ -201,7 +201,7 @@
             <TextView
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent" android:layout_height="0dp"
-                      android:text="일"
+                      android:text="@string/day"
                       android:gravity="center"
                       android:textSize="12dp"
                       android:textColor="#555555"
@@ -227,7 +227,7 @@ android:layout_weight="1"/>
             android:layout_width="match_parent"
               android:layout_height="50dp"
                  android:background="#000000"
-              android:text="다음"
+            android:text="@string/next"
             android:textStyle="bold"
               android:gravity="center"
               android:textSize="20.5dp"

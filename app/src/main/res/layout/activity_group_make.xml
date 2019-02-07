@@ -24,7 +24,7 @@
                 android:textSize="21dp"
                 android:textColor="#333333"
                 android:layout_centerInParent="true"
-                android:text="그룹 만들기"/>
+                android:text="@string/make_group_title"/>
 
     </RelativeLayout>
 
@@ -53,7 +53,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:hint="이름으로 검색"
+                android:hint="@string/input_group_make"
                 android:background="@null"
                 android:textColorHint="#bbbbbb"
                 android:paddingLeft="40dp"
@@ -71,8 +71,7 @@
             android:layout_height="wrap_content"
             android:textSize="12dp"
             android:textColor="#333333"
-            android:text="그룹으로 동시발송하실 분을 선택해 주세요\n
-단, 기본회원은 그룹 당 3명까지 가능합니다.(유료회원은 무제한)"
+            android:text="@string/groupmake_content"
             />
 
     <ListView

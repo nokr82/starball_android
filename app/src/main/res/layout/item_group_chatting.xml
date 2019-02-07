@@ -164,7 +164,7 @@
                 android:padding="8dp"
                 android:background="@drawable/background_border_strock10_e0e0e0"
                 android:textColor="#333333"
-                android:text="cancel"
+                android:text="@string/cancel"
                 />
     </LinearLayout>
 

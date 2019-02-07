@@ -24,7 +24,7 @@
                 android:textSize="21dp"
                 android:textColor="#333333"
                 android:layout_centerInParent="true"
-                android:text="검색설정"/>
+                android:text="@string/search_setting"/>
 
     </RelativeLayout>
 
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="24dp"
                 android:textColor="#333333"
-                android:text="검색설정은,"
+                android:text="@string/search_setting_is"
                 />
 
         <TextView
@@ -58,8 +58,7 @@
                 android:textSize="14dp"
                 android:textColor="#333333"
                 android:letterSpacing="-0.05"
-                android:text="노출설정에도 동일하게 적용됩니다.\n
-인기을 얻고 싶으시면 검색범위를 넓게 조정하세요."
+                android:text="@string/search_setting_content"
                 />
 
         <TextView
@@ -69,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textColor="#333333"
-                android:text="성별"
+                android:text="@string/gender"
                 />
         <LinearLayout
                 android:layout_marginTop="10dp"
@@ -88,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:textColor="#333333"
-                    android:text="남자"
+                    android:text="@string/man"
                     />
             <ImageView
                     android:layout_marginLeft="30dp"
@@ -102,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:textColor="#333333"
-                    android:text="여자"
+                    android:text="@string/famale"
                     />
 
 
@@ -119,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textColor="#333333"
-                android:text="나이"
+                android:text="@string/age"
                 />
 
         <TextView
@@ -143,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textColor="#333333"
-                android:text="거리"
+                android:text="@string/road"
                 />
 
         <TextView
@@ -166,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textColor="#333333"
-                android:text="키"
+                android:text="@string/height_is"
                 />
 
         <TextView
@@ -190,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textColor="#333333"
-                android:text="당신의 선호하는 언어를 알려 주세요."
+                android:text="@string/preference_language"
                 />
 
         <RelativeLayout
@@ -232,7 +231,7 @@
                     android:textSize="18dp"
                     android:textStyle="bold"
                     android:textColor="#333333"
-                    android:text="언어 추가"
+                    android:text="@string/add_language"
                     />
         </LinearLayout>
 
@@ -254,7 +253,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
                 android:textColor="#333333"
-                android:text="같은 국적 사람에게는 관심이 없습니다."
+                android:text="@string/language_op1"
                 />
 
     </LinearLayout>
@@ -277,7 +276,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:textColor="#333333"
-                    android:text="안전인증 회원만 봅니다."
+                    android:text="@string/safe_user_See"
                     />
 
         </LinearLayout>
@@ -299,7 +298,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:textColor="#333333"
-                    android:text="VVIP 회원만 봅니다."
+                    android:text="@string/vvip_search"
                     />
 
         </LinearLayout>
@@ -314,7 +313,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="#000000"
-                android:text="확인"
+                android:text="@string/check"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:textSize="20.5dp"
