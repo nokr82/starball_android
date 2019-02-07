@@ -144,7 +144,12 @@
                         android:layout_width="45dp"
                         android:layout_marginRight="5dp"
                         android:layout_height="match_parent"
-                        android:src="@mipmap/picoe"/>
+                        android:src="@mipmap/pic_3"/>
+                <ImageView
+                        android:layout_width="45dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/pic_4"/>
                 <ImageView
                         android:layout_width="45dp"
                         android:layout_marginRight="5dp"
@@ -154,17 +159,12 @@
                         android:layout_width="45dp"
                         android:layout_marginRight="5dp"
                         android:layout_height="match_parent"
-                        android:src="@mipmap/picoe"/>
+                        android:src="@mipmap/pic_3"/>
                 <ImageView
                         android:layout_width="45dp"
                         android:layout_marginRight="5dp"
                         android:layout_height="match_parent"
-                        android:src="@mipmap/picoe"/>
-                <ImageView
-                        android:layout_width="45dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_height="match_parent"
-                        android:src="@mipmap/picoe"/>
+                        android:src="@mipmap/pic_4"/>
 
             </LinearLayout>
 
