@@ -133,7 +133,7 @@
                                 android:textSize="13dp"
                                 android:textColor="#333333"
                                 android:letterSpacing="-0.03"
-                                android:text=": 기독교"
+                                android:text="@string/christian"
                                 />
 
 
@@ -201,7 +201,7 @@
                                 android:textSize="13dp"
                                 android:textColor="#333333"
                                 android:letterSpacing="-0.03"
-                                android:text=": 없음"
+                                android:text="@string/none"
                                 />
 
 
@@ -227,7 +227,7 @@
                                 android:textSize="13dp"
                                 android:textColor="#333333"
                                 android:letterSpacing="-0.03"
-                                android:text=": 강아지"
+                                android:text="@string/dog"
                                 />
 
 
@@ -269,7 +269,7 @@
                                 android:textSize="13dp"
                                 android:textColor="#333333"
                                 android:letterSpacing="-0.03"
-                                android:text=": 싫어함"
+                                android:text="@string/dislike"
                                 />
 
 
@@ -337,7 +337,7 @@
                                 android:textSize="13dp"
                                 android:textColor="#333333"
                                 android:letterSpacing="-0.03"
-                                android:text=": 안함"
+                                android:text="@string/not"
                                 />
 
 
@@ -363,7 +363,7 @@
                                 android:textSize="13dp"
                                 android:textColor="#333333"
                                 android:letterSpacing="-0.03"
-                                android:text=": 골프"
+                                android:text="@string/golf"
                                 />
 
 
@@ -447,7 +447,7 @@
                                 android:textSize="13dp"
                                 android:textColor="#333333"
                                 android:letterSpacing="-0.03"
-                                android:text=": 연동"
+                                android:text="@string/peristalsis"
                                 />
 
 
@@ -473,7 +473,7 @@
                                 android:textSize="13dp"
                                 android:textColor="#333333"
                                 android:letterSpacing="-0.03"
-                                android:text=": 연동안됨"
+                                android:text="@string/peristalsis_no"
                                 />
 
 

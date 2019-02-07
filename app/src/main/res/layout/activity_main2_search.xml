@@ -144,7 +144,7 @@
                     android:textSize="11dp"
                     android:background="@drawable/background_border_strock4_78678b"
                     android:textColor="#ffffff"
-                    android:text="한사람만 봐요"/>
+                    android:text="@string/charm_point_only"/>
             <TextView
                     android:layout_marginRight="10dp"
                     android:padding="5dp"
@@ -153,7 +153,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="11dp"
-                    android:text="솔직해요"/>
+                    android:text="@string/charm_point_frank"/>
             <TextView
                     android:layout_marginRight="10dp"
                     android:padding="5dp"
@@ -162,7 +162,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="11dp"
                     android:textColor="#ffffff"
-                    android:text="큰눈이 매력적이에요."/>
+                    android:text="@string/charm_point_bigeye"/>
             <TextView
                     android:layout_marginRight="10dp"
                     android:padding="5dp"
@@ -171,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="11dp"
                     android:textColor="#ffffff"
-                    android:text="대화를 잘해요"/>
+                    android:text="@string/charm_point_talk"/>
 
 
         </LinearLayout>
@@ -199,7 +199,7 @@
                     android:textSize="11dp"
                     android:background="@drawable/background_border_strock4_78678b"
                     android:textColor="#ffffff"
-                    android:text="맛집 투어"/>
+                    android:text="@string/charm_point_restaurant"/>
             <TextView
                     android:layout_marginRight="10dp"
                     android:padding="5dp"
@@ -208,7 +208,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="11dp"
-                    android:text="도시락 나들이"/>
+                    android:text="@string/charm_point_dosirak"/>
             <TextView
                     android:layout_marginRight="10dp"
                     android:padding="5dp"
@@ -217,7 +217,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="11dp"
                     android:textColor="#ffffff"
-                    android:text="함께 산책하기."/>
+                    android:text="@string/charm_point_picnic"/>
 
 
         </LinearLayout>
@@ -244,7 +244,7 @@
                     android:textSize="11dp"
                     android:background="@drawable/background_border_strock4_78678b"
                     android:textColor="#ffffff"
-                    android:text="한사람만 봐요"/>
+                    android:text="@string/charm_point_onlylove"/>
             <TextView
                     android:layout_marginRight="10dp"
                     android:padding="5dp"
@@ -253,7 +253,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="11dp"
-                    android:text="솔직해요"/>
+                    android:text="@string/charm_point_activity"/>
             <TextView
                     android:layout_marginRight="10dp"
                     android:padding="5dp"
@@ -262,7 +262,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="11dp"
                     android:textColor="#ffffff"
-                    android:text="유머러스한 사람"/>
+                    android:text="@string/charm_point_comicwant"/>
 
 
 
