@@ -21,7 +21,7 @@ class JoinResultActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
         checkTV.setOnClickListener {
-            val intent = Intent(context, MainSearchActivity::class.java)
+            val intent = Intent(context, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
