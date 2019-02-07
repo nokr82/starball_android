@@ -48,6 +48,10 @@
                 android:theme="@style/NoTitleDialog"
                 android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
+                android:name=".activities.MainActivity"
+                android:theme="@style/NoTitleDialog"
+                android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity
                 android:name=".activities.JoinStep7Activity"
                 android:theme="@style/NoTitleDialog"
                 android:windowSoftInputMode="adjustResize|stateHidden"/>
