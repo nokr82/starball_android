@@ -49,18 +49,6 @@ class MainSearchEx2Activity : Fragment() {
             startActivity(intent)
         }
 
-        chatIV.setOnClickListener {
-            val intent = Intent(context, ChattingExActivity::class.java)
-            startActivity(intent)
-        }
-
-
-
-        charIV.setOnClickListener {
-            val intent = Intent(context, SettingMainActivity::class.java)
-            startActivity(intent)
-        }
-
         }
 
 

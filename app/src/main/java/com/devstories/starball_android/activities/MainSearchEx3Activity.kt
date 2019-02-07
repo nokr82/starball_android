@@ -38,25 +38,12 @@ class MainSearchEx3Activity : Fragment() {
             startActivity(intent)
         }
 
-
         charmIV.setOnClickListener {
             val intent = Intent(context, DlgStarballLackActivity::class.java)
             startActivity(intent)
         }
         infoIV.setOnClickListener {
             val intent = Intent(context, DlgCharInfoActivity::class.java)
-            startActivity(intent)
-        }
-
-        chatIV.setOnClickListener {
-            val intent = Intent(context, ChattingExActivity::class.java)
-            startActivity(intent)
-        }
-
-
-
-        charIV.setOnClickListener {
-            val intent = Intent(context, SettingMainActivity::class.java)
             startActivity(intent)
         }
 

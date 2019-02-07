@@ -1,5 +1,6 @@
 package com.devstories.starball_android.activities
 
+import android.content.Intent
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
@@ -7,7 +8,7 @@ import android.support.v4.view.ViewPager
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import com.devstories.starball_android.R
-
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : FragmentActivity() {
 
@@ -20,6 +21,21 @@ class MainActivity : FragmentActivity() {
 
         val viewPager = findViewById(R.id.viewpager) as ViewPager        //Viewpager 선언 및 초기화
         viewPager.adapter = adapter(getSupportFragmentManager()) //선언한 viewpager에 adapter를 연결
+
+
+
+        chatIV.setOnClickListener {
+            val intent = Intent(this, ChattingExActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
+        charIV.setOnClickListener {
+            val intent = Intent(this, SettingMainActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 
     private inner class adapter//adapter클래스
