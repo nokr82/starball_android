@@ -16,6 +16,8 @@ class EditProfileActivity : RootActivity() {
 
     lateinit var ProfileAdapter: ProfileAdapter
 
+    var step = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
@@ -25,6 +27,73 @@ class EditProfileActivity : RootActivity() {
 
         ProfileAdapter = ProfileAdapter(context,R.layout.item_profile_img, 20)
         profileGV.adapter = ProfileAdapter
+
+
+
+
+
+        heightLL.setOnClickListener {
+            val intent = Intent(context, CharmpointSettingAcitivity::class.java)
+            startActivity(intent)
+        }
+        regionLL.setOnClickListener {
+            val intent = Intent(context, CharmpointSettingAcitivity::class.java)
+            step = 2
+            intent.putExtra("step",step)
+            startActivity(intent)
+
+        }
+        policyLL.setOnClickListener {
+            val intent = Intent(context, CharmpointSettingAcitivity::class.java)
+            step = 3
+            intent.putExtra("step",step)
+            startActivity(intent)
+        }
+        babyLL.setOnClickListener {
+            val intent = Intent(context, CharmpointSettingAcitivity::class.java)
+            step = 4
+            intent.putExtra("step",step)
+            startActivity(intent)
+        }
+        animalLL.setOnClickListener {
+            val intent = Intent(context, CharmpointSettingAcitivity::class.java)
+            step = 5
+            intent.putExtra("step",step)
+            startActivity(intent)
+        }
+        smokeLL.setOnClickListener {
+            val intent = Intent(context, CharmpointSettingAcitivity::class.java)
+            step = 6
+            intent.putExtra("step",step)
+            startActivity(intent)
+        }
+        drinkLL.setOnClickListener {
+            val intent = Intent(context, CharmpointSettingAcitivity::class.java)
+            step = 7
+            intent.putExtra("step",step)
+            startActivity(intent)
+        }
+        healthLL.setOnClickListener {
+            val intent = Intent(context, CharmpointSettingAcitivity::class.java)
+            step = 8
+            intent.putExtra("step",step)
+            startActivity(intent)
+        }
+        sportLL.setOnClickListener {
+            val intent = Intent(context, CharmpointSettingAcitivity::class.java)
+            step = 9
+            intent.putExtra("step",step)
+            startActivity(intent)
+        }
+        workLL.setOnClickListener {
+            val intent = Intent(context, CharmpointSettingAcitivity::class.java)
+            step = 10
+            intent.putExtra("step",step)
+            startActivity(intent)
+        }
+
+
+
 
         backIV.setOnClickListener {
             finish()
