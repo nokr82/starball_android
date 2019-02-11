@@ -1,5 +1,6 @@
 package com.devstories.starball_android.activities
 
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -18,6 +19,7 @@ class CharmpointSettingAcitivity : FragmentActivity() {
     private var progressDialog: ProgressDialog? = null
 
     var step = -1
+    var DLGMSG = 101
 
     val CharmpointHeightFragment : CharmpointHeightFragment = CharmpointHeightFragment()
     val CharmpointRegionFragment : CharmpointRegionFragment = CharmpointRegionFragment()
@@ -206,13 +208,27 @@ class CharmpointSettingAcitivity : FragmentActivity() {
         setstart()
 
 
-        charIV.setOnClickListener {
+        closeIV.setOnClickListener {
+            val intent = Intent(context, DlgCharmpointActivity::class.java)
+            startActivityForResult(intent,DLGMSG)
 
+        }
+        profileIV.setOnClickListener {
+            finish()
         }
 
     }
 
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            DLGMSG -> {
+                if (resultCode == Activity.RESULT_OK) {
+                finish()
+                }
+            }
+        }
+    }
 
     fun setstart(){
         if (step ==2 ){

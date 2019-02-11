@@ -43,9 +43,9 @@
 
 
     <Spinner
-            style="@style/Platform.Widget.AppCompat.Spinner"
             android:id="@+id/ticketSP"
             android:layout_width="match_parent"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:background="@null">
 
