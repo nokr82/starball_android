@@ -169,6 +169,7 @@
         </LinearLayout>
 
         <LinearLayout
+                android:id="@+id/popularLL"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -189,6 +190,8 @@
     
     
     <LinearLayout
+            android:id="@+id/popular1LL"
+            android:visibility="gone"
             android:layout_marginTop="44.5dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="10dp"
@@ -299,6 +302,8 @@
     </LinearLayout>
 
     <LinearLayout
+            android:id="@+id/popular2LL"
+            android:visibility="gone"
             android:layout_marginTop="24dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="10dp"

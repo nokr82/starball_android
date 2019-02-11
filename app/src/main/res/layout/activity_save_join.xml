@@ -57,15 +57,81 @@
             />
 
 
-    <ImageView
-            android:layout_marginTop="44dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/setting_safe_coupon"
-            android:layout_gravity="center"/>
+        <RelativeLayout
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:background="@mipmap/setting_safety_bg"
+                >
+            <LinearLayout
+                    android:layout_centerInParent="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <LinearLayout
+                        android:layout_width="70dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
+                    <TextView
+                            android:layout_marginTop="10dp"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="9.5dp"
+                            android:textColor="#ffd597"
+                            android:text="￦50,000"
+                            />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="60dp"
+                        android:layout_marginBottom="20dp"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:shadowColor="#c0040000"
+                            android:textSize="15dp"
+                            android:textColor="#ffffff"
+                            android:textStyle="bold"
+                            android:text="Starball 안전인증"
+                            />
+                    <TextView
+                            android:layout_marginTop="5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="9dp"
+                            android:textStyle="bold"
+                            android:textColor="#a9a9a9"
+                            android:text="상대회원에게 안전함을 증명하시고,"
+                            />
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="7dp"
+                            android:textColor="#a9a9a9"
+                            android:text="인기도를 대폭 올려 보세요."
+                            />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
 
 
-    <LinearLayout
+
+        <LinearLayout
             android:layout_marginTop="57dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

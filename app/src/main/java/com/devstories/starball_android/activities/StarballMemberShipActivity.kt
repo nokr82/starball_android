@@ -105,7 +105,7 @@ class StarballMemberShipActivity : RootActivity() {
                     }
                 }
 
-                handler!!.sendEmptyMessageDelayed(0, 2000) // 1초에 한번 업, 1000 = 1 초
+                handler!!.sendEmptyMessageDelayed(0, 4000) // 1초에 한번 업, 1000 = 1 초
             }
         }
         handler!!.sendEmptyMessage(0)

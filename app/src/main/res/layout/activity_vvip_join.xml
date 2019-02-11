@@ -2,6 +2,7 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        android:background="@drawable/background_border_background"
         android:layout_height="match_parent"
         android:orientation="vertical"
     >
@@ -22,7 +23,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:textSize="21dp"
-                android:textColor="#333333"
+                android:textColor="#b5b7c6"
                 android:layout_centerInParent="true"
                 android:text="@string/vvip_join"/>
 
@@ -56,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16.5dp"
-                android:textColor="#333333"
+                android:textColor="#ffff"
                 android:layout_gravity="center"
                 android:text="@string/vvip_content"
                 />
@@ -66,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12dp"
-                android:textColor="#555555"
+                android:textColor="#c0c0c0"
                 android:gravity="center_horizontal"
                 android:text="@string/vvip_content2"
                 />
@@ -76,122 +77,43 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12dp"
-                android:textColor="#333333"
+                android:textColor="#f2f1f1"
+                android:layout_marginBottom="30dp"
                 android:text="@string/vvip_content3"
                 />
 
 
 
-
-        <LinearLayout
-                android:layout_marginLeft="45dp"
-                android:layout_marginRight="45dp"
-                android:id="@+id/addelLL"
-                android:layout_marginTop="10dp"
+        <HorizontalScrollView
+                android:id="@+id/hoSV"
                 android:layout_width="match_parent"
-                android:layout_height="205dp"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:background="@drawable/background_gradient3">
-
-            <ImageView
-                    android:layout_marginTop="12dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/vvip_lock"/>
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    android:textColor="#ffffff"
-                    android:gravity="center_horizontal"
-                    android:text="@string/vvip_adver_del"
-                    />
-            <TextView
-                    android:paddingTop="13dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="13dp"
-                    android:textStyle="bold"
-                    android:textColor="#ffffff"
-                    android:gravity="center_horizontal"
-                    android:text="@string/vvip_join_content"
-                    />
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:scrollbars="none"
+                android:fillViewport="true">
 
             <LinearLayout
-                    android:id="@+id/covalLL"
-                    android:layout_marginTop="14dp"
-                    android:layout_width="115dp"
-                    android:gravity="center"
-                    android:layout_height="wrap_content">
-
-                <ImageView
-                        android:layout_marginRight="5dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="10dp"
-                        android:background="@drawable/circle_background1"/>
-                <ImageView
-                        android:layout_marginRight="5dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="10dp"
-                        android:background="@drawable/circle_background2"/>
-                <ImageView
-                        android:layout_marginRight="5dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="10dp"
-                        android:background="@drawable/circle_background2"/>
-                <ImageView
-                        android:layout_marginRight="5dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="10dp"
-                        android:background="@drawable/circle_background2"/>
-                <ImageView
-                        android:layout_marginRight="5dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="10dp"
-                        android:background="@drawable/circle_background2"/>
-                <ImageView
-                        android:layout_marginRight="5dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="10dp"
-                        android:background="@drawable/circle_background2"/>
-                <ImageView
-                        android:layout_marginRight="5dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="10dp"
-                        android:background="@drawable/circle_background2"/>
-                <ImageView
-                        android:layout_marginRight="5dp"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="10dp"
-                        android:background="@drawable/circle_background2"/>
-
+                    android:id="@+id/userLL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
 
             </LinearLayout>
 
 
-        </LinearLayout>
+        </HorizontalScrollView>
+
 
 
         <TextView
                 android:layout_marginLeft="45dp"
                 android:layout_marginRight="45dp"
-                android:paddingTop="9.5dp"
+                android:paddingTop="34dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="12dp"
-                android:textColor="#333333"
+                android:textColor="#c1c1c1"
                 android:text="@string/vvip_join_content2"
         />
 
@@ -204,17 +126,95 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
-                android:textColor="#333333"
+                android:textColor="#ffffff"
                 android:text="@string/vvip_join_content3"
         />
 
 
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+        <RelativeLayout
+                android:layout_marginRight="37.5dp"
+                android:layout_marginLeft="37.5dp"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/vvip_coupon"
-        />
+                android:orientation="vertical"
+                android:background="@mipmap/setting_vvip_certification_bg"
+        >
+            <LinearLayout
+                    android:layout_centerInParent="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+            <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_marginLeft="12.5dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="9sp"
+                    android:textColor="#333333"
+                    android:gravity="center"
+                    android:text="VVIP 가입 금액"
+                    />
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:textColor="#333333"
+                        android:text="￦60,000"
+                        />
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="9sp"
+                        android:textColor="#333333"
+                        android:letterSpacing="-0.03"
+                        android:gravity="center_horizontal"
+                        android:text="매월"
+                        />
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="43dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:shadowColor="#c0040000"
+                        android:textSize="15dp"
+                        android:textColor="#333333"
+                        android:textStyle="bold"
+                        android:text="VVIP Membership"
+                        />
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="9dp"
+                        android:textStyle="bold"
+                        android:textColor="#363635"
+                        android:text="오직 1%에게만 허락된 특권"
+                        />
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="7sp"
+                        android:textColor="#2e2116"
+                        android:letterSpacing="-0.02"
+                        android:text="Premium 이상 회원에게만 노출\n
+매일 최상위 10명의 인기회원 추천"
+                        />
+            </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
 
 
         <TextView
@@ -225,7 +225,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="#000000"
+                android:background="#717171"
                 android:text="@string/safe_join_yes"
                 android:textStyle="bold"
                 android:gravity="center"
@@ -241,7 +241,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
-                android:textColor="#333333"
+                android:textColor="#d7d7d7"
                 android:gravity="center_horizontal"
                 android:text="@string/safe_join_no"
         />

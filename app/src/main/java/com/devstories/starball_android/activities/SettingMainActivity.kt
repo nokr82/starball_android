@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.support.v4.view.ViewPager
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -66,6 +67,19 @@ class SettingMainActivity : RootActivity() {
             }
         })
         timer()
+
+
+        popularLL.setOnClickListener {
+                it.isSelected = !it.isSelected
+
+                if (it.isSelected) {
+                    popular1LL.visibility = View.VISIBLE
+                    popular2LL.visibility = View.VISIBLE
+                } else {
+                    popular1LL.visibility = View.GONE
+                    popular2LL.visibility = View.GONE
+                }
+        }
 
         finishIV.setOnClickListener {
             finish()
@@ -129,7 +143,7 @@ class SettingMainActivity : RootActivity() {
                     }
                 }
 
-                handler!!.sendEmptyMessageDelayed(0, 2000) // 1초에 한번 업, 1000 = 1 초
+                handler!!.sendEmptyMessageDelayed(0, 4000) // 1초에 한번 업, 1000 = 1 초
             }
         }
         handler!!.sendEmptyMessage(0)
