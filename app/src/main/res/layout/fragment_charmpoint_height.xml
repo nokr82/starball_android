@@ -42,14 +42,15 @@
             />
 
 
-    <Spinner
+    <NumberPicker
             android:id="@+id/ticketSP"
             android:layout_width="match_parent"
             android:gravity="center"
+            android:divider="#000000"
             android:layout_height="wrap_content"
             android:background="@null">
 
-    </Spinner>
+    </NumberPicker>
 
 
     <TextView

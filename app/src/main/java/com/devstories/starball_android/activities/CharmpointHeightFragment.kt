@@ -9,10 +9,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import com.devstories.starball_android.R
 import kotlinx.android.synthetic.main.fragment_charmpoint_height.*
+import android.widget.NumberPicker
+import kotlinx.android.synthetic.main.fragment_charmpoint_height.view.*
+
 
 //메세지관리(메시지작성화면)
 
@@ -43,7 +44,7 @@ class CharmpointHeightFragment : Fragment() {
 
         this.myContext = container!!.context
         progressDialog = ProgressDialog(myContext)
-        return inflater.inflate(R.layout.fragment_charmpoint_height, container, false)
+        return inflater.inflate(com.devstories.starball_android.R.layout.fragment_charmpoint_height, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,16 +57,16 @@ class CharmpointHeightFragment : Fragment() {
         charmpointSettingAcitivity = activity as CharmpointSettingAcitivity
 
         ticketAdapter = ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, heightitems)
-        ticketSP.adapter = ticketAdapter
-        ticketSP.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                select_height = heightitems[position]
-            }
-
-            override fun onNothingSelected(adapterView: AdapterView<*>) {
-
-            }
-        }
+            //set min value zero
+            ticketSP.setMinValue(0)
+        //set max value from length array string reduced 1
+        ticketSP.setMaxValue(heightitems.size - 1)
+        //implement array string to number picker
+        ticketSP.setDisplayedValues(heightitems)
+        //disable soft keyboard
+        ticketSP.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS)
+        //set wrap true or false, try it you will know the difference
+        ticketSP.setWrapSelectorWheel(false)
 
         skipTV.setOnClickListener {
             var intent = Intent()
