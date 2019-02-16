@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:background="@mipmap/main_pic_bg"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<android.support.v7.widget.RecyclerView
+		android:id="@+id/my_recycler_view"
+		android:scrollbars="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"/>
+
+	<TextView
+		android:id="@+id/idxTV"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:textColor="@android:color/holo_red_light"
+		android:gravity="center"
+		android:textSize="70dp"/>
+
+</RelativeLayout>
