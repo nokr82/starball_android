@@ -70,7 +70,7 @@ class SwipeStackAdapter(private val context: Context, private val data: ArrayLis
 
                 override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
 
-                    println("onTouchEvent at Adapter 2 : $e")
+                    // println("onTouchEvent at Adapter 2 : $e")
 
                     when (e.action) {
                         MotionEvent.ACTION_DOWN -> {
@@ -89,7 +89,7 @@ class SwipeStackAdapter(private val context: Context, private val data: ArrayLis
                             // lastX = curX
                             // lastY = curY
 
-                            println("diff : ${Math.abs(xDistance - yDistance)}")
+                            println("POS : $position, diff : ${Math.abs(xDistance - yDistance)}")
 
                             println("mSwipeHelper.isFloating : ${mSwipeHelper.isFloating}")
 
@@ -97,14 +97,14 @@ class SwipeStackAdapter(private val context: Context, private val data: ArrayLis
                                 mSwipeHelper.onTouch(rv, e)
                                 noScrollLinearLayoutManager.disableScrolling()
                             } else {
-                                if(Math.abs(xDistance - yDistance) > 50) {
+                                if(Math.abs(xDistance - yDistance) > 10) {
                                     if (dxs == 0 && xDistance <= yDistance) {
                                         mSwipeHelper.onTouch(rv, e)
                                     } else {
                                         noScrollLinearLayoutManager.enableScrolling()
                                     }
                                 } else {
-                                    noScrollLinearLayoutManager.enableScrolling()
+                                    noScrollLinearLayoutManager.disableScrolling()
                                 }
                             }
                         }

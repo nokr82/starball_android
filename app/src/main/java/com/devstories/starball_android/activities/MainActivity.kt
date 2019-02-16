@@ -5,9 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.ViewPager
 import com.devstories.starball_android.swipestack.SwipeStack
 import com.devstories.starball_android.swipestack.SwipeStackAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,10 +26,6 @@ class MainActivity : FragmentActivity() {
 
         mContext = this
 
-        val viewPager = findViewById(com.devstories.starball_android.R.id.viewpager) as ViewPager        //Viewpager 선언 및 초기화
-        viewPager.adapter = adapter(getSupportFragmentManager()) //선언한 viewpager에 adapter를 연결
-
-
         chatIV.setOnClickListener {
             val intent = Intent(this, ChattingExActivity::class.java)
             startActivity(intent)
@@ -44,6 +37,35 @@ class MainActivity : FragmentActivity() {
             val intent = Intent(this, SettingMainActivity::class.java)
             startActivity(intent)
         }
+
+        loadData()
+
+        val swipeStack = swipeStack as SwipeStack
+        swipeStack.adapter = SwipeStackAdapter(mContext, data, swipeStack.getmSwipeHelper())
+        swipeStack.setListener(object : SwipeStack.SwipeStackListener {
+            override fun onStackEmpty() {
+                loadData()
+            }
+
+            override fun onViewSwipedToTop(position: Int) {
+
+            }
+
+            override fun onViewSwipedToBottom(position: Int) {
+
+            }
+
+            override fun onViewSwipedToLeft(position: Int) {
+
+            }
+
+            override fun onViewSwipedToRight(position: Int) {
+
+            }
+        })
+    }
+
+    private fun loadData() {
 
         for (idx in 0 until 10) {
             val item = JSONObject()
@@ -57,31 +79,6 @@ class MainActivity : FragmentActivity() {
 
             data.add(item)
         }
-
-        val swipeStack = swipeStack as SwipeStack
-        swipeStack.adapter = SwipeStackAdapter(mContext, data, swipeStack.getmSwipeHelper())
     }
 
-    private inner class adapter//adapter클래스
-        (fm: FragmentManager) : FragmentPagerAdapter(fm) {
-
-        override fun getItem(position: Int): Fragment? {
-            if (position < 0 || MAX_PAGE <= position)
-            //가리키는 페이지가 0 이하거나 MAX_PAGE보다 많을 시 null로 리턴
-                return null
-            when (position) {
-                0 -> cur_fragment = MainSearchExActivity()
-
-                1 -> cur_fragment = MainSearchEx2Activity()
-
-                2 -> cur_fragment = MainSearchEx3Activity()
-            }
-
-            return cur_fragment
-        }
-
-        override fun getCount(): Int {
-            return MAX_PAGE
-        }
-    }
 }

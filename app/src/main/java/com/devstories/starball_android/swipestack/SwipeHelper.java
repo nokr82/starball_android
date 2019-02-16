@@ -38,7 +38,7 @@ public class SwipeHelper implements View.OnTouchListener {
     @Override
     public boolean onTouch(View v, MotionEvent event) {
 
-        // System.out.println(event);
+        System.out.println(event);
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -66,12 +66,14 @@ public class SwipeHelper implements View.OnTouchListener {
                 float newX = mObservedView.getX() + dx;
                 float newY = mObservedView.getY() + dy;
 
-                // System.out.println("newX : " + newX + ", dy : " + dy + ", newY : " + newY);
+                System.out.println("newX : " + newX + ", dy : " + dy + ", newY : " + newY);
 
                 mObservedView.setX(0);
                 // mObservedView.setX(mObservedView.getX());
                 // mObservedView.setX(newX);
                 mObservedView.setY(newY);
+
+                System.out.println("mObservedView.getY() 0 : " + mObservedView.getY());
 
                 // float dragDistanceX = newX - mInitialX;
                 // float swipeProgress = Math.min(Math.max(dragDistanceX / mSwipeStack.getWidth(), -1), 1);
@@ -114,19 +116,25 @@ public class SwipeHelper implements View.OnTouchListener {
     }
 
     private void checkViewPosition() {
+
+        System.out.println("checkViewPosition : " + mSwipeStack.isEnabled());
+
         if (!mSwipeStack.isEnabled()) {
             resetViewPosition();
             return;
         }
 
-        float viewCenterVertical = mObservedView.getY() + (mObservedView.getHeight() / 2);
-        float parentFirstThird = mSwipeStack.getHeight() / 5f;
-        float parentLastThird = parentFirstThird * 4;
+        System.out.println("mObservedView.getY() 1 : " + mObservedView.getY());
 
-        if (viewCenterVertical < parentFirstThird) {
-            swipeViewToTop(mAnimationDuration / 2);
-        } else if (viewCenterVertical > parentLastThird) {
-            swipeViewToBottom(mAnimationDuration / 2);
+        float viewCenterVertical = mObservedView.getY() + (mObservedView.getHeight() / 2);
+        float divider = mSwipeStack.getHeight() / 20f;
+        float topThreshhold = divider * 9;
+        float bottomThreshhold = divider * 11;
+
+        if (viewCenterVertical < topThreshhold) {
+            swipeViewToTop(mAnimationDuration);
+        } else if (viewCenterVertical > bottomThreshhold) {
+            swipeViewToBottom(mAnimationDuration);
         } else {
             resetViewPosition();
         }
@@ -154,13 +162,16 @@ public class SwipeHelper implements View.OnTouchListener {
     }
 
     private void resetViewPosition() {
+
+        System.out.println("resetViewPosition : ");
+
         mObservedView.animate()
                 .x(mInitialX)
                 .y(mInitialY)
                 .rotation(0)
                 .alpha(1)
                 .setDuration(mAnimationDuration)
-                .setInterpolator(new OvershootInterpolator(1.4f))
+                .setInterpolator(new OvershootInterpolator(2f))
                 .setListener(null);
     }
 
@@ -171,12 +182,12 @@ public class SwipeHelper implements View.OnTouchListener {
         mObservedView.animate()
                 .y(-mSwipeStack.getHeight() + mObservedView.getY())
                 .rotation(-mRotateDegrees)
-                .alpha(0f)
+                .alpha(0.5f)
                 .setDuration(duration)
                 .setListener(new AnimationUtils.AnimationEndListener() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
-                        mSwipeStack.onViewSwipedToLeft();
+                        mSwipeStack.onViewSwipedToTop();
                     }
                 });
     }
@@ -188,12 +199,12 @@ public class SwipeHelper implements View.OnTouchListener {
         mObservedView.animate()
                 .y(mSwipeStack.getHeight() + mObservedView.getY())
                 .rotation(mRotateDegrees)
-                .alpha(0f)
+                .alpha(0.5f)
                 .setDuration(duration)
                 .setListener(new AnimationUtils.AnimationEndListener() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
-                        mSwipeStack.onViewSwipedToRight();
+                        mSwipeStack.onViewSwipedToBottom();
                     }
                 });
     }

@@ -8,22 +8,15 @@
 	android:layout_height="match_parent"
 	android:clipChildren="false">
 
-
-	<android.support.v4.view.ViewPager
-		android:id="@+id/viewpager"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent">
-
-
-	</android.support.v4.view.ViewPager>
-
 	<com.devstories.starball_android.swipestack.SwipeStack
 		android:id="@+id/swipeStack"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		app:stack_rotation="0"
 		app:swipe_rotation="0"
-		app:stack_spacing="0dp">
+		app:animation_duration="300"
+		app:stack_spacing="0dp"
+		app:scale_factor="0.98">
 
 	</com.devstories.starball_android.swipestack.SwipeStack>
 
