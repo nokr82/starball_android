@@ -216,7 +216,7 @@ public class SwipeStack extends ViewGroup {
             boolean isNewView = (boolean) childView.getTag(R.id.new_view);
             // float scaleFactor = (float) Math.pow(mScaleFactor, getChildCount() - x);
 
-            System.out.println("mScaleFactor : " + mScaleFactor);
+            // System.out.println("mScaleFactor : " + mScaleFactor);
 
             if (x == topViewIndex) {
                 mSwipeHelper.unregisterObservedView();
@@ -224,7 +224,7 @@ public class SwipeStack extends ViewGroup {
                 mSwipeHelper.registerObservedView(mTopView, newPositionX, newPositionY);
             }
 
-            System.out.println("isNewView : " + isNewView + ", mIsFirstLayout : " + mIsFirstLayout + ", " + x + ", " + topViewIndex);
+            // System.out.println("isNewView : " + isNewView + ", mIsFirstLayout : " + mIsFirstLayout + ", " + x + ", " + topViewIndex);
 
             if (!mIsFirstLayout) {
 
@@ -286,12 +286,12 @@ public class SwipeStack extends ViewGroup {
 
     public void onSwipeProgress(float progress) {
 
-        System.out.println("getChildCount() : " + getChildCount() + ", progress : " + progress);
+        // System.out.println("getChildCount() : " + getChildCount() + ", progress : " + progress);
 
         if(getChildCount() > 2) {
             View childView = getChildAt(getChildCount() - 2);
 
-            float scaleFactor = mScaleFactor + ((1 - mScaleFactor) * Math.abs(progress) * 2);
+            float scaleFactor = mScaleFactor + (float) ((1 - mScaleFactor) * Math.abs(progress) * 1.8);
             if(scaleFactor > 1) {
                 scaleFactor = 1;
             }
@@ -420,7 +420,7 @@ public class SwipeStack extends ViewGroup {
      *
      * @return The view if the stack is not empty or null otherwise.
      */
-    public View getTopView() {
+    public View getYView() {
         return mTopView;
     }
 

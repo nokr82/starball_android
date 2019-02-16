@@ -63,6 +63,8 @@ public class SwipeHelper implements View.OnTouchListener {
                 float dx = event.getX(pointerIndex) - mDownX;
                 float dy = event.getY(pointerIndex) - mDownY;
 
+                mObservedView.setAnimation(null);
+
                 float newX = mObservedView.getX() + dx;
                 float newY = mObservedView.getY() + dy;
 
@@ -71,9 +73,11 @@ public class SwipeHelper implements View.OnTouchListener {
                 mObservedView.setX(0);
                 // mObservedView.setX(mObservedView.getX());
                 // mObservedView.setX(newX);
-                mObservedView.setY(newY);
+                // mObservedView.setY((int) newY);
 
-                System.out.println("mObservedView.getY() 0 : " + mObservedView.getY());
+                mObservedView.setY((int) newY);
+
+                System.out.println("mObservedView.getY() 0 : " + mObservedView.getY() + ", mObservedView.hs : " + mObservedView.hashCode());
 
                 // float dragDistanceX = newX - mInitialX;
                 // float swipeProgress = Math.min(Math.max(dragDistanceX / mSwipeStack.getWidth(), -1), 1);
@@ -82,22 +86,37 @@ public class SwipeHelper implements View.OnTouchListener {
 
                 mSwipeStack.onSwipeProgress(swipeProgress);
 
+                System.out.println("mObservedView.getY() 0-1 : " + mObservedView.getY() + ", mObservedView.hs : " + mObservedView.hashCode());
+
                 if (mRotateDegrees > 0) {
                     float rotation = mRotateDegrees * swipeProgress;
                     mObservedView.setRotation(rotation);
                 }
+
+                System.out.println("mObservedView.getY() 0-2 : " + mObservedView.getY() + ", mObservedView.hs : " + mObservedView.hashCode());
 
                 if (mOpacityEnd < 1f) {
                     float alpha = 1 - Math.min(Math.abs(swipeProgress), 1);
                     mObservedView.setAlpha(alpha);
                 }
 
-                return true;
+                System.out.println("mObservedView.getY() 0-3 : " + mObservedView.getY() + ", mObservedView.hs : " + mObservedView.hashCode());
+
+                return false;
 
             case MotionEvent.ACTION_UP:
+
+                System.out.println("mObservedView.getY() 1 : " + mObservedView.getY() + ", mObservedView.hs : " + mObservedView.hashCode());
+
                 floating = false;
                 v.getParent().requestDisallowInterceptTouchEvent(false);
+
+                System.out.println("mObservedView.getY() 2 : " + mObservedView.getY() + ", mObservedView.hs : " + mObservedView.hashCode());
+
                 mSwipeStack.onSwipeEnd();
+
+                System.out.println("mObservedView.getY() 3 : " + mObservedView.getY() + ", mObservedView.hs : " + mObservedView.hashCode());
+
                 checkViewPosition();
 
                 return true;
@@ -124,7 +143,7 @@ public class SwipeHelper implements View.OnTouchListener {
             return;
         }
 
-        System.out.println("mObservedView.getY() 1 : " + mObservedView.getY());
+        System.out.println("mObservedView.getY() 4 : " + mObservedView.getY() + ", mObservedView.hs : " + mObservedView.hashCode());
 
         float viewCenterVertical = mObservedView.getY() + (mObservedView.getHeight() / 2);
         float divider = mSwipeStack.getHeight() / 20f;
@@ -163,7 +182,7 @@ public class SwipeHelper implements View.OnTouchListener {
 
     private void resetViewPosition() {
 
-        System.out.println("resetViewPosition : ");
+        System.out.println("mObservedView.getY() 5 : " + mObservedView.getY() + ", mObservedView.hs : " + mObservedView.hashCode());
 
         mObservedView.animate()
                 .x(mInitialX)

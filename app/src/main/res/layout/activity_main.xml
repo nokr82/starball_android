@@ -16,7 +16,7 @@
 		app:swipe_rotation="0"
 		app:animation_duration="300"
 		app:stack_spacing="0dp"
-		app:scale_factor="0.98">
+		app:scale_factor="0.95">
 
 	</com.devstories.starball_android.swipestack.SwipeStack>
 
