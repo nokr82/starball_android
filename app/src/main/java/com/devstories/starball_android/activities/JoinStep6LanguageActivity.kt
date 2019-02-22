@@ -5,10 +5,12 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.LanguageAdapter
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import kotlinx.android.synthetic.main.activity_join_language.*
@@ -26,12 +28,6 @@ class JoinStep6LanguageActivity : RootActivity() {
     lateinit var languageAdapter:LanguageAdapter
     var adapterData = ArrayList<JSONObject>()
 
-    var email = ""
-    var passwd = ""
-    var name = ""
-    var gender = ""
-    var height = ""
-    var birth = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,15 +36,12 @@ class JoinStep6LanguageActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        email = intent.getStringExtra("email")
-        passwd = intent.getStringExtra("passwd")
-        name = intent.getStringExtra("name")
-        gender = intent.getStringExtra("gender")
-        height = intent.getStringExtra("height")
-        birth = intent.getStringExtra("birth")
+
         adapter = ArrayAdapter(context, R.layout.spinner_item, languages)
         languageSP.adapter = adapter
-
+        if (PrefUtils.getStringPreference(context,"language")!=null){
+          Log.d("언어",PrefUtils.getStringPreference(context,"language"))
+        }
 
 
         languageAdapter = LanguageAdapter(context, R.layout.item_language, adapterData)
@@ -86,13 +79,9 @@ class JoinStep6LanguageActivity : RootActivity() {
             println("adapterData:::::::::::::::::::::::::::::${adapterData}")
 
             val intent = Intent(context, JoinStep7JobActivity::class.java)
-            intent.putExtra("email", email)
-            intent.putExtra("passwd", passwd)
-            intent.putExtra("name", name)
-            intent.putExtra("gender", gender)
-            intent.putExtra("height", height)
-            intent.putExtra("birth", birth)
-            intent.putExtra("language", adapterData.toString())
+
+            PrefUtils.setPreference(context, "language", adapterData.toString())
+
             startActivity(intent)
         }
 

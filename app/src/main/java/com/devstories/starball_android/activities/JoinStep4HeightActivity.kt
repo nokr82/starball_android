@@ -29,10 +29,11 @@ class JoinStep4HeightActivity : RootActivity() {
 
 //        height= PrefUtils.getStringPreference(context,"height")
         Log.d("패스",height)
-        if (height!=null){
-            height1ET.setText(height.substring(height.length-2,height.length))
-            height2ET.setText(height.substring(1,1))
-            height3ET.setText(height.substring(2,2))
+        if (PrefUtils.getStringPreference(context,"height")!=null){
+            height = PrefUtils.getStringPreference(context,"height")
+            height1ET.setText(height.substring(0,1))
+            height2ET.setText(height.substring(1,2))
+            height3ET.setText(height.substring(2,3))
         }
 
 
@@ -71,7 +72,7 @@ class JoinStep4HeightActivity : RootActivity() {
             }
 
             height = height1.toString() + height2.toString() + height3.toString()
-
+            PrefUtils.setPreference(context, "height", height)
             val intent = Intent(context, JoinStep5BirthActivity::class.java)
 
             startActivity(intent)

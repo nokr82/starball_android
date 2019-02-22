@@ -29,10 +29,17 @@ class JoinStep1PasswdActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
-//        passwd= PrefUtils.getStringPreference(context,"passwd")
+//        passwd=
         Log.d("패스",passwd)
-        if (passwd!=null){
-            passwdET.setText(passwd)
+        if (PrefUtils.getStringPreference(context,"passwd") != null){
+            passwdET.setText(PrefUtils.getStringPreference(context,"passwd"))
+            val passwd = Utils.getString(passwdET)
+            if (Utils.containsAlpha(passwd) && Utils.containsNumber(passwd) && passwd.count() > 5 && passwd.count() < 13) {
+                passwdConfirmTV.visibility = View.VISIBLE
+                passwdConfirmTV.text = getString(R.string.pwd_confirm)
+            } else {
+                passwdConfirmTV.visibility = View.GONE
+            }
         }
 
         passwdET.addTextChangedListener(object : TextWatcher {

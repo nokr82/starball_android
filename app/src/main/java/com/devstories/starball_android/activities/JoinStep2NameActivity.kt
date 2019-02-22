@@ -29,10 +29,11 @@ class JoinStep2NameActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
-//        name= PrefUtils.getStringPreference(context,"name")
         Log.d("패스",name)
-        if (name!=null){
-            nameET.setText(name)
+        if (PrefUtils.getStringPreference(context,"name")!=null){
+            nameET.setText(PrefUtils.getStringPreference(context,"name"))
+            nameTV.text = PrefUtils.getStringPreference(context,"name")
+
         }
         nameET.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}

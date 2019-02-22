@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.devstories.starball_android.R
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import kotlinx.android.synthetic.main.activity_join_job.*
@@ -31,17 +32,10 @@ class JoinStep7JobActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        email = intent.getStringExtra("email")
-        passwd = intent.getStringExtra("passwd")
-        name = intent.getStringExtra("name")
-        gender = intent.getStringExtra("gender")
-        height = intent.getStringExtra("height")
-        birth = intent.getStringExtra("birth")
-        language = intent.getStringExtra("language")
-        Log.d("언어",email)
-        Log.d("언어",passwd)
-        Log.d("언어",language)
-        print("language:::::::::::::::::::::::::::::::::::::::::::$language")
+        if (PrefUtils.getStringPreference(context,"job")!=null){
+            job = PrefUtils.getStringPreference(context,"job")
+            jobET.setText(job)
+        }
 
         nextTV.setOnClickListener {
 
@@ -52,15 +46,10 @@ class JoinStep7JobActivity : RootActivity() {
                 return@setOnClickListener
             }
 
+            PrefUtils.setPreference(context, "job", job)
+
             val intent = Intent(context, JoinStep8SchoolActivity::class.java)
-            intent.putExtra("email", email)
-            intent.putExtra("passwd", passwd)
-            intent.putExtra("name", name)
-            intent.putExtra("gender", gender)
-            intent.putExtra("height", height)
-            intent.putExtra("birth", birth)
-            intent.putExtra("language", language)
-            intent.putExtra("job", job)
+
             startActivity(intent)
         }
 

@@ -31,29 +31,12 @@ class JoinStep10Activity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        email = intent.getStringExtra("email")
-        passwd = intent.getStringExtra("passwd")
-        name = intent.getStringExtra("name")
-        gender = intent.getStringExtra("gender")
-        height = intent.getStringExtra("height")
-        language = intent.getStringExtra("language")
-        birth = intent.getStringExtra("birth")
-        job = intent.getStringExtra("job")
-        exp = intent.getStringExtra("exp")
+
 
 
         nextTV.setOnClickListener {
             val intent = Intent(context, JoinStep11PicActivity::class.java)
-            intent.putExtra("email", email)
-            intent.putExtra("passwd", passwd)
-            intent.putExtra("name", name)
-            intent.putExtra("gender", gender)
-            intent.putExtra("height", height)
-            intent.putExtra("birth", birth)
-            intent.putExtra("language", language)
-            intent.putExtra("job", job)
-            intent.putExtra("school", school)
-            intent.putExtra("exp", exp)
+
             startActivity(intent)
         }
 

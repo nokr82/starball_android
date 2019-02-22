@@ -39,7 +39,7 @@ class JoinResultActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        email = intent.getStringExtra("email")
+       /* email = intent.getStringExtra("email")
         passwd = intent.getStringExtra("passwd")
         name = intent.getStringExtra("name")
         gender = intent.getStringExtra("gender")
@@ -48,17 +48,17 @@ class JoinResultActivity : RootActivity() {
         birth = intent.getStringExtra("birth")
         job = intent.getStringExtra("job")
         exp = intent.getStringExtra("exp")
-
+*/
 
         checkTV.setOnClickListener {
-            join()
+            final_join()
         }
 
 
     }
 
 
-    fun join() {
+    fun final_join() {
         val params = RequestParams()
         params.put("name", name)
         params.put("email", email)
@@ -71,7 +71,7 @@ class JoinResultActivity : RootActivity() {
         params.put("exp", exp)
 
 
-        JoinAction.join(params, object : JsonHttpResponseHandler() {
+        JoinAction.final_join(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
                 if (progressDialog != null) {

@@ -9,6 +9,7 @@ import android.text.TextWatcher
 import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.DateUtils
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import kotlinx.android.synthetic.main.activity_join_birth.*
@@ -22,7 +23,7 @@ class JoinStep5BirthActivity : RootActivity() {
     var passwd = ""
     var name = ""
     var gender = ""
-    var height = ""
+    var birth = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,11 +32,21 @@ class JoinStep5BirthActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        email = intent.getStringExtra("email")
-        passwd = intent.getStringExtra("passwd")
-        name = intent.getStringExtra("name")
-        gender = intent.getStringExtra("gender")
-        height = intent.getStringExtra("height")
+        if (PrefUtils.getStringPreference(context,"birth")!=null){
+            birth = PrefUtils.getStringPreference(context,"birth")
+            year1ET.setText(birth.substring(0,1))
+            year2ET.setText(birth.substring(1,2))
+            year3ET.setText(birth.substring(2,3))
+            year4ET.setText(birth.substring(3,4))
+            month1ET.setText(birth.substring(5,6))
+            month2ET.setText(birth.substring(6,7))
+            day1ET.setText(birth.substring(8,9))
+            day2ET.setText(birth.substring(9,10))
+            setYearTV()
+            setMonthTV()
+            setDayTV()
+        }
+
 
         year1ET.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -117,19 +128,15 @@ class JoinStep5BirthActivity : RootActivity() {
             val full_date = Utils.getString(yearTV) + "-" + Utils.getString(monthTV) + "-" + Utils.getString(dayTV)
 
             val checkDate = DateUtils.checkDate(full_date, "yyyy-MM-dd")
-
-            if (!checkDate) {
+          if (!checkDate) {
                 Toast.makeText(context, getString(R.string.birthday_fail), Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
+            birth = full_date
+            PrefUtils.setPreference(context, "birth", birth)
+
 
             val intent = Intent(context, JoinStep6LanguageActivity::class.java)
-            intent.putExtra("email", email)
-            intent.putExtra("passwd", passwd)
-            intent.putExtra("name", name)
-            intent.putExtra("gender", gender)
-            intent.putExtra("height", height)
-            intent.putExtra("birth", full_date)
             startActivity(intent)
         }
 

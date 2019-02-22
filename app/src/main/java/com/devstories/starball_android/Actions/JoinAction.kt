@@ -14,6 +14,11 @@ object JoinAction {
     fun send_sms(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/join/sms_code.json", params, handler)
     }
+    // 최종회원가입
+    fun final_join(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/edit", params, handler)
+    }
+
 
     // 회원가입
     fun join(params: RequestParams, handler: JsonHttpResponseHandler) {
