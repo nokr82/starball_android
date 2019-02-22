@@ -43,7 +43,7 @@ class JoinStep10Activity : RootActivity() {
 
 
         nextTV.setOnClickListener {
-            val intent = Intent(context, JoinStep11Activity::class.java)
+            val intent = Intent(context, JoinStep11PicActivity::class.java)
             intent.putExtra("email", email)
             intent.putExtra("passwd", passwd)
             intent.putExtra("name", name)
