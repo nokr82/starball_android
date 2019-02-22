@@ -6,8 +6,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Toast
 import com.devstories.starball_android.R
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import kotlinx.android.synthetic.main.activity_join_name.*
@@ -17,8 +19,7 @@ class JoinStep2NameActivity : RootActivity() {
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
-    var email = ""
-    var passwd = ""
+    var name  = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +28,12 @@ class JoinStep2NameActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        email = intent.getStringExtra("email")
-        passwd = intent.getStringExtra("passwd")
 
+//        name= PrefUtils.getStringPreference(context,"name")
+        Log.d("패스",name)
+        if (name!=null){
+            nameET.setText(name)
+        }
         nameET.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
@@ -43,17 +47,14 @@ class JoinStep2NameActivity : RootActivity() {
 
         nextTV.setOnClickListener {
 
-            val name = Utils.getString(nameET)
+            name = Utils.getString(nameET)
 
             if (name.count() < 1) {
                 errorMsg(getString(R.string.name_empty))
                 return@setOnClickListener
             }
-
+            PrefUtils.setPreference(context, "name", name)
             val intent = Intent(context, JoinStep3GenderActivity::class.java)
-            intent.putExtra("email", email)
-            intent.putExtra("passwd", passwd)
-            intent.putExtra("name", name)
             startActivity(intent)
 
         }

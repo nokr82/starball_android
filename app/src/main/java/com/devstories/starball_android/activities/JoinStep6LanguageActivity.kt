@@ -3,6 +3,7 @@ package com.devstories.starball_android.activities
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -19,7 +20,8 @@ class JoinStep6LanguageActivity : RootActivity() {
     private var progressDialog: ProgressDialog? = null
 
     lateinit var adapter:ArrayAdapter<String>
-    var languages = arrayOf("한국어", "영어", "일본어", "중국어", "태국어", "태국어")
+    var languages =  Resources.getSystem().getAssets().getLocales();
+
 
     lateinit var languageAdapter:LanguageAdapter
     var adapterData = ArrayList<JSONObject>()
@@ -44,9 +46,10 @@ class JoinStep6LanguageActivity : RootActivity() {
         gender = intent.getStringExtra("gender")
         height = intent.getStringExtra("height")
         birth = intent.getStringExtra("birth")
-
         adapter = ArrayAdapter(context, R.layout.spinner_item, languages)
         languageSP.adapter = adapter
+
+
 
         languageAdapter = LanguageAdapter(context, R.layout.item_language, adapterData)
         languageLV.adapter = languageAdapter
