@@ -1,4 +1,4 @@
-package com.devstories.starball_android.adapter;
+package com.devstories.starball_android.adapter
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import com.devstories.starball_android.R
 import org.json.JSONArray
 
 
-public class SwipeStackItemAdapter(private val data: JSONArray) :
+class SwipeStackItemAdapter(private val data: JSONArray) :
     RecyclerView.Adapter<SwipeStackItemAdapter.MyViewHolder>() {
 
     // Provide a reference to the views for each data item
