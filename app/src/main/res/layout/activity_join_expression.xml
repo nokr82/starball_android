@@ -31,6 +31,8 @@ android:layout_weight="1">
             android:layout_weight="1">
 
     <EditText
+            android:id="@+id/expET"
+            android:maxLength="500"
             android:paddingTop="10.5dp"
             android:layout_width="match_parent" android:layout_height="match_parent"
             android:gravity="start"
@@ -41,6 +43,7 @@ android:layout_weight="1">
             android:background="@drawable/background_border_strock1"/>
 
         <TextView
+                android:id="@+id/limitTV"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:padding="10dp"

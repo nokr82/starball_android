@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
@@ -20,8 +21,9 @@ class JoinStep7JobActivity : RootActivity() {
     var name = ""
     var gender = ""
     var height = ""
+    var birth = ""
     var language = ""
-
+    var job =""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join_job)
@@ -34,20 +36,31 @@ class JoinStep7JobActivity : RootActivity() {
         name = intent.getStringExtra("name")
         gender = intent.getStringExtra("gender")
         height = intent.getStringExtra("height")
+        birth = intent.getStringExtra("birth")
         language = intent.getStringExtra("language")
-
+        Log.d("언어",email)
+        Log.d("언어",passwd)
+        Log.d("언어",language)
         print("language:::::::::::::::::::::::::::::::::::::::::::$language")
 
         nextTV.setOnClickListener {
 
-            val job = Utils.getString(jobET)
+            job =  Utils.getString(jobET)
 
             if (job.count() < 1) {
                 Toast.makeText(context, getString(R.string.job_empty), Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
 
-            val intent = Intent(context, JoinStep8Activity::class.java)
+            val intent = Intent(context, JoinStep8SchoolActivity::class.java)
+            intent.putExtra("email", email)
+            intent.putExtra("passwd", passwd)
+            intent.putExtra("name", name)
+            intent.putExtra("gender", gender)
+            intent.putExtra("height", height)
+            intent.putExtra("birth", birth)
+            intent.putExtra("language", language)
+            intent.putExtra("job", job)
             startActivity(intent)
         }
 

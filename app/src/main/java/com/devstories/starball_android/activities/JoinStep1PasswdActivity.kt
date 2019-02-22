@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
@@ -48,6 +49,7 @@ class JoinStep1PasswdActivity : RootActivity() {
         nextTV.setOnClickListener {
 
             if(passwdConfirmTV.visibility == View.GONE) {
+                Toast.makeText(context,"올바르지 않은 비밀번호입니다.",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 

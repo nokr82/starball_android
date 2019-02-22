@@ -109,6 +109,9 @@ class JoinStep5BirthActivity : RootActivity() {
             override fun afterTextChanged(s: Editable) {}
         })
 
+        moveedit()
+
+
         nextTV.setOnClickListener {
 
             val full_date = Utils.getString(yearTV) + "-" + Utils.getString(monthTV) + "-" + Utils.getString(dayTV)
@@ -131,6 +134,74 @@ class JoinStep5BirthActivity : RootActivity() {
         }
 
     }
+
+    fun moveedit(){
+        year1ET.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if(year1ET.length()==1){
+                    year2ET.requestFocus()
+                }
+            }
+            override fun afterTextChanged(s: Editable) {}
+        })
+        year2ET.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if(year2ET.length()==1){
+                    year3ET.requestFocus()
+                }
+            }
+            override fun afterTextChanged(s: Editable) {}
+        })
+        year3ET.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if(year3ET.length()==1){
+                    year4ET.requestFocus()
+                }
+            }
+            override fun afterTextChanged(s: Editable) {}
+        })
+        year4ET.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if(year4ET.length()==1){
+                    month1ET.requestFocus()
+                }
+            }
+            override fun afterTextChanged(s: Editable) {}
+        })
+        month1ET.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if(month1ET.length()==1){
+                    month2ET.requestFocus()
+                }
+            }
+            override fun afterTextChanged(s: Editable) {}
+        })
+        month2ET.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if(month2ET.length()==1){
+                    day1ET.requestFocus()
+                }
+            }
+            override fun afterTextChanged(s: Editable) {}
+        })
+        day1ET.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if(day1ET.length()==1){
+                    day2ET.requestFocus()
+                }
+            }
+            override fun afterTextChanged(s: Editable) {}
+        })
+
+    }
+
 
     fun setYearTV() {
         yearTV.text = Utils.getString(year1ET) + Utils.getString(year2ET) + Utils.getString(year3ET) + Utils.getString(year4ET)

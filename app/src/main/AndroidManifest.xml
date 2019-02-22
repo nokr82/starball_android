@@ -62,11 +62,11 @@
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
-			android:name=".activities.JoinStep8Activity"
+			android:name=".activities.JoinStep8SchoolActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
-			android:name=".activities.JoinStep9Activity"
+			android:name=".activities.JoinStep9ExpActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity

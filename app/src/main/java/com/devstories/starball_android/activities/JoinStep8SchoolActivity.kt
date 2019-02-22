@@ -4,15 +4,16 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.activity_join_shape.*
+import com.devstories.starball_android.base.Utils
+import kotlinx.android.synthetic.main.activity_join_school.*
 
-class JoinStep10Activity : RootActivity() {
+class JoinStep8SchoolActivity : RootActivity() {
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
-
     var email = ""
     var passwd = ""
     var name = ""
@@ -22,12 +23,10 @@ class JoinStep10Activity : RootActivity() {
     var school = ""
     var birth = ""
     var job = ""
-    var exp = ""
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_join_shape)
+        setContentView(R.layout.activity_join_school)
         this.context = this
         progressDialog = ProgressDialog(context)
 
@@ -39,11 +38,17 @@ class JoinStep10Activity : RootActivity() {
         language = intent.getStringExtra("language")
         birth = intent.getStringExtra("birth")
         job = intent.getStringExtra("job")
-        exp = intent.getStringExtra("exp")
+
 
 
         nextTV.setOnClickListener {
-            val intent = Intent(context, JoinStep11Activity::class.java)
+            school = Utils.getString(schoolET)
+            if (school.count() < 1) {
+                Toast.makeText(context, getString(R.string.school_empty), Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
+            val intent = Intent(context, JoinStep9ExpActivity::class.java)
             intent.putExtra("email", email)
             intent.putExtra("passwd", passwd)
             intent.putExtra("name", name)
@@ -53,7 +58,6 @@ class JoinStep10Activity : RootActivity() {
             intent.putExtra("language", language)
             intent.putExtra("job", job)
             intent.putExtra("school", school)
-            intent.putExtra("exp", exp)
             startActivity(intent)
         }
 

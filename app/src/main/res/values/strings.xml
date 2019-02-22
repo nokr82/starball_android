@@ -336,5 +336,6 @@
     <string name="birthday_fail">생일을 다시 확인해주세요.</string>
     <string name="language_empty">대화 가능 언어를 추가해주세요.</string>
     <string name="job_empty">직업을 입력해주세요.</string>
+    <string name="school_empty">학교를 입력해주세요.</string>
 
 </resources>

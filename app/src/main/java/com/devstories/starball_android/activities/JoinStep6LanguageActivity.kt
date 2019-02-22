@@ -38,14 +38,12 @@ class JoinStep6LanguageActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        /*
         email = intent.getStringExtra("email")
         passwd = intent.getStringExtra("passwd")
         name = intent.getStringExtra("name")
         gender = intent.getStringExtra("gender")
         height = intent.getStringExtra("height")
         birth = intent.getStringExtra("birth")
-        */
 
         adapter = ArrayAdapter(context, R.layout.spinner_item, languages)
         languageSP.adapter = adapter
