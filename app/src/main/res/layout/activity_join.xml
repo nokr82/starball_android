@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+>
+
+    <TextView
+        android:layout_marginTop="15.5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="@string/join_title"
+        android:textSize="21dp"
+        android:textColor="#333333"
+        android:gravity="center"/>
+    <ScrollView
+        android:scrollbars="none"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                      android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent"
+                          android:gravity="center_vertical|center"
+                          android:layout_height="wrap_content"
+                          android:layout_marginBottom="43dp">
+
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                           android:src="@mipmap/join_bi"/>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:gravity="center">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                           android:src="@mipmap/join_fb"/>
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="#333333"
+                    android:text="Or"
+                />
+
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                           android:src="@mipmap/join_google"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="22.5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:textColor="#333333"
+                android:text="@string/if_not"/>
+
+
+            <EditText
+                android:id="@+id/emailET"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="@string/email_input"
+                android:textColorHint="#bbbbbb"
+                android:paddingLeft="10dp"
+                android:gravity="center_vertical"
+                android:textSize="14dp"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/background_border_strock1"/>
+
+
+            <TextView
+                android:id="@+id/joinTV"
+                android:layout_width="match_parent" android:layout_height="50dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/background_border_strock2"
+                android:textSize="20.5dp"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:text="@string/join" />
+
+            <LinearLayout
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="73.5dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="#999999"
+                    android:text="@string/login_content"
+                />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/loginTV"
+                android:layout_marginTop="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:textColor="#333333"
+                android:gravity="center_horizontal"
+                android:text="@string/log_in" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
