@@ -372,6 +372,24 @@ public class DateUtils {
 		return dateValidity;
 	}
 
+	public static boolean checkDate(String str, String format) {
+		boolean dateValidity = true;
+
+		SimpleDateFormat df = new SimpleDateFormat(format); // 20041102101244
+		df.setLenient(false); // false 로 설정해야 엄밀한 해석을 함.
+		try {
+
+			Date dt = df.parse(str);
+
+		} catch (ParseException pe) {
+			dateValidity = false;
+		} catch (IllegalArgumentException ae) {
+			dateValidity = false;
+		}
+
+		return dateValidity;
+	}
+
 	public static int getDiffDayCount(String fromDate, String toDate, String fmt) {
 		SimpleDateFormat sdf = new SimpleDateFormat(fmt);
 

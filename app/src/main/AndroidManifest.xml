@@ -26,27 +26,27 @@
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
-			android:name=".activities.JoinStep1Activity"
+			android:name=".activities.JoinStep1PasswdActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
-			android:name=".activities.JoinStep2Activity"
+			android:name=".activities.JoinStep2NameActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
-			android:name=".activities.JoinStep3Activity"
+			android:name=".activities.JoinStep3GenderActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
-			android:name=".activities.JoinStep4Activity"
+			android:name=".activities.JoinStep4HeightActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
-			android:name=".activities.JoinStep5Activity"
+			android:name=".activities.JoinStep5BirthActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
-			android:name=".activities.JoinStep6Activity"
+			android:name=".activities.JoinStep6LanguageActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
@@ -54,7 +54,7 @@
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
-			android:name=".activities.JoinStep7Activity"
+			android:name=".activities.JoinStep7JobActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity

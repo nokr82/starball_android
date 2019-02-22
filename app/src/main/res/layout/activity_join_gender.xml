@@ -1,63 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-    >
+        android:scrollbars="none"
+        android:fillViewport="true">
 
-    <TextView
-            android:textStyle="bold"
-            android:layout_marginTop="66dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24dp"
-            android:textColor="#333333"
-            android:text="@string/gender_title"
-    />
-
-    <LinearLayout android:layout_width="match_parent" android:layout_height="50dp"
-    android:orientation="horizontal"
-    android:layout_marginLeft="40dp"
-    android:layout_marginRight="40dp"
-    android:layout_marginTop="70dp">
-        <TextView android:layout_width="0dp" android:layout_height="match_parent"
-        android:layout_weight="1"
-                  android:gravity="center"
-                  android:textSize="18dp"
-                  android:textColor="#555555"
-                  android:textStyle="bold"
-                  android:text="@string/men"
-        android:background="@drawable/background_gender_strock2"/>
-
-        <TextView android:layout_width="0dp" android:layout_height="match_parent"
-                  android:layout_weight="1"
-                  android:textSize="18dp"
-                  android:textColor="#ffffff"
-                  android:gravity="center"
-                  android:textStyle="bold"
-                  android:text="@string/famale"
-                  android:background="@drawable/background_gender_strock1"/>
-    </LinearLayout>
-
-<TextView android:layout_width="wrap_content" android:layout_height="0dp"
-android:layout_weight="1"/>
-
-    <TextView
-            android:id="@+id/nextTV"
-            android:layout_marginBottom="40dp"
+        <LinearLayout
             android:layout_width="match_parent"
-              android:layout_height="50dp"
-                 android:background="#000000"
-            android:text="@string/next"
-            android:textStyle="bold"
-              android:gravity="center"
-              android:textSize="20.5dp"
-              android:textColor="#ffffff"/>
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
 
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginTop="66dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:textColor="#333333"
+                android:text="@string/gender_title" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="70dp">
 
+                <TextView
+                    android:id="@+id/maleTV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="18dp"
+                    android:textColor="#555555"
+                    android:textStyle="bold"
+                    android:text="@string/men"
+                    android:background="@drawable/background_gender_male_border"/>
+
+                <TextView
+                    android:id="@+id/femaleTV"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="18dp"
+                    android:textColor="#ffffff"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:text="@string/famale"
+                    android:background="@drawable/background_gender_female"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/nextTV"
+                android:layout_marginBottom="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#000000"
+                android:text="@string/next"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="20.5dp"
+                android:textColor="#ffffff"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

@@ -1,239 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-    >
+        android:scrollbars="none"
+        android:fillViewport="true">
 
-    <TextView
-            android:textStyle="bold"
-            android:layout_marginTop="66dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24dp"
-            android:textColor="#333333"
-            android:text="@string/birthday_title"
-    />
-
-    <LinearLayout android:layout_width="match_parent" android:layout_height="50dp"
-    android:orientation="horizontal"
-    android:layout_marginLeft="37.5dp"
-    android:layout_marginRight="37.5dp"
-    android:layout_marginTop="70dp">
-
-        <EditText android:layout_width="0dp" android:layout_height="match_parent"
-        android:layout_weight="1"
-                  android:textSize="24dp"
-                  android:inputType="number"
-                  android:gravity="center"
-                  android:layout_marginRight="5dp"
-                  android:hint="Y"
-                  android:textColorHint="#9b9ca0"
-                  android:background="@drawable/background_border_strock3"
-        />
-        <EditText
-                android:inputType="number"
-                android:layout_width="0dp" android:layout_height="match_parent"
-                  android:layout_weight="1"
-                  android:textSize="24dp"
-                  android:layout_marginRight="5dp"
-                  android:gravity="center"
-                  android:textColorHint="#9b9ca0"
-                  android:hint="Y"
-                  android:background="@drawable/background_border_strock3"
-                 />
-
-        <EditText android:layout_width="0dp"
-                  android:inputType="number"
-                  android:layout_height="match_parent"
-                  android:layout_weight="1"
-                  android:textSize="24dp"
-                  android:gravity="center"
-                  android:layout_marginRight="5dp"
-                  android:textColorHint="#9b9ca0"
-                  android:hint="Y"
-                  android:background="@drawable/background_border_strock3"
-        />
-        <EditText android:layout_width="0dp"
-                  android:inputType="number"
-                  android:layout_height="match_parent"
-                  android:layout_weight="1"
-                  android:textSize="24dp"
-                  android:layout_marginRight="5dp"
-                  android:textColorHint="#9b9ca0"
-                  android:gravity="center"
-                  android:hint="Y"
-                  android:background="@drawable/background_border_strock3"
-        />
-        <EditText android:layout_width="0dp"
-                  android:inputType="number"
-                  android:layout_height="match_parent"
-                  android:layout_weight="1"
-                  android:textSize="24dp"
-                  android:layout_marginRight="5dp"
-                  android:textColorHint="#9b9ca0"
-                  android:gravity="center"
-                  android:hint="M"
-                  android:background="@drawable/background_border_strock3"
-        />
-        <EditText android:layout_width="0dp"
-                  android:inputType="number"
-                  android:layout_height="match_parent"
-                  android:layout_weight="1"
-                  android:textSize="24dp"
-                  android:layout_marginRight="5dp"
-                  android:textColorHint="#9b9ca0"
-                  android:gravity="center"
-                  android:hint="M"
-                  android:background="@drawable/background_border_strock3"
-        />
-        <EditText android:layout_width="0dp"
-                  android:inputType="number"
-                  android:layout_height="match_parent"
-                  android:layout_weight="1"
-                  android:textSize="24dp"
-                  android:gravity="center"
-                  android:layout_marginLeft="5dp"
-                  android:layout_marginRight="5dp"
-                  android:textColorHint="#9b9ca0"
-                  android:hint="D"
-                  android:background="@drawable/background_border_strock3"
-        />
-        <EditText android:layout_width="0dp"
-                  android:inputType="number"
-                  android:layout_height="match_parent"
-                  android:layout_weight="1"
-                  android:textSize="24dp"
-                  android:textColorHint="#9b9ca0"
-                  android:layout_marginRight="5dp"
-                  android:hint="D"
-                  android:gravity="center"
-                  android:background="@drawable/background_border_strock3"
-        />
-
-
-    </LinearLayout>
-
-
-    <LinearLayout
-            android:layout_marginTop="10dp"
+        <LinearLayout
             android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_marginLeft="37.5dp"
-                  android:layout_marginRight="37.5dp">
-        
-        <LinearLayout 
-                android:layout_width="0dp" 
-                      android:orientation="vertical"
-                      android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:layout_marginRight="10dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
 
             <TextView
-                    android:layout_width="match_parent" android:layout_height="0dp"
-                    android:text=""
+                android:textStyle="bold"
+                android:layout_marginTop="66dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:textColor="#333333"
+                android:text="@string/birthday_title" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="37.5dp"
+                android:layout_marginRight="37.5dp"
+                android:layout_marginTop="70dp">
+
+                <EditText
+                    android:id="@+id/year1ET"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="24dp"
+                    android:inputType="number"
                     android:gravity="center"
-                    android:textSize="12dp"
-                    android:textColor="#555555"
-                    android:layout_weight="1"/>
-            
-            <View
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent" android:layout_height="1.5dp"
-            android:background="#000000"/>
-            <TextView
-                    android:layout_marginTop="10dp"
-                 android:layout_width="match_parent" android:layout_height="0dp"
-                      android:text="@string/year"
-                      android:gravity="center"
-                      android:textSize="12dp"
-                      android:textColor="#555555"
-                      android:layout_weight="1"/>
-        </LinearLayout>
-        <LinearLayout 
-                android:layout_width="0dp"
-                      android:orientation="vertical"
-                      android:layout_height="match_parent"
-                      android:layout_weight="1"
-        android:layout_marginRight="10dp">
+                    android:layout_marginRight="5dp"
+                    android:hint="Y"
+                    android:maxLength="1"
+                    android:textColorHint="#9b9ca0"
+                    android:background="@drawable/background_border_strock3"/>
 
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="0dp"
-                    android:text=""
+                <EditText
+                    android:id="@+id/year2ET"
+                    android:maxLength="1"
+                    android:inputType="number"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="24dp"
+                    android:layout_marginRight="5dp"
                     android:gravity="center"
-                    android:textSize="12dp"
-                    android:textColor="#555555"
-                    android:layout_weight="1"/>
+                    android:textColorHint="#9b9ca0"
+                    android:hint="Y"
+                    android:background="@drawable/background_border_strock3" />
 
-            <View
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent" android:layout_height="1.5dp"
-                  android:background="#000000"/>
-            <TextView
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent" android:layout_height="0dp"
-                      android:text="@string/month"
-                      android:gravity="center"
-                      android:textSize="12dp"
-                      android:textColor="#555555"
-                      android:layout_weight="1"/>
-        </LinearLayout>
-        <LinearLayout 
-                android:layout_width="0dp"
-                      android:layout_height="match_parent"
-                      android:orientation="vertical"
-                      android:layout_weight="1">
-            <TextView
-                    android:layout_width="match_parent" android:layout_height="0dp"
-                    android:text=""
+                <EditText
+                    android:id="@+id/year3ET"
+                    android:maxLength="1"
+                    android:layout_width="0dp"
+                    android:inputType="number"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="24dp"
                     android:gravity="center"
-                    android:textSize="12dp"
-                    android:textColor="#555555"
-                    android:layout_weight="1"/>
+                    android:layout_marginRight="5dp"
+                    android:textColorHint="#9b9ca0"
+                    android:hint="Y"
+                    android:background="@drawable/background_border_strock3" />
+
+                <EditText
+                    android:id="@+id/year4ET"
+                    android:maxLength="1"
+                    android:layout_width="0dp"
+                    android:inputType="number"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="24dp"
+                    android:layout_marginRight="5dp"
+                    android:textColorHint="#9b9ca0"
+                    android:gravity="center"
+                    android:hint="Y"
+                    android:background="@drawable/background_border_strock3" />
+
+                <EditText
+                    android:id="@+id/month1ET"
+                    android:maxLength="1"
+                    android:layout_width="0dp"
+                    android:inputType="number"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="24dp"
+                    android:layout_marginRight="5dp"
+                    android:textColorHint="#9b9ca0"
+                    android:gravity="center"
+                    android:hint="M"
+                    android:background="@drawable/background_border_strock3" />
+
+                <EditText
+                    android:id="@+id/month2ET"
+                    android:maxLength="1"
+                    android:layout_width="0dp"
+                    android:inputType="number"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="24dp"
+                    android:layout_marginRight="5dp"
+                    android:textColorHint="#9b9ca0"
+                    android:gravity="center"
+                    android:hint="M"
+                    android:background="@drawable/background_border_strock3" />
+
+                <EditText
+                    android:id="@+id/day1ET"
+                    android:maxLength="1"
+                    android:layout_width="0dp"
+                    android:inputType="number"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="24dp"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:textColorHint="#9b9ca0"
+                    android:hint="D"
+                    android:background="@drawable/background_border_strock3" />
+
+                <EditText
+                    android:id="@+id/day2ET"
+                    android:maxLength="1"
+                    android:layout_width="0dp"
+                    android:inputType="number"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="24dp"
+                    android:textColorHint="#9b9ca0"
+                    android:layout_marginRight="5dp"
+                    android:hint="D"
+                    android:gravity="center"
+                    android:background="@drawable/background_border_strock3" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="37.5dp"
+                android:layout_marginRight="37.5dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:id="@+id/yearTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textSize="12dp"
+                        android:textColor="#555555"
+                        android:layout_weight="1"/>
+
+                    <View
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:background="#000000"/>
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:text="@string/year"
+                        android:gravity="center"
+                        android:textSize="12dp"
+                        android:textColor="#555555"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:id="@+id/monthTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textSize="12dp"
+                        android:textColor="#555555"
+                        android:layout_weight="1"/>
+
+                    <View
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:background="#000000"/>
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:text="@string/month"
+                        android:gravity="center"
+                        android:textSize="12dp"
+                        android:textColor="#555555"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/dayTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:text=""
+                        android:gravity="center"
+                        android:textSize="12dp"
+                        android:textColor="#555555"
+                        android:layout_weight="1"/>
+
+                    <View
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="1.5dp"
+                        android:background="#000000"/>
+
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:text="@string/day"
+                        android:gravity="center"
+                        android:textSize="12dp"
+                        android:textColor="#555555"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
 
             <View
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent" android:layout_height="1.5dp"
-                  android:background="#000000"/>
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
             <TextView
-                    android:layout_marginTop="10dp"
-                    android:layout_width="match_parent" android:layout_height="0dp"
-                      android:text="@string/day"
-                      android:gravity="center"
-                      android:textSize="12dp"
-                      android:textColor="#555555"
-                      android:layout_weight="1"/>
+                android:id="@+id/nextTV"
+                android:layout_marginBottom="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#000000"
+                android:text="@string/next"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="20.5dp"
+                android:textColor="#ffffff"/>
+
+
 
         </LinearLayout>
 
-
-        
-    </LinearLayout>
-
-
-
-
-
-
-
-<View android:layout_width="wrap_content" android:layout_height="0dp"
-android:layout_weight="1"/>
-    <TextView
-            android:id="@+id/nextTV"
-            android:layout_marginBottom="40dp"
-            android:layout_width="match_parent"
-              android:layout_height="50dp"
-                 android:background="#000000"
-            android:text="@string/next"
-            android:textStyle="bold"
-              android:gravity="center"
-              android:textSize="20.5dp"
-              android:textColor="#ffffff"/>
-
-
-
+    </ScrollView>
 
 </LinearLayout>
