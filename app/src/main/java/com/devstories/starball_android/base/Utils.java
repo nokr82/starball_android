@@ -1307,6 +1307,16 @@ public class Utils {
         return -1;
     }
 
+    public static int getInt(TextView textView, int defaultValue) {
+        String val = textView.getText().toString().trim();
+        try {
+            return Integer.parseInt(val);
+        } catch (Exception e) {
+
+        }
+        return 0;
+    }
+
     // 리스트 뷰 아이템 높이만큼 크기 늘리기
     public static void setListViewHeightBasedOnItems(ListView listView) {
 

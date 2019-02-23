@@ -390,6 +390,31 @@ public class DateUtils {
 		return dateValidity;
 	}
 
+	public static boolean isValidDate(String str, String format) {
+		Date dt = null;
+		SimpleDateFormat df = new SimpleDateFormat(format); // 20041102101244
+		df.setLenient(false); // false 로 설정해야 엄밀한 해석을 함.
+		try {
+			dt = df.parse(str);
+		} catch (ParseException pe) {
+			return false;
+		} catch (IllegalArgumentException ae) {
+			return false;
+		}
+
+		Calendar cal = Calendar.getInstance();
+		cal.setLenient(false);
+		cal.setTime(dt);
+		try {
+			cal.getTime();
+			return true;
+		}
+		catch (Exception e) {
+
+		}
+		return false;
+	}
+
 	public static int getDiffDayCount(String fromDate, String toDate, String fmt) {
 		SimpleDateFormat sdf = new SimpleDateFormat(fmt);
 

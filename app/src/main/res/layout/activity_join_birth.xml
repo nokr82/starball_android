@@ -34,7 +34,7 @@
                 android:layout_marginRight="37.5dp"
                 android:layout_marginTop="70dp">
 
-                <EditText
+                <com.devstories.starball_android.base.KeyDetectableEditText
                     android:id="@+id/year1ET"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -48,7 +48,7 @@
                     android:textColorHint="#9b9ca0"
                     android:background="@drawable/background_border_strock3"/>
 
-                <EditText
+                <com.devstories.starball_android.base.KeyDetectableEditText
                     android:id="@+id/year2ET"
                     android:maxLength="1"
                     android:inputType="number"
@@ -62,7 +62,7 @@
                     android:hint="Y"
                     android:background="@drawable/background_border_strock3" />
 
-                <EditText
+                <com.devstories.starball_android.base.KeyDetectableEditText
                     android:id="@+id/year3ET"
                     android:maxLength="1"
                     android:layout_width="0dp"
@@ -76,7 +76,7 @@
                     android:hint="Y"
                     android:background="@drawable/background_border_strock3" />
 
-                <EditText
+                <com.devstories.starball_android.base.KeyDetectableEditText
                     android:id="@+id/year4ET"
                     android:maxLength="1"
                     android:layout_width="0dp"
@@ -90,7 +90,7 @@
                     android:hint="Y"
                     android:background="@drawable/background_border_strock3" />
 
-                <EditText
+                <com.devstories.starball_android.base.KeyDetectableEditText
                     android:id="@+id/month1ET"
                     android:maxLength="1"
                     android:layout_width="0dp"
@@ -104,7 +104,7 @@
                     android:hint="M"
                     android:background="@drawable/background_border_strock3" />
 
-                <EditText
+                <com.devstories.starball_android.base.KeyDetectableEditText
                     android:id="@+id/month2ET"
                     android:maxLength="1"
                     android:layout_width="0dp"
@@ -118,7 +118,7 @@
                     android:hint="M"
                     android:background="@drawable/background_border_strock3" />
 
-                <EditText
+                <com.devstories.starball_android.base.KeyDetectableEditText
                     android:id="@+id/day1ET"
                     android:maxLength="1"
                     android:layout_width="0dp"
@@ -133,7 +133,7 @@
                     android:hint="D"
                     android:background="@drawable/background_border_strock3" />
 
-                <EditText
+                <com.devstories.starball_android.base.KeyDetectableEditText
                     android:id="@+id/day2ET"
                     android:maxLength="1"
                     android:layout_width="0dp"

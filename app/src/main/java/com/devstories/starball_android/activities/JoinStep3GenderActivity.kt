@@ -30,7 +30,7 @@ class JoinStep3GenderActivity : RootActivity() {
 
 //        gender= PrefUtils.getStringPreference(context,"gender")
         Log.d("패스",gender)
-        if (PrefUtils.getStringPreference(context,"gender")!=null){
+        if (PrefUtils.getStringPreference(context,"join_gender")!=null){
             gender = PrefUtils.getStringPreference(context,"gender")
                 setGenderView()
         }
@@ -50,7 +50,7 @@ class JoinStep3GenderActivity : RootActivity() {
         }
 
         nextTV.setOnClickListener {
-            PrefUtils.setPreference(context, "gender", gender)
+            PrefUtils.setPreference(context, "join_gender", gender)
             val intent = Intent(context, JoinStep4HeightActivity::class.java)
             startActivity(intent)
         }

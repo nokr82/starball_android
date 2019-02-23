@@ -30,9 +30,9 @@ class JoinStep2NameActivity : RootActivity() {
 
 
         Log.d("패스",name)
-        if (PrefUtils.getStringPreference(context,"name")!=null){
-            nameET.setText(PrefUtils.getStringPreference(context,"name"))
-            nameTV.text = PrefUtils.getStringPreference(context,"name")
+        if (PrefUtils.getStringPreference(context,"join_name")!=null){
+            nameET.setText(PrefUtils.getStringPreference(context,"join_name"))
+            nameTV.text = PrefUtils.getStringPreference(context,"join_name")
 
         }
         nameET.addTextChangedListener(object : TextWatcher {
@@ -54,7 +54,7 @@ class JoinStep2NameActivity : RootActivity() {
                 errorMsg(getString(R.string.name_empty))
                 return@setOnClickListener
             }
-            PrefUtils.setPreference(context, "name", name)
+            PrefUtils.setPreference(context, "join_name", name)
             val intent = Intent(context, JoinStep3GenderActivity::class.java)
             startActivity(intent)
 

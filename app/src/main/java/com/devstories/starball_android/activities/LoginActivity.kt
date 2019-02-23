@@ -4,10 +4,9 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import com.devstories.starball_android.Actions.JoinAction
 import com.devstories.starball_android.Actions.MemberAction
 import com.devstories.starball_android.R
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import com.loopj.android.http.JsonHttpResponseHandler
@@ -160,5 +159,19 @@ class LoginActivity : RootActivity() {
 
     }
 
+
+    companion object {
+        fun processLoginData(context: Context, data: JSONObject) {
+
+            PrefUtils.setPreference(context, "member_id", Utils.getInt(data, "id"))
+            PrefUtils.setPreference(context, "email", Utils.getString(data, "email"))
+            PrefUtils.setPreference(context, "passwd", Utils.getString(data, "passwd"))
+            PrefUtils.setPreference(context, "sns_key", Utils.getString(data, "sns_key"))
+            PrefUtils.setPreference(context, "join_type", Utils.getInt(data, "join_type"))
+            PrefUtils.setPreference(context, "login_check", true)
+            PrefUtils.setPreference(context, "autoLogin", true)
+
+        }
+    }
 
 }

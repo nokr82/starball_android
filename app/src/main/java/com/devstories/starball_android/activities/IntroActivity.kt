@@ -3,9 +3,14 @@ package com.devstories.starball_android.activities
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 
 class IntroActivity : RootActivity() {
@@ -25,6 +30,9 @@ class IntroActivity : RootActivity() {
 
         this.context = this
         progressDialog = ProgressDialog(context)
+
+
+        getHash()
 
         val buldle = intent.extras
         if (buldle != null) {
@@ -56,12 +64,31 @@ class IntroActivity : RootActivity() {
     }
 
     private fun stopIntro() {
-         val intent = Intent(context, JoinActivity::class.java)
+         val intent = Intent(context, JoinStep5BirthActivity::class.java)
 //        val intent = Intent(context, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
 
     }
 
+    private fun getHash() {
+
+
+        try {
+            val info = packageManager.getPackageInfo("com.devstories.starball_android", PackageManager.GET_SIGNATURES)
+            for (signature in info.signatures) {
+                val md = MessageDigest.getInstance("SHA")
+                md.update(signature.toByteArray())
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT))
+            }
+
+        } catch (e: PackageManager.NameNotFoundException) {
+
+        } catch (e: NoSuchAlgorithmException) {
+
+        }
+
+
+    }
 
 }
