@@ -64,7 +64,7 @@ class IntroActivity : RootActivity() {
     }
 
     private fun stopIntro() {
-         val intent = Intent(context, JoinStep5BirthActivity::class.java)
+         val intent = Intent(context, JoinStep6LanguageActivity::class.java)
 //        val intent = Intent(context, MainActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)

@@ -7,14 +7,12 @@ import android.widget.ArrayAdapter
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.devstories.starball_android.R
-import com.devstories.starball_android.base.Utils
-import org.json.JSONObject
 
-open class LanguageAdapter(context: Context, view:Int, data:ArrayList<JSONObject>) : ArrayAdapter<JSONObject>(context, view, data) {
+open class LanguageAdapter(context: Context, view:Int, data:ArrayList<String>) : ArrayAdapter<String>(context, view, data) {
 
     private lateinit var item: ViewHolder
     var view:Int = view
-    var data:ArrayList<JSONObject> = data
+    var data:ArrayList<String> = data
 
     override fun getView(position: Int, convertView: View?, parent : ViewGroup?): View {
 
@@ -34,10 +32,10 @@ open class LanguageAdapter(context: Context, view:Int, data:ArrayList<JSONObject
             }
         }
 
-        val json = data[position]
+        val language = data[position]
 
 
-        item.optionTV.text = Utils.getString(json, "name")
+        item.optionTV.text = language
         item.delLL.setOnClickListener {
             data.removeAt(position)
             notifyDataSetChanged()
@@ -46,7 +44,7 @@ open class LanguageAdapter(context: Context, view:Int, data:ArrayList<JSONObject
         return retView
     }
 
-    override fun getItem(position: Int): JSONObject {
+    override fun getItem(position: Int): String {
         return data[position]
     }
 

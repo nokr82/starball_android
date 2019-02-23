@@ -81,25 +81,17 @@
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
-			android:name=".activities.MainActivity"
-			android:theme="@style/NoTitleDialog"
-			android:windowSoftInputMode="adjustResize|stateHidden"/>
-		<activity
 			android:name=".activities.JoinStep7JobActivity"
 			android:theme="@style/NoTitleDialog"
-			android:windowSoftInputMode="adjustResize|stateHidden"/>
-		<activity
-			android:name=".activities.ChattingExActivity"
-			android:theme="@style/NoTitleDialog"
-			android:windowSoftInputMode="adjustResize|stateHidden"/>
+			android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
 		<activity
 			android:name=".activities.JoinStep8SchoolActivity"
 			android:theme="@style/NoTitleDialog"
-			android:windowSoftInputMode="adjustResize|stateHidden"/>
+			android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
 		<activity
 			android:name=".activities.JoinStep9ExpActivity"
 			android:theme="@style/NoTitleDialog"
-			android:windowSoftInputMode="adjustResize|stateHidden"/>
+			android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
 		<activity
 			android:name=".activities.CharmpointSettingAcitivity"
 			android:theme="@style/NoTitleDialog"
@@ -117,6 +109,10 @@
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
+			android:name=".activities.MainActivity"
+			android:theme="@style/NoTitleDialog"
+			android:windowSoftInputMode="adjustResize|stateHidden"/>
+		<activity
 			android:name=".activities.MainSearchActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
@@ -130,6 +126,10 @@
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
 			android:name=".activities.ChattingActivity"
+			android:theme="@style/NoTitleDialog"
+			android:windowSoftInputMode="adjustResize|stateHidden"/>
+		<activity
+			android:name=".activities.ChattingExActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
@@ -247,6 +247,10 @@
 		<activity
 			android:name=".activities.DlgProposeActivity"
 			android:screenOrientation="unspecified"
+			android:theme="@style/full_screen_dialog1"/>
+		<activity
+			android:name=".activities.DlgSelectLanguageActivity"
+			android:screenOrientation="portrait"
 			android:theme="@style/full_screen_dialog1"/>
 	</application>
 
