@@ -101,7 +101,7 @@ class MatchedActivity : RootActivity() {
         animators1617.add(th17FadeIn)
 
         val firstSet1617 = AnimatorSet()
-        firstSet1617.duration = duration * 20
+        firstSet1617.duration = duration * 30
         firstSet1617.playTogether(animators1617)
 
         val mAnimationSet = AnimatorSet()

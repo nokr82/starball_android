@@ -34,44 +34,54 @@ class ChatNotiActivity : RootActivity() {
 
         val screenWidth = Utils.getScreenWidth(context)
         val screenHeight = Utils.getScreenHeight(context)
-        val containerHeight = screenHeight / 12
+        val containerHeight = screenHeight / 16
 
         println("screenHeight : $screenHeight, containerHeight : $containerHeight")
 
         val widthPadding = 150
         val topPadding = 0
 
+        val unitWidth = screenWidth / Random.nextInt(13, 18 )
+
+        var x = -100
 
         val animators = ArrayList<Animator>()
 
         val totalCnt = Random.nextInt(8, 18)
-        for(idx in 0..totalCnt) {
+        // for(idx in 0..totalCnt) {
+        while(true) {
             val item = View.inflate(context, com.devstories.starball_android.R.layout.item_matched, null)
             val starIV = item.findViewById<ImageView>(R.id.starIV)
 
-            val img = Random.nextInt(0, 200) % 3
-            if(img == 0) {
-                starIV.setImageResource(R.mipmap.star_01)
-            } else if(img == 1) {
-                starIV.setImageResource(R.mipmap.star_02)
-            } else if(img == 2) {
-                starIV.setImageResource(R.mipmap.star_03)
+            val img = Random.nextInt(1, 500) % 3
+            when (img) {
+                0 -> starIV.setImageResource(R.mipmap.star_01)
+                1 -> starIV.setImageResource(R.mipmap.star_02)
+                2 -> starIV.setImageResource(R.mipmap.star_03)
             }
 
-            val width = Random.nextInt(50, 300)
+            val width = Random.nextInt(50, 250)
+            x += Random.nextInt(unitWidth / 2, unitWidth)
+            // params.leftMargin = Random.nextInt(0, screenWidth - widthPadding)
+            // params.topMargin = 0
+            // x += Random.nextInt(unitWidth / 2, unitWidth)
+            // x += (width / 1.6).toInt()
 
             val params = RelativeLayout.LayoutParams(width, width)
-            params.leftMargin = Random.nextInt(0, screenWidth - widthPadding)
-            // params.topMargin = Random.nextInt(topPadding, containerHeight)
-            params.topMargin = 0
+            // params.leftMargin = Random.nextInt(0, screenWidth - widthPadding)
+            params.leftMargin = x
+            params.topMargin = Random.nextInt(topPadding, containerHeight) - width
+            // params.topMargin = 0
             rootRL.addView(item, params);
 
-            val animation = ObjectAnimator.ofFloat(item, "translationY", (screenHeight + 100).toFloat())
+            val animation = ObjectAnimator.ofFloat(item, "translationY", (screenHeight + width).toFloat())
             animation.duration = Random.nextInt(600, 1600).toLong()
 
             animators.add(animation)
 
-            animation.start()
+            if(x > screenWidth) {
+                break
+            }
         }
 
         val mAnimationSet = AnimatorSet()
