@@ -6,15 +6,13 @@ import android.animation.ObjectAnimator
 import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
-import com.devstories.starball_android.base.Utils
 import kotlinx.android.synthetic.main.activity_matched.*
-import kotlin.random.Random
+
+
+
+
 
 class MatchedActivity : RootActivity() {
 
@@ -32,50 +30,101 @@ class MatchedActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
-        val screenWidth = Utils.getScreenWidth(context)
-        val screenHeight = Utils.getScreenHeight(context)
-        val containerHeight = screenHeight / 12
+        val duration = 30L
 
-        println("screenHeight : $screenHeight, containerHeight : $containerHeight")
+        // val th01FadeIn = ObjectAnimator.ofFloat(th01IV, "alpha", 0f, 1f)
+        // th01FadeIn.duration = duration
 
-        val widthPadding = 150
-        val topPadding = 0
+        val scaleDownX = ObjectAnimator.ofFloat(th01IV, "scaleX", 1.0f)
+        val scaleDownY = ObjectAnimator.ofFloat(th01IV, "scaleY", 1.0f)
 
 
-        val animators = ArrayList<Animator>()
+        val animators1 = ArrayList<Animator>()
+        animators1.add(scaleDownX)
+        animators1.add(scaleDownY)
 
-        val totalCnt = Random.nextInt(8, 18)
-        for(idx in 0..totalCnt) {
-            val item = View.inflate(context, com.devstories.starball_android.R.layout.item_matched, null)
-            val starIV = item.findViewById<ImageView>(R.id.starIV)
+        val firstSet = AnimatorSet()
+        firstSet.duration = duration * 12
+        firstSet.playTogether(animators1)
 
-            val img = Random.nextInt(0, 200) % 3
-            if(img == 0) {
-                starIV.setImageResource(R.mipmap.star_01)
-            } else if(img == 1) {
-                starIV.setImageResource(R.mipmap.star_02)
-            } else if(img == 2) {
-                starIV.setImageResource(R.mipmap.star_03)
-            }
 
-            val width = Random.nextInt(50, 300)
+        val th02FadeIn = ObjectAnimator.ofFloat(th02IV, "alpha", 0f, 1f)
+        th02FadeIn.duration = duration
 
-            val params = RelativeLayout.LayoutParams(width, width)
-            params.leftMargin = Random.nextInt(0, screenWidth - widthPadding)
-            // params.topMargin = Random.nextInt(topPadding, containerHeight)
-            params.topMargin = 0
-            rootLL.addView(item, params);
+        val th03FadeIn = ObjectAnimator.ofFloat(th03IV, "alpha", 0f, 1f)
+        th03FadeIn.duration = duration
 
-            val animation = ObjectAnimator.ofFloat(item, "translationY", (screenHeight + 100).toFloat())
-            animation.duration = Random.nextInt(800, 2000).toLong()
+        val th04FadeIn = ObjectAnimator.ofFloat(th04IV, "alpha", 0f, 1f)
+        th04FadeIn.duration = duration
 
-            animators.add(animation)
+        val th05FadeIn = ObjectAnimator.ofFloat(th05IV, "alpha", 0f, 1f)
+        th05FadeIn.duration = duration
 
-            animation.start()
-        }
+        val th06FadeIn = ObjectAnimator.ofFloat(th06IV, "alpha", 0f, 1f)
+        th06FadeIn.duration = duration
+
+        val th07FadeIn = ObjectAnimator.ofFloat(th07IV, "alpha", 0f, 1f)
+        th07FadeIn.duration = duration
+
+        val th08FadeIn = ObjectAnimator.ofFloat(th08IV, "alpha", 0f, 1f)
+        th08FadeIn.duration = duration
+
+        val th09FadeIn = ObjectAnimator.ofFloat(th09IV, "alpha", 0f, 1f)
+        th09FadeIn.duration = duration
+
+        val th10FadeIn = ObjectAnimator.ofFloat(th10IV, "alpha", 0f, 1f)
+        th10FadeIn.duration = duration
+
+        val th11FadeIn = ObjectAnimator.ofFloat(th11IV, "alpha", 0f, 1f)
+        th11FadeIn.duration = duration
+
+        val th12FadeIn = ObjectAnimator.ofFloat(th12IV, "alpha", 0f, 1f)
+        th12FadeIn.duration = duration
+
+        val th13FadeIn = ObjectAnimator.ofFloat(th13IV, "alpha", 0f, 1f)
+        th13FadeIn.duration = duration
+
+        val th14FadeIn = ObjectAnimator.ofFloat(th14IV, "alpha", 0f, 1f)
+        th14FadeIn.duration = duration
+
+        val th15FadeIn = ObjectAnimator.ofFloat(th15IV, "alpha", 0f, 1f)
+        th15FadeIn.duration = duration
+
+        val th16FadeIn = ObjectAnimator.ofFloat(th16IV, "alpha", 0f, 1f)
+        // th16FadeIn.duration = duration
+
+        val th17FadeIn = ObjectAnimator.ofFloat(th17IV, "alpha", 0f, 1f)
+        // th17FadeIn.duration = duration
+
+        val animators1617 = ArrayList<Animator>()
+        animators1617.add(th16FadeIn)
+        animators1617.add(th17FadeIn)
+
+        val firstSet1617 = AnimatorSet()
+        firstSet1617.duration = duration * 20
+        firstSet1617.playTogether(animators1617)
 
         val mAnimationSet = AnimatorSet()
-        mAnimationSet.playTogether(animators)
+
+        val animators = ArrayList<Animator>()
+        animators.add(firstSet)
+        animators.add(th02FadeIn)
+        animators.add(th03FadeIn)
+        animators.add(th04FadeIn)
+        animators.add(th05FadeIn)
+        animators.add(th06FadeIn)
+        animators.add(th07FadeIn)
+        animators.add(th08FadeIn)
+        animators.add(th09FadeIn)
+        animators.add(th10FadeIn)
+        animators.add(th11FadeIn)
+        animators.add(th12FadeIn)
+        animators.add(th13FadeIn)
+        animators.add(th14FadeIn)
+        animators.add(th15FadeIn)
+        animators.add(firstSet1617)
+
+        mAnimationSet.playSequentially(animators)
         mAnimationSet.start()
         mAnimationSet.addListener(object : Animator.AnimatorListener {
             override fun onAnimationCancel(animation: Animator?) {
@@ -99,12 +148,10 @@ class MatchedActivity : RootActivity() {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                finish()
+
             }
         })
 
+
     }
-
-
-
 }

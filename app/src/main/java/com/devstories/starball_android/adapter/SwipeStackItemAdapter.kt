@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.devstories.starball_android.R
+import com.devstories.starball_android.activities.ChatNotiActivity
 import com.devstories.starball_android.activities.MatchedActivity
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.DateUtils
@@ -50,6 +51,7 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
         var ageTV = itemView.findViewById<View>(R.id.ageTV) as TextView
         var fitRateTV = itemView.findViewById<View>(R.id.fitRateTV) as TextView
         var introTV = itemView.findViewById<View>(R.id.introTV) as TextView
+        var charmIV = itemView.findViewById<View>(R.id.charmIV) as ImageView
 
     }
 
@@ -66,6 +68,7 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
         var nameTV = itemView.findViewById<View>(R.id.nameTV) as TextView
         var ageTV = itemView.findViewById<View>(R.id.ageTV) as TextView
         var fitRateTV = itemView.findViewById<View>(R.id.fitRateTV) as TextView
+        var charmIV = itemView.findViewById<View>(R.id.charmIV) as ImageView
 
     }
 
@@ -82,6 +85,7 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
         var nameTV = itemView.findViewById<View>(R.id.nameTV) as TextView
         var ageTV = itemView.findViewById<View>(R.id.ageTV) as TextView
         var fitRateTV = itemView.findViewById<View>(R.id.fitRateTV) as TextView
+        var charmIV = itemView.findViewById<View>(R.id.charmIV) as ImageView
 
     }
 
@@ -192,6 +196,11 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                 holder.introTV.text = intro
 
                 holder.infoIV.setOnClickListener {
+                    val intent = Intent(context, ChatNotiActivity::class.java)
+                    context.startActivity(intent)
+                }
+
+                holder.charmIV.setOnClickListener {
                     val intent = Intent(context, MatchedActivity::class.java)
                     context.startActivity(intent)
                 }
