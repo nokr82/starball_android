@@ -93,15 +93,23 @@
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
 		<activity
-			android:name=".activities.CharmpointSettingAcitivity"
-			android:theme="@style/NoTitleDialog"
-			android:windowSoftInputMode="adjustResize|stateHidden"/>
-		<activity
 			android:name=".activities.JoinStep10Activity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
 			android:name=".activities.JoinStep11PicActivity"
+			android:theme="@style/NoTitleDialog"
+			android:windowSoftInputMode="adjustResize|stateHidden"/>
+		<activity
+			android:name=".activities.FindPictureGridActivity"
+			android:theme="@style/NoTitleDialog"
+			android:windowSoftInputMode="adjustResize|stateHidden"/>
+		<activity
+			android:name=".activities.JoinStep12PreviewActivity"
+			android:theme="@style/NoTitleDialog"
+			android:windowSoftInputMode="adjustResize|stateHidden"/>
+		<activity
+			android:name=".activities.CharmpointSettingAcitivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity

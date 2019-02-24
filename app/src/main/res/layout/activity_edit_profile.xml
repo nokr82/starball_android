@@ -1,1421 +1,1498 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-    >
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
 
-        <ImageView
-                android:paddingLeft="9.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/comm_arrow_left"
-            />
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="50dp">
 
-        <TextView
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:textSize="21dp"
-                android:textColor="#333333"
-                android:layout_centerInParent="true"
-                android:text="@string/edit_profile_title"/>
+		<ImageView
+			android:paddingLeft="9.5dp"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:src="@mipmap/comm_arrow_left"
+			/>
 
-        <ImageView
-                android:paddingLeft="9.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/comm_arrow_left"
-                android:id="@+id/backIV"
-                />
+		<TextView
+			android:textStyle="bold"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:gravity="center_vertical"
+			android:textSize="21dp"
+			android:textColor="#333333"
+			android:layout_centerInParent="true"
+			android:text="@string/edit_profile_title"/>
 
-    </RelativeLayout>
+		<ImageView
+			android:paddingLeft="9.5dp"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:src="@mipmap/comm_arrow_left"
+			android:id="@+id/backIV"
+			/>
 
-<ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-    <TextView
-            android:paddingTop="9.5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:textColor="#555555"
-            android:text="@string/edit_profile_content"
-            />
+	</RelativeLayout>
 
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:fillViewport="true">
 
-    <GridView
-            android:padding="10dp"
-            android:id="@+id/profileGV"
-            android:layout_marginTop="17.5dp"
-            android:layout_width="wrap_content"
-            android:scrollbars="none"
-            android:layout_height="430dp"
-            android:numColumns="3"
-            ></GridView>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="10dp"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+			<TextView
+				android:paddingTop="9.5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="14dp"
+				android:textColor="#555555"
+				android:text="@string/edit_profile_content"
+				/>
 
 
-        <TextView
-                android:paddingBottom="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textColor="#333333"
-                android:textStyle="bold"
-                android:text="@string/aboutme"
-                />
+			<GridView
+				android:padding="10dp"
+				android:id="@+id/profileGV"
+				android:layout_marginTop="17.5dp"
+				android:layout_width="wrap_content"
+				android:scrollbars="none"
+				android:layout_height="430dp"
+				android:numColumns="3"
+				></GridView>
 
-        <EditText
-                android:padding="9dp"
-                android:layout_width="match_parent"
-                android:layout_height="125dp"
-                android:textSize="12dp"
-                android:background="#eaeaea"
-                android:text="More than 50 talented young people work with great enthusiasm from our offices in Málaga, in southern Spain. Jointly, more than 200 graphic designers and external collaborators, working hard to always offer our users the most exclusive graphic resources either for personal or professional use in their projects.
+
+			<TextView
+				android:paddingBottom="10dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="18dp"
+				android:textColor="#333333"
+				android:textStyle="bold"
+				android:text="@string/aboutme"
+				/>
+
+			<EditText
+				android:padding="9dp"
+				android:layout_width="match_parent"
+				android:layout_height="125dp"
+				android:textSize="12dp"
+				android:background="#eaeaea"
+				android:text="More than 50 talented young people work with great enthusiasm from our offices in Málaga, in southern Spain. Jointly, more than 200 graphic designers and external collaborators, working hard to always offer our users the most exclusive graphic resources either for personal or professional use in their projects.
 At Freepik we use a freemium business model which means, the majority of the resources offered at Freepik can be used for free, only having to credit the author of the illustration to Freepik. In addition, for a small fee, you can subscribe to the Premium plan and use all our illustrations without any accreditation whatsoever. "/>
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textColor="#333333"
-                android:textStyle="bold"
-                android:text="@string/language"
-                />
-<LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="18dp"
+				android:textColor="#333333"
+				android:textStyle="bold"
+				android:text="@string/language"
+				/>
+
+			<LinearLayout
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
 
 
-    <LinearLayout
-                android:layout_width="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_height="wrap_content">
-            <TextView
-                    android:textStyle="bold"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/Korean"/>
-            <ImageView
-                    android:paddingLeft="14dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/close_op"/>
-        </LinearLayout>
-    <LinearLayout
-            android:layout_marginLeft="25dp"
-            android:layout_width="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_height="wrap_content">
-        <TextView
-                android:textStyle="bold"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="14dp"
-                android:textColor="#333333"
-                android:text="@string/english"/>
-        <ImageView
-                android:paddingLeft="14dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/close_op"/>
-    </LinearLayout>
-    <LinearLayout
-            android:layout_marginLeft="25dp"
-            android:layout_width="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_height="wrap_content">
-        <TextView
-                android:textStyle="bold"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="14dp"
-                android:textColor="#333333"
-                android:text="@string/Thai"/>
-        <ImageView
-                android:paddingLeft="14dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/close_op"/>
-    </LinearLayout>
+				<LinearLayout
+					android:layout_width="wrap_content"
+					android:gravity="center_vertical"
+					android:layout_height="wrap_content">
 
-</LinearLayout>
+					<TextView
+						android:textStyle="bold"
+						android:layout_width="0dp"
+						android:layout_weight="1"
+						android:layout_height="wrap_content"
+						android:textSize="14dp"
+						android:textColor="#333333"
+						android:text="@string/Korean"/>
 
-        <LinearLayout
-                android:layout_marginTop="22dp"
-                android:layout_width="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_height="wrap_content">
+					<ImageView
+						android:paddingLeft="14dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:src="@mipmap/close_op"/>
+				</LinearLayout>
 
-            <ImageView android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:src="@mipmap/plus_op"/>
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    android:textColor="#333333"
-                    android:text="@string/add_language"
-                    />
-        </LinearLayout>
+				<LinearLayout
+					android:layout_marginLeft="25dp"
+					android:layout_width="wrap_content"
+					android:gravity="center_vertical"
+					android:layout_height="wrap_content">
 
-        <TextView
-                android:layout_marginTop="50dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:text="@string/Nationality"
-                />
+					<TextView
+						android:textStyle="bold"
+						android:layout_width="0dp"
+						android:layout_weight="1"
+						android:layout_height="wrap_content"
+						android:textSize="14dp"
+						android:textColor="#333333"
+						android:text="@string/english"/>
 
-        <RelativeLayout
-                android:layout_marginTop="11.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp">
-            <Spinner android:layout_width="match_parent"
-                     android:layout_height="40dp"
-                    android:background="@null">
-            </Spinner>
-            <ImageView
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:src="@mipmap/op_drop"/>
-            <View
-                    android:layout_marginTop="5dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#000000"/>
-        </RelativeLayout>
-        <TextView
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
-                android:padding="5dp"
-                android:layout_height="wrap_content"
-                android:background="#f1f1f1"
-                android:textSize="12dp"
-                android:textColor="#555555"
-                android:letterSpacing="-0.03"
-                android:text="국적 및 생년월일의 편집은 불가합니다.\n
+					<ImageView
+						android:paddingLeft="14dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:src="@mipmap/close_op"/>
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_marginLeft="25dp"
+					android:layout_width="wrap_content"
+					android:gravity="center_vertical"
+					android:layout_height="wrap_content">
+
+					<TextView
+						android:textStyle="bold"
+						android:layout_width="0dp"
+						android:layout_weight="1"
+						android:layout_height="wrap_content"
+						android:textSize="14dp"
+						android:textColor="#333333"
+						android:text="@string/Thai"/>
+
+					<ImageView
+						android:paddingLeft="14dp"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:src="@mipmap/close_op"/>
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_marginTop="22dp"
+				android:layout_width="wrap_content"
+				android:orientation="horizontal"
+				android:gravity="center_vertical"
+				android:layout_height="wrap_content">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/plus_op"/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textStyle="bold"
+					android:textColor="#333333"
+					android:text="@string/add_language"
+					/>
+			</LinearLayout>
+
+			<TextView
+				android:layout_marginTop="50dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="18dp"
+				android:textStyle="bold"
+				android:textColor="#333333"
+				android:text="@string/Nationality"
+				/>
+
+			<RelativeLayout
+				android:layout_marginTop="11.5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="30dp">
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:background="@null">
+				</Spinner>
+
+				<ImageView
+					android:layout_marginTop="15dp"
+					android:layout_marginRight="10dp"
+					android:layout_alignParentRight="true"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/op_drop"/>
+
+				<View
+					android:layout_marginTop="5dp"
+					android:layout_alignParentBottom="true"
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:background="#000000"/>
+			</RelativeLayout>
+
+			<TextView
+				android:layout_marginTop="15dp"
+				android:layout_width="match_parent"
+				android:padding="5dp"
+				android:layout_height="wrap_content"
+				android:background="#f1f1f1"
+				android:textSize="12dp"
+				android:textColor="#555555"
+				android:letterSpacing="-0.03"
+				android:text="국적 및 생년월일의 편집은 불가합니다.\n
 한번 등록된 정보는 변경하실 수 없으니,  다시  확인해 주세요"
-                />
-
-        <TextView
-                android:layout_marginTop="74.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:text="@string/my_attractive_point_is"
-                />
-        <RelativeLayout
-
-                android:layout_marginTop="11.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp">
-            <Spinner android:layout_width="match_parent"
-                     android:layout_height="40dp"
-                     android:background="@null">
-            </Spinner>
-            <ImageView
-                    android:id="@+id/charmRL"
-                    android:paddingLeft="50dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/op_drop"/>
-            <View
-                    android:layout_marginTop="5dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#000000"/>
-        </RelativeLayout>
-        <LinearLayout
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="한사람만 봐요"/>
-            <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="솔직해요"/>
-            <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="큰눈이 매력적이에요."/>
-            <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="섹시한 두뇌"/>
-
-
-        </LinearLayout>
-
-        <TextView
-                android:layout_marginTop="74.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:text="@string/If_we_meet"
-                />
-        <RelativeLayout
-                android:layout_marginTop="11.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp">
-            <Spinner android:layout_width="match_parent"
-                     android:layout_height="40dp"
-                     android:background="@null">
-            </Spinner>
-            <ImageView
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:src="@mipmap/op_drop"/>
-            <View
-                    android:layout_marginTop="5dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#000000"/>
-        </RelativeLayout>
-        <LinearLayout
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="한사람만 봐요"/>
-            <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="솔직해요"/>
-            <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="큰눈이 매력적이에요."/>
-            <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="섹시한 두뇌"/>
-
-
-        </LinearLayout>
-        <TextView
-                android:layout_marginTop="74.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:text="@string/meet_some_one"
-                />
-        <RelativeLayout
-                android:layout_marginTop="11.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp">
-            <Spinner android:layout_width="match_parent"
-                     android:layout_height="40dp"
-                     android:background="@null">
-            </Spinner>
-            <ImageView
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:src="@mipmap/op_drop"/>
-            <View
-                    android:layout_marginTop="5dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#000000"/>
-        </RelativeLayout>
-        <LinearLayout
-                android:layout_marginTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="한사람만 봐요"/>
-            <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="솔직해요"/>
-            <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="큰눈이 매력적이에요."/>
-            <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="섹시한 두뇌"/>
-
-
-        </LinearLayout>
-
-        <TextView
-                android:layout_marginTop="105dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:text="@string/character_info"
-                />
-        
-        <LinearLayout
-                android:id="@+id/heightLL"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
-
-            <ImageView
-                    android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/main_char_height"/>
-
-            <TextView
-                    android:textStyle="bold"
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/height"
-                    />
-
-            <TextView
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:paddingRight="19dp"
-                    android:text="172"
-                    />
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/setting_drop_right"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:id="@+id/regionLL"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
-
-            <ImageView
-                    android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/main_char_religion"/>
-
-            <TextView
-                    android:textStyle="bold"
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/religion"
-                    />
-
-            <TextView
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:paddingRight="19dp"
-                    android:text="기독교"
-                    />
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/setting_drop_right"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:id="@+id/policyLL"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
-
-            <ImageView
-                    android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/main_char_politics"/>
-
-            <TextView
-                    android:textStyle="bold"
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/politician"
-                    />
-
-            <TextView
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:paddingRight="19dp"
-                    android:text=""
-                    />
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/plus_op"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-                android:id="@+id/babyLL"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
-
-            <ImageView
-                    android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/main_char_baby"/>
-
-            <TextView
-                    android:textStyle="bold"
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/children"
-                    />
-
-            <TextView
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:paddingRight="19dp"
-                    android:text=""
-                    />
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/plus_op"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-                android:id="@+id/animalLL"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
-
-            <ImageView
-                    android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/main_char_animal"/>
-
-            <TextView
-                    android:textStyle="bold"
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/animal"
-                    />
-
-            <TextView
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:paddingRight="19dp"
-                    android:text=""
-                    />
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/plus_op"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-                android:id="@+id/smokeLL"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
-
-            <ImageView
-                    android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/main_char_smoke"/>
-
-            <TextView
-                    android:textStyle="bold"
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/smoking"
-                    />
-
-            <TextView
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:paddingRight="19dp"
-                    android:text=""
-                    />
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/plus_op"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:id="@+id/drinkLL"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
-
-            <ImageView
-                    android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/main_char_alcohol"/>
-
-            <TextView
-                    android:textStyle="bold"
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/Drinking"
-                    />
-
-            <TextView
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:paddingRight="19dp"
-                    android:text=""
-                    />
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/plus_op"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-                android:id="@+id/healthLL"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
-
-            <ImageView
-                    android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/main_char_exercise"/>
-
-            <TextView
-                    android:textStyle="bold"
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/Exercise"
-                    />
-
-            <TextView
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:paddingRight="19dp"
-                    android:text=""
-                    />
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/plus_op"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-                android:id="@+id/sportLL"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
-
-            <ImageView
-                    android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/main_char_sports"/>
-
-            <TextView
-                    android:textStyle="bold"
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/Recent_workouts"
-                    />
-
-            <TextView
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:paddingRight="19dp"
-                    android:text=""
-                    />
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/plus_op"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-                android:id="@+id/workLL"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
-
-            <ImageView
-                    android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/main_char_dollar"/>
-
-            <TextView
-                    android:textStyle="bold"
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/income"
-                    />
-
-            <TextView
-                    android:paddingLeft="12.5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:paddingRight="19dp"
-                    android:text=""
-                    />
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/plus_op"/>
-
-        </LinearLayout>
-
-
-
-
-        <TextView
-                android:textStyle="bold"
-                android:layout_marginTop="74.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textColor="#333333"
-                android:text="@string/Account_authentication_settings"
-                />
-        <LinearLayout
-                android:id="@+id/phoneLL"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
-
-
-
-            <TextView
-                    android:paddingLeft="10dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    android:textColor="#333333"
-                    android:text="@string/Phone_verification"
-                    />
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:gravity="end"
-                    android:text="@string/no_certi"
-                    />
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/setting_drop_right"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
-
-
-
-            <TextView
-                    android:id="@+id/saveLL"
-                    android:paddingLeft="10dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    android:textColor="#333333"
-                    android:text="@string/safety_certi"
-                    />
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:gravity="end"
-                    android:text="@string/no_certi"
-                    />
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/setting_drop_right"/>
-
-        </LinearLayout>
-        <TextView
-                android:layout_marginTop="14dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12dp"
-                android:textColor="#333333"
-                android:text="@string/edit_profile_content2"
-                />
-
-
-        <TextView
-                android:textStyle="bold"
-                android:layout_marginTop="103dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textColor="#333333"
-                android:text="@string/connected_account"
-                />
-        <LinearLayout
-                android:id="@+id/emailLL"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
-
-
-
-            <TextView
-                    android:paddingLeft="10dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    android:textColor="#333333"
-                    android:text="@string/email_acount"
-                    />
-
-            <TextView
-                    android:paddingRight="13.5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#923b9f"
-                    android:letterSpacing="-0.05"
-                    android:gravity="end"
-                    android:text="koreacap@gmail.com"
-                    />
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/op_drop"/>
-
-        </LinearLayout>
-        <LinearLayout
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
-
-
-
-            <TextView
-                    android:paddingLeft="10dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    android:textColor="#333333"
-                    android:text="@string/facebook_conect"
-                    />
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:gravity="end"
-                    android:text="@string/no_certi"
-                    />
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/setting_drop_right"/>
-
-        </LinearLayout>
-        <LinearLayout
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
-
-
-
-            <TextView
-                    android:paddingLeft="10dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    android:textColor="#333333"
-                    android:text="@string/instagram_connect"
-                    />
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:text="@string/no_certi"
-                    />
-
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/setting_drop_right"/>
-
-        </LinearLayout>
-
-        <TextView
-                android:layout_marginTop="74.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:text="노출 설정"
-                />
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14dp"
-                android:textColor="#333333"
-                android:textStyle="bold"
-                android:text="현재 상태"
-                />
-
-        <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:layout_height="wrap_content">
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/comm_check_off"/>
-            <TextView
-                    android:textStyle="bold"
-                    android:paddingLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/nomal"
-                    />
-            <ImageView
-                    android:layout_marginLeft="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/comm_check_on"/>
-            <TextView
-                    android:textStyle="bold"
-                    android:paddingLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/ghost"
-                    />
-
-
-
-
-
-
-        </LinearLayout>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="13dp"
-                android:textColor="#555555"
-                android:text="@string/edit_profile_content3"
-                />
-        <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:layout_height="wrap_content">
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/comm_check_off"/>
-            <TextView
-                    android:paddingLeft="5dp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/cross_filter"
-                    />
-
-        </LinearLayout>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="19dp"
-                android:textSize="13dp"
-                android:textColor="#555555"
-                android:text="@string/edit_profile_content4"/>
-        <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:layout_height="wrap_content">
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/comm_check_off"/>
-            <TextView
-                    android:paddingLeft="5dp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/limit_see_me"
-                    />
-
-        </LinearLayout>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="19dp"
-                android:textSize="13dp"
-                android:textColor="#555555"
-                android:text="@string/limit_see_me2"/>
-        <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:layout_height="wrap_content">
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/comm_check_off"/>
-            <TextView
-                    android:paddingLeft="5dp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="안전인증 회원에게만 보입니다."
-                    />
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:layout_height="wrap_content">
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/comm_check_off"/>
-            <TextView
-                    android:paddingLeft="5dp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/vvip_see"
-                    />
-
-        </LinearLayout>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="19dp"
-                android:textSize="13dp"
-                android:textColor="#555555"
-                android:text="@string/vvip_see2"/>
-        <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:layout_height="wrap_content">
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/comm_check_off"/>
-            <TextView
-                    android:paddingLeft="5dp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/unknown_diss"
-                    />
-
-        </LinearLayout>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="19dp"
-                android:textSize="13dp"
-                android:textColor="#555555"
-                android:text="@string/unknown_diss2"/>
-
-        <TextView
-                android:layout_marginTop="74.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:text="@string/travel_is"
-                />
-        <TextView
-                android:layout_marginTop="26.5dp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="#333333"
-                android:text="@string/travel_is2"
-                />
-        <RelativeLayout
-                android:layout_marginTop="11.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp">
-            <Spinner android:layout_width="match_parent"
-                     android:layout_height="40dp"
-                     android:background="@null">
-            </Spinner>
-            <ImageView
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:src="@mipmap/op_drop"/>
-            <View
-                    android:layout_alignParentBottom="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#000000"/>
-        </RelativeLayout>
-
-        <TextView
-                android:layout_marginTop="50dp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="#333333"
-                android:text="@string/calendar_talk"
-                />
-        <RelativeLayout
-                android:layout_marginTop="11.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp">
-            <Spinner android:layout_width="match_parent"
-                     android:layout_height="40dp"
-                     android:background="@null">
-            </Spinner>
-            <ImageView
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
-                    android:src="@mipmap/op_drop"/>
-            <View
-                    android:layout_alignParentBottom="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#000000"/>
-        </RelativeLayout>
-
-        <TextView
-                android:layout_marginTop="38dp"
-                android:id="@+id/nextTV"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="17dp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="#000000"
-                android:text="@string/check"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:textSize="20.5dp"
-                android:textColor="#ffffff"/>
-
-    </LinearLayout>
-</ScrollView>
+				/>
+
+			<TextView
+				android:layout_marginTop="74.5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="18dp"
+				android:textStyle="bold"
+				android:textColor="#333333"
+				android:text="@string/my_attractive_point_is"
+				/>
+
+			<RelativeLayout
+
+				android:layout_marginTop="11.5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="30dp">
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:background="@null">
+				</Spinner>
+
+				<ImageView
+					android:id="@+id/charmRL"
+					android:paddingLeft="50dp"
+					android:layout_marginTop="15dp"
+					android:layout_marginRight="10dp"
+					android:layout_alignParentRight="true"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/op_drop"/>
+
+				<View
+					android:layout_marginTop="5dp"
+					android:layout_alignParentBottom="true"
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:background="#000000"/>
+			</RelativeLayout>
+
+			<LinearLayout
+				android:layout_marginTop="16dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_923b9f"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:textColor="#ffffff"
+					android:text="한사람만 봐요"/>
+
+				<TextView
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_923b9f"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:textColor="#ffffff"
+					android:text="솔직해요"/>
+
+				<TextView
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_923b9f"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:textColor="#ffffff"
+					android:text="큰눈이 매력적이에요."/>
+
+				<TextView
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_923b9f"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:textColor="#ffffff"
+					android:text="섹시한 두뇌"/>
+
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_marginTop="74.5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="18dp"
+				android:textStyle="bold"
+				android:textColor="#333333"
+				android:text="@string/If_we_meet"
+				/>
+
+			<RelativeLayout
+				android:layout_marginTop="11.5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="30dp">
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:background="@null">
+				</Spinner>
+
+				<ImageView
+					android:layout_marginBottom="5dp"
+					android:layout_marginTop="15dp"
+					android:layout_marginRight="10dp"
+					android:layout_alignParentRight="true"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/op_drop"/>
+
+				<View
+					android:layout_marginTop="5dp"
+					android:layout_alignParentBottom="true"
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:background="#000000"/>
+			</RelativeLayout>
+
+			<LinearLayout
+				android:layout_marginTop="16dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_923b9f"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:textColor="#ffffff"
+					android:text="한사람만 봐요"/>
+
+				<TextView
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_923b9f"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:textColor="#ffffff"
+					android:text="솔직해요"/>
+
+				<TextView
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_923b9f"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:textColor="#ffffff"
+					android:text="큰눈이 매력적이에요."/>
+
+				<TextView
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_923b9f"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:textColor="#ffffff"
+					android:text="섹시한 두뇌"/>
+
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_marginTop="74.5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="18dp"
+				android:textStyle="bold"
+				android:textColor="#333333"
+				android:text="@string/meet_some_one"
+				/>
+
+			<RelativeLayout
+				android:layout_marginTop="11.5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="30dp">
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:background="@null">
+				</Spinner>
+
+				<ImageView
+					android:layout_marginTop="15dp"
+					android:layout_marginRight="10dp"
+					android:layout_alignParentRight="true"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/op_drop"/>
+
+				<View
+					android:layout_marginTop="5dp"
+					android:layout_alignParentBottom="true"
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:background="#000000"/>
+			</RelativeLayout>
+
+			<LinearLayout
+				android:layout_marginTop="16dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_923b9f"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:textColor="#ffffff"
+					android:text="한사람만 봐요"/>
+
+				<TextView
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_923b9f"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:textColor="#ffffff"
+					android:text="솔직해요"/>
+
+				<TextView
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_923b9f"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:textColor="#ffffff"
+					android:text="큰눈이 매력적이에요."/>
+
+				<TextView
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_923b9f"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:textColor="#ffffff"
+					android:text="섹시한 두뇌"/>
+
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_marginTop="105dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="18dp"
+				android:textStyle="bold"
+				android:textColor="#333333"
+				android:text="@string/character_info"
+				/>
+
+			<LinearLayout
+				android:id="@+id/heightLL"
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:background="@drawable/background_border_strock9_888888"
+				android:layout_height="40dp">
+
+				<ImageView
+					android:paddingLeft="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/main_char_height"/>
+
+				<TextView
+					android:textStyle="bold"
+					android:paddingLeft="12.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/height"
+					/>
+
+				<TextView
+					android:paddingLeft="12.5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#999999"
+					android:paddingRight="19dp"
+					android:text="172"
+					/>
+
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="10dp"
+					android:src="@mipmap/setting_drop_right"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/regionLL"
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:background="@drawable/background_border_strock9_888888"
+				android:layout_height="40dp">
+
+				<ImageView
+					android:paddingLeft="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/main_char_religion"/>
+
+				<TextView
+					android:textStyle="bold"
+					android:paddingLeft="12.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/religion"
+					/>
+
+				<TextView
+					android:paddingLeft="12.5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#999999"
+					android:paddingRight="19dp"
+					android:text="기독교"
+					/>
+
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="10dp"
+					android:src="@mipmap/setting_drop_right"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/policyLL"
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:background="@drawable/background_border_strock9_888888"
+				android:layout_height="40dp">
+
+				<ImageView
+					android:paddingLeft="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/main_char_politics"/>
+
+				<TextView
+					android:textStyle="bold"
+					android:paddingLeft="12.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/politician"
+					/>
+
+				<TextView
+					android:paddingLeft="12.5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#999999"
+					android:paddingRight="19dp"
+					android:text=""
+					/>
+
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="10dp"
+					android:src="@mipmap/plus_op"/>
+
+			</LinearLayout>
+
+
+			<LinearLayout
+				android:id="@+id/babyLL"
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:background="@drawable/background_border_strock9_888888"
+				android:layout_height="40dp">
+
+				<ImageView
+					android:paddingLeft="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/main_char_baby"/>
+
+				<TextView
+					android:textStyle="bold"
+					android:paddingLeft="12.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/children"
+					/>
+
+				<TextView
+					android:paddingLeft="12.5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#999999"
+					android:paddingRight="19dp"
+					android:text=""
+					/>
+
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="10dp"
+					android:src="@mipmap/plus_op"/>
+
+			</LinearLayout>
+
+
+			<LinearLayout
+				android:id="@+id/animalLL"
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:background="@drawable/background_border_strock9_888888"
+				android:layout_height="40dp">
+
+				<ImageView
+					android:paddingLeft="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/main_char_animal"/>
+
+				<TextView
+					android:textStyle="bold"
+					android:paddingLeft="12.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/animal"
+					/>
+
+				<TextView
+					android:paddingLeft="12.5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#999999"
+					android:paddingRight="19dp"
+					android:text=""
+					/>
+
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="10dp"
+					android:src="@mipmap/plus_op"/>
+
+			</LinearLayout>
+
+
+			<LinearLayout
+				android:id="@+id/smokeLL"
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:background="@drawable/background_border_strock9_888888"
+				android:layout_height="40dp">
+
+				<ImageView
+					android:paddingLeft="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/main_char_smoke"/>
+
+				<TextView
+					android:textStyle="bold"
+					android:paddingLeft="12.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/smoking"
+					/>
+
+				<TextView
+					android:paddingLeft="12.5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#999999"
+					android:paddingRight="19dp"
+					android:text=""
+					/>
+
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="10dp"
+					android:src="@mipmap/plus_op"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/drinkLL"
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:background="@drawable/background_border_strock9_888888"
+				android:layout_height="40dp">
+
+				<ImageView
+					android:paddingLeft="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/main_char_alcohol"/>
+
+				<TextView
+					android:textStyle="bold"
+					android:paddingLeft="12.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/Drinking"
+					/>
+
+				<TextView
+					android:paddingLeft="12.5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#999999"
+					android:paddingRight="19dp"
+					android:text=""
+					/>
+
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="10dp"
+					android:src="@mipmap/plus_op"/>
+
+			</LinearLayout>
+
+
+			<LinearLayout
+				android:id="@+id/healthLL"
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:background="@drawable/background_border_strock9_888888"
+				android:layout_height="40dp">
+
+				<ImageView
+					android:paddingLeft="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/main_char_exercise"/>
+
+				<TextView
+					android:textStyle="bold"
+					android:paddingLeft="12.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/Exercise"
+					/>
+
+				<TextView
+					android:paddingLeft="12.5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#999999"
+					android:paddingRight="19dp"
+					android:text=""
+					/>
+
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="10dp"
+					android:src="@mipmap/plus_op"/>
+
+			</LinearLayout>
+
+
+			<LinearLayout
+				android:id="@+id/sportLL"
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:background="@drawable/background_border_strock9_888888"
+				android:layout_height="40dp">
+
+				<ImageView
+					android:paddingLeft="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/main_char_sports"/>
+
+				<TextView
+					android:textStyle="bold"
+					android:paddingLeft="12.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/Recent_workouts"
+					/>
+
+				<TextView
+					android:paddingLeft="12.5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#999999"
+					android:paddingRight="19dp"
+					android:text=""
+					/>
+
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="10dp"
+					android:src="@mipmap/plus_op"/>
+
+			</LinearLayout>
+
+
+			<LinearLayout
+				android:id="@+id/workLL"
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:background="@drawable/background_border_strock9_888888"
+				android:layout_height="40dp">
+
+				<ImageView
+					android:paddingLeft="10dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/main_char_dollar"/>
+
+				<TextView
+					android:textStyle="bold"
+					android:paddingLeft="12.5dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/income"
+					/>
+
+				<TextView
+					android:paddingLeft="12.5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#999999"
+					android:paddingRight="19dp"
+					android:text=""
+					/>
+
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="10dp"
+					android:src="@mipmap/plus_op"/>
+
+			</LinearLayout>
+
+
+			<TextView
+				android:textStyle="bold"
+				android:layout_marginTop="74.5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="18dp"
+				android:textColor="#333333"
+				android:text="@string/Account_authentication_settings"
+				/>
+
+			<LinearLayout
+				android:id="@+id/phoneLL"
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:background="@drawable/background_border_strock9_888888"
+				android:layout_height="40dp">
+
+
+				<TextView
+					android:paddingLeft="10dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textStyle="bold"
+					android:textColor="#333333"
+					android:text="@string/Phone_verification"
+					/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="20dp"
+					android:textSize="14dp"
+					android:textColor="#999999"
+					android:gravity="end"
+					android:text="@string/no_certi"
+					/>
+
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="10dp"
+					android:src="@mipmap/setting_drop_right"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_marginTop="15dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:background="@drawable/background_border_strock9_888888"
+				android:layout_height="40dp">
+
+
+				<TextView
+					android:id="@+id/saveLL"
+					android:paddingLeft="10dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textStyle="bold"
+					android:textColor="#333333"
+					android:text="@string/safety_certi"
+					/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="20dp"
+					android:textSize="14dp"
+					android:textColor="#999999"
+					android:gravity="end"
+					android:text="@string/no_certi"
+					/>
+
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="10dp"
+					android:src="@mipmap/setting_drop_right"/>
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_marginTop="14dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="12dp"
+				android:textColor="#333333"
+				android:text="@string/edit_profile_content2"
+				/>
+
+
+			<TextView
+				android:textStyle="bold"
+				android:layout_marginTop="103dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="18dp"
+				android:textColor="#333333"
+				android:text="@string/connected_account"
+				/>
+
+			<LinearLayout
+				android:id="@+id/emailLL"
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:background="@drawable/background_border_strock9_888888"
+				android:layout_height="40dp">
+
+
+				<TextView
+					android:paddingLeft="10dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textStyle="bold"
+					android:textColor="#333333"
+					android:text="@string/email_acount"
+					/>
+
+				<TextView
+					android:paddingRight="13.5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#923b9f"
+					android:letterSpacing="-0.05"
+					android:gravity="end"
+					android:text="koreacap@gmail.com"
+					/>
+
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="10dp"
+					android:src="@mipmap/op_drop"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_marginTop="15dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:background="@drawable/background_border_strock9_888888"
+				android:layout_height="40dp">
+
+
+				<TextView
+					android:paddingLeft="10dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textStyle="bold"
+					android:textColor="#333333"
+					android:text="@string/facebook_conect"
+					/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="20dp"
+					android:textSize="14dp"
+					android:textColor="#999999"
+					android:gravity="end"
+					android:text="@string/no_certi"
+					/>
+
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="10dp"
+					android:src="@mipmap/setting_drop_right"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_marginTop="15dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:background="@drawable/background_border_strock9_888888"
+				android:layout_height="40dp">
+
+
+				<TextView
+					android:paddingLeft="10dp"
+					android:layout_width="0dp"
+					android:layout_weight="1"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textStyle="bold"
+					android:textColor="#333333"
+					android:text="@string/instagram_connect"
+					/>
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="20dp"
+					android:textSize="14dp"
+					android:textColor="#999999"
+					android:text="@string/no_certi"
+					/>
+
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:paddingRight="10dp"
+					android:src="@mipmap/setting_drop_right"/>
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_marginTop="74.5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="18dp"
+				android:textStyle="bold"
+				android:textColor="#333333"
+				android:text="노출 설정"
+				/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="14dp"
+				android:textColor="#333333"
+				android:textStyle="bold"
+				android:text="현재 상태"
+				/>
+
+			<LinearLayout
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:layout_height="wrap_content">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/comm_check_off"/>
+
+				<TextView
+					android:textStyle="bold"
+					android:paddingLeft="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/nomal"
+					/>
+
+				<ImageView
+					android:layout_marginLeft="30dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/comm_check_on"/>
+
+				<TextView
+					android:textStyle="bold"
+					android:paddingLeft="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/ghost"
+					/>
+
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="13dp"
+				android:textColor="#555555"
+				android:text="@string/edit_profile_content3"
+				/>
+
+			<LinearLayout
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:layout_height="wrap_content">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/comm_check_off"/>
+
+				<TextView
+					android:paddingLeft="5dp"
+					android:textStyle="bold"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/cross_filter"
+					/>
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingLeft="19dp"
+				android:textSize="13dp"
+				android:textColor="#555555"
+				android:text="@string/edit_profile_content4"/>
+
+			<LinearLayout
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:layout_height="wrap_content">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/comm_check_off"/>
+
+				<TextView
+					android:paddingLeft="5dp"
+					android:textStyle="bold"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/limit_see_me"
+					/>
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingLeft="19dp"
+				android:textSize="13dp"
+				android:textColor="#555555"
+				android:text="@string/limit_see_me2"/>
+
+			<LinearLayout
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:layout_height="wrap_content">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/comm_check_off"/>
+
+				<TextView
+					android:paddingLeft="5dp"
+					android:textStyle="bold"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="안전인증 회원에게만 보입니다."
+					/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:layout_height="wrap_content">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/comm_check_off"/>
+
+				<TextView
+					android:paddingLeft="5dp"
+					android:textStyle="bold"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/vvip_see"
+					/>
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingLeft="19dp"
+				android:textSize="13dp"
+				android:textColor="#555555"
+				android:text="@string/vvip_see2"/>
+
+			<LinearLayout
+				android:layout_marginTop="10dp"
+				android:layout_width="match_parent"
+				android:gravity="center_vertical"
+				android:layout_height="wrap_content">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/comm_check_off"/>
+
+				<TextView
+					android:paddingLeft="5dp"
+					android:textStyle="bold"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="14dp"
+					android:textColor="#333333"
+					android:text="@string/unknown_diss"
+					/>
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingLeft="19dp"
+				android:textSize="13dp"
+				android:textColor="#555555"
+				android:text="@string/unknown_diss2"/>
+
+			<TextView
+				android:layout_marginTop="74.5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="18dp"
+				android:textStyle="bold"
+				android:textColor="#333333"
+				android:text="@string/travel_is"
+				/>
+
+			<TextView
+				android:layout_marginTop="26.5dp"
+				android:textStyle="bold"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="15dp"
+				android:textColor="#333333"
+				android:text="@string/travel_is2"
+				/>
+
+			<RelativeLayout
+				android:layout_marginTop="11.5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="30dp">
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:background="@null">
+				</Spinner>
+
+				<ImageView
+					android:layout_marginTop="15dp"
+					android:layout_marginRight="10dp"
+					android:layout_alignParentRight="true"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/op_drop"/>
+
+				<View
+					android:layout_alignParentBottom="true"
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:background="#000000"/>
+			</RelativeLayout>
+
+			<TextView
+				android:layout_marginTop="50dp"
+				android:textStyle="bold"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="15dp"
+				android:textColor="#333333"
+				android:text="@string/calendar_talk"
+				/>
+
+			<RelativeLayout
+				android:layout_marginTop="11.5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="30dp">
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:background="@null">
+				</Spinner>
+
+				<ImageView
+					android:layout_marginTop="15dp"
+					android:layout_marginRight="10dp"
+					android:layout_alignParentRight="true"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@mipmap/op_drop"/>
+
+				<View
+					android:layout_alignParentBottom="true"
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:background="#000000"/>
+			</RelativeLayout>
+
+			<TextView
+				android:layout_marginTop="38dp"
+				android:id="@+id/nextTV"
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
+				android:layout_marginBottom="17dp"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:background="#000000"
+				android:text="@string/check"
+				android:textStyle="bold"
+				android:gravity="center"
+				android:textSize="20.5dp"
+				android:textColor="#ffffff"/>
+
+		</LinearLayout>
+	</ScrollView>
 
 </LinearLayout>

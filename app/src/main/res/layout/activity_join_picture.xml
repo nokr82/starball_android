@@ -24,8 +24,8 @@
 				android:textSize="15dp"
 				android:textColor="#333333"
 				android:text="@string/picture_content"
-				android:layout_marginLeft="10dp"
-				android:layout_marginRight="10dp"/>
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"/>
 
 			<LinearLayout
 				android:layout_width="match_parent"
@@ -33,8 +33,9 @@
 				android:orientation="vertical"
 				android:layout_marginTop="17.5dp"
 				android:paddingTop="10dp"
-				android:paddingLeft="10dp"
-				android:paddingBottom="10dp"
+				android:paddingLeft="20dp"
+				android:paddingBottom="5dp"
+				android:paddingRight="10dp"
 				android:background="#f2f2f2">
 				<LinearLayout
 					android:layout_width="match_parent"
@@ -46,21 +47,27 @@
 						android:layout_height="wrap_content"
 						android:layout_weight="1"
 						app:ratio="105:135">
-						<LinearLayout
-							android:id="@+id/profile1LL"
+						<RelativeLayout
+							android:id="@+id/profile1RL"
 							android:layout_width="match_parent"
 							android:layout_height="match_parent"
-							android:gravity="center"
 							android:layout_marginEnd="15dp"
 							android:layout_marginBottom="15dp"
 							android:background="@drawable/background_border_strock10_profile">
 							<ImageView
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:src="@mipmap/profile_plus"/>
-						</LinearLayout>
+								android:src="@mipmap/profile_plus"
+								android:layout_centerInParent="true"/>
+							<ImageView
+								android:id="@+id/profile1IV"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:scaleType="centerCrop"/>
+						</RelativeLayout>
 						<ImageView
-							android:visibility="visible"
+							android:id="@+id/profile1DelIV"
+							android:visibility="gone"
 							android:layout_width="30dp"
 							android:layout_height="30dp"
 							android:src="@mipmap/profile_pic_bg_del"
@@ -73,21 +80,28 @@
 						android:layout_height="wrap_content"
 						android:layout_weight="1"
 						app:ratio="105:135">
-						<LinearLayout
-							android:id="@+id/profile2LL"
+						<RelativeLayout
+							android:id="@+id/profile2RL"
 							android:layout_width="match_parent"
 							android:layout_height="match_parent"
-							android:gravity="center"
 							android:layout_marginEnd="15dp"
 							android:layout_marginBottom="15dp"
 							android:background="@drawable/background_border_strock10_profile">
 							<ImageView
+								android:id="@+id/plus2IV"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:src="@mipmap/profile_plus"/>
-						</LinearLayout>
+								android:src="@mipmap/profile_plus"
+								android:layout_centerInParent="true"/>
+							<ImageView
+								android:id="@+id/profile2IV"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:scaleType="centerCrop"/>
+						</RelativeLayout>
 						<ImageView
-							android:visibility="visible"
+							android:id="@+id/profile2DelIV"
+							android:visibility="gone"
 							android:layout_width="30dp"
 							android:layout_height="30dp"
 							android:src="@mipmap/profile_pic_bg_del"
@@ -100,21 +114,260 @@
 						android:layout_height="wrap_content"
 						android:layout_weight="1"
 						app:ratio="105:135">
-						<LinearLayout
-							android:id="@+id/profile3LL"
+						<RelativeLayout
+							android:id="@+id/profile3RL"
 							android:layout_width="match_parent"
 							android:layout_height="match_parent"
-							android:gravity="center"
 							android:layout_marginEnd="15dp"
 							android:layout_marginBottom="15dp"
 							android:background="@drawable/background_border_strock10_profile">
 							<ImageView
+								android:id="@+id/plus3IV"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:src="@mipmap/profile_plus"/>
-						</LinearLayout>
+								android:src="@mipmap/profile_plus"
+								android:layout_centerInParent="true"/>
+							<ImageView
+								android:id="@+id/profile3IV"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:scaleType="centerCrop"/>
+						</RelativeLayout>
 						<ImageView
-							android:visibility="visible"
+							android:id="@+id/profile3DelIV"
+							android:visibility="gone"
+							android:layout_width="30dp"
+							android:layout_height="30dp"
+							android:src="@mipmap/profile_pic_bg_del"
+							android:layout_alignParentBottom="true"
+							android:layout_alignParentEnd="true"/>
+					</com.devstories.starball_android.base.RationalRelativeLayout>
+				</LinearLayout>
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:layout_marginTop="25dp"
+				android:paddingLeft="20dp"
+				android:paddingRight="10dp">
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="horizontal">
+					<com.devstories.starball_android.base.RationalRelativeLayout
+						android:orientation="vertical"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						app:ratio="105:135">
+						<RelativeLayout
+							android:id="@+id/profile4RL"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_marginEnd="15dp"
+							android:layout_marginBottom="15dp"
+							android:background="@drawable/background_border_strock10_profile">
+							<ImageView
+								android:id="@+id/plus4IV"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:src="@mipmap/profile_plus"
+								android:layout_centerInParent="true"/>
+							<ImageView
+								android:id="@+id/profile4IV"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:scaleType="centerCrop"/>
+						</RelativeLayout>
+						<ImageView
+							android:id="@+id/profile4DelIV"
+							android:visibility="gone"
+							android:layout_width="30dp"
+							android:layout_height="30dp"
+							android:src="@mipmap/profile_pic_bg_del"
+							android:layout_alignParentBottom="true"
+							android:layout_alignParentEnd="true"/>
+					</com.devstories.starball_android.base.RationalRelativeLayout>
+					<com.devstories.starball_android.base.RationalRelativeLayout
+						android:orientation="vertical"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						app:ratio="105:135">
+						<RelativeLayout
+							android:id="@+id/profile5RL"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_marginEnd="15dp"
+							android:layout_marginBottom="15dp"
+							android:background="@drawable/background_border_strock10_profile">
+							<ImageView
+								android:id="@+id/plus5IV"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:src="@mipmap/profile_plus"
+								android:layout_centerInParent="true"/>
+							<ImageView
+								android:id="@+id/profile5IV"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:scaleType="centerCrop"/>
+						</RelativeLayout>
+						<ImageView
+							android:id="@+id/profile5DelIV"
+							android:visibility="gone"
+							android:layout_width="30dp"
+							android:layout_height="30dp"
+							android:src="@mipmap/profile_pic_bg_del"
+							android:layout_alignParentBottom="true"
+							android:layout_alignParentEnd="true"/>
+					</com.devstories.starball_android.base.RationalRelativeLayout>
+					<com.devstories.starball_android.base.RationalRelativeLayout
+						android:orientation="vertical"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						app:ratio="105:135">
+						<RelativeLayout
+							android:id="@+id/profile6RL"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_marginEnd="15dp"
+							android:layout_marginBottom="15dp"
+							android:background="@drawable/background_border_strock10_profile">
+							<ImageView
+								android:id="@+id/plus6IV"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:src="@mipmap/profile_plus"
+								android:layout_centerInParent="true"/>
+							<ImageView
+								android:id="@+id/profile6IV"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:scaleType="centerCrop"/>
+						</RelativeLayout>
+						<ImageView
+							android:id="@+id/profile6DelIV"
+							android:visibility="gone"
+							android:layout_width="30dp"
+							android:layout_height="30dp"
+							android:src="@mipmap/profile_pic_bg_del"
+							android:layout_alignParentBottom="true"
+							android:layout_alignParentEnd="true"/>
+					</com.devstories.starball_android.base.RationalRelativeLayout>
+				</LinearLayout>
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:layout_marginTop="10dp"
+				android:paddingLeft="20dp"
+				android:paddingRight="10dp">
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:orientation="horizontal">
+					<com.devstories.starball_android.base.RationalRelativeLayout
+						android:orientation="vertical"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						app:ratio="105:135">
+						<RelativeLayout
+							android:id="@+id/profile7RL"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_marginEnd="15dp"
+							android:layout_marginBottom="15dp"
+							android:background="@drawable/background_border_strock10_profile">
+							<ImageView
+								android:id="@+id/plus7IV"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:src="@mipmap/profile_plus"
+								android:layout_centerInParent="true"/>
+							<ImageView
+								android:id="@+id/profile7IV"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:scaleType="centerCrop"/>
+						</RelativeLayout>
+						<ImageView
+							android:id="@+id/profile7DelIV"
+							android:visibility="gone"
+							android:layout_width="30dp"
+							android:layout_height="30dp"
+							android:src="@mipmap/profile_pic_bg_del"
+							android:layout_alignParentBottom="true"
+							android:layout_alignParentEnd="true"/>
+					</com.devstories.starball_android.base.RationalRelativeLayout>
+					<com.devstories.starball_android.base.RationalRelativeLayout
+						android:orientation="vertical"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						app:ratio="105:135">
+						<RelativeLayout
+							android:id="@+id/profile8RL"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_marginEnd="15dp"
+							android:layout_marginBottom="15dp"
+							android:background="@drawable/background_border_strock10_profile">
+							<ImageView
+								android:id="@+id/plus8IV"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:src="@mipmap/profile_plus"
+								android:layout_centerInParent="true"/>
+							<ImageView
+								android:id="@+id/profile8IV"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:scaleType="centerCrop"/>
+						</RelativeLayout>
+						<ImageView
+							android:id="@+id/profile8DelIV"
+							android:visibility="gone"
+							android:layout_width="30dp"
+							android:layout_height="30dp"
+							android:src="@mipmap/profile_pic_bg_del"
+							android:layout_alignParentBottom="true"
+							android:layout_alignParentEnd="true"/>
+					</com.devstories.starball_android.base.RationalRelativeLayout>
+					<com.devstories.starball_android.base.RationalRelativeLayout
+						android:orientation="vertical"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						app:ratio="105:135">
+						<RelativeLayout
+							android:id="@+id/profile9RL"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:layout_marginEnd="15dp"
+							android:layout_marginBottom="15dp"
+							android:background="@drawable/background_border_strock10_profile">
+							<ImageView
+								android:id="@+id/plus9IV"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:src="@mipmap/profile_plus"
+								android:layout_centerInParent="true"/>
+							<ImageView
+								android:id="@+id/profile9IV"
+								android:layout_width="match_parent"
+								android:layout_height="match_parent"
+								android:scaleType="centerCrop"/>
+						</RelativeLayout>
+						<ImageView
+							android:id="@+id/profile9DelIV"
+							android:visibility="gone"
 							android:layout_width="30dp"
 							android:layout_height="30dp"
 							android:src="@mipmap/profile_pic_bg_del"
@@ -129,8 +382,8 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="vertical"
-				android:layout_marginLeft="10dp"
-				android:layout_marginRight="10dp">
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp">
 
 				<TextView
 					android:layout_width="wrap_content"
@@ -146,6 +399,7 @@
 					android:layout_height="wrap_content">
 
 					<View
+						android:id="@+id/basicV"
 						android:layout_width="0dp"
 						android:layout_weight="1"
 						android:layout_height="5dp"
@@ -157,10 +411,11 @@
 						android:background="#ffff"/>
 
 					<View
+						android:id="@+id/plusV"
 						android:layout_width="0dp"
 						android:layout_weight="1"
 						android:layout_height="5dp"
-						android:background="#903ba0"/>
+						android:background="#d4d4d4"/>
 
 					<View
 						android:layout_width="0.5dp"
@@ -168,10 +423,11 @@
 						android:background="#ffff"/>
 
 					<View
+						android:id="@+id/premiumV"
 						android:layout_width="0dp"
 						android:layout_weight="1"
 						android:layout_height="5dp"
-						android:background="#903ba0"/>
+						android:background="#d4d4d4"/>
 
 					<View
 						android:layout_width="0.5dp"
@@ -179,6 +435,7 @@
 						android:background="#ffff"/>
 
 					<View
+						android:id="@+id/vvipV"
 						android:layout_width="0dp"
 						android:layout_weight="1"
 						android:layout_height="5dp"
@@ -241,8 +498,8 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:orientation="vertical"
-				android:layout_marginLeft="10dp"
-				android:layout_marginRight="10dp">
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp">
 
 				<TextView
 					android:layout_width="wrap_content"
@@ -259,6 +516,7 @@
 					android:layout_height="wrap_content">
 
 					<View
+						android:id="@+id/basicV2"
 						android:layout_width="0dp"
 						android:layout_weight="1"
 						android:layout_height="5dp"
@@ -270,10 +528,11 @@
 						android:background="#ffff"/>
 
 					<View
+						android:id="@+id/plusV2"
 						android:layout_width="0dp"
 						android:layout_weight="1"
 						android:layout_height="5dp"
-						android:background="#903ba0"/>
+						android:background="#d4d4d4"/>
 
 					<View
 						android:layout_width="0.5dp"
@@ -281,10 +540,11 @@
 						android:background="#ffff"/>
 
 					<View
+						android:id="@+id/premiumV2"
 						android:layout_width="0dp"
 						android:layout_weight="1"
 						android:layout_height="5dp"
-						android:background="#903ba0"/>
+						android:background="#d4d4d4"/>
 
 					<View
 						android:layout_width="0.5dp"
@@ -292,6 +552,7 @@
 						android:background="#ffff"/>
 
 					<View
+						android:id="@+id/vvipV2"
 						android:layout_width="0dp"
 						android:layout_weight="1"
 						android:layout_height="5dp"
@@ -358,8 +619,8 @@
 				android:gravity="center"
 				android:textSize="20.5dp"
 				android:textColor="#ffffff"
-				android:layout_marginLeft="10dp"
-				android:layout_marginRight="10dp"/>
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"/>
 
 		</LinearLayout>
 

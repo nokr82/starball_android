@@ -2,51 +2,18 @@
 <RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
-	android:background="@mipmap/main_pic_bg"
+	android:background="@mipmap/main_pic_03"
 	android:layout_height="match_parent"
 	android:orientation="vertical">
 
-	<!--   <LinearLayout
-			   android:id="@+id/ckLL"
-			   android:background="@mipmap/main_top_gra"
-			   android:layout_width="match_parent"
-			   android:layout_height="40dp"
-			   android:gravity="center_vertical">
-
-
-		   <ImageView
-				   android:id="@+id/charIV"
-				   android:paddingLeft="15dp"
-				   android:layout_width="wrap_content"
-				   android:layout_height="match_parent"
-				   android:src="@mipmap/main_left"/>
-
-		   <ImageView
-				   android:layout_width="0dp"
-				   android:layout_weight="1"
-				   android:layout_height="wrap_content"
-				   android:src="@mipmap/main_logo"/>
-
-		   <ImageView
-				   android:id="@+id/chatIV"
-				   android:paddingRight="15dp"
-				   android:layout_width="wrap_content"
-				   android:layout_height="match_parent"
-				   android:src="@mipmap/main_right"/>
-	   </LinearLayout>
-
-	   <ImageView
-			   android:paddingTop="28dp"
-			   android:layout_below="@id/ckLL"
-			   android:paddingLeft="15dp"
-			   android:layout_width="wrap_content"
-			   android:layout_height="wrap_content"
-			   android:src="@mipmap/back_op"
-			   android:layout_marginTop="0dp"
-			  />-->
+	<ImageView
+		android:id="@+id/imgIV"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scaleType="centerCrop"/>
 
 	<LinearLayout
-		android:layout_width="wrap_content"
+		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="vertical"
 		android:layout_marginLeft="19.5dp"
@@ -75,7 +42,6 @@
 
 
 		<TextView
-			android:id="@+id/titleTV"
 			android:paddingTop="15dp"
 			android:paddingBottom="5dp"
 			android:layout_width="wrap_content"
@@ -119,20 +85,87 @@
 				android:textColor="#ffffff"
 				android:text="  78%"
 				/>
+
+
 		</LinearLayout>
 
-		<TextView
-			android:paddingTop="15dp"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textSize="12dp"
-			android:textColor="#ffffff"
-			android:text="CJ제일제당 영업관리 지원자 홍길동입니다. 안녕하십니까! 저를 대표
-하는 두 단어는 &quot;조화&quot; &quot;도전&quot;입니다.\n
-먼저, 대학시절 10회가 넘는 팀 프로젝트를 경험하며 개인적인 편안함\n
-보다는 조직생활에 필요한 팀원 간의 조화에 힘썼습니다. "
-			/>
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:gravity="center_vertical"
+			android:layout_height="wrap_content">
 
+
+			<HorizontalScrollView
+				android:layout_marginTop="15dp"
+				android:layout_width="match_parent"
+				android:layout_height="33.5dp">
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent">
+
+					<ImageView
+						android:layout_width="45dp"
+						android:layout_marginRight="5dp"
+						android:layout_height="match_parent"
+						android:src="@mipmap/picoe"/>
+
+					<ImageView
+						android:layout_width="45dp"
+						android:layout_marginRight="5dp"
+						android:layout_height="match_parent"
+						android:src="@mipmap/pic_3"/>
+
+					<ImageView
+						android:layout_width="45dp"
+						android:layout_marginRight="5dp"
+						android:layout_height="match_parent"
+						android:src="@mipmap/pic_4"/>
+
+					<ImageView
+						android:layout_width="45dp"
+						android:layout_marginRight="5dp"
+						android:layout_height="match_parent"
+						android:src="@mipmap/picoe"/>
+
+					<ImageView
+						android:layout_width="45dp"
+						android:layout_marginRight="5dp"
+						android:layout_height="match_parent"
+						android:src="@mipmap/pic_3"/>
+
+					<ImageView
+						android:layout_width="45dp"
+						android:layout_marginRight="5dp"
+						android:layout_height="match_parent"
+						android:src="@mipmap/pic_4"/>
+
+				</LinearLayout>
+
+
+			</HorizontalScrollView>
+
+			<ImageView
+				android:paddingTop="15dp"
+				android:layout_marginRight="20dp"
+				android:layout_alignParentRight="true"
+				android:layout_centerInParent="true"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:src="@mipmap/main_thumnail_more"/>
+
+
+		</RelativeLayout>
+
+		<RatingBar
+			android:layout_marginTop="15dp"
+			style="@style/Base.Widget.AppCompat.RatingBar"
+			android:numStars="5"
+			android:max="5"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			/>
 	</LinearLayout>
 
 
@@ -144,7 +177,7 @@
 		android:layout_alignParentRight="true"
 		android:layout_alignParentBottom="true"
 		android:layout_marginRight="9.5dp"
-		android:layout_marginBottom="116dp"/>
+		android:layout_marginBottom="150dp"/>
 
 
 </RelativeLayout>

@@ -50,7 +50,7 @@ class SwipeStackAdapter(private val context: Context, private val data: ArrayLis
             layoutManager = noScrollLinearLayoutManager
 
             // specify an viewAdapter (ee also next example)
-            adapter = SwipeStackItemAdapter(item.getJSONArray("pages"))
+            adapter = SwipeStackItemAdapter(context, item.getJSONArray("pages"))
 
             PagerSnapHelper().attachToRecyclerView(this)
 
