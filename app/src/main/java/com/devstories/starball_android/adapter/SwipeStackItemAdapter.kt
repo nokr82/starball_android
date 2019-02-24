@@ -27,6 +27,7 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.google.android.exoplayer2.upstream.TransferListener
 import com.google.android.exoplayer2.util.Util
+import com.nostra13.universalimageloader.core.ImageLoader
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -94,12 +95,19 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
         val item = data.get(position) as JSONObject
 
         val id = Utils.getInt(item, "id")
-        val path = Utils.getString(item, "path")
-        val mediaType = Utils.getInt(item, "mediaType")
+        var path = Utils.getString(item, "path")
+        var mediaType = Utils.getInt(item, "mediaType")
+
+        if(!preview) {
+            path = Utils.getString(item, "image_uri")
+            mediaType = Utils.getInt(item, "type")
+        }
 
         var bitmap:Bitmap? = null
         if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
-            bitmap = Utils.getImage(context.contentResolver, path)
+            if(preview) {
+                bitmap = Utils.getImage(context.contentResolver, path)
+            }
         } else {
             // bitmap = MediaStore.Video.Thumbnails.getThumbnail(context.contentResolver, id.toLong(), MediaStore.Video.Thumbnails.MINI_KIND, null)
             bitmap = null
@@ -115,19 +123,23 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                     holder.infoLL.visibility = View.VISIBLE
                 }
 
-                if(bitmap != null) {
-                    holder.imgIV.setImageBitmap(bitmap)
+                if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
+
+                    if(preview && bitmap != null) {
+                        holder.imgIV.setImageBitmap(bitmap)
+                    } else {
+                        ImageLoader.getInstance().displayImage(Config.url + path, holder.imgIV, Utils.UILoptions)
+                    }
 
                     holder.imgIV.visibility = View.VISIBLE
                     holder.videoVV.visibility = View.GONE
+
                 } else {
 
                     var dataSource = path
                     if(!preview) {
                         dataSource = Config.url + path
                     }
-
-                    println("gg : ${dataSource}")
 
                     val (mediaSource, player) = createExoPlayer(dataSource)
 
@@ -170,19 +182,23 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                     holder.infoLL.visibility = View.VISIBLE
                 }
 
-                if(bitmap != null) {
-                    holder.imgIV.setImageBitmap(bitmap)
+                if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
+
+                    if(preview && bitmap != null) {
+                        holder.imgIV.setImageBitmap(bitmap)
+                    } else {
+                        ImageLoader.getInstance().displayImage(Config.url + path, holder.imgIV, Utils.UILoptions)
+                    }
 
                     holder.imgIV.visibility = View.VISIBLE
                     holder.videoVV.visibility = View.GONE
+
                 } else {
 
                     var dataSource = path
                     if(!preview) {
                         dataSource = Config.url + path
                     }
-
-                    println("gg : ${dataSource}")
 
                     val (mediaSource, player) = createExoPlayer(dataSource)
 
@@ -195,6 +211,7 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                     holder.imgIV.visibility = View.GONE
                     holder.videoVV.visibility = View.VISIBLE
                 }
+
             }
 
             else -> {
@@ -206,19 +223,23 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                     holder.infoLL.visibility = View.VISIBLE
                 }
 
-                if(bitmap != null) {
-                    holder.imgIV.setImageBitmap(bitmap)
+                if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
+
+                    if(preview && bitmap != null) {
+                        holder.imgIV.setImageBitmap(bitmap)
+                    } else {
+                        ImageLoader.getInstance().displayImage(Config.url + path, holder.imgIV, Utils.UILoptions)
+                    }
 
                     holder.imgIV.visibility = View.VISIBLE
                     holder.videoVV.visibility = View.GONE
+
                 } else {
 
                     var dataSource = path
                     if(!preview) {
                         dataSource = Config.url + path
                     }
-
-                    println("gg : ${dataSource}")
 
                     val (mediaSource, player) = createExoPlayer(dataSource)
 
@@ -231,6 +252,7 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                     holder.imgIV.visibility = View.GONE
                     holder.videoVV.visibility = View.VISIBLE
                 }
+
             }
         }
 

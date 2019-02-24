@@ -13,12 +13,4 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"/>
 
-	<TextView
-		android:id="@+id/idxTV"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:textColor="@android:color/holo_red_light"
-		android:gravity="center"
-		android:textSize="70dp"/>
-
 </RelativeLayout>

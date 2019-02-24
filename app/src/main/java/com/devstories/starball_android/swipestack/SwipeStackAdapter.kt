@@ -8,7 +8,6 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.TextView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.SwipeStackItemAdapter
 import com.devstories.starball_android.base.NoScrollLinearLayoutManager
@@ -36,10 +35,6 @@ class SwipeStackAdapter(private val context: Context, private val data: ArrayLis
 
         val item = data[position]
 
-        convertView.findViewById<TextView>(R.id.idxTV).apply {
-            text = position.toString()
-        }
-
         val recyclerView = convertView.findViewById<android.support.v7.widget.RecyclerView>(R.id.my_recycler_view).apply {
             // use this setting to improve performance if you know that changes
             // in content do not change the layout size of the RecyclerView
@@ -50,7 +45,7 @@ class SwipeStackAdapter(private val context: Context, private val data: ArrayLis
             layoutManager = noScrollLinearLayoutManager
 
             // specify an viewAdapter (ee also next example)
-            adapter = SwipeStackItemAdapter(context, JSONObject(), item.getJSONArray("pages"), false)
+            adapter = SwipeStackItemAdapter(context, item.getJSONObject("member"), item.getJSONArray("pages"), false)
 
             PagerSnapHelper().attachToRecyclerView(this)
 

@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.Html
 import android.util.Log
 import com.devstories.starball_android.Actions.JoinAction
@@ -18,6 +19,8 @@ import kotlinx.android.synthetic.main.activity_join_result.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import java.io.ByteArrayInputStream
+import java.io.File
 
 class JoinResultActivity : RootActivity() {
 
@@ -73,6 +76,9 @@ class JoinResultActivity : RootActivity() {
 
     fun join() {
 
+        val join_type = PrefUtils.getIntPreference(context, "join_join_type")
+        val sns_key = PrefUtils.getStringPreference(context, "join_sns_key")
+
         val email = PrefUtils.getStringPreference(context, "join_email")
         val passwd = PrefUtils.getStringPreference(context, "join_passwd")
         val name = PrefUtils.getStringPreference(context, "join_name")
@@ -85,15 +91,49 @@ class JoinResultActivity : RootActivity() {
         val intro = PrefUtils.getStringPreference(context, "join_intro")
 
         val params = RequestParams()
-        params.put("name", name)
+        params.put("join_type", join_type)
         params.put("email", email)
         params.put("passwd", passwd)
+        params.put("sns_key", sns_key)
+        params.put("name", name)
         params.put("gender", gender)
         params.put("height", height)
-        params.put("language", language)
         params.put("birth", birth)
         params.put("job", job)
+        params.put("school", school)
         params.put("intro", intro)
+
+        params.put("language", language)
+
+        // pictures
+
+        val joinPics = PrefUtils.getStringPreference(context, "join_pics", "")
+        if(joinPics.isNotEmpty()) {
+            val splited = joinPics.split("`devstories`")
+            for ((idx, sp) in  splited.withIndex()) {
+                try {
+                    val picture = JSONObject(sp)
+
+                    val id = Utils.getInt(picture!!, "id")
+                    val path = Utils.getString(picture!!, "path")
+                    val mediaType = Utils.getInt(picture!!, "mediaType")
+
+                    if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
+                        var bitmap = Utils.getImage(context.contentResolver, path)
+                        params.put("images[$idx]", ByteArrayInputStream(Utils.getByteArray(bitmap)), "${System.currentTimeMillis()}.png")
+                    } else {
+                        val file = File(path)
+                        var videoBytes = file.readBytes()
+                        params.put("images[$idx]", ByteArrayInputStream(videoBytes), "${System.currentTimeMillis()}.mp4")
+                    }
+                    params.put("media_types[$idx]", mediaType)
+
+                } catch (e:Exception) {
+
+                }
+            }
+
+        }
 
 
         JoinAction.join(params, object : JsonHttpResponseHandler() {
@@ -107,15 +147,16 @@ class JoinResultActivity : RootActivity() {
                     val result = response!!.getString("result")
 
                     Log.d("결과",result.toString())
-                    if ("ok" == result) {
+                    if ("ok" == result || "already" == result) {
+
+                        LoginActivity.processLoginData(context, response.getJSONObject("member"))
+
                         val intent = Intent(context, MainActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(intent)
 
-
                     } else {
-
-
+                        Utils.alert(context, "조회중 장애가 발생하였습니다.")
                     }
 
                 } catch (e: JSONException) {

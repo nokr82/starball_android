@@ -132,7 +132,7 @@ class JoinActivity : RootActivity() {
                 val account = task.getResult(ApiException::class.java)
 
                 if(account != null) {
-                    toJoinStep2Name(account.email, "3", account.id, account.displayName, account.photoUrl)
+                    toJoinStep2Name(account.email, 3, account.id, account.displayName, account.photoUrl)
                 }
 
 
@@ -205,7 +205,7 @@ class JoinActivity : RootActivity() {
             facebook_ID = id
             facebook_NAME = name
 
-            toJoinStep2Name(eamil!!, "4", facebook_ID, facebook_NAME, null)
+            toJoinStep2Name(eamil!!, 2, facebook_ID, facebook_NAME, null)
         }
         val parameters = Bundle()
         parameters.putString("fields", "id,name,link, email")
@@ -213,7 +213,7 @@ class JoinActivity : RootActivity() {
         request.executeAsync()
     }
 
-    private fun toJoinStep2Name(email: String?, join_type: String, sns_key: String?, name: String?, photo_url: Uri?) {
+    private fun toJoinStep2Name(email: String?, join_type: Int, sns_key: String?, name: String?, photo_url: Uri?) {
 
         PrefUtils.setPreference(context, "join_email", email)
         PrefUtils.setPreference(context, "join_join_type", join_type)

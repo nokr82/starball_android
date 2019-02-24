@@ -943,14 +943,14 @@ public class Utils {
         // .displayer(new RoundedBitmapDisplayer(2))
 //        .showImageOnLoading(R.drawable.noimage)
 //        .showImageForEmptyUri(R.drawable.noimage).showImageOnFail(R.drawable.noimage).delayBeforeLoading(100)
-        .cacheInMemory(true).cacheOnDisk(true).considerExifParams(true).imageScaleType(ImageScaleType.EXACTLY).bitmapConfig(Bitmap.Config.RGB_565).build();
+        .cacheInMemory(true).cacheOnDisk(true).considerExifParams(true).imageScaleType(ImageScaleType.EXACTLY).build();
 
     public static DisplayImageOptions UILoptionsProfile = new DisplayImageOptions.Builder()
 //         .displayer(new RoundedBitmapDisplayer(2))
 //         .showImageOnLoading(R.mipmap.myimg)
 //         .showImageForEmptyUri(R.mipmap.myimg)
 //        .showImageOnFail(R.mipmap.myimg).delayBeforeLoading(100)
-        .cacheInMemory(true).cacheOnDisk(true).considerExifParams(true).imageScaleType(ImageScaleType.EXACTLY).bitmapConfig(Bitmap.Config.RGB_565).build();
+        .cacheInMemory(true).cacheOnDisk(true).considerExifParams(true).imageScaleType(ImageScaleType.EXACTLY).build();
 
     public static DisplayImageOptions UILoptionsPosting = new DisplayImageOptions.Builder()
 //         .displayer(new RoundedBitmapDisplayer(2))
