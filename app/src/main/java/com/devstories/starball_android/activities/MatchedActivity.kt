@@ -44,7 +44,7 @@ class MatchedActivity : RootActivity() {
         animators1.add(scaleDownY)
 
         val firstSet = AnimatorSet()
-        firstSet.duration = duration * 12
+        firstSet.duration = duration * 10
         firstSet.playTogether(animators1)
 
 

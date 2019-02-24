@@ -67,7 +67,7 @@ class ChatNotiActivity : RootActivity() {
             rootRL.addView(item, params);
 
             val animation = ObjectAnimator.ofFloat(item, "translationY", (screenHeight + 100).toFloat())
-            animation.duration = Random.nextInt(800, 2000).toLong()
+            animation.duration = Random.nextInt(600, 1600).toLong()
 
             animators.add(animation)
 
