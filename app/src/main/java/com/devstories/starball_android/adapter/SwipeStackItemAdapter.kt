@@ -1,6 +1,7 @@
 package com.devstories.starball_android.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.provider.MediaStore
@@ -12,6 +13,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.devstories.starball_android.R
+import com.devstories.starball_android.activities.MatchedActivity
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.DateUtils
 import com.devstories.starball_android.base.Utils
@@ -43,6 +45,7 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
         var hereIV = itemView.findViewById<View>(R.id.hereIV) as ImageView
         var safeIV = itemView.findViewById<View>(R.id.safeIV) as ImageView
         var distanceTV = itemView.findViewById<View>(R.id.distanceTV) as TextView
+        var infoIV = itemView.findViewById<View>(R.id.infoIV) as ImageView
         var nameTV = itemView.findViewById<View>(R.id.nameTV) as TextView
         var ageTV = itemView.findViewById<View>(R.id.ageTV) as TextView
         var fitRateTV = itemView.findViewById<View>(R.id.fitRateTV) as TextView
@@ -59,6 +62,7 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
         var hereIV = itemView.findViewById<View>(R.id.hereIV) as ImageView
         var safeIV = itemView.findViewById<View>(R.id.safeIV) as ImageView
         var distanceTV = itemView.findViewById<View>(R.id.distanceTV) as TextView
+        var infoIV = itemView.findViewById<View>(R.id.infoIV) as ImageView
         var nameTV = itemView.findViewById<View>(R.id.nameTV) as TextView
         var ageTV = itemView.findViewById<View>(R.id.ageTV) as TextView
         var fitRateTV = itemView.findViewById<View>(R.id.fitRateTV) as TextView
@@ -74,6 +78,7 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
         var hereIV = itemView.findViewById<View>(R.id.hereIV) as ImageView
         var safeIV = itemView.findViewById<View>(R.id.safeIV) as ImageView
         var distanceTV = itemView.findViewById<View>(R.id.distanceTV) as TextView
+        var infoIV = itemView.findViewById<View>(R.id.infoIV) as ImageView
         var nameTV = itemView.findViewById<View>(R.id.nameTV) as TextView
         var ageTV = itemView.findViewById<View>(R.id.ageTV) as TextView
         var fitRateTV = itemView.findViewById<View>(R.id.fitRateTV) as TextView
@@ -185,6 +190,11 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                 holder.ageTV.text = age.toString()
                 holder.fitRateTV.text = "23%"
                 holder.introTV.text = intro
+
+                holder.infoIV.setOnClickListener {
+                    val intent = Intent(context, MatchedActivity::class.java)
+                    context.startActivity(intent)
+                }
             }
 
             1 -> {

@@ -26,7 +26,7 @@ class DlgSelectLanguageActivity  : RootActivity() {
         super.onCreate(savedInstanceState)
         setContentView(com.devstories.starball_android.R.layout.dlg_select_language)
 
-        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
 
         this.myContext = this
         progressDialog = ProgressDialog(myContext)
@@ -50,15 +50,15 @@ class DlgSelectLanguageActivity  : RootActivity() {
 
         ticketAdapter = ArrayAdapter<String>(myContext, android.R.layout.simple_spinner_item, languages)
         //set min value zero
-        ticketSP.setMinValue(0)
+        ticketSP.minValue = 0
         //set max value from length array string reduced 1
-        ticketSP.setMaxValue(languages.size - 1)
+        ticketSP.maxValue = languages.size - 1
         //implement array string to number picker
-        ticketSP.setDisplayedValues(array)
+        ticketSP.displayedValues = array
         //disable soft keyboard
-        ticketSP.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS)
+        ticketSP.descendantFocusability = NumberPicker.FOCUS_BLOCK_DESCENDANTS
         //set wrap true or false, try it you will know the difference
-        ticketSP.setWrapSelectorWheel(false)
+        ticketSP.wrapSelectorWheel = false
         ticketSP.setOnValueChangedListener { picker, oldVal, newVal ->
             selectedLanguage = languages.get(newVal)
             selectedLanguageTV.text = extractLanguage()
