@@ -177,8 +177,7 @@ class MainActivity : FragmentActivity() {
             override fun onStart() {
                 // show dialog
                 if (progressDialog != null) {
-
-                    progressDialog!!.show()
+                    // progressDialog!!.show()
                 }
             }
 

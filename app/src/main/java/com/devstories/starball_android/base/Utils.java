@@ -15,6 +15,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore.Images;
 import android.text.*;
 import android.text.style.ClickableSpan;
@@ -1424,5 +1425,9 @@ public class Utils {
         paint.setAlpha(155);
         canvas.drawRect(0F, 0F, (float) width, (float) height, paint);
         return bitmap;
+    }
+
+    public static void delay(Context context, long delay, Runnable runnable ) {
+        new Handler().postDelayed(runnable, delay);
     }
 }

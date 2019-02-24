@@ -106,7 +106,7 @@ class JoinStep12PreviewActivity : RootActivity() {
 
                         if(overallXScroll % screenWidth == 0) {
                             val position = (overallXScroll / screenWidth)
-                            if(position <= pages.length()) {
+                            if(position >= pages.length()) {
                                 return
                             }
 

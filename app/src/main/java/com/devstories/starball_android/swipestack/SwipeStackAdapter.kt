@@ -1,6 +1,7 @@
 package com.devstories.starball_android.swipestack
 
 import android.content.Context
+import android.provider.MediaStore
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PagerSnapHelper
 import android.support.v7.widget.RecyclerView
@@ -10,13 +11,17 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.SwipeStackItemAdapter
+import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.NoScrollLinearLayoutManager
+import com.devstories.starball_android.base.Utils
 import org.json.JSONObject
 
 class SwipeStackAdapter(private val context: Context, private val data: ArrayList<JSONObject>, swipeHelper: SwipeHelper) : BaseAdapter() {
 
     private var mSwipeHelper = swipeHelper
     private var dxs = 0
+
+    private var overallXScroll = 0
 
     override fun getCount(): Int {
         return data.size
@@ -34,6 +39,8 @@ class SwipeStackAdapter(private val context: Context, private val data: ArrayLis
         var convertView = View.inflate(context, com.devstories.starball_android.R.layout.item_card, null)
 
         val item = data[position]
+
+        val pages = item.getJSONArray("pages")
 
         val recyclerView = convertView.findViewById<android.support.v7.widget.RecyclerView>(R.id.my_recycler_view).apply {
             // use this setting to improve performance if you know that changes
@@ -53,6 +60,61 @@ class SwipeStackAdapter(private val context: Context, private val data: ArrayLis
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
                     dxs += dx
+
+                    overallXScroll += dx;
+
+                }
+
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+
+                    // println("newState : $newState")
+
+                    if(newState == RecyclerView.SCROLL_STATE_IDLE) {
+                        val screenWidth = Utils.getScreenWidth(context)
+
+                        println("$overallXScroll / $screenWidth = ${overallXScroll / screenWidth}")
+
+                        if(overallXScroll % screenWidth == 0) {
+                            val position = (overallXScroll / screenWidth)
+
+                            // println("pos : $position, pages.length() : ${pages.length()}")
+
+                            if(position >= pages.length()) {
+                                return
+                            }
+
+                            val item = pages.get(position) as JSONObject
+
+                            println(item)
+
+
+                            val id = Utils.getInt(item!!, "id")
+                            val path = Utils.getString(item!!, "image_uri")
+                            val mediaType = Utils.getInt(item!!, "type")
+
+                            if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO) {
+
+                                layoutManager!!.findViewByPosition(position)
+
+                                var dataSource = Config.url + path
+
+                                println("dd $dataSource")
+
+                                val holder = recyclerView.findViewHolderForAdapterPosition(position)
+                                if (holder is SwipeStackItemAdapter.MainSearchType1) {
+                                    holder.videoVV.player.playWhenReady = true
+                                    holder.videoVV.player.seekTo(0)
+                                } else if (holder is SwipeStackItemAdapter.MainSearchType2) {
+                                    holder.videoVV.player.playWhenReady = true
+                                    holder.videoVV.player.seekTo(0)
+                                } else if (holder is SwipeStackItemAdapter.MainSearchType3) {
+                                    holder.videoVV.player.playWhenReady = true
+                                    holder.videoVV.player.seekTo(0)
+                                }
+                            }
+                        }
+                    }
                 }
             })
 
@@ -84,9 +146,9 @@ class SwipeStackAdapter(private val context: Context, private val data: ArrayLis
                             // lastX = curX
                             // lastY = curY
 
-                            println("POS : $position, diff : ${Math.abs(xDistance - yDistance)}")
+                            // println("POS : $position, diff : ${Math.abs(xDistance - yDistance)}")
 
-                            println("mSwipeHelper.isFloating : ${mSwipeHelper.isFloating}")
+                            // println("mSwipeHelper.isFloating : ${mSwipeHelper.isFloating}")
 
                             if(mSwipeHelper.isFloating) {
                                 mSwipeHelper.onTouch(rv, e)

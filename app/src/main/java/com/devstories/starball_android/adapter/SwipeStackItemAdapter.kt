@@ -56,6 +56,12 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
 
         var imgIV = itemView.findViewById<View>(R.id.imgIV) as ImageView
         var videoVV = itemView.findViewById<View>(R.id.videoVV) as PlayerView
+        var hereIV = itemView.findViewById<View>(R.id.hereIV) as ImageView
+        var safeIV = itemView.findViewById<View>(R.id.safeIV) as ImageView
+        var distanceTV = itemView.findViewById<View>(R.id.distanceTV) as TextView
+        var nameTV = itemView.findViewById<View>(R.id.nameTV) as TextView
+        var ageTV = itemView.findViewById<View>(R.id.ageTV) as TextView
+        var fitRateTV = itemView.findViewById<View>(R.id.fitRateTV) as TextView
 
     }
 
@@ -65,6 +71,12 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
 
         var imgIV = itemView.findViewById<View>(R.id.imgIV) as ImageView
         var videoVV = itemView.findViewById<View>(R.id.videoVV) as PlayerView
+        var hereIV = itemView.findViewById<View>(R.id.hereIV) as ImageView
+        var safeIV = itemView.findViewById<View>(R.id.safeIV) as ImageView
+        var distanceTV = itemView.findViewById<View>(R.id.distanceTV) as TextView
+        var nameTV = itemView.findViewById<View>(R.id.nameTV) as TextView
+        var ageTV = itemView.findViewById<View>(R.id.ageTV) as TextView
+        var fitRateTV = itemView.findViewById<View>(R.id.fitRateTV) as TextView
 
     }
 
@@ -141,6 +153,8 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                         dataSource = Config.url + path
                     }
 
+                    println("dataSource 1 : $dataSource")
+
                     val (mediaSource, player) = createExoPlayer(dataSource)
 
                     holder.videoVV.requestFocus()
@@ -200,6 +214,8 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                         dataSource = Config.url + path
                     }
 
+                    println("dataSource 2 : $dataSource")
+
                     val (mediaSource, player) = createExoPlayer(dataSource)
 
                     holder.videoVV.requestFocus()
@@ -212,6 +228,23 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                     holder.videoVV.visibility = View.VISIBLE
                 }
 
+                val email = Utils.getString(memberInfo, "email")
+                val name = Utils.getString(memberInfo, "name")
+                val gender = Utils.getString(memberInfo, "gender")
+                val height = Utils.getString(memberInfo, "height")
+                val birth = Utils.getString(memberInfo, "birth")
+
+                val age = DateUtils.getYearDiffCount(DateUtils.getToday("yyyyMMdd"), birth, "yyyyMMdd")
+
+                val language = Utils.getString(memberInfo, "language")
+                val job = Utils.getString(memberInfo, "job")
+                val school = Utils.getString(memberInfo, "school")
+                val intro = Utils.getString(memberInfo, "intro")
+
+                holder.distanceTV.text = "17Km"
+                holder.nameTV.text = name
+                holder.ageTV.text = age.toString()
+                holder.fitRateTV.text = "23%"
             }
 
             else -> {
@@ -241,6 +274,8 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                         dataSource = Config.url + path
                     }
 
+                    println("dataSource 3 : $dataSource")
+
                     val (mediaSource, player) = createExoPlayer(dataSource)
 
                     holder.videoVV.requestFocus()
@@ -253,6 +288,23 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                     holder.videoVV.visibility = View.VISIBLE
                 }
 
+                val email = Utils.getString(memberInfo, "email")
+                val name = Utils.getString(memberInfo, "name")
+                val gender = Utils.getString(memberInfo, "gender")
+                val height = Utils.getString(memberInfo, "height")
+                val birth = Utils.getString(memberInfo, "birth")
+
+                val age = DateUtils.getYearDiffCount(DateUtils.getToday("yyyyMMdd"), birth, "yyyyMMdd")
+
+                val language = Utils.getString(memberInfo, "language")
+                val job = Utils.getString(memberInfo, "job")
+                val school = Utils.getString(memberInfo, "school")
+                val intro = Utils.getString(memberInfo, "intro")
+
+                holder.distanceTV.text = "17Km"
+                holder.nameTV.text = name
+                holder.ageTV.text = age.toString()
+                holder.fitRateTV.text = "23%"
             }
         }
 

@@ -1,19 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@mipmap/bg"
-    android:orientation="vertical"
-    android:gravity="center">
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@mipmap/bg"
+	android:orientation="vertical"
+	android:gravity="center">
 
 
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@mipmap/intro_bi"/>
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:gravity="center">
 
+		<ImageView
+			android:id="@+id/logoIV"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@mipmap/star_logo"/>
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:gravity="bottom">
+
+			<ImageView
+				android:id="@+id/sIV"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@mipmap/s"
+				android:layout_marginLeft="13dp"
+				android:layout_marginRight="10dp"
+				android:alpha="0.0"/>
+
+			<ImageView
+				android:id="@+id/tIV"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@mipmap/t"
+				android:alpha="0.0"/>
+
+			<ImageView
+				android:id="@+id/aIV"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@mipmap/a"
+				android:layout_marginLeft="11.5dp"
+				android:layout_marginRight="13.5dp"
+				android:alpha="0.0"/>
+
+			<ImageView
+				android:id="@+id/rIV"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@mipmap/r"
+				android:alpha="0.0"/>
+
+			<ImageView
+				android:id="@+id/bIV"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@mipmap/b"
+				android:layout_marginLeft="12.5dp"
+				android:layout_marginRight="12.5dp"
+				android:alpha="0.0"/>
+
+			<ImageView
+				android:id="@+id/a2IV"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@mipmap/a"
+				android:alpha="0.0"/>
+
+			<ImageView
+				android:id="@+id/lIV"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@mipmap/l_2"
+				android:layout_marginLeft="13.5dp"
+				android:layout_marginRight="14.5dp"
+				android:alpha="0.0"/>
+
+			<ImageView
+				android:id="@+id/l2IV"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@mipmap/l_2"
+				android:alpha="0.0"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
 
 
 </LinearLayout>
