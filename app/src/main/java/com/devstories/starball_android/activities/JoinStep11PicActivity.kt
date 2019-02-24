@@ -4,18 +4,18 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Html
 import android.util.Log
 import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.ProfileAdapter
 import com.devstories.starball_android.base.RootActivity
-import com.devstories.starball_android.base.Utils
 import kotlinx.android.synthetic.main.activity_join_picture.*
 
 class JoinStep11PicActivity : RootActivity() {
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
-    lateinit var ProfileAdapter: ProfileAdapter
+    lateinit var profileAdapter: ProfileAdapter
     var email = ""
     var name = ""
     var height = ""
@@ -27,9 +27,18 @@ class JoinStep11PicActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
+        val spanText = getString(R.string.picture_content)
 
-        ProfileAdapter = ProfileAdapter(context, R.layout.item_profile_img, data)
-        profileGV.adapter = ProfileAdapter
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.N) {
+            descTV.text = Html.fromHtml(spanText);
+        } else {
+            descTV.text = Html.fromHtml(spanText, Html.FROM_HTML_MODE_LEGACY);
+        }
+
+        /*
+        profileAdapter = ProfileAdapter(context, R.layout.item_profile_img, data)
+        profileGV.adapter = profileAdapter
+        profileGV.isExpanded = true
 
 
 
@@ -38,6 +47,7 @@ class JoinStep11PicActivity : RootActivity() {
             Log.d("로그",view.toString())
             Log.d("로그",l.toString())
         }
+        */
 
         nextTV.setOnClickListener {
             val intent = Intent(context, JoinResultActivity::class.java)

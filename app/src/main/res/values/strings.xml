@@ -103,7 +103,7 @@
     <string name="phone_confirm_content">인증번호를 받지 못하셨나요? 받지 못하셨다면, 번호를 다시 확인하신 후</string>
     <string name="push_link">이 링크를 눌러 주세요</string>
     <string name="phone_certi_no_share">회원님의 정보는 인증 목적으로만 사용됩니다. 저희는 이 정보를 그 누구와도 공유하지 않습니다.</string>
-    <string name="picture_content">인물 외 사진은 자동 삭제됩니다. 세로화면에 최적화 되어 있습니다. 최소 3장의 동영상 또는 사진을 등록해 주세요. 동영상을 추천합니다.</string>
+    <string name="picture_content"><![CDATA[<b>인물 외 사진</b>은 <b>자동 삭제</b>됩니다.<br/>세로화면에 최적화 되어 있습니다.<br/><b>최소 3장</b>의 동영상 또는 사진을 등록해 주세요.<br/><b>동영상을 추천합니다.</b>]]></string>
     <string name="pwd_title">당신의 비밀번호는,</string>
     <string name="pwd_content">6자리에서~12자리로 \n최소 영문자 1개와 숫자1개를 포함하여야 합니다.</string>
     <string name="pwd_confirm">올바른 비밀번호 입니다.</string>
@@ -117,7 +117,7 @@
     <string name="result_lesson">회원님 존재에 대한 존중, 만나게 될 친구들에 대한 배려, 회원님 미래를 위한 환원 입니다.</string>
     <string name="school_title">당신의 최종학교는,</string>
     <string name="shape_title">당신의 모습은,</string>
-    <string name="shape_content">동영상 갯수와 사진 퀄리티에 따라 상대 소개 등급이 달라집니다.</string>
+    <string name="shape_content"><![CDATA[동영상 갯수와 사진 퀄리티에 따라 <b>상대 소개 등급이 달라집니다.</b>]]></string>
     <string name="shape_remember">기억하세요.</string>
     <string name="join_title">회원가입</string>
     <string name="if_not">없다면,</string>
