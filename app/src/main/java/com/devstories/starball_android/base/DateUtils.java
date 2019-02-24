@@ -425,6 +425,16 @@ public class DateUtils {
 		}
 	}
 
+	public static int getYearDiffCount(String fromDate, String toDate, String fmt) {
+		SimpleDateFormat sdf = new SimpleDateFormat(fmt);
+
+		try {
+			return (int) ((sdf.parse(toDate).getTime() - sdf.parse(fromDate).getTime()) / 1000 / 60 / 60 / 24 / 365);
+		} catch (Exception e) {
+			return 0;
+		}
+	}
+
 	public static int getDiffTimeCount() {
 		SimpleDateFormat sdf = new SimpleDateFormat("HH");
 

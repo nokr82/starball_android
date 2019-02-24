@@ -2,35 +2,68 @@ package com.devstories.starball_android.adapter
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.net.Uri
 import android.provider.MediaStore
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import com.devstories.starball_android.R
+import com.devstories.starball_android.base.Config
+import com.devstories.starball_android.base.DateUtils
 import com.devstories.starball_android.base.Utils
+import com.google.android.exoplayer2.ExoPlayerFactory
+import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
+import com.google.android.exoplayer2.source.ExtractorMediaSource
+import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
+import com.google.android.exoplayer2.ui.PlayerView
+import com.google.android.exoplayer2.upstream.DataSource
+import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.upstream.TransferListener
+import com.google.android.exoplayer2.util.Util
 import org.json.JSONArray
 import org.json.JSONObject
 
 
-class SwipeStackItemAdapter(private val context:Context, private val data: JSONArray) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SwipeStackItemAdapter(private val context:Context, private val memberInfo:JSONObject, private val data: JSONArray, private val preview:Boolean) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class MainSearchType1(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        var infoLL = itemView.findViewById<View>(R.id.infoLL) as LinearLayout
+
         var imgIV = itemView.findViewById<View>(R.id.imgIV) as ImageView
+        var videoVV = itemView.findViewById<View>(R.id.videoVV) as PlayerView
+        var hereIV = itemView.findViewById<View>(R.id.hereIV) as ImageView
+        var safeIV = itemView.findViewById<View>(R.id.safeIV) as ImageView
+        var distanceTV = itemView.findViewById<View>(R.id.distanceTV) as TextView
+        var nameTV = itemView.findViewById<View>(R.id.nameTV) as TextView
+        var ageTV = itemView.findViewById<View>(R.id.ageTV) as TextView
+        var fitRateTV = itemView.findViewById<View>(R.id.fitRateTV) as TextView
+        var introTV = itemView.findViewById<View>(R.id.introTV) as TextView
 
     }
 
     class MainSearchType2(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        var infoLL = itemView.findViewById<View>(R.id.infoLL) as LinearLayout
+
         var imgIV = itemView.findViewById<View>(R.id.imgIV) as ImageView
+        var videoVV = itemView.findViewById<View>(R.id.videoVV) as PlayerView
 
     }
 
     class MainSearchType3(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        var infoLL = itemView.findViewById<View>(R.id.infoLL) as LinearLayout
+
         var imgIV = itemView.findViewById<View>(R.id.imgIV) as ImageView
+        var videoVV = itemView.findViewById<View>(R.id.videoVV) as PlayerView
 
     }
 
@@ -60,35 +93,168 @@ class SwipeStackItemAdapter(private val context:Context, private val data: JSONA
 
         val item = data.get(position) as JSONObject
 
-        val id = Utils.getInt(item!!, "id")
-        val path = Utils.getString(item!!, "path")
-        val mediaType = Utils.getInt(item!!, "mediaType")
+        val id = Utils.getInt(item, "id")
+        val path = Utils.getString(item, "path")
+        val mediaType = Utils.getInt(item, "mediaType")
 
-        var bitmap:Bitmap?
+        var bitmap:Bitmap? = null
         if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
             bitmap = Utils.getImage(context.contentResolver, path)
         } else {
-            bitmap = MediaStore.Video.Thumbnails.getThumbnail(context.contentResolver, id.toLong(), MediaStore.Video.Thumbnails.MINI_KIND, null)
+            // bitmap = MediaStore.Video.Thumbnails.getThumbnail(context.contentResolver, id.toLong(), MediaStore.Video.Thumbnails.MINI_KIND, null)
+            bitmap = null
         }
 
         when (holder.itemViewType) {
             0 -> {
                 val holder = holder as MainSearchType1
-                holder.imgIV.setImageBitmap(bitmap)
+
+                if(preview) {
+                    holder.infoLL.visibility = View.VISIBLE
+                } else {
+                    holder.infoLL.visibility = View.VISIBLE
+                }
+
+                if(bitmap != null) {
+                    holder.imgIV.setImageBitmap(bitmap)
+
+                    holder.imgIV.visibility = View.VISIBLE
+                    holder.videoVV.visibility = View.GONE
+                } else {
+
+                    var dataSource = path
+                    if(!preview) {
+                        dataSource = Config.url + path
+                    }
+
+                    println("gg : ${dataSource}")
+
+                    val (mediaSource, player) = createExoPlayer(dataSource)
+
+                    holder.videoVV.requestFocus()
+
+                    holder.videoVV.player = player!!
+                    player.playWhenReady = false
+                    player.prepare(mediaSource)
+
+                    holder.imgIV.visibility = View.GONE
+                    holder.videoVV.visibility = View.VISIBLE
+                }
+
+                val email = Utils.getString(memberInfo, "email")
+                val name = Utils.getString(memberInfo, "name")
+                val gender = Utils.getString(memberInfo, "gender")
+                val height = Utils.getString(memberInfo, "height")
+                val birth = Utils.getString(memberInfo, "birth")
+
+                val age = DateUtils.getYearDiffCount(DateUtils.getToday("yyyyMMdd"), birth, "yyyyMMdd")
+
+                val language = Utils.getString(memberInfo, "language")
+                val job = Utils.getString(memberInfo, "job")
+                val school = Utils.getString(memberInfo, "school")
+                val intro = Utils.getString(memberInfo, "intro")
+
+                holder.distanceTV.text = "17Km"
+                holder.nameTV.text = name
+                holder.ageTV.text = age.toString()
+                holder.fitRateTV.text = "23%"
+                holder.introTV.text = intro
             }
 
             1 -> {
                 val holder = holder as MainSearchType2
-                holder.imgIV.setImageBitmap(bitmap)
+
+                if(preview) {
+                    holder.infoLL.visibility = View.GONE
+                } else {
+                    holder.infoLL.visibility = View.VISIBLE
+                }
+
+                if(bitmap != null) {
+                    holder.imgIV.setImageBitmap(bitmap)
+
+                    holder.imgIV.visibility = View.VISIBLE
+                    holder.videoVV.visibility = View.GONE
+                } else {
+
+                    var dataSource = path
+                    if(!preview) {
+                        dataSource = Config.url + path
+                    }
+
+                    println("gg : ${dataSource}")
+
+                    val (mediaSource, player) = createExoPlayer(dataSource)
+
+                    holder.videoVV.requestFocus()
+
+                    holder.videoVV.player = player!!
+                    player.playWhenReady = false
+                    player.prepare(mediaSource)
+
+                    holder.imgIV.visibility = View.GONE
+                    holder.videoVV.visibility = View.VISIBLE
+                }
             }
 
             else -> {
                 val holder = holder as MainSearchType3
-                holder.imgIV.setImageBitmap(bitmap)
+
+                if(preview) {
+                    holder.infoLL.visibility = View.GONE
+                } else {
+                    holder.infoLL.visibility = View.VISIBLE
+                }
+
+                if(bitmap != null) {
+                    holder.imgIV.setImageBitmap(bitmap)
+
+                    holder.imgIV.visibility = View.VISIBLE
+                    holder.videoVV.visibility = View.GONE
+                } else {
+
+                    var dataSource = path
+                    if(!preview) {
+                        dataSource = Config.url + path
+                    }
+
+                    println("gg : ${dataSource}")
+
+                    val (mediaSource, player) = createExoPlayer(dataSource)
+
+                    holder.videoVV.requestFocus()
+
+                    holder.videoVV.player = player!!
+                    player.playWhenReady = false
+                    player.prepare(mediaSource)
+
+                    holder.imgIV.visibility = View.GONE
+                    holder.videoVV.visibility = View.VISIBLE
+                }
             }
         }
 
 
+    }
+
+    private fun createExoPlayer(dataSource: String?): Pair<ExtractorMediaSource, SimpleExoPlayer> {
+        val bandwidthMeter = DefaultBandwidthMeter()
+        val extractorsFactory = DefaultExtractorsFactory()
+        val videoTrackSelectionFactory = AdaptiveTrackSelection.Factory(bandwidthMeter)
+        val mediaDataSourceFactory = DefaultDataSourceFactory(
+            context,
+            Util.getUserAgent(context, "mediaPlayerSample"),
+            bandwidthMeter as TransferListener<in DataSource>
+        )
+        val mediaSource = ExtractorMediaSource(
+            Uri.parse(dataSource),
+            mediaDataSourceFactory, extractorsFactory, null, null
+        )
+
+        val trackSelector = DefaultTrackSelector(videoTrackSelectionFactory)
+
+        val player = ExoPlayerFactory.newSimpleInstance(context, trackSelector)
+        return Pair(mediaSource, player)
     }
 
     // Return the size of your dataset (invoked by the layout manager)

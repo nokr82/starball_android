@@ -35,7 +35,7 @@ class JoinStep8SchoolActivity : RootActivity() {
 
             PrefUtils.setPreference(context, "school", school)
 
-            val intent = Intent(context, JoinStep9ExpActivity::class.java)
+            val intent = Intent(context, JoinStep9IntroActivity::class.java)
             startActivity(intent)
         }
     }

@@ -34,6 +34,15 @@ android {
             signingConfig signingConfigs.sign
         }
     }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -69,5 +78,7 @@ dependencies {
 
     implementation 'gun0912.ted:tedpermission:2.2.2'
 
+    implementation 'com.google.android.exoplayer:exoplayer:2.7.3'
+    
 }
 apply plugin: 'com.google.gms.google-services'

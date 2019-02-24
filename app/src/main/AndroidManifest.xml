@@ -89,7 +89,7 @@
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
 		<activity
-			android:name=".activities.JoinStep9ExpActivity"
+			android:name=".activities.JoinStep9IntroActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
 		<activity

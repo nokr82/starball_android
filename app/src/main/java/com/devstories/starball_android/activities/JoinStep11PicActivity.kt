@@ -175,8 +175,6 @@ class JoinStep11PicActivity : RootActivity() {
         // clear
         for (idx in 0..8) {
 
-            println("idx : $idx")
-
             val imageIV = getIV(idx)
             val delIV = getDelIV(idx)
 

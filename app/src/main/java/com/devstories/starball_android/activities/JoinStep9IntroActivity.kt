@@ -11,29 +11,29 @@ import com.devstories.starball_android.R
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
-import kotlinx.android.synthetic.main.activity_join_expression.*
+import kotlinx.android.synthetic.main.activity_join_step9_intro.*
 
-class JoinStep9ExpActivity : RootActivity() {
+class JoinStep9IntroActivity : RootActivity() {
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
-    var exp = ""
+    var intro = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_join_expression)
+        setContentView(R.layout.activity_join_step9_intro)
 
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        var exp = PrefUtils.getStringPreference(context,"join_exp", "")
-        if (exp.isNotEmpty()){
-            expET.setText(exp)
-            limitTV.text = exp.length.toString()+"/500"
+        var intro = PrefUtils.getStringPreference(context,"join_intro", "")
+        if (intro.isNotEmpty()){
+            introET.setText(intro)
+            limitTV.text = intro.length.toString()+"/500"
         }
 
-        expET.addTextChangedListener(object : TextWatcher {
+        introET.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
 
@@ -47,14 +47,14 @@ class JoinStep9ExpActivity : RootActivity() {
         })
 
         nextTV.setOnClickListener {
-            exp = Utils.getString(expET)
+            intro = Utils.getString(introET)
 
-            if (exp.isEmpty()) {
+            if (intro.isEmpty()) {
                 Toast.makeText(context, "당신을 표현할 수 있는 말을 입력해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            PrefUtils.setPreference(context, "join_exp", exp)
+            PrefUtils.setPreference(context, "join_intro", intro)
 
             val intent = Intent(context, JoinStep10Activity::class.java)
             startActivity(intent)
@@ -62,7 +62,7 @@ class JoinStep9ExpActivity : RootActivity() {
 
         skipTV.setOnClickListener {
 
-            PrefUtils.removePreference(context, "join_exp")
+            PrefUtils.removePreference(context, "join_intro")
 
             val intent = Intent(context, JoinStep10Activity::class.java)
             startActivity(intent)
