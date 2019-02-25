@@ -184,7 +184,7 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                 val height = Utils.getString(memberInfo, "height")
                 val birth = Utils.getString(memberInfo, "birth")
 
-                val age = DateUtils.getYearDiffCount(DateUtils.getToday("yyyyMMdd"), birth, "yyyyMMdd")
+                val age = DateUtils.getYearDiffCount(birth, DateUtils.getToday("yyyyMMdd"), "yyyyMMdd")
 
                 val language = Utils.getString(memberInfo, "language")
                 val job = Utils.getString(memberInfo, "job")
@@ -256,7 +256,7 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                 val height = Utils.getString(memberInfo, "height")
                 val birth = Utils.getString(memberInfo, "birth")
 
-                val age = DateUtils.getYearDiffCount(DateUtils.getToday("yyyyMMdd"), birth, "yyyyMMdd")
+                val age = DateUtils.getYearDiffCount(birth, DateUtils.getToday("yyyyMMdd"), "yyyyMMdd")
 
                 val language = Utils.getString(memberInfo, "language")
                 val job = Utils.getString(memberInfo, "job")
@@ -317,7 +317,7 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                 val height = Utils.getString(memberInfo, "height")
                 val birth = Utils.getString(memberInfo, "birth")
 
-                val age = DateUtils.getYearDiffCount(DateUtils.getToday("yyyyMMdd"), birth, "yyyyMMdd")
+                val age = DateUtils.getYearDiffCount(birth, DateUtils.getToday("yyyyMMdd"), "yyyyMMdd")
 
                 val language = Utils.getString(memberInfo, "language")
                 val job = Utils.getString(memberInfo, "job")
