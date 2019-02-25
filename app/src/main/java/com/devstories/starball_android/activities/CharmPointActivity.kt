@@ -24,9 +24,6 @@ class CharmPointActivity : RootActivity() {
             finish()
         }
 
-
-
-
     }
 
 }
