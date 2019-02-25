@@ -103,12 +103,15 @@ class SwipeStackAdapter(private val context: Context, private val data: ArrayLis
 
                                 val holder = recyclerView.findViewHolderForAdapterPosition(position)
                                 if (holder is SwipeStackItemAdapter.MainSearchType1) {
+                                    // holder.videoVV.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM)
                                     holder.videoVV.player.playWhenReady = true
                                     holder.videoVV.player.seekTo(0)
                                 } else if (holder is SwipeStackItemAdapter.MainSearchType2) {
+                                    // holder.videoVV.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM)
                                     holder.videoVV.player.playWhenReady = true
                                     holder.videoVV.player.seekTo(0)
                                 } else if (holder is SwipeStackItemAdapter.MainSearchType3) {
+                                    // holder.videoVV.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM)
                                     holder.videoVV.player.playWhenReady = true
                                     holder.videoVV.player.seekTo(0)
                                 }
