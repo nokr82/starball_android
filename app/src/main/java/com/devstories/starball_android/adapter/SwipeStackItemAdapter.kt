@@ -18,6 +18,7 @@ import com.devstories.starball_android.activities.MatchedActivity
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.DateUtils
 import com.devstories.starball_android.base.Utils
+import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
@@ -166,9 +167,10 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
 
                     val (mediaSource, player) = createExoPlayer(dataSource)
 
+                    // holder.videoVV.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM)
                     holder.videoVV.requestFocus()
 
-                    holder.videoVV.player = player!!
+                    holder.videoVV.player = player
                     player.playWhenReady = false
                     player.prepare(mediaSource)
 
@@ -237,9 +239,10 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
 
                     val (mediaSource, player) = createExoPlayer(dataSource)
 
+                    // holder.videoVV.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM)
                     holder.videoVV.requestFocus()
 
-                    holder.videoVV.player = player!!
+                    holder.videoVV.player = player
                     player.playWhenReady = false
                     player.prepare(mediaSource)
 
@@ -297,9 +300,10 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
 
                     val (mediaSource, player) = createExoPlayer(dataSource)
 
+                    // holder.videoVV.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM)
                     holder.videoVV.requestFocus()
 
-                    holder.videoVV.player = player!!
+                    holder.videoVV.player = player
                     player.playWhenReady = false
                     player.prepare(mediaSource)
 
@@ -347,6 +351,7 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
         val trackSelector = DefaultTrackSelector(videoTrackSelectionFactory)
 
         val player = ExoPlayerFactory.newSimpleInstance(context, trackSelector)
+        player.videoScalingMode = C.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING
         return Pair(mediaSource, player)
     }
 
