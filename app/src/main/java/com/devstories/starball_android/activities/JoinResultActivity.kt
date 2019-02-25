@@ -80,7 +80,7 @@ class JoinResultActivity : RootActivity() {
         val sns_key = PrefUtils.getStringPreference(context, "join_sns_key")
 
         val email = PrefUtils.getStringPreference(context, "join_email")
-        val passwd = PrefUtils.getStringPreference(context, "join_passwd")
+        val passwd = PrefUtils.getStringPreference(context, "passwd")
         val name = PrefUtils.getStringPreference(context, "join_name")
         val gender = PrefUtils.getStringPreference(context, "join_gender")
         val height = PrefUtils.getStringPreference(context, "join_height")

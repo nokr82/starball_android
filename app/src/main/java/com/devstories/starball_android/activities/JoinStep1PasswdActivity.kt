@@ -69,6 +69,8 @@ class JoinStep1PasswdActivity : RootActivity() {
             val passwd = Utils.getString(passwdET)
             PrefUtils.setPreference(context, "passwd", passwd)
 
+            println("passwd::::::::::::::::::::::::::::::::::::::$passwd")
+
             val intent = Intent(context, JoinStep2NameActivity::class.java)
             startActivity(intent)
 
