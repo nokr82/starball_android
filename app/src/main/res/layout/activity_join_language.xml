@@ -1,98 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_marginLeft="10dp"
+	android:layout_marginRight="10dp"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	>
 
-    <TextView
-        android:textStyle="bold"
-        android:layout_marginTop="66dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:textColor="#333333"
-        android:text="@string/language_title"
-        />
+	<TextView
+		android:textStyle="bold"
+		android:layout_marginTop="66dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textSize="24dp"
+		android:textColor="#333333"
+		android:text="@string/language_title"/>
 
-    <RelativeLayout
-        android:layout_marginTop="70dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+	<RelativeLayout
+		android:layout_marginTop="70dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
 
-        <Spinner
-            android:id="@+id/languageSP"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/background_border_strock1">
+		<TextView
+			android:id="@+id/languageTV"
+			android:layout_width="match_parent"
+			android:layout_height="40dp"
+			android:background="@drawable/background_border_strock1"
+			android:text="선택해주세요."
+			android:textColorHint="#bbbbbb"
+			android:paddingLeft="10dp"
+			android:gravity="center_vertical"
+			android:textSize="14dp"/>
+
+		<ImageView
+			android:layout_marginTop="15dp"
+			android:layout_marginRight="10dp"
+			android:layout_alignParentRight="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@mipmap/op_drop"/>
+	</RelativeLayout>
+
+	<ListView
+		android:id="@+id/languageLV"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:divider="@null"
+		android:listSelector="#00000000">
+
+	</ListView>
 
 
-        </Spinner>
+	<LinearLayout
+		android:id="@+id/addLanguageLL"
+		android:layout_marginTop="20.5dp"
+		android:layout_width="wrap_content"
+		android:orientation="horizontal"
+		android:gravity="center_vertical"
+		android:paddingTop="10dp"
+		android:paddingBottom="10dp"
+		android:paddingRight="10dp"
+		android:layout_height="wrap_content"
+		android:visibility="gone">
 
-        <ImageView
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="10dp"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/op_drop"/>
-    </RelativeLayout>
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@mipmap/plus_op"/>
 
-    <ListView
-        android:id="@+id/languageLV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:divider="@null">
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="18dp"
+			android:textStyle="bold"
+			android:textColor="#333333"
+			android:text="@string/add_language"/>
 
-    </ListView>
+	</LinearLayout>
 
+	<View
+		android:layout_width="wrap_content"
+		android:layout_height="0dp"
+		android:layout_weight="1"/>
 
-    <LinearLayout
-        android:id="@+id/addLanguageLL"
-        android:layout_marginTop="20.5dp"
-        android:layout_width="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingRight="10dp"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/plus_op"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:textColor="#333333"
-            android:text="@string/add_language" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <TextView
-        android:id="@+id/nextTV"
-        android:layout_marginBottom="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#000000"
-        android:text="@string/next"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textSize="20.5dp"
-        android:textColor="#ffffff"/>
+	<TextView
+		android:id="@+id/nextTV"
+		android:layout_marginBottom="40dp"
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:background="#000000"
+		android:text="@string/next"
+		android:textStyle="bold"
+		android:gravity="center"
+		android:textSize="20.5dp"
+		android:textColor="#ffffff"/>
 
 
 </LinearLayout>

@@ -1,40 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
 
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+	<com.devstories.starball_android.base.RationalLinearLayout
+		android:id="@+id/profileLL"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:gravity="center"
+		app:ratio="90:120"
+		android:background="@drawable/background_border_strock10_profile">
 
-<RelativeLayout
-        android:layout_width="110dp"
-        android:layout_height="140dp">
-
-    <LinearLayout
-            android:id="@+id/profileLL"
-            android:layout_width="90dp"
-            android:layout_height="120dp"
-            android:gravity="center"
-            android:background="@drawable/background_border_strock10_profile">
-
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/profile_plus"/>
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@mipmap/profile_plus"/>
+	</com.devstories.starball_android.base.RationalLinearLayout>
 
 
-
-
-    </LinearLayout>
-    <ImageView
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/profile_pic_bg_del"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            />
-</RelativeLayout>
+	<ImageView
+		android:visibility="visible"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@mipmap/profile_pic_bg_del"
+		android:layout_alignParentBottom="true"
+		android:layout_alignParentRight="true"
+		android:layout_marginBottom="25dp"
+		android:layout_marginRight="-25dp"/>
 
 
 </RelativeLayout>

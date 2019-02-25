@@ -15,6 +15,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore.Images;
 import android.text.*;
 import android.text.style.ClickableSpan;
@@ -943,14 +944,14 @@ public class Utils {
         // .displayer(new RoundedBitmapDisplayer(2))
 //        .showImageOnLoading(R.drawable.noimage)
 //        .showImageForEmptyUri(R.drawable.noimage).showImageOnFail(R.drawable.noimage).delayBeforeLoading(100)
-        .cacheInMemory(true).cacheOnDisk(true).considerExifParams(true).imageScaleType(ImageScaleType.EXACTLY).bitmapConfig(Bitmap.Config.RGB_565).build();
+        .cacheInMemory(true).cacheOnDisk(true).considerExifParams(true).imageScaleType(ImageScaleType.EXACTLY).build();
 
     public static DisplayImageOptions UILoptionsProfile = new DisplayImageOptions.Builder()
 //         .displayer(new RoundedBitmapDisplayer(2))
 //         .showImageOnLoading(R.mipmap.myimg)
 //         .showImageForEmptyUri(R.mipmap.myimg)
 //        .showImageOnFail(R.mipmap.myimg).delayBeforeLoading(100)
-        .cacheInMemory(true).cacheOnDisk(true).considerExifParams(true).imageScaleType(ImageScaleType.EXACTLY).bitmapConfig(Bitmap.Config.RGB_565).build();
+        .cacheInMemory(true).cacheOnDisk(true).considerExifParams(true).imageScaleType(ImageScaleType.EXACTLY).build();
 
     public static DisplayImageOptions UILoptionsPosting = new DisplayImageOptions.Builder()
 //         .displayer(new RoundedBitmapDisplayer(2))
@@ -1307,6 +1308,16 @@ public class Utils {
         return -1;
     }
 
+    public static int getInt(TextView textView, int defaultValue) {
+        String val = textView.getText().toString().trim();
+        try {
+            return Integer.parseInt(val);
+        } catch (Exception e) {
+
+        }
+        return 0;
+    }
+
     // 리스트 뷰 아이템 높이만큼 크기 늘리기
     public static void setListViewHeightBasedOnItems(ListView listView) {
 
@@ -1414,5 +1425,9 @@ public class Utils {
         paint.setAlpha(155);
         canvas.drawRect(0F, 0F, (float) width, (float) height, paint);
         return bitmap;
+    }
+
+    public static void delay(Context context, long delay, Runnable runnable ) {
+        new Handler().postDelayed(runnable, delay);
     }
 }

@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">Starball_android</string>
+    <string name="app_name">Starball</string>
+    <string name="facebook_app_id">249192249348195</string>
+    <string name="fb_login_protocol_scheme">fb249192249348195</string>
+
     <string name="cash">Cash 요청</string>
     <string name="starball">보유 Starball :</string>
     <string name="cash_starball">Cash 가능 Starball 갯수:</string>
@@ -8,8 +11,8 @@
     <string name="cash_request_amount">Cash 요청 Starball 갯수</string>
     <string name="ex_input">입력해주세요</string>
     <string name="prediction_cash">예상 Cash</string>
-    <string name="cash_content2">앱스토어 결제비용과 시스템비용을 공제한 금액이 송금됩니다.  페이팔 송금수수료 약 3% 공제 됩니다.</string>
-    <string name="cash_content3">환율에 따라 금액은 최종 달라질 수 있습니다.  요청일 기준 2~3일 소요될 수 있습니다.</string>
+    <string name="cash_content2">앱스토어 결제비용과 시스템비용을 공제한 금액이 송금됩니다. 페이팔 송금수수료 약 3&#37; 공제 됩니다.</string>
+    <string name="cash_content3">환율에 따라 금액은 최종 달라질 수 있습니다. 요청일 기준 2~3일 소요될 수 있습니다.</string>
     <string name="cash_content4">페이팔 연동 e-mail을 적어 주세요.</string>
     <string name="deposit_request">입금요청 e-mail :</string>
     <string name="charmpoint_content">최대 4개를 선택해주세요.</string>
@@ -49,20 +52,22 @@
     <string name="Phone_verification">전화 번호 인증</string>
     <string name="safety_certi">안전 인증</string>
     <string name="no_certi">인증되지 않았습니다.</string>
-    <string name="edit_profile_content2">계정인증이 다 완료되지 않을 경우, 만약의 사태에 저희가 회원님을 보호  및 조치 할 수 없을 수 있습니다.  회원님의 안전을 위해 계정 인증을 진행해 주세요  또한, 미 인증시 Starball을 Cash화가 불가 할 수도 있습니다.</string>
+    <string name="edit_profile_content2">계정인증이 다 완료되지 않을 경우, 만약의 사태에 저희가 회원님을 보호 및 조치 할 수 없을 수 있습니다. 회원님의 안전을 위해 계정 인증을
+        진행해 주세요 또한, 미 인증시 Starball을 Cash화가 불가 할 수도 있습니다.
+    </string>
     <string name="connected_account">연결된 계정</string>
     <string name="email_acount">이메일 인증</string>
     <string name="facebook_conect">Facebook 연결</string>
     <string name="instagram_connect">instagram 연결</string>
     <string name="nomal">정상</string>
     <string name="ghost">유령모드</string>
-    <string name="edit_profile_content3">유령모드일 경우 검색에 나타나지 않습니다.  또한 가상으로 탈퇴된 것으로 처리 됩니다.</string>
+    <string name="edit_profile_content3">유령모드일 경우 검색에 나타나지 않습니다. 또한 가상으로 탈퇴된 것으로 처리 됩니다.</string>
     <string name="cross_filter">크로스 필터링</string>
     <string name="edit_profile_content4">(나랑 동일한 검색조건을 한 사람에게만 노출됩니다.)</string>
     <string name="limit_see_me">나를 보는 회원을 제한합니다.</string>
     <string name="limit_see_me2">(내가 호감보낸 회원만 볼 수 있습니다.)</string>
     <string name="vvip_see">VVIP 회원에게만 보입니다.</string>
-    <string name="vvip_see2">(1%의 최상 Premium 회원에게만 보입니다.)</string>
+    <string name="vvip_see2">(1&#37;의 최상 Premium 회원에게만 보입니다.)</string>
     <string name="unknown_diss">아는 사람에게 노출되지 않습니다.</string>
     <string name="unknown_diss2">(전화번호에 등록된 사람은 서로 노출 되지 않습니다.)</string>
     <string name="travel_is">여행을 간다면,</string>
@@ -72,14 +77,14 @@
     <string name="e_mail_connct_title">내 e-mail 계정 연결하기</string>
     <string name="email_input">연결할 e-mail를 입력하세요</string>
     <string name="check_email">확인 메일 보내기</string>
-    <string name="email_content">회원님의 정보는 인증 목적으로만 사용됩니다.  저희는 이 정보를 그 누구와도 공유하지 않습니다.</string>
+    <string name="email_content">회원님의 정보는 인증 목적으로만 사용됩니다. 저희는 이 정보를 그 누구와도 공유하지 않습니다.</string>
     <string name="commercial">상용어구</string>
     <string name="emoticon">이모티콘</string>
     <string name="input_commercial">상용어구를 등록하세요</string>
     <string name="participants">참여자</string>
     <string name="make_group_title">그룹 만들기</string>
     <string name="input_group_make">이름으로 검색</string>
-    <string name="groupmake_content">그룹으로 동시발송하실 분을 선택해 주세요  단, 기본회원은 그룹 당 3명까지 가능합니다.(유료회원은 무제한)</string>
+    <string name="groupmake_content">그룹으로 동시발송하실 분을 선택해 주세요 단, 기본회원은 그룹 당 3명까지 가능합니다.(유료회원은 무제한)</string>
     <string name="birthday_title">당신의 생년월일은,</string>
     <string name="year">년</string>
     <string name="month">월</string>
@@ -95,23 +100,24 @@
     <string name="name_title">당신의 이름은,</string>
     <string name="name_display">아래와 같이 표시 됩니다.</string>
     <string name="phone_confirm_title">번호를 입력하세요</string>
-    <string name="phone_confirm_content">인증번호를 받지 못하셨나요?  받지 못하셨다면, 번호를 다시 확인하신 후</string>
+    <string name="phone_confirm_content">인증번호를 받지 못하셨나요? 받지 못하셨다면, 번호를 다시 확인하신 후</string>
     <string name="push_link">이 링크를 눌러 주세요</string>
-    <string name="phone_certi_no_share">회원님의 정보는 인증 목적으로만 사용됩니다.  저희는 이 정보를 그 누구와도 공유하지 않습니다.</string>
-    <string name="picture_content">인물 외 사진은 자동 삭제됩니다.  세로화면에 최적화 되어 있습니다.  최소 3장의 동영상 또는 사진을 등록해 주세요.  동영상을 추천합니다.</string>
+    <string name="phone_certi_no_share">회원님의 정보는 인증 목적으로만 사용됩니다. 저희는 이 정보를 그 누구와도 공유하지 않습니다.</string>
+    <string name="picture_content"><![CDATA[<b>인물 외 사진</b>은 <b>자동 삭제</b>됩니다.<br/>세로화면에 최적화 되어 있습니다.<br/><b>최소 3장</b>의 동영상 또는 사진을 등록해 주세요.<br/><b>동영상을 추천합니다.</b>]]></string>
+    <string name="picture_min3">최소 3장의 동영상 또는 사진을 등록해 주세요.</string>
     <string name="pwd_title">당신의 비밀번호는,</string>
     <string name="pwd_content">6자리에서~12자리로 \n최소 영문자 1개와 숫자1개를 포함하여야 합니다.</string>
     <string name="pwd_confirm">올바른 비밀번호 입니다.</string>
-    <string name="final_join_title">Filippo Chiumiento님. 축하 드립니다.</string>
+    <string name="final_join_title">%1$s님.\n축하 드립니다.</string>
     <string name="join_result">Starball에 가입이 완료되었습니다.</string>
-    <string name="join_result_content">이제 회원님에게 한국과 글로벌의  매력적인 친구들을 소개해 드릴께요.  이 공간은 문화와 생각과 사람들이 연결되는  최상의 소셜 네트워크 입니다.</string>
-    <string name="join_result_manner">Filippo Chiumiento님.  매너있게 행동해 주세요</string>
+    <string name="join_result_content"><![CDATA[이제 회원님에게 한국과 글로벌의<br/>매력적인 친구들을 소개해 드릴께요.<br/>이 공간은 문화와 생각과 사람들이 연결되는<br/><b>최상의 소셜 네트워크 입니다.</b>]]></string>
+    <string name="join_result_manner"><![CDATA[<b>%1$s님.</b><br/>매너있게 행동해 주세요]]></string>
     <string name="join_result_ex">Starball은 가지고만 있어도 모든 소원을 들어준다는 신화 속 구슬입니다.</string>
-    <string name="starball_join_result">Starball이 드리는 소중한 가치는,</string>
-    <string name="result_lesson">회원님 존재에 대한 존중,  만나게 될 친구들에 대한 배려,  회원님 미래를 위한 환원 입니다.</string>
+    <string name="starball_join_result"><![CDATA[Starball이\n드리는 소중한 가치는,]]></string>
+    <string name="result_lesson"><![CDATA[회원님 존재에 대한 <b><font color="#923b9f">존중</font></b>,<br/>만나게 될 친구들에 대한 <b><font color="#923b9f">배려</font></b>,<br/>회원님 미래를 위한 <b><font color="#923b9f">환원</font></b> 입니다.]]></string>
     <string name="school_title">당신의 최종학교는,</string>
     <string name="shape_title">당신의 모습은,</string>
-    <string name="shape_content">동영상 갯수와 사진 퀄리티에 따라 상대 소개 등급이 달라집니다.</string>
+    <string name="shape_content"><![CDATA[동영상 갯수와 사진 퀄리티에 따라 <b>상대 소개 등급이 달라집니다.</b>]]></string>
     <string name="shape_remember">기억하세요.</string>
     <string name="join_title">회원가입</string>
     <string name="if_not">없다면,</string>
@@ -131,7 +137,8 @@
     <string name="iam">나는</string>
     <string name="we_meet">우리가 만난다면</string>
     <string name="want_people">내가 원하는 사람은</string>
-    <string name="starball_pay_content">Starball은 친구에게 선물 및 프로포즈, 포토 열람등  다양한 역할을 합니다.  또한, 구매한 Starball은 Cash화가 가능합니다.</string>
+    <string name="starball_pay_content">Starball은 친구에게 선물 및 프로포즈, 포토 열람등 다양한 역할을 합니다. 또한, 구매한 Starball은 Cash화가 가능합니다.
+    </string>
     <string name="starball_pay_title">Starball 구입</string>
     <string name="starball_free">무료로 Starball 받기</string>
     <string name="adver_see">광고시청</string>
@@ -140,34 +147,44 @@
     <string name="phone_certi_title">내 Phone 인증하기</string>
     <string name="phone_certi_content">인증할 핸드폰 번호를 입력하세요</string>
     <string name="phone_certi_input">번호를 입력하세요</string>
-    <string name="phone_certi_content2">회원님의 정보는 인증 목적으로만 사용됩니다.  저희는 이 정보를 그 누구와도 공유하지 않습니다.</string>
+    <string name="phone_certi_content2">회원님의 정보는 인증 목적으로만 사용됩니다. 저희는 이 정보를 그 누구와도 공유하지 않습니다.</string>
     <string name="sliding_display">좌우로 화면을 쓸어주세요</string>
     <string name="profile_preview">Profile 미리보기</string>
     <string name="report_title">신고하기</string>
     <string name="report_content">신고를 원하시나요?</string>
     <string name="precautions">주의사항</string>
-    <string name="report_content2">회원님의 정보 및 자세한 신고내용은 공개되지 않습니다.  신고내용에 대해 반드시 조치를 취한다는 보장은 하지 않습니다.  타 서비스상에서 발생한 피해신고는 접수되지 않습니다.</string>
-    <string name="report_content3">허위 혹은 보복성 신고, 동일 회원을 여러번 신고하실 경우 신고 내  용에 대한 신뢰성이 떨어질 수 있습니다.</string>
-    <string name="report_content4">회원님이 일상생활에서 피해를 볼 가능성이 있는 경우, 실제로 피해  를 본 경우, 범죄의 근거가 되는 정보를 가진 경우에는 즉시 경찰과  상담하시기 바랍니다.</string>
+    <string name="report_content2">회원님의 정보 및 자세한 신고내용은 공개되지 않습니다. 신고내용에 대해 반드시 조치를 취한다는 보장은 하지 않습니다. 타 서비스상에서 발생한 피해신고는
+        접수되지 않습니다.
+    </string>
+    <string name="report_content3">허위 혹은 보복성 신고, 동일 회원을 여러번 신고하실 경우 신고 내 용에 대한 신뢰성이 떨어질 수 있습니다.</string>
+    <string name="report_content4">회원님이 일상생활에서 피해를 볼 가능성이 있는 경우, 실제로 피해 를 본 경우, 범죄의 근거가 되는 정보를 가진 경우에는 즉시 경찰과 상담하시기
+        바랍니다.
+    </string>
     <string name="proof_photograph">증빙 사진 첨부</string>
     <string name="safe_join_title">안전인증 가입</string>
     <string name="safe_join_content">안전 인증에 가입하시겠습니까?</string>
-    <string name="safe_join_content2">안전 인증제도란, 불성실한 회원 (변태, working girl, 언어폭력 기타) 을  가려내기 위하여 도입된 제도로써, 공탁금을 걸고 회원활동을 하는 것을  말합니다.  정상적인 활동을 할 경우 공탁금이 없어지지 아니하며, 탈퇴나   휴면계정전환시 관리비를 제한 금액 전액 환불됩니다.    만약 불성실한 사유 적발, 및 누적으로 신고될 경우 해당 공탁금은 돌려받  을 수 없습니다.    상대회원에게 안전함을 증명하시고, 인기도를 대폭 올려 보세요.</string>
+    <string name="safe_join_content2">안전 인증제도란, 불성실한 회원 (변태, working girl, 언어폭력 기타) 을 가려내기 위하여 도입된 제도로써, 공탁금을 걸고 회원활동을
+        하는 것을 말합니다. 정상적인 활동을 할 경우 공탁금이 없어지지 아니하며, 탈퇴나 휴면계정전환시 관리비를 제한 금액 전액 환불됩니다. 만약 불성실한 사유 적발, 및 누적으로 신고될 경우 해당 공탁금은
+        돌려받 을 수 없습니다. 상대회원에게 안전함을 증명하시고, 인기도를 대폭 올려 보세요.
+    </string>
     <string name="safe_join_no">아니오. 괜찮습니다.</string>
     <string name="safe_join_yes">예. 좋아요</string>
-    <string name="safe_join_content3">* 관리비: 시스템 운영비10%+ 앱스토어 인앱결제수수료 30%</string>
+    <string name="safe_join_content3">* 관리비: 시스템 운영비10&#37;+ 앱스토어 인앱결제수수료 30&#37;</string>
     <string name="safe_join_confirm_title">안전인증 확인</string>
     <string name="safe_join_confirm_content">안전 인증에 가입되어 있습니다.</string>
-    <string name="safe_join_confirm_content3">안전 인증제도란, 불성실한 회원 (변태, working girl, 언어폭력 기타) 을  가려내기 위하여 도입된 제도로써, 공탁금을 걸고 회원활동을 하는 것을  말합니다.  정상적인 활동을 할 경우 공탁금이 없어지지 아니하며, 탈퇴나 휴면계정  전환시 관리비를 제한 금액 전액 환불됩니다.    만약 불성실한 사유 적발, 및 누적으로 신고될 경우 해당 공탁금은 돌려  받을 수 없습니다.</string>
+    <string name="safe_join_confirm_content3">안전 인증제도란, 불성실한 회원 (변태, working girl, 언어폭력 기타) 을 가려내기 위하여 도입된 제도로써, 공탁금을 걸고
+        회원활동을 하는 것을 말합니다. 정상적인 활동을 할 경우 공탁금이 없어지지 아니하며, 탈퇴나 휴면계정 전환시 관리비를 제한 금액 전액 환불됩니다. 만약 불성실한 사유 적발, 및 누적으로 신고될 경우
+        해당 공탁금은 돌려 받을 수 없습니다.
+    </string>
     <string name="safe_join_confirm_del">인증 취소를 원하십니까?</string>
     <string name="safe_join_cancel">인증 취소</string>
     <string name="cash_return">예상 반환 Cash</string>
-    <string name="safe_join_cancel_content">앱스토어 결제비용(30%)와 시스템비용(10%)을 공제한 금액으로 환산  되어 송금됩니다.  페이팔 송금수수료 약 3% 공제 됩니다.</string>
-    <string name="safe_join_cancel_content2">환율에 따라 금액은 최종 달라질 수 있습니다.  요청일 기준 2~3일 소요될 수 있습니다.</string>
+    <string name="safe_join_cancel_content" formatted="false">앱스토어 결제비용(30&#37;)와 시스템비용(10&#37;)을 공제한 금액으로 환산 되어 송금됩니다. 페이팔 송금수수료 약 3&#37; 공제 됩니다.</string>
+    <string name="safe_join_cancel_content2">환율에 따라 금액은 최종 달라질 수 있습니다. 요청일 기준 2~3일 소요될 수 있습니다.</string>
     <string name="safe_join_cancel_content3">페이팔 연동 e-mail을 적어 주세요.</string>
     <string name="search_setting">검색설정</string>
     <string name="search_setting_is">검색설정은,</string>
-    <string name="search_setting_content">노출설정에도 동일하게 적용됩니다.  인기을 얻고 싶으시면 검색범위를 넓게 조정하세요.</string>
+    <string name="search_setting_content">노출설정에도 동일하게 적용됩니다. 인기을 얻고 싶으시면 검색범위를 넓게 조정하세요.</string>
     <string name="gender">성별</string>
     <string name="man">남자</string>
     <string name="age">나이</string>
@@ -198,9 +215,9 @@
     <string name="popular">인기도</string>
     <string name="current_rating">현재 등급</string>
     <string name="introduce_rating">소개 등급</string>
-    <string name="setting_main_content">Starball이 드리는 가치는  존중, 배려, 환원 입니다.</string>
+    <string name="setting_main_content">Starball이 드리는 가치는 존중, 배려, 환원 입니다.</string>
     <string name="setting_main_adver_del">광고제거</string>
-    <string name="setting_main_adver_content">더 이상 검색이나 리스트에서 광고가 표시되지 않습니다.  쾌적한 활동이 가능해집니다.</string>
+    <string name="setting_main_adver_content">더 이상 검색이나 리스트에서 광고가 표시되지 않습니다. 쾌적한 활동이 가능해집니다.</string>
     <string name="setting_main_yes">네. 좀 더 알고 싶습니다.</string>
     <string name="starball_membership_title">Starball Membership</string>
     <string name="starball_membership_content">Starball의 기능을 활성화하세요!</string>
@@ -212,15 +229,15 @@
     <string name="version_info">버전정보</string>
     <string name="my_version">내 버전_</string>
     <string name="new_version">최신 버전_</string>
-    <string name="version_content">Copyright 2018 starball all rights reserved  (모든 저작권 보유)</string>
+    <string name="version_content">Copyright 2018 starball all rights reserved (모든 저작권 보유)</string>
     <string name="new_version_is">최신 버전입니다.</string>
     <string name="vvip_join">VVIP 가입</string>
     <string name="vvip_content">보다, 특별한 대우를 원하시는 군요.</string>
     <string name="vvip_content2">기존 혜택과 더불어,</string>
-    <string name="vvip_content3">오직 1%에게만 허락된 특권은,</string>
+    <string name="vvip_content3">오직 1&#37;에게만 허락된 특권은,</string>
     <string name="vvip_adver_del">원천차단</string>
-    <string name="vvip_join_content">신고된 회원은 원천적으로 검색에 노출되거나  더 이상 추천되지 않습니다</string>
-    <string name="vvip_join_content2">본 회원권은 사전 공지 없이 가입신청이 불가 하거나,  금액이 상향 조정될 수 있습니다.</string>
+    <string name="vvip_join_content">신고된 회원은 원천적으로 검색에 노출되거나 더 이상 추천되지 않습니다</string>
+    <string name="vvip_join_content2">본 회원권은 사전 공지 없이 가입신청이 불가 하거나, 금액이 상향 조정될 수 있습니다.</string>
     <string name="vvip_join_content3">서두르세요!</string>
     <string name="dlg_album_pay_title">님의 앨범을 구매하시겠습니까?</string>
     <string name="dlg_album_pay_content">구매시 3 Starball이 소모되며, 구매일시로 부터 1주일간 앨범을 보실 수 있습니다.</string>
@@ -245,11 +262,11 @@
     <string name="dlg_crush_no">아니오. 다시 생각해볼게요.</string>
     <string name="dlg_prose_title">축하합니다.! 님께서 프로포즈하셨습니다.</string>
     <string name="dlg_prose_ok">수락 하시겠습니까?</string>
-    <string name="dlg_prose_content">수락시 회원님에게 200 Starall을 선물 드리며, 1주일간  오직 신청하신 회원님만 대화하실 수 있습니다.</string>
+    <string name="dlg_prose_content">수락시 회원님에게 200 Starall을 선물 드리며, 1주일간 오직 신청하신 회원님만 대화하실 수 있습니다.</string>
     <string name="dlg_prose_content2">(다른 회원과 호감/ 채팅불가)</string>
     <string name="dlg_prose_yes">네, 기쁩니다</string>
     <string name="dlg_send_prose">프로포즈 하시겠습니까?</string>
-    <string name="dlg_send_prose_content">Cedrica님께서 수락시 1주일간 오직 회원님하고만 대화  하실 수 있습니다.   (다른 회원에게서 호감/ 채팅불가)</string>
+    <string name="dlg_send_prose_content">Cedrica님께서 수락시 1주일간 오직 회원님하고만 대화 하실 수 있습니다. (다른 회원에게서 호감/ 채팅불가)</string>
     <string name="dlg_send_prose_content2">선물할 Starball</string>
     <string name="dlg_prose_no">아니오. 다시 생각해볼게요.</string>
     <string name="starball_lack">Starball이 부족합니다.</string>
@@ -321,14 +338,6 @@
     <string name="christian">: 기독교</string>
 
 
-
-
-
-
-
-
-
-
     <string name="email_empty">이메일을 입력해주세요.</string>
     <string name="email_fail">이메일을 다시 확인해주세요.</string>
     <string name="name_empty">이름을 입력해주세요.</string>
@@ -336,5 +345,6 @@
     <string name="birthday_fail">생일을 다시 확인해주세요.</string>
     <string name="language_empty">대화 가능 언어를 추가해주세요.</string>
     <string name="job_empty">직업을 입력해주세요.</string>
+    <string name="school_empty">학교를 입력해주세요.</string>
 
 </resources>

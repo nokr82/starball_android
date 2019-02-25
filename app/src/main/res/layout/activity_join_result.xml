@@ -1,128 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
 
 
-<ScrollView
-        android:layout_width="match_parent"
-        android:fillViewport="true"
-        android:layout_height="match_parent">
-    <LinearLayout
-            android:orientation="vertical"
-            android:background="#fbfbfb"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <TextView
-                android:layout_marginTop="72dp"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20.5dp"
-                android:textColor="#000000"
-                android:gravity="center"
-                android:text="@string/final_join_title"
-                />
-        <TextView
-                android:paddingTop="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="#333333"
-                android:gravity="center_horizontal"
-                android:text="@string/join_result"
-                />
-        <TextView
-                android:paddingTop="42dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14dp"
-                android:textColor="#555555"
-                android:gravity="center_horizontal"
-                android:text="@string/join_result_content"
-                />
-        <TextView
-                android:paddingTop="20dp"
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="#333333"
-                android:gravity="center"
-                android:text="@string/join_result_manner"/>
-        <TextView
-                android:paddingTop="8dp"
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="wrap_content"
-                android:textSize="10dp"
-                android:textColor="#555555"
-                android:text="@string/join_result_ex"
-                tools:ignore="HardcodedText"/>
+	<ScrollView
+		android:layout_width="match_parent"
+		android:fillViewport="true"
+		android:layout_height="match_parent">
 
+		<LinearLayout
+			android:orientation="vertical"
+			android:background="#fbfbfb"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:paddingStart="32.5dp"
+			android:paddingEnd="32.5dp">
 
+			<TextView
+				android:id="@+id/titleTV"
+				android:layout_marginTop="72dp"
+				android:textStyle="bold"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textSize="20.5dp"
+				android:textColor="#000000"
+				android:gravity="center"
+				android:text=""/>
 
-        <TextView
-                android:paddingTop="49.5dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="#333333"
-                android:text="@string/starball_join_result"
-                />
+			<TextView
+				android:paddingTop="16dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textSize="16dp"
+				android:textColor="#333333"
+				android:gravity="center_horizontal"
+				android:text="@string/join_result"
+				android:textStyle="bold"/>
 
+			<TextView
+				android:id="@+id/desc1TV"
+				android:paddingTop="42dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:textSize="14dp"
+				android:textColor="#555555"
+				android:gravity="center_horizontal"
+				android:text="@string/join_result_content"/>
 
+			<TextView
+				android:id="@+id/mannerTV"
+				android:paddingTop="20dp"
+				android:layout_width="wrap_content"
+				android:layout_gravity="center"
+				android:layout_height="wrap_content"
+				android:textSize="16dp"
+				android:textColor="#333333"
+				android:gravity="center"
+				android:text="@string/join_result_manner"/>
 
-        <TextView
-                android:layout_marginTop="12dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16dp"
-                android:textColor="#333333"
-                android:text="@string/result_lesson"
-                />
+			<TextView
+				android:paddingTop="8dp"
+				android:layout_width="match_parent"
+				android:gravity="center"
+				android:layout_height="wrap_content"
+				android:textSize="10dp"
+				android:textColor="#555555"
+				android:text="@string/join_result_ex"
+				tools:ignore="HardcodedText"/>
 
-        <TextView
-                android:id="@+id/checkTV"
-                android:layout_marginTop="42.5dp"
-                android:layout_gravity="center"
-                android:layout_width="120dp"
-                android:textStyle="bold"
-                android:layout_height="30dp"
-                android:textSize="14dp"
-                android:background="#000000"
-                android:textColor="#ffffff"
-                android:gravity="center"
-                android:text="예. 좋아요"
-                />
-        <LinearLayout
-                android:layout_marginTop="24.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="10dp"
-                android:textColor="#333333"
-                android:text="아니오. 다시 생각해볼게요."
-                />
-            <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#000000"/>
-        </LinearLayout>
-    </LinearLayout>
+			<LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:paddingTop="49.5dp"
+				android:layout_gravity="center">
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="16dp"
+					android:textColor="#333333"
+					android:text="@string/starball_join_result"
+					android:textStyle="bold"/>
 
-</ScrollView>
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/profile_ribon"/>
+				<TextView
+					android:id="@+id/lessionTV"
+					android:layout_marginTop="12dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="16dp"
+					android:textColor="#333333"
+					android:text="@string/result_lesson"/>
+			</LinearLayout>
+
+			<TextView
+				android:id="@+id/okTV"
+				android:layout_marginTop="42.5dp"
+				android:layout_gravity="center"
+				android:layout_width="120dp"
+				android:textStyle="bold"
+				android:layout_height="30dp"
+				android:textSize="14dp"
+				android:background="#000000"
+				android:textColor="#ffffff"
+				android:gravity="center"
+				android:text="예. 좋아요"/>
+
+			<LinearLayout
+				android:id="@+id/noLL"
+				android:layout_marginTop="24.5dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:orientation="vertical">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="10dp"
+					android:textColor="#333333"
+					android:text="아니오. 다시 생각해볼게요."/>
+
+				<View
+					android:layout_width="match_parent"
+					android:layout_height="1dp"
+					android:background="#000000"/>
+			</LinearLayout>
+		</LinearLayout>
+
+	</ScrollView>
+
+	<ImageView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@mipmap/profile_ribon"/>
 </RelativeLayout>

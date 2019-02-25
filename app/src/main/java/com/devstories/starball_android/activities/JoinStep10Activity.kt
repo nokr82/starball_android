@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Html
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
 import kotlinx.android.synthetic.main.activity_join_shape.*
@@ -13,23 +14,23 @@ class JoinStep10Activity : RootActivity() {
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join_shape)
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        nextTV.setOnClickListener {
-            val intent = Intent(context, JoinStep11Activity::class.java)
-            startActivity(intent)
+        val spanText = getString(R.string.shape_content)
+
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.N) {
+            descTV.text = Html.fromHtml(spanText);
+        } else {
+            descTV.text = Html.fromHtml(spanText, Html.FROM_HTML_MODE_LEGACY);
         }
 
-
-
-
+        nextTV.setOnClickListener {
+            val intent = Intent(context, JoinStep11PicActivity::class.java)
+            startActivity(intent)
+        }
     }
-
-
-
 }

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Point;
 import android.net.ConnectivityManager;
@@ -15,6 +16,7 @@ import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
+import com.devstories.starball_android.R;
 
 public class RootActivity extends Activity {
 
@@ -150,4 +152,12 @@ public class RootActivity extends Activity {
         }
     }
 
+    @Override
+    public void startActivity(Intent intent) {
+
+        super.startActivity(intent);
+
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
+    }
 }
