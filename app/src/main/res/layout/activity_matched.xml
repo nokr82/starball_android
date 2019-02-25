@@ -108,13 +108,11 @@
 			android:scaleY="0.0"/>
 		<ImageView
 			android:id="@+id/th17IV"
-			android:alpha="0.0"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:src="@mipmap/man"/>
 		<ImageView
 			android:id="@+id/th18IV"
-			android:alpha="0.0"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:src="@mipmap/woman"/>

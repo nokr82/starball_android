@@ -11,9 +11,6 @@ import com.devstories.starball_android.base.RootActivity
 import kotlinx.android.synthetic.main.activity_matched.*
 
 
-
-
-
 class MatchedActivity : RootActivity() {
 
     lateinit var context: Context
@@ -93,11 +90,20 @@ class MatchedActivity : RootActivity() {
         val th16FadeIn = ObjectAnimator.ofFloat(th16IV, "alpha", 0f, 1f)
         th16FadeIn.duration = duration
 
-        val th17FadeIn = ObjectAnimator.ofFloat(th17IV, "alpha", 0f, 1f)
+        // val th17FadeIn = ObjectAnimator.ofFloat(th17IV, "alpha", 0f, 1f)
         // th17FadeIn.duration = duration
 
-        val th18FadeIn = ObjectAnimator.ofFloat(th18IV, "alpha", 0f, 1f)
+
+        th17IV.x = -(screenWidth / 1.5).toFloat()
+        val th17FadeIn = ObjectAnimator.ofFloat(th17IV, "translationX", 0.toFloat())
+        // th17FadeIn.duration = Random.nextInt(600, 1600).toLong()
+
+
+        // val th18FadeIn = ObjectAnimator.ofFloat(th18IV, "alpha", 0f, 1f)
         // th17FadeIn.duration = duration * 20
+
+        th18IV.x = (screenWidth / 1.5).toFloat()
+        val th18FadeIn = ObjectAnimator.ofFloat(th18IV, "translationX", 0.toFloat())
 
         val th19FadeIn = ObjectAnimator.ofFloat(th19IV, "alpha", 0f, 1f)
         th19FadeIn.duration = duration * 5
@@ -107,7 +113,7 @@ class MatchedActivity : RootActivity() {
         animators1718.add(th18FadeIn)
 
         val firstSet1718 = AnimatorSet()
-        firstSet1718.duration = duration * 30
+        firstSet1718.duration = duration * 25
         firstSet1718.playTogether(animators1718)
 
         val mAnimationSet = AnimatorSet()
