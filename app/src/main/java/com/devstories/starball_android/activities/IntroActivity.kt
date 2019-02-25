@@ -3,6 +3,7 @@ package com.devstories.starball_android.activities
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.app.NotificationManager
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
@@ -13,20 +14,11 @@ import android.util.Log
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
 import android.view.animation.RotateAnimation
-import com.devstories.starball_android.R
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import kotlinx.android.synthetic.main.activity_intro.*
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
-
-
-
-
-
-
-
-
-
 
 class IntroActivity : RootActivity() {
 
@@ -45,6 +37,10 @@ class IntroActivity : RootActivity() {
 
         this.context = this
         progressDialog = ProgressDialog(context)
+
+        // clear all notification
+        val nm = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        nm.cancelAll()
 
         startAnimation()
 
@@ -82,7 +78,7 @@ class IntroActivity : RootActivity() {
 
     private fun startAnimation() {
 
-        val duration = 300L
+        val duration = 500L
 
         val sFadeIn = ObjectAnimator.ofFloat(sIV, "alpha", 0f, 1f)
         sFadeIn.duration = duration
@@ -150,18 +146,26 @@ class IntroActivity : RootActivity() {
 
 
         val rotate = RotateAnimation(0f, 360f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f)
-        rotate.duration = animators.size * duration
+        rotate.duration = duration * 3
         rotate.interpolator = LinearInterpolator()
+        rotate.repeatCount = Animation.INFINITE
+        rotate.repeatMode = Animation.INFINITE
         logoIV.startAnimation(rotate)
 
     }
 
     private fun stopIntro() {
-        val intent = Intent(context, MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
 
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
+        val memberId = PrefUtils.getIntPreference(context, "member_id")
+        if(memberId > 0) {
+            val intent = Intent(context, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        } else {
+            val intent = Intent(context, JoinActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
 
     }
 

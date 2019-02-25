@@ -121,12 +121,9 @@
 					android:layout_height="wrap_content"
 					android:textSize="14dp"
 					android:textColor="#999999"
-					android:text="@string/login_content"
-					/>
-
+					android:text="@string/login_content"/>
 
 			</LinearLayout>
-
 
 			<TextView
 				android:id="@+id/loginTV"
