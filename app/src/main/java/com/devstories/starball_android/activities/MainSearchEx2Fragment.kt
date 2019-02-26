@@ -9,10 +9,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.devstories.starball_android.R
-import kotlinx.android.synthetic.main.item_main_search3.*
+import kotlinx.android.synthetic.main.fragment_main_search2.*
 
 
-class MainSearchEx3Activity : Fragment() {
+
+class MainSearchEx2Fragment : Fragment() {
 
     private var progressDialog: ProgressDialog? = null
     lateinit var myContext: Context
@@ -23,7 +24,7 @@ class MainSearchEx3Activity : Fragment() {
         this.myContext = container!!.context
         progressDialog = ProgressDialog(myContext)
 
-        return inflater.inflate(R.layout.item_main_search3, container, false)
+        return inflater.inflate(R.layout.fragment_main_search2, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,6 +39,7 @@ class MainSearchEx3Activity : Fragment() {
             startActivity(intent)
         }
 
+
         charmIV.setOnClickListener {
             val intent = Intent(context, DlgStarballLackActivity::class.java)
             startActivity(intent)
@@ -46,7 +48,6 @@ class MainSearchEx3Activity : Fragment() {
             val intent = Intent(context, DlgCharInfoActivity::class.java)
             startActivity(intent)
         }
-
 
         }
 

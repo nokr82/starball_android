@@ -1,414 +1,399 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
 
     <com.devstories.starball_android.base.RationalRelativeLayout
-            android:id="@+id/popup"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@drawable/background_round_ffffff"
-            app:ratio="330:500">
-
-<ScrollView
+        android:id="@+id/popup"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:fillViewport="true">
+        android:layout_height="0dp"
+        android:background="@drawable/background_round_ffffff"
+        app:ratio="330:500">
 
-<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
-<ImageView
-        android:layout_marginTop="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:src="@mipmap/comm_profile_pic"/>
-
-    <TextView
-            android:paddingTop="8.5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="14dp"
-            android:textColor="#646464"
-            android:text="@string/dlg_crush_content"/>
-
-    <View
-            android:layout_marginTop="23dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#1f1f1f"/>
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:fillViewport="true">
 
-
-    <LinearLayout
-            android:background="#f8f8f8"
-            android:layout_width="match_parent"
-            android:layout_height="44.5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-           >
-        <TextView
-                android:layout_width="wrap_content"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="#333333"
-                android:text="@string/left_starball2"
-                />
-        <TextView
-                android:layout_width="wrap_content"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="#0056cd"
-                android:text="10"
-                />
-        <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="#333333"
-                android:text="개"
-                />
-
-
-        <TextView
-                android:id="@+id/payTV"
-                android:layout_width="63dp"
-                android:layout_height="23.5dp"
-                android:textSize="13dp"
-                android:textStyle="bold"
-                android:layout_marginRight="9.5dp"
-                android:background="@drawable/background_border_strock4"
-                android:textColor="#ffffff"
-                android:gravity="center"
-                android:text="@string/pay"
-                />
-
-    </LinearLayout>
-    <View
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#1f1f1f"/>
-    <LinearLayout
-            android:paddingBottom="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#f8f8f8"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:orientation="vertical">
-        <TextView
-                android:paddingTop="11dp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="#333333"
-                android:text="@string/dlg_crush_content2"
-                />
-
-        <LinearLayout
-                android:layout_marginTop="14.5dp"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
+                <ImageView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/comm_profile_pic"/>
 
-            <TextView
+                <TextView
+                    android:paddingTop="8.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="14dp"
+                    android:textColor="#646464"
+                    android:text="@string/dlg_crush_content"/>
+
+                <View
+                    android:layout_marginTop="23dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_width="0dp"
-                    android:layout_height="23.5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/background_border_strock5"
-                    android:textSize="12dp"
-                    android:gravity="center"
-                    android:textColor="#5c5c5c"
-                    android:text="광고시청"/>
-            <View
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.6"
-                  />
-            <TextView
                     android:layout_marginRight="10dp"
-                    android:layout_width="0dp"
-                    android:layout_height="23.5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/background_border_strock5"
-                    android:textSize="12dp"
-                    android:gravity="center"
-                    android:textColor="#5c5c5c"
-                    android:text="친구초대"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
 
 
+                <LinearLayout
+                    android:background="#f8f8f8"
+                    android:layout_width="match_parent"
+                    android:layout_height="44.5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#333333"
+                        android:text="@string/left_starball2"/>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#0056cd"
+                        android:text="10"/>
 
-        </LinearLayout>
-        
-        
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#333333"
+                        android:text="개"/>
 
+                    <TextView
+                        android:id="@+id/payTV"
+                        android:layout_width="63dp"
+                        android:layout_height="23.5dp"
+                        android:textSize="13dp"
+                        android:textStyle="bold"
+                        android:layout_marginRight="9.5dp"
+                        android:background="@drawable/background_border_strock4"
+                        android:textColor="#ffffff"
+                        android:gravity="center"
+                        android:text="@string/pay"/>
 
+                </LinearLayout>
 
+                <View
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
 
-    </LinearLayout>
-    <View
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#1f1f1f"/>
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="73dp"
-            android:gravity="center">
-
-        <TextView
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="#4a4a4a"
-                android:gravity="center_horizontal"
-                android:text="@string/dlg_crush_content3"
-                />
-        <TextView
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="#013e92"
-                android:gravity="center_horizontal"
-                android:text="@string/dlg_crush_content4"
-                />
-        <TextView
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="#4a4a4a"
-                android:gravity="center_horizontal"
-                android:text="@string/dlg_crush_content5"
-                />
-        
-
-    </LinearLayout>
-    <View
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#1f1f1f"/>
-
-    <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#f8f8f8"
-            android:orientation="vertical">
-        <TextView
-                android:paddingLeft="10.5dp"
-                android:paddingTop="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:text="보낼 starball"
-                />
-
-        <LinearLayout
-                android:layout_marginTop="13dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-          
-            <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="0dp"
+                <LinearLayout
+                    android:paddingBottom="15dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                <ImageView
+                    android:background="#f8f8f8"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:paddingTop="11dp"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/radio_off"/>
+                        android:textSize="15dp"
+                        android:textColor="#333333"
+                        android:text="@string/dlg_crush_content2"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="14.5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="0dp"
+                            android:layout_height="23.5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/background_border_strock5"
+                            android:textSize="12dp"
+                            android:gravity="center"
+                            android:textColor="#5c5c5c"
+                            android:text="광고시청"/>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.6"/>
+
+                        <TextView
+                            android:layout_marginRight="10dp"
+                            android:layout_width="0dp"
+                            android:layout_height="23.5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/background_border_strock5"
+                            android:textSize="12dp"
+                            android:gravity="center"
+                            android:textColor="#5c5c5c"
+                            android:text="친구초대"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="73dp"
+                    android:gravity="center">
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#4a4a4a"
+                        android:gravity="center_horizontal"
+                        android:text="@string/dlg_crush_content3"/>
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#013e92"
+                        android:gravity="center_horizontal"
+                        android:text="@string/dlg_crush_content4"/>
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#4a4a4a"
+                        android:gravity="center_horizontal"
+                        android:text="@string/dlg_crush_content5"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+
+                <LinearLayout
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#f8f8f8"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:paddingLeft="10.5dp"
+                        android:paddingTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:textColor="#333333"
+                        android:text="보낼 starball"/>
+
+                    <LinearLayout
+                        android:layout_marginTop="13dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/radio_off"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#333333"
+                                android:text="@string/amount_2"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/radio_off"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#333333"
+                                android:text="@string/amount_5"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/radio_off"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#333333"
+                                android:text="@string/amount_10"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/radio_off"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#333333"
+                                android:text="@string/amount_30"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/radio_on"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#333333"
+                                android:text="@string/amount_50"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:paddingTop="15dp"
+                        android:paddingBottom="11dp"
+                        android:layout_width="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:paddingLeft="10.5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14dp"
+                            android:textStyle="bold"
+                            android:textColor="#333333"
+                            android:text="@string/direct_input"/>
+
+                        <EditText
+                            android:layout_marginLeft="12dp"
+                            android:layout_width="140dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/background_border_strock6ddddd"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
 
                 <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:textColor="#333333"
-                        android:text="@string/amount_2"
-                        />
-            </LinearLayout>
-            <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="0dp"
+                    android:id="@+id/giftTV"
+                    android:layout_marginTop="23dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/radio_off"/>
+                    android:textSize="14dp"
+                    android:textColor="#ffffff"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:background="@drawable/background_border_strock4"
+                    android:gravity="center"
+                    android:text="@string/dlg_crush_gift"/>
 
                 <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:textColor="#333333"
-                        android:text="@string/amount_5"
-                        />
-            </LinearLayout>
-            <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="0dp"
+                    android:id="@+id/noTV"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/radio_off"/>
+                    android:textSize="10dp"
+                    android:textColor="#333333"
+                    android:text="@string/dlg_crush_no"/>
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:textColor="#333333"
-                        android:text="@string/amount_10"
-                        />
-            </LinearLayout>
-            <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/radio_off"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:textColor="#333333"
-                        android:text="@string/amount_30"
-                        />
-            </LinearLayout>
-            <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/radio_on"/>
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:textColor="#333333"
-                        android:text="@string/amount_50"
-                        />
             </LinearLayout>
 
-
-
-        </LinearLayout>
-
-
-       <LinearLayout
-               android:paddingTop="15dp"
-               android:paddingBottom="11dp"
-               android:layout_width="match_parent"
-               android:gravity="center_vertical"
-               android:layout_height="wrap_content">
-           <TextView
-                   android:paddingLeft="10.5dp"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:textSize="14dp"
-                   android:textStyle="bold"
-
-                   android:textColor="#333333"
-                   android:text="@string/direct_input"
-                   />
-           
-           <EditText
-                   android:layout_marginLeft="12dp"
-                   android:layout_width="140dp"
-                   android:layout_height="20dp"
-                   android:background="@drawable/background_border_strock6ddddd"
-                   />
-           
-           
-           
-       </LinearLayout>
-        
-
-
-
-    </LinearLayout>
-
-    <View
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#1f1f1f"/>
-
-
-    <TextView
-            android:id="@+id/giftTV"
-            android:layout_marginTop="23dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:textColor="#ffffff"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:padding="8dp"
-            android:background="@drawable/background_border_strock4"
-            android:gravity="center"
-            android:text="@string/dlg_crush_gift"
-            />
-
-    <TextView
-            android:id="@+id/noTV"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10dp"
-            android:textColor="#333333"
-            android:text="@string/dlg_crush_no"
-            />
-
-</LinearLayout>
-</ScrollView>
+        </ScrollView>
 
     </com.devstories.starball_android.base.RationalRelativeLayout>
-    
-    
-    
+
 </LinearLayout>
 
 

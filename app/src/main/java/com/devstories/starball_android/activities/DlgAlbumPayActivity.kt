@@ -17,7 +17,6 @@ class DlgAlbumPayActivity : RootActivity() {
     private val _active = true
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dlg_album_pay)
@@ -30,11 +29,6 @@ class DlgAlbumPayActivity : RootActivity() {
         noTV.setOnClickListener {
             finish()
         }
-
-
-
-
-
 
 
     }

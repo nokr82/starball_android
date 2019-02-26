@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import com.devstories.starball_android.R
 import kotlinx.android.synthetic.main.fragment_charmpoint_animal.*
 
-//메세지관리(메시지작성화면)
 
 class CharmpointAnimalFragment : Fragment() {
     lateinit var myContext: Context

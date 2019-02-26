@@ -1,332 +1,315 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
 
     <com.devstories.starball_android.base.RationalRelativeLayout
-            android:id="@+id/popup"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@drawable/background_round_ffffff"
-            app:ratio="330:470">
-
-<ScrollView
+        android:id="@+id/popup"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:fillViewport="true">
+        android:layout_height="0dp"
+        android:background="@drawable/background_round_ffffff"
+        app:ratio="330:470">
 
-<LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
-<ImageView
-        android:layout_marginTop="15dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:src="@mipmap/comm_profile_pic"/>
-
-    <TextView
-            android:layout_marginTop="18dp"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:textColor="#013e92"
-            android:gravity="center"
-            android:text="@string/dlg_send_prose"
-            />
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:fillViewport="true">
 
-
-    <View
-            android:layout_marginTop="23dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#1f1f1f"/>
-
-    <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:textColor="#333333"
-            android:text="@string/dlg_send_prose_content"
-            />
-
-
-
-    <LinearLayout
-            android:layout_marginTop="25dp"
-            android:background="#f8f8f8"
-            android:layout_width="match_parent"
-            android:layout_height="44.5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-           >
-        <ImageView
-                android:layout_marginLeft="25dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/setting_pur_bi"/>
-        <TextView
-                android:paddingLeft="5dp"
-                android:layout_width="wrap_content"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="#333333"
-                android:text="@string/left_starball2"
-                />
-        <TextView
-                android:layout_width="wrap_content"
-                android:textStyle="bold"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="#0056cd"
-                android:text="10"
-                />
-        <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="#333333"
-                android:text="개"
-                />
-
-
-        <TextView
-                android:id="@+id/payTV"
-                android:layout_width="63dp"
-                android:layout_height="23.5dp"
-                android:textSize="13dp"
-                android:textStyle="bold"
-                android:layout_marginRight="9.5dp"
-                android:background="@drawable/background_border_strock4"
-                android:textColor="#ffffff"
-                android:gravity="center"
-                android:text="@string/pay"
-                />
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_height="wrap_content">
-        <ImageView
-                android:layout_marginLeft="25dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/setting_pur_bi"/>
-        <TextView
-                android:paddingLeft="10.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:textColor="#333333"
-                android:text="@string/dlg_send_prose_content2"
-                />
-    </LinearLayout>
-
-
-
-
-
-
-    <LinearLayout
-            android:layout_marginTop="21dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#f8f8f8"
-            android:orientation="vertical">
-
-
-        <LinearLayout
-                android:layout_marginTop="13dp"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-          
-            <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
                 <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/radio_off"/>
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/comm_profile_pic"/>
 
                 <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:textColor="#333333"
-                        android:text="@string/amount_2"
-                        />
-            </LinearLayout>
-            <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="0dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/radio_off"/>
+                    android:textSize="16dp"
+                    android:textColor="#013e92"
+                    android:gravity="center"
+                    android:text="@string/dlg_send_prose"/>
+
+                <View
+                    android:layout_marginTop="23dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
 
                 <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:textColor="#333333"
-                        android:text="@string/amount_5"
-                        />
-            </LinearLayout>
-            <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="0dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                <ImageView
+                    android:textSize="14dp"
+                    android:textColor="#333333"
+                    android:text="@string/dlg_send_prose_content"/>
+
+                <LinearLayout
+                    android:layout_marginTop="25dp"
+                    android:background="#f8f8f8"
+                    android:layout_width="match_parent"
+                    android:layout_height="44.5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_marginLeft="25dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/radio_off"/>
+                        android:src="@mipmap/setting_pur_bi"/>
+
+                    <TextView
+                        android:paddingLeft="5dp"
+                        android:layout_width="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#333333"
+                        android:text="@string/left_starball2"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#0056cd"
+                        android:text="10"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#333333"
+                        android:text="개"/>
+
+                    <TextView
+                        android:id="@+id/payTV"
+                        android:layout_width="63dp"
+                        android:layout_height="23.5dp"
+                        android:textSize="13dp"
+                        android:textStyle="bold"
+                        android:layout_marginRight="9.5dp"
+                        android:background="@drawable/background_border_strock4"
+                        android:textColor="#ffffff"
+                        android:gravity="center"
+                        android:text="@string/pay"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_marginLeft="25dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/setting_pur_bi"/>
+
+                    <TextView
+                        android:paddingLeft="10.5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:textColor="#333333"
+                        android:text="@string/dlg_send_prose_content2"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_marginTop="21dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#f8f8f8"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_marginTop="13dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/radio_off"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#333333"
+                                android:text="@string/amount_2"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/radio_off"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#333333"
+                                android:text="@string/amount_5"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/radio_off"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#333333"
+                                android:text="@string/amount_10"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/radio_off"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#333333"
+                                android:text="@string/amount_30"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:gravity="center"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@mipmap/radio_on"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="14dp"
+                                android:textColor="#333333"
+                                android:text="@string/amount_50"/>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:paddingTop="15dp"
+                        android:paddingBottom="11dp"
+                        android:layout_width="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:paddingLeft="10.5dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="14dp"
+                            android:textStyle="bold"
+                            android:textColor="#333333"
+                            android:text="@string/direct_input"/>
+
+                        <EditText
+                            android:layout_marginLeft="12dp"
+                            android:layout_width="140dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/background_border_strock6ddddd"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
                 <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:textColor="#333333"
-                        android:text="@string/amount_10"
-                        />
-            </LinearLayout>
-            <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="0dp"
+                    android:id="@+id/giftTV"
+                    android:layout_marginTop="23dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/radio_off"/>
+                    android:textSize="14dp"
+                    android:textColor="#ffffff"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:padding="8dp"
+                    android:background="@drawable/background_border_strock4"
+                    android:gravity="center"
+                    android:text="@string/dlg_crush_gift"/>
 
                 <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:textColor="#333333"
-                        android:text="@string/amount_30"
-                        />
-            </LinearLayout>
-            <LinearLayout
-                    android:gravity="center"
-                    android:layout_width="0dp"
+                    android:id="@+id/noTV"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1">
-                <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/radio_on"/>
+                    android:textSize="10dp"
+                    android:textColor="#333333"
+                    android:text="@string/dlg_prose_no"/>
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:textColor="#333333"
-                        android:text="@string/amount_50"
-                        />
             </LinearLayout>
 
-
-
-        </LinearLayout>
-
-
-       <LinearLayout
-               android:paddingTop="15dp"
-               android:paddingBottom="11dp"
-               android:layout_width="match_parent"
-               android:gravity="center_vertical"
-               android:layout_height="wrap_content">
-           <TextView
-                   android:paddingLeft="10.5dp"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:textSize="14dp"
-                   android:textStyle="bold"
-
-                   android:textColor="#333333"
-                   android:text="@string/direct_input"
-                   />
-           
-           <EditText
-                   android:layout_marginLeft="12dp"
-                   android:layout_width="140dp"
-                   android:layout_height="20dp"
-                   android:background="@drawable/background_border_strock6ddddd"
-                   />
-           
-           
-           
-       </LinearLayout>
-        
-
-
-
-    </LinearLayout>
-
-
-
-
-    <TextView
-            android:id="@+id/giftTV"
-            android:layout_marginTop="23dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:textColor="#ffffff"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:padding="8dp"
-            android:background="@drawable/background_border_strock4"
-            android:gravity="center"
-            android:text="@string/dlg_crush_gift"
-            />
-
-    <TextView
-            android:id="@+id/noTV"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10dp"
-            android:textColor="#333333"
-            android:text="@string/dlg_prose_no"
-            />
-
-</LinearLayout>
-</ScrollView>
+        </ScrollView>
 
     </com.devstories.starball_android.base.RationalRelativeLayout>
-    
-    
-    
+
 </LinearLayout>
 
 

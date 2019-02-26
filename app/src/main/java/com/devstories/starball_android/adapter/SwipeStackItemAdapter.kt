@@ -96,17 +96,17 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
 
         when(viewType) {
             0 -> {
-                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_search1, parent, false) as View
+                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_main_search1, parent, false) as View
                 return MainSearchType1(itemView)
             }
 
             1 -> {
-                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_search2, parent, false) as View
+                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_main_search2, parent, false) as View
                 return MainSearchType2(itemView)
             }
         }
 
-        var itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_search3, parent, false) as View
+        var itemView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_main_search3, parent, false) as View
 
         return MainSearchType3(itemView)
     }

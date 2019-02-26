@@ -1,51 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-    >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-            android:textStyle="bold"
-            android:layout_marginTop="66dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24dp"
-            android:textColor="#333333"
-            android:text="@string/school_title"
-    />
+        android:textStyle="bold"
+        android:layout_marginTop="66dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:textColor="#333333"
+        android:text="@string/school_title"/>
 
     <EditText
-            android:id="@+id/schoolET"
-            android:layout_marginTop="70dp"
-            android:layout_width="match_parent" android:layout_height="40dp"
-            android:hint="@string/ex_input"
-            android:textColorHint="#bbbbbb"
-            android:paddingLeft="10dp"
-            android:gravity="center_vertical"
-            android:textSize="14dp"
-            android:background="@drawable/background_border_strock1"/>
-
-
-<TextView android:layout_width="wrap_content" android:layout_height="0dp"
-android:layout_weight="1"/>
+        android:id="@+id/schoolET"
+        android:layout_marginTop="70dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="@string/ex_input"
+        android:textColorHint="#bbbbbb"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:textSize="14dp"
+        android:background="@drawable/background_border_strock1"/>
 
     <TextView
-            android:id="@+id/nextTV"
-            android:layout_marginBottom="40dp"
-            android:layout_width="match_parent"
-              android:layout_height="50dp"
-                 android:background="#000000"
-            android:text="@string/next"
-            android:textStyle="bold"
-              android:gravity="center"
-              android:textSize="20.5dp"
-              android:textColor="#ffffff"/>
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-
-
+    <TextView
+        android:id="@+id/nextTV"
+        android:layout_marginBottom="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#000000"
+        android:text="@string/next"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="20.5dp"
+        android:textColor="#ffffff"/>
 
 </LinearLayout>

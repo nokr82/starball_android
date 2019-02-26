@@ -1,70 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
 
     <com.devstories.starball_android.base.RationalRelativeLayout
-            android:id="@+id/popup"
-            android:background="@drawable/background_round_ffffff"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:ratio="330:515">
-
-<LinearLayout
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:id="@+id/popup"
+        android:background="@drawable/background_round_ffffff"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        app:ratio="330:515">
 
-        <ImageView
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <ImageView
                 android:layout_marginTop="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:src="@mipmap/comm_profile_pic"/>
 
-        <TextView
+            <TextView
                 android:layout_marginTop="18dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
                 android:textColor="#013e92"
                 android:gravity="center"
-                android:text="@string/dlg_album_pay_title"
-                />
-        <TextView
+                android:text="@string/dlg_album_pay_title"/>
+
+            <TextView
                 android:layout_marginTop="24dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
                 android:textColor="#333333"
-                android:text="@string/dlg_album_pay_content"
-                />
+                android:text="@string/dlg_album_pay_content"/>
 
-
-        <TextView
+            <TextView
                 android:layout_marginTop="19dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
                 android:textColor="#555555"
-                android:text="@string/dlg_album_pay_content2"
-                />
+                android:text="@string/dlg_album_pay_content2"/>
 
-
-
-
-
-
-
-
-
-        <TextView
+            <TextView
                 android:layout_marginTop="23dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
@@ -77,9 +66,9 @@
                 android:padding="8dp"
                 android:background="@drawable/background_border_strock4"
                 android:gravity="center"
-                android:text="@string/_3_starball"
-                />
-        <TextView
+                android:text="@string/_3_starball"/>
+
+            <TextView
                 android:layout_marginLeft="40dp"
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="23dp"
@@ -92,10 +81,9 @@
                 android:padding="8dp"
                 android:background="@drawable/background_border_strock4"
                 android:gravity="center"
-                android:text="@string/_10_starball"
-                />
+                android:text="@string/_10_starball"/>
 
-        <TextView
+            <TextView
                 android:id="@+id/noTV"
                 android:paddingTop="20dp"
                 android:paddingBottom="20dp"
@@ -104,13 +92,11 @@
                 android:layout_height="wrap_content"
                 android:textSize="10dp"
                 android:textColor="#333333"
-                android:text="@string/safe_join_no"
-                />
-</LinearLayout>
+                android:text="@string/safe_join_no"/>
+
+        </LinearLayout>
 
     </com.devstories.starball_android.base.RationalRelativeLayout>
-
-
 
 </LinearLayout>
 

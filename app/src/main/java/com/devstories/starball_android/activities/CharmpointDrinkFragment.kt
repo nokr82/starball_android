@@ -13,12 +13,14 @@ import kotlinx.android.synthetic.main.fragment_charmpoint_drink.*
 
 //메세지관리(메시지작성화면)
 
-class CharmpointDrinkFragment : Fragment() {
+class rCharmpointDrinkFragment : Fragment() {
     lateinit var myContext: Context
     private var progressDialog: ProgressDialog? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         this.myContext = container!!.context
         progressDialog = ProgressDialog(myContext)

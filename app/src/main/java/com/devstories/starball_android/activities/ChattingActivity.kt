@@ -11,8 +11,7 @@ import com.devstories.starball_android.adapter.EventAdapter
 import com.devstories.starball_android.adapter.GroupAdapter
 import com.devstories.starball_android.adapter.TalkAdapter
 import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.activity_lounge_main.*
-import kotlinx.android.synthetic.main.activity_lounge_main.view.*
+import kotlinx.android.synthetic.main.activity_chatting.*
 
 class ChattingActivity : RootActivity() {
 
@@ -29,7 +28,7 @@ class ChattingActivity : RootActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_lounge_main)
+        setContentView(R.layout.activity_chatting)
         this.context = this
         progressDialog = ProgressDialog(context)
 
@@ -148,7 +147,7 @@ class ChattingActivity : RootActivity() {
         reciveRL.setOnClickListener {
             setmenu()
             type = 2
-            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3,type)
+            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3, type)
             eventLV.adapter = EventAdapter
             menuLL.visibility = View.GONE
             storyTV.visibility = View.GONE
@@ -162,7 +161,7 @@ class ChattingActivity : RootActivity() {
         sendRL.setOnClickListener {
             setmenu()
             type = 3
-            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3,type)
+            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3, type)
             eventLV.adapter = EventAdapter
             menuLL.visibility = View.GONE
             storyTV.visibility = View.GONE
@@ -175,7 +174,7 @@ class ChattingActivity : RootActivity() {
         matchRL.setOnClickListener {
             setmenu()
             type = 1
-            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3,type)
+            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3, type)
             eventLV.adapter = EventAdapter
             menuLL.visibility = View.GONE
             storyTV.visibility = View.GONE
@@ -186,11 +185,9 @@ class ChattingActivity : RootActivity() {
         }
 
 
-
-
     }
 
-    fun setmenu(){
+    fun setmenu() {
         recive2LL.visibility = View.GONE
         send2LL.visibility = View.GONE
         event2LL.visibility = View.GONE

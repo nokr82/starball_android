@@ -32,11 +32,7 @@ class CashRequestActivity : RootActivity() {
         }
 
 
-
-
-
     }
-
 
 
 }

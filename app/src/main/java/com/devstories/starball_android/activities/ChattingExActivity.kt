@@ -15,7 +15,7 @@ import com.devstories.starball_android.adapter.EventAdapter
 import com.devstories.starball_android.adapter.GroupAdapter
 import com.devstories.starball_android.adapter.TalkAdapter
 import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.activity_lounge_main_se.*
+import kotlinx.android.synthetic.main.activity_chatting_ex.*
 
 class ChattingExActivity : RootActivity() {
 
@@ -34,41 +34,38 @@ class ChattingExActivity : RootActivity() {
     lateinit var backIV: ImageView
     lateinit var timeIV: ImageView
     lateinit var plusIV: ImageView
-    lateinit var  matchRL: RelativeLayout
-    lateinit var  sendRL: RelativeLayout
+    lateinit var matchRL: RelativeLayout
+    lateinit var sendRL: RelativeLayout
     lateinit var reciveRL: RelativeLayout
     lateinit var storyRL: RelativeLayout
-    lateinit var  matchmoreTV:ImageView
+    lateinit var matchmoreTV: ImageView
     lateinit var storymoreIV: ImageView
     lateinit var recivemoreIV: ImageView
     lateinit var sendmoreIV: ImageView
     lateinit var more2IV: ImageView
-    lateinit var storyLL:LinearLayout
+    lateinit var storyLL: LinearLayout
     lateinit var moreIV: ImageView
-    lateinit var friendLL:LinearLayout
-    lateinit var sendLL:LinearLayout
-    lateinit var  reciveLL:LinearLayout
+    lateinit var friendLL: LinearLayout
+    lateinit var sendLL: LinearLayout
+    lateinit var reciveLL: LinearLayout
     lateinit var matchLL: LinearLayout
-    lateinit var recive2LL:LinearLayout
-    lateinit var send2LL:LinearLayout
-    lateinit var  menuLL:LinearLayout
+    lateinit var recive2LL: LinearLayout
+    lateinit var send2LL: LinearLayout
+    lateinit var menuLL: LinearLayout
     lateinit var eventLL: LinearLayout
     lateinit var event2LL: RelativeLayout
-    lateinit var storyTV:TextView
+    lateinit var storyTV: TextView
     lateinit var groupLL: LinearLayout
-    lateinit var story_op2LL:LinearLayout
+    lateinit var story_op2LL: LinearLayout
     lateinit var group2LL: LinearLayout
-    lateinit var story_opLL:LinearLayout
-    lateinit var star_opIV:ImageView
-    lateinit var titleTV:TextView
-
-
-
+    lateinit var story_opLL: LinearLayout
+    lateinit var star_opIV: ImageView
+    lateinit var titleTV: TextView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_lounge_main_se)
+        setContentView(R.layout.activity_chatting_ex)
         this.context = this
         progressDialog = ProgressDialog(context)
         footer = View.inflate(this, R.layout.item_lounge_footer, null)
@@ -79,34 +76,34 @@ class ChattingExActivity : RootActivity() {
         group2LL = header.findViewById(R.id.group2LL)
         story_opLL = header.findViewById(R.id.story_opLL)
         backIV = header.findViewById(R.id.backIV)
-        timeIV= header.findViewById(R.id.timeIV)
-        plusIV= header.findViewById(R.id.plusIV)
-        matchRL=  header.findViewById(R.id.matchRL)
-        sendRL=  header.findViewById(R.id.sendRL)
-        reciveRL=  header.findViewById(R.id.reciveRL)
-        storyRL=  header.findViewById(R.id.storyRL)
-        matchmoreTV=  header.findViewById(R.id.matchmoreTV)
-        storymoreIV=  header.findViewById(R.id.storymoreIV)
-        recivemoreIV=  header.findViewById(R.id.recivemoreIV)
-        sendmoreIV=  header.findViewById(R.id.sendmoreIV)
-        more2IV=  header.findViewById(R.id.more2IV)
-        storyLL=  header.findViewById(R.id.storyLL)
-        moreIV=  header.findViewById(R.id.moreIV)
-        friendLL=  header.findViewById(R.id.friendLL)
-        sendLL=  header.findViewById(R.id.sendLL)
-        reciveLL=  header.findViewById(R.id.reciveLL)
-        matchLL=  header.findViewById(R.id.matchLL)
-        recive2LL=  header.findViewById(R.id.recive2LL)
-        send2LL=  header.findViewById(R.id.send2LL)
-        menuLL=  header.findViewById(R.id.menuLL)
-        eventLL=  header.findViewById(R.id.eventLL)
-        storyTV=  header.findViewById(R.id.storyTV)
-        event2LL=  header.findViewById(R.id.event2LL)
-        star_opIV=  footer.findViewById(R.id.star_opIV)
-        titleTV=  footer.findViewById(R.id.titleTV)
+        timeIV = header.findViewById(R.id.timeIV)
+        plusIV = header.findViewById(R.id.plusIV)
+        matchRL = header.findViewById(R.id.matchRL)
+        sendRL = header.findViewById(R.id.sendRL)
+        reciveRL = header.findViewById(R.id.reciveRL)
+        storyRL = header.findViewById(R.id.storyRL)
+        matchmoreTV = header.findViewById(R.id.matchmoreTV)
+        storymoreIV = header.findViewById(R.id.storymoreIV)
+        recivemoreIV = header.findViewById(R.id.recivemoreIV)
+        sendmoreIV = header.findViewById(R.id.sendmoreIV)
+        more2IV = header.findViewById(R.id.more2IV)
+        storyLL = header.findViewById(R.id.storyLL)
+        moreIV = header.findViewById(R.id.moreIV)
+        friendLL = header.findViewById(R.id.friendLL)
+        sendLL = header.findViewById(R.id.sendLL)
+        reciveLL = header.findViewById(R.id.reciveLL)
+        matchLL = header.findViewById(R.id.matchLL)
+        recive2LL = header.findViewById(R.id.recive2LL)
+        send2LL = header.findViewById(R.id.send2LL)
+        menuLL = header.findViewById(R.id.menuLL)
+        eventLL = header.findViewById(R.id.eventLL)
+        storyTV = header.findViewById(R.id.storyTV)
+        event2LL = header.findViewById(R.id.event2LL)
+        star_opIV = footer.findViewById(R.id.star_opIV)
+        titleTV = footer.findViewById(R.id.titleTV)
 
 
-        EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 0,type)
+        EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 0, type)
         eventLV.adapter = EventAdapter
         eventLV.addHeaderView(header)
 
@@ -174,7 +171,7 @@ class ChattingExActivity : RootActivity() {
 
         moreIV.setOnClickListener {
             eventLV.removeFooterView(footer)
-            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 0,type)
+            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 0, type)
             eventLV.adapter = EventAdapter
             menuLL.visibility = View.GONE
             eventLL.visibility = View.VISIBLE
@@ -192,7 +189,7 @@ class ChattingExActivity : RootActivity() {
         sendmoreIV.setOnClickListener {
             setmenu()
             eventLV.removeFooterView(footer)
-            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 0,type)
+            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 0, type)
             eventLV.adapter = EventAdapter
             menuLL.visibility = View.VISIBLE
             eventLL.visibility = View.GONE
@@ -200,7 +197,7 @@ class ChattingExActivity : RootActivity() {
         }
         recivemoreIV.setOnClickListener {
             setmenu()
-            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 0,type)
+            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 0, type)
             eventLV.adapter = EventAdapter
             menuLL.visibility = View.VISIBLE
             eventLL.visibility = View.GONE
@@ -209,7 +206,7 @@ class ChattingExActivity : RootActivity() {
         matchmoreTV.setOnClickListener {
             setmenu()
             eventLV.removeFooterView(footer)
-            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 0,type)
+            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 0, type)
             eventLV.adapter = EventAdapter
             menuLL.visibility = View.VISIBLE
             eventLL.visibility = View.GONE
@@ -220,7 +217,7 @@ class ChattingExActivity : RootActivity() {
         storymoreIV.setOnClickListener {
             eventLV.removeFooterView(footer)
 
-            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 0,type)
+            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 0, type)
             eventLV.adapter = EventAdapter
             menuLL.visibility = View.VISIBLE
             eventLL.visibility = View.GONE
@@ -242,7 +239,7 @@ class ChattingExActivity : RootActivity() {
             eventLV.addFooterView(footer)
             star_opIV.setImageResource(R.mipmap.recive_star)
             type = 2
-            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3,type)
+            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3, type)
             eventLV.adapter = EventAdapter
             menuLL.visibility = View.GONE
             storyTV.visibility = View.GONE
@@ -258,7 +255,7 @@ class ChattingExActivity : RootActivity() {
             star_opIV.setImageResource(R.mipmap.lounge_heart_like)
             titleTV.text = "보낸 Like"
             type = 3
-            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3,type)
+            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3, type)
             eventLV.adapter = EventAdapter
             menuLL.visibility = View.GONE
             storyTV.visibility = View.GONE
@@ -272,7 +269,7 @@ class ChattingExActivity : RootActivity() {
             setmenu()
             eventLV.removeFooterView(footer)
             type = 1
-            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 1,type)
+            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 1, type)
             eventLV.adapter = EventAdapter
             menuLL.visibility = View.GONE
             storyTV.visibility = View.GONE
@@ -283,10 +280,9 @@ class ChattingExActivity : RootActivity() {
         }
 
 
-
     }
 
-    fun setmenu(){
+    fun setmenu() {
         recive2LL.visibility = View.GONE
         send2LL.visibility = View.GONE
         event2LL.visibility = View.GONE

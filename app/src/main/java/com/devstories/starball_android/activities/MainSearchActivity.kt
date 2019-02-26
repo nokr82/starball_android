@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.item_main_search1.*
+import kotlinx.android.synthetic.main.fragment_main_search1.*
 
 class MainSearchActivity : RootActivity() {
 
@@ -16,7 +16,7 @@ class MainSearchActivity : RootActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.item_main_search1)
+        setContentView(R.layout.fragment_main_search1)
         this.context = this
         progressDialog = ProgressDialog(context)
 

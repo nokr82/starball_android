@@ -1,110 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_height="match_parent">
 
     <ImageView
-            android:layout_marginTop="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@mipmap/setting_character_icon_06"/>
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@mipmap/setting_character_icon_06"/>
 
     <TextView
-            android:textStyle="bold"
-            android:paddingTop="25dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:textColor="#a862b2"
-            android:layout_gravity="center"
-            android:text="당신의 흡연량은,"
-            />
+        android:textStyle="bold"
+        android:paddingTop="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:textColor="#a862b2"
+        android:layout_gravity="center"
+        android:text="당신의 흡연량은,"/>
+
     <ScrollView
-            android:scrollbars="none"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/firstTV"
+                android:layout_marginTop="50dp"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
+                android:gravity="center"
+                android:padding="14dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:textSize="16dp"
+                android:textColor="#333333"
+                android:background="@drawable/background_border_strock_c9c9c9"
+                android:layout_gravity="center"
+                android:text="자주핌"
+                android:layout_marginBottom="10dp"/>
 
             <TextView
-                    android:id="@+id/firstTV"
-                    android:layout_marginTop="50dp"
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:padding="14dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="16dp"
-                    android:textColor="#333333"
-                    android:background="@drawable/background_border_strock_c9c9c9"
-                    android:layout_gravity="center"
-                    android:text="자주핌"
-                    android:layout_marginBottom="10dp"
-                    />
-            <TextView
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:padding="14dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="16dp"
-                    android:textColor="#333333"
-                    android:background="@drawable/background_border_strock_c9c9c9"
-                    android:layout_gravity="center"
-                    android:text="사교적 흡연"
-                    android:layout_marginBottom="10dp"
-                    />
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:padding="14dp"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="#333333"
+                android:background="@drawable/background_border_strock_c9c9c9"
+                android:layout_gravity="center"
+                android:text="사교적 흡연"
+                android:layout_marginBottom="10dp"/>
 
             <TextView
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:padding="14dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="16dp"
-                    android:textColor="#333333"
-                    android:background="@drawable/background_border_strock_c9c9c9"
-                    android:layout_gravity="center"
-                    android:text="안핌"
-                    android:layout_marginBottom="10dp"
-                    />
-            <TextView
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:gravity="center"
-                    android:padding="14dp"
-                    android:layout_height="wrap_content"
-                    android:textSize="16dp"
-                    android:textColor="#333333"
-                    android:background="@drawable/background_border_strock_c9c9c9"
-                    android:layout_gravity="center"
-                    android:text="싫어함"
-                    android:layout_marginBottom="10dp"
-                    />
-
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:padding="14dp"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="#333333"
+                android:background="@drawable/background_border_strock_c9c9c9"
+                android:layout_gravity="center"
+                android:text="안핌"
+                android:layout_marginBottom="10dp"/>
 
             <TextView
-                    android:id="@+id/skipTV"
-                    android:paddingTop="25dp"
-                    android:paddingBottom="25dp"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12dp"
-                    android:textColor="#888888"
-                    android:gravity="center_horizontal"
-                    android:text="건너뛰기"
-                    />
-    </LinearLayout>
-</ScrollView>
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:padding="14dp"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textColor="#333333"
+                android:background="@drawable/background_border_strock_c9c9c9"
+                android:layout_gravity="center"
+                android:text="싫어함"
+                android:layout_marginBottom="10dp"/>
+
+            <TextView
+                android:id="@+id/skipTV"
+                android:paddingTop="25dp"
+                android:paddingBottom="25dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#888888"
+                android:gravity="center_horizontal"
+                android:text="건너뛰기"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

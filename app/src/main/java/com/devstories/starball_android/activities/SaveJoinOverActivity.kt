@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.activity_save_join2.*
+import kotlinx.android.synthetic.main.activity_save_join_over.*
 
 class SaveJoinOverActivity : RootActivity() {
 
@@ -16,7 +16,7 @@ class SaveJoinOverActivity : RootActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_save_join2)
+        setContentView(R.layout.activity_save_join_over)
         this.context = this
         progressDialog = ProgressDialog(context)
 

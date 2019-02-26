@@ -1,309 +1,304 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-    >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
 
         <ImageView
-                android:paddingLeft="9.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/comm_arrow_left"
-                android:id="@+id/backIV"/>
+            android:paddingLeft="9.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/comm_arrow_left"
+            android:id="@+id/backIV"/>
 
         <TextView
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:textSize="21dp"
-                android:textColor="#333333"
-                android:layout_centerInParent="true"
-                android:text="@string/search_setting"/>
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="21dp"
+            android:textColor="#333333"
+            android:layout_centerInParent="true"
+            android:text="@string/search_setting"/>
 
     </RelativeLayout>
 
-
-
     <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:fillViewport="true">
-    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="match_parent">
-        <TextView
+
+            <TextView
                 android:layout_marginTop="15dp"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="24dp"
                 android:textColor="#333333"
-                android:text="@string/search_setting_is"
-                />
+                android:text="@string/search_setting_is"/>
 
-        <TextView
+            <TextView
                 android:paddingTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
                 android:textColor="#333333"
                 android:letterSpacing="-0.05"
-                android:text="@string/search_setting_content"
-                />
+                android:text="@string/search_setting_content"/>
 
-        <TextView
+            <TextView
                 android:layout_marginTop="25.5dp"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textColor="#333333"
-                android:text="@string/gender"
-                />
-        <LinearLayout
+                android:text="@string/gender"/>
+
+            <LinearLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:layout_height="wrap_content">
 
-            <ImageView
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/comm_check_off"/>
-            <TextView
+
+                <TextView
                     android:textStyle="bold"
                     android:paddingLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:textColor="#333333"
-                    android:text="@string/man"
-                    />
-            <ImageView
+                    android:text="@string/man"/>
+
+                <ImageView
                     android:layout_marginLeft="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/comm_check_on"/>
-            <TextView
+
+                <TextView
                     android:textStyle="bold"
                     android:paddingLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:textColor="#333333"
-                    android:text="@string/famale"
-                    />
+                    android:text="@string/famale"/>
 
+            </LinearLayout>
 
-
-
-
-
-        </LinearLayout>
-
-        <TextView
+            <TextView
                 android:layout_marginTop="25dp"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textColor="#333333"
-                android:text="@string/age"
-                />
+                android:text="@string/age"/>
 
-        <TextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="12dp"
                 android:textColor="#555555"
                 android:gravity="end"
-                android:text="22 ~ 35"
-                />
+                android:text="22 ~ 35"/>
 
-        <ProgressBar
+            <ProgressBar
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
 
-        <TextView
+            <TextView
                 android:layout_marginTop="25dp"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textColor="#333333"
-                android:text="@string/road"
-                />
+                android:text="@string/road"/>
 
-        <TextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="12dp"
                 android:textColor="#555555"
                 android:gravity="end"
-                android:text="0~100km"
-                />
+                android:text="0~100km"/>
 
-        <ProgressBar
+            <ProgressBar
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
-        <TextView
+
+            <TextView
                 android:layout_marginTop="25dp"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textColor="#333333"
-                android:text="@string/height_is"
-                />
+                android:text="@string/height_is"/>
 
-        <TextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="12dp"
                 android:textColor="#555555"
                 android:gravity="end"
-                android:text="140~175cm"
-                />
+                android:text="140~175cm"/>
 
-        <ProgressBar
+            <ProgressBar
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
 
-        <TextView
+            <TextView
                 android:layout_marginTop="83.5dp"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textColor="#333333"
-                android:text="@string/preference_language"
-                />
+                android:text="@string/preference_language"/>
 
-        <RelativeLayout
+            <RelativeLayout
                 android:layout_marginTop="11.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp">
-            <Spinner android:layout_width="match_parent"
-                     android:layout_height="40dp"
-                     android:background="@null">
-            </Spinner>
-            <ImageView
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@null">
+                </Spinner>
+
+                <ImageView
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:src="@mipmap/op_drop"/>
-            <View
+
+                <View
                     android:layout_alignParentBottom="true"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#000000"/>
-        </RelativeLayout>
+            </RelativeLayout>
 
 
-        <LinearLayout
+            <LinearLayout
                 android:layout_marginTop="30.5dp"
                 android:layout_width="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:layout_height="wrap_content">
 
-            <ImageView android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="wrap_content"
 
-                       android:layout_height="wrap_content"
-                       android:src="@mipmap/plus_op"/>
-            <TextView
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/plus_op"/>
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="18dp"
                     android:textStyle="bold"
                     android:textColor="#333333"
-                    android:text="@string/add_language"
-                    />
-        </LinearLayout>
+                    android:text="@string/add_language"/>
+
+            </LinearLayout>
 
 
-        <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:gravity="center_vertical"
-        android:layout_height="wrap_content">
-
-        <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/comm_check_off"/>
-        <TextView
-                android:textStyle="bold"
-                android:paddingLeft="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14dp"
-                android:textColor="#333333"
-                android:text="@string/language_op1"
-                />
-
-    </LinearLayout>
-
-
-        <LinearLayout
+            <LinearLayout
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:layout_height="wrap_content">
 
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/comm_check_on"/>
-            <TextView
-                    android:textStyle="bold"
-                    android:paddingLeft="5dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/safe_user_See"
-                    />
-
-        </LinearLayout>
-
-        <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:layout_height="wrap_content">
-
-            <ImageView
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/comm_check_off"/>
-            <TextView
+
+                <TextView
                     android:textStyle="bold"
                     android:paddingLeft="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:textColor="#333333"
-                    android:text="@string/vvip_search"
-                    />
+                    android:text="@string/language_op1"/>
 
-        </LinearLayout>
+            </LinearLayout>
 
-        <TextView
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/comm_check_on"/>
+
+                <TextView
+                    android:textStyle="bold"
+                    android:paddingLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="#333333"
+                    android:text="@string/safe_user_See"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/comm_check_off"/>
+
+                <TextView
+                    android:textStyle="bold"
+                    android:paddingLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="#333333"
+                    android:text="@string/vvip_search"/>
+
+            </LinearLayout>
+
+            <TextView
 
                 android:layout_marginTop="34.5dp"
                 android:id="@+id/nextTV"
@@ -320,8 +315,8 @@
                 android:textColor="#ffffff"/>
 
 
+        </LinearLayout>
 
-    </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

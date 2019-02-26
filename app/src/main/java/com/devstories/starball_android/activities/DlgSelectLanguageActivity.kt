@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.dlg_select_language.*
 import java.util.*
 
 
-class DlgSelectLanguageActivity  : RootActivity() {
+class DlgSelectLanguageActivity : RootActivity() {
 
     lateinit var myContext: Context
     private var progressDialog: ProgressDialog? = null

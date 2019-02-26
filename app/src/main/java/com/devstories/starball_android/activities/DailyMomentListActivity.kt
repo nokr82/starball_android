@@ -53,8 +53,8 @@ class DailyMomentListActivity : RootActivity() {
         header = View.inflate(this, R.layout.item_daily_momenthead, null)
         backIV = header.findViewById(R.id.backIV)
         headRL = header.findViewById(R.id.headRL)
-        videoLL= header.findViewById(R.id.videoLL)
-        photoLL= header.findViewById(R.id.photoLL)
+        videoLL = header.findViewById(R.id.videoLL)
+        photoLL = header.findViewById(R.id.photoLL)
         dailyLV.addHeaderView(header)
         headRL.setOnClickListener {
 
@@ -75,11 +75,7 @@ class DailyMomentListActivity : RootActivity() {
         }
 
 
-
-
-
     }
-
 
 
 }

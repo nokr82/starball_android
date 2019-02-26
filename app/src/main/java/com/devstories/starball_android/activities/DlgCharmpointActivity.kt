@@ -26,16 +26,13 @@ class DlgCharmpointActivity : RootActivity() {
 
 
         continueTV.setOnClickListener {
-           finish()
+            finish()
         }
         finishTV.setOnClickListener {
             val resultIntent = Intent()
             setResult(RESULT_OK, resultIntent)
             finish()
         }
-
-
-
 
 
     }

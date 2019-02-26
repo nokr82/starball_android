@@ -6,8 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.activity_charmpoint.*
-
+import kotlinx.android.synthetic.main.activity_charm_point.*
 class CharmPointActivity : RootActivity() {
 
     lateinit var context: Context
@@ -16,7 +15,7 @@ class CharmPointActivity : RootActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_charmpoint)
+        setContentView(R.layout.activity_charm_point)
         this.context = this
         progressDialog = ProgressDialog(context)
 

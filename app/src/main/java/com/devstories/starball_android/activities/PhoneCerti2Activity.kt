@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.activity_join_phone_confirm2.*
+import kotlinx.android.synthetic.main.activity_phone_certi2.*
 
 class PhoneCerti2Activity : RootActivity() {
 
@@ -16,7 +16,7 @@ class PhoneCerti2Activity : RootActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_join_phone_confirm2)
+        setContentView(R.layout.activity_phone_certi2)
         this.context = this
         progressDialog = ProgressDialog(context)
 
