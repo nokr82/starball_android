@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_charmpoint_drink.*
 
 //메세지관리(메시지작성화면)
 
-class rCharmpointDrinkFragment : Fragment() {
+class CharmpointDrinkFragment : Fragment() {
     lateinit var myContext: Context
     private var progressDialog: ProgressDialog? = null
 
