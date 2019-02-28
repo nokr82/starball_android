@@ -40,7 +40,7 @@ class CharmPointActivity : RootActivity() {
         nextTV.setOnClickListener {
             val intent = Intent()
             Log.d("어뎀터",adapterData.toString())
-            intent.putExtra("charmPoint", adapterData.toString())
+            intent.putExtra("charmPoint", adapterData)
             setResult(Activity.RESULT_OK, intent)
             finish()
         }

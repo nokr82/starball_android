@@ -159,9 +159,6 @@ class EditProfileActivity : RootActivity() {
             startActivityForResult(intent,WORK_SELECT)
         }
 
-
-
-
         backIV.setOnClickListener {
             finish()
         }
@@ -300,8 +297,14 @@ class EditProfileActivity : RootActivity() {
             CHARM_POINT    -> {
                 if (resultCode == Activity.RESULT_OK) {
                     if(data != null) {
-                        adapterData2.add( data.getStringExtra("charmPoint"))
-
+                        var  champoints = data.getSerializableExtra("charmPoint") as ArrayList<String>
+                        if (champoints.size>0){
+                            for (i in 0..(champoints.size -1)){
+                                val champoint = champoints[i]
+                                //배열로 입력저장은 [] 이걸 넣어준다\
+                                adapterData2.add(champoint)
+                            }
+                        }
                         charmAdapter.notifyDataSetChanged()
                     }
                 }

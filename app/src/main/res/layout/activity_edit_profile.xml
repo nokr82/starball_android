@@ -217,7 +217,7 @@
 
             <GridView
                 android:id="@+id/charmpointGV"
-                android:numColumns="3"
+                android:numColumns="4"
                 android:scrollbars="none"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
