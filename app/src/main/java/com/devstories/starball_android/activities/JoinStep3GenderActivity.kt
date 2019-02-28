@@ -31,7 +31,7 @@ class JoinStep3GenderActivity : RootActivity() {
 //        gender= PrefUtils.getStringPreference(context,"gender")
         Log.d("패스",gender)
         if (PrefUtils.getStringPreference(context,"join_gender")!=null){
-            gender = PrefUtils.getStringPreference(context,"gender")
+            gender = PrefUtils.getStringPreference(context,"join_gender")
                 setGenderView()
         }
 

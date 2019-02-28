@@ -22,6 +22,8 @@ class LoginActivity : RootActivity() {
     private lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -36,7 +38,10 @@ class LoginActivity : RootActivity() {
         }
 
         joinLL.setOnClickListener {
-            login()
+//            login()
+            val intent = Intent(context, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
 
         finishLL.setOnClickListener {
@@ -81,9 +86,9 @@ class LoginActivity : RootActivity() {
 
                         Utils.hideKeyboard(context)
 
-                        val intent = Intent(context, MainActivity::class.java)
+                     /*   val intent = Intent(context, MainActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        startActivity(intent)
+                        startActivity(intent)*/
 
                     } else {
 

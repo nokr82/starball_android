@@ -76,13 +76,13 @@
                 android:text="@string/aboutme"/>
 
             <EditText
+                android:id="@+id/introET"
                 android:padding="9dp"
                 android:layout_width="match_parent"
                 android:layout_height="125dp"
                 android:textSize="12dp"
                 android:background="#eaeaea"
-                android:text="More than 50 talented young people work with great enthusiasm from our offices in Málaga, in southern Spain. Jointly, more than 200 graphic designers and external collaborators, working hard to always offer our users the most exclusive graphic resources either for personal or professional use in their projects.
-At Freepik we use a freemium business model which means, the majority of the resources offered at Freepik can be used for free, only having to credit the author of the illustration to Freepik. In addition, for a small fee, you can subscribe to the Premium plan and use all our illustrations without any accreditation whatsoever. "/>
+                android:text="자기소개"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -90,85 +90,22 @@ At Freepik we use a freemium business model which means, the majority of the res
                 android:textSize="18dp"
                 android:textColor="#333333"
                 android:textStyle="bold"
-                android:text="@string/language"/>
+                android:text="@string/language"
+                android:layout_marginBottom="10dp"/>
 
-            <LinearLayout
-                android:layout_marginTop="10dp"
+            <GridView
+                android:id="@+id/languageGV"
+                android:numColumns="3"
+                android:scrollbars="none"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:gravity="center_vertical"
-                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:textStyle="bold"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:textColor="#333333"
-                        android:text="@string/Korean"/>
-
-                    <ImageView
-                        android:paddingLeft="14dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/close_op"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_marginLeft="25dp"
-                    android:layout_width="wrap_content"
-                    android:gravity="center_vertical"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:textStyle="bold"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:textColor="#333333"
-                        android:text="@string/english"/>
-
-                    <ImageView
-                        android:paddingLeft="14dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/close_op"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_marginLeft="25dp"
-                    android:layout_width="wrap_content"
-                    android:gravity="center_vertical"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:textStyle="bold"
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:textSize="14dp"
-                        android:textColor="#333333"
-                        android:text="@string/Thai"/>
-
-                    <ImageView
-                        android:paddingLeft="14dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/close_op"/>
-
-                </LinearLayout>
-
-            </LinearLayout>
+            </GridView>
 
             <LinearLayout
+                android:id="@+id/languageLL"
                 android:layout_marginTop="22dp"
                 android:layout_width="wrap_content"
                 android:orientation="horizontal"
@@ -278,52 +215,12 @@ At Freepik we use a freemium business model which means, the majority of the res
 
             </RelativeLayout>
 
-            <LinearLayout
-                android:layout_marginTop="16dp"
+            <GridView
+                android:id="@+id/charmpointGV"
+                android:numColumns="3"
+                android:scrollbars="none"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="한사람만 봐요"/>
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="솔직해요"/>
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="큰눈이 매력적이에요."/>
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="섹시한 두뇌"/>
-
-            </LinearLayout>
+                android:layout_height="wrap_content"/>
 
             <TextView
                 android:layout_marginTop="74.5dp"

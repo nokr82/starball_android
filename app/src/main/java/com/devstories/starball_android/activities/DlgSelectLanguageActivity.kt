@@ -66,7 +66,6 @@ class DlgSelectLanguageActivity : RootActivity() {
 
         selectTV.setOnClickListener {
             val intent = Intent()
-
             val language = extractLanguage()
             intent.putExtra("selectedLanguage", language)
             setResult(Activity.RESULT_OK, intent)

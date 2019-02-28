@@ -21,7 +21,6 @@ class CashRequestActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
-
         backIV.setOnClickListener {
             finish()
         }
@@ -31,8 +30,6 @@ class CashRequestActivity : RootActivity() {
             startActivity(intent)
         }
 
-
     }
-
 
 }

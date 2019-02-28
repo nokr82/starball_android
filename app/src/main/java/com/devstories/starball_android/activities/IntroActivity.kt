@@ -46,7 +46,6 @@ class IntroActivity : RootActivity() {
 
         getHash()
 
-        /*
         val buldle = intent.extras
         if (buldle != null) {
             try {
@@ -66,14 +65,13 @@ class IntroActivity : RootActivity() {
                         waited += 100
                     }
                 } catch (e: InterruptedException) {
-                    // do nothing
+//                     do nothing
                 } finally {
-                    // stopIntro()
+                     stopIntro()
                 }
             }
         }
         (splashThread as Thread).start()
-        */
     }
 
     private fun startAnimation() {

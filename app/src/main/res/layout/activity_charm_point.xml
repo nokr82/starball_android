@@ -57,6 +57,7 @@
 				android:layout_height="wrap_content">
 
 				<TextView
+					android:id="@+id/item1TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -67,6 +68,7 @@
 					android:text="@string/charm_point_voice"/>
 
 				<TextView
+					android:id="@+id/item2TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:background="@drawable/background_border_strock4_d4d4d4"
@@ -77,24 +79,17 @@
 					android:text="@string/charm_point_playful"/>
 
 				<TextView
+					android:id="@+id/item3TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
-					android:background="@drawable/background_border_strock4_923b9f"
+					android:background="@drawable/background_border_strock4_d4d4d4"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:textSize="11dp"
-					android:textColor="#ffffff"
+					android:textColor="#555555"
 					android:text="@string/charm_point_bigeye"/>
 
-				<TextView
-					android:layout_marginRight="10dp"
-					android:padding="5dp"
-					android:background="@drawable/background_border_strock4_923b9f"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:textSize="11dp"
-					android:textColor="#ffffff"
-					android:text="@string/charm_point_sexyduke"/>
+
 
 			</LinearLayout>
 
@@ -104,6 +99,7 @@
 				android:layout_height="wrap_content">
 
 				<TextView
+					android:id="@+id/item4TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -114,6 +110,7 @@
 					android:text="@string/charm_point_game"/>
 
 				<TextView
+					android:id="@+id/item5TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:background="@drawable/background_border_strock4_d4d4d4"
@@ -124,6 +121,7 @@
 					android:text="@string/charm_point_leg"/>
 
 				<TextView
+					android:id="@+id/item6TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -134,6 +132,7 @@
 					android:text="@string/charm_point_turf"/>
 
 				<TextView
+					android:id="@+id/item7TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:background="@drawable/background_border_strock4_d4d4d4"
@@ -151,6 +150,7 @@
 				android:layout_height="wrap_content">
 
 				<TextView
+					android:id="@+id/item8TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -161,6 +161,7 @@
 					android:text="@string/charm_point_bluff"/>
 
 				<TextView
+					android:id="@+id/item9TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:background="@drawable/background_border_strock4_d4d4d4"
@@ -171,6 +172,7 @@
 					android:text="@string/charm_point_eye"/>
 
 				<TextView
+					android:id="@+id/item10TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -188,6 +190,7 @@
 				android:layout_height="wrap_content">
 
 				<TextView
+					android:id="@+id/item11TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -198,6 +201,7 @@
 					android:text="@string/charm_point_story"/>
 
 				<TextView
+					android:id="@+id/item12TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:background="@drawable/background_border_strock4_d4d4d4"
@@ -207,7 +211,16 @@
 					android:textSize="11dp"
 					android:text="@string/charm_point_figure"/>
 
-
+				<TextView
+					android:id="@+id/item13TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:textColor="#555555"
+					android:text="@string/charm_point_sexyduke"/>
 			</LinearLayout>
 
 			<LinearLayout
@@ -216,6 +229,7 @@
 				android:layout_height="wrap_content">
 
 				<TextView
+					android:id="@+id/item14TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -226,6 +240,7 @@
 					android:text="@string/charm_point_history"/>
 
 				<TextView
+					android:id="@+id/item15TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:background="@drawable/background_border_strock4_d4d4d4"
@@ -236,6 +251,7 @@
 					android:text="@string/charm_point_cuty"/>
 
 				<TextView
+					android:id="@+id/item16TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -253,6 +269,7 @@
 				android:layout_height="wrap_content">
 
 				<TextView
+					android:id="@+id/item17TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -263,6 +280,7 @@
 					android:text="@string/charm_point_work"/>
 
 				<TextView
+					android:id="@+id/item18TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:background="@drawable/background_border_strock4_d4d4d4"
@@ -273,6 +291,7 @@
 					android:text="@string/charm_point_sing"/>
 
 				<TextView
+					android:id="@+id/item19TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -291,6 +310,7 @@
 				android:layout_height="wrap_content">
 
 				<TextView
+					android:id="@+id/item20TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -301,6 +321,7 @@
 					android:text="@string/charm_point_only"/>
 
 				<TextView
+					android:id="@+id/item21TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:background="@drawable/background_border_strock4_d4d4d4"
@@ -311,6 +332,7 @@
 					android:text="@string/charm_point_solo"/>
 
 				<TextView
+					android:id="@+id/item22TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -329,6 +351,7 @@
 				android:layout_height="wrap_content">
 
 				<TextView
+					android:id="@+id/item23TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -339,6 +362,7 @@
 					android:text="@string/charm_point_frank"/>
 
 				<TextView
+					android:id="@+id/item24TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:background="@drawable/background_border_strock4_d4d4d4"
@@ -349,6 +373,7 @@
 					android:text="@string/charm_point_eye"/>
 
 				<TextView
+					android:id="@+id/item25TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -367,6 +392,7 @@
 				android:layout_height="wrap_content">
 
 				<TextView
+					android:id="@+id/item26TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -377,6 +403,7 @@
 					android:text="@string/charm_point_smilemany"/>
 
 				<TextView
+					android:id="@+id/item27TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:background="@drawable/background_border_strock4_d4d4d4"
@@ -387,6 +414,7 @@
 					android:text="@string/charm_point_helth"/>
 
 				<TextView
+					android:id="@+id/item28TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -405,6 +433,7 @@
 				android:layout_height="wrap_content">
 
 				<TextView
+					android:id="@+id/item29TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
@@ -415,6 +444,7 @@
 					android:text="@string/charm_point_comic"/>
 
 				<TextView
+					android:id="@+id/item30TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:background="@drawable/background_border_strock4_d4d4d4"
@@ -425,6 +455,7 @@
 					android:text="@string/charm_point_cook"/>
 
 				<TextView
+					android:id="@+id/item31TV"
 					android:layout_marginRight="10dp"
 					android:padding="5dp"
 					android:layout_width="wrap_content"
