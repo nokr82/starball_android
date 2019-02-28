@@ -87,7 +87,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/joinLL"
+                    android:id="@+id/loginLL"
                     android:layout_marginTop="80dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"

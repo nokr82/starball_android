@@ -96,7 +96,7 @@ class JoinActivity : RootActivity() {
             override fun afterTextChanged(s: Editable) {
 
                 val email = Utils.getString(emailET)
-                if(email.isNotEmpty() && Utils.isValidEmail(email)) {
+                if (email.isNotEmpty() && Utils.isValidEmail(email)) {
                     joinTV.setBackgroundColor(Color.BLACK)
                 } else {
                     joinTV.setBackgroundResource(R.drawable.background_border_strock2)
@@ -108,7 +108,7 @@ class JoinActivity : RootActivity() {
 
             val email = Utils.getString(emailET)
 
-           if (email.isEmpty()) {
+            if (email.isEmpty()) {
                 dlg(getString(R.string.email_empty))
                 return@setOnClickListener
             }
@@ -141,7 +141,7 @@ class JoinActivity : RootActivity() {
                 val task = GoogleSignIn.getSignedInAccountFromIntent(data)
                 val account = task.getResult(ApiException::class.java)
 
-                if(account != null) {
+                if (account != null) {
                     toJoinStep2Name(account.email, 3, account.id, account.displayName, account.photoUrl)
                 }
 
@@ -157,10 +157,15 @@ class JoinActivity : RootActivity() {
 
     // 페이스북 로그아웃
     fun disconnectFromFacebook() {
-        GraphRequest(AccessToken.getCurrentAccessToken(), "/me/permissions/", null, HttpMethod.DELETE, GraphRequest.Callback {
-            LoginManager.getInstance().logOut()
-            doStartWithFacebook()
-        }).executeAsync()
+        GraphRequest(
+            AccessToken.getCurrentAccessToken(),
+            "/me/permissions/",
+            null,
+            HttpMethod.DELETE,
+            GraphRequest.Callback {
+                LoginManager.getInstance().logOut()
+                doStartWithFacebook()
+            }).executeAsync()
     }
 
     private fun doStartWithFacebook() {
@@ -168,7 +173,8 @@ class JoinActivity : RootActivity() {
             this.accessToken = AccessToken.getCurrentAccessToken()
             fetchUserData()
         } else {
-            LoginManager.getInstance().logInWithReadPermissions(this@JoinActivity, Arrays.asList("public_profile", "email"))
+            LoginManager.getInstance()
+                .logInWithReadPermissions(this@JoinActivity, Arrays.asList("public_profile", "email"))
             LoginManager.getInstance().registerCallback(callbackManager,
                 object : FacebookCallback<LoginResult> {
                     override fun onSuccess(loginResult: LoginResult) {

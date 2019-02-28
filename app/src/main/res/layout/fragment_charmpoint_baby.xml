@@ -36,7 +36,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/firstTV"
+                android:id="@+id/baby1TV"
                 android:layout_marginTop="50dp"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
@@ -51,6 +51,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <TextView
+                android:id="@+id/baby2TV"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:gravity="center"
@@ -64,6 +65,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <TextView
+                android:id="@+id/baby3TV"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:gravity="center"
@@ -77,6 +79,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <TextView
+                android:id="@+id/baby4TV"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:gravity="center"

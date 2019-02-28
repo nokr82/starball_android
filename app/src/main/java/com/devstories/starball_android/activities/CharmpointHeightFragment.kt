@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.fragment_charmpoint_height.*
 import android.widget.NumberPicker
-import kotlinx.android.synthetic.main.fragment_charmpoint_height.view.*
 
 
 //메세지관리(메시지작성화면)
@@ -37,7 +36,6 @@ class CharmpointHeightFragment : Fragment() {
         "181cm"
     )
     private var select_height = "0"
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -57,6 +55,9 @@ class CharmpointHeightFragment : Fragment() {
         charmpointSettingAcitivity = activity as CharmpointSettingAcitivity
 
         ticketAdapter = ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, heightitems)
+
+        select_height = heightitems.first()
+
             //set min value zero
             ticketSP.setMinValue(0)
         //set max value from length array string reduced 1
@@ -67,7 +68,10 @@ class CharmpointHeightFragment : Fragment() {
         ticketSP.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS)
         //set wrap true or false, try it you will know the difference
         ticketSP.setWrapSelectorWheel(false)
-
+        ticketSP.setOnValueChangedListener { picker, oldVal, newVal ->
+            select_height = heightitems.get(newVal)
+            heightTV.text =select_height
+        }
         skipTV.setOnClickListener {
             var intent = Intent()
             intent.action = "HEIGHT_CHANGE"

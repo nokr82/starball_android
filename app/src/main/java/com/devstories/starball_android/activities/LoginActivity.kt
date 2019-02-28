@@ -37,12 +37,11 @@ class LoginActivity : RootActivity() {
             startActivity(intent)
         }
 
-        joinLL.setOnClickListener {
-//            login()
-            val intent = Intent(context, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
+        loginLL.setOnClickListener {
+            login()
+
         }
+
 
         finishLL.setOnClickListener {
             finish()
@@ -86,9 +85,9 @@ class LoginActivity : RootActivity() {
 
                         Utils.hideKeyboard(context)
 
-                     /*   val intent = Intent(context, MainActivity::class.java)
+                        val intent = Intent(context, MainActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        startActivity(intent)*/
+                        startActivity(intent)
 
                     } else {
 

@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.devstories.starball_android.R
+import com.devstories.starball_android.base.Utils
 import kotlinx.android.synthetic.main.fragment_charmpoint_baby.*
 
 //메세지관리(메시지작성화면)
@@ -16,6 +17,7 @@ import kotlinx.android.synthetic.main.fragment_charmpoint_baby.*
 class CharmpointBabyFragment : Fragment() {
     lateinit var myContext: Context
     private var progressDialog: ProgressDialog? = null
+    var baby = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -31,12 +33,40 @@ class CharmpointBabyFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        firstTV.setOnClickListener {
-            firstTV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+        baby1TV.setOnClickListener {
+            baby = Utils.getString(baby1TV)
+            baby1TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
             var intent = Intent()
             intent.action = "BABY_CHANGE"
             myContext.sendBroadcast(intent)
         }
+
+
+        baby2TV.setOnClickListener {
+            baby = Utils.getString(baby2TV)
+            baby2TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+            var intent = Intent()
+            intent.action = "BABY_CHANGE"
+            myContext.sendBroadcast(intent)
+        }
+
+        baby3TV.setOnClickListener {
+            baby = Utils.getString(baby3TV)
+            baby3TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+            var intent = Intent()
+            intent.action = "BABY_CHANGE"
+            myContext.sendBroadcast(intent)
+        }
+
+        baby4TV.setOnClickListener {
+            baby = Utils.getString(baby4TV)
+            baby4TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+            var intent = Intent()
+            intent.action = "BABY_CHANGE"
+            myContext.sendBroadcast(intent)
+        }
+
+
 
         skipTV.setOnClickListener {
             var intent = Intent()
