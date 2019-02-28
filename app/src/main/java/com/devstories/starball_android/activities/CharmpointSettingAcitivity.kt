@@ -77,7 +77,6 @@ class CharmpointSettingAcitivity : FragmentActivity() {
             }
         }
     }
-
     internal var animalReciver: BroadcastReceiver? = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
             if (intent != null) {
@@ -107,7 +106,6 @@ class CharmpointSettingAcitivity : FragmentActivity() {
             }
         }
     }
-
     internal var drinkReciver: BroadcastReceiver? = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
             if (intent != null) {
@@ -141,7 +139,6 @@ class CharmpointSettingAcitivity : FragmentActivity() {
             }
         }
     }
-
     internal var sportsReciver: BroadcastReceiver? = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
             if (intent != null) {

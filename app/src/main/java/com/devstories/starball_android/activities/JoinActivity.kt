@@ -155,6 +155,11 @@ class JoinActivity : RootActivity() {
         callbackManager!!.onActivityResult(requestCode, resultCode, data)
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+    }
+
     // 페이스북 로그아웃
     fun disconnectFromFacebook() {
         GraphRequest(

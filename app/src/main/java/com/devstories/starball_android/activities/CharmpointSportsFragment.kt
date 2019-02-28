@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.devstories.starball_android.R
+import com.devstories.starball_android.base.Utils
 import kotlinx.android.synthetic.main.fragment_charmpoint_sports.*
 
 //메세지관리(메시지작성화면)
@@ -16,6 +17,8 @@ import kotlinx.android.synthetic.main.fragment_charmpoint_sports.*
 class CharmpointSportsFragment : Fragment() {
     lateinit var myContext: Context
     private var progressDialog: ProgressDialog? = null
+
+    var sports = ""
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -31,12 +34,63 @@ class CharmpointSportsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        firstTV.setOnClickListener {
-            firstTV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+        sport1TV.setOnClickListener {
+            sports = Utils.getString(sport1TV)
+            sport1TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
             var intent = Intent()
             intent.action = "SPORTS_CHANGE"
             myContext.sendBroadcast(intent)
         }
+        sport2TV.setOnClickListener {
+            sports = Utils.getString(sport2TV)
+            sport2TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+            var intent = Intent()
+            intent.action = "SPORTS_CHANGE"
+            myContext.sendBroadcast(intent)
+        }
+        sport1TV.setOnClickListener {
+            sports = Utils.getString(sport1TV)
+            sport1TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+            var intent = Intent()
+            intent.action = "SPORTS_CHANGE"
+            myContext.sendBroadcast(intent)
+        }
+        sport3TV.setOnClickListener {
+            sports = Utils.getString(sport3TV)
+            sport3TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+            var intent = Intent()
+            intent.action = "SPORTS_CHANGE"
+            myContext.sendBroadcast(intent)
+        }
+        sport4TV.setOnClickListener {
+            sports = Utils.getString(sport4TV)
+            sport4TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+            var intent = Intent()
+            intent.action = "SPORTS_CHANGE"
+            myContext.sendBroadcast(intent)
+        }
+        sport5TV.setOnClickListener {
+            sports = Utils.getString(sport5TV)
+            sport5TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+            var intent = Intent()
+            intent.action = "SPORTS_CHANGE"
+            myContext.sendBroadcast(intent)
+        }
+        sport6TV.setOnClickListener {
+            sports = Utils.getString(sport6TV)
+            sport6TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+            var intent = Intent()
+            intent.action = "SPORTS_CHANGE"
+            myContext.sendBroadcast(intent)
+        }
+        sport7TV.setOnClickListener {
+            sports = Utils.getString(sport7TV)
+            sport7TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+            var intent = Intent()
+            intent.action = "SPORTS_CHANGE"
+            myContext.sendBroadcast(intent)
+        }
+
 
         skipTV.setOnClickListener {
             var intent = Intent()

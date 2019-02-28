@@ -33,7 +33,6 @@ class JoinStep2NameActivity : RootActivity() {
         if (PrefUtils.getStringPreference(context,"join_name")!=null){
             nameET.setText(PrefUtils.getStringPreference(context,"join_name"))
             nameTV.text = PrefUtils.getStringPreference(context,"join_name")
-
         }
         nameET.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}

@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.devstories.starball_android.R
+import com.devstories.starball_android.base.Utils
 import kotlinx.android.synthetic.main.fragment_charmpoint_drink.*
 
 //메세지관리(메시지작성화면)
@@ -16,6 +17,8 @@ import kotlinx.android.synthetic.main.fragment_charmpoint_drink.*
 class CharmpointDrinkFragment : Fragment() {
     lateinit var myContext: Context
     private var progressDialog: ProgressDialog? = null
+
+    var drink = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,8 +36,30 @@ class CharmpointDrinkFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        firstTV.setOnClickListener {
-            firstTV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+        drink1TV.setOnClickListener {
+            drink = Utils.getString(drink1TV)
+            drink1TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+            var intent = Intent()
+            intent.action = "DRINK_CHANGE"
+            myContext.sendBroadcast(intent)
+        }
+        drink2TV.setOnClickListener {
+            drink = Utils.getString(drink2TV)
+            drink2TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+            var intent = Intent()
+            intent.action = "DRINK_CHANGE"
+            myContext.sendBroadcast(intent)
+        }
+        drink3TV.setOnClickListener {
+            drink = Utils.getString(drink3TV)
+            drink3TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+            var intent = Intent()
+            intent.action = "DRINK_CHANGE"
+            myContext.sendBroadcast(intent)
+        }
+        drink4TV.setOnClickListener {
+            drink = Utils.getString(drink4TV)
+            drink4TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
             var intent = Intent()
             intent.action = "DRINK_CHANGE"
             myContext.sendBroadcast(intent)

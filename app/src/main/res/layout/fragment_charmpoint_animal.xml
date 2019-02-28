@@ -36,7 +36,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/dogTV"
+                android:id="@+id/animal1TV"
                 android:layout_marginTop="50dp"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
@@ -51,6 +51,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <TextView
+                android:id="@+id/animal2TV"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:gravity="center"
@@ -64,6 +65,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <TextView
+                android:id="@+id/animal3TV"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:gravity="center"
@@ -77,6 +79,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <TextView
+                android:id="@+id/animal4TV"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:gravity="center"
@@ -90,6 +93,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <TextView
+                android:id="@+id/animal5TV"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:gravity="center"
@@ -103,6 +107,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <TextView
+                android:id="@+id/animal6TV"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:gravity="center"
@@ -116,6 +121,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <TextView
+                android:id="@+id/animal7TV"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:gravity="center"

@@ -20,7 +20,7 @@ class JoinStep8SchoolActivity : RootActivity() {
 
         this.context = this
 
-        var school = PrefUtils.getStringPreference(context,"school", "")
+        var school = PrefUtils.getStringPreference(context,"join_school", "")
         if (school.isNotEmpty()){
             schoolET.setText(school)
         }
@@ -33,7 +33,7 @@ class JoinStep8SchoolActivity : RootActivity() {
                 return@setOnClickListener
             }
 
-            PrefUtils.setPreference(context, "school", school)
+            PrefUtils.setPreference(context, "join_school", school)
 
             val intent = Intent(context, JoinStep9IntroActivity::class.java)
             startActivity(intent)
