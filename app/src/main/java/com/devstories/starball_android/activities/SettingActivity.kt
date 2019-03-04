@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.devstories.starball_android.R
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import kotlinx.android.synthetic.main.activity_setting.*
 
@@ -44,6 +45,7 @@ class SettingActivity : RootActivity() {
         }
 
         logoutLL.setOnClickListener {
+            PrefUtils.clear(context)
             val intent = Intent(context, JoinActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)

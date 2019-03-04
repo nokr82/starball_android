@@ -31,7 +31,7 @@ class CharmPointActivity : RootActivity() {
 
         type = intent.getIntExtra("type", -1)
 
-        if (type == 2){
+        if (type == 2) {
             titleTV.text = getString(R.string.meet_some_one)
         }
 
@@ -45,7 +45,7 @@ class CharmPointActivity : RootActivity() {
         }
         nextTV.setOnClickListener {
             val intent = Intent()
-            Log.d("어뎀터",adapterData.toString())
+            Log.d("어뎀터", adapterData.toString())
             intent.putExtra("charmPoint", adapterData)
             setResult(Activity.RESULT_OK, intent)
             finish()
@@ -568,6 +568,7 @@ class CharmPointActivity : RootActivity() {
 
 
     }
+
 
 
 }

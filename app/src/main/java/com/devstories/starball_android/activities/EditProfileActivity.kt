@@ -6,8 +6,10 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import com.devstories.starball_android.Actions.JoinAction
 import com.devstories.starball_android.Actions.MemberAction
@@ -15,11 +17,15 @@ import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.CharmAdapter
 import com.devstories.starball_android.adapter.LanguageAdapter
 import com.devstories.starball_android.adapter.ProfileAdapter
+import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
+import com.gun0912.tedpermission.PermissionListener
+import com.gun0912.tedpermission.TedPermission
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
+import com.nostra13.universalimageloader.core.ImageLoader
 import cz.msebera.android.httpclient.Header
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import org.json.JSONArray
@@ -57,6 +63,8 @@ class EditProfileActivity : RootActivity() {
     private val WORK_SELECT = 110
 
     var option_list = ArrayList<String>()
+
+    var profiledata  = arrayListOf<JSONObject>()
 
     var adapterData = ArrayList<String>()
     var adapterData2 = ArrayList<String>()
@@ -114,8 +122,6 @@ class EditProfileActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
-        ProfileAdapter = ProfileAdapter(context, R.layout.item_profile_img, 20)
-        profileGV.adapter = ProfileAdapter
 
 
         languageAdapter = LanguageAdapter(context, R.layout.item_language, adapterData)
@@ -147,8 +153,49 @@ class EditProfileActivity : RootActivity() {
             languageAdapter.notifyDataSetChanged()
         }
 
+        profileclick()
         click()
     }
+
+    fun profileclick(){
+
+        profile1RL.setOnClickListener {
+            checkPermission()
+        }
+
+        profile2RL.setOnClickListener {
+            checkPermission()
+        }
+
+        profile3RL.setOnClickListener {
+            checkPermission()
+        }
+
+        profile4RL.setOnClickListener {
+            checkPermission()
+        }
+
+        profile5RL.setOnClickListener {
+            checkPermission()
+        }
+
+        profile6RL.setOnClickListener {
+            checkPermission()
+        }
+
+        profile7RL.setOnClickListener {
+            checkPermission()
+        }
+
+        profile8RL.setOnClickListener {
+            checkPermission()
+        }
+
+        profile9RL.setOnClickListener {
+            checkPermission()
+        }
+    }
+
 
     fun click() {
         nextTV.setOnClickListener {
@@ -338,7 +385,28 @@ class EditProfileActivity : RootActivity() {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }
 
+    private fun checkPermission() {
 
+        val permissionlistener = object : PermissionListener {
+            override fun onPermissionGranted() {
+                var intent = Intent(context, FindPictureGridActivity::class.java)
+                intent.putExtra("pictureCnt", pictures.count())
+                startActivityForResult(intent, SELECT_PICTURE_REQUEST)
+
+            }
+
+            override fun onPermissionDenied(deniedPermissions: List<String>) {
+
+            }
+
+        }
+
+        TedPermission.with(this)
+            .setPermissionListener(permissionlistener)
+            .setDeniedMessage("[설정] > [권한] 에서 권한을 허용할 수 있습니다.")
+            .setPermissions(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+            .check();
+    }
     fun setmenu() {
         ghostIV.setImageResource(R.mipmap.comm_check_off)
         nomalIV.setImageResource(R.mipmap.comm_check_off)
@@ -365,9 +433,20 @@ class EditProfileActivity : RootActivity() {
                     if ("ok" == result) {
 
                         val member = response.getJSONObject("member")
+
+                        val profiles = response.getJSONArray("profiles")
+                        for (i in 0..profiles.length()-1){
+                            //새로운뷰를 이미지의 길이만큼생성
+                            var json=profiles[i] as JSONObject
+                            Log.d("제이슨",json.toString())
+                            var image_uri = Utils.getString(json,"image_uri")
+                            pictures.add(json)
+                            Log.d("제이슨이미지",image_uri.toString())
+                            }
+                        updatePictures()
+
+
                         email = Utils.getString(member, "email")
-
-
                         height = Utils.getInt(member, "height")
                         intro = Utils.getString(member, "intro")
                         nation = Utils.getString(member, "nation")
@@ -730,10 +809,119 @@ class EditProfileActivity : RootActivity() {
     }
 
 
+
+    private fun updatePictures() {
+
+        // clear
+        for (idx in 0..8) {
+
+            val imageIV = getIV(idx)
+            val delIV = getDelIV(idx)
+
+            imageIV.setImageBitmap(null)
+
+            imageIV.visibility = View.GONE
+            delIV.visibility = View.GONE
+        }
+
+        for ((idx, picture) in pictures.withIndex()) {
+            val image_uri = Utils.getString(picture!!, "image_uri")
+            val id = Utils.getInt(picture!!, "id")
+            val path = Utils.getString(picture!!, "path")
+            val mediaType = Utils.getInt(picture!!, "mediaType")
+            val imageIV = getIV(idx)
+            val delIV = getDelIV(idx)
+
+
+            if (path !=null){
+                if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
+                    var bitmap = Utils.getImage(context.contentResolver, path)
+                    imageIV.setImageBitmap(bitmap)
+                } else {
+                    val curThumb = MediaStore.Video.Thumbnails.getThumbnail(context.contentResolver, id.toLong(), MediaStore.Video.Thumbnails.MINI_KIND, null)
+                    imageIV.setImageBitmap(curThumb)
+                }
+            }
+            var bitmap  = Config.url + image_uri
+            ImageLoader.getInstance().displayImage(bitmap, imageIV, Utils.UILoptionsPosting)
+
+
+            delIV.tag = idx
+            delIV.setOnClickListener(null)
+            delIV.setOnClickListener {
+                val tag = it.tag as Int
+                if(pictures.size <= tag) {
+                    return@setOnClickListener
+                }
+                pictures.removeAt(tag)
+
+                updatePictures()
+            }
+
+            imageIV.visibility = View.VISIBLE
+            delIV.visibility = View.VISIBLE
+
+        }
+
+    }
+
+
+
+    private fun getIV(idx: Int): ImageView {
+        when (idx) {
+            0 -> return profile1IV
+            1 -> return profile2IV
+            2 -> return profile3IV
+            3 -> return profile4IV
+            4 -> return profile5IV
+            5 -> return profile6IV
+            6 -> return profile7IV
+            7 -> return profile8IV
+            8 -> return profile9IV
+        }
+
+        return profile1IV
+    }
+
+    private fun getDelIV(idx: Int): ImageView {
+        when (idx) {
+            0 -> return profile1DelIV
+            1 -> return profile2DelIV
+            2 -> return profile3DelIV
+            3 -> return profile4DelIV
+            4 -> return profile5DelIV
+            5 -> return profile6DelIV
+            6 -> return profile7DelIV
+            7 -> return profile8DelIV
+            8 -> return profile9DelIV
+        }
+
+        return profile1DelIV
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         when (requestCode) {
+
+            SELECT_PICTURE_REQUEST -> {
+
+                val items = data?.getStringArrayListExtra("items")
+                for (i in 0..(items!!.size - 1)) {
+
+                    val item = JSONObject(items[i])
+
+                    pictures.add(item)
+
+                    println(item)
+
+
+
+                    // reset(str, i, "picture", mediaType, id, -1, null)
+                }
+                updatePictures()
+            }
+
             CHARM_POINT -> {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data != null) {
