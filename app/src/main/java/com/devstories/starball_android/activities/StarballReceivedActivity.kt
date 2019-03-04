@@ -5,6 +5,8 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.app.ProgressDialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.ViewGroup
 import com.devstories.starball_android.base.RootActivity
@@ -18,6 +20,9 @@ class StarballReceivedActivity : RootActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
         setContentView(com.devstories.starball_android.R.layout.activity_starball_received)
 
         window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
@@ -54,15 +59,15 @@ class StarballReceivedActivity : RootActivity() {
 
         val th14FadeOut = ObjectAnimator.ofFloat(th14IV, "alpha", 1f, 0f)
         val th14FadeIn = ObjectAnimator.ofFloat(th14IV, "alpha", 0f, 1f)
-        th14FadeIn.duration = duration
+        th14FadeIn.duration = duration * 5
 
         val th15FadeOut = ObjectAnimator.ofFloat(th15IV, "alpha", 1f, 0f)
         val th15FadeIn = ObjectAnimator.ofFloat(th15IV, "alpha", 0f, 1f)
-        th15FadeIn.duration = duration
+        th15FadeIn.duration = duration * 5
 
         val th16FadeOut = ObjectAnimator.ofFloat(th16IV, "alpha", 1f, 0f)
         val th16FadeIn = ObjectAnimator.ofFloat(th16IV, "alpha", 0f, 1f)
-        th16FadeIn.duration = duration
+        th16FadeIn.duration = duration * 5
 
         val wingAnimators = ArrayList<Animator>()
         wingAnimators.add(scaleDownX)
@@ -146,6 +151,7 @@ class StarballReceivedActivity : RootActivity() {
 
             override fun onAnimationEnd(animation: Animator?, isReverse: Boolean) {
                 finish()
+                overridePendingTransition(0, 0)
             }
 
             override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {
@@ -154,6 +160,7 @@ class StarballReceivedActivity : RootActivity() {
 
             override fun onAnimationEnd(animation: Animator?) {
                 finish()
+                overridePendingTransition(0, 0)
             }
         })
     }

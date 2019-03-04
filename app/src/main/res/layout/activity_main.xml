@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    android:clipChildren="false">
+    android:clipChildren="false"
+    android:id="@+id/rootLL">
 
     <com.devstories.starball_android.swipestack.SwipeStack
         android:id="@+id/swipeStack"

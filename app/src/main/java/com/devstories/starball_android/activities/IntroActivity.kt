@@ -56,6 +56,7 @@ class IntroActivity : RootActivity() {
 
         }
 
+        /*
         splashThread = object : Thread() {
             override fun run() {
                 try {
@@ -67,11 +68,12 @@ class IntroActivity : RootActivity() {
                 } catch (e: InterruptedException) {
 //                     do nothing
                 } finally {
-                     stopIntro()
+                     // stopIntro()
                 }
             }
         }
         (splashThread as Thread).start()
+        */
     }
 
     private fun startAnimation() {
@@ -130,7 +132,7 @@ class IntroActivity : RootActivity() {
             }
 
             override fun onAnimationEnd(animation: Animator?, isReverse: Boolean) {
-
+                stopIntro()
             }
 
             override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {

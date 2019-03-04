@@ -8,6 +8,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.ViewGroup
 import com.devstories.starball_android.base.RootActivity
+import com.devstories.starball_android.base.Utils
 import kotlinx.android.synthetic.main.activity_matched.*
 
 class MatchedActivity : RootActivity() {
@@ -47,7 +48,7 @@ class MatchedActivity : RootActivity() {
         val wingScaleDownY = ObjectAnimator.ofFloat(wingStarIV, "scaleY", 1.0f)
         val wingRotateAnimator = ObjectAnimator.ofFloat(
             wingStarIV,
-            "rotation", 150f, 0f
+            "rotation", 200f, 0f
         )
 
         val wingAnimators = ArrayList<Animator>()
@@ -58,7 +59,7 @@ class MatchedActivity : RootActivity() {
         wingAnimators.add(wingRotateAnimator)
 
         val wingSet = AnimatorSet()
-        wingSet.duration = duration * 10
+        wingSet.duration = duration * 16
         wingSet.playTogether(wingAnimators)
 
         /*
@@ -173,7 +174,10 @@ class MatchedActivity : RootActivity() {
             }
 
             override fun onAnimationEnd(animation: Animator?, isReverse: Boolean) {
-
+                Utils.delay(context, 500) {
+                    finish()
+                    overridePendingTransition(0, 0)
+                }
             }
 
             override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {
@@ -181,7 +185,8 @@ class MatchedActivity : RootActivity() {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-
+                finish()
+                overridePendingTransition(0, 0)
             }
         })
 

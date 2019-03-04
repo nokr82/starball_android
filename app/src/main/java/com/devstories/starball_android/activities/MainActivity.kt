@@ -5,10 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v4.app.FragmentActivity
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.base.PrefUtils
+import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import com.devstories.starball_android.swipestack.SwipeStack
 import com.devstories.starball_android.swipestack.SwipeStackAdapter
@@ -21,7 +21,7 @@ import org.json.JSONException
 import org.json.JSONObject
 
 
-class MainActivity : FragmentActivity() {
+class MainActivity : RootActivity() {
 
     lateinit var mContext:Context
     private var progressDialog: ProgressDialog? = null

@@ -14,8 +14,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.ChatNotiActivity
+import com.devstories.starball_android.activities.LikedNotiActivity
 import com.devstories.starball_android.activities.MatchedActivity
-import com.devstories.starball_android.activities.StarballReceivedActivity
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.DateUtils
 import com.devstories.starball_android.base.Utils
@@ -269,6 +269,18 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                 holder.nameTV.text = name
                 holder.ageTV.text = age.toString()
                 holder.fitRateTV.text = "23%"
+
+                holder.infoIV.setOnClickListener {
+
+                    val intent = Intent(context, LikedNotiActivity::class.java)
+                    context.startActivity(intent)
+
+                    /*
+                    val intent = Intent("LIKED_NOTI")
+                    context.sendBroadcast(intent)
+                    */
+                }
+
             }
 
             else -> {

@@ -2,10 +2,9 @@ package com.devstories.starball_android.base;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.content.*;
 import android.database.Cursor;
+import android.graphics.PixelFormat;
 import android.graphics.Point;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -15,14 +14,32 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.Gravity;
+import android.view.View;
 import android.view.WindowManager;
 import com.devstories.starball_android.R;
 
 public class RootActivity extends Activity {
 
+    BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            System.out.println("EEE");
+
+            likedNoti();
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        System.out.println("TTT");
+
+        IntentFilter intentfilter = new IntentFilter("LIKED_NOTI");
+        registerReceiver(mReceiver, intentfilter);
+
     }
 
     public Context getDialogContext() {
@@ -159,5 +176,51 @@ public class RootActivity extends Activity {
 
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 
+    }
+
+    public void likedNoti() {
+
+        System.out.println("likedNoti likedNoti");
+
+        View layout = getLayoutInflater().inflate(R.layout.activity_liked_noti, null);
+
+        /*
+        Toast toast = new Toast(getApplicationContext());
+        toast.setDuration(Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.TOP, 0, 0);
+        toast.setView(layout);
+        toast.show();
+        */
+
+        // LinearLayout rootLL = findViewById(R.id.rootLL);
+        // rootLL.addView(layout);
+        int LAYOUT_FLAG;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            LAYOUT_FLAG = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+        } else {
+            LAYOUT_FLAG = WindowManager.LayoutParams.TYPE_PHONE;
+        }
+
+        WindowManager.LayoutParams params = new WindowManager.LayoutParams(
+                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                LAYOUT_FLAG,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
+                        WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,
+                PixelFormat.TRANSPARENT);
+
+        params.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
+        WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+        wm.addView(layout, params);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if(mReceiver != null) {
+            unregisterReceiver(mReceiver);
+        }
     }
 }
