@@ -59,7 +59,9 @@
             android:text="+82"/>
 
         <EditText
+            android:id="@+id/phoneET"
             android:background="@null"
+            android:maxLength="11"
             android:layout_width="match_parent"
             android:gravity="center_vertical"
             android:inputType="number"
