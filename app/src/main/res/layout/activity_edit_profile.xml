@@ -98,11 +98,10 @@
                 android:numColumns="3"
                 android:scrollbars="none"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"/>
 
 
 
-            </GridView>
 
             <LinearLayout
                 android:id="@+id/languageLL"
@@ -137,22 +136,27 @@
                 android:text="@string/Nationality"/>
 
             <RelativeLayout
+                android:id="@+id/nationRL"
                 android:layout_marginTop="11.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp">
 
-                <Spinner
+                <TextView
+                    android:id="@+id/nationTV"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@null">
-                </Spinner>
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:textSize="14dp"
+                    android:textColor="#555555"
+                    android:text="@string/select_hint"/>
 
                 <ImageView
-                    android:layout_marginTop="15dp"
+                    android:paddingLeft="50dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@mipmap/op_drop"/>
 
                 <View
@@ -186,24 +190,26 @@
                 android:text="@string/my_attractive_point_is"/>
 
             <RelativeLayout
+                android:id="@+id/charmRL"
                 android:layout_marginTop="11.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp">
 
-                <Spinner
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@null">
-                </Spinner>
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:textSize="14dp"
+                    android:textColor="#555555"
+                    android:text="@string/select_hint"/>
 
                 <ImageView
-                    android:id="@+id/charmRL"
                     android:paddingLeft="50dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@mipmap/op_drop"/>
 
                 <View
@@ -216,6 +222,7 @@
             </RelativeLayout>
 
             <GridView
+                android:layout_marginTop="10dp"
                 android:id="@+id/charmpointGV"
                 android:numColumns="4"
                 android:scrollbars="none"
@@ -232,23 +239,27 @@
                 android:text="@string/If_we_meet"/>
 
             <RelativeLayout
+                android:id="@+id/meetRL"
                 android:layout_marginTop="11.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp">
 
-                <Spinner
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@null">
-                </Spinner>
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:textSize="14dp"
+                    android:textColor="#555555"
+                    android:text="선택해주세요"/>
 
                 <ImageView
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="15dp"
+
+                    android:paddingLeft="50dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@mipmap/op_drop"/>
 
                 <View
@@ -260,52 +271,13 @@
 
             </RelativeLayout>
 
-            <LinearLayout
-                android:layout_marginTop="16dp"
+            <GridView
+                android:layout_marginTop="10dp"
+                android:id="@+id/meeetpointGV"
+                android:numColumns="4"
+                android:scrollbars="none"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="한사람만 봐요"/>
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="솔직해요"/>
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="큰눈이 매력적이에요."/>
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="섹시한 두뇌"/>
-
-            </LinearLayout>
+                android:layout_height="wrap_content"/>
 
             <TextView
                 android:layout_marginTop="74.5dp"
@@ -317,22 +289,26 @@
                 android:text="@string/meet_some_one"/>
 
             <RelativeLayout
+                android:id="@+id/peopleRL"
                 android:layout_marginTop="11.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp">
 
-                <Spinner
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@null">
-                </Spinner>
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:textSize="14dp"
+                    android:textColor="#555555"
+                    android:text="선택해주세요"/>
 
                 <ImageView
-                    android:layout_marginTop="15dp"
+                    android:paddingLeft="50dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@mipmap/op_drop"/>
 
                 <View
@@ -344,53 +320,13 @@
 
             </RelativeLayout>
 
-            <LinearLayout
-                android:layout_marginTop="16dp"
+            <GridView
+                android:layout_marginTop="10dp"
+                android:id="@+id/wantmeetGV"
+                android:numColumns="4"
+                android:scrollbars="none"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="한사람만 봐요"/>
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="솔직해요"/>
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="큰눈이 매력적이에요."/>
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="섹시한 두뇌"/>
-
-            </LinearLayout>
-
+                android:layout_height="wrap_content"/>
             <TextView
                 android:layout_marginTop="105dp"
                 android:layout_width="wrap_content"
@@ -854,41 +790,7 @@
                     android:src="@mipmap/setting_drop_right"/>
 
             </LinearLayout>
-            <LinearLayout
-                android:id="@+id/picLL"
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
 
-                <TextView
-                    android:id="@+id/picTV"
-                    android:paddingLeft="10dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    android:textColor="#333333"
-                    android:text="사진 인증"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:gravity="end"
-                    android:text="@string/no_certi"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/setting_drop_right"/>
-
-            </LinearLayout>
             <LinearLayout
                 android:id="@+id/saveLL"
                 android:layout_marginTop="15dp"
@@ -898,7 +800,6 @@
                 android:layout_height="40dp">
 
                 <TextView
-                    android:id="@+id/saveTV"
                     android:paddingLeft="10dp"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -1070,6 +971,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/nomalIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/comm_check_off"/>
@@ -1084,10 +986,11 @@
                     android:text="@string/nomal"/>
 
                 <ImageView
+                    android:id="@+id/ghostIV"
                     android:layout_marginLeft="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/comm_check_on"/>
+                    android:src="@mipmap/comm_check_off"/>
 
                 <TextView
                     android:textStyle="bold"
@@ -1108,12 +1011,14 @@
                 android:text="@string/edit_profile_content3"/>
 
             <LinearLayout
+                android:id="@+id/crossLL"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/crossIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/comm_check_off"/>
@@ -1138,12 +1043,14 @@
                 android:text="@string/edit_profile_content4"/>
 
             <LinearLayout
+                android:id="@+id/limitLL"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/limitIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/comm_check_off"/>
@@ -1168,12 +1075,14 @@
                 android:text="@string/limit_see_me2"/>
 
             <LinearLayout
+                android:id="@+id/saveviewLL"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/saveviewIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/comm_check_off"/>
@@ -1190,6 +1099,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/vvipLL"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
@@ -1220,12 +1130,14 @@
                 android:text="@string/vvip_see2"/>
 
             <LinearLayout
+                android:id="@+id/knowLL"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/knowIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/comm_check_off"/>
@@ -1268,32 +1180,37 @@
                 android:text="@string/travel_is2"/>
 
             <RelativeLayout
+                android:id="@+id/travelRL"
                 android:layout_marginTop="11.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp">
 
-                <Spinner
+                <TextView
+                    android:id="@+id/travelTV"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@null">
-                </Spinner>
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:textSize="14dp"
+                    android:textColor="#555555"
+                    android:text="@string/select_hint"/>
 
                 <ImageView
-                    android:layout_marginTop="15dp"
+                    android:paddingLeft="50dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@mipmap/op_drop"/>
 
                 <View
+                    android:layout_marginTop="5dp"
                     android:layout_alignParentBottom="true"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#000000"/>
 
             </RelativeLayout>
-
             <TextView
                 android:layout_marginTop="50dp"
                 android:textStyle="bold"
@@ -1304,32 +1221,37 @@
                 android:text="@string/calendar_talk"/>
 
             <RelativeLayout
+                android:id="@+id/calRL"
                 android:layout_marginTop="11.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp">
 
-                <Spinner
+                <TextView
+                    android:id="@+id/dateTV"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@null">
-                </Spinner>
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:textSize="14dp"
+                    android:textColor="#555555"
+                    android:text="@string/select_hint"/>
 
                 <ImageView
-                    android:layout_marginTop="15dp"
+                    android:paddingLeft="50dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@mipmap/op_drop"/>
 
                 <View
+                    android:layout_marginTop="5dp"
                     android:layout_alignParentBottom="true"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#000000"/>
 
             </RelativeLayout>
-
             <TextView
                 android:layout_marginTop="38dp"
                 android:id="@+id/nextTV"

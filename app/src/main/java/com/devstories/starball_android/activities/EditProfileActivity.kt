@@ -1,11 +1,14 @@
 package com.devstories.starball_android.activities
 
 import android.app.Activity
+import android.app.DatePickerDialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import com.devstories.starball_android.Actions.JoinAction
 import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.CharmAdapter
@@ -31,9 +34,14 @@ class EditProfileActivity : RootActivity() {
 
     private val SELECT_LANGUAGE_REQUST_CODE = 1004
     private val SELECT_PICTURE_REQUEST = 1002
+    private val SELECT_NATION = 1005
+    private val SELECT_TRAVEL = 1006
+
     private var pictures = arrayListOf<JSONObject>()
 
     private val CHARM_POINT = 111
+    private val WE_MEET = 112
+    private val WANT_MEET = 113
 
 
     private val HEIGHT_SELECT = 101
@@ -47,12 +55,24 @@ class EditProfileActivity : RootActivity() {
     private val SPORTS_SELECT = 109
     private val WORK_SELECT = 110
 
+    var option_list = ArrayList<String>()
+
+    var adapterData = ArrayList<String>()
+    var adapterData2 = ArrayList<String>()
+    var adapterData3 = ArrayList<String>()
+    var adapterData4 = ArrayList<String>()
+
 
     lateinit var languageAdapter: LanguageAdapter
-    var adapterData = ArrayList<String>()
-
     lateinit var charmAdapter: CharmAdapter
-    var adapterData2 = ArrayList<String>()
+    lateinit var meetAdapter: CharmAdapter
+    lateinit var wantmeetAdapter: CharmAdapter
+
+
+    var year: Int = 1
+    var month: Int = 1
+    var day: Int = 1
+
 
     var step = -1
 
@@ -75,13 +95,19 @@ class EditProfileActivity : RootActivity() {
             languageAdapter.notifyDataSetChanged()
         }
 
-        charmAdapter = CharmAdapter(context,R.layout.item_charm_point, adapterData2)
+        charmAdapter = CharmAdapter(context, R.layout.item_charm_point, adapterData2)
         charmpointGV.adapter = charmAdapter
 
 
+        meetAdapter = CharmAdapter(context, R.layout.item_charm_point, adapterData3)
+        meeetpointGV.adapter = meetAdapter
+
+        wantmeetAdapter = CharmAdapter(context, R.layout.item_charm_point, adapterData4)
+        wantmeetGV.adapter = wantmeetAdapter
+
 
         val joinLanguage = PrefUtils.getStringPreference(context, "join_language", "")
-        if(joinLanguage.isNotEmpty()) {
+        if (joinLanguage.isNotEmpty()) {
             val splited = joinLanguage.split(",")
             for (language in splited) {
                 adapterData.add(language.trim())
@@ -93,7 +119,7 @@ class EditProfileActivity : RootActivity() {
         click()
     }
 
-    fun click(){
+    fun click() {
         languageLL.setOnClickListener {
             val intent = Intent(context, DlgSelectLanguageActivity::class.java)
             startActivityForResult(intent, SELECT_LANGUAGE_REQUST_CODE)
@@ -101,62 +127,62 @@ class EditProfileActivity : RootActivity() {
 
         heightLL.setOnClickListener {
             val intent = Intent(context, CharmpointSettingAcitivity::class.java)
-            startActivityForResult(intent,HEIGHT_SELECT)
+            startActivityForResult(intent, HEIGHT_SELECT)
         }
         regionLL.setOnClickListener {
             val intent = Intent(context, CharmpointSettingAcitivity::class.java)
             step = 2
             intent.putExtra("step", step)
-            startActivityForResult(intent,REGION_SELECT)
+            startActivityForResult(intent, REGION_SELECT)
 
         }
         policyLL.setOnClickListener {
             val intent = Intent(context, CharmpointSettingAcitivity::class.java)
             step = 3
             intent.putExtra("step", step)
-            startActivityForResult(intent,POLICY_SELECT)
+            startActivityForResult(intent, POLICY_SELECT)
         }
         babyLL.setOnClickListener {
             val intent = Intent(context, CharmpointSettingAcitivity::class.java)
             step = 4
             intent.putExtra("step", step)
-            startActivityForResult(intent,BABY_SELECT)
+            startActivityForResult(intent, BABY_SELECT)
         }
         animalLL.setOnClickListener {
             val intent = Intent(context, CharmpointSettingAcitivity::class.java)
             step = 5
             intent.putExtra("step", step)
-            startActivityForResult(intent,ANIMAL_SELECT)
+            startActivityForResult(intent, ANIMAL_SELECT)
         }
         smokeLL.setOnClickListener {
             val intent = Intent(context, CharmpointSettingAcitivity::class.java)
             step = 6
             intent.putExtra("step", step)
-            startActivityForResult(intent,SMOKE_SELECT)
+            startActivityForResult(intent, SMOKE_SELECT)
         }
         drinkLL.setOnClickListener {
             val intent = Intent(context, CharmpointSettingAcitivity::class.java)
             step = 7
             intent.putExtra("step", step)
-            startActivityForResult(intent,DRINK_SELECT)
+            startActivityForResult(intent, DRINK_SELECT)
         }
         healthLL.setOnClickListener {
             val intent = Intent(context, CharmpointSettingAcitivity::class.java)
             step = 8
             intent.putExtra("step", step)
-            startActivityForResult(intent,HEALTH_SELECT)
+            startActivityForResult(intent, HEALTH_SELECT)
         }
         sportLL.setOnClickListener {
             val intent = Intent(context, CharmpointSettingAcitivity::class.java)
             step = 9
             intent.putExtra("step", step)
-            startActivityForResult(intent,SPORTS_SELECT)
+            startActivityForResult(intent, SPORTS_SELECT)
         }
         workLL.setOnClickListener {
             val intent = Intent(context, CharmpointSettingAcitivity::class.java)
             step = 10
             intent.putExtra("step", step)
-            startActivityForResult(intent,WORK_SELECT)
+            startActivityForResult(intent, WORK_SELECT)
         }
 
         backIV.setOnClickListener {
@@ -165,7 +191,17 @@ class EditProfileActivity : RootActivity() {
 
         charmRL.setOnClickListener {
             val intent = Intent(context, CharmPointActivity::class.java)
-            startActivityForResult(intent,CHARM_POINT)
+            startActivityForResult(intent, CHARM_POINT)
+        }
+
+        meetRL.setOnClickListener {
+            val intent = Intent(context, WeMeetActivity::class.java)
+            startActivityForResult(intent, WE_MEET)
+        }
+        peopleRL.setOnClickListener {
+            val intent = Intent(context, CharmPointActivity::class.java)
+            intent.putExtra("type", 2)
+            startActivityForResult(intent, WANT_MEET)
         }
 
 
@@ -181,18 +217,110 @@ class EditProfileActivity : RootActivity() {
             val intent = Intent(context, EmailConnectActivity::class.java)
             startActivity(intent)
         }
+        ghostIV.setOnClickListener {
+            setmenu()
+            ghostIV.setImageResource(R.mipmap.comm_check_on)
+        }
+        nomalIV.setOnClickListener {
+            setmenu()
+            nomalIV.setImageResource(R.mipmap.comm_check_on)
+        }
+        crossLL.setOnClickListener {
+            it.isSelected = !it.isSelected
+            if (it.isSelected) {
+                option_list.add("1")
+                crossIV.setImageResource(R.mipmap.comm_check_on)
+            } else {
+                option_list.remove("1")
+                crossIV.setImageResource(R.mipmap.comm_check_off)
+            }
+        }
+        limitLL.setOnClickListener {
+            it.isSelected = !it.isSelected
+            if (it.isSelected) {
+                option_list.add("2")
+                limitIV.setImageResource(R.mipmap.comm_check_on)
+            } else {
+                option_list.remove("2")
+                limitIV.setImageResource(R.mipmap.comm_check_off)
+            }
+        }
+        saveviewLL.setOnClickListener {
+            it.isSelected = !it.isSelected
+            if (it.isSelected) {
+                option_list.add("3")
+                saveviewIV.setImageResource(R.mipmap.comm_check_on)
+            } else {
+                option_list.remove("3")
+                saveviewIV.setImageResource(R.mipmap.comm_check_off)
+            }
+        }
+        vvipLL.setOnClickListener {
+            it.isSelected = !it.isSelected
+            if (it.isSelected) {
+                option_list.add("4")
+                knowIV.setImageResource(R.mipmap.comm_check_on)
+            } else {
+                option_list.remove("4")
+                knowIV.setImageResource(R.mipmap.comm_check_off)
+            }
+        }
+        knowLL.setOnClickListener {
+            it.isSelected = !it.isSelected
+            if (it.isSelected) {
+                option_list.add("5")
+                knowIV.setImageResource(R.mipmap.comm_check_on)
+            } else {
+                option_list.remove("5")
+                knowIV.setImageResource(R.mipmap.comm_check_off)
+            }
+        }
+
+        nationRL.setOnClickListener {
+            val intent = Intent(context, DlgSelectNationActivity::class.java)
+            startActivityForResult(intent, SELECT_NATION)
+        }
+        travelRL.setOnClickListener {
+            val intent = Intent(context, DlgSelectNationActivity::class.java)
+            startActivityForResult(intent, SELECT_TRAVEL)
+        }
+
+        calRL.setOnClickListener {
+            datedlg()
+        }
+
 
     }
 
+    fun datedlg() {
+        DatePickerDialog(context, dateSetListener, year, month, day).show()
+    }
+
+    private val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+        val msg = String.format("%d.%d.%d", year, monthOfYear + 1, dayOfMonth)
+        dateTV.text = msg
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+    }
+
+
+    fun setmenu() {
+        ghostIV.setImageResource(R.mipmap.comm_check_off)
+        nomalIV.setImageResource(R.mipmap.comm_check_off)
+    }
 
     fun edit_info() {
         var intro = Utils.getString(introET)
-       var join_language =   PrefUtils.setPreference(context, "join_language", adapterData.joinToString())
+        var join_language = PrefUtils.setPreference(context, "join_language", adapterData.joinToString())
+        var nation = Utils.getString(nationTV)
+        var travel = Utils.getString(travelTV)
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
 
         val params = RequestParams()
+        params.put("member_id", member_id)
         params.put("intro", intro)
         params.put("language", join_language)
-
+        params.put("nation", nation)
+        params.put("travel", travel)
 
 
         JoinAction.final_join(params, object : JsonHttpResponseHandler() {
@@ -205,7 +333,7 @@ class EditProfileActivity : RootActivity() {
                 try {
                     val result = response!!.getString("result")
 
-                    Log.d("결과",result.toString())
+                    Log.d("결과", result.toString())
                     if ("ok" == result) {
 
                     } else {
@@ -294,12 +422,12 @@ class EditProfileActivity : RootActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         when (requestCode) {
-            CHARM_POINT    -> {
+            CHARM_POINT -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    if(data != null) {
-                        var  champoints = data.getSerializableExtra("charmPoint") as ArrayList<String>
-                        if (champoints.size>0){
-                            for (i in 0..(champoints.size -1)){
+                    if (data != null) {
+                        var champoints = data.getSerializableExtra("charmPoint") as ArrayList<String>
+                        if (champoints.size > 0) {
+                            for (i in 0..(champoints.size - 1)) {
                                 val champoint = champoints[i]
                                 //배열로 입력저장은 [] 이걸 넣어준다\
                                 adapterData2.add(champoint)
@@ -309,80 +437,124 @@ class EditProfileActivity : RootActivity() {
                     }
                 }
             }
+            WE_MEET -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    if (data != null) {
+                        var meetpoints = data.getSerializableExtra("meetPoint") as ArrayList<String>
+                        if (meetpoints.size > 0) {
+                            for (i in 0..(meetpoints.size - 1)) {
+                                val meetpoint = meetpoints[i]
+                                //배열로 입력저장은 [] 이걸 넣어준다\
+                                adapterData3.add(meetpoint)
+                            }
+                        }
+                        meetAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
+            WANT_MEET -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    if (data != null) {
+                        var wantmeetpoints = data.getSerializableExtra("charmPoint") as ArrayList<String>
+                        if (wantmeetpoints.size > 0) {
+                            for (i in 0..(wantmeetpoints.size - 1)) {
+                                val wantmeetpoint = wantmeetpoints[i]
+                                //배열로 입력저장은 [] 이걸 넣어준다\
+                                adapterData4.add(wantmeetpoint)
+                            }
+                        }
+                        wantmeetAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
             SELECT_LANGUAGE_REQUST_CODE -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    if(data != null) {
+                    if (data != null) {
                         adapterData.add(data.getStringExtra("selectedLanguage"))
                         languageAdapter.notifyDataSetChanged()
                     }
                 }
             }
-            HEIGHT_SELECT  -> {
+            SELECT_NATION -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    if(data != null) {
+                    if (data != null) {
+                        nationTV.text = data.getStringExtra("selectedNation")
+                    }
+                }
+            }
+            SELECT_TRAVEL -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    if (data != null) {
+                        travelTV.text = data.getStringExtra("selectedNation")
+                    }
+                }
+            }
+            HEIGHT_SELECT -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    if (data != null) {
 
                     }
                 }
             }
-            REGION_SELECT   -> {
+            REGION_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    if(data != null) {
+                    if (data != null) {
 
                     }
                 }
             }
-            POLICY_SELECT   -> {
+            POLICY_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    if(data != null) {
+                    if (data != null) {
 
                     }
                 }
             }
-            BABY_SELECT    -> {
+            BABY_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    if(data != null) {
+                    if (data != null) {
 
                     }
                 }
             }
-            ANIMAL_SELECT   -> {
+            ANIMAL_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    if(data != null) {
+                    if (data != null) {
 
                     }
                 }
             }
-            SMOKE_SELECT   -> {
+            SMOKE_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    if(data != null) {
+                    if (data != null) {
 
                     }
                 }
             }
-            DRINK_SELECT   -> {
+            DRINK_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    if(data != null) {
+                    if (data != null) {
 
                     }
                 }
             }
-            HEALTH_SELECT   -> {
+            HEALTH_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    if(data != null) {
+                    if (data != null) {
 
                     }
                 }
             }
-            SPORTS_SELECT    -> {
+            SPORTS_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    if(data != null) {
+                    if (data != null) {
 
                     }
                 }
             }
-            WORK_SELECT    -> {
+            WORK_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    if(data != null) {
+                    if (data != null) {
 
                     }
                 }

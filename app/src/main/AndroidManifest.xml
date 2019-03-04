@@ -45,6 +45,7 @@
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden">
 		</activity>
+
 		<activity
 			android:name=".activities.IntroActivity"
 			android:theme="@style/NoTitleDialog"
@@ -133,6 +134,10 @@
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
 			android:name=".activities.CharmPointActivity"
+			android:theme="@style/NoTitleDialog"
+			android:windowSoftInputMode="adjustResize|stateHidden"/>
+		<activity
+			android:name=".activities.WeMeetActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
@@ -229,6 +234,10 @@
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
 			android:name=".activities.DlgCharInfoActivity"
+			android:screenOrientation="unspecified"
+			android:theme="@style/full_screen_dialog1"/>
+		<activity
+			android:name=".activities.DlgSelectNationActivity"
 			android:screenOrientation="unspecified"
 			android:theme="@style/full_screen_dialog1"/>
 		<activity

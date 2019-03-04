@@ -106,7 +106,7 @@ class SettingMainActivity : RootActivity() {
         }
 
         settingIV.setOnClickListener {
-            val intent = Intent(context, CharmpointSettingAcitivity::class.java)
+            val intent = Intent(context, SettingActivity::class.java)
             startActivity(intent)
         }
 
