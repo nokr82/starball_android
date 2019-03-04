@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.devstories.starball_android.Actions.JoinAction
 import com.devstories.starball_android.R
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
@@ -100,7 +101,9 @@ class CharmpointWorkFragment : Fragment() {
 
     }
     fun edit_info() {
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
         val params = RequestParams()
+        params.put("member_id", member_id)
         params.put("work", work)
 
         JoinAction.final_join(params, object : JsonHttpResponseHandler() {

@@ -77,6 +77,36 @@ class EditProfileActivity : RootActivity() {
 
     var step = -1
 
+    //회원정보
+    var email = ""
+    var height = -1
+    var intro = ""
+    var nation = ""
+    var region = ""
+    var policy = ""
+    var baby = ""
+    var animal = ""
+    var smoke = ""
+    var drink = ""
+    var health = ""
+    var sport = ""
+    var work = ""
+
+    var vvip_yn = ""
+    var know_yn = ""
+    var save_yn = ""
+    var limit_yn = ""
+    var cross_yn = ""
+    var ghost_yn = ""
+    var savejoin_yn = ""
+    var phone_yn = ""
+    var email_yn = ""
+    var facebook_yn = ""
+    var insta_yn = ""
+    var travel = ""
+    var travel_cal = ""
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
@@ -227,60 +257,58 @@ class EditProfileActivity : RootActivity() {
         }
         ghostIV.setOnClickListener {
             setmenu()
+            ghost_yn = "Y"
             ghostIV.setImageResource(R.mipmap.comm_check_on)
         }
         nomalIV.setOnClickListener {
             setmenu()
+            ghost_yn = "N"
             nomalIV.setImageResource(R.mipmap.comm_check_on)
         }
         crossLL.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                option_list.add("1")
-                crossIV.setImageResource(R.mipmap.comm_check_on)
-            } else {
-                option_list.remove("1")
+            if (cross_yn == "Y") {
+                cross_yn = "N"
                 crossIV.setImageResource(R.mipmap.comm_check_off)
+            } else {
+                cross_yn = "Y"
+                crossIV.setImageResource(R.mipmap.comm_check_on)
             }
+
         }
         limitLL.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                option_list.add("2")
-                limitIV.setImageResource(R.mipmap.comm_check_on)
-            } else {
-                option_list.remove("2")
+            if (limit_yn == "Y") {
+                limit_yn = "N"
                 limitIV.setImageResource(R.mipmap.comm_check_off)
+            } else {
+                limit_yn = "Y"
+                limitIV.setImageResource(R.mipmap.comm_check_on)
             }
         }
         saveviewLL.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                option_list.add("3")
-                saveviewIV.setImageResource(R.mipmap.comm_check_on)
-            } else {
-                option_list.remove("3")
+            if (save_yn == "Y") {
+                save_yn = "N"
                 saveviewIV.setImageResource(R.mipmap.comm_check_off)
+            } else {
+                save_yn = "Y"
+                saveviewIV.setImageResource(R.mipmap.comm_check_on)
             }
         }
         vvipLL.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                option_list.add("4")
-                vvipIV.setImageResource(R.mipmap.comm_check_on)
-            } else {
-                option_list.remove("4")
+            if (vvip_yn == "Y") {
+                vvip_yn = "N"
                 vvipIV.setImageResource(R.mipmap.comm_check_off)
+            } else {
+                vvip_yn = "Y"
+                vvipIV.setImageResource(R.mipmap.comm_check_on)
             }
         }
         knowLL.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                option_list.add("5")
-                knowIV.setImageResource(R.mipmap.comm_check_on)
-            } else {
-                option_list.remove("5")
+            if (know_yn == "Y") {
+                know_yn = "N"
                 knowIV.setImageResource(R.mipmap.comm_check_off)
+            } else {
+                know_yn = "Y"
+                knowIV.setImageResource(R.mipmap.comm_check_on)
             }
         }
 
@@ -297,7 +325,7 @@ class EditProfileActivity : RootActivity() {
             datedlg()
         }
 
-
+        get_info()
     }
 
     fun datedlg() {
@@ -335,6 +363,150 @@ class EditProfileActivity : RootActivity() {
 
                     Log.d("결과", result.toString())
                     if ("ok" == result) {
+
+                        val member = response.getJSONObject("member")
+                        email = Utils.getString(member, "email")
+
+
+                        height = Utils.getInt(member, "height")
+                        intro = Utils.getString(member, "intro")
+                        nation = Utils.getString(member, "nation")
+                        region = Utils.getString(member, "region")
+                        policy = Utils.getString(member, "policy")
+                        baby = Utils.getString(member, "baby")
+                        drink = Utils.getString(member, "drink")
+                        smoke = Utils.getString(member, "smoke")
+                        health = Utils.getString(member, "health")
+                        sport = Utils.getString(member, "sport")
+                        animal = Utils.getString(member, "animal")
+                        work = Utils.getString(member, "work")
+
+
+                        vvip_yn = Utils.getString(member, "vvip_yn")
+                        know_yn = Utils.getString(member, "know_yn")
+                        save_yn = Utils.getString(member, "save_yn")
+                        cross_yn = Utils.getString(member, "cross_yn")
+                        limit_yn = Utils.getString(member, "limit_yn")
+                        ghost_yn = Utils.getString(member, "ghost_yn")
+                        savejoin_yn = Utils.getString(member, "savejoin_yn")
+                        phone_yn = Utils.getString(member, "phone_yn")
+                        email_yn = Utils.getString(member, "email_yn")
+                        facebook_yn = Utils.getString(member, "facebook_yn")
+                        insta_yn = Utils.getString(member, "insta_yn")
+                        travel = Utils.getString(member, "travel")
+                        travel_cal = Utils.getString(member, "travel_cal")
+
+                        introET.setText(intro)
+
+
+                        if (ghost_yn == "Y") {
+                            setmenu()
+                            ghostIV.setImageResource(R.mipmap.comm_check_on)
+                        } else {
+                            setmenu()
+                            nomalIV.setImageResource(R.mipmap.comm_check_on)
+                        }
+
+
+                        if (cross_yn == "Y") {
+                            crossIV.setImageResource(R.mipmap.comm_check_on)
+                        } else {
+                            crossIV.setImageResource(R.mipmap.comm_check_off)
+                        }
+
+                        if (limit_yn == "Y") {
+                            limitIV.setImageResource(R.mipmap.comm_check_on)
+                        } else {
+                            limitIV.setImageResource(R.mipmap.comm_check_off)
+                        }
+
+                        if (save_yn == "Y") {
+                            saveviewIV.setImageResource(R.mipmap.comm_check_on)
+                        } else {
+                            saveviewIV.setImageResource(R.mipmap.comm_check_off)
+                        }
+                        if (vvip_yn == "Y") {
+                            vvipIV.setImageResource(R.mipmap.comm_check_on)
+                        } else {
+                            vvipIV.setImageResource(R.mipmap.comm_check_off)
+                        }
+
+                        if (know_yn == "Y") {
+                            knowIV.setImageResource(R.mipmap.comm_check_on)
+                        } else {
+                            knowIV.setImageResource(R.mipmap.comm_check_off)
+                        }
+                        if (height!= -1){
+                            heightTV.text = height.toString()
+                            heightIV.setImageResource(R.mipmap.setting_drop_right)
+                        }else{
+                            heightIV.setImageResource(R.mipmap.plus_op)
+                        }
+
+                        if (region!=""){
+                            regionTV.text = region
+                            regionIV.setImageResource(R.mipmap.setting_drop_right)
+                        }else{
+                            regionIV.setImageResource(R.mipmap.plus_op)
+                        }
+                        if (policy!=""){
+                            policyTV.text = policy
+                            policyIV.setImageResource(R.mipmap.setting_drop_right)
+                        }else{
+                            policyIV.setImageResource(R.mipmap.plus_op)
+                        }
+
+                        if (baby!=""){
+                            babyTV.text = baby
+                            babyIV.setImageResource(R.mipmap.setting_drop_right)
+                        }else{
+                            babyIV.setImageResource(R.mipmap.plus_op)
+                        }
+
+                        if (animal!=""){
+                            animalTV.text = animal
+                            animalIV.setImageResource(R.mipmap.setting_drop_right)
+                        }else{
+                            animalIV.setImageResource(R.mipmap.plus_op)
+                        }
+
+                        if (smoke!=""){
+                            smokeTV.text = smoke
+                            smokeIV.setImageResource(R.mipmap.setting_drop_right)
+                        }else{
+                            smokeIV.setImageResource(R.mipmap.plus_op)
+                        }
+                        if (drink!=""){
+                            drinkTV.text = drink
+                            drinkIV.setImageResource(R.mipmap.setting_drop_right)
+                        }else{
+                            drinkIV.setImageResource(R.mipmap.plus_op)
+                        }
+                        if (health!=""){
+                            healthTV.text = health
+                            healthIV.setImageResource(R.mipmap.setting_drop_right)
+                        }else{
+                            healthIV.setImageResource(R.mipmap.plus_op)
+                        }
+
+                        if (sport !=""){
+                            sportTV.text = sport
+                            sportIV.setImageResource(R.mipmap.setting_drop_right)
+                        }else{
+                            sportIV.setImageResource(R.mipmap.plus_op)
+                        }
+                        if (work !=""){
+                            workTV.text = work
+                            workIV.setImageResource(R.mipmap.setting_drop_right)
+                        }else{
+                            workIV.setImageResource(R.mipmap.plus_op)
+                        }
+
+
+
+
+
+
 
                     } else {
 
@@ -601,70 +773,70 @@ class EditProfileActivity : RootActivity() {
             HEIGHT_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data != null) {
-
+                        get_info()
                     }
                 }
             }
             REGION_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data != null) {
-
+                        get_info()
                     }
                 }
             }
             POLICY_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data != null) {
-
+                        get_info()
                     }
                 }
             }
             BABY_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data != null) {
-
+                        get_info()
                     }
                 }
             }
             ANIMAL_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data != null) {
-
+                        get_info()
                     }
                 }
             }
             SMOKE_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data != null) {
-
+                        get_info()
                     }
                 }
             }
             DRINK_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data != null) {
-
+                        get_info()
                     }
                 }
             }
             HEALTH_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data != null) {
-
+                        get_info()
                     }
                 }
             }
             SPORTS_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data != null) {
-
+                        get_info()
                     }
                 }
             }
             WORK_SELECT -> {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data != null) {
-
+                        get_info()
                     }
                 }
             }

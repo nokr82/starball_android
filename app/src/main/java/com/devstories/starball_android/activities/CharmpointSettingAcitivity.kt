@@ -160,8 +160,10 @@ class CharmpointSettingAcitivity : FragmentActivity() {
     internal var workReciver: BroadcastReceiver? = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
             if (intent != null) {
-
-                supportFragmentManager.beginTransaction().replace(R.id.charmFL, CharmpointWorkFragment).commit()
+                val intent = Intent()
+                setResult(Activity.RESULT_OK, intent)
+                intent.putExtra("result", "result")
+                finish()
             }
         }
     }

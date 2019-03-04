@@ -110,7 +110,9 @@ class CharmpointAnimalFragment : Fragment() {
 
     }
     fun edit_info() {
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
         val params = RequestParams()
+        params.put("member_id", member_id)
         params.put("animal", animal)
 
         JoinAction.final_join(params, object : JsonHttpResponseHandler() {

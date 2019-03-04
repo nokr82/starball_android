@@ -361,15 +361,17 @@
                     android:text="@string/height"/>
 
                 <TextView
+                    android:id="@+id/heightTV"
                     android:paddingLeft="12.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:textColor="#999999"
                     android:paddingRight="19dp"
-                    android:text="172"/>
+                    android:text=""/>
 
                 <ImageView
+                    android:id="@+id/heightIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="10dp"
@@ -402,15 +404,17 @@
                     android:text="@string/religion"/>
 
                 <TextView
+                    android:id="@+id/regionTV"
                     android:paddingLeft="12.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     android:textColor="#999999"
                     android:paddingRight="19dp"
-                    android:text="기독교"/>
+                    android:text=""/>
 
                 <ImageView
+                    android:id="@+id/regionIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="10dp"
@@ -443,6 +447,7 @@
                     android:text="@string/politician"/>
 
                 <TextView
+                    android:id="@+id/policyTV"
                     android:paddingLeft="12.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -452,6 +457,7 @@
                     android:text=""/>
 
                 <ImageView
+                    android:id="@+id/policyIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="10dp"
@@ -484,6 +490,7 @@
                     android:text="@string/children"/>
 
                 <TextView
+                    android:id="@+id/babyTV"
                     android:paddingLeft="12.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -493,6 +500,7 @@
                     android:text=""/>
 
                 <ImageView
+                    android:id="@+id/babyIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="10dp"
@@ -525,6 +533,7 @@
                     android:text="@string/animal"/>
 
                 <TextView
+                    android:id="@+id/animalTV"
                     android:paddingLeft="12.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -534,6 +543,7 @@
                     android:text=""/>
 
                 <ImageView
+                    android:id="@+id/animalIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="10dp"
@@ -566,6 +576,7 @@
                     android:text="@string/smoking"/>
 
                 <TextView
+                    android:id="@+id/smokeTV"
                     android:paddingLeft="12.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -575,6 +586,7 @@
                     android:text=""/>
 
                 <ImageView
+                    android:id="@+id/smokeIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="10dp"
@@ -607,6 +619,7 @@
                     android:text="@string/Drinking"/>
 
                 <TextView
+                    android:id="@+id/drinkTV"
                     android:paddingLeft="12.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -616,6 +629,7 @@
                     android:text=""/>
 
                 <ImageView
+                    android:id="@+id/drinkIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="10dp"
@@ -648,6 +662,7 @@
                     android:text="@string/Exercise"/>
 
                 <TextView
+                    android:id="@+id/healthTV"
                     android:paddingLeft="12.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -657,6 +672,7 @@
                     android:text=""/>
 
                 <ImageView
+                    android:id="@+id/healthIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="10dp"
@@ -690,6 +706,7 @@
                     android:text="@string/Recent_workouts"/>
 
                 <TextView
+                    android:id="@+id/sportTV"
                     android:paddingLeft="12.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -699,6 +716,7 @@
                     android:text=""/>
 
                 <ImageView
+                    android:id="@+id/sportIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="10dp"
@@ -731,6 +749,7 @@
                     android:text="@string/income"/>
 
                 <TextView
+                    android:id="@+id/workTV"
                     android:paddingLeft="12.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -740,6 +759,7 @@
                     android:text=""/>
 
                 <ImageView
+                    android:id="@+id/workIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="10dp"
@@ -775,6 +795,7 @@
                     android:text="@string/Phone_verification"/>
 
                 <TextView
+                    android:id="@+id/phoneTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="20dp"
@@ -810,6 +831,7 @@
                     android:text="@string/safety_certi"/>
 
                 <TextView
+                    android:id="@+id/saveTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="20dp"
@@ -862,6 +884,7 @@
                     android:text="@string/email_acount"/>
 
                 <TextView
+                    android:id="@+id/emailTV"
                     android:paddingRight="13.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -897,6 +920,7 @@
                     android:text="@string/facebook_conect"/>
 
                 <TextView
+                    android:id="@+id/facebookTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="20dp"
@@ -932,6 +956,7 @@
                     android:text="@string/instagram_connect"/>
 
                 <TextView
+                    android:id="@+id/instaTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="20dp"

@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.fragment_charmpoint_height.*
 import android.widget.NumberPicker
 import com.devstories.starball_android.Actions.JoinAction
+import com.devstories.starball_android.Actions.MemberAction
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
@@ -41,7 +43,17 @@ class CharmpointHeightFragment : Fragment() {
         "178cm",
         "179cm",
         "180cm",
-        "181cm"
+        "181cm",
+        "182cm",
+        "183cm",
+        "184cm",
+        "185cm",
+        "186cm",
+        "187cm",
+        "188cm",
+        "189cm",
+        "190cm"
+
     )
     private var select_height = "0"
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -95,13 +107,15 @@ class CharmpointHeightFragment : Fragment() {
             myContext.sendBroadcast(intent)
         }
 
-
+        get_info()
 
     }
 
     fun edit_info() {
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
         val params = RequestParams()
-        params.put("height", select_height)
+        params.put("member_id", member_id)
+        params.put("height", select_height.replace("cm","").toInt())
 
         JoinAction.final_join(params, object : JsonHttpResponseHandler() {
 
@@ -124,6 +138,115 @@ class CharmpointHeightFragment : Fragment() {
                     e.printStackTrace()
                 }
             }
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(myContext, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
+    fun get_info() {
+
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+
+        MemberAction.get_info(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    Log.d("결과", result.toString())
+                    if ("ok" == result) {
+
+                        val member = response.getJSONObject("member")
+
+                        var height = Utils.getInt(member,"height")
+
+                        if (height != -1){
+                            heightTV.text = height.toString()+"cm"
+                        }
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
                 super.onSuccess(statusCode, headers, response)
             }
@@ -194,6 +317,8 @@ class CharmpointHeightFragment : Fragment() {
             }
         })
     }
+
+
 
     override fun onDestroy() {
         super.onDestroy()
