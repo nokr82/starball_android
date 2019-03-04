@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.devstories.starball_android.Actions.JoinAction
+import com.devstories.starball_android.Actions.MemberAction
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
@@ -45,6 +46,7 @@ class CharmpointSmokeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         smoke1TV.setOnClickListener {
+            setmenu()
             smoke = Utils.getString(smoke1TV)
             edit_info()
             smoke1TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
@@ -53,6 +55,7 @@ class CharmpointSmokeFragment : Fragment() {
             myContext.sendBroadcast(intent)
         }
         smoke2TV.setOnClickListener {
+            setmenu()
             smoke = Utils.getString(smoke2TV)
             edit_info()
             smoke2TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
@@ -61,6 +64,7 @@ class CharmpointSmokeFragment : Fragment() {
             myContext.sendBroadcast(intent)
         }
         smoke3TV.setOnClickListener {
+            setmenu()
             smoke = Utils.getString(smoke3TV)
             edit_info()
             smoke3TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
@@ -69,6 +73,7 @@ class CharmpointSmokeFragment : Fragment() {
             myContext.sendBroadcast(intent)
         }
         smoke4TV.setOnClickListener {
+            setmenu()
             smoke = Utils.getString(smoke4TV)
             edit_info()
             smoke4TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
@@ -82,7 +87,129 @@ class CharmpointSmokeFragment : Fragment() {
             intent.action = "SMOKE_CHANGE"
             myContext.sendBroadcast(intent)
         }
+        get_info()
+    }
+    fun get_info() {
 
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+
+        MemberAction.get_info(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    Log.d("결과", result.toString())
+                    if ("ok" == result) {
+
+                        val member = response.getJSONObject("member")
+
+                        var smoke = Utils.getString(member,"smoke")
+
+                        if (smoke == Utils.getString(smoke1TV)){
+                            smoke1TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+                        }else if (smoke == Utils.getString(smoke2TV)){
+                            smoke2TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+                        }else if (smoke ==Utils.getString(smoke3TV)){
+                            smoke3TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+                        }else if (smoke == Utils.getString(smoke4TV)){
+                            smoke4TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+                        }else{
+
+                        }
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+    fun setmenu(){
+        smoke1TV.setBackgroundResource(R.drawable.background_border_strock_c9c9c9)
+        smoke2TV.setBackgroundResource(R.drawable.background_border_strock_c9c9c9)
+        smoke3TV.setBackgroundResource(R.drawable.background_border_strock_c9c9c9)
+        smoke4TV.setBackgroundResource(R.drawable.background_border_strock_c9c9c9)
     }
 
     fun edit_info() {

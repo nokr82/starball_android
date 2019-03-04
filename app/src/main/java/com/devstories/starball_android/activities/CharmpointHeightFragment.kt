@@ -117,6 +117,7 @@ class CharmpointHeightFragment : Fragment() {
         params.put("member_id", member_id)
         params.put("height", select_height.replace("cm","").toInt())
 
+        Log.d("키",select_height)
         JoinAction.final_join(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {

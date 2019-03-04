@@ -396,6 +396,21 @@ class EditProfileActivity : RootActivity() {
                         travel = Utils.getString(member, "travel")
                         travel_cal = Utils.getString(member, "travel_cal")
 
+                        if (nation != ""){
+                            nationTV.text = nation
+                        }
+
+
+                        if (travel != "") {
+                            travelTV.text = travel
+                        }
+
+                        if (travel_cal != "") {
+                            dateTV.text = travel_cal
+                        }
+
+
+
                         introET.setText(intro)
 
 
@@ -594,6 +609,9 @@ class EditProfileActivity : RootActivity() {
         var join_language = PrefUtils.setPreference(context, "join_language", adapterData.joinToString())
         var nation = Utils.getString(nationTV)
         var travel = Utils.getString(travelTV)
+        var travel_cal = Utils.getString(dateTV)
+
+
         var member_id = PrefUtils.getIntPreference(context, "member_id")
 
         val params = RequestParams()
@@ -602,6 +620,19 @@ class EditProfileActivity : RootActivity() {
         params.put("language", join_language)
         params.put("nation", nation)
         params.put("travel", travel)
+        params.put("travel_cal", travel_cal)
+        params.put("vvip_yn", vvip_yn)
+        params.put("know_yn", know_yn)
+        params.put("save_yn", save_yn)
+        params.put("limit_yn", limit_yn)
+        params.put("cross_yn", cross_yn)
+        params.put("ghost_yn", ghost_yn)
+        params.put("savejoin_yn", savejoin_yn)
+        params.put("phone_yn", phone_yn)
+        params.put("email_yn", email_yn)
+        params.put("facebook_yn", facebook_yn)
+        params.put("insta_yn", insta_yn)
+
 
 
         JoinAction.final_join(params, object : JsonHttpResponseHandler() {

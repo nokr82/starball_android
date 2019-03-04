@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.devstories.starball_android.Actions.JoinAction
+import com.devstories.starball_android.Actions.MemberAction
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
@@ -46,6 +47,7 @@ class CharmpointDrinkFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         drink1TV.setOnClickListener {
+            setmenu()
             drink = Utils.getString(drink1TV)
             drink1TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
             edit_info()
@@ -54,6 +56,7 @@ class CharmpointDrinkFragment : Fragment() {
             myContext.sendBroadcast(intent)
         }
         drink2TV.setOnClickListener {
+            setmenu()
             drink = Utils.getString(drink2TV)
             drink2TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
             edit_info()
@@ -62,6 +65,7 @@ class CharmpointDrinkFragment : Fragment() {
             myContext.sendBroadcast(intent)
         }
         drink3TV.setOnClickListener {
+            setmenu()
             drink = Utils.getString(drink3TV)
             drink3TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
             edit_info()
@@ -70,6 +74,7 @@ class CharmpointDrinkFragment : Fragment() {
             myContext.sendBroadcast(intent)
         }
         drink4TV.setOnClickListener {
+            setmenu()
             drink = Utils.getString(drink4TV)
             drink4TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
             edit_info()
@@ -83,8 +88,132 @@ class CharmpointDrinkFragment : Fragment() {
             intent.action = "DRINK_CHANGE"
             myContext.sendBroadcast(intent)
         }
-
+        get_info()
     }
+    fun setmenu(){
+        drink1TV.setBackgroundResource(R.drawable.background_border_strock_c9c9c9)
+        drink2TV.setBackgroundResource(R.drawable.background_border_strock_c9c9c9)
+        drink3TV.setBackgroundResource(R.drawable.background_border_strock_c9c9c9)
+        drink4TV.setBackgroundResource(R.drawable.background_border_strock_c9c9c9)
+    }
+    fun get_info() {
+
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+
+        MemberAction.get_info(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    Log.d("결과", result.toString())
+                    if ("ok" == result) {
+
+                        val member = response.getJSONObject("member")
+
+                        var drink = Utils.getString(member,"drink")
+
+                        if (drink == Utils.getString(drink1TV)){
+                            drink1TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+                        }else if (drink == Utils.getString(drink2TV)){
+                            drink2TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+                        }else if (drink ==Utils.getString(drink3TV)){
+                            drink3TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+                        }else if (drink == Utils.getString(drink4TV)){
+                            drink4TV.setBackgroundResource(R.drawable.background_border_strock_a862b2)
+                        }else{
+
+                        }
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
+
     fun edit_info() {
         var member_id = PrefUtils.getIntPreference(context, "member_id")
         val params = RequestParams()

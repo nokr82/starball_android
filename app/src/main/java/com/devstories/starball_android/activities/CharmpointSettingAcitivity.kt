@@ -31,6 +31,7 @@ class CharmpointSettingAcitivity : FragmentActivity() {
     val CharmpointHealthFragment: CharmpointHealthFragment = CharmpointHealthFragment()
     val CharmpointSportsFragment: CharmpointSportsFragment = CharmpointSportsFragment()
     val CharmpointWorkFragment: CharmpointWorkFragment = CharmpointWorkFragment()
+
     internal var heightReciver: BroadcastReceiver? = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
             if (intent != null) {
