@@ -6,8 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import com.devstories.starball_android.Actions.JoinAction
+import com.devstories.starball_android.actions.JoinAction
 import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.LanguageAdapter
 import com.devstories.starball_android.base.RootActivity

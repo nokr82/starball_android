@@ -9,15 +9,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.devstories.starball_android.Actions.JoinAction
-import com.devstories.starball_android.Actions.MemberAction
+import com.devstories.starball_android.actions.JoinAction
+import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 import cz.msebera.android.httpclient.Header
-import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.fragment_charmpoint_region.*
 import org.json.JSONArray
 import org.json.JSONException

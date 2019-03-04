@@ -9,8 +9,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.devstories.starball_android.Actions.JoinAction
-import com.devstories.starball_android.Actions.MemberAction
+import com.devstories.starball_android.actions.JoinAction
+import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils

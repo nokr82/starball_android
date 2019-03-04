@@ -4,7 +4,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.devstories.starball_android.Actions.MemberAction
+import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity

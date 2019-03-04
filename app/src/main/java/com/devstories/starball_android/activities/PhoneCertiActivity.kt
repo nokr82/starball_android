@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
-import com.devstories.starball_android.Actions.MemberAction
+import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity

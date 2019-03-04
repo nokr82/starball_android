@@ -11,8 +11,8 @@ import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
-import com.devstories.starball_android.Actions.JoinAction
-import com.devstories.starball_android.Actions.MemberAction
+import com.devstories.starball_android.actions.JoinAction
+import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.CharmAdapter
 import com.devstories.starball_android.adapter.LanguageAdapter

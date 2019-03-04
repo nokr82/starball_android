@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import com.devstories.starball_android.Actions.ChargeAction
+import com.devstories.starball_android.actions.ChargeAction
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
@@ -32,7 +32,6 @@ class DlgStarballLackActivity : RootActivity() {
 
         this.mContext = this
         progressDialog = ProgressDialog(mContext)
-
 
         iapHelper = IAPHelper(this, object : IAPHelper.BuyListener {
 
@@ -95,7 +94,7 @@ class DlgStarballLackActivity : RootActivity() {
                         iapHelper?.consume(purchaseToken)
 
                         val intent = Intent()
-                        intent.action = "MY_QUOTA_UPDATED"
+                        intent.action = "MY_STARBALL_UPDATED"
                         sendBroadcast(intent)
 
                     } else if (result == 0) {

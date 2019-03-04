@@ -12,8 +12,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import kotlinx.android.synthetic.main.fragment_charmpoint_height.*
 import android.widget.NumberPicker
-import com.devstories.starball_android.Actions.JoinAction
-import com.devstories.starball_android.Actions.MemberAction
+import com.devstories.starball_android.actions.JoinAction
+import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
 import com.loopj.android.http.JsonHttpResponseHandler
