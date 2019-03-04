@@ -1000,6 +1000,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/nomalIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/comm_check_off"/>
@@ -1014,10 +1015,11 @@
                     android:text="@string/nomal"/>
 
                 <ImageView
+                    android:id="@+id/ghostIV"
                     android:layout_marginLeft="30dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/comm_check_on"/>
+                    android:src="@mipmap/comm_check_off"/>
 
                 <TextView
                     android:textStyle="bold"
@@ -1038,12 +1040,14 @@
                 android:text="@string/edit_profile_content3"/>
 
             <LinearLayout
+                android:id="@+id/crossLL"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/crossIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/comm_check_off"/>
@@ -1068,12 +1072,14 @@
                 android:text="@string/edit_profile_content4"/>
 
             <LinearLayout
+                android:id="@+id/limitLL"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/limitIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/comm_check_off"/>
@@ -1098,12 +1104,14 @@
                 android:text="@string/limit_see_me2"/>
 
             <LinearLayout
+                android:id="@+id/saveviewLL"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/saveviewIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/comm_check_off"/>
@@ -1120,6 +1128,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/vvipLL"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
@@ -1150,12 +1159,14 @@
                 android:text="@string/vvip_see2"/>
 
             <LinearLayout
+                android:id="@+id/knowLL"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/knowIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/comm_check_off"/>

@@ -49,6 +49,7 @@ class EditProfileActivity : RootActivity() {
     private val SPORTS_SELECT = 109
     private val WORK_SELECT = 110
 
+    var option_list = ArrayList<String>()
 
     var adapterData = ArrayList<String>()
     var adapterData2 = ArrayList<String>()
@@ -209,9 +210,72 @@ class EditProfileActivity : RootActivity() {
             val intent = Intent(context, EmailConnectActivity::class.java)
             startActivity(intent)
         }
+        ghostIV.setOnClickListener {
+            setmenu()
+            ghostIV.setImageResource(R.mipmap.comm_check_on)
+        }
+        nomalIV.setOnClickListener {
+            setmenu()
+            nomalIV.setImageResource(R.mipmap.comm_check_on)
+        }
+        crossLL.setOnClickListener {
+            it.isSelected = !it.isSelected
+            if(it.isSelected) {
+                option_list.add("1")
+                crossIV.setImageResource(R.mipmap.comm_check_on)
+            } else {
+                option_list.remove("1")
+                crossIV.setImageResource(R.mipmap.comm_check_off)
+            }
+        }
+        limitLL.setOnClickListener {
+            it.isSelected = !it.isSelected
+            if(it.isSelected) {
+                option_list.add("2")
+                limitIV.setImageResource(R.mipmap.comm_check_on)
+            } else {
+                option_list.remove("2")
+                limitIV.setImageResource(R.mipmap.comm_check_off)
+            }
+        }
+        saveviewLL.setOnClickListener {
+            it.isSelected = !it.isSelected
+            if(it.isSelected) {
+                option_list.add("3")
+                saveviewIV.setImageResource(R.mipmap.comm_check_on)
+            } else {
+                option_list.remove("3")
+                saveviewIV.setImageResource(R.mipmap.comm_check_off)
+            }
+        }
+        vvipLL.setOnClickListener {
+            it.isSelected = !it.isSelected
+            if(it.isSelected) {
+                option_list.add("4")
+                knowIV.setImageResource(R.mipmap.comm_check_on)
+            } else {
+                option_list.remove("4")
+                knowIV.setImageResource(R.mipmap.comm_check_off)
+            }
+        }
+        knowLL.setOnClickListener {
+            it.isSelected = !it.isSelected
+            if(it.isSelected) {
+                option_list.add("5")
+                knowIV.setImageResource(R.mipmap.comm_check_on)
+            } else {
+                option_list.remove("5")
+                knowIV.setImageResource(R.mipmap.comm_check_off)
+            }
+        }
 
     }
 
+
+    fun setmenu(){
+        ghostIV.setImageResource(R.mipmap.comm_check_off)
+        nomalIV.setImageResource(R.mipmap.comm_check_off)
+    }
 
     fun edit_info() {
         var intro = Utils.getString(introET)
