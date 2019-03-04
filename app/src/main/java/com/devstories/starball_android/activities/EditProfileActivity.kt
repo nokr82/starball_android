@@ -1,11 +1,14 @@
 package com.devstories.starball_android.activities
 
 import android.app.Activity
+import android.app.DatePickerDialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import com.devstories.starball_android.Actions.JoinAction
 import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.CharmAdapter
@@ -31,6 +34,7 @@ class EditProfileActivity : RootActivity() {
 
     private val SELECT_LANGUAGE_REQUST_CODE = 1004
     private val SELECT_PICTURE_REQUEST = 1002
+    private val SELECT_NATION = 1005
     private var pictures = arrayListOf<JSONObject>()
 
     private val CHARM_POINT = 111
@@ -62,6 +66,10 @@ class EditProfileActivity : RootActivity() {
     lateinit var meetAdapter: CharmAdapter
     lateinit var wantmeetAdapter: CharmAdapter
 
+
+    var year: Int = 1
+    var month: Int = 1
+    var day: Int = 1
 
 
     var step = -1
@@ -269,6 +277,26 @@ class EditProfileActivity : RootActivity() {
             }
         }
 
+        travelRL.setOnClickListener {
+            val intent = Intent(context, DlgSelectNationActivity::class.java)
+            startActivityForResult(intent, SELECT_NATION)
+        }
+
+        calRL.setOnClickListener {
+            datedlg()
+        }
+
+
+
+    }
+
+    fun datedlg() {
+        DatePickerDialog(context, dateSetListener, year, month, day).show()
+    }
+    private val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+        val msg = String.format("%d.%d.%d", year, monthOfYear + 1, dayOfMonth)
+        dateTV.text = msg
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }
 
 
@@ -436,6 +464,13 @@ class EditProfileActivity : RootActivity() {
                     if(data != null) {
                         adapterData.add(data.getStringExtra("selectedLanguage"))
                         languageAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
+            SELECT_NATION -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    if(data != null) {
+                        nationTV.text = data.getStringExtra("selectedNation")
                     }
                 }
             }

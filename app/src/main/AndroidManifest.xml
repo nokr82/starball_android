@@ -236,6 +236,10 @@
 			android:screenOrientation="unspecified"
 			android:theme="@style/full_screen_dialog1"/>
 		<activity
+			android:name=".activities.DlgSelectNationActivity"
+			android:screenOrientation="unspecified"
+			android:theme="@style/full_screen_dialog1"/>
+		<activity
 			android:name=".activities.DlgCharmpointActivity"
 			android:screenOrientation="unspecified"
 			android:theme="@style/full_screen_dialog1"/>

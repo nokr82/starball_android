@@ -197,7 +197,7 @@
                     android:background="@null"
                     android:textSize="14dp"
                     android:textColor="#555555"
-                    android:text="선택해주세요"/>
+                    android:text="@string/select_hint"/>
 
                 <ImageView
                     android:paddingLeft="50dp"
@@ -1209,32 +1209,37 @@
                 android:text="@string/travel_is2"/>
 
             <RelativeLayout
+                android:id="@+id/travelRL"
                 android:layout_marginTop="11.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp">
 
-                <Spinner
+                <TextView
+                    android:id="@+id/nationTV"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@null">
-                </Spinner>
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:textSize="14dp"
+                    android:textColor="#555555"
+                    android:text="@string/select_hint"/>
 
                 <ImageView
-                    android:layout_marginTop="15dp"
+                    android:paddingLeft="50dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@mipmap/op_drop"/>
 
                 <View
+                    android:layout_marginTop="5dp"
                     android:layout_alignParentBottom="true"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#000000"/>
 
             </RelativeLayout>
-
             <TextView
                 android:layout_marginTop="50dp"
                 android:textStyle="bold"
@@ -1245,32 +1250,37 @@
                 android:text="@string/calendar_talk"/>
 
             <RelativeLayout
+                android:id="@+id/calRL"
                 android:layout_marginTop="11.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp">
 
-                <Spinner
+                <TextView
+                    android:id="@+id/dateTV"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@null">
-                </Spinner>
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:textSize="14dp"
+                    android:textColor="#555555"
+                    android:text="@string/select_hint"/>
 
                 <ImageView
-                    android:layout_marginTop="15dp"
+                    android:paddingLeft="50dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@mipmap/op_drop"/>
 
                 <View
+                    android:layout_marginTop="5dp"
                     android:layout_alignParentBottom="true"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="#000000"/>
 
             </RelativeLayout>
-
             <TextView
                 android:layout_marginTop="38dp"
                 android:id="@+id/nextTV"
