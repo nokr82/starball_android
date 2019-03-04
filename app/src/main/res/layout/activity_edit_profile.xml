@@ -1106,6 +1106,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/vvipIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/comm_check_off"/>

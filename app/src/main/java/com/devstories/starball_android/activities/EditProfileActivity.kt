@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.devstories.starball_android.Actions.JoinAction
+import com.devstories.starball_android.Actions.MemberAction
 import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.CharmAdapter
 import com.devstories.starball_android.adapter.LanguageAdapter
@@ -120,6 +121,9 @@ class EditProfileActivity : RootActivity() {
     }
 
     fun click() {
+        nextTV.setOnClickListener {
+            edit_info()
+        }
         languageLL.setOnClickListener {
             val intent = Intent(context, DlgSelectLanguageActivity::class.java)
             startActivityForResult(intent, SELECT_LANGUAGE_REQUST_CODE)
@@ -190,15 +194,19 @@ class EditProfileActivity : RootActivity() {
         }
 
         charmRL.setOnClickListener {
+            charmAdapter.clear()
             val intent = Intent(context, CharmPointActivity::class.java)
             startActivityForResult(intent, CHARM_POINT)
+
         }
 
         meetRL.setOnClickListener {
+            meetAdapter.clear()
             val intent = Intent(context, WeMeetActivity::class.java)
             startActivityForResult(intent, WE_MEET)
         }
         peopleRL.setOnClickListener {
+            wantmeetAdapter.clear()
             val intent = Intent(context, CharmPointActivity::class.java)
             intent.putExtra("type", 2)
             startActivityForResult(intent, WANT_MEET)
@@ -259,10 +267,10 @@ class EditProfileActivity : RootActivity() {
             it.isSelected = !it.isSelected
             if (it.isSelected) {
                 option_list.add("4")
-                knowIV.setImageResource(R.mipmap.comm_check_on)
+                vvipIV.setImageResource(R.mipmap.comm_check_on)
             } else {
                 option_list.remove("4")
-                knowIV.setImageResource(R.mipmap.comm_check_off)
+                vvipIV.setImageResource(R.mipmap.comm_check_off)
             }
         }
         knowLL.setOnClickListener {
@@ -306,6 +314,107 @@ class EditProfileActivity : RootActivity() {
     fun setmenu() {
         ghostIV.setImageResource(R.mipmap.comm_check_off)
         nomalIV.setImageResource(R.mipmap.comm_check_off)
+    }
+
+    fun get_info() {
+
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+
+        MemberAction.get_info(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    Log.d("결과", result.toString())
+                    if ("ok" == result) {
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
     }
 
     fun edit_info() {
