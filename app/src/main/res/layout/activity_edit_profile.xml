@@ -136,22 +136,27 @@
                 android:text="@string/Nationality"/>
 
             <RelativeLayout
+                android:id="@+id/nationRL"
                 android:layout_marginTop="11.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp">
 
-                <Spinner
+                <TextView
+                    android:id="@+id/nationTV"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@null">
-                </Spinner>
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:textSize="14dp"
+                    android:textColor="#555555"
+                    android:text="@string/select_hint"/>
 
                 <ImageView
-                    android:layout_marginTop="15dp"
+                    android:paddingLeft="50dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@mipmap/op_drop"/>
 
                 <View
@@ -785,41 +790,7 @@
                     android:src="@mipmap/setting_drop_right"/>
 
             </LinearLayout>
-            <LinearLayout
-                android:id="@+id/picLL"
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
-                android:gravity="center_vertical"
-                android:background="@drawable/background_border_strock9_888888"
-                android:layout_height="40dp">
 
-                <TextView
-                    android:id="@+id/picTV"
-                    android:paddingLeft="10dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textStyle="bold"
-                    android:textColor="#333333"
-                    android:text="사진 인증"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="20dp"
-                    android:textSize="14dp"
-                    android:textColor="#999999"
-                    android:gravity="end"
-                    android:text="@string/no_certi"/>
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingRight="10dp"
-                    android:src="@mipmap/setting_drop_right"/>
-
-            </LinearLayout>
             <LinearLayout
                 android:id="@+id/saveLL"
                 android:layout_marginTop="15dp"
@@ -1215,7 +1186,7 @@
                 android:layout_height="30dp">
 
                 <TextView
-                    android:id="@+id/nationTV"
+                    android:id="@+id/travelTV"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center_vertical"

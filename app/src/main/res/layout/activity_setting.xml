@@ -77,6 +77,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/messageLL"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
@@ -93,10 +94,11 @@
                         android:text="@string/alram_message"/>
 
                     <ImageView
+                        android:id="@+id/messageIV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
-                        android:src="@mipmap/setting_toggle_on"/>
+                        android:src="@mipmap/off"/>
 
 
                 </LinearLayout>
@@ -107,6 +109,7 @@
                     android:background="#1f1f1f"/>
 
                 <LinearLayout
+                    android:id="@+id/matchLL"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
@@ -124,6 +127,7 @@
                         />
 
                     <ImageView
+                        android:id="@+id/matchIV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
@@ -138,6 +142,7 @@
                     android:background="#1f1f1f"/>
 
                 <LinearLayout
+                    android:id="@+id/crushLL"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
@@ -154,6 +159,7 @@
                         android:text="@string/alram_send_crush"/>
 
                     <ImageView
+                        android:id="@+id/crushIV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
@@ -168,6 +174,7 @@
                     android:background="#1f1f1f"/>
 
                 <LinearLayout
+                    android:id="@+id/proposeLL"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
@@ -185,10 +192,11 @@
                         />
 
                     <ImageView
+                        android:id="@+id/proposeIV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
-                        android:src="@mipmap/setting_toggle_on"/>
+                        android:src="@mipmap/off"/>
 
 
                 </LinearLayout>
@@ -199,6 +207,7 @@
                     android:background="#1f1f1f"/>
 
                 <LinearLayout
+                    android:id="@+id/dailyLL"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
@@ -215,10 +224,11 @@
                         android:text="@string/alram_daily_moment"/>
 
                     <ImageView
+                        android:id="@+id/dailyIV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
-                        android:src="@mipmap/setting_toggle_on"/>
+                        android:src="@mipmap/off"/>
 
 
                 </LinearLayout>
@@ -229,6 +239,7 @@
                     android:background="#1f1f1f"/>
 
                 <LinearLayout
+                    android:id="@+id/starballLL"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
@@ -245,10 +256,11 @@
                         android:text="@string/alram_recive_starball"/>
 
                     <ImageView
+                        android:id="@+id/starballIV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
-                        android:src="@mipmap/setting_toggle_on"/>
+                        android:src="@mipmap/off"/>
 
 
                 </LinearLayout>
@@ -259,6 +271,7 @@
                     android:background="#1f1f1f"/>
 
                 <LinearLayout
+                    android:id="@+id/vibeLL"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
@@ -275,10 +288,11 @@
                         android:text="@string/alram_vibe"/>
 
                     <ImageView
+                        android:id="@+id/vibeIV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
-                        android:src="@mipmap/setting_toggle_on"/>
+                        android:src="@mipmap/off"/>
 
 
                 </LinearLayout>
@@ -289,6 +303,7 @@
                     android:background="#1f1f1f"/>
 
                 <LinearLayout
+                    android:id="@+id/soundLL"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:gravity="center_vertical"
@@ -305,10 +320,11 @@
                         android:text="@string/alram_sound"/>
 
                     <ImageView
+                        android:id="@+id/soundIV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
-                        android:src="@mipmap/setting_toggle_on"/>
+                        android:src="@mipmap/off"/>
 
 
                 </LinearLayout>
