@@ -44,8 +44,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="15dp"
                     android:textColor="#ffffff"
-                    android:text="Geex Arts님을 놓치지 싫으시면\n
-스타볼을 이용하세요"/>
+                    android:text="Geex Arts님을 놓치지 싫으시면\n스타볼을 이용하세요"/>
 
                 <TextView
                     android:paddingTop="13dp"
@@ -64,6 +63,7 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:id="@+id/starballO2LL"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -112,6 +112,7 @@
                     android:background="#1f1f1f"/>
 
                 <LinearLayout
+                    android:id="@+id/starball20LL"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
@@ -202,39 +203,46 @@
                 android:layout_height="0.5dp"
                 android:background="#1f1f1f"/>
 
-            <TextView
-                android:textStyle="bold"
-                android:paddingTop="15dp"
-                android:layout_gravity="center"
+            <LinearLayout
+                android:id="@+id/starball24hLL"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="21dp"
-                android:textColor="#282828"
-                android:gravity="center_horizontal"
-                android:text="@string/hour_24_like"/>
+                android:orientation="vertical">
+                <TextView
+                    android:textStyle="bold"
+                    android:paddingTop="15dp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="21dp"
+                    android:textColor="#282828"
+                    android:gravity="center_horizontal"
+                    android:text="@string/hour_24_like"/>
 
-            <TextView
-                android:paddingTop="8dp"
-                android:textStyle="bold"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textColor="#ff0000"
-                android:gravity="center"
-                android:text="@string/booster_mode"/>
+                <TextView
+                    android:paddingTop="8dp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="#ff0000"
+                    android:gravity="center"
+                    android:text="@string/booster_mode"/>
 
-            <TextView
-                android:layout_marginTop="12dp"
-                android:layout_marginBottom="20.5dp"
-                android:layout_width="125dp"
-                android:layout_height="40dp"
-                android:textSize="20dp"
-                android:layout_gravity="center"
-                android:background="@drawable/background_border_strock7ffffff"
-                android:textColor="#555555"
-                android:gravity="center"
-                android:text="9,900원"/>
+                <TextView
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="20.5dp"
+                    android:layout_width="125dp"
+                    android:layout_height="40dp"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/background_border_strock7ffffff"
+                    android:textColor="#555555"
+                    android:gravity="center"
+                    android:text="9,900원"/>
+            </LinearLayout>
+
 
         </LinearLayout>
 
