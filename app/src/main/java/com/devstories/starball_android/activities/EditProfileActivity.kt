@@ -447,6 +447,15 @@ class EditProfileActivity : RootActivity() {
                             Log.d("제이슨이미지",image_uri.toString())
                             }
                         updatePictures()
+                        adapterData.clear()
+                        val languages = response.getJSONArray("languages")
+                        for (i in 0..languages.length()-1){
+                            //새로운뷰를 이미지의 길이만큼생성
+                            var json=languages[i] as JSONObject
+                            var language = Utils.getString(json,"language")
+                            adapterData.add(language)
+                        }
+                        languageAdapter.notifyDataSetChanged()
 
 
                         email = Utils.getString(member, "email")
