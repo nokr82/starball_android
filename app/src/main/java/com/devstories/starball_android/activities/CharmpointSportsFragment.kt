@@ -178,7 +178,7 @@ class CharmpointSportsFragment : Fragment() {
             }
 
             private fun error() {
-                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                Utils.alert(myContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -248,7 +248,7 @@ class CharmpointSportsFragment : Fragment() {
         sport7TV.setBackgroundResource(R.drawable.background_border_strock_c9c9c9)
     }
     fun edit_info() {
-        var member_id = PrefUtils.getIntPreference(context, "member_id")
+        var member_id = PrefUtils.getIntPreference(myContext, "member_id")
         val params = RequestParams()
         params.put("member_id", member_id)
         params.put("sport", sports)
@@ -284,7 +284,7 @@ class CharmpointSportsFragment : Fragment() {
             }
 
             private fun error() {
-                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                Utils.alert(myContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(

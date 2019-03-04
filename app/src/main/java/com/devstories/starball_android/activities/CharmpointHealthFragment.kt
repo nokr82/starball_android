@@ -132,7 +132,7 @@ class CharmpointHealthFragment : Fragment() {
             }
 
             private fun error() {
-                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                Utils.alert(myContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(

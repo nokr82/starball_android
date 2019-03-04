@@ -390,6 +390,7 @@
                 android:background="#1f1f1f"/>
 
             <LinearLayout
+                android:id="@+id/suggestionLL"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"

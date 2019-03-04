@@ -108,7 +108,7 @@ class JoinResultActivity : RootActivity() {
         // pictures
 
         val joinPics = PrefUtils.getStringPreference(context, "join_pics", "")
-        if(joinPics.isNotEmpty()) {
+            if(joinPics.isNotEmpty()) {
             val splited = joinPics.split("`devstories`")
             for ((idx, sp) in  splited.withIndex()) {
                 try {

@@ -203,7 +203,7 @@ class CharmpointSettingAcitivity : FragmentActivity() {
         var filter10 = IntentFilter("ANIMAL_CHANGE")
         registerReceiver(animalReciver, filter10)
 
-        supportFragmentManager.beginTransaction().replace(R.id.charmFL, CharmpointHeightFragment).commit()
+//        supportFragmentManager.beginTransaction().replace(R.id.charmFL, CharmpointHeightFragment).commit()
         setstart()
 
 
@@ -311,6 +311,8 @@ class CharmpointSettingAcitivity : FragmentActivity() {
             sportV.setBackgroundColor(Color.parseColor("#a862b2"))
             workV.setBackgroundColor(Color.parseColor("#a862b2"))
             supportFragmentManager.beginTransaction().replace(R.id.charmFL, CharmpointWorkFragment).commit()
+        }else{
+            supportFragmentManager.beginTransaction().replace(R.id.charmFL, CharmpointHeightFragment).commit()
         }
     }
 

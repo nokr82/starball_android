@@ -31,6 +31,8 @@ import kotlinx.android.synthetic.main.activity_edit_profile.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import java.io.ByteArrayInputStream
+import java.io.File
 
 class EditProfileActivity : RootActivity() {
 
@@ -200,6 +202,7 @@ class EditProfileActivity : RootActivity() {
     fun click() {
         nextTV.setOnClickListener {
             edit_info()
+            edit()
         }
         languageLL.setOnClickListener {
             val intent = Intent(context, DlgSelectLanguageActivity::class.java)
@@ -685,7 +688,6 @@ class EditProfileActivity : RootActivity() {
 
     fun edit_info() {
         var intro = Utils.getString(introET)
-        var join_language = PrefUtils.setPreference(context, "join_language", adapterData.joinToString())
         var nation = Utils.getString(nationTV)
         var travel = Utils.getString(travelTV)
         var travel_cal = Utils.getString(dateTV)
@@ -696,7 +698,6 @@ class EditProfileActivity : RootActivity() {
         val params = RequestParams()
         params.put("member_id", member_id)
         params.put("intro", intro)
-        params.put("language", join_language)
         params.put("nation", nation)
         params.put("travel", travel)
         params.put("travel_cal", travel_cal)
@@ -726,7 +727,7 @@ class EditProfileActivity : RootActivity() {
 
                     Log.d("결과", result.toString())
                     if ("ok" == result) {
-
+                        Toast.makeText(context,"저장되었습니다",Toast.LENGTH_SHORT).show()
                     } else {
 
                     }
@@ -809,9 +810,141 @@ class EditProfileActivity : RootActivity() {
     }
 
 
+    fun edit() {
+
+        val member_id = PrefUtils.getIntPreference(context, "member_id")
+        var picturesArr = ArrayList<String>()
+        for (picture in pictures) {
+            picturesArr.add(picture.toString())
+        }
+
+
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("language", adapterData)
+        if(picturesArr.isNotEmpty()) {
+            for ((idx, sp) in  picturesArr.withIndex()) {
+                try {
+                    val picture = JSONObject(sp)
+
+                    val id = Utils.getInt(picture!!, "id")
+                    val path = Utils.getString(picture!!, "path")
+                    val mediaType = Utils.getInt(picture!!, "mediaType")
+
+                    if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
+                        var bitmap = Utils.getImage(context.contentResolver, path)
+                        params.put("images[$idx]", ByteArrayInputStream(Utils.getByteArray(bitmap)), "${System.currentTimeMillis()}.png")
+                    } else {
+                        val file = File(path)
+                        var videoBytes = file.readBytes()
+                        params.put("images[$idx]", ByteArrayInputStream(videoBytes), "${System.currentTimeMillis()}.mp4")
+                    }
+                    params.put("media_types[$idx]", mediaType)
+
+                } catch (e:Exception) {
+
+                }
+            }
+
+        }
+        // pictures
+        Log.d("결과2",adapterData.toString())
+        JoinAction.join(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result || "already" == result) {
+
+                    } else {
+                        Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
 
     private fun updatePictures() {
-
+        Log.d("픽쳐",pictures.toString())
         // clear
         for (idx in 0..8) {
 
@@ -827,6 +960,7 @@ class EditProfileActivity : RootActivity() {
         for ((idx, picture) in pictures.withIndex()) {
             val image_uri = Utils.getString(picture!!, "image_uri")
             val id = Utils.getInt(picture!!, "id")
+            Log.d("아이디",id.toString())
             val path = Utils.getString(picture!!, "path")
             val mediaType = Utils.getInt(picture!!, "mediaType")
             val imageIV = getIV(idx)
