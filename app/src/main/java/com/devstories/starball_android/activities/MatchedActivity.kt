@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import com.devstories.starball_android.base.RootActivity
 import kotlinx.android.synthetic.main.activity_matched.*
 
-
 class MatchedActivity : RootActivity() {
 
     lateinit var context: Context
@@ -35,7 +34,6 @@ class MatchedActivity : RootActivity() {
         val scaleDownX = ObjectAnimator.ofFloat(th01IV, "scaleX", 1.0f)
         val scaleDownY = ObjectAnimator.ofFloat(th01IV, "scaleY", 1.0f)
 
-
         val animators1 = ArrayList<Animator>()
         animators1.add(scaleDownX)
         animators1.add(scaleDownY)
@@ -44,7 +42,26 @@ class MatchedActivity : RootActivity() {
         firstSet.duration = duration * 10
         firstSet.playTogether(animators1)
 
+        // wings
+        val wingScaleDownX = ObjectAnimator.ofFloat(wingStarIV, "scaleX", 1.0f)
+        val wingScaleDownY = ObjectAnimator.ofFloat(wingStarIV, "scaleY", 1.0f)
+        val wingRotateAnimator = ObjectAnimator.ofFloat(
+            wingStarIV,
+            "rotation", 150f, 0f
+        )
 
+        val wingAnimators = ArrayList<Animator>()
+        wingAnimators.add(scaleDownX)
+        wingAnimators.add(scaleDownY)
+        wingAnimators.add(wingScaleDownX)
+        wingAnimators.add(wingScaleDownY)
+        wingAnimators.add(wingRotateAnimator)
+
+        val wingSet = AnimatorSet()
+        wingSet.duration = duration * 10
+        wingSet.playTogether(wingAnimators)
+
+        /*
         val th02FadeIn = ObjectAnimator.ofFloat(th02IV, "alpha", 0f, 1f)
         th02FadeIn.duration = duration
 
@@ -80,6 +97,7 @@ class MatchedActivity : RootActivity() {
 
         val th13FadeIn = ObjectAnimator.ofFloat(th13IV, "alpha", 0f, 1f)
         th13FadeIn.duration = duration
+        */
 
         val th14FadeIn = ObjectAnimator.ofFloat(th14IV, "alpha", 0f, 1f)
         th14FadeIn.duration = duration
@@ -94,7 +112,7 @@ class MatchedActivity : RootActivity() {
         // th17FadeIn.duration = duration
 
 
-        th17IV.x = -(screenWidth / 1.5).toFloat()
+        th17IV.x = -(screenWidth / 1.8).toFloat()
         val th17FadeIn = ObjectAnimator.ofFloat(th17IV, "translationX", 0.toFloat())
         // th17FadeIn.duration = Random.nextInt(600, 1600).toLong()
 
@@ -102,11 +120,8 @@ class MatchedActivity : RootActivity() {
         // val th18FadeIn = ObjectAnimator.ofFloat(th18IV, "alpha", 0f, 1f)
         // th17FadeIn.duration = duration * 20
 
-        th18IV.x = (screenWidth / 1.5).toFloat()
+        th18IV.x = (screenWidth / 1.8).toFloat()
         val th18FadeIn = ObjectAnimator.ofFloat(th18IV, "translationX", 0.toFloat())
-
-        val th19FadeIn = ObjectAnimator.ofFloat(th19IV, "alpha", 0f, 1f)
-        th19FadeIn.duration = duration * 5
 
         val animators1718 = ArrayList<Animator>()
         animators1718.add(th17FadeIn)
@@ -119,7 +134,10 @@ class MatchedActivity : RootActivity() {
         val mAnimationSet = AnimatorSet()
 
         val animators = ArrayList<Animator>()
-        animators.add(firstSet)
+        // animators.add(firstSet)
+        animators.add(wingSet)
+
+        /*
         animators.add(th02FadeIn)
         animators.add(th03FadeIn)
         animators.add(th04FadeIn)
@@ -132,11 +150,12 @@ class MatchedActivity : RootActivity() {
         animators.add(th11FadeIn)
         animators.add(th12FadeIn)
         animators.add(th13FadeIn)
+        */
+
         animators.add(th14FadeIn)
         animators.add(th15FadeIn)
         animators.add(th16FadeIn)
         animators.add(firstSet1718)
-        animators.add(th19FadeIn)
 
         mAnimationSet.playSequentially(animators)
         mAnimationSet.start()

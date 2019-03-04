@@ -11,6 +11,14 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/wingStarIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/wing_star"
+            android:scaleX="0.0"
+            android:scaleY="0.0"/>
+
+        <!-- ImageView
             android:id="@+id/th02IV"
             android:alpha="0.0"
             android:layout_width="wrap_content"
@@ -92,28 +100,28 @@
             android:alpha="0.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/top_top_star"/>
+            android:src="@mipmap/top_top_star"/ -->
 
         <ImageView
             android:id="@+id/th14IV"
             android:alpha="0.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/etc_star_01"/>
+            android:src="@mipmap/etc_star01"/>
 
         <ImageView
             android:id="@+id/th15IV"
             android:alpha="0.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/etc_star_02"/>
+            android:src="@mipmap/etc_star02"/>
 
         <ImageView
             android:id="@+id/th16IV"
             android:alpha="0.0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/etc_star_03"/>
+            android:src="@mipmap/etc_star03"/>
 
         <ImageView
             android:id="@+id/th01IV"
@@ -135,13 +143,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/woman"/>
-
-        <ImageView
-            android:id="@+id/th19IV"
-            android:alpha="0.0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/congratulations"/>
 
     </RelativeLayout>
 

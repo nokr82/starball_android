@@ -15,6 +15,7 @@ import android.widget.TextView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.ChatNotiActivity
 import com.devstories.starball_android.activities.MatchedActivity
+import com.devstories.starball_android.activities.StarballReceivedActivity
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.DateUtils
 import com.devstories.starball_android.base.Utils
@@ -206,6 +207,7 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                     val intent = Intent(context, MatchedActivity::class.java)
                     context.startActivity(intent)
                 }
+
             }
 
             1 -> {

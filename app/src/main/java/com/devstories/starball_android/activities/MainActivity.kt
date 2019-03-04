@@ -6,8 +6,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentActivity
-import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.R
+import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
 import com.devstories.starball_android.swipestack.SwipeStack
@@ -46,10 +46,13 @@ class MainActivity : FragmentActivity() {
             startActivity(intent)
         }
 
-
-
         charIV.setOnClickListener {
             val intent = Intent(this, SettingMainActivity::class.java)
+            startActivity(intent)
+        }
+
+        prevIV.setOnClickListener {
+            val intent = Intent(this, StarballReceivedActivity::class.java)
             startActivity(intent)
         }
 

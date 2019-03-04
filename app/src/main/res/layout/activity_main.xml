@@ -50,6 +50,7 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/prevIV"
         android:paddingTop="28dp"
         android:layout_below="@id/ckLL"
         android:paddingLeft="15dp"
