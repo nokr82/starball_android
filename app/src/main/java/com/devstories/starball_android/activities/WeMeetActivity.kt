@@ -11,42 +11,36 @@ import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
-import kotlinx.android.synthetic.main.activity_charm_point.*
+import kotlinx.android.synthetic.main.activity_we_meet.*
 
-class CharmPointActivity : RootActivity() {
+class WeMeetActivity : RootActivity() {
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
 
     var adapterData = ArrayList<String>()
-    var type = -1
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_charm_point)
+        setContentView(R.layout.activity_we_meet)
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        type = intent.getIntExtra("type", -1)
-
-        if (type == 2){
-            titleTV.text = getString(R.string.meet_some_one)
-        }
 
 
 
         backIV.setOnClickListener {
             val intent = Intent()
-            intent.putExtra("charmPoint", adapterData)
+            intent.putExtra("meetPoint", adapterData)
             setResult(Activity.RESULT_OK, intent)
             finish()
         }
         nextTV.setOnClickListener {
             val intent = Intent()
             Log.d("어뎀터",adapterData.toString())
-            intent.putExtra("charmPoint", adapterData)
+            intent.putExtra("meetPoint", adapterData)
             setResult(Activity.RESULT_OK, intent)
             finish()
         }
@@ -483,86 +477,6 @@ class CharmPointActivity : RootActivity() {
                 item26TV.setTextColor(Color.parseColor("#555555"))
                 item26TV.setBackgroundResource(R.drawable.background_border_strock4_d4d4d4)
                 adapterData.remove(Utils.getString(item26TV))
-            }
-        }
-        item27TV.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                if (adapterData.count() > 3) {
-                    Toast.makeText(context, "더이상 선택할수없습니다.", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
-                item27TV.setTextColor(Color.parseColor("#ffffff"))
-                item27TV.setBackgroundResource(R.drawable.background_border_strock4_923b9f)
-                adapterData.add(Utils.getString(item27TV))
-            } else {
-                item27TV.setTextColor(Color.parseColor("#555555"))
-                item27TV.setBackgroundResource(R.drawable.background_border_strock4_d4d4d4)
-                adapterData.remove(Utils.getString(item27TV))
-            }
-        }
-        item28TV.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                if (adapterData.count() > 3) {
-                    Toast.makeText(context, "더이상 선택할수없습니다.", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
-                item28TV.setTextColor(Color.parseColor("#ffffff"))
-                item28TV.setBackgroundResource(R.drawable.background_border_strock4_923b9f)
-                adapterData.add(Utils.getString(item28TV))
-            } else {
-                item28TV.setTextColor(Color.parseColor("#555555"))
-                item28TV.setBackgroundResource(R.drawable.background_border_strock4_d4d4d4)
-                adapterData.remove(Utils.getString(item28TV))
-            }
-        }
-        item29TV.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                if (adapterData.count() > 3) {
-                    Toast.makeText(context, "더이상 선택할수없습니다.", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
-                item29TV.setTextColor(Color.parseColor("#ffffff"))
-                item29TV.setBackgroundResource(R.drawable.background_border_strock4_923b9f)
-                adapterData.add(Utils.getString(item29TV))
-            } else {
-                item29TV.setTextColor(Color.parseColor("#555555"))
-                item29TV.setBackgroundResource(R.drawable.background_border_strock4_d4d4d4)
-                adapterData.remove(Utils.getString(item29TV))
-            }
-        }
-        item30TV.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                if (adapterData.count() > 3) {
-                    Toast.makeText(context, "더이상 선택할수없습니다.", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
-                item30TV.setTextColor(Color.parseColor("#ffffff"))
-                item30TV.setBackgroundResource(R.drawable.background_border_strock4_923b9f)
-                adapterData.add(Utils.getString(item30TV))
-            } else {
-                item30TV.setTextColor(Color.parseColor("#555555"))
-                item30TV.setBackgroundResource(R.drawable.background_border_strock4_d4d4d4)
-                adapterData.remove(Utils.getString(item30TV))
-            }
-        }
-        item31TV.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                if (adapterData.count() > 3) {
-                    Toast.makeText(context, "더이상 선택할수없습니다.", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
-                item31TV.setTextColor(Color.parseColor("#ffffff"))
-                item31TV.setBackgroundResource(R.drawable.background_border_strock4_923b9f)
-                adapterData.add(Utils.getString(item31TV))
-            } else {
-                item31TV.setTextColor(Color.parseColor("#555555"))
-                item31TV.setBackgroundResource(R.drawable.background_border_strock4_d4d4d4)
-                adapterData.remove(Utils.getString(item31TV))
             }
         }
 

@@ -186,24 +186,26 @@
                 android:text="@string/my_attractive_point_is"/>
 
             <RelativeLayout
+                android:id="@+id/charmRL"
                 android:layout_marginTop="11.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp">
 
-                <Spinner
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@null">
-                </Spinner>
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:textSize="14dp"
+                    android:textColor="#555555"
+                    android:text="선택해주세요"/>
 
                 <ImageView
-                    android:id="@+id/charmRL"
                     android:paddingLeft="50dp"
-                    android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@mipmap/op_drop"/>
 
                 <View
@@ -216,6 +218,7 @@
             </RelativeLayout>
 
             <GridView
+                android:layout_marginTop="10dp"
                 android:id="@+id/charmpointGV"
                 android:numColumns="4"
                 android:scrollbars="none"
@@ -232,23 +235,27 @@
                 android:text="@string/If_we_meet"/>
 
             <RelativeLayout
+                android:id="@+id/meetRL"
                 android:layout_marginTop="11.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp">
 
-                <Spinner
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@null">
-                </Spinner>
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:textSize="14dp"
+                    android:textColor="#555555"
+                    android:text="선택해주세요"/>
 
                 <ImageView
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginTop="15dp"
+
+                    android:paddingLeft="50dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@mipmap/op_drop"/>
 
                 <View
@@ -260,52 +267,13 @@
 
             </RelativeLayout>
 
-            <LinearLayout
-                android:layout_marginTop="16dp"
+            <GridView
+                android:layout_marginTop="10dp"
+                android:id="@+id/meeetpointGV"
+                android:numColumns="4"
+                android:scrollbars="none"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="한사람만 봐요"/>
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="솔직해요"/>
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="큰눈이 매력적이에요."/>
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="섹시한 두뇌"/>
-
-            </LinearLayout>
+                android:layout_height="wrap_content"/>
 
             <TextView
                 android:layout_marginTop="74.5dp"
@@ -317,22 +285,26 @@
                 android:text="@string/meet_some_one"/>
 
             <RelativeLayout
+                android:id="@+id/peopleRL"
                 android:layout_marginTop="11.5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp">
 
-                <Spinner
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:background="@null">
-                </Spinner>
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:textSize="14dp"
+                    android:textColor="#555555"
+                    android:text="선택해주세요"/>
 
                 <ImageView
-                    android:layout_marginTop="15dp"
+                    android:paddingLeft="50dp"
                     android:layout_marginRight="10dp"
                     android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@mipmap/op_drop"/>
 
                 <View
@@ -344,53 +316,13 @@
 
             </RelativeLayout>
 
-            <LinearLayout
-                android:layout_marginTop="16dp"
+            <GridView
+                android:layout_marginTop="10dp"
+                android:id="@+id/wantmeetGV"
+                android:numColumns="4"
+                android:scrollbars="none"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="한사람만 봐요"/>
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="솔직해요"/>
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="큰눈이 매력적이에요."/>
-
-                <TextView
-                    android:layout_marginRight="10dp"
-                    android:padding="5dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="11dp"
-                    android:textColor="#ffffff"
-                    android:text="섹시한 두뇌"/>
-
-            </LinearLayout>
-
+                android:layout_height="wrap_content"/>
             <TextView
                 android:layout_marginTop="105dp"
                 android:layout_width="wrap_content"
@@ -898,7 +830,6 @@
                 android:layout_height="40dp">
 
                 <TextView
-                    android:id="@+id/saveLL"
                     android:paddingLeft="10dp"
                     android:layout_width="0dp"
                     android:layout_weight="1"

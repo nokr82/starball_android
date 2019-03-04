@@ -34,6 +34,8 @@ class EditProfileActivity : RootActivity() {
     private var pictures = arrayListOf<JSONObject>()
 
     private val CHARM_POINT = 111
+    private val WE_MEET = 112
+    private val WANT_MEET = 113
 
 
     private val HEIGHT_SELECT = 101
@@ -48,11 +50,18 @@ class EditProfileActivity : RootActivity() {
     private val WORK_SELECT = 110
 
 
-    lateinit var languageAdapter: LanguageAdapter
     var adapterData = ArrayList<String>()
-
-    lateinit var charmAdapter: CharmAdapter
     var adapterData2 = ArrayList<String>()
+    var adapterData3 = ArrayList<String>()
+    var adapterData4 = ArrayList<String>()
+
+
+    lateinit var languageAdapter: LanguageAdapter
+    lateinit var charmAdapter: CharmAdapter
+    lateinit var meetAdapter: CharmAdapter
+    lateinit var wantmeetAdapter: CharmAdapter
+
+
 
     var step = -1
 
@@ -77,6 +86,15 @@ class EditProfileActivity : RootActivity() {
 
         charmAdapter = CharmAdapter(context,R.layout.item_charm_point, adapterData2)
         charmpointGV.adapter = charmAdapter
+
+
+        meetAdapter= CharmAdapter(context,R.layout.item_charm_point, adapterData3)
+        meeetpointGV.adapter = meetAdapter
+
+        wantmeetAdapter= CharmAdapter(context,R.layout.item_charm_point, adapterData4)
+        wantmeetGV.adapter = wantmeetAdapter
+
+
 
 
 
@@ -166,6 +184,16 @@ class EditProfileActivity : RootActivity() {
         charmRL.setOnClickListener {
             val intent = Intent(context, CharmPointActivity::class.java)
             startActivityForResult(intent,CHARM_POINT)
+        }
+
+        meetRL.setOnClickListener {
+            val intent = Intent(context, WeMeetActivity::class.java)
+            startActivityForResult(intent,WE_MEET)
+        }
+        peopleRL.setOnClickListener {
+            val intent = Intent(context, CharmPointActivity::class.java)
+            intent.putExtra("type",2)
+            startActivityForResult(intent,WANT_MEET)
         }
 
 
@@ -306,6 +334,36 @@ class EditProfileActivity : RootActivity() {
                             }
                         }
                         charmAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
+            WE_MEET  -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    if(data != null) {
+                        var  meetpoints = data.getSerializableExtra("meetPoint") as ArrayList<String>
+                        if (meetpoints.size>0){
+                            for (i in 0..(meetpoints.size -1)){
+                                val meetpoint = meetpoints[i]
+                                //배열로 입력저장은 [] 이걸 넣어준다\
+                                adapterData3.add(meetpoint)
+                            }
+                        }
+                        meetAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
+            WANT_MEET  -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    if(data != null) {
+                        var  wantmeetpoints = data.getSerializableExtra("charmPoint") as ArrayList<String>
+                        if (wantmeetpoints.size>0){
+                            for (i in 0..(wantmeetpoints.size -1)){
+                                val wantmeetpoint = wantmeetpoints[i]
+                                //배열로 입력저장은 [] 이걸 넣어준다\
+                                adapterData4.add(wantmeetpoint)
+                            }
+                        }
+                        wantmeetAdapter.notifyDataSetChanged()
                     }
                 }
             }

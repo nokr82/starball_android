@@ -44,6 +44,7 @@
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden">
 		</activity>
+
 		<activity
 			android:name=".activities.IntroActivity"
 			android:theme="@style/NoTitleDialog"
@@ -132,6 +133,10 @@
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
 			android:name=".activities.CharmPointActivity"
+			android:theme="@style/NoTitleDialog"
+			android:windowSoftInputMode="adjustResize|stateHidden"/>
+		<activity
+			android:name=".activities.WeMeetActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
