@@ -44,8 +44,6 @@ class SearchSettingActivity : RootActivity() {
     var other_nation = "N"
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_setting)
@@ -63,7 +61,8 @@ class SearchSettingActivity : RootActivity() {
         click()
 
     }
-    fun click(){
+
+    fun click() {
 
         backIV.setOnClickListener {
             finish()
@@ -94,28 +93,28 @@ class SearchSettingActivity : RootActivity() {
 
 
         nationLL.setOnClickListener {
-            if (other_nation =="Y"){
+            if (other_nation == "Y") {
                 other_nation = "N"
                 nationIV.setImageResource(R.mipmap.comm_check_off)
-            }else{
+            } else {
                 other_nation = "Y"
                 nationIV.setImageResource(R.mipmap.comm_check_on)
             }
         }
         saveLL.setOnClickListener {
-            if (saveview_yn =="Y"){
+            if (saveview_yn == "Y") {
                 saveview_yn = "N"
                 saveIV.setImageResource(R.mipmap.comm_check_off)
-            }else{
+            } else {
                 saveview_yn = "Y"
                 saveIV.setImageResource(R.mipmap.comm_check_on)
             }
         }
         vvipLL.setOnClickListener {
-            if (vvipview_yn =="Y"){
+            if (vvipview_yn == "Y") {
                 vvipview_yn = "N"
                 vvipIV.setImageResource(R.mipmap.comm_check_off)
-            }else{
+            } else {
                 vvipview_yn = "Y"
                 vvipIV.setImageResource(R.mipmap.comm_check_on)
             }
@@ -129,11 +128,10 @@ class SearchSettingActivity : RootActivity() {
         get_info()
     }
 
-    fun setmenu(){
+    fun setmenu() {
         menIV.setImageResource(R.mipmap.comm_check_off)
         girlIV.setImageResource(R.mipmap.comm_check_off)
     }
-
 
 
     fun edit_search() {
@@ -145,7 +143,7 @@ class SearchSettingActivity : RootActivity() {
         params.put("saveview_yn", saveview_yn)
         params.put("other_nation", other_nation)
         params.put("search_gender", search_gender)
-        params.put("language", adapterData.joinToString())
+        params.put("like_language", adapterData.joinToString())
 
         JoinAction.final_join(params, object : JsonHttpResponseHandler() {
 
@@ -157,9 +155,9 @@ class SearchSettingActivity : RootActivity() {
                 try {
                     val result = response!!.getString("result")
 
-                    Log.d("결과",result.toString())
+                    Log.d("결과", result.toString())
                     if ("ok" == result) {
-                        Toast.makeText(context,"변경되었습니다",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "변경되었습니다", Toast.LENGTH_SHORT).show()
                     } else {
 
                     }
@@ -168,6 +166,7 @@ class SearchSettingActivity : RootActivity() {
                     e.printStackTrace()
                 }
             }
+
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
                 super.onSuccess(statusCode, headers, response)
             }
@@ -238,6 +237,7 @@ class SearchSettingActivity : RootActivity() {
             }
         })
     }
+
     fun get_info() {
 
         var member_id = PrefUtils.getIntPreference(context, "member_id")
@@ -260,40 +260,45 @@ class SearchSettingActivity : RootActivity() {
 
                         val member = response.getJSONObject("member")
 
-                        vvipview_yn = Utils.getString(member,"vvipview_yn")
-                        saveview_yn = Utils.getString(member,"saveview_yn")
-                        other_nation = Utils.getString(member,"other_nation")
-                        gender = Utils.getString(member,"gender")
-                        search_gender = Utils.getString(member,"search_gender")
+                        vvipview_yn = Utils.getString(member, "vvipview_yn")
+                        saveview_yn = Utils.getString(member, "saveview_yn")
+                        other_nation = Utils.getString(member, "other_nation")
+                        gender = Utils.getString(member, "gender")
+                        search_gender = Utils.getString(member, "search_gender")
 
 
+                        adapterData.clear()
+                        val like_languages = response.getJSONArray("like_languages")
+                        for (i in 0..like_languages.length() - 1) {
+                            var json = like_languages[i] as JSONObject
+                            var language = Utils.getString(json, "language")
+                            adapterData.add(language)
+                        }
+                        languageAdapter.notifyDataSetChanged()
 
 
-                        if (search_gender =="F"){
+                        if (search_gender == "F") {
                             girlIV.setImageResource(R.mipmap.comm_check_on)
-                        }else if (search_gender =="M"){
+                        } else if (search_gender == "M") {
                             menIV.setImageResource(R.mipmap.comm_check_on)
                         }
 
 
-                        if (vvipview_yn =="Y"){
+                        if (vvipview_yn == "Y") {
                             vvipIV.setImageResource(R.mipmap.comm_check_on)
-                        }else{
+                        } else {
                             vvipIV.setImageResource(R.mipmap.comm_check_off)
                         }
-                        if (saveview_yn =="Y"){
+                        if (saveview_yn == "Y") {
                             saveIV.setImageResource(R.mipmap.comm_check_on)
-                        }else{
+                        } else {
                             saveIV.setImageResource(R.mipmap.comm_check_off)
                         }
-                        if (other_nation =="Y"){
+                        if (other_nation == "Y") {
                             nationIV.setImageResource(R.mipmap.comm_check_on)
-                        }else{
+                        } else {
                             nationIV.setImageResource(R.mipmap.comm_check_off)
                         }
-
-
-
 
 
                     } else {
@@ -375,14 +380,13 @@ class SearchSettingActivity : RootActivity() {
     }
 
 
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         when (requestCode) {
             SELECT_LANGUAGE_REQUST_CODE -> {
                 if (resultCode == Activity.RESULT_OK) {
-                    if(data != null) {
+                    if (data != null) {
                         adapterData.add(data.getStringExtra("selectedLanguage"))
                         languageAdapter.notifyDataSetChanged()
                     }
