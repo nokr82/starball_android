@@ -98,6 +98,12 @@ class SettingActivity : RootActivity() {
             finish()
         }
 
+        agree1LL.setOnClickListener {
+            var intent = Intent(context, AgreeActivity::class.java)
+            intent.putExtra("type", "1")
+            startActivity(intent)
+        }
+
         click()
 
         loadData()
