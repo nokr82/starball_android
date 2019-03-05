@@ -63,6 +63,10 @@
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
+			android:name=".activities.AgreeActivity"
+			android:theme="@style/NoTitleDialog"
+			android:windowSoftInputMode="adjustResize|stateHidden"/>
+		<activity
 			android:name=".activities.JoinStep1PasswdActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
@@ -234,6 +238,14 @@
 			android:name=".activities.FriendChattingActivity"
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
+		<activity
+			android:name=".activities.DlgLogoutActivity"
+			android:screenOrientation="unspecified"
+			android:theme="@style/full_screen_dialog1"/>
+		<activity
+			android:name=".activities.DlgSecessionActivity"
+			android:screenOrientation="unspecified"
+			android:theme="@style/full_screen_dialog1"/>
 		<activity
 			android:name=".activities.DlgCharInfoActivity"
 			android:screenOrientation="unspecified"

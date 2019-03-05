@@ -1,0 +1,38 @@
+package com.devstories.starball_android.activities
+
+import android.app.Activity
+import android.app.ProgressDialog
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import com.devstories.starball_android.R
+import com.devstories.starball_android.base.RootActivity
+import kotlinx.android.synthetic.main.dlg_alert_common.*
+
+class DlgLogoutActivity : RootActivity() {
+
+    lateinit var context: Context
+    private var progressDialog: ProgressDialog? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.dlg_logout)
+
+        this.context = this
+        progressDialog = ProgressDialog(context)
+
+        doneTV.setOnClickListener {
+            var intent = Intent()
+            setResult(Activity.RESULT_OK, intent)
+            finish()
+        }
+
+        cancelTV.setOnClickListener {
+            var intent = Intent()
+            setResult(Activity.RESULT_CANCELED, intent)
+            finish()
+        }
+
+    }
+
+}

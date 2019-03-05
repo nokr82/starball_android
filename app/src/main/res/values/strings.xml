@@ -353,5 +353,7 @@
     <!-- 추가-->
     <string name="version_update">업데이트 하기</string>
     <string name="version_update_str">보다 나은 사용성을 위해 업데이트해주세요</string>
+    <string name="logout_confirm">로그아웃 하시겠습니까?</string>
+    <string name="secession_confirm">계정을 삭제 하시겠습니까?</string>
 
 </resources>

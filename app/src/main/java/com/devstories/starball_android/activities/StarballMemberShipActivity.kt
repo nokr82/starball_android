@@ -30,8 +30,10 @@ class StarballMemberShipActivity : RootActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_starball_membership)
+
         this.context = this
         progressDialog = ProgressDialog(context)
+
         adverImagePaths.add("1")
         adverImagePaths.add("2")
         adverImagePaths.add("3")
@@ -65,8 +67,8 @@ class StarballMemberShipActivity : RootActivity() {
                 }
             }
         })
-        timer()
 
+        timer()
 
         backIV.setOnClickListener {
             finish()
@@ -76,10 +78,6 @@ class StarballMemberShipActivity : RootActivity() {
             val intent = Intent(context, VVIPJoinActivity::class.java)
             startActivity(intent)
         }
-
-
-
-
 
     }
 
