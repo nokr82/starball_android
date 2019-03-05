@@ -1,5 +1,6 @@
 package com.devstories.starball_android.activities
 
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
@@ -25,6 +26,8 @@ class JoinStep12PreviewActivity : RootActivity() {
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
+    lateinit var activity:Activity
+
     private var pages = JSONArray()
 
     private var overallXScroll = 0
@@ -34,6 +37,8 @@ class JoinStep12PreviewActivity : RootActivity() {
         setContentView(R.layout.activity_join_step12_preview)
         this.context = this
         progressDialog = ProgressDialog(context)
+
+        this.activity = this
 
         val joinPics = PrefUtils.getStringPreference(context, "join_pics", "")
         if(joinPics.isNotEmpty()) {
@@ -81,7 +86,7 @@ class JoinStep12PreviewActivity : RootActivity() {
             layoutManager = noScrollLinearLayoutManager
 
             // specify an viewAdapter (ee also next example)
-            adapter = SwipeStackItemAdapter(context, memberInfo, pages, true)
+            adapter = SwipeStackItemAdapter(context, activity, memberInfo, pages, true)
 
             PagerSnapHelper().attachToRecyclerView(this)
 

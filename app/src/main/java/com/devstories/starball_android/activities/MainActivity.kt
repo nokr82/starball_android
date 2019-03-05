@@ -1,11 +1,15 @@
 package com.devstories.starball_android.activities
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import com.devstories.starball_android.R
+import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
@@ -19,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-
+import java.util.*
 
 class MainActivity : RootActivity() {
 
@@ -32,13 +36,16 @@ class MainActivity : RootActivity() {
     var data = ArrayList<JSONObject>()
     lateinit var swipeStackAdapter:SwipeStackAdapter
 
+    private val topLogoTimer = Timer()
+    private val rightBottomStarballTimer = Timer()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.devstories.starball_android.R.layout.activity_main)
 
         mContext = this
 
-        progressDialog = ProgressDialog(mContext, R.style.CustomProgressBar)
+        progressDialog = ProgressDialog(mContext, com.devstories.starball_android.R.style.CustomProgressBar)
         progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
 
         chatIV.setOnClickListener {
@@ -57,7 +64,7 @@ class MainActivity : RootActivity() {
         }
 
         val swipeStack = swipeStack as SwipeStack
-        swipeStackAdapter = SwipeStackAdapter(mContext, data, swipeStack.getmSwipeHelper())
+        swipeStackAdapter = SwipeStackAdapter(mContext, this, data, swipeStack.getmSwipeHelper())
         swipeStack.adapter = swipeStackAdapter
         swipeStack.setListener(object : SwipeStack.SwipeStackListener {
             override fun onStackEmpty() {
@@ -80,6 +87,8 @@ class MainActivity : RootActivity() {
 
             }
         })
+
+        startAnimation()
 
         loadData()
 
@@ -191,6 +200,43 @@ class MainActivity : RootActivity() {
             }
         })
 
+    }
+
+    private fun startAnimation() {
+
+        val topLogoPeriod = 1000 * 10L
+        topLogoTimer.scheduleAtFixedRate(object:TimerTask() {
+            override fun run() {
+                runOnUiThread {
+                    animateTopLogo()
+                }
+            }
+        }, topLogoPeriod, topLogoPeriod)
+
+        rightBottomStarballTimer.scheduleAtFixedRate(object:TimerTask() {
+            override fun run() {
+                runOnUiThread {
+                    // val intent = Intent("ROTATE_RIGHT_BOTTOM_STARBALL")
+                    // sendBroadcast(intent)
+                }
+            }
+        }, 0, 1000 * 5)
+
+    }
+
+    fun animateTopLogo() {
+
+        val oa1 = ObjectAnimator.ofFloat(logoIV, "scaleY", 1f, 0f)
+        val oa2 = ObjectAnimator.ofFloat(logoIV, "scaleY", 0f, 1f)
+        oa1.interpolator = DecelerateInterpolator()
+        oa2.interpolator = AccelerateDecelerateInterpolator()
+        oa1.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                super.onAnimationEnd(animation)
+                oa2.start()
+            }
+        })
+        oa1.start()
     }
 
 }

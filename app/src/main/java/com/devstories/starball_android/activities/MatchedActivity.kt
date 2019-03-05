@@ -185,8 +185,10 @@ class MatchedActivity : RootActivity() {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-                finish()
-                overridePendingTransition(0, 0)
+                Utils.delay(context, 500) {
+                    finish()
+                    overridePendingTransition(0, 0)
+                }
             }
         })
 
