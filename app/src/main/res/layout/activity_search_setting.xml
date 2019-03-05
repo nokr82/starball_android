@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -124,10 +125,20 @@
                 android:gravity="end"
                 android:text="22 ~ 35"/>
 
-            <SeekBar
+            <com.crystal.crystalrangeseekbar.widgets.BubbleThumbRangeSeekbar
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                />
+                android:layout_height="wrap_content"
+                app:corner_radius="10"
+                app:min_value="0"
+                app:max_value="100"
+                app:steps="5"
+                app:bar_color="#F7BB88"
+                app:bar_highlight_color="#E07416"
+                app:left_thumb_image="@drawable/circle_seek"
+                app:right_thumb_image="@drawable/circle_seek"
+                app:left_thumb_image_pressed="@drawable/circle_seek"
+                app:right_thumb_image_pressed="@drawable/circle_seek"
+                app:data_type="_integer"/>
 
             <TextView
                 android:layout_marginTop="25dp"
@@ -146,10 +157,20 @@
                 android:gravity="end"
                 android:text="0~100km"/>
 
-            <SeekBar
+            <com.crystal.crystalrangeseekbar.widgets.BubbleThumbRangeSeekbar
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+                android:layout_height="wrap_content"
+                app:corner_radius="10"
+                app:min_value="0"
+                app:max_value="100"
+                app:steps="5"
+                app:bar_color="#F7BB88"
+                app:bar_highlight_color="#E07416"
+                app:left_thumb_image="@drawable/circle_seek"
+                app:right_thumb_image="@drawable/circle_seek"
+                app:left_thumb_image_pressed="@drawable/circle_seek"
+                app:right_thumb_image_pressed="@drawable/circle_seek"
+                app:data_type="_integer"/>
 
             <TextView
                 android:layout_marginTop="25dp"
@@ -168,10 +189,20 @@
                 android:gravity="end"
                 android:text="140~175cm"/>
 
-            <SeekBar
+            <com.crystal.crystalrangeseekbar.widgets.BubbleThumbRangeSeekbar
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+                android:layout_height="wrap_content"
+                app:corner_radius="10"
+                app:min_value="0"
+                app:max_value="100"
+                app:steps="5"
+                app:bar_color="#F7BB88"
+                app:bar_highlight_color="#E07416"
+                app:left_thumb_image="@drawable/circle_seek"
+                app:right_thumb_image="@drawable/circle_seek"
+                app:left_thumb_image_pressed="@drawable/circle_seek"
+                app:right_thumb_image_pressed="@drawable/circle_seek"
+                app:data_type="_integer"/>
 
             <TextView
                 android:layout_marginTop="83.5dp"
