@@ -1,5 +1,6 @@
 package com.devstories.starball_android.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -37,7 +38,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 
-class SwipeStackItemAdapter(private val context:Context, private val memberInfo:JSONObject, private val data: JSONArray, private val preview:Boolean) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SwipeStackItemAdapter(private val context:Context, private val activity:Activity, private val memberInfo:JSONObject, private val data: JSONArray, private val preview:Boolean) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class MainSearchType1(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -208,6 +209,7 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                     context.startActivity(intent)
                 }
 
+
             }
 
             1 -> {
@@ -273,7 +275,10 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                 holder.infoIV.setOnClickListener {
 
                     val intent = Intent(context, LikedNotiActivity::class.java)
-                    context.startActivity(intent)
+                    activity.startActivity(intent)
+
+                    activity.overridePendingTransition(0, 0)
+
 
                     /*
                     val intent = Intent("LIKED_NOTI")
@@ -375,5 +380,6 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
     override fun getItemViewType(position: Int): Int {
         return position
     }
+
 }
 

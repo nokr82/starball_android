@@ -223,6 +223,9 @@ class CharmpointSettingAcitivity : FragmentActivity() {
         when (requestCode) {
             DLGMSG -> {
                 if (resultCode == Activity.RESULT_OK) {
+                    val intent = Intent()
+                    setResult(Activity.RESULT_OK, intent)
+                    intent.putExtra("result", "result")
                     finish()
                 }
             }

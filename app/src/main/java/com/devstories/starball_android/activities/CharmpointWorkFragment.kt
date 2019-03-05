@@ -184,7 +184,6 @@ class CharmpointWorkFragment : Fragment() {
                 // System.out.println(responseString);
 
                 throwable.printStackTrace()
-                error()
             }
 
             override fun onFailure(
@@ -197,7 +196,6 @@ class CharmpointWorkFragment : Fragment() {
                     progressDialog!!.dismiss()
                 }
                 throwable.printStackTrace()
-                error()
             }
 
             override fun onFailure(
@@ -210,7 +208,6 @@ class CharmpointWorkFragment : Fragment() {
                     progressDialog!!.dismiss()
                 }
                 throwable.printStackTrace()
-                error()
             }
 
             override fun onStart() {
@@ -278,21 +275,7 @@ class CharmpointWorkFragment : Fragment() {
                 Utils.alert(myContext, "조회중 장애가 발생하였습니다.")
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                responseString: String?,
-                throwable: Throwable
-            ) {
-                if (progressDialog != null) {
-                    progressDialog!!.dismiss()
-                }
 
-                // System.out.println(responseString);
-
-                throwable.printStackTrace()
-                error()
-            }
 
             override fun onFailure(
                 statusCode: Int,
@@ -304,7 +287,6 @@ class CharmpointWorkFragment : Fragment() {
                     progressDialog!!.dismiss()
                 }
                 throwable.printStackTrace()
-                error()
             }
 
             override fun onFailure(
@@ -317,7 +299,6 @@ class CharmpointWorkFragment : Fragment() {
                     progressDialog!!.dismiss()
                 }
                 throwable.printStackTrace()
-                error()
             }
 
             override fun onStart() {

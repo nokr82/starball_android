@@ -114,10 +114,12 @@ class CharmpointHeightFragment : Fragment() {
     fun edit_info() {
         var member_id = PrefUtils.getIntPreference(context, "member_id")
         val params = RequestParams()
+        var height = select_height.replace("cm","")
         params.put("member_id", member_id)
-        params.put("height", select_height.replace("cm","").toInt())
 
-        Log.d("키",select_height)
+        params.put("height", height)
+
+        Log.d("키",height)
         JoinAction.final_join(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
@@ -152,21 +154,7 @@ class CharmpointHeightFragment : Fragment() {
                 Utils.alert(myContext, "조회중 장애가 발생하였습니다.")
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                responseString: String?,
-                throwable: Throwable
-            ) {
-                if (progressDialog != null) {
-                    progressDialog!!.dismiss()
-                }
 
-                // System.out.println(responseString);
-
-                throwable.printStackTrace()
-                error()
-            }
 
             override fun onFailure(
                 statusCode: Int,
@@ -178,7 +166,6 @@ class CharmpointHeightFragment : Fragment() {
                     progressDialog!!.dismiss()
                 }
                 throwable.printStackTrace()
-                error()
             }
 
             override fun onFailure(
@@ -191,7 +178,6 @@ class CharmpointHeightFragment : Fragment() {
                     progressDialog!!.dismiss()
                 }
                 throwable.printStackTrace()
-                error()
             }
 
             override fun onStart() {
@@ -274,7 +260,6 @@ class CharmpointHeightFragment : Fragment() {
                 // System.out.println(responseString);
 
                 throwable.printStackTrace()
-                error()
             }
 
             override fun onFailure(
@@ -287,7 +272,6 @@ class CharmpointHeightFragment : Fragment() {
                     progressDialog!!.dismiss()
                 }
                 throwable.printStackTrace()
-                error()
             }
 
             override fun onFailure(
@@ -300,7 +284,6 @@ class CharmpointHeightFragment : Fragment() {
                     progressDialog!!.dismiss()
                 }
                 throwable.printStackTrace()
-                error()
             }
 
             override fun onStart() {

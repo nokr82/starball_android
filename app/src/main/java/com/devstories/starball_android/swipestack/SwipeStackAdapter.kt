@@ -1,5 +1,6 @@
 package com.devstories.starball_android.swipestack
 
+import android.app.Activity
 import android.content.Context
 import android.provider.MediaStore
 import android.support.v7.widget.LinearLayoutManager
@@ -16,7 +17,7 @@ import com.devstories.starball_android.base.NoScrollLinearLayoutManager
 import com.devstories.starball_android.base.Utils
 import org.json.JSONObject
 
-class SwipeStackAdapter(private val context: Context, private val data: ArrayList<JSONObject>, swipeHelper: SwipeHelper) : BaseAdapter() {
+class SwipeStackAdapter(private val context: Context, private val activity: Activity, private val data: ArrayList<JSONObject>, swipeHelper: SwipeHelper) : BaseAdapter() {
 
     private var mSwipeHelper = swipeHelper
     private var dxs = 0
@@ -52,7 +53,7 @@ class SwipeStackAdapter(private val context: Context, private val data: ArrayLis
             layoutManager = noScrollLinearLayoutManager
 
             // specify an viewAdapter (ee also next example)
-            adapter = SwipeStackItemAdapter(context, item.getJSONObject("member"), item.getJSONArray("pages"), false)
+            adapter = SwipeStackItemAdapter(context, activity, item.getJSONObject("member"), item.getJSONArray("pages"), false)
 
             PagerSnapHelper().attachToRecyclerView(this)
 

@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -66,7 +67,7 @@ class EditProfileActivity : RootActivity() {
 
     var option_list = ArrayList<String>()
 
-    var profiledata  = arrayListOf<JSONObject>()
+    var profiledata = arrayListOf<JSONObject>()
 
     var adapterData = ArrayList<String>()
     var adapterData2 = ArrayList<String>()
@@ -144,7 +145,7 @@ class EditProfileActivity : RootActivity() {
         wantmeetAdapter = CharmAdapter(context, R.layout.item_charm_point, adapterData4)
         wantmeetGV.adapter = wantmeetAdapter
 
-
+        get_info()
         val joinLanguage = PrefUtils.getStringPreference(context, "join_language", "")
         if (joinLanguage.isNotEmpty()) {
             val splited = joinLanguage.split(",")
@@ -159,7 +160,7 @@ class EditProfileActivity : RootActivity() {
         click()
     }
 
-    fun profileclick(){
+    fun profileclick() {
 
         profile1RL.setOnClickListener {
             checkPermission()
@@ -202,7 +203,6 @@ class EditProfileActivity : RootActivity() {
     fun click() {
         nextTV.setOnClickListener {
             edit_info()
-            edit()
         }
         languageLL.setOnClickListener {
             val intent = Intent(context, DlgSelectLanguageActivity::class.java)
@@ -375,7 +375,7 @@ class EditProfileActivity : RootActivity() {
             datedlg()
         }
 
-        get_info()
+
     }
 
     fun datedlg() {
@@ -407,9 +407,13 @@ class EditProfileActivity : RootActivity() {
         TedPermission.with(this)
             .setPermissionListener(permissionlistener)
             .setDeniedMessage("[설정] > [권한] 에서 권한을 허용할 수 있습니다.")
-            .setPermissions(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+            .setPermissions(
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            )
             .check();
     }
+
     fun setmenu() {
         ghostIV.setImageResource(R.mipmap.comm_check_off)
         nomalIV.setImageResource(R.mipmap.comm_check_off)
@@ -438,21 +442,22 @@ class EditProfileActivity : RootActivity() {
                         val member = response.getJSONObject("member")
 
                         val profiles = response.getJSONArray("profiles")
-                        for (i in 0..profiles.length()-1){
+                        pictures.clear()
+                        for (i in 0..profiles.length() - 1) {
                             //새로운뷰를 이미지의 길이만큼생성
-                            var json=profiles[i] as JSONObject
-                            Log.d("제이슨",json.toString())
-                            var image_uri = Utils.getString(json,"image_uri")
+                            var json = profiles[i] as JSONObject
+                            Log.d("제이슨", json.toString())
+                            var image_uri = Utils.getString(json, "image_uri")
                             pictures.add(json)
-                            Log.d("제이슨이미지",image_uri.toString())
-                            }
+                            Log.d("제이슨이미지", image_uri.toString())
+                        }
                         updatePictures()
                         adapterData.clear()
                         val languages = response.getJSONArray("languages")
-                        for (i in 0..languages.length()-1){
+                        for (i in 0..languages.length() - 1) {
                             //새로운뷰를 이미지의 길이만큼생성
-                            var json=languages[i] as JSONObject
-                            var language = Utils.getString(json,"language")
+                            var json = languages[i] as JSONObject
+                            var language = Utils.getString(json, "language")
                             adapterData.add(language)
                         }
                         languageAdapter.notifyDataSetChanged()
@@ -460,6 +465,7 @@ class EditProfileActivity : RootActivity() {
 
                         email = Utils.getString(member, "email")
                         height = Utils.getInt(member, "height")
+                        Log.d("멀대", height.toString())
                         intro = Utils.getString(member, "intro")
                         nation = Utils.getString(member, "nation")
                         region = Utils.getString(member, "region")
@@ -487,7 +493,24 @@ class EditProfileActivity : RootActivity() {
                         travel = Utils.getString(member, "travel")
                         travel_cal = Utils.getString(member, "travel_cal")
 
-                        if (nation != ""){
+
+                        if (email != "") {
+                            emailTV.text = email
+                            emailTV.setTextColor(Color.parseColor("#923b9f"))
+                            emailIV.setImageResource(R.mipmap.op_drop)
+                        }
+                        if (facebook_yn != "N") {
+                            facebookTV.text = "인증되었습니다"
+                            facebookTV.setTextColor(Color.parseColor("#923b9f"))
+                            facebookIV.setImageResource(R.mipmap.op_drop)
+                        }
+                        if (insta_yn != "N") {
+                            instaTV.text = "인증되었습니다"
+                            instaTV.setTextColor(Color.parseColor("#923b9f"))
+                            instaIV.setImageResource(R.mipmap.op_drop)
+                        }
+
+                        if (nation != "") {
                             nationTV.text = nation
                         }
 
@@ -542,76 +565,71 @@ class EditProfileActivity : RootActivity() {
                         } else {
                             knowIV.setImageResource(R.mipmap.comm_check_off)
                         }
-                        if (height!= -1){
+                        if (height != -1) {
                             heightTV.text = height.toString()
                             heightIV.setImageResource(R.mipmap.setting_drop_right)
-                        }else{
+                        } else {
                             heightIV.setImageResource(R.mipmap.plus_op)
                         }
 
-                        if (region!=""){
+                        if (region != "") {
                             regionTV.text = region
                             regionIV.setImageResource(R.mipmap.setting_drop_right)
-                        }else{
+                        } else {
                             regionIV.setImageResource(R.mipmap.plus_op)
                         }
-                        if (policy!=""){
+                        if (policy != "") {
                             policyTV.text = policy
                             policyIV.setImageResource(R.mipmap.setting_drop_right)
-                        }else{
+                        } else {
                             policyIV.setImageResource(R.mipmap.plus_op)
                         }
 
-                        if (baby!=""){
+                        if (baby != "") {
                             babyTV.text = baby
                             babyIV.setImageResource(R.mipmap.setting_drop_right)
-                        }else{
+                        } else {
                             babyIV.setImageResource(R.mipmap.plus_op)
                         }
 
-                        if (animal!=""){
+                        if (animal != "") {
                             animalTV.text = animal
                             animalIV.setImageResource(R.mipmap.setting_drop_right)
-                        }else{
+                        } else {
                             animalIV.setImageResource(R.mipmap.plus_op)
                         }
 
-                        if (smoke!=""){
+                        if (smoke != "") {
                             smokeTV.text = smoke
                             smokeIV.setImageResource(R.mipmap.setting_drop_right)
-                        }else{
+                        } else {
                             smokeIV.setImageResource(R.mipmap.plus_op)
                         }
-                        if (drink!=""){
+                        if (drink != "") {
                             drinkTV.text = drink
                             drinkIV.setImageResource(R.mipmap.setting_drop_right)
-                        }else{
+                        } else {
                             drinkIV.setImageResource(R.mipmap.plus_op)
                         }
-                        if (health!=""){
+                        if (health != "") {
                             healthTV.text = health
                             healthIV.setImageResource(R.mipmap.setting_drop_right)
-                        }else{
+                        } else {
                             healthIV.setImageResource(R.mipmap.plus_op)
                         }
 
-                        if (sport !=""){
+                        if (sport != "") {
                             sportTV.text = sport
                             sportIV.setImageResource(R.mipmap.setting_drop_right)
-                        }else{
+                        } else {
                             sportIV.setImageResource(R.mipmap.plus_op)
                         }
-                        if (work !=""){
+                        if (work != "") {
                             workTV.text = work
                             workIV.setImageResource(R.mipmap.setting_drop_right)
-                        }else{
+                        } else {
                             workIV.setImageResource(R.mipmap.plus_op)
                         }
-
-
-
-
-
 
 
                     } else {
@@ -646,7 +664,7 @@ class EditProfileActivity : RootActivity() {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
-
+                Log.d("에러", responseString)
                 // System.out.println(responseString);
 
                 throwable.printStackTrace()
@@ -662,6 +680,7 @@ class EditProfileActivity : RootActivity() {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
+                Log.d("에러", errorResponse.toString())
                 throwable.printStackTrace()
                 error()
             }
@@ -675,6 +694,7 @@ class EditProfileActivity : RootActivity() {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
+                Log.d("에러", errorResponse.toString())
                 throwable.printStackTrace()
                 error()
             }
@@ -705,6 +725,47 @@ class EditProfileActivity : RootActivity() {
         var member_id = PrefUtils.getIntPreference(context, "member_id")
 
         val params = RequestParams()
+
+        var picturesArr = ArrayList<String>()
+        for (picture in pictures) {
+            picturesArr.add(picture.toString())
+        }
+        params.put("member_id", member_id)
+        params.put("language", adapterData)
+        if (picturesArr.isNotEmpty()) {
+            for ((idx, sp) in picturesArr.withIndex()) {
+                try {
+                    val picture = JSONObject(sp)
+
+                    val id = Utils.getInt(picture!!, "id")
+                    val path = Utils.getString(picture!!, "path")
+                    val mediaType = Utils.getInt(picture!!, "mediaType")
+
+                    if (mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
+                        var bitmap = Utils.getImage(context.contentResolver, path)
+                        Log.d("이미지", bitmap.toString())
+                        params.put(
+                            "images[$idx]",
+                            ByteArrayInputStream(Utils.getByteArray(bitmap)),
+                            "${System.currentTimeMillis()}.png"
+                        )
+                    } else {
+                        val file = File(path)
+                        var videoBytes = file.readBytes()
+                        params.put(
+                            "images[$idx]",
+                            ByteArrayInputStream(videoBytes),
+                            "${System.currentTimeMillis()}.mp4"
+                        )
+                    }
+                    params.put("media_types[$idx]", mediaType)
+
+                } catch (e: Exception) {
+
+                }
+            }
+
+        }
         params.put("member_id", member_id)
         params.put("intro", intro)
         params.put("nation", nation)
@@ -736,7 +797,7 @@ class EditProfileActivity : RootActivity() {
 
                     Log.d("결과", result.toString())
                     if ("ok" == result) {
-                        Toast.makeText(context,"저장되었습니다",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "저장되었습니다", Toast.LENGTH_SHORT).show()
                     } else {
 
                     }
@@ -769,7 +830,7 @@ class EditProfileActivity : RootActivity() {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
-
+                Log.d("에러", responseString.toString())
                 // System.out.println(responseString);
 
                 throwable.printStackTrace()
@@ -785,6 +846,7 @@ class EditProfileActivity : RootActivity() {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
+                Log.d("에러2", errorResponse.toString())
                 throwable.printStackTrace()
                 error()
             }
@@ -798,6 +860,7 @@ class EditProfileActivity : RootActivity() {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
+                Log.d("에러3", errorResponse.toString())
                 throwable.printStackTrace()
                 error()
             }
@@ -818,48 +881,11 @@ class EditProfileActivity : RootActivity() {
         })
     }
 
-
-    fun edit() {
-
-        val member_id = PrefUtils.getIntPreference(context, "member_id")
-        var picturesArr = ArrayList<String>()
-        for (picture in pictures) {
-            picturesArr.add(picture.toString())
-        }
-
-
-
+    fun del_img(id: Int) {
         val params = RequestParams()
-        params.put("member_id", member_id)
-        params.put("language", adapterData)
-        if(picturesArr.isNotEmpty()) {
-            for ((idx, sp) in  picturesArr.withIndex()) {
-                try {
-                    val picture = JSONObject(sp)
+        params.put("profile_id", id)
 
-                    val id = Utils.getInt(picture!!, "id")
-                    val path = Utils.getString(picture!!, "path")
-                    val mediaType = Utils.getInt(picture!!, "mediaType")
-
-                    if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
-                        var bitmap = Utils.getImage(context.contentResolver, path)
-                        params.put("images[$idx]", ByteArrayInputStream(Utils.getByteArray(bitmap)), "${System.currentTimeMillis()}.png")
-                    } else {
-                        val file = File(path)
-                        var videoBytes = file.readBytes()
-                        params.put("images[$idx]", ByteArrayInputStream(videoBytes), "${System.currentTimeMillis()}.mp4")
-                    }
-                    params.put("media_types[$idx]", mediaType)
-
-                } catch (e:Exception) {
-
-                }
-            }
-
-        }
-        // pictures
-        Log.d("결과2",adapterData.toString())
-        JoinAction.join(params, object : JsonHttpResponseHandler() {
+        MemberAction.profile_del(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
                 if (progressDialog != null) {
@@ -869,16 +895,16 @@ class EditProfileActivity : RootActivity() {
                 try {
                     val result = response!!.getString("result")
 
-                    if ("ok" == result || "already" == result) {
+                    Log.d("결과", result.toString())
+                    if ("ok" == result) {
 
                     } else {
-                        Utils.alert(context, "조회중 장애가 발생하였습니다.")
+
                     }
 
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
-
             }
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
@@ -907,7 +933,6 @@ class EditProfileActivity : RootActivity() {
                 // System.out.println(responseString);
 
                 throwable.printStackTrace()
-                error()
             }
 
             override fun onFailure(
@@ -920,7 +945,6 @@ class EditProfileActivity : RootActivity() {
                     progressDialog!!.dismiss()
                 }
                 throwable.printStackTrace()
-                error()
             }
 
             override fun onFailure(
@@ -933,7 +957,6 @@ class EditProfileActivity : RootActivity() {
                     progressDialog!!.dismiss()
                 }
                 throwable.printStackTrace()
-                error()
             }
 
             override fun onStart() {
@@ -953,7 +976,7 @@ class EditProfileActivity : RootActivity() {
     }
 
     private fun updatePictures() {
-        Log.d("픽쳐",pictures.toString())
+        Log.d("픽쳐", pictures.toString())
         // clear
         for (idx in 0..8) {
 
@@ -969,23 +992,28 @@ class EditProfileActivity : RootActivity() {
         for ((idx, picture) in pictures.withIndex()) {
             val image_uri = Utils.getString(picture!!, "image_uri")
             val id = Utils.getInt(picture!!, "id")
-            Log.d("아이디",id.toString())
+            Log.d("아이디", id.toString())
             val path = Utils.getString(picture!!, "path")
             val mediaType = Utils.getInt(picture!!, "mediaType")
             val imageIV = getIV(idx)
             val delIV = getDelIV(idx)
 
 
-            if (path !=null){
-                if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
+            if (path != null) {
+                if (mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
                     var bitmap = Utils.getImage(context.contentResolver, path)
                     imageIV.setImageBitmap(bitmap)
                 } else {
-                    val curThumb = MediaStore.Video.Thumbnails.getThumbnail(context.contentResolver, id.toLong(), MediaStore.Video.Thumbnails.MINI_KIND, null)
+                    val curThumb = MediaStore.Video.Thumbnails.getThumbnail(
+                        context.contentResolver,
+                        id.toLong(),
+                        MediaStore.Video.Thumbnails.MINI_KIND,
+                        null
+                    )
                     imageIV.setImageBitmap(curThumb)
                 }
             }
-            var bitmap  = Config.url + image_uri
+            var bitmap = Config.url + image_uri
             ImageLoader.getInstance().displayImage(bitmap, imageIV, Utils.UILoptionsPosting)
 
 
@@ -993,12 +1021,15 @@ class EditProfileActivity : RootActivity() {
             delIV.setOnClickListener(null)
             delIV.setOnClickListener {
                 val tag = it.tag as Int
-                if(pictures.size <= tag) {
+                if (pictures.size <= tag) {
                     return@setOnClickListener
                 }
+                Log.d("태그",tag.toString())
+                Log.d("아뒤",id.toString())
                 pictures.removeAt(tag)
-
                 updatePictures()
+                del_img(id)
+
             }
 
             imageIV.visibility = View.VISIBLE
@@ -1007,7 +1038,6 @@ class EditProfileActivity : RootActivity() {
         }
 
     }
-
 
 
     private fun getIV(idx: Int): ImageView {
@@ -1057,7 +1087,6 @@ class EditProfileActivity : RootActivity() {
                     pictures.add(item)
 
                     println(item)
-
 
 
                     // reset(str, i, "picture", mediaType, id, -1, null)

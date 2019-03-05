@@ -12,6 +12,9 @@ object MemberAction {
     fun get_info(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/members/info", params, handler)
     }
+    fun profile_del(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/profile_del", params, handler)
+    }
     fun list(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/members/list", params, handler)
     }

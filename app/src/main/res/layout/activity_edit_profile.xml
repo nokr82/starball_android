@@ -779,7 +779,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="10dp"
-                    android:src="@mipmap/setting_drop_right"/>
+                    android:src="@mipmap/plus_op"/>
 
             </LinearLayout>
 
@@ -822,7 +822,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="10dp"
-                    android:src="@mipmap/setting_drop_right"/>
+                    android:src="@mipmap/plus_op"/>
 
             </LinearLayout>
 
@@ -1293,16 +1293,17 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
-                    android:textColor="#923b9f"
+                    android:textColor="#999999"
                     android:letterSpacing="-0.05"
                     android:gravity="end"
-                    android:text="koreacap@gmail.com"/>
+                    android:text="@string/no_certi"/>
 
                 <ImageView
+                    android:id="@+id/emailIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="10dp"
-                    android:src="@mipmap/op_drop"/>
+                    android:src="@mipmap/setting_drop_right"/>
 
             </LinearLayout>
 
@@ -1335,6 +1336,7 @@
 
 
                 <ImageView
+                    android:id="@+id/facebookIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="10dp"
@@ -1369,6 +1371,7 @@
                     android:text="@string/no_certi"/>
 
                 <ImageView
+                    android:id="@+id/instaIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingRight="10dp"
