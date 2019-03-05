@@ -49,7 +49,7 @@ class MainActivity : RootActivity() {
         progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
 
         chatIV.setOnClickListener {
-            val intent = Intent(this, ChattingExActivity::class.java)
+            val intent = Intent(this, ChattingActivity::class.java)
             startActivity(intent)
         }
 

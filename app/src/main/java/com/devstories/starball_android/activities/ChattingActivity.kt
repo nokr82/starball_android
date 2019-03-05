@@ -4,27 +4,23 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.FragmentActivity
 import android.view.View
 import com.devstories.starball_android.R
-import com.devstories.starball_android.adapter.DaillyAdapter
-import com.devstories.starball_android.adapter.EventAdapter
-import com.devstories.starball_android.adapter.GroupAdapter
-import com.devstories.starball_android.adapter.TalkAdapter
-import com.devstories.starball_android.base.RootActivity
 import kotlinx.android.synthetic.main.activity_chatting.*
 
-class ChattingActivity : RootActivity() {
+
+class ChattingActivity : FragmentActivity() {
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
-    lateinit var GroupAdapter: GroupAdapter
-
-    lateinit var TalkAdapter: TalkAdapter
-
-    lateinit var EventAdapter: EventAdapter
-
     var type = -1
+    val ChattingFragment: ChattingFragment = ChattingFragment()
+    val ChattingMatchFragment: ChattingMatchFragment = ChattingMatchFragment()
+    val ChattingCrushFragment: ChattingCrushFragment = ChattingCrushFragment()
+    val ChattingSendCrushFragment: ChattingSendCrushFragment = ChattingSendCrushFragment()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,169 +28,108 @@ class ChattingActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        GroupAdapter = GroupAdapter(context, R.layout.item_chat_profile, 2)
-        groupLV.adapter = GroupAdapter
-        TalkAdapter = TalkAdapter(context, R.layout.item_chat_profile, 2)
-        talkLV.adapter = TalkAdapter
+        supportFragmentManager.beginTransaction().replace(R.id.chattingFL, ChattingFragment).commit()
 
-        groupLV.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(context, GroupChattingActivity::class.java)
-            startActivity(intent)
-        }
-        talkLV.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(context, FriendChattingActivity::class.java)
-            startActivity(intent)
+        click()
+    }
+
+    fun click() {
+
+        backIV.setOnClickListener {
+            finish()
         }
 
         timeIV.setOnClickListener {
             val intent = Intent(context, DailyMomentListActivity::class.java)
             startActivity(intent)
         }
-        plusIV.setOnClickListener {
-            val intent = Intent(context, GrouptMakeActivity::class.java)
-            startActivity(intent)
-        }
-        backIV.setOnClickListener {
-            finish()
-        }
 
-
+        clickmoreIV.setOnClickListener {
+            menuLL.visibility = View.GONE
+            clickLL.visibility = View.GONE
+            eventLL.visibility = View.VISIBLE
+        }
 
 
         storyLL.setOnClickListener {
-            setmenu()
-            storyLL.visibility = View.VISIBLE
-            friendLL.visibility = View.VISIBLE
-            eventLV.visibility = View.GONE
-
+            eventLL.visibility = View.GONE
+            clickLL.visibility = View.VISIBLE
+            clickIV.setImageResource(R.mipmap.lounge_menu_chat)
+            clickTV.text = "대화"
+            menuLL.visibility = View.GONE
+            supportFragmentManager.beginTransaction().replace(R.id.chattingFL, ChattingFragment).commit()
         }
         matchLL.setOnClickListener {
-            setmenu()
-            storyLL.visibility = View.VISIBLE
-            friendLL.visibility = View.GONE
-            eventLV.visibility = View.VISIBLE
+            eventLL.visibility = View.GONE
+            clickLL.visibility = View.VISIBLE
+            clickIV.setImageResource(R.mipmap.lounge_menu_match)
+            clickTV.text = "매치"
+            menuLL.visibility = View.GONE
+            supportFragmentManager.beginTransaction().replace(R.id.chattingFL, ChattingMatchFragment).commit()
         }
         reciveLL.setOnClickListener {
-            setmenu()
-            reciveLL.visibility = View.VISIBLE
-            friendLL.visibility = View.GONE
-            eventLV.visibility = View.VISIBLE
-            recive2LL.visibility = View.VISIBLE
+            eventLL.visibility = View.GONE
+            clickLL.visibility = View.VISIBLE
+            clickIV.setImageResource(R.mipmap.lounge_menu_send)
+            clickTV.text = "받은 호감"
+            menuLL.visibility = View.GONE
+            supportFragmentManager.beginTransaction().replace(R.id.chattingFL, ChattingCrushFragment).commit()
         }
         sendLL.setOnClickListener {
-            setmenu()
-            sendLL.visibility = View.VISIBLE
-            friendLL.visibility = View.GONE
-            eventLV.visibility = View.VISIBLE
-            send2LL.visibility = View.VISIBLE
-        }
-
-
-        moreIV.setOnClickListener {
+            eventLL.visibility = View.GONE
+            clickLL.visibility = View.VISIBLE
+            clickIV.setImageResource(R.mipmap.lounge_menu_rece)
+            clickTV.text = "보낸 호감"
             menuLL.visibility = View.GONE
-            eventLL.visibility = View.VISIBLE
+            supportFragmentManager.beginTransaction().replace(R.id.chattingFL, ChattingSendCrushFragment).commit()
         }
         more2IV.setOnClickListener {
-            setmenu()
             menuLL.visibility = View.VISIBLE
             eventLL.visibility = View.GONE
-            friendLL.visibility = View.VISIBLE
-            eventLV.visibility = View.GONE
+            clickLL.visibility = View.GONE
         }
 
 
-
-        sendmoreIV.setOnClickListener {
-            setmenu()
-            menuLL.visibility = View.VISIBLE
-            eventLL.visibility = View.GONE
-            friendLL.visibility = View.VISIBLE
-            eventLV.visibility = View.GONE
-        }
-        recivemoreIV.setOnClickListener {
-            setmenu()
-            menuLL.visibility = View.VISIBLE
-            eventLL.visibility = View.GONE
-            friendLL.visibility = View.VISIBLE
-            eventLV.visibility = View.GONE
-        }
-        matchmoreTV.setOnClickListener {
-            setmenu()
-            menuLL.visibility = View.VISIBLE
-            eventLL.visibility = View.GONE
-            friendLL.visibility = View.VISIBLE
-            eventLV.visibility = View.GONE
-        }
-
-
-        storymoreIV.setOnClickListener {
-            menuLL.visibility = View.VISIBLE
-            eventLL.visibility = View.GONE
-            friendLL.visibility = View.VISIBLE
-            eventLV.visibility = View.GONE
-        }
         storyRL.setOnClickListener {
-            setmenu()
             menuLL.visibility = View.GONE
-            storyTV.visibility = View.GONE
-            eventLL.visibility = View.VISIBLE
-            storyLL.visibility = View.VISIBLE
-            friendLL.visibility = View.VISIBLE
-            eventLV.visibility = View.GONE
+            eventLL.visibility = View.GONE
+            clickLL.visibility = View.VISIBLE
+            clickIV.setImageResource(R.mipmap.lounge_menu_chat)
+            clickTV.text = "대화"
+            supportFragmentManager.beginTransaction().replace(R.id.chattingFL, ChattingFragment).commit()
         }
-
-
         reciveRL.setOnClickListener {
-            setmenu()
-            type = 2
-            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3, type)
-            eventLV.adapter = EventAdapter
             menuLL.visibility = View.GONE
-            storyTV.visibility = View.GONE
-            eventLL.visibility = View.VISIBLE
-            reciveLL.visibility = View.VISIBLE
-            friendLL.visibility = View.GONE
-            eventLV.visibility = View.VISIBLE
-            recive2LL.visibility = View.VISIBLE
+            eventLL.visibility = View.GONE
+            clickLL.visibility = View.VISIBLE
+            clickIV.setImageResource(R.mipmap.lounge_menu_send)
+            clickTV.text = "받은 호감"
+            supportFragmentManager.beginTransaction().replace(R.id.chattingFL, ChattingCrushFragment).commit()
         }
 
         sendRL.setOnClickListener {
-            setmenu()
-            type = 3
-            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3, type)
-            eventLV.adapter = EventAdapter
             menuLL.visibility = View.GONE
-            storyTV.visibility = View.GONE
-            eventLL.visibility = View.VISIBLE
-            sendLL.visibility = View.VISIBLE
-            friendLL.visibility = View.GONE
-            eventLV.visibility = View.VISIBLE
-            send2LL.visibility = View.VISIBLE
+            eventLL.visibility = View.GONE
+            clickLL.visibility = View.VISIBLE
+            clickIV.setImageResource(R.mipmap.lounge_menu_rece)
+            clickTV.text = "보낸 호감"
+            supportFragmentManager.beginTransaction().replace(R.id.chattingFL, ChattingSendCrushFragment).commit()
         }
         matchRL.setOnClickListener {
-            setmenu()
-            type = 1
-            EventAdapter = EventAdapter(context, R.layout.item_chatting_match, 3, type)
-            eventLV.adapter = EventAdapter
             menuLL.visibility = View.GONE
-            storyTV.visibility = View.GONE
-            eventLL.visibility = View.VISIBLE
-            matchLL.visibility = View.VISIBLE
-            friendLL.visibility = View.GONE
-            eventLV.visibility = View.VISIBLE
+            eventLL.visibility = View.GONE
+            clickLL.visibility = View.VISIBLE
+            clickIV.setImageResource(R.mipmap.lounge_menu_match)
+            clickTV.text = "매치"
+            supportFragmentManager.beginTransaction().replace(R.id.chattingFL, ChattingMatchFragment).commit()
         }
 
+        moreRL.setOnClickListener {
+            menuLL.visibility = View.GONE
+            clickLL.visibility = View.GONE
+            eventLL.visibility = View.VISIBLE
+        }
 
-    }
-
-    fun setmenu() {
-        recive2LL.visibility = View.GONE
-        send2LL.visibility = View.GONE
-        event2LL.visibility = View.GONE
-        storyLL.visibility = View.GONE
-        matchLL.visibility = View.GONE
-        reciveLL.visibility = View.GONE
-        sendLL.visibility = View.GONE
     }
 
 

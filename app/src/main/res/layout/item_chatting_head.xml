@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="#ffffff"
+        android:layout_height="match_parent">
+
+
+    <LinearLayout
+            android:id="@+id/send2LL"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="14dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/background_border_strock10_ededed">
+
+        <ImageView
+                android:paddingLeft="11dp"
+                android:paddingRight="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/recive_star"/>
+
+        <TextView
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#555555"
+                android:letterSpacing="-0.03"
+                android:text="보낸 Starball"
+                />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+            android:id="@+id/friendLL"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/background_border_strock10_ededed">
+            <TextView
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="6.5dp"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:textColor="#333333"
+                    android:text="그룹발송"
+                    />
+
+            <ImageView
+                    android:id="@+id/plusIV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_picture_add"
+                    android:paddingLeft="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginTop="24.5dp"/>
+
+
+
+            <ListView
+                android:id="@+id/groupLV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </ListView>
+
+
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

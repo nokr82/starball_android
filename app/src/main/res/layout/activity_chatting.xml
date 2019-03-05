@@ -75,6 +75,7 @@
 
             </RelativeLayout>
 
+
             <RelativeLayout
                 android:id="@+id/matchRL"
                 android:layout_width="0dp"
@@ -143,16 +144,61 @@
                     android:src="@mipmap/lounge_dot"/>
 
             </RelativeLayout>
-
-            <ImageView
-                android:id="@+id/moreIV"
+            <RelativeLayout
+                android:id="@+id/moreRL"
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/moreIV"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@mipmap/op_drop"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/clickLL"
+            android:visibility="gone"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:textSize="14dp"
+            android:background="@drawable/background_border_strock10_ededed">
+
+            <ImageView
+                android:id="@+id/clickIV"
+                android:paddingLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/lounge_menu_chat"/>
+
+            <TextView
+                android:id="@+id/clickTV"
+                android:paddingLeft="13.5dp"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:textSize="21dp"
+                android:textColor="#333333"
+                android:text="@string/talk"/>
+
+
+
+            <ImageView
+                android:id="@+id/clickmoreIV"
+                android:paddingRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:src="@mipmap/op_drop"/>
 
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/eventLL"
             android:visibility="gone"
@@ -408,145 +454,17 @@
 
         </RelativeLayout>
 
-        <LinearLayout
-            android:id="@+id/recive2LL"
-            android:layout_marginTop="10dp"
-            android:visibility="gone"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+
+
+
+        <FrameLayout
+            android:id="@+id/chattingFL"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textSize="14dp"
-            android:gravity="center_vertical"
-            android:background="@drawable/background_border_strock10_ededed">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-            <ImageView
-                android:paddingLeft="11dp"
-                android:paddingRight="6dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/recive_star"/>
+        </FrameLayout>
 
-            <TextView
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#555555"
-                android:letterSpacing="-0.03"
-                android:text="@string/recive_starball"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/send2LL"
-            android:layout_marginTop="10dp"
-            android:visibility="gone"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:textSize="14dp"
-            android:gravity="center_vertical"
-            android:background="@drawable/background_border_strock10_ededed">
-
-            <ImageView
-                android:paddingLeft="11dp"
-                android:paddingRight="6dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/recive_star"/>
-
-            <TextView
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:textColor="#555555"
-                android:letterSpacing="-0.03"
-                android:text="보낸 Starball"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/friendLL"
-            android:visibility="visible"
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_marginTop="25dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/background_border_strock10_ededed">
-
-                <TextView
-                    android:paddingLeft="10dp"
-                    android:layout_marginTop="6.5dp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18dp"
-                    android:textColor="#333333"
-                    android:text="@string/group_send"/>
-
-                <ImageView
-                    android:id="@+id/plusIV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/lounge_picture_add"
-                    android:paddingLeft="10dp"
-                    android:paddingBottom="10dp"
-                    android:layout_marginTop="24.5dp"/>
-
-                <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
-                    android:id="@+id/groupLV"
-                    android:visibility="visible"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                </com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView>
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="25dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:paddingLeft="10dp"
-                    android:layout_marginTop="6.5dp"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="18dp"
-                    android:textColor="#333333"
-                    android:text="@string/talk"/>
-
-                <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/talkLV">
-
-                </com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView
-            android:id="@+id/eventLV"
-            android:visibility="visible"
-            android:layout_width="match_parent"
-            android:background="#ededed"
-            android:layout_height="wrap_content">
-
-        </com.github.paolorotolo.expandableheightlistview.ExpandableHeightListView>
 
     </LinearLayout>
 
