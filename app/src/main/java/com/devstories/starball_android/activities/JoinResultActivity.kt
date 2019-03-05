@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.text.Html
 import android.util.Log
-import com.devstories.starball_android.Actions.JoinAction
+import com.devstories.starball_android.actions.JoinAction
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
@@ -108,7 +108,7 @@ class JoinResultActivity : RootActivity() {
         // pictures
 
         val joinPics = PrefUtils.getStringPreference(context, "join_pics", "")
-        if(joinPics.isNotEmpty()) {
+            if(joinPics.isNotEmpty()) {
             val splited = joinPics.split("`devstories`")
             for ((idx, sp) in  splited.withIndex()) {
                 try {

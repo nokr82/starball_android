@@ -46,7 +46,6 @@ class IntroActivity : RootActivity() {
 
         getHash()
 
-        /*
         val buldle = intent.extras
         if (buldle != null) {
             try {
@@ -57,6 +56,7 @@ class IntroActivity : RootActivity() {
 
         }
 
+        /*
         splashThread = object : Thread() {
             override fun run() {
                 try {
@@ -66,9 +66,9 @@ class IntroActivity : RootActivity() {
                         waited += 100
                     }
                 } catch (e: InterruptedException) {
-                    // do nothing
+//                     do nothing
                 } finally {
-                    // stopIntro()
+                     // stopIntro()
                 }
             }
         }
@@ -132,7 +132,7 @@ class IntroActivity : RootActivity() {
             }
 
             override fun onAnimationEnd(animation: Animator?, isReverse: Boolean) {
-
+                stopIntro()
             }
 
             override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {

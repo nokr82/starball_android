@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="24dp"
                 android:textColor="#333333"
-                android:text="@string/birthday_title" />
+                android:text="@string/birthday_title"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,7 +60,7 @@
                     android:gravity="center"
                     android:textColorHint="#9b9ca0"
                     android:hint="Y"
-                    android:background="@drawable/background_border_strock3" />
+                    android:background="@drawable/background_border_strock3"/>
 
                 <com.devstories.starball_android.base.KeyDetectableEditText
                     android:id="@+id/year3ET"
@@ -74,7 +74,7 @@
                     android:layout_marginRight="5dp"
                     android:textColorHint="#9b9ca0"
                     android:hint="Y"
-                    android:background="@drawable/background_border_strock3" />
+                    android:background="@drawable/background_border_strock3"/>
 
                 <com.devstories.starball_android.base.KeyDetectableEditText
                     android:id="@+id/year4ET"
@@ -88,7 +88,7 @@
                     android:textColorHint="#9b9ca0"
                     android:gravity="center"
                     android:hint="Y"
-                    android:background="@drawable/background_border_strock3" />
+                    android:background="@drawable/background_border_strock3"/>
 
                 <com.devstories.starball_android.base.KeyDetectableEditText
                     android:id="@+id/month1ET"
@@ -102,7 +102,7 @@
                     android:textColorHint="#9b9ca0"
                     android:gravity="center"
                     android:hint="M"
-                    android:background="@drawable/background_border_strock3" />
+                    android:background="@drawable/background_border_strock3"/>
 
                 <com.devstories.starball_android.base.KeyDetectableEditText
                     android:id="@+id/month2ET"
@@ -116,7 +116,7 @@
                     android:textColorHint="#9b9ca0"
                     android:gravity="center"
                     android:hint="M"
-                    android:background="@drawable/background_border_strock3" />
+                    android:background="@drawable/background_border_strock3"/>
 
                 <com.devstories.starball_android.base.KeyDetectableEditText
                     android:id="@+id/day1ET"
@@ -131,7 +131,7 @@
                     android:layout_marginRight="5dp"
                     android:textColorHint="#9b9ca0"
                     android:hint="D"
-                    android:background="@drawable/background_border_strock3" />
+                    android:background="@drawable/background_border_strock3"/>
 
                 <com.devstories.starball_android.base.KeyDetectableEditText
                     android:id="@+id/day2ET"
@@ -145,7 +145,7 @@
                     android:layout_marginRight="5dp"
                     android:hint="D"
                     android:gravity="center"
-                    android:background="@drawable/background_border_strock3" />
+                    android:background="@drawable/background_border_strock3"/>
 
             </LinearLayout>
 
@@ -278,7 +278,6 @@
                 android:gravity="center"
                 android:textSize="20.5dp"
                 android:textColor="#ffffff"/>
-
 
 
         </LinearLayout>

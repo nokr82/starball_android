@@ -1,132 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-    >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <LinearLayout
-            android:layout_width="match_parent"
-            android:gravity="center_vertical"
-            android:layout_height="50dp">
+        android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:layout_height="50dp">
 
         <ImageView
-                android:paddingRight="10dp"
-                android:paddingLeft="9.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/comm_arrow_left"
-                android:id="@+id/backIV"/>
+            android:paddingRight="10dp"
+            android:paddingLeft="9.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/comm_arrow_left"
+            android:id="@+id/backIV"/>
 
         <TextView
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textColor="#333333"
-                android:text="인도네시아 친구"
-                />
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="#333333"
+            android:text="인도네시아 친구"/>
 
         <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:textColor="#c8c8c8"
-                android:text="6"
-                />
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="#c8c8c8"
+            android:text="6"/>
 
         <ImageView
-                android:id="@+id/globalIV"
-                android:paddingLeft="9.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/global"
-              />
+            android:id="@+id/globalIV"
+            android:paddingLeft="9.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/global"/>
+
         <ImageView
-                android:id="@+id/reportIV"
-                android:paddingRight="10dp"
-                android:paddingLeft="9.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/siren"
-         />
+            android:id="@+id/reportIV"
+            android:paddingRight="10dp"
+            android:paddingLeft="9.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/siren"/>
 
     </LinearLayout>
 
     <LinearLayout
-            android:background="#f8f8f8"
-            android:layout_width="match_parent"
-            android:layout_height="95dp"
-            android:orientation="vertical">
+        android:background="#f8f8f8"
+        android:layout_width="match_parent"
+        android:layout_height="95dp"
+        android:orientation="vertical">
 
         <TextView
-                android:textStyle="bold"
-                android:paddingLeft="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="#333333"
-                android:text="@string/participants"
-                />
-
+            android:textStyle="bold"
+            android:paddingLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textColor="#333333"
+            android:text="@string/participants"/>
 
         <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="65dp">
+            android:layout_width="match_parent"
+            android:layout_height="65dp">
 
-
-        <RelativeLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-            <ImageView
+
+                <ImageView
                     android:layout_alignParentTop="true"
                     android:paddingLeft="10dp"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:src="@mipmap/comm_profile_pic"/>
 
-            <ImageView
+                <ImageView
                     android:paddingTop="25dp"
                     android:paddingLeft="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/profile_pic_bg_del"/>
-            <TextView
+
+                <TextView
                     android:layout_marginLeft="15dp"
                     android:layout_alignParentBottom="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="12dp"
                     android:textColor="#333333"
-                    android:text="Sabdo"
-                    />
+                    android:text="Sabdo"/>
 
-
-        </RelativeLayout>
-
+            </RelativeLayout>
 
         </HorizontalScrollView>
 
-
-
     </LinearLayout>
 
-
-
-
-
     <ListView
-            android:id="@+id/groupLV"
-            android:divider="@null"
-            android:scrollbars="none"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-
+        android:id="@+id/groupLV"
+        android:divider="@null"
+        android:scrollbars="none"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
     </ListView>
-<LinearLayout
+
+    <LinearLayout
         android:visibility="gone"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
@@ -134,7 +120,7 @@
         android:gravity="center_vertical|right"
         android:layout_height="wrap_content">
 
-    <TextView
+        <TextView
             android:id="@+id/cancelTV"
             android:visibility="visible"
             android:layout_width="wrap_content"
@@ -145,10 +131,9 @@
             android:textStyle="bold"
             android:textColor="#ff0000"
             android:gravity="end"
-            android:text="4:16"
-            />
+            android:text="4:16"/>
 
-    <TextView
+        <TextView
             android:id="@+id/cancelIV"
             android:layout_marginRight="10dp"
             android:layout_width="wrap_content"
@@ -157,67 +142,66 @@
             android:padding="8dp"
             android:background="@drawable/background_border_strock10_e0e0e0"
             android:textColor="#333333"
-            android:text="cancel"
-  />
-</LinearLayout>
+            android:text="cancel"/>
+
+    </LinearLayout>
 
     <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#1f1f1f"/>
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#1f1f1f"/>
+
     <LinearLayout
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="70dp">
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
 
         <LinearLayout
-                android:id="@+id/plusLL"
-                android:layout_marginLeft="10dp"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:gravity="center"
-                android:background="@drawable/background_border_strock10_000000">
+            android:id="@+id/plusLL"
+            android:layout_marginLeft="10dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:gravity="center"
+            android:background="@drawable/background_border_strock10_000000">
 
             <ImageView
-                    android:padding="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/profile_plus"/>
-
-
-
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/profile_plus"/>
 
         </LinearLayout>
 
         <ImageView
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/chatting_mic"/>
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/chatting_mic"/>
 
         <ImageView
-                android:layout_marginRight="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/chatting_camera"/>
-<RelativeLayout
-        android:layout_marginRight="10dp"
-        android:layout_width="0dp"
-        android:background="@drawable/background_border_strock13"
-        android:layout_weight="1"
-        android:layout_height="wrap_content">
-        <EditText
+            android:layout_marginRight="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/chatting_camera"/>
+
+        <RelativeLayout
+            android:layout_marginRight="10dp"
+            android:layout_width="0dp"
+            android:background="@drawable/background_border_strock13"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:textColorHint="#bbbbbb"
                 android:paddingLeft="10dp"
                 android:background="@null"
                 android:gravity="center_vertical"
-                android:textSize="14dp"
-               />
+                android:textSize="14dp"/>
 
-        <LinearLayout
+            <LinearLayout
                 android:layout_marginRight="5dp"
                 android:layout_centerInParent="true"
                 android:layout_alignParentRight="true"
@@ -226,109 +210,91 @@
                 android:gravity="center"
                 android:background="@drawable/circle_background4">
 
-            <ImageView
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/paper_op"/>
 
+            </LinearLayout>
 
-
-
-
-        </LinearLayout>
-
-
-
-</RelativeLayout>
+        </RelativeLayout>
 
         <ImageView
-                android:id="@+id/starballIV"
-                android:layout_marginRight="10dp"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@mipmap/bi"/>
-
+            android:id="@+id/starballIV"
+            android:layout_marginRight="10dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@mipmap/bi"/>
 
     </LinearLayout>
 
     <View
-            android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="#1f1f1f"/>
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#1f1f1f"/>
+
     <LinearLayout
-            android:visibility="gone"
-            android:id="@+id/emoLL"
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="70dp">
+        android:visibility="gone"
+        android:id="@+id/emoLL"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
 
         <LinearLayout
-                android:layout_marginLeft="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-               >
-
-            <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/emoticon"/>
+                android:src="@mipmap/emoticon"/>
 
             <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12dp"
-                    android:textColor="#333333"
-                    android:gravity="center_horizontal"
-                    android:text="@string/emoticon"
-                    />
-
-
-
-
-       </LinearLayout>
-
-        <LinearLayout
-
-                android:layout_marginLeft="30dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="left"
-                >
-
-            <ImageView
-                    android:id="@+id/languageIV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/bubble"/>
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12dp"
-                    android:textColor="#333333"
-                    android:gravity="center_horizontal"
-                    android:text="@string/commercial"
-                    />
-
-
-
+                android:textSize="12dp"
+                android:textColor="#333333"
+                android:gravity="center_horizontal"
+                android:text="@string/emoticon"/>
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_marginLeft="30dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="left">
 
+            <ImageView
+                android:id="@+id/languageIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/bubble"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#333333"
+                android:gravity="center_horizontal"
+                android:text="@string/commercial"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
-            android:id="@+id/languageLL"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
-    <RelativeLayout
+        android:id="@+id/languageLL"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:visibility="visible"
@@ -338,7 +304,7 @@
             android:background="@drawable/background_border_strock10_ededed"
             android:orientation="vertical">
 
-        <ImageView
+            <ImageView
                 android:padding="7dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -347,8 +313,7 @@
                 android:layout_alignParentRight="true"
                 android:paddingLeft="10dp"/>
 
-
-        <EditText
+            <EditText
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
@@ -358,60 +323,78 @@
                 android:hint="@string/input_commercial"
                 android:paddingLeft="20dp"
                 android:gravity="center_vertical"
-                android:textSize="14dp"
-                />
+                android:textSize="14dp"/>
 
-    </RelativeLayout>
+        </RelativeLayout>
 
-
-    <LinearLayout
+        <LinearLayout
             android:layout_marginTop="12.5dp"
             android:layout_marginBottom="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
-
             <RelativeLayout
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="90dp"
-                    android:background="@drawable/background_border_strock4_923b9f"
-                    android:layout_height="wrap_content">
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:textSize="11dp"
-                        android:textColor="#ffff"
+                android:layout_marginLeft="10dp"
+                android:layout_width="90dp"
+                android:background="@drawable/background_border_strock4_923b9f"
+                android:layout_height="wrap_content">
 
-                        android:text="Good Night"
-                        />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="11dp"
+                    android:textColor="#ffff"
+                    android:text="Good Night"/>
 
                 <ImageView
-                        android:layout_alignParentRight="true"
-                        android:paddingRight="10dp"
-                        android:layout_centerInParent="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/close_lang"/>
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="10dp"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/close_lang"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginLeft="10dp"
+                android:layout_width="90dp"
+                android:background="@drawable/background_border_strock4_923b9f"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textSize="11dp"
+                    android:textColor="#ffff"
+                    android:text="Good Night"/>
+
+                <ImageView
+                    android:layout_alignParentRight="true"
+                    android:paddingRight="10dp"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/close_lang"/>
 
             </RelativeLayout>
-        <RelativeLayout
+
+            <RelativeLayout
                 android:layout_marginLeft="10dp"
                 android:layout_width="90dp"
                 android:background="@drawable/background_border_strock4_923b9f"
                 android:layout_height="wrap_content">
-            <TextView
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:textSize="11dp"
                     android:textColor="#ffff"
+                    android:text="Good Night"/>
 
-                    android:text="Good Night"
-                    />
-
-            <ImageView
+                <ImageView
                     android:layout_alignParentRight="true"
                     android:paddingRight="10dp"
                     android:layout_centerInParent="true"
@@ -419,23 +402,23 @@
                     android:layout_height="wrap_content"
                     android:src="@mipmap/close_lang"/>
 
-        </RelativeLayout>
-        <RelativeLayout
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:layout_marginLeft="10dp"
                 android:layout_width="90dp"
                 android:background="@drawable/background_border_strock4_923b9f"
                 android:layout_height="wrap_content">
-            <TextView
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:textSize="11dp"
                     android:textColor="#ffff"
+                    android:text="Good Night"/>
 
-                    android:text="Good Night"
-                    />
-
-            <ImageView
+                <ImageView
                     android:layout_alignParentRight="true"
                     android:paddingRight="10dp"
                     android:layout_centerInParent="true"
@@ -443,35 +426,10 @@
                     android:layout_height="wrap_content"
                     android:src="@mipmap/close_lang"/>
 
-        </RelativeLayout>
-        <RelativeLayout
-                android:layout_marginLeft="10dp"
-                android:layout_width="90dp"
-                android:background="@drawable/background_border_strock4_923b9f"
-                android:layout_height="wrap_content">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:textSize="11dp"
-                    android:textColor="#ffff"
+            </RelativeLayout>
 
-                    android:text="Good Night"
-                    />
-
-            <ImageView
-                    android:layout_alignParentRight="true"
-                    android:paddingRight="10dp"
-                    android:layout_centerInParent="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/close_lang"/>
-
-        </RelativeLayout>
-
+        </LinearLayout>
 
     </LinearLayout>
-    </LinearLayout>
-
 
 </LinearLayout>

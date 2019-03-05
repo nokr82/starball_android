@@ -29,7 +29,6 @@ class JoinStep1PasswdActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
-//        passwd=
         Log.d("패스",passwd)
         if (PrefUtils.getStringPreference(context,"passwd") != null){
             passwdET.setText(PrefUtils.getStringPreference(context,"passwd"))

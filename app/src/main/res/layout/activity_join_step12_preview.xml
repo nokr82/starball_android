@@ -1,69 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-	<android.support.v7.widget.RecyclerView
-		android:id="@+id/my_recycler_view"
-		android:scrollbars="vertical"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/my_recycler_view"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="55dp"
-		android:gravity="center_vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center_vertical">
 
-		<ImageView
-			android:id="@+id/backIV"
-			android:paddingLeft="9.5dp"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:src="@mipmap/profile_arrow_back"/>
+        <ImageView
+            android:id="@+id/backIV"
+            android:paddingLeft="9.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/profile_arrow_back"/>
 
-		<TextView
-			android:layout_width="0dp"
-			android:layout_weight="1"
-			android:layout_height="wrap_content"
-			android:shadowColor="#8f040000"
-			android:shadowDx="6.123233995736766e-17"
-			android:shadowDy="1"
-			android:shadowRadius="20"
-			android:textSize="21dp"
-			android:textColor="#ffffff"
-			android:gravity="center_horizontal"
-			android:text="@string/profile_preview"
-			/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:shadowColor="#8f040000"
+            android:shadowDx="6.123233995736766e-17"
+            android:shadowDy="1"
+            android:shadowRadius="20"
+            android:textSize="21dp"
+            android:textColor="#ffffff"
+            android:gravity="center_horizontal"
+            android:text="@string/profile_preview"
+            />
 
-		<ImageView
-			android:id="@+id/nextIV"
-			android:paddingRight="9.5dp"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:src="@mipmap/profile_arrow_next"/>
-	</LinearLayout>
+        <ImageView
+            android:id="@+id/nextIV"
+            android:paddingRight="9.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/profile_arrow_next"/>
+    </LinearLayout>
 
 
-	<LinearLayout
-		android:layout_width="match_parent"
-		android:layout_height="50dp"
-		android:layout_marginLeft="67.5dp"
-		android:layout_marginRight="67.5dp"
-		android:layout_centerInParent="true"
-		android:gravity="center"
-		android:background="@mipmap/profile_pre_rec">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="67.5dp"
+        android:layout_marginRight="67.5dp"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:background="@mipmap/profile_pre_rec">
 
-		<TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textSize="19dp"
-			android:textStyle="bold"
-			android:textColor="#ffffff"
-			android:text="@string/sliding_display"
-			/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="19dp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:text="@string/sliding_display"
+            />
 
-	</LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

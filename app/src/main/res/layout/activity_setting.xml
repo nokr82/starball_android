@@ -1,460 +1,488 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android = "http://schemas.android.com/apk/res/android"
-        android:layout_width = "match_parent"
-        android:layout_height = "match_parent"
-        android:orientation = "vertical"
->
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <RelativeLayout
-            android:layout_width = "match_parent"
-            android:layout_height = "50dp">
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
 
         <ImageView
-                android:paddingLeft = "9.5dp"
-                android:layout_width = "wrap_content"
-                android:layout_height = "match_parent"
-                android:src = "@mipmap/comm_arrow_left"
-                android:id="@+id/backIV"/>
+            android:paddingLeft="9.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/comm_arrow_left"
+            android:id="@+id/backIV"/>
 
         <TextView
-                android:textStyle = "bold"
-                android:layout_width = "wrap_content"
-                android:layout_height = "match_parent"
-                android:gravity = "center_vertical"
-                android:textSize = "21dp"
-                android:textColor = "#333333"
-                android:layout_centerInParent = "true"
-                android:text = "@string/setting_title"/>
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="21dp"
+            android:textColor="#333333"
+            android:layout_centerInParent="true"
+            android:text="@string/setting_title"/>
 
     </RelativeLayout>
 
     <ScrollView
-            android:layout_width = "match_parent"
-            android:layout_height = "0dp"
-            android:layout_weight = "1"
-            android:fillViewport = "true">
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
         <LinearLayout
-                android:layout_width = "match_parent"
-                android:layout_height = "wrap_content"
-                android:orientation = "vertical">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <View
-                    android:layout_marginTop = "10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="#1f1f1f"/>
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#1f1f1f"/>
+
             <LinearLayout
-                    android:id="@+id/alramLL"
-                    android:layout_width = "match_parent"
-                    android:layout_height = "50dp"
-                    android:gravity = "center_vertical"
-                    android:background = "#e2e2e2">
+                android:id="@+id/alramLL"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:background="#e2e2e2">
 
                 <TextView
-                        android:textStyle = "bold"
-                        android:paddingLeft = "9.5dp"
-                        android:layout_width = "wrap_content"
-                        android:layout_height = "wrap_content"
-                        android:textSize = "16dp"
-                        android:textColor = "#7b818d"
-                        android:text = "@string/alram_setting"
-                />
+                    android:textStyle="bold"
+                    android:paddingLeft="9.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="#7b818d"
+                    android:text="@string/alram_setting"/>
 
 
             </LinearLayout>
+
             <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="#1f1f1f"/>
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#1f1f1f"/>
+
             <LinearLayout
-                    android:id="@+id/alram_opLL"
-                    android:visibility="gone"
-                    android:layout_width = "match_parent"
-                          android:layout_height = "wrap_content"
-                          android:orientation = "vertical">
+                android:id="@+id/alram_opLL"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <LinearLayout
-                        android:layout_width = "match_parent"
-                        android:layout_height = "50dp"
-                        android:gravity = "center_vertical"
-                        android:background = "#ffffff">
+                    android:id="@+id/messageLL"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:background="#ffffff">
 
                     <TextView
-                            android:paddingLeft = "15dp"
-                            android:textStyle = "bold"
-                            android:layout_width = "0dp"
-                            android:layout_weight = "1"
-                            android:layout_height = "wrap_content"
-                            android:textSize = "15dp"
-                            android:textColor = "#333333"
-                            android:text = "@string/alram_message"
-                    />
-                    <ImageView android:layout_width = "wrap_content"
-                               android:layout_height = "wrap_content"
-                               android:layout_marginRight="10dp"
-                               android:src = "@mipmap/setting_toggle_on"/>
+                        android:paddingLeft="15dp"
+                        android:textStyle="bold"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#333333"
+                        android:text="@string/alram_message"/>
+
+                    <ImageView
+                        android:id="@+id/messageIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:src="@mipmap/off"/>
 
 
                 </LinearLayout>
+
                 <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="#1f1f1f"/>
-                <LinearLayout
-                        android:layout_width = "match_parent"
-                        android:layout_height = "50dp"
-                        android:gravity = "center_vertical"
-                        android:background = "#ffffff">
-
-                    <TextView
-                            android:paddingLeft = "15dp"
-                            android:textStyle = "bold"
-                            android:layout_width = "0dp"
-                            android:layout_weight = "1"
-                            android:layout_height = "wrap_content"
-                            android:textSize = "15dp"
-                            android:textColor = "#333333"
-                            android:text = "@string/alram_match"
-                    />
-                    <ImageView android:layout_width = "wrap_content"
-                               android:layout_height = "wrap_content"
-                               android:layout_marginRight="10dp"
-                               android:src = "@mipmap/off"/>
-
-
-                </LinearLayout>
-                <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="#1f1f1f"/>
-                <LinearLayout
-                        android:layout_width = "match_parent"
-                        android:layout_height = "50dp"
-                        android:gravity = "center_vertical"
-                        android:background = "#ffffff">
-
-                    <TextView
-                            android:paddingLeft = "15dp"
-                            android:textStyle = "bold"
-                            android:layout_width = "0dp"
-                            android:layout_weight = "1"
-                            android:layout_height = "wrap_content"
-                            android:textSize = "15dp"
-                            android:textColor = "#333333"
-                            android:text = "@string/alram_send_crush"
-                    />
-                    <ImageView android:layout_width = "wrap_content"
-                               android:layout_height = "wrap_content"
-                               android:layout_marginRight="10dp"
-                               android:src = "@mipmap/off"/>
-
-
-                </LinearLayout>
-                <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="#1f1f1f"/>
-                <LinearLayout
-                        android:layout_width = "match_parent"
-                        android:layout_height = "50dp"
-                        android:gravity = "center_vertical"
-                        android:background = "#ffffff">
-
-                    <TextView
-                            android:paddingLeft = "15dp"
-                            android:textStyle = "bold"
-                            android:layout_width = "0dp"
-                            android:layout_weight = "1"
-                            android:layout_height = "wrap_content"
-                            android:textSize = "15dp"
-                            android:textColor = "#333333"
-                            android:text = "@string/alram_propose_event"
-                    />
-                    <ImageView android:layout_width = "wrap_content"
-                               android:layout_height = "wrap_content"
-                               android:layout_marginRight="10dp"
-                               android:src = "@mipmap/setting_toggle_on"/>
-
-
-                </LinearLayout>
-                <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="#1f1f1f"/>
-                <LinearLayout
-                        android:layout_width = "match_parent"
-                        android:layout_height = "50dp"
-                        android:gravity = "center_vertical"
-                        android:background = "#ffffff">
-
-                    <TextView
-                            android:paddingLeft = "15dp"
-                            android:textStyle = "bold"
-                            android:layout_width = "0dp"
-                            android:layout_weight = "1"
-                            android:layout_height = "wrap_content"
-                            android:textSize = "15dp"
-                            android:textColor = "#333333"
-                            android:text = "@string/alram_daily_moment"
-                    />
-                    <ImageView android:layout_width = "wrap_content"
-                               android:layout_height = "wrap_content"
-                               android:layout_marginRight="10dp"
-                               android:src = "@mipmap/setting_toggle_on"/>
-
-
-                </LinearLayout>
-                <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="#1f1f1f"/>
-                <LinearLayout
-                        android:layout_width = "match_parent"
-                        android:layout_height = "50dp"
-                        android:gravity = "center_vertical"
-                        android:background = "#ffffff">
-
-                    <TextView
-                            android:paddingLeft = "15dp"
-                            android:textStyle = "bold"
-                            android:layout_width = "0dp"
-                            android:layout_weight = "1"
-                            android:layout_height = "wrap_content"
-                            android:textSize = "15dp"
-                            android:textColor = "#333333"
-                            android:text = "@string/alram_recive_starball"
-                    />
-                    <ImageView android:layout_width = "wrap_content"
-                               android:layout_height = "wrap_content"
-                               android:layout_marginRight="10dp"
-                               android:src = "@mipmap/setting_toggle_on"/>
-
-
-                </LinearLayout>
-                <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="#1f1f1f"/>
-                <LinearLayout
-                        android:layout_width = "match_parent"
-                        android:layout_height = "50dp"
-                        android:gravity = "center_vertical"
-                        android:background = "#ffffff">
-
-                    <TextView
-                            android:paddingLeft = "15dp"
-                            android:textStyle = "bold"
-                            android:layout_width = "0dp"
-                            android:layout_weight = "1"
-                            android:layout_height = "wrap_content"
-                            android:textSize = "15dp"
-                            android:textColor = "#333333"
-                            android:text = "@string/alram_vibe"
-                    />
-                    <ImageView android:layout_width = "wrap_content"
-                               android:layout_height = "wrap_content"
-                               android:layout_marginRight="10dp"
-                               android:src = "@mipmap/setting_toggle_on"/>
-
-
-                </LinearLayout>
-                <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="#1f1f1f"/>
-                <LinearLayout
-                        android:layout_width = "match_parent"
-                        android:layout_height = "50dp"
-                        android:gravity = "center_vertical"
-                        android:background = "#ffffff">
-
-                    <TextView
-                            android:paddingLeft = "15dp"
-                            android:textStyle = "bold"
-                            android:layout_width = "0dp"
-                            android:layout_weight = "1"
-                            android:layout_height = "wrap_content"
-                            android:textSize = "15dp"
-                            android:textColor = "#333333"
-                            android:text = "@string/alram_sound"
-                    />
-                    <ImageView android:layout_width = "wrap_content"
-                               android:layout_height = "wrap_content"
-                               android:layout_marginRight="10dp"
-                               android:src = "@mipmap/setting_toggle_on"/>
-
-
-                </LinearLayout>
-                <View
-                        android:layout_width="match_parent"
-                        android:layout_height="0.5dp"
-                        android:background="#1f1f1f"/>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                    android:layout_width = "match_parent"
-                    android:layout_height = "50dp"
-                    android:gravity = "center_vertical"
-                    android:background = "#e2e2e2">
-
-                <TextView
-                        android:textStyle = "bold"
-                        android:paddingLeft = "9.5dp"
-                        android:layout_width = "wrap_content"
-                        android:layout_height = "wrap_content"
-                        android:textSize = "16dp"
-                        android:textColor = "#7b818d"
-                        android:text = "@string/setting_help"
-                />
-
-
-            </LinearLayout>
-            <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="#1f1f1f"/>
-            <LinearLayout
-                    android:layout_width = "match_parent"
-                    android:layout_height = "50dp"
-                    android:gravity = "center_vertical"
-                    android:background = "#e2e2e2">
-
-                <TextView
-                        android:textStyle = "bold"
-                        android:paddingLeft = "9.5dp"
-                        android:layout_width = "wrap_content"
-                        android:layout_height = "wrap_content"
-                        android:textSize = "16dp"
-                        android:textColor = "#7b818d"
-                        android:text = "@string/setting_payback"
-                />
-
-
-            </LinearLayout>
-            <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="#1f1f1f"/>
-            <LinearLayout
-                    android:layout_width = "match_parent"
-                    android:layout_height = "50dp"
-                    android:gravity = "center_vertical"
-                    android:background = "#e2e2e2">
-
-                <TextView
-                        android:textStyle = "bold"
-                        android:paddingLeft = "9.5dp"
-                        android:layout_width = "wrap_content"
-                        android:layout_height = "wrap_content"
-                        android:textSize = "16dp"
-                        android:textColor = "#7b818d"
-                        android:text = "@string/setting_solo_method"
-                />
-
-
-            </LinearLayout>
-            <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="#1f1f1f"/>
-            <LinearLayout
-                    android:layout_width = "match_parent"
-                    android:layout_height = "50dp"
-                    android:gravity = "center_vertical"
-                    android:background = "#e2e2e2">
-
-                <TextView
-                        android:textStyle = "bold"
-                        android:paddingLeft = "9.5dp"
-                        android:layout_width = "wrap_content"
-                        android:layout_height = "wrap_content"
-                        android:textSize = "16dp"
-                        android:textColor = "#7b818d"
-                        android:text = "@string/setting_improving"
-                />
-
-
-            </LinearLayout>
-            <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="#1f1f1f"/>
-            <LinearLayout
-                    android:id="@+id/logoutLL"
-                    android:layout_width = "match_parent"
-                    android:layout_height = "50dp"
-                    android:gravity = "center_vertical"
-                    android:background = "#e2e2e2">
-
-                <TextView
-                        android:textStyle = "bold"
-                        android:paddingLeft = "9.5dp"
-                        android:layout_width = "wrap_content"
-                        android:layout_height = "wrap_content"
-                        android:textSize = "16dp"
-                        android:textColor = "#7b818d"
-                        android:text = "@string/setting_logout"
-                />
-
-
-            </LinearLayout>
-            <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="#1f1f1f"/>
-            <LinearLayout
-                    android:layout_width = "match_parent"
-                    android:layout_height = "50dp"
-                    android:gravity = "center_vertical"
-                    android:background = "#e2e2e2">
-
-                <TextView
-                        android:textStyle = "bold"
-                        android:paddingLeft = "9.5dp"
-                        android:layout_width = "wrap_content"
-                        android:layout_height = "wrap_content"
-                        android:textSize = "16dp"
-                        android:textColor = "#7b818d"
-                        android:text = "@string/setting_account_del"
-                />
-
-
-            </LinearLayout>
-            <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="#1f1f1f"/>
-            <LinearLayout
-                    android:id="@+id/versionLL"
-                    android:layout_width = "match_parent"
-                    android:layout_height = "50dp"
-                    android:gravity = "center_vertical"
-                    android:background = "#e2e2e2">
-
-                <TextView
-                        android:textStyle = "bold"
-                        android:paddingLeft = "9.5dp"
-                        android:layout_width = "wrap_content"
-                        android:layout_height = "wrap_content"
-                        android:textSize = "16dp"
-                        android:textColor = "#7b818d"
-                        android:text = "@string/setting_version"
-                />
-
-
-            </LinearLayout>
-            <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
                     android:background="#1f1f1f"/>
 
+                <LinearLayout
+                    android:id="@+id/matchLL"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:background="#ffffff">
+
+                    <TextView
+                        android:paddingLeft="15dp"
+                        android:textStyle="bold"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#333333"
+                        android:text="@string/alram_match"
+                        />
+
+                    <ImageView
+                        android:id="@+id/matchIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:src="@mipmap/off"/>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+
+                <LinearLayout
+                    android:id="@+id/crushLL"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:background="#ffffff">
+
+                    <TextView
+                        android:paddingLeft="15dp"
+                        android:textStyle="bold"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#333333"
+                        android:text="@string/alram_send_crush"/>
+
+                    <ImageView
+                        android:id="@+id/crushIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:src="@mipmap/off"/>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+
+                <LinearLayout
+                    android:id="@+id/proposeLL"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:background="#ffffff">
+
+                    <TextView
+                        android:paddingLeft="15dp"
+                        android:textStyle="bold"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#333333"
+                        android:text="@string/alram_propose_event"
+                        />
+
+                    <ImageView
+                        android:id="@+id/proposeIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:src="@mipmap/off"/>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+
+                <LinearLayout
+                    android:id="@+id/dailyLL"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:background="#ffffff">
+
+                    <TextView
+                        android:paddingLeft="15dp"
+                        android:textStyle="bold"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#333333"
+                        android:text="@string/alram_daily_moment"/>
+
+                    <ImageView
+                        android:id="@+id/dailyIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:src="@mipmap/off"/>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+
+                <LinearLayout
+                    android:id="@+id/starballLL"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:background="#ffffff">
+
+                    <TextView
+                        android:paddingLeft="15dp"
+                        android:textStyle="bold"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#333333"
+                        android:text="@string/alram_recive_starball"/>
+
+                    <ImageView
+                        android:id="@+id/starballIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:src="@mipmap/off"/>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+
+                <LinearLayout
+                    android:id="@+id/vibeLL"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:background="#ffffff">
+
+                    <TextView
+                        android:paddingLeft="15dp"
+                        android:textStyle="bold"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#333333"
+                        android:text="@string/alram_vibe"/>
+
+                    <ImageView
+                        android:id="@+id/vibeIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:src="@mipmap/off"/>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+
+                <LinearLayout
+                    android:id="@+id/soundLL"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:background="#ffffff">
+
+                    <TextView
+                        android:paddingLeft="15dp"
+                        android:textStyle="bold"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColor="#333333"
+                        android:text="@string/alram_sound"/>
+
+                    <ImageView
+                        android:id="@+id/soundIV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:src="@mipmap/off"/>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#1f1f1f"/>
+
+            </LinearLayout>
+
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#1f1f1f"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:background="#e2e2e2">
+
+                <TextView
+                    android:textStyle="bold"
+                    android:paddingLeft="9.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="#7b818d"
+                    android:text="@string/setting_payback"/>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#1f1f1f"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:background="#e2e2e2">
+
+                <TextView
+                    android:textStyle="bold"
+                    android:paddingLeft="9.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="#7b818d"
+                    android:text="@string/setting_solo_method"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#1f1f1f"/>
+
+            <LinearLayout
+                android:id="@+id/suggestionLL"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:background="#e2e2e2">
+
+                <TextView
+                    android:textStyle="bold"
+                    android:paddingLeft="9.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="#7b818d"
+                    android:text="@string/setting_improving"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#1f1f1f"/>
+
+            <LinearLayout
+                android:id="@+id/logoutLL"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:background="#e2e2e2">
+
+                <TextView
+                    android:textStyle="bold"
+                    android:paddingLeft="9.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="#7b818d"
+                    android:text="@string/setting_logout"/>
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#1f1f1f"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:background="#e2e2e2">
+
+                <TextView
+                    android:textStyle="bold"
+                    android:paddingLeft="9.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="#7b818d"
+                    android:text="@string/setting_account_del"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#1f1f1f"/>
+
+            <LinearLayout
+                android:id="@+id/versionLL"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:background="#e2e2e2">
+
+                <TextView
+                    android:textStyle="bold"
+                    android:paddingLeft="9.5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:textColor="#7b818d"
+                    android:text="@string/setting_version"/>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#1f1f1f"/>
 
         </LinearLayout>
 
-
     </ScrollView>
-
 
 </LinearLayout>

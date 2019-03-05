@@ -1,74 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-    >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
 
         <ImageView
-                android:paddingLeft="9.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/comm_arrow_left"
-                android:id="@+id/backIV"/>
+            android:paddingLeft="9.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/comm_arrow_left"
+            android:id="@+id/backIV"/>
 
         <TextView
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:textSize="21dp"
-                android:textColor="#333333"
-                android:layout_centerInParent="true"
-                android:text="@string/version_info"/>
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="21dp"
+            android:textColor="#333333"
+            android:layout_centerInParent="true"
+            android:text="@string/version_info"/>
 
     </RelativeLayout>
 
 
-
     <LinearLayout
-            android:layout_marginTop="76dp"
-            android:layout_width = "wrap_content"
-                  android:layout_height = "wrap_content"
-                  android:background="@drawable/background_border_strock10_d4d4d4"
-                  android:layout_gravity="center"
-    android:padding="13dp">
+        android:layout_marginTop="76dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_border_strock10_d4d4d4"
+        android:layout_gravity="center"
+        android:padding="13dp">
 
-                  <ImageView android:layout_width = "wrap_content" android:layout_height = "wrap_content"
-                  android:src="@mipmap/settung_ver_bi"/>
-
-
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/settung_ver_bi"/>
 
 
     </LinearLayout>
 
     <LinearLayout
-            android:layout_gravity="center"
-            android:layout_marginTop="28dp"
-            android:layout_width="200dp"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
-    <LinearLayout
-            android:layout_width = "164dp"
-                  android:layout_height = "wrap_content"
-                  android:orientation="horizontal"
-                    >
+        android:layout_gravity="center"
+        android:layout_marginTop="28dp"
+        android:layout_width="200dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
-
-
-    <TextView
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="164dp"
             android:layout_height="wrap_content"
-            android:textSize="14dp"
-            android:textColor="#333333"
-            android:text="@string/my_version"/>
-        <TextView
+            android:orientation="horizontal">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="#333333"
+                android:text="@string/my_version"/>
+
+            <TextView
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,21 +74,15 @@
                 android:textColor="#0095dc"
                 android:text="version. 1.00.00"/>
 
+        </LinearLayout>
 
-
-    </LinearLayout>
-
-    <LinearLayout
+        <LinearLayout
             android:paddingTop="6dp"
-            android:layout_width = "wrap_content"
-            android:layout_height = "wrap_content"
-            android:orientation="horizontal"
-    >
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-
-
-
-        <TextView
+            <TextView
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
@@ -98,7 +90,8 @@
                 android:textSize="14dp"
                 android:textColor="#333333"
                 android:text="@string/new_version"/>
-        <TextView
+
+            <TextView
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -106,37 +99,35 @@
                 android:textColor="#0095dc"
                 android:text="version. 1.00.00"/>
 
+        </LinearLayout>
 
     </LinearLayout>
-    </LinearLayout>
-    <TextView
-            android:layout_marginTop="27dp"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12dp"
-            android:textColor="#555555"
-            android:gravity="center_horizontal"
-            android:text="@string/version_content"
-    />
-
 
     <TextView
-            android:layout_marginTop="70dp"
-            android:id="@+id/nextTV"
-            android:layout_marginLeft="90dp"
-            android:layout_marginRight="90dp"
-            android:layout_marginBottom="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#000000"
-            android:text="@string/new_version_is"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textSize="20.5dp"
-            android:textColor="#ffffff"/>
+        android:layout_marginTop="27dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:textColor="#555555"
+        android:gravity="center_horizontal"
+        android:text="@string/version_content"/>
 
 
+    <TextView
+        android:layout_marginTop="70dp"
+        android:id="@+id/nextTV"
+        android:layout_marginLeft="90dp"
+        android:layout_marginRight="90dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#000000"
+        android:text="@string/new_version_is"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="20.5dp"
+        android:textColor="#ffffff"/>
 
 
 </LinearLayout>

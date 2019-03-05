@@ -24,8 +24,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="24dp"
                 android:textColor="#333333"
-                android:text="@string/name_title"
-                />
+                android:text="@string/name_title"/>
 
             <EditText
                 android:id="@+id/nameET"
@@ -45,8 +44,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
                 android:textColor="#555555"
-                android:text="@string/name_display"
-                />
+                android:text="@string/name_display"/>
 
             <TextView
                 android:id="@+id/nameTV"
@@ -56,7 +54,7 @@
                 android:text=""
                 android:textStyle="bold"
                 android:textSize="16dp"
-                android:gravity="center" />
+                android:gravity="center"/>
 
             <View
                 android:layout_width="match_parent"

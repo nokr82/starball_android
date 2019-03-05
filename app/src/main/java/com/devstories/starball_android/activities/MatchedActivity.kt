@@ -8,11 +8,8 @@ import android.content.Context
 import android.os.Bundle
 import android.view.ViewGroup
 import com.devstories.starball_android.base.RootActivity
+import com.devstories.starball_android.base.Utils
 import kotlinx.android.synthetic.main.activity_matched.*
-
-
-
-
 
 class MatchedActivity : RootActivity() {
 
@@ -38,7 +35,6 @@ class MatchedActivity : RootActivity() {
         val scaleDownX = ObjectAnimator.ofFloat(th01IV, "scaleX", 1.0f)
         val scaleDownY = ObjectAnimator.ofFloat(th01IV, "scaleY", 1.0f)
 
-
         val animators1 = ArrayList<Animator>()
         animators1.add(scaleDownX)
         animators1.add(scaleDownY)
@@ -47,7 +43,26 @@ class MatchedActivity : RootActivity() {
         firstSet.duration = duration * 10
         firstSet.playTogether(animators1)
 
+        // wings
+        val wingScaleDownX = ObjectAnimator.ofFloat(wingStarIV, "scaleX", 1.0f)
+        val wingScaleDownY = ObjectAnimator.ofFloat(wingStarIV, "scaleY", 1.0f)
+        val wingRotateAnimator = ObjectAnimator.ofFloat(
+            wingStarIV,
+            "rotation", 200f, 0f
+        )
 
+        val wingAnimators = ArrayList<Animator>()
+        wingAnimators.add(scaleDownX)
+        wingAnimators.add(scaleDownY)
+        wingAnimators.add(wingScaleDownX)
+        wingAnimators.add(wingScaleDownY)
+        wingAnimators.add(wingRotateAnimator)
+
+        val wingSet = AnimatorSet()
+        wingSet.duration = duration * 16
+        wingSet.playTogether(wingAnimators)
+
+        /*
         val th02FadeIn = ObjectAnimator.ofFloat(th02IV, "alpha", 0f, 1f)
         th02FadeIn.duration = duration
 
@@ -83,6 +98,7 @@ class MatchedActivity : RootActivity() {
 
         val th13FadeIn = ObjectAnimator.ofFloat(th13IV, "alpha", 0f, 1f)
         th13FadeIn.duration = duration
+        */
 
         val th14FadeIn = ObjectAnimator.ofFloat(th14IV, "alpha", 0f, 1f)
         th14FadeIn.duration = duration
@@ -93,27 +109,36 @@ class MatchedActivity : RootActivity() {
         val th16FadeIn = ObjectAnimator.ofFloat(th16IV, "alpha", 0f, 1f)
         th16FadeIn.duration = duration
 
-        val th17FadeIn = ObjectAnimator.ofFloat(th17IV, "alpha", 0f, 1f)
+        // val th17FadeIn = ObjectAnimator.ofFloat(th17IV, "alpha", 0f, 1f)
         // th17FadeIn.duration = duration
 
-        val th18FadeIn = ObjectAnimator.ofFloat(th18IV, "alpha", 0f, 1f)
+
+        th17IV.x = -(screenWidth / 1.8).toFloat()
+        val th17FadeIn = ObjectAnimator.ofFloat(th17IV, "translationX", 0.toFloat())
+        // th17FadeIn.duration = Random.nextInt(600, 1600).toLong()
+
+
+        // val th18FadeIn = ObjectAnimator.ofFloat(th18IV, "alpha", 0f, 1f)
         // th17FadeIn.duration = duration * 20
 
-        val th19FadeIn = ObjectAnimator.ofFloat(th19IV, "alpha", 0f, 1f)
-        th19FadeIn.duration = duration * 5
+        th18IV.x = (screenWidth / 1.8).toFloat()
+        val th18FadeIn = ObjectAnimator.ofFloat(th18IV, "translationX", 0.toFloat())
 
         val animators1718 = ArrayList<Animator>()
         animators1718.add(th17FadeIn)
         animators1718.add(th18FadeIn)
 
         val firstSet1718 = AnimatorSet()
-        firstSet1718.duration = duration * 30
+        firstSet1718.duration = duration * 25
         firstSet1718.playTogether(animators1718)
 
         val mAnimationSet = AnimatorSet()
 
         val animators = ArrayList<Animator>()
-        animators.add(firstSet)
+        // animators.add(firstSet)
+        animators.add(wingSet)
+
+        /*
         animators.add(th02FadeIn)
         animators.add(th03FadeIn)
         animators.add(th04FadeIn)
@@ -126,11 +151,12 @@ class MatchedActivity : RootActivity() {
         animators.add(th11FadeIn)
         animators.add(th12FadeIn)
         animators.add(th13FadeIn)
+        */
+
         animators.add(th14FadeIn)
         animators.add(th15FadeIn)
         animators.add(th16FadeIn)
         animators.add(firstSet1718)
-        animators.add(th19FadeIn)
 
         mAnimationSet.playSequentially(animators)
         mAnimationSet.start()
@@ -148,7 +174,10 @@ class MatchedActivity : RootActivity() {
             }
 
             override fun onAnimationEnd(animation: Animator?, isReverse: Boolean) {
-
+                Utils.delay(context, 500) {
+                    finish()
+                    overridePendingTransition(0, 0)
+                }
             }
 
             override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {
@@ -156,7 +185,8 @@ class MatchedActivity : RootActivity() {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-
+                finish()
+                overridePendingTransition(0, 0)
             }
         })
 

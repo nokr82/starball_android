@@ -4,7 +4,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import com.devstories.starball_android.Actions.MemberAction
+import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
@@ -22,6 +22,8 @@ class LoginActivity : RootActivity() {
     private lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -35,9 +37,13 @@ class LoginActivity : RootActivity() {
             startActivity(intent)
         }
 
-        joinLL.setOnClickListener {
+        loginLL.setOnClickListener {
             login()
+//            val intent = Intent(context, MainActivity::class.java)
+//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//            startActivity(intent)
         }
+
 
         finishLL.setOnClickListener {
             finish()

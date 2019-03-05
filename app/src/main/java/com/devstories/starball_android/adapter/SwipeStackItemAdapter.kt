@@ -14,6 +14,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.ChatNotiActivity
+import com.devstories.starball_android.activities.LikedNotiActivity
 import com.devstories.starball_android.activities.MatchedActivity
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.DateUtils
@@ -96,17 +97,17 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
 
         when(viewType) {
             0 -> {
-                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_search1, parent, false) as View
+                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_main_search1, parent, false) as View
                 return MainSearchType1(itemView)
             }
 
             1 -> {
-                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_search2, parent, false) as View
+                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_main_search2, parent, false) as View
                 return MainSearchType2(itemView)
             }
         }
 
-        var itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_main_search3, parent, false) as View
+        var itemView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_main_search3, parent, false) as View
 
         return MainSearchType3(itemView)
     }
@@ -206,6 +207,7 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                     val intent = Intent(context, MatchedActivity::class.java)
                     context.startActivity(intent)
                 }
+
             }
 
             1 -> {
@@ -267,6 +269,18 @@ class SwipeStackItemAdapter(private val context:Context, private val memberInfo:
                 holder.nameTV.text = name
                 holder.ageTV.text = age.toString()
                 holder.fitRateTV.text = "23%"
+
+                holder.infoIV.setOnClickListener {
+
+                    val intent = Intent(context, LikedNotiActivity::class.java)
+                    context.startActivity(intent)
+
+                    /*
+                    val intent = Intent("LIKED_NOTI")
+                    context.sendBroadcast(intent)
+                    */
+                }
+
             }
 
             else -> {

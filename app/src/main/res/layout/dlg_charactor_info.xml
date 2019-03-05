@@ -1,606 +1,531 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_height="match_parent"
-        android:background="@drawable/background_round_ffffff">
-
-
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_round_ffffff">
 
 
     <com.devstories.starball_android.base.RationalRelativeLayout
-            android:id="@+id/popup"
-            android:background="@drawable/background_round_ffffff"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:ratio="330:519">
+        android:id="@+id/popup"
+        android:background="@drawable/background_round_ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:ratio="330:519">
 
         <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
                 android:layout_marginTop="22dp"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textColor="#333333"
-                android:text="@string/characcter_info"
-                />
-
+                android:text="@string/characcter_info"/>
 
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
                 <LinearLayout
-                        android:layout_width="match_parent"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/phoneLL"
+                        android:layout_marginLeft="50dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:layout_height="match_parent">
-                    <LinearLayout
-                            android:id="@+id/phoneLL"
-                            android:layout_marginLeft="50dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:gravity="center_vertical"
-                            android:layout_height="match_parent">
-
 
                         <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@mipmap/main_char_phone"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/main_char_phone"/>
 
                         <TextView
-                                android:paddingLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:textColor="#333333"
-                                android:letterSpacing="-0.03"
-                                android:text=": 완료"
-                                />
-
-
-
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:text=": 완료"/>
 
                     </LinearLayout>
-                    <LinearLayout
-                            android:id="@+id/emailLL"
-                            android:layout_width="0dp"
-                            android:gravity="center_vertical"
-                            android:layout_weight="1"
-                            android:layout_height="match_parent">
 
+                    <LinearLayout
+                        android:id="@+id/emailLL"
+                        android:layout_width="0dp"
+                        android:gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent">
 
                         <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@mipmap/main_char_mail"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/main_char_mail"/>
 
                         <TextView
-                                android:paddingLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:textColor="#333333"
-                                android:letterSpacing="-0.03"
-                                android:text=": 미인증"
-                                />
-
-
-
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:text=": 미인증"/>
 
                     </LinearLayout>
 
                 </LinearLayout>
-
-
-
             </LinearLayout>
+
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    <LinearLayout
-                            android:layout_marginLeft="50dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <LinearLayout
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
 
                         <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@mipmap/main_char_religion"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/main_char_religion"/>
 
                         <TextView
-                                android:paddingLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:textColor="#333333"
-                                android:letterSpacing="-0.03"
-                                android:text="@string/christian"
-                                />
-
-
-
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:text="@string/christian"/>
 
                     </LinearLayout>
-                    <LinearLayout
-                            android:layout_marginTop="20dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content">
 
+                    <LinearLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
 
                         <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@mipmap/main_char_politics"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/main_char_politics"/>
 
                         <TextView
-                                android:paddingLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:textColor="#333333"
-                                android:letterSpacing="-0.03"
-                                android:text=": 진보"
-                                />
-
-
-
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:text=": 진보"/>
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-
-
             </LinearLayout>
+
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
                     <LinearLayout
-                            android:layout_marginLeft="50dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content">
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
 
 
                         <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@mipmap/main_char_baby"/>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/main_char_baby"/>
 
                         <TextView
-                                android:paddingLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:textColor="#333333"
-                                android:letterSpacing="-0.03"
-                                android:text="@string/none"
-                                />
-
-
-
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:text="@string/none"/>
 
                     </LinearLayout>
-                    <LinearLayout
-                            android:layout_marginTop="20dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content">
 
+                    <LinearLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
 
                         <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@mipmap/main_char_animal"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/main_char_animal"/>
 
                         <TextView
-                                android:paddingLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:textColor="#333333"
-                                android:letterSpacing="-0.03"
-                                android:text="@string/dog"
-                                />
-
-
-
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:text="@string/dog"/>
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-
-
             </LinearLayout>
+
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    <LinearLayout
-                            android:layout_marginLeft="50dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <LinearLayout
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
 
                         <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@mipmap/main_char_smoke"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/main_char_smoke"/>
 
                         <TextView
-                                android:paddingLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:textColor="#333333"
-                                android:letterSpacing="-0.03"
-                                android:text="@string/dislike"
-                                />
-
-
-
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:text="@string/dislike"/>
 
                     </LinearLayout>
-                    <LinearLayout
-                            android:layout_marginTop="20dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content">
 
+                    <LinearLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
 
                         <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@mipmap/main_char_alcohol"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/main_char_alcohol"/>
 
                         <TextView
-                                android:paddingLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:textColor="#333333"
-                                android:letterSpacing="-0.03"
-                                android:text=": 사교적음주"
-                                />
-
-
-
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:text=": 사교적음주"/>
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-
-
             </LinearLayout>
+
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    <LinearLayout
-                            android:layout_marginLeft="50dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <LinearLayout
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
 
                         <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@mipmap/main_char_exercise"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/main_char_exercise"/>
 
                         <TextView
-                                android:paddingLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:textColor="#333333"
-                                android:letterSpacing="-0.03"
-                                android:text="@string/not"
-                                />
-
-
-
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:text="@string/not"/>
 
                     </LinearLayout>
-                    <LinearLayout
-                            android:layout_marginTop="20dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content">
 
+                    <LinearLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
 
                         <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@mipmap/main_char_sports"/>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/main_char_sports"/>
 
                         <TextView
-                                android:paddingLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:textColor="#333333"
-                                android:letterSpacing="-0.03"
-                                android:text="@string/golf"
-                                />
-
-
-
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:text="@string/golf"/>
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-
-
             </LinearLayout>
+
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
                     <LinearLayout
-                            android:layout_marginLeft="50dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content">
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
 
 
                         <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@mipmap/main_char_height"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/main_char_height"/>
 
                         <TextView
-                                android:paddingLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:textColor="#333333"
-                                android:letterSpacing="-0.03"
-                                android:text=": 178cm"
-                                />
-
-
-
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:text=": 178cm"/>
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-
-
             </LinearLayout>
+
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    <LinearLayout
-                            android:layout_marginLeft="50dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <LinearLayout
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
 
                         <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@mipmap/main_char_fb"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/main_char_fb"/>
 
                         <TextView
-                                android:paddingLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:textColor="#333333"
-                                android:letterSpacing="-0.03"
-                                android:text="@string/peristalsis"
-                                />
-
-
-
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:text="@string/peristalsis"/>
 
                     </LinearLayout>
-                    <LinearLayout
-                            android:layout_marginTop="20dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content">
 
+                    <LinearLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
 
                         <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@mipmap/main_char_ins"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/main_char_ins"/>
 
                         <TextView
-                                android:paddingLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:textColor="#333333"
-                                android:letterSpacing="-0.03"
-                                android:text="@string/peristalsis_no"
-                                />
-
-
-
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:text="@string/peristalsis_no"/>
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-
-
             </LinearLayout>
+
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
                     <LinearLayout
-                            android:layout_marginLeft="50dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content">
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
 
 
                         <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@mipmap/main_char_dollar"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/main_char_dollar"/>
 
                         <TextView
-                                android:paddingLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:textColor="#333333"
-                                android:letterSpacing="-0.03"
-                                android:text=": $ 10,000~30,000 per month"
-                                />
-
-
-
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:text=": $ 10,000~30,000 per month"/>
 
                     </LinearLayout>
 
                 </LinearLayout>
 
-
-
             </LinearLayout>
+
             <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    <LinearLayout
-                            android:layout_marginLeft="50dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
+                    <LinearLayout
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
 
                         <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:src="@mipmap/main_char_airplan"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@mipmap/main_char_airplan"/>
 
                         <TextView
-                                android:paddingLeft="10dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="13dp"
-                                android:textColor="#333333"
-                                android:letterSpacing="-0.03"
-                                android:text=": 2018.08.15~09.16. Thailand"
-                                />
-
-
-
+                            android:paddingLeft="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:text=": 2018.08.15~09.16. Thailand"/>
 
                     </LinearLayout>
 
-
                 </LinearLayout>
-
-
 
             </LinearLayout>
 
+            <LinearLayout
+                android:paddingTop="23dp"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_height="wrap_content">
 
+                <TextView
+                    android:layout_marginBottom="15dp"
+                    android:id="@+id/reportTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="13dp"
+                    android:textColor="#333333"
+                    android:textStyle="bold"
+                    android:text="@string/report_blcok"/>
 
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="0.5dp"
+                    android:background="#333333"/>
 
+            </LinearLayout>
 
-
-
-<LinearLayout
-        android:paddingTop="23dp"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        >
-        <TextView
-                android:layout_marginBottom="15dp"
-                android:id="@+id/reportTV"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:textSize="13dp"
-                android:textColor="#333333"
-                android:textStyle="bold"
-                android:text="@string/report_blcok"
-                />
-            <View
-            android:layout_width="60dp"
-            android:layout_height="0.5dp"
-            android:background="#333333"/>
-</LinearLayout>
         </LinearLayout>
+
     </com.devstories.starball_android.base.RationalRelativeLayout>
 
 </LinearLayout>

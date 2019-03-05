@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="50dp">
+
+		<ImageView
+			android:paddingLeft="9.5dp"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:src="@mipmap/comm_arrow_left"
+			android:id="@+id/backIV"/>
+
+		<TextView
+			android:textStyle="bold"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:gravity="center_vertical"
+			android:textSize="21dp"
+			android:textColor="#333333"
+			android:layout_centerInParent="true"
+			android:text="@string/we_meet"/>
+
+	</RelativeLayout>
+
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:fillViewport="true">
+
+		<LinearLayout
+			android:layout_marginLeft="10dp"
+			android:layout_marginRight="10dp"
+			android:layout_width="match_parent"
+			android:orientation="vertical"
+			android:layout_height="match_parent">
+
+			<TextView
+				android:textStyle="bold"
+				android:layout_marginTop="15dp"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="15dp"
+				android:textColor="#333333"
+				android:text="@string/charmpoint_content"/>
+
+			<LinearLayout
+				android:layout_marginTop="35dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/item1TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:text="함께 전시회 관람"/>
+
+				<TextView
+					android:id="@+id/item2TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:text="취미활동 공유하기"/>
+
+				<TextView
+					android:id="@+id/item3TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:textColor="#555555"
+					android:text="함께 드라이브가기"/>
+
+
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_marginTop="15dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/item4TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:text="함께 게임하기"/>
+
+				<TextView
+					android:id="@+id/item5TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:text="공연 관람"/>
+
+				<TextView
+					android:id="@+id/item6TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:text="맛집 투어"/>
+
+
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_marginTop="15dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/item8TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:text="카페 데이트"/>
+
+				<TextView
+					android:id="@+id/item9TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:text="영화 관람"/>
+
+				<TextView
+					android:id="@+id/item10TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:text="함께 술마시기"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_marginTop="15dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/item11TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:text="도시락 나들이"/>
+
+				<TextView
+					android:id="@+id/item12TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:text="함께 산책하기"/>
+
+				<TextView
+					android:id="@+id/item13TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:textColor="#555555"
+					android:text="함께 운동하기"/>
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_marginTop="15dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/item14TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:text="함께 스포츠 관람"/>
+
+				<TextView
+					android:id="@+id/item15TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:text="즉흥적인 만남"/>
+
+				<TextView
+					android:id="@+id/item16TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:text="친구 같은 편한 만남"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_marginTop="15dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/item17TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:text="여행가기"/>
+
+				<TextView
+					android:id="@+id/item18TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:text="통화 자주하기"/>
+
+				<TextView
+					android:id="@+id/item19TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:text="노래방 데이트"/>
+
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_marginTop="15dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/item20TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:text="자주 만나기"/>
+
+				<TextView
+					android:id="@+id/item21TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:text="함께 사진찍기"/>
+
+				<TextView
+					android:id="@+id/item22TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:text="나이트 클럽"/>
+
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_marginTop="15dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/item23TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:text="Shopping 하기"/>
+
+				<TextView
+					android:id="@+id/item24TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:text="함께 유적 관람하기"/>
+
+				<TextView
+					android:id="@+id/item25TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:text="함께 요리해서 먹기"/>
+
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_marginTop="15dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<TextView
+					android:id="@+id/item26TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:text="봉사활동하기"/>
+
+				<TextView
+					android:id="@+id/item7TV"
+					android:layout_marginRight="10dp"
+					android:padding="5dp"
+					android:background="@drawable/background_border_strock4_d4d4d4"
+					android:textColor="#555555"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dp"
+					android:text="집 데이트"/>
+			</LinearLayout>
+
+
+
+			<TextView
+				android:layout_marginTop="31.5dp"
+				android:id="@+id/nextTV"
+				android:layout_marginLeft="20dp"
+				android:layout_marginRight="20dp"
+				android:layout_marginBottom="10dp"
+				android:layout_width="match_parent"
+				android:layout_height="50dp"
+				android:background="#000000"
+				android:text="@string/next"
+				android:textStyle="bold"
+				android:gravity="center"
+				android:textSize="20.5dp"
+				android:textColor="#ffffff"/>
+
+		</LinearLayout>
+
+
+	</ScrollView>
+
+</LinearLayout>

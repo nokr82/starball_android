@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.dlg_select_language.*
 import java.util.*
 
 
-class DlgSelectLanguageActivity  : RootActivity() {
+class DlgSelectLanguageActivity : RootActivity() {
 
     lateinit var myContext: Context
     private var progressDialog: ProgressDialog? = null
@@ -66,7 +66,6 @@ class DlgSelectLanguageActivity  : RootActivity() {
 
         selectTV.setOnClickListener {
             val intent = Intent()
-
             val language = extractLanguage()
             intent.putExtra("selectedLanguage", language)
             setResult(Activity.RESULT_OK, intent)

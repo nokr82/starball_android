@@ -1,49 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:background="@drawable/background_border_background"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-    >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/background_border_background"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
 
         <ImageView
-                android:paddingLeft="9.5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/comm_arrow_left"
-                android:id="@+id/backIV"/>
+            android:paddingLeft="9.5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/comm_arrow_left"
+            android:id="@+id/backIV"/>
 
         <TextView
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:textSize="21dp"
-                android:textColor="#b5b7c6"
-                android:layout_centerInParent="true"
-                android:text="@string/vvip_join"/>
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="21dp"
+            android:textColor="#b5b7c6"
+            android:layout_centerInParent="true"
+            android:text="@string/vvip_join"/>
 
     </RelativeLayout>
 
 
-
     <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:fillViewport="true">
-    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="match_parent">
 
 
-
-        <ImageView
+            <ImageView
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:layout_width="wrap_content"
@@ -51,7 +50,7 @@
                 android:src="@mipmap/vvip_dia"/>
 
 
-        <TextView
+            <TextView
                 android:layout_marginTop="13.5dp"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
@@ -59,9 +58,9 @@
                 android:textSize="16.5dp"
                 android:textColor="#ffff"
                 android:layout_gravity="center"
-                android:text="@string/vvip_content"
-                />
-        <TextView
+                android:text="@string/vvip_content"/>
+
+            <TextView
                 android:layout_marginTop="6dp"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
@@ -69,9 +68,9 @@
                 android:textSize="12dp"
                 android:textColor="#c0c0c0"
                 android:gravity="center_horizontal"
-                android:text="@string/vvip_content2"
-                />
-        <TextView
+                android:text="@string/vvip_content2"/>
+
+            <TextView
                 android:layout_marginTop="8.5dp"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
@@ -79,12 +78,9 @@
                 android:textSize="12dp"
                 android:textColor="#f2f1f1"
                 android:layout_marginBottom="30dp"
-                android:text="@string/vvip_content3"
-                />
+                android:text="@string/vvip_content3"/>
 
-
-
-        <HorizontalScrollView
+            <HorizontalScrollView
                 android:id="@+id/hoSV"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -92,21 +88,17 @@
                 android:scrollbars="none"
                 android:fillViewport="true">
 
-            <LinearLayout
+                <LinearLayout
                     android:id="@+id/userLL"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
+                </LinearLayout>
 
-            </LinearLayout>
+            </HorizontalScrollView>
 
-
-        </HorizontalScrollView>
-
-
-
-        <TextView
+            <TextView
                 android:layout_marginLeft="45dp"
                 android:layout_marginRight="45dp"
                 android:paddingTop="34dp"
@@ -114,10 +106,9 @@
                 android:layout_height="wrap_content"
                 android:textSize="12dp"
                 android:textColor="#c1c1c1"
-                android:text="@string/vvip_join_content2"
-        />
+                android:text="@string/vvip_join_content2"/>
 
-        <TextView
+            <TextView
                 android:layout_marginLeft="45dp"
                 android:layout_marginRight="45dp"
                 android:textStyle="bold"
@@ -127,97 +118,100 @@
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
                 android:textColor="#ffffff"
-                android:text="@string/vvip_join_content3"
-        />
+                android:text="@string/vvip_join_content3"/>
 
 
-        <RelativeLayout
+            <RelativeLayout
                 android:layout_marginRight="37.5dp"
                 android:layout_marginLeft="37.5dp"
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:layout_gravity="center"
                 android:orientation="vertical"
-                android:background="@mipmap/setting_vvip_certification_bg"
-        >
-            <LinearLayout
+                android:background="@mipmap/setting_vvip_certification_bg">
+
+                <LinearLayout
                     android:layout_centerInParent="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-            <LinearLayout
-                    android:layout_width="70dp"
-                    android:layout_marginLeft="12.5dp"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerInParent="true"
-                    android:orientation="vertical">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="9sp"
-                    android:textColor="#333333"
-                    android:gravity="center"
-                    android:text="VVIP 가입 금액"
-                    />
-                <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="16sp"
+
+                    <LinearLayout
+                        android:layout_width="70dp"
+                        android:layout_marginLeft="12.5dp"
                         android:gravity="center"
-                        android:textColor="#333333"
-                        android:text="￦60,000"
-                        />
-                <TextView
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="9sp"
-                        android:textColor="#333333"
-                        android:letterSpacing="-0.03"
-                        android:gravity="center_horizontal"
-                        android:text="매월"
-                        />
-            </LinearLayout>
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
 
-            <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_marginLeft="43dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerInParent="true"
-                    android:orientation="vertical">
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:shadowColor="#c0040000"
-                        android:textSize="15dp"
-                        android:textColor="#333333"
-                        android:textStyle="bold"
-                        android:text="VVIP Membership"
-                        />
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="9dp"
-                        android:textStyle="bold"
-                        android:textColor="#363635"
-                        android:text="오직 1%에게만 허락된 특권"
-                        />
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="7sp"
-                        android:textColor="#2e2116"
-                        android:letterSpacing="-0.02"
-                        android:text="Premium 이상 회원에게만 노출\n
-매일 최상위 10명의 인기회원 추천"
-                        />
-            </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="9sp"
+                            android:textColor="#333333"
+                            android:gravity="center"
+                            android:text="VVIP 가입 금액"/>
 
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="16sp"
+                            android:gravity="center"
+                            android:textColor="#333333"
+                            android:text="￦60,000"/>
 
-        <TextView
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="9sp"
+                            android:textColor="#333333"
+                            android:letterSpacing="-0.03"
+                            android:gravity="center_horizontal"
+                            android:text="매월"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="43dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:shadowColor="#c0040000"
+                            android:textSize="15dp"
+                            android:textColor="#333333"
+                            android:textStyle="bold"
+                            android:text="VVIP Membership"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="9dp"
+                            android:textStyle="bold"
+                            android:textColor="#363635"
+                            android:text="오직 1%에게만 허락된 특권"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="7sp"
+                            android:textColor="#2e2116"
+                            android:letterSpacing="-0.02"
+                            android:text="Premium 이상 회원에게만 노출\n
+매일 최상위 10명의 인기회원 추천"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <TextView
                 android:layout_marginTop="25dp"
                 android:id="@+id/nextTV"
                 android:layout_marginLeft="20dp"
@@ -232,7 +226,7 @@
                 android:textSize="20.5dp"
                 android:textColor="#ffffff"/>
 
-        <TextView
+            <TextView
                 android:id="@+id/noTV"
                 android:layout_marginTop="11.5dp"
                 android:layout_marginBottom="25dp"
@@ -243,19 +237,9 @@
                 android:textSize="16dp"
                 android:textColor="#d7d7d7"
                 android:gravity="center_horizontal"
-                android:text="@string/safe_join_no"
-        />
+                android:text="@string/safe_join_no"/>
 
-    </LinearLayout>
-
-
-
-
-
-
-
-
-
+        </LinearLayout>
 
     </ScrollView>
 

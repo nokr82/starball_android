@@ -27,10 +27,8 @@ class DlgCharInfoActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
-
-
-    /*    infoAdapter = infoAdapter(context,R.layout.item_char_info, 12)
-        infoGV.adapter = infoAdapter*/
+        /*    infoAdapter = infoAdapter(context,R.layout.item_char_info, 12)
+            infoGV.adapter = infoAdapter*/
 
 
         reportTV.setOnClickListener {
@@ -47,7 +45,6 @@ class DlgCharInfoActivity : RootActivity() {
             val intent = Intent(context, PhoneCertiActivity::class.java)
             startActivity(intent)
         }
-
 
 
     }

@@ -10,8 +10,7 @@ import android.widget.TextView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.DaillyAdapter
 import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.activity_daily_view_list.*
-import kotlinx.android.synthetic.main.item_daily_moment_view_head.*
+import kotlinx.android.synthetic.main.activity_daily_moment_view_list.*
 
 class DailyMomentViewListActivity : RootActivity() {
 
@@ -28,7 +27,7 @@ class DailyMomentViewListActivity : RootActivity() {
     lateinit var starballIV: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_daily_view_list)
+        setContentView(R.layout.activity_daily_moment_view_list)
         this.context = this
         progressDialog = ProgressDialog(context)
 

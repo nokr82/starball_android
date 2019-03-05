@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
-import kotlinx.android.synthetic.main.activity_save_join3.*
+import kotlinx.android.synthetic.main.activity_save_join_cancel.*
 
 class SaveJoinCancleActivity : RootActivity() {
 
@@ -16,7 +16,7 @@ class SaveJoinCancleActivity : RootActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_save_join3)
+        setContentView(R.layout.activity_save_join_cancel)
         this.context = this
         progressDialog = ProgressDialog(context)
 

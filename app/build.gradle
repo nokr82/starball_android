@@ -10,17 +10,19 @@ android {
         applicationId "com.devstories.starball_android"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     signingConfigs {
-        sign {
+        release {
             storeFile file("/Users/theclub/CloudStation/android_keystore/starball/starball")
 //            storeFile file("D:/CloudStation/android_keystore/starball/starball")
             keyAlias "starball"
             keyPassword "123456"
             storePassword '123456'
+            v2SigningEnabled true
         }
     }
 
@@ -28,10 +30,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         debug {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
-            signingConfig signingConfigs.sign
+            signingConfig signingConfigs.release
         }
     }
 
@@ -46,8 +49,8 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.android.support:multidex:1.0.3'
@@ -61,26 +64,19 @@ dependencies {
     implementation('io.nlopez.smartlocation:library:3.3.3') {
         transitive = false
     }
-
     // google
     implementation 'com.google.firebase:firebase-core:16.0.7'
-    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    implementation 'com.google.firebase:firebase-messaging:17.4.0'
     implementation 'com.google.firebase:firebase-auth:16.1.0'
     implementation 'com.google.android.gms:play-services-auth:16.0.1'
-
     //페이스북로그인
     implementation 'com.facebook.android:facebook-login:4.40.0'
     implementation 'com.facebook.android:facebook-android-sdk:4.40.0'
-
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
     implementation 'gun0912.ted:tedpermission:2.2.2'
-
     implementation 'com.google.android.exoplayer:exoplayer:2.7.3'
-
-    compile 'com.github.fuzz-productions:RatingBar:1.0.3'
-    
+    implementation 'com.github.fuzz-productions:RatingBar:1.0.3'
 }
 apply plugin: 'com.google.gms.google-services'

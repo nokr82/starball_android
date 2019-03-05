@@ -1,118 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-    >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
 
         <ImageView
-                android:paddingLeft="10dp"
-                android:paddingRight="50dp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/comm_arrow_left"
-                android:id="@+id/backIV"/>
+            android:paddingLeft="10dp"
+            android:paddingRight="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/comm_arrow_left"
+            android:id="@+id/backIV"/>
 
         <TextView
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="10dp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:textSize="21dp"
-                android:textColor="#333333"
-                android:text="@string/report_title"/>
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="21dp"
+            android:textColor="#333333"
+            android:text="@string/report_title"/>
 
     </RelativeLayout>
 
     <TextView
-            android:paddingLeft="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15dp"
-            android:textColor="#333333"
-            android:text="@string/report_content"
-            />
-
+        android:paddingLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:textColor="#333333"
+        android:text="@string/report_content"/>
 
     <RelativeLayout
-            android:layout_marginTop="25dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-    <Spinner android:layout_width="match_parent"
-             android:layout_height="40dp"
-    android:background="@drawable/background_border_strock1">
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/background_border_strock1">
+        </Spinner>
 
-    </Spinner>
         <ImageView
-                android:layout_marginTop="15dp"
-                android:layout_marginRight="10dp"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:src="@mipmap/op_drop"/>
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/op_drop"/>
     </RelativeLayout>
 
-<LinearLayout
+    <LinearLayout
         android:layout_marginTop="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="wrap_content">
-    <TextView
+
+        <TextView
             android:id="@+id/nextTV"
             android:layout_marginBottom="25dp"
             android:layout_width="match_parent"
-              android:layout_height="50dp"
-                 android:background="#000000"
-              android:text="@string/proof_photograph"
+            android:layout_height="50dp"
+            android:background="#000000"
+            android:text="@string/proof_photograph"
             android:textStyle="bold"
-              android:gravity="center"
-              android:textSize="20.5dp"
-              android:textColor="#ffffff"/>
+            android:gravity="center"
+            android:textSize="20.5dp"
+            android:textColor="#ffffff"/>
 
-    <TextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16dp"
             android:textStyle="bold"
             android:textColor="#333333"
-            android:text="@string/precautions"
-            />
-    <TextView
+            android:text="@string/precautions"/>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="13dp"
             android:textColor="#555555"
-            android:text="@string/report_content2"
-            />
-    <TextView
+            android:text="@string/report_content2"/>
+
+        <TextView
             android:paddingTop="11dp"
             android:paddingBottom="11dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="13dp"
             android:textColor="#555555"
-            android:text="@string/report_content3"
-            />
-    <TextView
+            android:text="@string/report_content3"/>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="13dp"
             android:textColor="#555555"
-            android:text="@string/report_content4"
-            />
-</LinearLayout>
+            android:text="@string/report_content4"/>
 
-
+    </LinearLayout>
 
 </LinearLayout>
