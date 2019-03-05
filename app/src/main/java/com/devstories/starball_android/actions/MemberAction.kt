@@ -18,4 +18,10 @@ object MemberAction {
     fun list(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/members/list", params, handler)
     }
+    fun edit(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/edit", params, handler)
+    }
+    fun secession(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/secession", params, handler)
+    }
 }

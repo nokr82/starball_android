@@ -235,6 +235,14 @@
 			android:theme="@style/NoTitleDialog"
 			android:windowSoftInputMode="adjustResize|stateHidden"/>
 		<activity
+			android:name=".activities.DlgLogoutActivity"
+			android:screenOrientation="unspecified"
+			android:theme="@style/full_screen_dialog1"/>
+		<activity
+			android:name=".activities.DlgSecessionActivity"
+			android:screenOrientation="unspecified"
+			android:theme="@style/full_screen_dialog1"/>
+		<activity
 			android:name=".activities.DlgCharInfoActivity"
 			android:screenOrientation="unspecified"
 			android:theme="@style/full_screen_dialog1"/>

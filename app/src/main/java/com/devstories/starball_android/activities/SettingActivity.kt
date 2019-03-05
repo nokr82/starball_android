@@ -1,11 +1,13 @@
 package com.devstories.starball_android.activities
 
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.devstories.starball_android.R
+import com.devstories.starball_android.actions.JoinAction
 import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
@@ -18,8 +20,9 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-
 class SettingActivity : RootActivity() {
+
+    val LOGOUT_CONFIRM = 100
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
@@ -33,11 +36,16 @@ class SettingActivity : RootActivity() {
     var vibe_yn = "N"
     var sound_yn = "N"
 
+    var member_id = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.devstories.starball_android.R.layout.activity_setting)
+        setContentView(R.layout.activity_setting)
+
         this.context = this
         progressDialog = ProgressDialog(context)
+
+        member_id = PrefUtils.getIntPreference(context, "member_id")
 
         suggestionLL.setOnClickListener {
             val emailIntent = Intent(Intent.ACTION_SEND)
@@ -62,6 +70,10 @@ class SettingActivity : RootActivity() {
 
         }
 
+        secessionLL.setOnClickListener {
+            var intent = Intent(context, DlgSecessionActivity::class.java)
+            startActivity(intent)
+        }
 
         versionLL.setOnClickListener {
             val intent = Intent(context, VersionActivity::class.java)
@@ -78,10 +90,8 @@ class SettingActivity : RootActivity() {
         }
 
         logoutLL.setOnClickListener {
-            PrefUtils.clear(context)
-            val intent = Intent(context, JoinActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
+            var intent = Intent(context, DlgLogoutActivity::class.java)
+            startActivityForResult(intent, LOGOUT_CONFIRM)
         }
 
         backIV.setOnClickListener {
@@ -102,83 +112,90 @@ class SettingActivity : RootActivity() {
             } else {
                 message_yn = "Y"
             }
+
+            editInfo()
+
         }
         matchLL.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                match_yn = "Y"
-                matchIV.setImageResource(com.devstories.starball_android.R.mipmap.setting_toggle_on)
-            } else {
+
+            if (match_yn == "Y") {
                 match_yn = "N"
-                matchIV.setImageResource(com.devstories.starball_android.R.mipmap.off)
+            } else {
+                match_yn = "Y"
             }
+
+            editInfo()
         }
         crushLL.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                crush_yn = "Y"
-                crushIV.setImageResource(com.devstories.starball_android.R.mipmap.setting_toggle_on)
-            } else {
+
+            if (crush_yn == "Y") {
                 crush_yn = "N"
-                crushIV.setImageResource(com.devstories.starball_android.R.mipmap.off)
+            } else {
+                crush_yn = "Y"
             }
+
+            editInfo()
         }
         proposeLL.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                propose_yn = "Y"
-                proposeIV.setImageResource(com.devstories.starball_android.R.mipmap.setting_toggle_on)
-            } else {
+
+            if (crush_yn == "Y") {
                 propose_yn = "N"
-                proposeIV.setImageResource(com.devstories.starball_android.R.mipmap.off)
+            } else {
+                propose_yn = "Y"
             }
+
+            editInfo()
         }
         dailyLL.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                daily_yn = "Y"
-                dailyIV.setImageResource(com.devstories.starball_android.R.mipmap.setting_toggle_on)
-            } else {
+
+            if (crush_yn == "Y") {
                 daily_yn = "N"
-                dailyIV.setImageResource(com.devstories.starball_android.R.mipmap.off)
+            } else {
+                daily_yn = "Y"
             }
+
+            editInfo()
+
         }
         starballLL.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                starball_yn = "Y"
-                starballIV.setImageResource(com.devstories.starball_android.R.mipmap.setting_toggle_on)
-            } else {
+
+            if (crush_yn == "Y") {
                 starball_yn = "N"
-                starballIV.setImageResource(com.devstories.starball_android.R.mipmap.off)
+            } else {
+                starball_yn = "Y"
             }
+
+            editInfo()
+
         }
         vibeLL.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                vibe_yn = "Y"
-                vibeIV.setImageResource(com.devstories.starball_android.R.mipmap.setting_toggle_on)
-            } else {
+
+            if (crush_yn == "Y") {
                 vibe_yn = "N"
-                vibeIV.setImageResource(com.devstories.starball_android.R.mipmap.off)
+            } else {
+                vibe_yn = "Y"
             }
+
+            editInfo()
+
         }
         soundLL.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                sound_yn = "Y"
-                soundIV.setImageResource(com.devstories.starball_android.R.mipmap.setting_toggle_on)
-            } else {
+
+            if (crush_yn == "Y") {
                 sound_yn = "N"
-                soundIV.setImageResource(com.devstories.starball_android.R.mipmap.off)
+            } else {
+                sound_yn = "Y"
             }
+
+            editInfo()
+
         }
     }
 
     fun loadData() {
 
         val params = RequestParams()
-        params.put("device", "A")
+        params.put("member_id", member_id)
 
         MemberAction.get_info(params, object : JsonHttpResponseHandler() {
 
@@ -335,6 +352,7 @@ class SettingActivity : RootActivity() {
     fun editInfo() {
 
         val params = RequestParams()
+        params.put("member_id", member_id)
         params.put("message_yn", message_yn)
         params.put("match_yn", match_yn)
         params.put("crush_yn", crush_yn)
@@ -344,7 +362,7 @@ class SettingActivity : RootActivity() {
         params.put("vibe_yn", vibe_yn)
         params.put("sound_yn", sound_yn)
 
-        MemberAction.get_info(params, object : JsonHttpResponseHandler() {
+        MemberAction.edit(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
                 if (progressDialog != null) {
@@ -494,6 +512,25 @@ class SettingActivity : RootActivity() {
                 }
             }
         })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK) {
+            when(requestCode) {
+                LOGOUT_CONFIRM -> {
+
+                    PrefUtils.clear(context)
+
+                    val intent = Intent(context, JoinActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+
+                }
+            }
+        }
+
     }
 
 }
