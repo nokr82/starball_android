@@ -124,10 +124,10 @@
                 android:gravity="end"
                 android:text="22 ~ 35"/>
 
-            <ProgressBar
+            <com.crystal.crystalrangeseekbar.widgets.BubbleThumbRangeSeekbar
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
+                />
 
             <TextView
                 android:layout_marginTop="25dp"
@@ -146,7 +146,7 @@
                 android:gravity="end"
                 android:text="0~100km"/>
 
-            <ProgressBar
+            <SeekBar
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>
@@ -168,7 +168,7 @@
                 android:gravity="end"
                 android:text="140~175cm"/>
 
-            <ProgressBar
+            <SeekBar
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"/>

@@ -1033,13 +1033,13 @@ class EditProfileActivity : RootActivity() {
                     var bitmap = Utils.getImage(context.contentResolver, path)
                     imageIV.setImageBitmap(bitmap)
                 } else {
-                    val curThumb = MediaStore.Video.Thumbnails.getThumbnail(
+                  /*  val curThumb = MediaStore.Video.Thumbnails.getThumbnail(
                         context.contentResolver,
                         id.toLong(),
                         MediaStore.Video.Thumbnails.MINI_KIND,
                         null
-                    )
-                    imageIV.setImageBitmap(curThumb)
+                    )*/
+//                    imageIV.setImageBitmap(curThumb)
                 }
             }
             var bitmap = Config.url + image_uri
