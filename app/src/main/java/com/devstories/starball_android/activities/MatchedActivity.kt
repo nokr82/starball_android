@@ -27,7 +27,7 @@ class MatchedActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
-        val duration = 30L
+        val duration = 40L
 
         // val th01FadeIn = ObjectAnimator.ofFloat(th01IV, "alpha", 0f, 1f)
         // th01FadeIn.duration = duration
