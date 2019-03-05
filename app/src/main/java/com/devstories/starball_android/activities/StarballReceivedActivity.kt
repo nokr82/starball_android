@@ -31,7 +31,7 @@ class StarballReceivedActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
-        val duration = 30L
+        val duration = 50L
 
         // val th01FadeIn = ObjectAnimator.ofFloat(th01IV, "alpha", 0f, 1f)
         // th01FadeIn.duration = duration
@@ -130,7 +130,7 @@ class StarballReceivedActivity : RootActivity() {
             }
 
             override fun onAnimationEnd(animation: Animator?) {
-
+                fadeoutSet.start()
             }
         })
 
