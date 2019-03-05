@@ -201,7 +201,8 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
 
                 holder.infoIV.setOnClickListener {
                     val intent = Intent(context, ChatNotiActivity::class.java)
-                    context.startActivity(intent)
+                    activity.startActivity(intent)
+                    activity.overridePendingTransition(0, 0)
                 }
 
                 holder.charmIV.setOnClickListener {
@@ -276,7 +277,6 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
 
                     val intent = Intent(context, LikedNotiActivity::class.java)
                     activity.startActivity(intent)
-
                     activity.overridePendingTransition(0, 0)
 
 
