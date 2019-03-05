@@ -95,6 +95,7 @@ class ChatNotiActivity : RootActivity() {
             override fun onAnimationEnd(animation: Animator?, isReverse: Boolean) {
                 println("onAnimationEnd 1")
                 finish()
+                overridePendingTransition(0, 0)
             }
 
             override fun onAnimationStart(animation: Animator?, isReverse: Boolean) {
@@ -104,6 +105,7 @@ class ChatNotiActivity : RootActivity() {
             override fun onAnimationEnd(animation: Animator?) {
                 println("onAnimationEnd 2")
                 finish()
+                overridePendingTransition(0, 0)
             }
         })
 

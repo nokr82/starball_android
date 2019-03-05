@@ -40,7 +40,6 @@ class EditProfileActivity : RootActivity() {
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
-    lateinit var ProfileAdapter: ProfileAdapter
 
     private val SELECT_LANGUAGE_REQUST_CODE = 1004
     private val SELECT_PICTURE_REQUEST = 1002
@@ -65,9 +64,6 @@ class EditProfileActivity : RootActivity() {
     private val SPORTS_SELECT = 109
     private val WORK_SELECT = 110
 
-    var option_list = ArrayList<String>()
-
-    var profiledata = arrayListOf<JSONObject>()
 
     var adapterData = ArrayList<String>()
     var adapterData2 = ArrayList<String>()
@@ -144,6 +140,8 @@ class EditProfileActivity : RootActivity() {
 
         wantmeetAdapter = CharmAdapter(context, R.layout.item_charm_point, adapterData4)
         wantmeetGV.adapter = wantmeetAdapter
+
+
 
         get_info()
         val joinLanguage = PrefUtils.getStringPreference(context, "join_language", "")
@@ -411,7 +409,7 @@ class EditProfileActivity : RootActivity() {
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
                 android.Manifest.permission.READ_EXTERNAL_STORAGE
             )
-            .check();
+            .check()
     }
 
     fun setmenu() {
@@ -444,7 +442,6 @@ class EditProfileActivity : RootActivity() {
                         val profiles = response.getJSONArray("profiles")
                         pictures.clear()
                         for (i in 0..profiles.length() - 1) {
-                            //새로운뷰를 이미지의 길이만큼생성
                             var json = profiles[i] as JSONObject
                             Log.d("제이슨", json.toString())
                             var image_uri = Utils.getString(json, "image_uri")
@@ -455,12 +452,41 @@ class EditProfileActivity : RootActivity() {
                         adapterData.clear()
                         val languages = response.getJSONArray("languages")
                         for (i in 0..languages.length() - 1) {
-                            //새로운뷰를 이미지의 길이만큼생성
                             var json = languages[i] as JSONObject
                             var language = Utils.getString(json, "language")
                             adapterData.add(language)
                         }
                         languageAdapter.notifyDataSetChanged()
+
+
+                        adapterData2.clear()
+                        val charms = response.getJSONArray("charms")
+                        for (i in 0..charms.length() - 1) {
+                            var json = charms[i] as JSONObject
+                            var charm = Utils.getString(json, "charm")
+                            adapterData2.add(charm)
+                        }
+                        charmAdapter.notifyDataSetChanged()
+
+                        adapterData3.clear()
+                        val meets = response.getJSONArray("meets")
+                        for (i in 0..meets.length() - 1) {
+                            var json = meets[i] as JSONObject
+                            var meet = Utils.getString(json, "meet")
+                            adapterData3.add(meet)
+                        }
+                        meetAdapter.notifyDataSetChanged()
+
+                        adapterData4.clear()
+                        val meet_charms = response.getJSONArray("meet_charms")
+                        for (i in 0..meet_charms.length() - 1) {
+                            var json = meet_charms[i] as JSONObject
+                            var charm = Utils.getString(json, "charm")
+                            adapterData4.add(charm)
+                        }
+                        wantmeetAdapter.notifyDataSetChanged()
+
+
 
 
                         email = Utils.getString(member, "email")
@@ -680,7 +706,7 @@ class EditProfileActivity : RootActivity() {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
-                Log.d("에러", errorResponse.toString())
+                Log.d("에러2", errorResponse.toString())
                 throwable.printStackTrace()
                 error()
             }
@@ -694,7 +720,7 @@ class EditProfileActivity : RootActivity() {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
-                Log.d("에러", errorResponse.toString())
+                Log.d("에러3", errorResponse.toString())
                 throwable.printStackTrace()
                 error()
             }
@@ -731,7 +757,11 @@ class EditProfileActivity : RootActivity() {
             picturesArr.add(picture.toString())
         }
         params.put("member_id", member_id)
-        params.put("language", adapterData)
+        params.put("language", adapterData.joinToString())
+        params.put("meet", adapterData3.joinToString())
+        params.put("charm", adapterData2.joinToString())
+        params.put("meet_charm", adapterData4.joinToString())
+        Log.d("언어", adapterData.joinToString())
         if (picturesArr.isNotEmpty()) {
             for ((idx, sp) in picturesArr.withIndex()) {
                 try {
@@ -821,21 +851,21 @@ class EditProfileActivity : RootActivity() {
                 Utils.alert(context, "조회중 장애가 발생하였습니다.")
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                responseString: String?,
-                throwable: Throwable
-            ) {
-                if (progressDialog != null) {
-                    progressDialog!!.dismiss()
-                }
-                Log.d("에러", responseString.toString())
-                // System.out.println(responseString);
+            /* override fun onFailure(
+                 statusCode: Int,
+                 headers: Array<Header>?,
+                 responseString: String?,
+                 throwable: Throwable
+             ) {
+                 if (progressDialog != null) {
+                     progressDialog!!.dismiss()
+                 }
+                 Log.d("에러", responseString.toString())
+                 // System.out.println(responseString);
 
-                throwable.printStackTrace()
-                error()
-            }
+                 throwable.printStackTrace()
+                 error()
+             }*/
 
             override fun onFailure(
                 statusCode: Int,
@@ -880,6 +910,7 @@ class EditProfileActivity : RootActivity() {
             }
         })
     }
+
 
     fun del_img(id: Int) {
         val params = RequestParams()
@@ -1024,8 +1055,8 @@ class EditProfileActivity : RootActivity() {
                 if (pictures.size <= tag) {
                     return@setOnClickListener
                 }
-                Log.d("태그",tag.toString())
-                Log.d("아뒤",id.toString())
+                Log.d("태그", tag.toString())
+                Log.d("아뒤", id.toString())
                 pictures.removeAt(tag)
                 updatePictures()
                 del_img(id)
