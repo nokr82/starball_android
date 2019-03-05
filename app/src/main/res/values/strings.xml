@@ -349,4 +349,9 @@
     <string name="phone_certi">번호 인증하기</string>
     <string name="select_hint">선택해주세요</string>
 
+
+    <!-- 추가-->
+    <string name="version_update">업데이트 하기</string>
+    <string name="version_update_str">보다 나은 사용성을 위해 업데이트해주세요</string>
+
 </resources>

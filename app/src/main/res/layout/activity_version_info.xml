@@ -67,12 +67,13 @@
                 android:text="@string/my_version"/>
 
             <TextView
+                android:id="@+id/myVersionTV"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
                 android:textColor="#0095dc"
-                android:text="version. 1.00.00"/>
+                android:text="version. "/>
 
         </LinearLayout>
 
@@ -92,12 +93,13 @@
                 android:text="@string/new_version"/>
 
             <TextView
+                android:id="@+id/versionTV"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
                 android:textColor="#0095dc"
-                android:text="version. 1.00.00"/>
+                android:text="version. "/>
 
         </LinearLayout>
 
@@ -113,21 +115,37 @@
         android:gravity="center_horizontal"
         android:text="@string/version_content"/>
 
-
-    <TextView
+    <LinearLayout
         android:layout_marginTop="70dp"
-        android:id="@+id/nextTV"
-        android:layout_marginLeft="90dp"
-        android:layout_marginRight="90dp"
-        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="#000000"
-        android:text="@string/new_version_is"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textSize="20.5dp"
-        android:textColor="#ffffff"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/updateTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            android:text="@string/version_update_str"/>
+
+        <TextView
+            android:id="@+id/nextTV"
+            android:layout_marginLeft="90dp"
+            android:layout_marginRight="90dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#000000"
+            android:text="@string/new_version_is"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="20.5dp"
+            android:textColor="#ffffff"/>
+
+
+    </LinearLayout>
 
 
 </LinearLayout>

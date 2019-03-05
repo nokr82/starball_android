@@ -680,7 +680,7 @@ class EditProfileActivity : RootActivity() {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
-                Log.d("에러", errorResponse.toString())
+                Log.d("에러2", errorResponse.toString())
                 throwable.printStackTrace()
                 error()
             }
@@ -694,7 +694,7 @@ class EditProfileActivity : RootActivity() {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
-                Log.d("에러", errorResponse.toString())
+                Log.d("에러3", errorResponse.toString())
                 throwable.printStackTrace()
                 error()
             }
@@ -821,7 +821,7 @@ class EditProfileActivity : RootActivity() {
                 Utils.alert(context, "조회중 장애가 발생하였습니다.")
             }
 
-            override fun onFailure(
+           /* override fun onFailure(
                 statusCode: Int,
                 headers: Array<Header>?,
                 responseString: String?,
@@ -835,7 +835,7 @@ class EditProfileActivity : RootActivity() {
 
                 throwable.printStackTrace()
                 error()
-            }
+            }*/
 
             override fun onFailure(
                 statusCode: Int,
