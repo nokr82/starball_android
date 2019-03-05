@@ -50,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
-                android:background="#e2e2e2">
+                android:background="#f7f7f7">
 
                 <TextView
                     android:textStyle="bold"
@@ -338,7 +338,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
-                android:background="#e2e2e2">
+                android:background="#f7f7f7">
 
                 <TextView
                     android:textStyle="bold"
@@ -361,7 +361,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
-                android:background="#e2e2e2">
+                android:background="#f7f7f7">
 
                 <TextView
                     android:textStyle="bold"
@@ -384,7 +384,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
-                android:background="#e2e2e2">
+                android:background="#f7f7f7">
 
                 <TextView
                     android:textStyle="bold"
@@ -407,7 +407,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
-                android:background="#e2e2e2">
+                android:background="#f7f7f7">
 
                 <TextView
                     android:textStyle="bold"
@@ -431,7 +431,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
-                android:background="#e2e2e2">
+                android:background="#f7f7f7">
 
                 <TextView
                     android:textStyle="bold"
@@ -454,7 +454,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center_vertical"
-                android:background="#e2e2e2">
+                android:background="#f7f7f7">
 
                 <TextView
                     android:textStyle="bold"
