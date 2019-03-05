@@ -197,7 +197,6 @@ class EditProfileActivity : RootActivity() {
         }
     }
 
-
     fun click() {
         nextTV.setOnClickListener {
             edit_info()
@@ -911,7 +910,6 @@ class EditProfileActivity : RootActivity() {
         })
     }
 
-
     fun del_img(id: Int) {
         val params = RequestParams()
         params.put("profile_id", id)
@@ -1069,7 +1067,6 @@ class EditProfileActivity : RootActivity() {
         }
 
     }
-
 
     private fun getIV(idx: Int): ImageView {
         when (idx) {
