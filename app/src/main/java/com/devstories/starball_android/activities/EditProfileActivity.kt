@@ -5,6 +5,7 @@ import android.app.DatePickerDialog
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
@@ -144,7 +145,7 @@ class EditProfileActivity : RootActivity() {
         wantmeetAdapter = CharmAdapter(context, R.layout.item_charm_point, adapterData4)
         wantmeetGV.adapter = wantmeetAdapter
 
-
+        get_info()
         val joinLanguage = PrefUtils.getStringPreference(context, "join_language", "")
         if (joinLanguage.isNotEmpty()) {
             val splited = joinLanguage.split(",")
@@ -202,7 +203,6 @@ class EditProfileActivity : RootActivity() {
     fun click() {
         nextTV.setOnClickListener {
             edit_info()
-            edit()
         }
         languageLL.setOnClickListener {
             val intent = Intent(context, DlgSelectLanguageActivity::class.java)
@@ -375,7 +375,7 @@ class EditProfileActivity : RootActivity() {
             datedlg()
         }
 
-        get_info()
+
     }
 
     fun datedlg() {
@@ -438,6 +438,7 @@ class EditProfileActivity : RootActivity() {
                         val member = response.getJSONObject("member")
 
                         val profiles = response.getJSONArray("profiles")
+                        pictures.clear()
                         for (i in 0..profiles.length()-1){
                             //새로운뷰를 이미지의 길이만큼생성
                             var json=profiles[i] as JSONObject
@@ -460,6 +461,7 @@ class EditProfileActivity : RootActivity() {
 
                         email = Utils.getString(member, "email")
                         height = Utils.getInt(member, "height")
+                        Log.d("멀대",height.toString())
                         intro = Utils.getString(member, "intro")
                         nation = Utils.getString(member, "nation")
                         region = Utils.getString(member, "region")
@@ -486,6 +488,23 @@ class EditProfileActivity : RootActivity() {
                         insta_yn = Utils.getString(member, "insta_yn")
                         travel = Utils.getString(member, "travel")
                         travel_cal = Utils.getString(member, "travel_cal")
+
+
+                        if (email != ""){
+                            emailTV.text = email
+                            emailTV.setTextColor(Color.parseColor("#923b9f"))
+                            emailIV.setImageResource(R.mipmap.op_drop)
+                        }
+                        if (facebook_yn !="N"){
+                            facebookTV.text = "인증되었습니다"
+                            facebookTV.setTextColor(Color.parseColor("#923b9f"))
+                            facebookIV.setImageResource(R.mipmap.op_drop)
+                        }
+                        if (insta_yn != "N"){
+                            instaTV.text = "인증되었습니다"
+                            instaTV.setTextColor(Color.parseColor("#923b9f"))
+                            instaIV.setImageResource(R.mipmap.op_drop)
+                        }
 
                         if (nation != ""){
                             nationTV.text = nation
@@ -542,7 +561,7 @@ class EditProfileActivity : RootActivity() {
                         } else {
                             knowIV.setImageResource(R.mipmap.comm_check_off)
                         }
-                        if (height!= -1){
+                        if (height != -1){
                             heightTV.text = height.toString()
                             heightIV.setImageResource(R.mipmap.setting_drop_right)
                         }else{
@@ -607,11 +626,6 @@ class EditProfileActivity : RootActivity() {
                         }else{
                             workIV.setImageResource(R.mipmap.plus_op)
                         }
-
-
-
-
-
 
 
                     } else {
@@ -705,6 +719,39 @@ class EditProfileActivity : RootActivity() {
         var member_id = PrefUtils.getIntPreference(context, "member_id")
 
         val params = RequestParams()
+
+        var picturesArr = ArrayList<String>()
+        for (picture in pictures) {
+            picturesArr.add(picture.toString())
+        }
+        params.put("member_id", member_id)
+        params.put("language", adapterData)
+        if(picturesArr.isNotEmpty()) {
+            for ((idx, sp) in  picturesArr.withIndex()) {
+                try {
+                    val picture = JSONObject(sp)
+
+                    val id = Utils.getInt(picture!!, "id")
+                    val path = Utils.getString(picture!!, "path")
+                    val mediaType = Utils.getInt(picture!!, "mediaType")
+
+                    if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
+                        var bitmap = Utils.getImage(context.contentResolver, path)
+                        Log.d("이미지",bitmap.toString())
+                        params.put("images[$idx]", ByteArrayInputStream(Utils.getByteArray(bitmap)), "${System.currentTimeMillis()}.png")
+                    } else {
+                        val file = File(path)
+                        var videoBytes = file.readBytes()
+                        params.put("images[$idx]", ByteArrayInputStream(videoBytes), "${System.currentTimeMillis()}.mp4")
+                    }
+                    params.put("media_types[$idx]", mediaType)
+
+                } catch (e:Exception) {
+
+                }
+            }
+
+        }
         params.put("member_id", member_id)
         params.put("intro", intro)
         params.put("nation", nation)
@@ -818,138 +865,8 @@ class EditProfileActivity : RootActivity() {
         })
     }
 
+    fun del_img(){
 
-    fun edit() {
-
-        val member_id = PrefUtils.getIntPreference(context, "member_id")
-        var picturesArr = ArrayList<String>()
-        for (picture in pictures) {
-            picturesArr.add(picture.toString())
-        }
-
-
-
-        val params = RequestParams()
-        params.put("member_id", member_id)
-        params.put("language", adapterData)
-        if(picturesArr.isNotEmpty()) {
-            for ((idx, sp) in  picturesArr.withIndex()) {
-                try {
-                    val picture = JSONObject(sp)
-
-                    val id = Utils.getInt(picture!!, "id")
-                    val path = Utils.getString(picture!!, "path")
-                    val mediaType = Utils.getInt(picture!!, "mediaType")
-
-                    if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
-                        var bitmap = Utils.getImage(context.contentResolver, path)
-                        params.put("images[$idx]", ByteArrayInputStream(Utils.getByteArray(bitmap)), "${System.currentTimeMillis()}.png")
-                    } else {
-                        val file = File(path)
-                        var videoBytes = file.readBytes()
-                        params.put("images[$idx]", ByteArrayInputStream(videoBytes), "${System.currentTimeMillis()}.mp4")
-                    }
-                    params.put("media_types[$idx]", mediaType)
-
-                } catch (e:Exception) {
-
-                }
-            }
-
-        }
-        // pictures
-        Log.d("결과2",adapterData.toString())
-        JoinAction.join(params, object : JsonHttpResponseHandler() {
-
-            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
-                if (progressDialog != null) {
-                    progressDialog!!.dismiss()
-                }
-
-                try {
-                    val result = response!!.getString("result")
-
-                    if ("ok" == result || "already" == result) {
-
-                    } else {
-                        Utils.alert(context, "조회중 장애가 발생하였습니다.")
-                    }
-
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
-
-            }
-
-            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
-                super.onSuccess(statusCode, headers, response)
-            }
-
-            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
-
-                // System.out.println(responseString);
-            }
-
-            private fun error() {
-                Utils.alert(context, "조회중 장애가 발생하였습니다.")
-            }
-
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                responseString: String?,
-                throwable: Throwable
-            ) {
-                if (progressDialog != null) {
-                    progressDialog!!.dismiss()
-                }
-
-                // System.out.println(responseString);
-
-                throwable.printStackTrace()
-                error()
-            }
-
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONObject?
-            ) {
-                if (progressDialog != null) {
-                    progressDialog!!.dismiss()
-                }
-                throwable.printStackTrace()
-                error()
-            }
-
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONArray?
-            ) {
-                if (progressDialog != null) {
-                    progressDialog!!.dismiss()
-                }
-                throwable.printStackTrace()
-                error()
-            }
-
-            override fun onStart() {
-                // show dialog
-                if (progressDialog != null) {
-
-                    progressDialog!!.show()
-                }
-            }
-
-            override fun onFinish() {
-                if (progressDialog != null) {
-                    progressDialog!!.dismiss()
-                }
-            }
-        })
     }
 
     private fun updatePictures() {
