@@ -6,9 +6,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.devstories.starball_android.actions.JoinAction
 import com.devstories.starball_android.R
+import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.adapter.LanguageAdapter
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import com.loopj.android.http.JsonHttpResponseHandler
@@ -32,10 +35,16 @@ class SearchSettingActivity : RootActivity() {
 
     var adapterData = ArrayList<String>()
 
+    var search_gender = ""
     var gender = ""
 
-    var option = -1
-    var option_list= ArrayList<String>()
+
+    var vvipview_yn = "N"
+    var saveview_yn = "N"
+    var other_nation = "N"
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,45 +84,49 @@ class SearchSettingActivity : RootActivity() {
         menIV.setOnClickListener {
             setmenu()
             menIV.setImageResource(R.mipmap.comm_check_on)
-            gender = "M"
+            search_gender = "M"
         }
         girlIV.setOnClickListener {
             setmenu()
             girlIV.setImageResource(R.mipmap.comm_check_on)
-            gender = "F"
+            search_gender = "F"
         }
+
+
         nationLL.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if(it.isSelected) {
-                option_list.add("1")
-                nationIV.setImageResource(R.mipmap.comm_check_on)
-            } else {
-                option_list.remove("1")
+            if (other_nation =="Y"){
+                other_nation = "N"
                 nationIV.setImageResource(R.mipmap.comm_check_off)
+            }else{
+                other_nation = "Y"
+                nationIV.setImageResource(R.mipmap.comm_check_on)
             }
         }
         saveLL.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if(it.isSelected) {
-                option_list.add("2")
-                saveIV.setImageResource(R.mipmap.comm_check_on)
-            } else {
-                option_list.remove("2")
+            if (saveview_yn =="Y"){
+                saveview_yn = "N"
                 saveIV.setImageResource(R.mipmap.comm_check_off)
+            }else{
+                saveview_yn = "Y"
+                saveIV.setImageResource(R.mipmap.comm_check_on)
             }
         }
         vvipLL.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if(it.isSelected) {
-                option_list.add("3")
-                vvipIV.setImageResource(R.mipmap.comm_check_on)
-            } else {
-                option_list.remove("3")
+            if (vvipview_yn =="Y"){
+                vvipview_yn = "N"
                 vvipIV.setImageResource(R.mipmap.comm_check_off)
+            }else{
+                vvipview_yn = "Y"
+                vvipIV.setImageResource(R.mipmap.comm_check_on)
             }
         }
 
 
+        nextTV.setOnClickListener {
+            edit_search()
+        }
+
+        get_info()
     }
 
     fun setmenu(){
@@ -124,9 +137,14 @@ class SearchSettingActivity : RootActivity() {
 
 
     fun edit_search() {
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
+
         val params = RequestParams()
-        params.put("gender", gender)
-        params.put("option_list", option_list)
+        params.put("member_id", member_id)
+        params.put("vvipview_yn", vvipview_yn)
+        params.put("saveview_yn", saveview_yn)
+        params.put("other_nation", other_nation)
+        params.put("search_gender", search_gender)
 
         JoinAction.final_join(params, object : JsonHttpResponseHandler() {
 
@@ -140,7 +158,7 @@ class SearchSettingActivity : RootActivity() {
 
                     Log.d("결과",result.toString())
                     if ("ok" == result) {
-
+                        Toast.makeText(context,"변경되었습니다",Toast.LENGTH_SHORT).show()
                     } else {
 
                     }
@@ -219,6 +237,142 @@ class SearchSettingActivity : RootActivity() {
             }
         })
     }
+    fun get_info() {
+
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+
+        MemberAction.get_info(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    Log.d("결과", result.toString())
+                    if ("ok" == result) {
+
+                        val member = response.getJSONObject("member")
+
+                        vvipview_yn = Utils.getString(member,"vvipview_yn")
+                        saveview_yn = Utils.getString(member,"saveview_yn")
+                        other_nation = Utils.getString(member,"other_nation")
+                        gender = Utils.getString(member,"gender")
+                        search_gender = Utils.getString(member,"search_gender")
+
+
+
+
+                        if (search_gender =="F"){
+                            girlIV.setImageResource(R.mipmap.comm_check_on)
+                        }else if (search_gender =="M"){
+                            menIV.setImageResource(R.mipmap.comm_check_on)
+                        }
+
+
+                        if (vvipview_yn =="Y"){
+                            vvipIV.setImageResource(R.mipmap.comm_check_on)
+                        }else{
+                            vvipIV.setImageResource(R.mipmap.comm_check_off)
+                        }
+                        if (saveview_yn =="Y"){
+                            saveIV.setImageResource(R.mipmap.comm_check_on)
+                        }else{
+                            saveIV.setImageResource(R.mipmap.comm_check_off)
+                        }
+                        if (other_nation =="Y"){
+                            nationIV.setImageResource(R.mipmap.comm_check_on)
+                        }else{
+                            nationIV.setImageResource(R.mipmap.comm_check_off)
+                        }
+
+
+
+
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

@@ -319,7 +319,6 @@
             </LinearLayout>
 
             <TextView
-
                 android:layout_marginTop="34.5dp"
                 android:id="@+id/nextTV"
                 android:layout_marginLeft="20dp"
