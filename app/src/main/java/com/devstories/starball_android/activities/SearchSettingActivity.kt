@@ -145,6 +145,7 @@ class SearchSettingActivity : RootActivity() {
         params.put("saveview_yn", saveview_yn)
         params.put("other_nation", other_nation)
         params.put("search_gender", search_gender)
+        params.put("language", adapterData.joinToString())
 
         JoinAction.final_join(params, object : JsonHttpResponseHandler() {
 

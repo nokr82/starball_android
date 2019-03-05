@@ -442,7 +442,6 @@ class EditProfileActivity : RootActivity() {
                         val profiles = response.getJSONArray("profiles")
                         pictures.clear()
                         for (i in 0..profiles.length() - 1) {
-                            //새로운뷰를 이미지의 길이만큼생성
                             var json = profiles[i] as JSONObject
                             Log.d("제이슨", json.toString())
                             var image_uri = Utils.getString(json, "image_uri")
@@ -453,12 +452,41 @@ class EditProfileActivity : RootActivity() {
                         adapterData.clear()
                         val languages = response.getJSONArray("languages")
                         for (i in 0..languages.length() - 1) {
-                            //새로운뷰를 이미지의 길이만큼생성
                             var json = languages[i] as JSONObject
                             var language = Utils.getString(json, "language")
                             adapterData.add(language)
                         }
                         languageAdapter.notifyDataSetChanged()
+
+
+                        adapterData2.clear()
+                        val charms = response.getJSONArray("charms")
+                        for (i in 0..charms.length() - 1) {
+                            var json = charms[i] as JSONObject
+                            var charm = Utils.getString(json, "charm")
+                            adapterData2.add(charm)
+                        }
+                        charmAdapter.notifyDataSetChanged()
+
+                        adapterData3.clear()
+                        val meets = response.getJSONArray("meets")
+                        for (i in 0..meets.length() - 1) {
+                            var json = meets[i] as JSONObject
+                            var meet = Utils.getString(json, "meet")
+                            adapterData3.add(meet)
+                        }
+                        meetAdapter.notifyDataSetChanged()
+
+                        adapterData4.clear()
+                        val meet_charms = response.getJSONArray("meet_charms")
+                        for (i in 0..meet_charms.length() - 1) {
+                            var json = meet_charms[i] as JSONObject
+                            var charm = Utils.getString(json, "charm")
+                            adapterData4.add(charm)
+                        }
+                        wantmeetAdapter.notifyDataSetChanged()
+
+
 
 
                         email = Utils.getString(member, "email")
@@ -732,7 +760,7 @@ class EditProfileActivity : RootActivity() {
         params.put("language", adapterData.joinToString())
         params.put("meet", adapterData3.joinToString())
         params.put("charm", adapterData2.joinToString())
-        params.put("wantcharm", adapterData4.joinToString())
+        params.put("meet_charm", adapterData4.joinToString())
         Log.d("언어", adapterData.joinToString())
         if (picturesArr.isNotEmpty()) {
             for ((idx, sp) in picturesArr.withIndex()) {
