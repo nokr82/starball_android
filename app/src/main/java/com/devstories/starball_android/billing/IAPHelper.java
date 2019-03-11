@@ -44,8 +44,15 @@ public class IAPHelper implements ServiceConnection {
     private void detail() {
 
         ArrayList<String> skuList = new ArrayList<String> ();
-        skuList.add("1gb");
-        skuList.add("600mb");
+        skuList.add("starball_02");
+        skuList.add("starball_05");
+        skuList.add("starball_10");
+        skuList.add("starball_20");
+        skuList.add("starball_30");
+        skuList.add("starball_50");
+        skuList.add("starball_100");
+        skuList.add("starball_24h");
+        skuList.add("safety");
 
         Bundle querySkus = new Bundle();
         querySkus.putStringArrayList("ITEM_ID_LIST", skuList);

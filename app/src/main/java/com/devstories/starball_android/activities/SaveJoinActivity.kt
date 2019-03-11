@@ -14,6 +14,7 @@ import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
+import com.devstories.starball_android.billing.IAPHelper
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 import cz.msebera.android.httpclient.Header
@@ -32,12 +33,41 @@ class SaveJoinActivity : RootActivity() {
 
     var savejoin_yn = "N"
 
+    var member_id = -1
+
+    private var iapHelper: IAPHelper? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_save_join)
+
         this.context = this
         progressDialog = ProgressDialog(context)
 
+        member_id = PrefUtils.getIntPreference(context, "member_id")
+
+        iapHelper = IAPHelper(this, object : IAPHelper.BuyListener {
+
+            override fun bought(sku: String, purchaseToken: String) {
+
+                println("$sku bought!!! $purchaseToken")
+
+                join_safe(purchaseToken)
+
+//                if ("1gb" == sku) {
+//                    setCharge(1024*1024*1024, purchaseToken)
+//                } else if ("600mb" == sku) {
+//                    setCharge(1024*1024*600, purchaseToken)
+//                }
+
+            }
+
+            override fun failed(e: Exception) {
+                e.printStackTrace()
+
+                Utils.alert(context, "구매 중 장애가 발생하였습니다. " + e.localizedMessage)
+            }
+        })
 
         get_info()
 
@@ -54,12 +84,13 @@ class SaveJoinActivity : RootActivity() {
                 val intent = Intent(context, SaveJoinOverActivity::class.java)
                 startActivity(intent)
             } else {
-                join_safe()
+
+                iapHelper?.buy("safety")
+//                join_safe()
             }
 
         }
         noTV.setOnClickListener {
-
             finish()
         }
 
@@ -67,8 +98,6 @@ class SaveJoinActivity : RootActivity() {
 
 
     fun get_info() {
-
-        var member_id = PrefUtils.getIntPreference(context, "member_id")
 
         val params = RequestParams()
         params.put("member_id", member_id)
@@ -89,7 +118,6 @@ class SaveJoinActivity : RootActivity() {
                         val member = response.getJSONObject("member")
 
                         savejoin_yn = Utils.getString(member, "savejoin_yn")
-
 
                     } else {
 
@@ -155,16 +183,13 @@ class SaveJoinActivity : RootActivity() {
         })
     }
 
-    fun join_safe() {
-        var member_id = PrefUtils.getIntPreference(context, "member_id")
+    fun join_safe(purchaseToken: String) {
 
         val params = RequestParams()
-
         params.put("member_id", member_id)
         params.put("price", 50000)
         params.put("pay_type", "1")
-
-
+        params.put("purchaseToken", purchaseToken)
 
         JoinAction.join_safety(params, object : JsonHttpResponseHandler() {
 
@@ -179,6 +204,9 @@ class SaveJoinActivity : RootActivity() {
                     Log.d("결과", result.toString())
                     if ("ok" == result) {
                         Toast.makeText(context, "가입되었습니다", Toast.LENGTH_SHORT).show()
+
+                        iapHelper?.consume(purchaseToken)
+
                         get_info()
                         val intent = Intent()
                         intent.putExtra("result", "result")
@@ -266,5 +294,19 @@ class SaveJoinActivity : RootActivity() {
         })
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+        if (iapHelper != null) {
+            iapHelper!!.destroy()
+        }
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        iapHelper!!.onActivityResult(requestCode, resultCode, data)
+    }
 
 }

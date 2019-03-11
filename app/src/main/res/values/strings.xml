@@ -355,5 +355,7 @@
     <string name="version_update_str">보다 나은 사용성을 위해 업데이트해주세요</string>
     <string name="logout_confirm">로그아웃 하시겠습니까?</string>
     <string name="secession_confirm">계정을 삭제 하시겠습니까?</string>
+    <string name="cash_starball_empty">Cash 요청할 Starball 갯수를 입력해주세요.</string>
+    <string name="cash_starball_confirm">Cash 요청할 Starball 갯수를 확인해주세요.</string>
 
 </resources>

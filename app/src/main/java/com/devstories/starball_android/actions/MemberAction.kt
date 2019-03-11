@@ -24,4 +24,10 @@ object MemberAction {
     fun secession(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/members/secession", params, handler)
     }
+    fun starball_history(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/starball_history", params, handler)
+    }
+    fun cash_request(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/cash_request", params, handler)
+    }
 }

@@ -155,8 +155,7 @@ class SettingMainActivity : RootActivity() {
                         val name = Utils.getString(member, "name")
                         nameTV.text = name
 
-
-
+                        starballTV.text = Utils.getInt(response, "starball").toString()
 
                     } else {
 

@@ -9,7 +9,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.devstories.starball_android.R
-import com.devstories.starball_android.adapter.AdverAdapter
 import com.devstories.starball_android.base.RootActivity
 import kotlinx.android.synthetic.main.activity_vvip_join.*
 
@@ -25,9 +24,7 @@ class VVIPJoinActivity : RootActivity() {
         "vvip5",
         "vvip6",
         "vvip7"
-
     )
-    private lateinit var adverAdapter: AdverAdapter
     var adPosition = 0
 
     private var adTime = 0

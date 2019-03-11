@@ -9,6 +9,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.*;
 import android.graphics.Bitmap.CompressFormat;
+import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
 import android.media.ExifInterface;
 import android.net.ConnectivityManager;
@@ -1094,6 +1095,15 @@ public class Utils {
             list.add(m.group(1));
         }
         return list;
+    }
+
+    public static Bitmap convertToBitmap(Drawable drawable, int widthPixels, int heightPixels) {
+        Bitmap mutableBitmap = Bitmap.createBitmap(widthPixels, heightPixels, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(mutableBitmap);
+        drawable.setBounds(0, 0, widthPixels, heightPixels);
+        drawable.draw(canvas);
+
+        return mutableBitmap;
     }
 
     public static Object[] convertTag(final Context context, String workingText, boolean clickable) {

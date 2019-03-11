@@ -1309,6 +1309,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/facebookLL"
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"

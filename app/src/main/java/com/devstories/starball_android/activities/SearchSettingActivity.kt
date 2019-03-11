@@ -21,6 +21,9 @@ import kotlinx.android.synthetic.main.activity_search_setting.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.support.v4.content.ContextCompat
 
 class SearchSettingActivity : RootActivity() {
 
@@ -29,24 +32,21 @@ class SearchSettingActivity : RootActivity() {
 
     private val SELECT_LANGUAGE_REQUST_CODE = 1004
 
-
     lateinit var languageAdapter: LanguageAdapter
-
 
     var adapterData = ArrayList<String>()
 
     var search_gender = ""
     var gender = ""
 
-
     var vvipview_yn = "N"
     var saveview_yn = "N"
     var other_nation = "N"
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_setting)
+
         this.context = this
         progressDialog = ProgressDialog(context)
 
@@ -58,8 +58,47 @@ class SearchSettingActivity : RootActivity() {
             languageAdapter.notifyDataSetChanged()
         }
 
+        ageSB.setOnRangeSeekbarChangeListener { minValue, maxValue ->
+
+            minAgeTV.text = minValue.toString()
+            maxAgeTV.text = maxValue.toString()
+
+        }
+
+        distanceSB.setOnRangeSeekbarChangeListener { minValue, maxValue ->
+            minDistanceTV.text = minValue.toString()
+            maxDistanceTV.text = maxValue.toString()
+        }
+
+        heightSB.setOnRangeSeekbarChangeListener { minValue, maxValue ->
+            minHeightTV.text = minValue.toString()
+            maxHeightTV.text = maxValue.toString()
+        }
+
+        seekBarSet()
+
         click()
 
+    }
+
+    fun seekBarSet() {
+
+        var thump = Utils.convertToBitmap(ContextCompat.getDrawable(applicationContext, R.drawable.circle_background_ffffff_border_5_923b9f), Utils.dpToPx(18f).toInt(), Utils.dpToPx(18f).toInt())
+
+        ageSB.setLeftThumbBitmap(thump).apply()
+        ageSB.setLeftThumbHighlightBitmap(thump).apply()
+        ageSB.setRightThumbBitmap(thump).apply()
+        ageSB.setRightThumbHighlightBitmap(thump).apply()
+
+        distanceSB.setLeftThumbBitmap(thump).apply()
+        distanceSB.setLeftThumbHighlightBitmap(thump).apply()
+        distanceSB.setRightThumbBitmap(thump).apply()
+        distanceSB.setRightThumbHighlightBitmap(thump).apply()
+
+        heightSB.setLeftThumbBitmap(thump).apply()
+        heightSB.setLeftThumbHighlightBitmap(thump).apply()
+        heightSB.setRightThumbBitmap(thump).apply()
+        heightSB.setRightThumbHighlightBitmap(thump).apply()
     }
 
     fun click() {
@@ -80,17 +119,17 @@ class SearchSettingActivity : RootActivity() {
         }
 
 
-        menIV.setOnClickListener {
+        maleLL.setOnClickListener {
             setmenu()
             menIV.setImageResource(R.mipmap.comm_check_on)
             search_gender = "M"
         }
-        girlIV.setOnClickListener {
+
+        femaleLL.setOnClickListener {
             setmenu()
             girlIV.setImageResource(R.mipmap.comm_check_on)
             search_gender = "F"
         }
-
 
         nationLL.setOnClickListener {
             if (other_nation == "Y") {
@@ -101,6 +140,7 @@ class SearchSettingActivity : RootActivity() {
                 nationIV.setImageResource(R.mipmap.comm_check_on)
             }
         }
+
         saveLL.setOnClickListener {
             if (saveview_yn == "Y") {
                 saveview_yn = "N"
@@ -110,6 +150,7 @@ class SearchSettingActivity : RootActivity() {
                 saveIV.setImageResource(R.mipmap.comm_check_on)
             }
         }
+
         vvipLL.setOnClickListener {
             if (vvipview_yn == "Y") {
                 vvipview_yn = "N"
@@ -120,10 +161,16 @@ class SearchSettingActivity : RootActivity() {
             }
         }
 
-
         nextTV.setOnClickListener {
             edit_search()
         }
+
+        val icon = BitmapFactory.decodeResource(
+            context.resources,
+            com.devstories.starball_android.R.drawable.circle_background_ffffff_border_5_923b9f
+        )
+
+
 
         get_info()
     }
@@ -144,6 +191,12 @@ class SearchSettingActivity : RootActivity() {
         params.put("other_nation", other_nation)
         params.put("search_gender", search_gender)
         params.put("like_language", adapterData.joinToString())
+        params.put("min_age", ageSB.selectedMinValue)
+        params.put("max_age", ageSB.selectedMaxValue)
+        params.put("min_distance", distanceSB.selectedMinValue)
+        params.put("max_distance", distanceSB.selectedMaxValue)
+        params.put("min_height", heightSB.selectedMinValue)
+        params.put("max_height", heightSB.selectedMaxValue)
 
         JoinAction.final_join(params, object : JsonHttpResponseHandler() {
 
@@ -266,8 +319,8 @@ class SearchSettingActivity : RootActivity() {
                         gender = Utils.getString(member, "gender")
                         search_gender = Utils.getString(member, "search_gender")
 
-
                         adapterData.clear()
+
                         val like_languages = response.getJSONArray("like_languages")
                         for (i in 0..like_languages.length() - 1) {
                             var json = like_languages[i] as JSONObject
@@ -282,7 +335,6 @@ class SearchSettingActivity : RootActivity() {
                         } else if (search_gender == "M") {
                             menIV.setImageResource(R.mipmap.comm_check_on)
                         }
-
 
                         if (vvipview_yn == "Y") {
                             vvipIV.setImageResource(R.mipmap.comm_check_on)
@@ -300,6 +352,48 @@ class SearchSettingActivity : RootActivity() {
                             nationIV.setImageResource(R.mipmap.comm_check_off)
                         }
 
+                        val min_age = Utils.getInt(member, "min_age")
+                        val max_age = Utils.getInt(member, "max_age")
+
+                        minAgeTV.text = min_age.toString()
+                        maxAgeTV.text = max_age.toString()
+
+                        ageSB.setMinStartValue(min_age.toFloat()).apply()
+                        ageSB.setMaxStartValue(max_age.toFloat()).apply()
+
+                        var min_distance = Utils.getInt(member, "min_distance")
+                        var max_distance = Utils.getInt(member, "max_distance")
+
+                        if (min_distance < 0) {
+                            min_distance = 0
+                        }
+
+                        if (max_distance < 0) {
+                            max_distance = 100
+                        }
+
+                        minDistanceTV.text = min_distance.toString()
+                        maxDistanceTV.text = max_distance.toString()
+
+                        distanceSB.setMinStartValue(min_distance.toFloat()).apply()
+                        distanceSB.setMaxStartValue(max_distance.toFloat()).apply()
+
+                        var min_height = Utils.getInt(member, "min_height")
+                        var max_height = Utils.getInt(member, "max_height")
+
+                        if (min_height < 0) {
+                            min_height = 140
+                        }
+
+                        if (max_height < 0) {
+                            max_height = 250
+                        }
+
+                        minHeightTV.text = min_height.toString()
+                        maxHeightTV.text = max_height.toString()
+
+                        heightSB.setMinStartValue(min_height.toFloat()).apply()
+                        heightSB.setMaxStartValue(max_height.toFloat()).apply()
 
                     } else {
 

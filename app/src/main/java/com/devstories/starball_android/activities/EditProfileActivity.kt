@@ -142,9 +142,6 @@ class EditProfileActivity : RootActivity() {
         wantmeetAdapter = CharmAdapter(context, R.layout.item_charm_point, adapterData4)
         wantmeetGV.adapter = wantmeetAdapter
 
-
-
-        get_info()
         val joinLanguage = PrefUtils.getStringPreference(context, "join_language", "")
         if (joinLanguage.isNotEmpty()) {
             val splited = joinLanguage.split(",")
@@ -155,8 +152,14 @@ class EditProfileActivity : RootActivity() {
             languageAdapter.notifyDataSetChanged()
         }
 
+        facebookLL.setOnClickListener {
+
+        }
+
         profileclick()
         click()
+
+        get_info()
     }
 
     fun profileclick() {
