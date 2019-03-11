@@ -17,7 +17,6 @@ import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.CharmAdapter
 import com.devstories.starball_android.adapter.LanguageAdapter
-import com.devstories.starball_android.adapter.ProfileAdapter
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
@@ -45,6 +44,8 @@ class EditProfileActivity : RootActivity() {
     private val SELECT_PICTURE_REQUEST = 1002
     private val SELECT_NATION = 1005
     private val SELECT_TRAVEL = 1006
+
+    private val SAVE_JOIN = 1007
 
     private var pictures = arrayListOf<JSONObject>()
 
@@ -197,7 +198,6 @@ class EditProfileActivity : RootActivity() {
         }
     }
 
-
     fun click() {
         nextTV.setOnClickListener {
             edit_info()
@@ -297,7 +297,7 @@ class EditProfileActivity : RootActivity() {
         }
         saveLL.setOnClickListener {
             val intent = Intent(context, SaveJoinActivity::class.java)
-            startActivity(intent)
+            startActivityForResult(intent,SAVE_JOIN)
         }
         emailLL.setOnClickListener {
             val intent = Intent(context, EmailConnectActivity::class.java)
@@ -519,6 +519,12 @@ class EditProfileActivity : RootActivity() {
                         travel = Utils.getString(member, "travel")
                         travel_cal = Utils.getString(member, "travel_cal")
 
+
+                        if (savejoin_yn=="Y"){
+                            saveTV.text = "인증되었습니다"
+                            saveTV.setTextColor(Color.parseColor("#923b9f"))
+                            saveIV.setImageResource(R.mipmap.op_drop)
+                        }
 
                         if (email != "") {
                             emailTV.text = email
@@ -807,7 +813,6 @@ class EditProfileActivity : RootActivity() {
         params.put("limit_yn", limit_yn)
         params.put("cross_yn", cross_yn)
         params.put("ghost_yn", ghost_yn)
-        params.put("savejoin_yn", savejoin_yn)
         params.put("phone_yn", phone_yn)
         params.put("email_yn", email_yn)
         params.put("facebook_yn", facebook_yn)
@@ -910,7 +915,6 @@ class EditProfileActivity : RootActivity() {
             }
         })
     }
-
 
     fun del_img(id: Int) {
         val params = RequestParams()
@@ -1035,13 +1039,13 @@ class EditProfileActivity : RootActivity() {
                     var bitmap = Utils.getImage(context.contentResolver, path)
                     imageIV.setImageBitmap(bitmap)
                 } else {
-                    val curThumb = MediaStore.Video.Thumbnails.getThumbnail(
+                  /*  val curThumb = MediaStore.Video.Thumbnails.getThumbnail(
                         context.contentResolver,
                         id.toLong(),
                         MediaStore.Video.Thumbnails.MINI_KIND,
                         null
-                    )
-                    imageIV.setImageBitmap(curThumb)
+                    )*/
+//                    imageIV.setImageBitmap(curThumb)
                 }
             }
             var bitmap = Config.url + image_uri
@@ -1069,7 +1073,6 @@ class EditProfileActivity : RootActivity() {
         }
 
     }
-
 
     private fun getIV(idx: Int): ImageView {
         when (idx) {
@@ -1185,6 +1188,14 @@ class EditProfileActivity : RootActivity() {
                     }
                 }
             }
+            SAVE_JOIN -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    if (data != null) {
+                       get_info()
+                    }
+                }
+            }
+
             SELECT_TRAVEL -> {
                 if (resultCode == Activity.RESULT_OK) {
                     if (data != null) {

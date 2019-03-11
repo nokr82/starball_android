@@ -18,8 +18,10 @@ object JoinAction {
     fun final_join(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/members/edit", params, handler)
     }
-
-
+    // 안전회원가입
+    fun join_safety(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/join_safety", params, handler)
+    }
     // 회원가입
     fun join(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/members/join", params, handler)
