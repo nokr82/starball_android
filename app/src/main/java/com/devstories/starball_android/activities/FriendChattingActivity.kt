@@ -1,38 +1,89 @@
 package com.devstories.starball_android.activities
 
+import android.Manifest
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.provider.MediaStore
+import android.support.v4.app.ActivityCompat
+import android.support.v4.content.ContextCompat
 import android.view.View
+import android.widget.AbsListView
+import android.widget.BaseAdapter
 import com.devstories.starball_android.R
-import com.devstories.starball_android.adapter.DaillyAdapter
-import com.devstories.starball_android.adapter.GroupAdapter
+import com.devstories.starball_android.actions.ChattingAction
+import com.devstories.starball_android.adapter.ChattingAdapter
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
+import com.devstories.starball_android.base.Utils
+import com.loopj.android.http.JsonHttpResponseHandler
+import com.loopj.android.http.RequestParams
+import cz.msebera.android.httpclient.Header
 import kotlinx.android.synthetic.main.activity_friend_chatting.*
+import org.json.JSONException
+import org.json.JSONObject
+import java.io.ByteArrayInputStream
+import java.util.*
+import java.text.SimpleDateFormat
 
 
-class FriendChattingActivity : RootActivity() {
+class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
+
+    private var userScrolled: Boolean = false
+    private var lastItemVisibleFlag: Boolean = false
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
-    lateinit var GroupAdapter: GroupAdapter
+    var member_id = -1
+    var room_id = -1
+
+    var first_id = -1
+    var last_id = -1
+
+    var translation_yn = ""
+
+    lateinit var adapter: ChattingAdapter
+    var adapterData = ArrayList<JSONObject>()
+
+    internal var loadDataHandler: Handler = object : Handler() {
+        override fun handleMessage(msg: android.os.Message) {
+            chatting()
+        }
+    }
+
+    private var timer: Timer? = null
+
+    private val FROM_ALBUM = 101
+    private val REQUEST_PERMISSION_READ_EXTERNAL_STORAGE = 2
+    private var selectedImage: Bitmap? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_friend_chatting)
+
         this.context = this
         progressDialog = ProgressDialog(context)
 
+        member_id = PrefUtils.getIntPreference(context, "member_id")
 
-        GroupAdapter = GroupAdapter(context, R.layout.item_chatting, 30)
-        groupLV.adapter = GroupAdapter
-        groupLV.setOnItemClickListener { parent, view, position, id ->
+        room_id = intent.getIntExtra("room_id", -1)
+
+        adapter = ChattingAdapter(context, R.layout.item_chatting, adapterData, this)
+        listLV.adapter = adapter
+        listLV.setOnScrollListener(this)
+
+        listLV.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(context, DlgProposeActivity::class.java)
             startActivity(intent)
         }
 
-        groupLV.setOnItemLongClickListener { parent, view, position, id ->
+        listLV.setOnItemLongClickListener { parent, view, position, id ->
 
 
             return@setOnItemLongClickListener true
@@ -59,9 +110,6 @@ class FriendChattingActivity : RootActivity() {
             }
         }
 
-
-
-
         plusLL.setOnClickListener {
             it.isSelected = !it.isSelected
             if (it.isSelected) {
@@ -70,6 +118,7 @@ class FriendChattingActivity : RootActivity() {
                 emoLL.visibility = View.GONE
             }
         }
+
         languageIV.setOnClickListener {
             it.isSelected = !it.isSelected
             if (it.isSelected) {
@@ -85,12 +134,536 @@ class FriendChattingActivity : RootActivity() {
             finish()
         }
 
+        sendLL.setOnClickListener {
 
+            val contents = Utils.getString(contentsET)
 
+            if ("" == contents) {
+                return@setOnClickListener
+            }
 
+            sendChatting(1)
+
+        }
+
+        sendImageIV.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+                loadPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_PERMISSION_READ_EXTERNAL_STORAGE)
+            } else {
+                imageFromGallery()
+            }
+        }
+
+        detail()
+        timerStart()
 
     }
 
+    private fun loadPermissions(perm: String, requestCode: Int) {
+        if (ContextCompat.checkSelfPermission(this, perm) !== PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(perm), requestCode)
+        } else {
+            imageFromGallery()
+        }
+    }
+
+    private fun imageFromGallery() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        startActivityForResult(intent, FROM_ALBUM)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when (requestCode) {
+            REQUEST_PERMISSION_READ_EXTERNAL_STORAGE -> {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    imageFromGallery()
+                } else {
+                    // no granted
+                }
+                return
+            }
+        }
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == RESULT_OK) {
+            when (requestCode) {
+                FROM_ALBUM -> if (data != null && data.data != null) {
+                    val selectedImageUri = data.data
+
+                    val filePathColumn = arrayOf(MediaStore.MediaColumns.DATA)
+
+                    val cursor = context!!.contentResolver.query(selectedImageUri!!, filePathColumn, null, null, null)
+                    if (cursor!!.moveToFirst()) {
+                        val columnIndex = cursor.getColumnIndex(filePathColumn[0])
+                        val picturePath = cursor.getString(columnIndex)
+
+                        cursor.close()
+
+                        selectedImage = Utils.getImage(context!!.contentResolver, picturePath)
+
+                        sendChatting(2)
+
+                    }
+                }
+
+            }
+        }
+    }
+
+    fun timerStart(){
+        val task = object : TimerTask() {
+            override fun run() {
+                loadDataHandler.sendEmptyMessage(0)
+            }
+        }
+
+        timer = Timer()
+        timer!!.schedule(task, 0, 2000)
+
+    }
+
+    fun detail() {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("room_id", room_id)
+
+        ChattingAction.detail(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+
+                        val room = response.getJSONObject("Room")
+
+                        val founderMemberObj = response.getJSONObject("founderMember")
+                        val founderMember = founderMemberObj.getJSONObject("Member")
+                        val founderProfile = founderMemberObj.getJSONObject("Profile")
+
+                        val attendMemberObj = response.getJSONObject("attendMember")
+                        val attendMember = attendMemberObj.getJSONObject("Member")
+                        val attendProfile = attendMemberObj.getJSONObject("Profile")
+
+                        val founder_member_id = Utils.getInt(room, "founder_member_id")
+                        val attend_member_id = Utils.getInt(room, "attend_member_id")
+
+                        var name = Utils.getString(founderMember, "name")
+                        var birth = Utils.getString(founderMember, "birth")
+                        translation_yn = Utils.getString(room, "founder_translation_yn")
+
+                        if (member_id == founder_member_id) {
+                            name = Utils.getString(attendMember, "name")
+                            birth = Utils.getString(attendMember, "birth")
+                            translation_yn = Utils.getString(room, "attend_translation_yn")
+                        }
+
+                        val births = birth.split("-")
+                        var age = 0
+
+                        if (births.count() == 3) {
+
+                            var now = System.currentTimeMillis()
+                            var date = Date(now)
+                            val sdfNow = SimpleDateFormat("yyyy")
+                            val year = sdfNow.format(date)
+
+                            age = year.toInt() - births[0].toInt()
+                        }
+
+                        titleTV.text = name + " " + age
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
 
 
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
+    fun chatting() {
+
+        if (first_id < 1) {
+            if (adapterData.size > 0) {
+                try {
+                    try {
+                        val lastMSG = adapterData.get(adapterData.size - 1)
+                        val chatting = lastMSG.getJSONObject("Chatting")
+                        last_id = Utils.getInt(chatting, "id")
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+
+                } catch (e: NumberFormatException) {
+
+                }
+
+            }
+        }
+
+        val params = RequestParams()
+        params.put("member_id", PrefUtils.getIntPreference(context, "member_id"))
+        params.put("room_id", room_id)
+        params.put("first_id", first_id)
+        params.put("last_id", last_id)
+
+        ChattingAction.chatting(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+                        val list = response.getJSONArray("chattings")
+
+                        if (first_id > 0) {
+                            for (i in 0 until list.length()) {
+                                val data = list.get(i) as JSONObject
+                                adapterData.add(0, data)
+                            }
+
+                        } else {
+                            for (i in 0 until list.length()) {
+
+                                val data = list.get(i) as JSONObject
+                                adapterData.add(data)
+
+                                listLV.setSelection(adapter.count - 1)
+                            }
+                        }
+
+                        if (adapterData.size > 0) {
+                            val data = adapterData[adapterData.size - 1]
+                            val chatting = data.getJSONObject("Chatting")
+                            last_id = Utils.getInt(chatting, "id")
+                        }
+
+                        if (list.length() > 0) {
+                            (adapter as BaseAdapter).notifyDataSetChanged()
+                        }
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+//                val listViewHeight = Utils.getListViewHeightBasedOnItems(chatLV)
+//
+//                if (chatLV.height < listViewHeight) {
+//                    chatLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL
+//                } else {
+//                    chatLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_NORMAL
+//                }
+            }
+
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
+    fun addChatting(chatting: JSONObject) : Boolean {
+        for (i in 0 until adapterData.size) {
+            val data = adapterData[i]
+            val chat = data.getJSONObject("Chatting")
+            if (Utils.getInt(chat, "id") == Utils.getInt(chatting, "id")) {
+                return false
+            }
+        }
+        return true
+    }
+
+    fun sendChatting(type: Int) {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("room_id", room_id)
+        params.put("type", type)
+        params.put("contents", Utils.getString(contentsET))
+
+        if (type == 2) {
+            if (selectedImage != null) {
+                val selectedImg = ByteArrayInputStream(Utils.getByteArray(selectedImage))
+                params.put("upload", selectedImg)
+            }
+        }
+
+        ChattingAction.send_chatting(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    selectedImage = null
+                    contentsET.setText("")
+
+                    if ("ok" == result) {
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+//                val listViewHeight = Utils.getListViewHeightBasedOnItems(chatLV)
+//
+//                if (chatLV.height < listViewHeight) {
+//                    chatLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL
+//                } else {
+//                    chatLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_NORMAL
+//                }
+            }
+
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
+    override fun onScroll(view: AbsListView?, firstVisibleItem: Int, visibleItemCount: Int, totalItemCount: Int) {
+        lastItemVisibleFlag = totalItemCount > 0 && firstVisibleItem + visibleItemCount >= totalItemCount
+
+        if (firstVisibleItem == 0 && firstVisibleItem + visibleItemCount < totalItemCount) {
+            if (adapterData.size > 0) {
+                try {
+                    val firstMSG = adapterData[0]
+                    val chatting = firstMSG.getJSONObject("Chatting")
+                    first_id = Utils.getInt(chatting, "id")
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+                last_id = -1
+            } else {
+                first_id = -1
+                if (adapterData.size > 0) {
+                    try {
+                        val lastMSG = adapterData[adapterData.size - 1]
+                        val chatting = lastMSG.getJSONObject("Chatting")
+                        last_id = Utils.getInt(chatting, "id")
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+
+                } else {
+                    last_id = -1
+                }
+
+            }
+        } else {
+            first_id = -1
+            if (adapterData.size > 0) {
+                try {
+                    val lastMSG = adapterData[adapterData.size - 1]
+                    val chatting = lastMSG.getJSONObject("Chatting")
+                    last_id = Utils.getInt(chatting, "id")
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            } else {
+                last_id = -1
+            }
+        }
+
+    }
+
+    override fun onScrollStateChanged(view: AbsListView?, scrollState: Int) {
+        if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+            userScrolled = true
+            if (timer != null) {
+                timer!!.cancel()
+            }
+        } else if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
+            if (timer != null) {
+                timer!!.cancel()
+            }
+        } else if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE) {
+            if (lastItemVisibleFlag) {
+                if (adapterData.size > 0) {
+                    val lastMSG = adapterData[adapterData.size - 1]
+                    first_id = -1
+                    try {
+                        val chatting = lastMSG.getJSONObject("Chatting")
+                        last_id = Utils.getInt(chatting, "id")
+                    } catch (e: NumberFormatException) {
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+
+                }
+            } else {
+                /*
+                if (first_id > 0) {
+                    loadData();
+                }
+                */
+            }
+
+            if (adapterData.size > 0) {
+                if (timer != null) {
+                    timer!!.cancel()
+                }
+
+                val task = object : TimerTask() {
+                    override fun run() {
+                        loadDataHandler.sendEmptyMessage(0)
+                    }
+                }
+
+                timer = Timer()
+                timer!!.schedule(task, 1000, 2000)
+            }
+
+        } else {
+        }
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        if (timer != null) {
+            timer!!.cancel()
+        }
+    }
 }

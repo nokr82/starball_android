@@ -131,6 +131,7 @@
                             android:text="10,000원"/>
 
                         <TextView
+                            android:id="@+id/starball5TV"
                             android:padding="6dp"
                             android:layout_marginTop="9.5dp"
                             android:layout_width="wrap_content"
@@ -213,6 +214,7 @@
                             android:text="20,000원"/>
 
                         <TextView
+                            android:id="@+id/starball10TV"
                             android:padding="6dp"
                             android:layout_marginTop="9.5dp"
                             android:layout_width="wrap_content"
@@ -306,6 +308,7 @@
                             android:text="60,000원"/>
 
                         <TextView
+                            android:id="@+id/starball30TV"
                             android:padding="6dp"
                             android:layout_marginTop="9.5dp"
                             android:layout_width="wrap_content"
@@ -388,6 +391,7 @@
                             android:text="100,000원"/>
 
                         <TextView
+                            android:id="@+id/starball50TV"
                             android:padding="6dp"
                             android:layout_marginTop="9.5dp"
                             android:layout_width="wrap_content"
@@ -457,7 +461,7 @@
                                 android:textSize="16dp"
                                 android:textColor="#e47100"
                                 android:gravity="center_horizontal"
-                                android:text="5"/>
+                                android:text="100"/>
 
                             <TextView
                                 android:textStyle="bold"
@@ -479,6 +483,7 @@
                             android:text="200,000원"/>
 
                         <TextView
+                            android:id="@+id/starball100TV"
                             android:padding="6dp"
                             android:layout_marginTop="9.5dp"
                             android:layout_width="wrap_content"
@@ -563,6 +568,7 @@
                             android:text="10,000,000원"/>
 
                         <TextView
+                            android:id="@+id/starball500TV"
                             android:padding="6dp"
                             android:layout_marginTop="9.5dp"
                             android:layout_width="wrap_content"

@@ -6,8 +6,12 @@
         android:background="#ffffff"
         android:layout_height="match_parent">
 
-
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
             android:id="@+id/send2LL"
             android:layout_marginBottom="15dp"
             android:layout_marginTop="10dp"
@@ -20,14 +24,14 @@
             android:gravity="center_vertical"
             android:background="@drawable/background_border_strock10_ededed">
 
-        <ImageView
+            <ImageView
                 android:paddingLeft="11dp"
                 android:paddingRight="6dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:src="@mipmap/recive_star"/>
 
-        <TextView
+            <TextView
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,19 +43,19 @@
 
 
 
-    </LinearLayout>
-    <LinearLayout
+        </LinearLayout>
+        <LinearLayout
             android:id="@+id/friendLL"
             android:visibility="visible"
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="wrap_content">
-        <LinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@drawable/background_border_strock10_ededed">
-            <TextView
+                <TextView
                     android:paddingLeft="10dp"
                     android:layout_marginTop="6.5dp"
                     android:textStyle="bold"
@@ -62,7 +66,7 @@
                     android:text="그룹발송"
                     />
 
-            <ImageView
+                <ImageView
                     android:id="@+id/plusIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -73,20 +77,32 @@
 
 
 
-            <ListView
-                android:id="@+id/groupLV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <ListView
+                    android:id="@+id/groupLV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            </ListView>
+                </ListView>
 
 
+
+
+
+            </LinearLayout>
 
 
 
         </LinearLayout>
 
-
+        <TextView
+            android:paddingLeft="10dp"
+            android:layout_marginTop="6.5dp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="#333333"
+            android:text="대화" />
 
     </LinearLayout>
 

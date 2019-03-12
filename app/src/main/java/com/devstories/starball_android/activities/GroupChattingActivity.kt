@@ -6,8 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.devstories.starball_android.R
-import com.devstories.starball_android.adapter.DaillyAdapter
-import com.devstories.starball_android.adapter.GroupAdapter
+import com.devstories.starball_android.adapter.ChattingAdapter
 import com.devstories.starball_android.base.RootActivity
 import kotlinx.android.synthetic.main.activity_group_chatting.*
 
@@ -16,7 +15,7 @@ class GroupChattingActivity : RootActivity() {
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
-    lateinit var GroupAdapter: GroupAdapter
+    lateinit var GroupAdapter: ChattingAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_chatting)
@@ -24,7 +23,7 @@ class GroupChattingActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
-        GroupAdapter = GroupAdapter(context, R.layout.item_group_chatting, 1)
+//        GroupAdapter = ChattingAdapter(context, R.layout.item_group_chatting, 1)
         groupLV.adapter = GroupAdapter
 
         groupLV.setOnItemClickListener { parent, view, position, id ->

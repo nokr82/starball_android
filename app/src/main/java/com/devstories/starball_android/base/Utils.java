@@ -949,9 +949,9 @@ public class Utils {
 
     public static DisplayImageOptions UILoptionsProfile = new DisplayImageOptions.Builder()
 //         .displayer(new RoundedBitmapDisplayer(2))
-//         .showImageOnLoading(R.mipmap.myimg)
-//         .showImageForEmptyUri(R.mipmap.myimg)
-//        .showImageOnFail(R.mipmap.myimg).delayBeforeLoading(100)
+         .showImageOnLoading(R.mipmap.main_left)
+         .showImageForEmptyUri(R.mipmap.main_left)
+        .showImageOnFail(R.mipmap.main_left).delayBeforeLoading(100)
         .cacheInMemory(true).cacheOnDisk(true).considerExifParams(true).imageScaleType(ImageScaleType.EXACTLY).build();
 
     public static DisplayImageOptions UILoptionsPosting = new DisplayImageOptions.Builder()

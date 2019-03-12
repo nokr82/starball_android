@@ -30,4 +30,10 @@ object MemberAction {
     fun cash_request(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/members/cash_request", params, handler)
     }
+    fun buy_starball(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/buy_starball", params, handler)
+    }
+    fun like(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/like", params, handler)
+    }
 }

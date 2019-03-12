@@ -10,10 +10,9 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import com.devstories.starball_android.R
-import com.devstories.starball_android.adapter.DaillyAdapter
 import com.devstories.starball_android.adapter.EventAdapter
-import com.devstories.starball_android.adapter.GroupAdapter
-import com.devstories.starball_android.adapter.TalkAdapter
+import com.devstories.starball_android.adapter.ChattingAdapter
+import com.devstories.starball_android.adapter.ChattingRoomAdapter
 import com.devstories.starball_android.base.RootActivity
 import kotlinx.android.synthetic.main.activity_chatting_ex.*
 
@@ -22,9 +21,9 @@ class ChattingExActivity : RootActivity() {
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
-    lateinit var GroupAdapter: GroupAdapter
+    lateinit var GroupAdapter: ChattingAdapter
 
-    lateinit var TalkAdapter: TalkAdapter
+    lateinit var TalkAdapter: ChattingRoomAdapter
 
     lateinit var EventAdapter: EventAdapter
 

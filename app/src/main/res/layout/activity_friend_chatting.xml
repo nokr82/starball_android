@@ -19,13 +19,16 @@
             android:id="@+id/backIV"/>
 
         <TextView
+            android:id="@+id/titleTV"
             android:textStyle="bold"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:textSize="18dp"
             android:textColor="#333333"
-            android:text="Hasan Sibakhi  25"/>
+            android:text=""/>
 
         <ImageView
             android:id="@+id/globalIV"
@@ -46,12 +49,13 @@
 
 
     <ListView
-        android:id="@+id/groupLV"
+        android:id="@+id/listLV"
         android:divider="@null"
         android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:listSelector="@null">
 
     </ListView>
 
@@ -90,6 +94,7 @@
             android:src="@mipmap/chatting_mic"/>
 
         <ImageView
+            android:id="@+id/sendImageIV"
             android:layout_marginRight="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,15 +108,18 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/contentsET"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:textColorHint="#bbbbbb"
                 android:paddingLeft="10dp"
                 android:background="@null"
                 android:gravity="center_vertical"
+                android:singleLine="true"
                 android:textSize="14dp"/>
 
             <LinearLayout
+                android:id="@+id/sendLL"
                 android:layout_marginRight="5dp"
                 android:layout_centerInParent="true"
                 android:layout_alignParentRight="true"

@@ -357,5 +357,7 @@
     <string name="secession_confirm">계정을 삭제 하시겠습니까?</string>
     <string name="cash_starball_empty">Cash 요청할 Starball 갯수를 입력해주세요.</string>
     <string name="cash_starball_confirm">Cash 요청할 Starball 갯수를 확인해주세요.</string>
+    <string name="delete">삭제</string>
+    <string name="pin">핀고정</string>
 
 </resources>
