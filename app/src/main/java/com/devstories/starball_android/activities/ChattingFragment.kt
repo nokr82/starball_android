@@ -31,7 +31,7 @@ import android.graphics.Color
 import com.baoyz.swipemenulistview.SwipeMenuListView
 
 
-//메세지관리(메시지작성화면)
+//채팅화면
 
 class ChattingFragment : Fragment() {
 

@@ -2,26 +2,15 @@ package com.devstories.starball_android.activities
 
 import android.app.ProgressDialog
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.devstories.starball_android.actions.JoinAction
-import com.devstories.starball_android.actions.MemberAction
+import android.widget.ListView
 import com.devstories.starball_android.R
-import com.devstories.starball_android.actions.MemberAction.get_info
-import com.devstories.starball_android.base.PrefUtils
-import com.devstories.starball_android.base.Utils
-import com.loopj.android.http.JsonHttpResponseHandler
-import com.loopj.android.http.RequestParams
-import cz.msebera.android.httpclient.Header
-import kotlinx.android.synthetic.main.fragment_charmpoint_sports.*
-import org.json.JSONArray
-import org.json.JSONException
-import org.json.JSONObject
+import com.devstories.starball_android.adapter.MatchAdapter
+import kotlinx.android.synthetic.main.fragment_chatting_send_crush.*
 
 //메세지관리(메시지작성화면)
 
@@ -29,6 +18,10 @@ class ChattingSendCrushFragment : Fragment() {
     lateinit var myContext: Context
     private var progressDialog: ProgressDialog? = null
 
+    lateinit var sendcrushLV: ListView
+    lateinit var header: View
+
+    lateinit var MatchAdapter: MatchAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -40,6 +33,21 @@ class ChattingSendCrushFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+        header = View.inflate(myContext, R.layout.item_send_crush_header, null)
+        sendcrushLV = header.findViewById(R.id.sendcrushLV)
+
+        MatchAdapter = MatchAdapter(myContext, R.layout.item_chatting_match, 4)
+        sendcrushLV.adapter = MatchAdapter
+
+        sendlikeLV.addHeaderView(header)
+
+        MatchAdapter = MatchAdapter(myContext, R.layout.item_chatting_match, 4)
+        sendlikeLV.adapter = MatchAdapter
+
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
