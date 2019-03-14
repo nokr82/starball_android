@@ -154,7 +154,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:gravity="center_vertical"
@@ -210,10 +210,10 @@
 
         <LinearLayout
             android:id="@+id/languageLL"
-            android:visibility="visible"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_marginRight="10dp"
@@ -247,7 +247,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/lounge_picture_add"
+                        android:src="@mipmap/btn_add"
                         android:layout_centerInParent="true"
                         android:layout_alignParentRight="true"/>
 

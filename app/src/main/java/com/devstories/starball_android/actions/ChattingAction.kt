@@ -18,6 +18,10 @@ object ChattingAction {
         HttpClient.post("/chattings/detail", params, handler)
     }
 
+    fun edit_room(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/edit_room", params, handler)
+    }
+
     fun send_chatting(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/chattings/send_chatting", params, handler)
     }
@@ -32,5 +36,9 @@ object ChattingAction {
 
     fun add_adverb(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/chattings/add_adverb", params, handler)
+    }
+
+    fun like(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/like", params, handler)
     }
 }
