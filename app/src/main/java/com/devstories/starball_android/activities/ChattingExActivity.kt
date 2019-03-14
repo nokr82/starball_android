@@ -67,7 +67,7 @@ class ChattingExActivity : RootActivity() {
         setContentView(R.layout.activity_chatting_ex)
         this.context = this
         progressDialog = ProgressDialog(context)
-        footer = View.inflate(this, R.layout.item_lounge_footer, null)
+        footer = View.inflate(this, R.layout.item_group_make_footer, null)
         header = View.inflate(this, R.layout.item_lounge_head, null)
 
         groupLL = header.findViewById(R.id.groupLL)
@@ -98,7 +98,7 @@ class ChattingExActivity : RootActivity() {
         eventLL = header.findViewById(R.id.eventLL)
         storyTV = header.findViewById(R.id.storyTV)
         event2LL = header.findViewById(R.id.event2LL)
-        star_opIV = footer.findViewById(R.id.star_opIV)
+//        star_opIV = footer.findViewById(R.id.star_opIV)
         titleTV = footer.findViewById(R.id.titleTV)
 
 

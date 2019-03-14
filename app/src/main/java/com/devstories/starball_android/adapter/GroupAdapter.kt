@@ -62,15 +62,13 @@ open class GroupAdapter (context: Context, view:Int, data:ArrayList<JSONObject>)
         }
 
         item.nameTV.text = name + " " + age
-
-        item.ckIV.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected){
-                item.ckIV.setImageResource(R.mipmap.radio_on)
-            }else{
-                item.ckIV.setImageResource(R.mipmap.radio_off)
-            }
+        var isSel = json.getBoolean("isSelectedOp")
+        if (isSel){
+            item.ckIV.setImageResource(R.mipmap.radio_on)
+        } else {
+            item.ckIV.setImageResource(R.mipmap.radio_off)
         }
+
         ImageLoader.getInstance().displayImage(Config.url + image_uri, item.profileIV, Utils.UILoptionsPosting)
 
 

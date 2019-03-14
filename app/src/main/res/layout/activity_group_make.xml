@@ -74,7 +74,18 @@
     <ListView
         android:id="@+id/groupLV"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
     </ListView>
+    <TextView
+        android:id="@+id/nextTV"
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="확인"
+        android:background="#000000"
+        android:textColor="#ffffff"/>
 
 </LinearLayout>
