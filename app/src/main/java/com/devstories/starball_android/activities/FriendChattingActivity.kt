@@ -48,6 +48,7 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
     private var lastItemVisibleFlag: Boolean = false
 
     var member_id = -1
+    var other_member_id = -1
     var room_id = -1
 
     var first_id = -1
@@ -110,16 +111,14 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
         reportIV.setOnClickListener {
             val intent = Intent(context, ReportActivity::class.java)
+            intent.putExtra("report_member_id", other_member_id)
             startActivity(intent)
         }
 
         globalIV.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                globalIV.setImageResource(R.mipmap.global_on)
-            } else {
-                globalIV.setImageResource(R.mipmap.global)
-            }
+            translation_yn = if (translation_yn == "Y") "N" else "Y"
+
+            editRoom()
         }
 
         plusLL.setOnClickListener {
@@ -373,9 +372,94 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
                     if ("ok" == result) {
 
+                        adverbET.setText("")
+
                         val adverb = response.getJSONObject("adverb")
                         adverbAdapterData.add(0, adverb)
                         adverbAdapter.notifyDataSetChanged()
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
+    fun chattingLike(chatting_id: Int, like_yn: String) {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("chatting_id", chatting_id)
+        params.put("like_yn", like_yn)
+
+        ChattingAction.like(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+
+                        for (i in 0 until adapterData.size) {
+                            val data = adapterData[i]
+                            val chatting = data.getJSONObject("Chatting")
+                            val id = Utils.getInt(chatting,"id")
+
+                            if (id == chatting_id) {
+                                chatting.put("like_yn", like_yn)
+                                break
+                            }
+                        }
+
+                        adapter.notifyDataSetChanged()
 
                     } else {
 
@@ -461,12 +545,16 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
                         var name = Utils.getString(founderMember, "name")
                         var birth = Utils.getString(founderMember, "birth")
-                        translation_yn = Utils.getString(room, "founder_translation_yn")
 
                         if (member_id == founder_member_id) {
                             name = Utils.getString(attendMember, "name")
                             birth = Utils.getString(attendMember, "birth")
+
+                            translation_yn = Utils.getString(room, "founder_translation_yn")
+                            other_member_id = attend_member_id
+                        } else {
                             translation_yn = Utils.getString(room, "attend_translation_yn")
+                            other_member_id = founder_member_id
                         }
 
                         val births = birth.split("-")
@@ -483,6 +571,90 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                         }
 
                         titleTV.text = name + " " + age
+
+                        if (translation_yn == "Y") {
+                            globalIV.setImageResource(R.mipmap.global_on)
+                        } else {
+                            globalIV.setImageResource(R.mipmap.global)
+                        }
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
+    fun editRoom() {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("room_id", room_id)
+        params.put("translation_yn", translation_yn)
+
+        ChattingAction.edit_room(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+
+                        if (translation_yn == "Y") {
+                            globalIV.setImageResource(R.mipmap.global_on)
+                        } else {
+                            globalIV.setImageResource(R.mipmap.global)
+                        }
+
+                        adapter.notifyDataSetChanged()
 
                     } else {
 
@@ -866,6 +1038,5 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             timer!!.cancel()
         }
     }
-
 
 }

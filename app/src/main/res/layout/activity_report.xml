@@ -47,6 +47,7 @@
         android:layout_height="wrap_content">
 
         <Spinner
+            android:id="@+id/reportTypeSP"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:background="@drawable/background_border_strock1">
@@ -67,14 +68,15 @@
         android:layout_marginRight="10dp"
         android:layout_width="match_parent"
         android:orientation="vertical"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <TextView
-            android:id="@+id/nextTV"
+            android:id="@+id/addImageTV"
             android:layout_marginBottom="25dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#000000"
+            android:background="#333333"
             android:text="@string/proof_photograph"
             android:textStyle="bold"
             android:gravity="center"
@@ -113,5 +115,19 @@
             android:text="@string/report_content4"/>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/reportTV"
+        android:layout_marginBottom="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#e2e2e2"
+        android:text="@string/check"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="20.5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textColor="#ffffff"/>
 
 </LinearLayout>

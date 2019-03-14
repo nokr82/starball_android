@@ -361,4 +361,16 @@
     <string name="pin">핀고정</string>
     <string name="confrim_adverb_del">해당 상용어구를 삭제 하시겠습니까?</string>
 
+    <string name="report_type1">금전 목적(성매매, 조건만남 등)</string>
+    <string name="report_type2">스팸/사기</string>
+    <string name="report_type3">성관계 목적</string>
+    <string name="report_type4">허위 프로필</string>
+    <string name="report_type5">갑작스런 약속 취소</string>
+    <string name="report_type6">비방욕설/음란한 언행</string>
+    <string name="report_type7">비매너/위반 행위</string>
+    <string name="report_type8">기타 부당한 내용</string>
+    <string name="report_image_empty">증빙 사진을 첨부해주세요.</string>
+    <string name="report_type_empty">신고 유형을 선택해주세요.</string>
+    <string name="report_done">신고 처리가 완료되었습니다.</string>
+
 </resources>

@@ -1,6 +1,7 @@
 package com.devstories.starball_android.adapter
 
 import android.content.Context
+import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -101,6 +102,20 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
             }
         }
 
+        var like_yn = Utils.getString(chatting, "like_yn")
+        if (like_yn == "Y") {
+            item.likeIV.setImageResource(R.mipmap.lounge_heart_like)
+            item.likeIV.setBackgroundColor(Color.parseColor("#000000"))
+        } else {
+            item.likeIV.setImageResource(R.mipmap.lounge_heart_like)
+            item.likeIV.setBackgroundColor(Color.parseColor("#00000000"))
+        }
+
+        item.likeLL.setOnClickListener {
+            var edit_like_yn = if (like_yn == "Y") "N" else "Y"
+            activity.chattingLike(Utils.getInt(chatting, "id"), edit_like_yn)
+        }
+
         return retView
     }
 
@@ -132,6 +147,9 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
 
         var profileIV: CircleImageView
 
+        var likeIV: ImageView
+        var likeLL: LinearLayout
+
         init {
 
             otherLL = v.findViewById(R.id.otherLL)
@@ -148,6 +166,8 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
             myImageIV = v.findViewById(R.id.myImageIV)
 
             profileIV = v.findViewById(R.id.profileIV)
+            likeIV = v.findViewById(R.id.likeIV)
+            likeLL = v.findViewById(R.id.likeLL)
 
         }
     }

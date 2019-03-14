@@ -74,7 +74,7 @@
                     android:layout_marginLeft="10dp"/>
 
                 <LinearLayout
-                    android:id="@+id/loveIV"
+                    android:id="@+id/likeLL"
                     android:layout_marginLeft="5dp"
                     android:background="@drawable/circle_backgroundgroup"
                     android:layout_width="30dp"
@@ -82,6 +82,7 @@
                     android:layout_height="30dp">
 
                     <ImageView
+                        android:id="@+id/likeIV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@mipmap/lounge_heart_like"/>
