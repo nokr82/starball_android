@@ -1,33 +1,58 @@
 package com.devstories.starball_android.adapter
 
+import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.devstories.starball_android.R
+import com.devstories.starball_android.activities.DlgAdverbDeleteConfirmActivity
+import com.devstories.starball_android.activities.FriendChattingActivity
+import com.devstories.starball_android.base.Utils
+import org.json.JSONObject
 
-class AdverbAdapter(imagePaths: ArrayList<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AdverbAdapter(data: ArrayList<JSONObject>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val _imagePaths: ArrayList<String> = imagePaths
+    private val data: ArrayList<JSONObject> = data
+    private lateinit var context: Context
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): RecyclerView.ViewHolder {
-//        return ViewHolder(p1)
+    override fun onCreateViewHolder(parent: ViewGroup, p1: Int): RecyclerView.ViewHolder {
+        var view = LayoutInflater.from(parent.context)
+            .inflate(com.devstories.starball_android.R.layout.item_adverb, parent, false)
+        context = parent.context
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return data.count()
     }
 
-    override fun onBindViewHolder(p0: RecyclerView.ViewHolder, p1: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+
+        val holder = holder as ViewHolder
+
+        val adverb = data[position]
+
+        holder.contentTV.text = Utils.getString(adverb, "content")
+        holder.delLL.setOnClickListener {
+            var intent = Intent(context, DlgAdverbDeleteConfirmActivity::class.java)
+            intent.putExtra("adverb_id", Utils.getInt(adverb, "id"))
+            (context as FriendChattingActivity).startActivityForResult(intent, 100)
+        }
+
     }
 
-    class ViewHolder(v: View) {
+    class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
-        var charmTV:TextView
+        var contentTV:TextView
+        var delLL:LinearLayout
 
         init {
-            charmTV = v.findViewById(R.id.charmTV)
+            contentTV = v.findViewById(R.id.contentTV)
+            delLL = v.findViewById(R.id.delLL)
         }
     }
 

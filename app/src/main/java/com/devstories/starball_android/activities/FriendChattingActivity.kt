@@ -12,6 +12,7 @@ import android.os.Handler
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.AbsListView
 import android.widget.BaseAdapter
@@ -19,6 +20,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
+import com.devstories.starball_android.adapter.AdverbAdapter
 import com.devstories.starball_android.adapter.ChattingAdapter
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
@@ -56,7 +58,7 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
     lateinit var adapter: ChattingAdapter
     var adapterData = ArrayList<JSONObject>()
 
-    lateinit var adverbAdapter: ChattingAdapter
+    lateinit var adverbAdapter: AdverbAdapter
     var adverbAdapterData = ArrayList<JSONObject>()
 
     internal var loadDataHandler: Handler = object : Handler() {
@@ -82,7 +84,9 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
         room_id = intent.getIntExtra("room_id", -1)
 
-        adverbRV.adapter
+        adverbRV.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        adverbAdapter = AdverbAdapter(adverbAdapterData)
+        adverbRV.adapter = adverbAdapter
 
         adapter = ChattingAdapter(context, R.layout.item_chatting, adapterData, this)
         listLV.adapter = adapter
@@ -239,17 +243,21 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                     if (data != null) {
                         var adverb_id = data.getIntExtra("adverb_id", -1)
 
-                        for (i in 0 until adverbLL.childCount) {
-                            var view = adverbLL.getChildAt(i)
-                            var delLL:LinearLayout = view.findViewById(R.id.delLL)
+                        for (j in 0 until adverbAdapterData.size) {
 
-                            val id: String = delLL.tag.toString()
+                            println("j::::::::::::::::::::::::::::::::j")
 
-                            if (adverb_id == id.toInt()) {
-                                adverbLL.removeViewAt(i)
+                            var adverb = adverbAdapterData[j]
+                            val id = Utils.getInt(adverb, "id")
+
+                            if (adverb_id == id) {
+                                adverbAdapterData.removeAt(j)
+                                break
                             }
 
                         }
+
+                        adverbAdapter.notifyDataSetChanged()
                     }
 
                 }
@@ -284,36 +292,21 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 try {
                     val result = response!!.getString("result")
 
-                    adverbLL.removeAllViews()
+                    adverbAdapterData.clear()
 
                     if ("ok" == result) {
 
                         val adverbs = response.getJSONArray("adverb")
 
                         for (i in 0 until adverbs.length()) {
-                            val adverb = adverbs[i] as JSONObject
-
-                            var view:View = View.inflate(context, R.layout.item_adverb, null)
-                            var contentTV: TextView = view.findViewById(R.id.contentTV)
-                            var delLL: LinearLayout = view.findViewById(R.id.delLL)
-
-                            val adverb_id = Utils.getInt(adverb, "id")
-
-                            contentTV.text = Utils.getString(adverb, "content")
-                            delLL.tag = adverb_id
-
-                            delLL.setOnClickListener {
-                                var intent = Intent(context, DlgAdverbDeleteConfirmActivity::class.java)
-                                intent.putExtra("adverb_id", adverb_id)
-                                startActivityForResult(intent, DELETE_ADBERB)
-                            }
-
-                            adverbLL.addView(view)
+                            adverbAdapterData.add(adverbs[i] as JSONObject)
                         }
 
                     } else {
 
                     }
+
+                    adverbAdapter.notifyDataSetChanged()
 
                 } catch (e: JSONException) {
                     e.printStackTrace()
@@ -381,23 +374,8 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                     if ("ok" == result) {
 
                         val adverb = response.getJSONObject("adverb")
-
-                        var view:View = View.inflate(context, R.layout.item_adverb, null)
-                        var contentTV: TextView = view.findViewById(R.id.contentTV)
-                        var delLL: LinearLayout = view.findViewById(R.id.delLL)
-
-                        val adverb_id = Utils.getInt(adverb, "id")
-
-                        contentTV.text = Utils.getString(adverb, "content")
-                        delLL.tag = adverb_id
-
-                        delLL.setOnClickListener {
-                            var intent = Intent(context, DlgAdverbDeleteConfirmActivity::class.java)
-                            intent.putExtra("adverb_id", adverb_id)
-                            startActivityForResult(intent, DELETE_ADBERB)
-                        }
-
-                        adverbLL.addView(view, 0)
+                        adverbAdapterData.add(0, adverb)
+                        adverbAdapter.notifyDataSetChanged()
 
                     } else {
 
