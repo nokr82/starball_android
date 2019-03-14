@@ -55,7 +55,8 @@
                 android:textStyle="bold"
                 android:background="#e5e5e5"
                 android:gravity="center"
-                android:text="@string/close"/>
+                android:text="@string/close"
+                android:visibility="gone"/>
 
             <TextView
                 android:id="@+id/doneTV"

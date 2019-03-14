@@ -15,12 +15,15 @@ import android.support.v4.content.ContextCompat
 import android.view.View
 import android.widget.AbsListView
 import android.widget.BaseAdapter
+import android.widget.LinearLayout
+import android.widget.TextView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
 import com.devstories.starball_android.adapter.ChattingAdapter
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
+import com.google.android.exoplayer2.util.Util
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 import cz.msebera.android.httpclient.Header
@@ -34,11 +37,13 @@ import java.text.SimpleDateFormat
 
 class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
-    private var userScrolled: Boolean = false
-    private var lastItemVisibleFlag: Boolean = false
-
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
+
+    val DELETE_ADBERB = 100
+
+    private var userScrolled: Boolean = false
+    private var lastItemVisibleFlag: Boolean = false
 
     var member_id = -1
     var room_id = -1
@@ -50,6 +55,9 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
     lateinit var adapter: ChattingAdapter
     var adapterData = ArrayList<JSONObject>()
+
+    lateinit var adverbAdapter: ChattingAdapter
+    var adverbAdapterData = ArrayList<JSONObject>()
 
     internal var loadDataHandler: Handler = object : Handler() {
         override fun handleMessage(msg: android.os.Message) {
@@ -74,6 +82,8 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
         room_id = intent.getIntExtra("room_id", -1)
 
+        adverbRV.adapter
+
         adapter = ChattingAdapter(context, R.layout.item_chatting, adapterData, this)
         listLV.adapter = adapter
         listLV.setOnScrollListener(this)
@@ -94,12 +104,10 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             startActivity(intent)
         }
 
-
         reportIV.setOnClickListener {
             val intent = Intent(context, ReportActivity::class.java)
             startActivity(intent)
         }
-
 
         globalIV.setOnClickListener {
             it.isSelected = !it.isSelected
@@ -154,8 +162,20 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
         }
 
+        addAdverbLL.setOnClickListener {
+            val adverb = Utils.getString(adverbET)
+
+            if (adverb == "") {
+                return@setOnClickListener
+            }
+
+            addAdverb()
+
+        }
+
         detail()
         timerStart()
+        adverb()
 
     }
 
@@ -193,25 +213,46 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             when (requestCode) {
-                FROM_ALBUM -> if (data != null && data.data != null) {
-                    val selectedImageUri = data.data
+                FROM_ALBUM -> {
+                    if (data != null && data.data != null) {
+                        val selectedImageUri = data.data
 
-                    val filePathColumn = arrayOf(MediaStore.MediaColumns.DATA)
+                        val filePathColumn = arrayOf(MediaStore.MediaColumns.DATA)
 
-                    val cursor = context!!.contentResolver.query(selectedImageUri!!, filePathColumn, null, null, null)
-                    if (cursor!!.moveToFirst()) {
-                        val columnIndex = cursor.getColumnIndex(filePathColumn[0])
-                        val picturePath = cursor.getString(columnIndex)
+                        val cursor = context!!.contentResolver.query(selectedImageUri!!, filePathColumn, null, null, null)
+                        if (cursor!!.moveToFirst()) {
+                            val columnIndex = cursor.getColumnIndex(filePathColumn[0])
+                            val picturePath = cursor.getString(columnIndex)
 
-                        cursor.close()
+                            cursor.close()
 
-                        selectedImage = Utils.getImage(context!!.contentResolver, picturePath)
+                            selectedImage = Utils.getImage(context!!.contentResolver, picturePath)
 
-                        sendChatting(2)
+                            sendChatting(2)
 
+                        }
                     }
                 }
 
+                DELETE_ADBERB-> {
+
+                    if (data != null) {
+                        var adverb_id = data.getIntExtra("adverb_id", -1)
+
+                        for (i in 0 until adverbLL.childCount) {
+                            var view = adverbLL.getChildAt(i)
+                            var delLL:LinearLayout = view.findViewById(R.id.delLL)
+
+                            val id: String = delLL.tag.toString()
+
+                            if (adverb_id == id.toInt()) {
+                                adverbLL.removeViewAt(i)
+                            }
+
+                        }
+                    }
+
+                }
             }
         }
     }
@@ -226,6 +267,187 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         timer = Timer()
         timer!!.schedule(task, 0, 2000)
 
+    }
+
+    fun adverb() {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+
+        ChattingAction.adverb(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    adverbLL.removeAllViews()
+
+                    if ("ok" == result) {
+
+                        val adverbs = response.getJSONArray("adverb")
+
+                        for (i in 0 until adverbs.length()) {
+                            val adverb = adverbs[i] as JSONObject
+
+                            var view:View = View.inflate(context, R.layout.item_adverb, null)
+                            var contentTV: TextView = view.findViewById(R.id.contentTV)
+                            var delLL: LinearLayout = view.findViewById(R.id.delLL)
+
+                            val adverb_id = Utils.getInt(adverb, "id")
+
+                            contentTV.text = Utils.getString(adverb, "content")
+                            delLL.tag = adverb_id
+
+                            delLL.setOnClickListener {
+                                var intent = Intent(context, DlgAdverbDeleteConfirmActivity::class.java)
+                                intent.putExtra("adverb_id", adverb_id)
+                                startActivityForResult(intent, DELETE_ADBERB)
+                            }
+
+                            adverbLL.addView(view)
+                        }
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
+    fun addAdverb() {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("content", Utils.getString(adverbET))
+
+        ChattingAction.add_adverb(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+
+                        val adverb = response.getJSONObject("adverb")
+
+                        var view:View = View.inflate(context, R.layout.item_adverb, null)
+                        var contentTV: TextView = view.findViewById(R.id.contentTV)
+                        var delLL: LinearLayout = view.findViewById(R.id.delLL)
+
+                        val adverb_id = Utils.getInt(adverb, "id")
+
+                        contentTV.text = Utils.getString(adverb, "content")
+                        delLL.tag = adverb_id
+
+                        delLL.setOnClickListener {
+                            var intent = Intent(context, DlgAdverbDeleteConfirmActivity::class.java)
+                            intent.putExtra("adverb_id", adverb_id)
+                            startActivityForResult(intent, DELETE_ADBERB)
+                        }
+
+                        adverbLL.addView(view, 0)
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
     }
 
     fun detail() {
@@ -666,4 +888,6 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             timer!!.cancel()
         }
     }
+
+
 }
