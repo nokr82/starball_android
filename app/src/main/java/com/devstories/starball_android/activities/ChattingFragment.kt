@@ -31,7 +31,7 @@ import android.graphics.Color
 import com.baoyz.swipemenulistview.SwipeMenuListView
 
 
-//메세지관리(메시지작성화면)
+//채팅화면
 
 class ChattingFragment : Fragment() {
 
@@ -74,6 +74,10 @@ class ChattingFragment : Fragment() {
         chattingLV.addHeaderView(header)
 //        chattingLV.addHeaderView(footer)
 
+        plusIV.setOnClickListener {
+            val intent = Intent(context, GrouptMakeActivity::class.java)
+            startActivity(intent)
+        }
         roomAdapter = ChattingRoomAdapter(myContext, R.layout.item_chat_profile, roomAdapterData)
         chattingLV.adapter = roomAdapter
 

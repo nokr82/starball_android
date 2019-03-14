@@ -36,4 +36,9 @@ object MemberAction {
     fun like(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/members/like", params, handler)
     }
+
+    fun like_list(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/like_list", params, handler)
+    }
+
 }

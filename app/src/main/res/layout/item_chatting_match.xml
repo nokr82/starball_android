@@ -1,233 +1,265 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
 
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+
+    <LinearLayout
+        android:id="@+id/sendtitleLL"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="10dp"
+        android:visibility="visible"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="14dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/background_border_strock10_ededed">
+
+        <ImageView
+            android:id="@+id/titleIV"
+            android:paddingLeft="11dp"
+            android:paddingRight="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/recive_star"/>
+
+        <TextView
+            android:id="@+id/titleTV"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="#555555"
+            android:letterSpacing="-0.03"
+            android:text="보낸 Starball"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/itemLL"
+        android:background="#ffffff"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
 
         <LinearLayout
-                android:background="#ffffff"
-                android:paddingBottom="10dp"
-               android:layout_marginBottom="10dp"
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:paddingTop="15dp"
+            android:layout_height="wrap_content">
 
-
-
-
-         <LinearLayout
-                 android:layout_width="match_parent"
-                 android:paddingTop="15dp"
-                 android:layout_height="wrap_content">
-
-
-                    <TextView
-                            android:paddingLeft="10dp"
-                            android:textStyle="bold"
-                            android:layout_width="0dp"
-                            android:layout_weight="1"
-                            android:layout_height="wrap_content"
-                            android:textSize="14dp"
-                            android:textColor="#333333"
-                            android:text="Bakhtiyar Sattarov  25"
-                            />
 
             <TextView
-                    android:layout_marginRight="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:shadowColor="#59040000"
-                    android:shadowDx="1.2246467991473532e-16"
-                    android:shadowDy="2"
-                    android:shadowRadius="5"
-                    android:textSize="14dp"
-                    android:textColor="#f91212"
-                    android:text="13시간 28분 남음"
-                    />
+                android:id="@+id/nameTV"
+                android:paddingLeft="10dp"
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="#333333"
+                android:text="Bakhtiyar Sattarov  25"
+                />
 
-         </LinearLayout>
-<RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:background="@drawable/background_border_strock7ffffff"
-        android:layout_marginRight="10dp"
-        android:layout_height="350dp">
-    <ImageView
-            android:scaleType="fitXY"
-            android:background="#000000"
+            <TextView
+                android:id="@+id/timeTV"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#59040000"
+                android:shadowDx="1.2246467991473532e-16"
+                android:shadowDy="2"
+                android:shadowRadius="5"
+                android:textSize="14dp"
+                android:textColor="#f91212"
+                android:text="13시간 28분 남음"
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@mipmap/lounge_daily_photo"/>
-    <ImageView
-            android:id="@+id/starballIV"
-            android:layout_marginLeft="5dp"
-            android:layout_marginBottom="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/setting_pur_starball_06"
-            />
-
-
-    <ImageView
-            android:id="@+id/imgIV"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#40000000"/>
-    <TextView
             android:layout_marginLeft="10dp"
+            android:background="@drawable/background_border_strock7ffffff"
+            android:layout_marginRight="10dp"
+            android:layout_height="350dp">
+
+            <ImageView
+                android:id="@+id/likeIV"
+                android:scaleType="fitXY"
+                android:background="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/lounge_daily_photo"/>
+
+            <ImageView
+                android:id="@+id/starballIV"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/setting_pur_starball_06"
+                />
+
+
+            <ImageView
+                android:id="@+id/imgIV"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#40000000"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="15dp"
+                android:layout_alignParentBottom="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_border_strock10_000000"
+                android:textSize="12dp"
+                android:paddingLeft="9dp"
+                android:paddingRight="9dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:text="+100"/>
+
+            <ListView
+                android:visibility="gone"
+                android:id="@+id/chattingLV"
+                android:divider="@null"
+                android:scrollbars="none"
+                android:layout_centerInParent="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="80dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+            </ListView>
+
+            <ImageView
+                android:id="@+id/sendIV"
+                android:visibility="gone"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/send_btn"
+                />
+
+            <ImageView
+                android:id="@+id/heartIV"
+                android:visibility="gone"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/send_heart"
+                />
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/starIV"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/bi"
+                />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:background="#efefef"
+            android:id="@+id/menuLL"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center_vertical"
             android:layout_marginBottom="15dp"
-            android:layout_alignParentBottom="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background_border_strock10_000000"
-            android:textSize="12dp"
-            android:paddingLeft="9dp"
-            android:paddingRight="9dp"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp"
-            android:gravity="center"
-            android:textColor="#ffffff"
-            android:text="+100"/>
-
-    <ListView
-            android:visibility="gone"
-            android:id="@+id/chattingLV"
-            android:divider="@null"
-            android:scrollbars="none"
-            android:layout_centerInParent="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="80dp"
             android:layout_width="match_parent"
-            android:layout_height="100dp">
-    </ListView>
-
-    <ImageView
-            android:id="@+id/sendIV"
-            android:visibility="gone"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/send_btn"
-            />
-    <ImageView
-            android:id="@+id/heartIV"
-            android:visibility="gone"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/send_heart"
-            />
-    <ImageView
-            android:visibility="gone"
-            android:id="@+id/starIV"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/bi"
-            />
-
-
-</RelativeLayout>
+            android:layout_height="40dp">
 
             <LinearLayout
-                    android:visibility="gone"
-                    android:background="#efefef"
-                    android:id="@+id/menuLL"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp">
+                android:id="@+id/micLL"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:gravity="center"
+                android:background="@drawable/background_border_strock10_000000">
 
-                <LinearLayout
-                        android:id="@+id/micLL"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:gravity="center"
-                        android:background="@drawable/background_border_strock10_000000">
-
-                    <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/mic_op"/>
-
-
-
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:paddingLeft="10dp"
-                        android:orientation="vertical"
-                        android:layout_height="wrap_content">
-                    <TextView
-                            android:textStyle="bold"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:textColor="#4e3b9f"
-                            android:text="남자가 먼저 인사해야 합니다."
-                            />
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:textColor="#c2c2c2"
-                            android:text="인사가 수락되어야만 대화창이 생깁니다"
-                            />
-
-
-
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                        android:id="@+id/sendLL"
-                        android:layout_width="32dp"
-                        android:layout_height="32dp"
-                        android:gravity="center"
-                        android:background="@drawable/background_border_strock10_923b9f">
-
-                    <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@mipmap/paper_op"/>
-
-
-
-
-
-                </LinearLayout>
-
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/mic_op"/>
 
 
             </LinearLayout>
 
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:paddingLeft="10dp"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:textColor="#4e3b9f"
+                    android:text="남자가 먼저 인사해야 합니다."
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:textColor="#c2c2c2"
+                    android:text="인사가 수락되어야만 대화창이 생깁니다"
+                    />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sendLL"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:gravity="center"
+                android:background="@drawable/background_border_strock10_923b9f">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/paper_op"/>
+
+
+            </LinearLayout>
 
 
         </LinearLayout>
 
 
-
     </LinearLayout>
+
+
+</LinearLayout>
