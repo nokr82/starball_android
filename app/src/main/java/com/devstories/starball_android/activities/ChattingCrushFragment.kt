@@ -49,7 +49,7 @@ class ChattingCrushFragment : Fragment() {
 
         like_list()
 
-        crushAdapter = CrushAdapter(R.layout.item_chatting_match, adapterdata,1)
+        crushAdapter = CrushAdapter(ChattingSendCrushFragment(),this,adapterdata,1)
         likeLV.adapter = crushAdapter
 
 

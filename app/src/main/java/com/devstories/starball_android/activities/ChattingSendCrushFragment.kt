@@ -32,6 +32,7 @@ class ChattingSendCrushFragment : Fragment() {
     var member_id = -1
     lateinit var crushAdapter: CrushAdapter
     var adapterdata  = ArrayList<JSONObject>()
+    var starball = -1
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -47,8 +48,8 @@ class ChattingSendCrushFragment : Fragment() {
         sendlikeLV.layoutManager = LinearLayoutManager (context)
 
         like_list()
-
-        crushAdapter = CrushAdapter(R.layout.item_chatting_match, adapterdata,2)
+        get_info()
+        crushAdapter = CrushAdapter(this,ChattingCrushFragment(), adapterdata,2)
         sendlikeLV.adapter = crushAdapter
 
 
@@ -168,6 +169,104 @@ class ChattingSendCrushFragment : Fragment() {
     }
 
 
+    private fun get_info() {
+        val member_id = PrefUtils.getIntPreference(myContext,"member_id")
+        val params = RequestParams()
+        params.put("member_id", member_id)
+
+        MemberAction.get_info(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                Log.d("스타볼",response.toString())
+                try {
+                    val result = response!!.getString("result")
+                    if ("ok" == result) {
+                        starball = Utils.getInt(response, "starball")
+                        Log.d("스타볼",starball.toString())
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(myContext, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
 
     override fun onDestroy() {
         super.onDestroy()

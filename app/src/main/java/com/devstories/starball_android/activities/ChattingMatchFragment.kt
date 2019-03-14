@@ -11,7 +11,7 @@ import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.MatchAdapter
 import kotlinx.android.synthetic.main.fragment_chatting_match.*
 
-//메세지관리(메시지작성화면)
+//채팅 매칭
 
 class ChattingMatchFragment : Fragment() {
     lateinit var myContext: Context
