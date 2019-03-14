@@ -448,6 +448,12 @@ class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
                     if ("ok" == result) {
 
+                        if(like_yn == "Y") {
+                            val intent = Intent(context, LikedNotiActivity::class.java)
+                            startActivity(intent)
+                            overridePendingTransition(0, 0)
+                        }
+
                         for (i in 0 until adapterData.size) {
                             val data = adapterData[i]
                             val chatting = data.getJSONObject("Chatting")
