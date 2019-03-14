@@ -21,4 +21,16 @@ object ChattingAction {
     fun send_chatting(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/chattings/send_chatting", params, handler)
     }
+
+    fun adverb(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/adverb", params, handler)
+    }
+
+    fun del_adverb(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/del_adverb", params, handler)
+    }
+
+    fun add_adverb(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/add_adverb", params, handler)
+    }
 }

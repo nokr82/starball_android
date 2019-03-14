@@ -359,5 +359,6 @@
     <string name="cash_starball_confirm">Cash 요청할 Starball 갯수를 확인해주세요.</string>
     <string name="delete">삭제</string>
     <string name="pin">핀고정</string>
+    <string name="confrim_adverb_del">해당 상용어구를 삭제 하시겠습니까?</string>
 
 </resources>

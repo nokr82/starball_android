@@ -47,7 +47,6 @@
 
     </LinearLayout>
 
-
     <ListView
         android:id="@+id/listLV"
         android:divider="@null"
@@ -58,7 +57,6 @@
         android:listSelector="#00000000">
 
     </ListView>
-
 
     <View
         android:layout_width="match_parent"
@@ -152,199 +150,121 @@
         android:background="#1f1f1f"/>
 
     <LinearLayout
-        android:visibility="gone"
         android:id="@+id/emoLL"
-        android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="70dp">
-
-        <LinearLayout
-            android:layout_marginLeft="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/emoticon"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12dp"
-                android:textColor="#333333"
-                android:gravity="center_horizontal"
-                android:text="@string/emoticon"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginLeft="30dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="left">
-
-            <ImageView
-                android:id="@+id/languageIV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/bubble"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12dp"
-                android:textColor="#333333"
-                android:gravity="center_horizontal"
-                android:text="@string/commercial"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/languageLL"
-        android:visibility="gone"
-        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_height="wrap_content">
-
-        <RelativeLayout
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="14dp"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/background_border_strock10_ededed"
-            android:orientation="vertical">
-
-            <ImageView
-                android:padding="7dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/lounge_picture_add"
-                android:layout_centerInParent="true"
-                android:layout_alignParentRight="true"
-                android:paddingLeft="10dp"/>
-
-            <EditText
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@null"
-                android:textColor="#666666"
-                android:hint="@string/input_commercial"
-                android:paddingLeft="20dp"
-                android:gravity="center_vertical"
-                android:textSize="14dp"/>
-
-        </RelativeLayout>
+        android:visibility="visible">
 
         <LinearLayout
-            android:layout_marginTop="12.5dp"
-            android:layout_marginBottom="15dp"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+            <LinearLayout
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/emoticon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:textColor="#333333"
+                    android:gravity="center_horizontal"
+                    android:text="@string/emoticon"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginLeft="30dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="left">
+
+                <ImageView
+                    android:id="@+id/languageIV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/bubble"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12dp"
+                    android:textColor="#333333"
+                    android:gravity="center_horizontal"
+                    android:text="@string/commercial"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/languageLL"
+            android:visibility="visible"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
             android:layout_height="wrap_content">
 
-            <RelativeLayout
+            <LinearLayout
+                android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_width="90dp"
-                android:background="@drawable/background_border_strock4_923b9f"
-                android:layout_height="wrap_content">
+                android:layout_marginTop="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/background_border_strock10_ededed"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:textSize="11dp"
-                    android:textColor="#ffff"
-                    android:text="Good Night"/>
+                <EditText
+                    android:id="@+id/adverbET"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:background="@null"
+                    android:textColor="#666666"
+                    android:hint="@string/input_commercial"
+                    android:paddingLeft="10dp"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:textSize="14dp"/>
 
-                <ImageView
-                    android:layout_alignParentRight="true"
-                    android:paddingRight="10dp"
-                    android:layout_centerInParent="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/close_lang"/>
+                <LinearLayout
+                    android:id="@+id/addAdverbLL"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
 
-            </RelativeLayout>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/lounge_picture_add"
+                        android:layout_centerInParent="true"
+                        android:layout_alignParentRight="true"/>
 
-            <RelativeLayout
-                android:layout_marginLeft="10dp"
-                android:layout_width="90dp"
-                android:background="@drawable/background_border_strock4_923b9f"
-                android:layout_height="wrap_content">
+                </LinearLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:textSize="11dp"
-                    android:textColor="#ffff"
-                    android:text="Good Night"/>
+            </LinearLayout>
 
-                <ImageView
-                    android:layout_alignParentRight="true"
-                    android:paddingRight="10dp"
-                    android:layout_centerInParent="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/close_lang"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/adverbRV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12.5dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
 
-            </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_marginLeft="10dp"
-                android:layout_width="90dp"
-                android:background="@drawable/background_border_strock4_923b9f"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:textSize="11dp"
-                    android:textColor="#ffff"
-                    android:text="Good Night"/>
-
-                <ImageView
-                    android:layout_alignParentRight="true"
-                    android:paddingRight="10dp"
-                    android:layout_centerInParent="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/close_lang"/>
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_marginLeft="10dp"
-                android:layout_width="90dp"
-                android:background="@drawable/background_border_strock4_923b9f"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:textSize="11dp"
-                    android:textColor="#ffff"
-                    android:text="Good Night"/>
-
-                <ImageView
-                    android:layout_alignParentRight="true"
-                    android:paddingRight="10dp"
-                    android:layout_centerInParent="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/close_lang"/>
-
-            </RelativeLayout>
+            </android.support.v7.widget.RecyclerView>
 
         </LinearLayout>
 
