@@ -84,7 +84,7 @@ class CrushAdapter(view: Int, data: ArrayList<JSONObject>,a_type:Int) :
             holder.titleIV.setImageResource(R.mipmap.recive_star)
             holder.itemLL.visibility = View.GONE
         }
-        else if (type == "LikeTitle") {
+        else if (type == "likeTitle") {
             holder.sendtitleLL.visibility = View.VISIBLE
             if (a_type==2){
                 holder.titleTV.text = "보낸 Like"
