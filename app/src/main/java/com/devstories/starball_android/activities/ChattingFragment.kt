@@ -74,6 +74,10 @@ class ChattingFragment : Fragment() {
         chattingLV.addHeaderView(header)
 //        chattingLV.addHeaderView(footer)
 
+        plusIV.setOnClickListener {
+            val intent = Intent(context, GrouptMakeActivity::class.java)
+            startActivity(intent)
+        }
         roomAdapter = ChattingRoomAdapter(myContext, R.layout.item_chat_profile, roomAdapterData)
         chattingLV.adapter = roomAdapter
 

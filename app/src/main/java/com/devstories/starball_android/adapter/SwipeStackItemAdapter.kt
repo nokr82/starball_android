@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.provider.MediaStore
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +15,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.devstories.starball_android.R
-import com.devstories.starball_android.activities.ChatNotiActivity
-import com.devstories.starball_android.activities.LikedNotiActivity
-import com.devstories.starball_android.activities.MatchedActivity
+import com.devstories.starball_android.activities.*
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.DateUtils
 import com.devstories.starball_android.base.Utils
@@ -38,7 +37,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 
-class SwipeStackItemAdapter(private val context:Context, private val activity:Activity, private val memberInfo:JSONObject, private val data: JSONArray, private val preview:Boolean) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SwipeStackItemAdapter(private val context:Context, private val activity:Activity, private val memberInfo:JSONObject, private val data: JSONArray, private val preview:Boolean,private val starball:Int) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class MainSearchType1(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -272,7 +271,21 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 holder.nameTV.text = name
                 holder.ageTV.text = age.toString()
                 holder.fitRateTV.text = "23%"
+                holder.charmIV.setOnClickListener {
+                    Log.d("스타볼",starball.toString())
+                    if (starball>0){
+                        val intent = Intent(context, DlgCrushActivity::class.java)
+                        context.startActivity(intent)
+                    }else{
+                        val intent = Intent(context, DlgStarballLackActivity::class.java)
+                        context.startActivity(intent)
+                    }
 
+
+
+                    /*  val intent = Intent(context, MatchedActivity::class.java)
+                      context.startActivity(intent)*/
+                }
                 holder.infoIV.setOnClickListener {
 
                     val intent = Intent(context, LikedNotiActivity::class.java)
@@ -347,6 +360,20 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 holder.nameTV.text = name
                 holder.ageTV.text = age.toString()
                 holder.fitRateTV.text = "23%"
+
+                holder.charmIV.setOnClickListener {
+                    Log.d("스타볼",starball.toString())
+                    if (starball>0){
+                        val intent = Intent(context, DlgCrushActivity::class.java)
+                        context.startActivity(intent)
+                    }else{
+                        val intent = Intent(context, DlgStarballLackActivity::class.java)
+                        context.startActivity(intent)
+                    }
+
+                    /*  val intent = Intent(context, MatchedActivity::class.java)
+                      context.startActivity(intent)*/
+                }
             }
         }
 

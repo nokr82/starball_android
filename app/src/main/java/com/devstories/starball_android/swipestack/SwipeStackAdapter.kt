@@ -6,18 +6,20 @@ import android.provider.MediaStore
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PagerSnapHelper
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.devstories.starball_android.R
+import com.devstories.starball_android.activities.MainActivity
 import com.devstories.starball_android.adapter.SwipeStackItemAdapter
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.NoScrollLinearLayoutManager
 import com.devstories.starball_android.base.Utils
 import org.json.JSONObject
 
-class SwipeStackAdapter(private val context: Context, private val activity: Activity, private val data: ArrayList<JSONObject>, swipeHelper: SwipeHelper) : BaseAdapter() {
+class SwipeStackAdapter(private val context: Context, private val activity: MainActivity, private val data: ArrayList<JSONObject>, swipeHelper: SwipeHelper) : BaseAdapter() {
 
     private var mSwipeHelper = swipeHelper
     private var dxs = 0
@@ -53,7 +55,7 @@ class SwipeStackAdapter(private val context: Context, private val activity: Acti
             layoutManager = noScrollLinearLayoutManager
 
             // specify an viewAdapter (ee also next example)
-            adapter = SwipeStackItemAdapter(context, activity, item.getJSONObject("member"), item.getJSONArray("pages"), false)
+            adapter = SwipeStackItemAdapter(context, activity, item.getJSONObject("member"), item.getJSONArray("pages"), false,activity.starball)
 
             PagerSnapHelper().attachToRecyclerView(this)
 
@@ -89,11 +91,12 @@ class SwipeStackAdapter(private val context: Context, private val activity: Acti
 
                             println(item)
 
-
                             val id = Utils.getInt(item!!, "id")
+                            val member_id = Utils.getInt(item!!, "member")
                             val path = Utils.getString(item!!, "image_uri")
                             val mediaType = Utils.getInt(item!!, "type")
-
+                            Log.d("아뒤",member_id.toString())
+                            Log.d("아뒤",member_id.toString())
                             if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO) {
 
                                 layoutManager!!.findViewByPosition(position)

@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import com.devstories.starball_android.actions.MemberAction
@@ -19,6 +20,7 @@ import com.devstories.starball_android.swipestack.SwipeStackAdapter
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 import cz.msebera.android.httpclient.Header
+import kotlinx.android.synthetic.main.activity_cash_request.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -38,6 +40,8 @@ class MainActivity : RootActivity() {
 
     private val topLogoTimer = Timer()
     private val rightBottomStarballTimer = Timer()
+    //현재보유스타볼
+    var starball = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +51,8 @@ class MainActivity : RootActivity() {
 
         progressDialog = ProgressDialog(mContext, com.devstories.starball_android.R.style.CustomProgressBar)
         progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
+
+
 
         chatIV.setOnClickListener {
             val intent = Intent(this, ChattingActivity::class.java)
@@ -62,6 +68,8 @@ class MainActivity : RootActivity() {
             val intent = Intent(this, StarballReceivedActivity::class.java)
             startActivity(intent)
         }
+
+        get_info()
 
         val swipeStack = swipeStack as SwipeStack
         swipeStackAdapter = SwipeStackAdapter(mContext, this, data, swipeStack.getmSwipeHelper())
@@ -94,6 +102,106 @@ class MainActivity : RootActivity() {
 
     }
 
+
+    private fun get_info() {
+        val member_id = PrefUtils.getIntPreference(mContext,"member_id")
+        val params = RequestParams()
+        params.put("member_id", member_id)
+
+        MemberAction.get_info(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                Log.d("스타볼",response.toString())
+                try {
+                    val result = response!!.getString("result")
+                    if ("ok" == result) {
+                        starball = Utils.getInt(response, "starball")
+                        Log.d("스타볼",starball.toString())
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
     private fun loadData() {
 
         val member_id = PrefUtils.getIntPreference(mContext,"member_id")
@@ -118,6 +226,7 @@ class MainActivity : RootActivity() {
                         val members = response!!.getJSONArray("members")
                         for (idx in 0 until members.length()){
                             val member = members.get(idx) as JSONObject
+                            member.put("starball",starball)
                             member.put("pages", member.getJSONArray("profiles"))
                             data.add(member)
                         }
