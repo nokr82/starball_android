@@ -33,4 +33,7 @@ object ChattingAction {
     fun add_adverb(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/chattings/add_adverb", params, handler)
     }
+    fun chat_user_list(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/chat_user_list", params, handler)
+    }
 }

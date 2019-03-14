@@ -14,6 +14,7 @@ import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.Utils
 import com.nostra13.universalimageloader.core.ImageLoader
 import org.json.JSONObject
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -61,12 +62,26 @@ class CrushAdapter(view: Int, data: ArrayList<JSONObject>,a_type:Int) :
             val gender = Utils.getString(LikeMember, "gender")
             val image_uri = Utils.getString(LikeMemberProfile, "image_uri")
             var bitmap = Config.url + image_uri
+            val births = birth.split("-")
+            var age = 0
+
+            if (births.count() == 3) {
+
+                var now = System.currentTimeMillis()
+                var date = Date(now)
+                val sdfNow = SimpleDateFormat("yyyy")
+                val year = sdfNow.format(date)
+
+                age = year.toInt() - births[0].toInt()
+            }
+
+            holder.nameTV.text = name + " " + age
+
             if (a_type==2){
                 holder.sendIV.setImageResource(R.mipmap.bi)
             }else{
                 holder.sendIV.setImageResource(R.mipmap.send_btn)
             }
-            holder.nameTV.text = name
             holder.timeTV.text = created_at.substring(0,10).replace("-",".")
             ImageLoader.getInstance().displayImage(Config.url + image_uri, holder.likeIV, Utils.UILoptions)
         }else{

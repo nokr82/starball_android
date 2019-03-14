@@ -13,6 +13,7 @@
             android:layout_height="70dp">
 
         <ImageView
+                android:id="@+id/ckIV"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -22,7 +23,8 @@
         <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-        <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileIV"
                 android:paddingLeft="10dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -36,6 +38,7 @@
 
 
         <TextView
+                android:id="@+id/nameTV"
                 android:layout_marginLeft="15dp"
                 android:textStyle="bold"
                 android:layout_width="0dp"
