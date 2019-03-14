@@ -2,6 +2,7 @@ package com.devstories.starball_android.activities
 
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -45,10 +46,20 @@ class GrouptMakeActivity : RootActivity()  {
 
             for (i in 0..adapterdata.size - 1) {
                 var json = adapterdata[i] as JSONObject
-                Log.d("제이슨",json.toString())
+                val Member = json.getJSONObject("Member")
+                var member_id = Utils.getString(Member, "id")
+                val isSelectedOp = json.getBoolean("isSelectedOp")
+                if (isSelectedOp){
+                    member_list.add(member_id)
+                }else{
 
+                }
             }
+            Log.d("아뒤",member_list.toString())
 
+            val intent = Intent(context, GroupChattingActivity::class.java)
+            intent.putExtra("member_list",member_list)
+            startActivity(intent)
 
         }
 
