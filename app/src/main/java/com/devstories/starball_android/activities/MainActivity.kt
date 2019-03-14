@@ -4,8 +4,10 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
 import android.app.ProgressDialog
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -43,6 +45,16 @@ class MainActivity : RootActivity() {
     //현재보유스타볼
     var starball = -1
 
+    internal var usestarballreciver: BroadcastReceiver? = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent?) {
+            if (intent != null) {
+                val intent = Intent(context, MatchedActivity::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.devstories.starball_android.R.layout.activity_main)
@@ -52,7 +64,8 @@ class MainActivity : RootActivity() {
         progressDialog = ProgressDialog(mContext, com.devstories.starball_android.R.style.CustomProgressBar)
         progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
 
-
+        var filter1 = IntentFilter("STARBALL_USE")
+        registerReceiver(usestarballreciver, filter1)
 
         chatIV.setOnClickListener {
             val intent = Intent(this, ChattingActivity::class.java)

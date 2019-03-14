@@ -254,6 +254,7 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                     holder.videoVV.visibility = View.VISIBLE
                 }
 
+                val like_member_id  = Utils.getInt(memberInfo,"id")
                 val email = Utils.getString(memberInfo, "email")
                 val name = Utils.getString(memberInfo, "name")
                 val gender = Utils.getString(memberInfo, "gender")
@@ -267,6 +268,8 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 val school = Utils.getString(memberInfo, "school")
                 val intro = Utils.getString(memberInfo, "intro")
 
+                Log.d("멤버정보",memberInfo.toString())
+
                 holder.distanceTV.text = "17Km"
                 holder.nameTV.text = name
                 holder.ageTV.text = age.toString()
@@ -275,13 +278,12 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                     Log.d("스타볼",starball.toString())
                     if (starball>0){
                         val intent = Intent(context, DlgCrushActivity::class.java)
+                        intent.putExtra("like_member_id",like_member_id)
                         context.startActivity(intent)
                     }else{
                         val intent = Intent(context, DlgStarballLackActivity::class.java)
                         context.startActivity(intent)
                     }
-
-
 
                     /*  val intent = Intent(context, MatchedActivity::class.java)
                       context.startActivity(intent)*/
@@ -342,7 +344,8 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                     holder.imgIV.visibility = View.GONE
                     holder.videoVV.visibility = View.VISIBLE
                 }
-
+                Log.d("멤버정보",memberInfo.toString())
+                val like_member_id  = Utils.getInt(memberInfo,"id")
                 val email = Utils.getString(memberInfo, "email")
                 val name = Utils.getString(memberInfo, "name")
                 val gender = Utils.getString(memberInfo, "gender")
@@ -365,6 +368,7 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                     Log.d("스타볼",starball.toString())
                     if (starball>0){
                         val intent = Intent(context, DlgCrushActivity::class.java)
+                        intent.putExtra("like_member_id",like_member_id)
                         context.startActivity(intent)
                     }else{
                         val intent = Intent(context, DlgStarballLackActivity::class.java)

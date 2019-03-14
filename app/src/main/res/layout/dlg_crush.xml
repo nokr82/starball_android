@@ -67,6 +67,7 @@
                         android:text="@string/left_starball2"/>
 
                     <TextView
+                        android:id="@+id/left_starballTV"
                         android:layout_width="wrap_content"
                         android:textStyle="bold"
                         android:layout_height="wrap_content"
@@ -235,6 +236,7 @@
                             android:layout_weight="1">
 
                             <ImageView
+                                android:id="@+id/starball2IV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@mipmap/radio_off"/>
@@ -255,6 +257,7 @@
                             android:layout_weight="1">
 
                             <ImageView
+                                android:id="@+id/starball5IV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@mipmap/radio_off"/>
@@ -275,6 +278,7 @@
                             android:layout_weight="1">
 
                             <ImageView
+                                android:id="@+id/starball10IV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@mipmap/radio_off"/>
@@ -295,6 +299,7 @@
                             android:layout_weight="1">
 
                             <ImageView
+                                android:id="@+id/starball20IV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@mipmap/radio_off"/>
@@ -315,9 +320,10 @@
                             android:layout_weight="1">
 
                             <ImageView
+                                android:id="@+id/starball50IV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@mipmap/radio_on"/>
+                                android:src="@mipmap/radio_off"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -347,6 +353,8 @@
                             android:text="@string/direct_input"/>
 
                         <EditText
+                            android:id="@+id/use_starballET"
+                            android:inputType="number"
                             android:layout_marginLeft="12dp"
                             android:layout_width="140dp"
                             android:layout_height="20dp"
