@@ -2,13 +2,14 @@ package com.devstories.starball_android.activities
 
 import android.app.ProgressDialog
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
-import com.devstories.starball_android.actions.MemberAction
+import com.devstories.starball_android.actions.ChattingAction.chat_user_list
 import com.devstories.starball_android.adapter.GroupAdapter
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
@@ -21,14 +22,15 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-class GrouptMakeActivity : RootActivity() {
+class GrouptMakeActivity : RootActivity()  {
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
     lateinit var GroupAdapter: GroupAdapter
     var adapterdata  = ArrayList<JSONObject>()
-
+    var member_list  = ArrayList<String>()
+    var size = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_make)
@@ -39,9 +41,44 @@ class GrouptMakeActivity : RootActivity() {
         GroupAdapter = GroupAdapter(context, R.layout.item_group_profile, adapterdata)
         groupLV.adapter = GroupAdapter
 
-        groupLV.setOnItemClickListener { parent, view, position, id ->
+        nextTV.setOnClickListener {
+
+            for (i in 0..adapterdata.size - 1) {
+                var json = adapterdata[i] as JSONObject
+                Log.d("제이슨",json.toString())
+
+            }
+
 
         }
+
+        groupLV.setOnItemClickListener { parent, view, position, id ->
+
+            val json = adapterdata.get(position)
+            Log.d("클릭",json.toString())
+            val Member = json.getJSONObject("Member")
+            val isSelectedOp = json.getBoolean("isSelectedOp")
+            var member_id = Utils.getString(Member, "id")
+
+
+            if (isSelectedOp){
+                adapterdata[position].put("isSelectedOp",false)
+                size--
+            }else{
+                if (size>2){
+                    Toast.makeText(context,"그룹당 3명까지만 선택할수있습니다",Toast.LENGTH_SHORT).show()
+                    return@setOnItemClickListener
+                }
+                adapterdata[position].put("isSelectedOp",true)
+                size++
+            }
+
+            Log.d("사이즈",size.toString())
+            Log.d("클릭",member_list.toString())
+            GroupAdapter.notifyDataSetChanged()
+
+        }
+
 
         backIV.setOnClickListener {
             finish()
@@ -79,10 +116,10 @@ class GrouptMakeActivity : RootActivity() {
                             var json = chats[i] as JSONObject
                             Log.d("제이슨",json.toString())
                             adapterdata.add(json)
+                            adapterdata[i].put("isSelectedOp",false)
                         }
                         GroupAdapter.notifyDataSetChanged()
-                        Log.d("제이슨",adapterdata.count().toString())
-                        Log.d("제이슨",adapterdata.toString())
+
 
                     } else {
 
