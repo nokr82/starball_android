@@ -44,7 +44,7 @@ class GrouptMakeActivity : RootActivity()  {
 
         nextTV.setOnClickListener {
 
-            for (i in 0..adapterdata.size - 1) {
+            for (i in 0 until adapterdata.size) {
                 var json = adapterdata[i] as JSONObject
                 val Member = json.getJSONObject("Member")
                 var member_id = Utils.getString(Member, "id")
