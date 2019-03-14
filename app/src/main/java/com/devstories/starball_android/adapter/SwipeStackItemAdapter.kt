@@ -178,7 +178,7 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                     holder.imgIV.visibility = View.GONE
                     holder.videoVV.visibility = View.VISIBLE
                 }
-
+                val like_member_id  = Utils.getInt(memberInfo,"id")
                 val email = Utils.getString(memberInfo, "email")
                 val name = Utils.getString(memberInfo, "name")
                 val gender = Utils.getString(memberInfo, "gender")
@@ -205,8 +205,14 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 }
 
                 holder.charmIV.setOnClickListener {
-                    val intent = Intent(context, MatchedActivity::class.java)
-                    context.startActivity(intent)
+                    if (starball>0){
+                        val intent = Intent(context, DlgCrushActivity::class.java)
+                        intent.putExtra("like_member_id",like_member_id)
+                        context.startActivity(intent)
+                    }else{
+                        val intent = Intent(context, DlgStarballLackActivity::class.java)
+                        context.startActivity(intent)
+                    }
                 }
 
 
