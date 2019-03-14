@@ -4,6 +4,8 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
 import com.devstories.starball_android.R
@@ -213,6 +215,10 @@ class DlgCrushActivity : RootActivity() {
             use_starball = Utils.getInt(use_starballET)
         }
 
+        if (use_starball>starball){
+            Toast.makeText(context,"스타볼이 부족합니다.",Toast.LENGTH_SHORT).show()
+            return
+        }
         val params = RequestParams()
         params.put("member_id", member_id)
         params.put("like_member_id",like_member_id)
