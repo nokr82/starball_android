@@ -71,7 +71,7 @@
                 android:id="@+id/infoIV"
                 android:paddingRight="7.5dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="28dp"
                 android:src="@mipmap/main_info"/>
 
             <TextView
