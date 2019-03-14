@@ -48,7 +48,7 @@ class ChattingSendCrushFragment : Fragment() {
 
         like_list()
 
-        crushAdapter = CrushAdapter(R.layout.item_chatting_match, adapterdata)
+        crushAdapter = CrushAdapter(R.layout.item_chatting_match, adapterdata,2)
         sendlikeLV.adapter = crushAdapter
 
 
@@ -74,8 +74,8 @@ class ChattingSendCrushFragment : Fragment() {
                 }
                 try {
                     val result = response!!.getString("result")
-                    adapterdata.clear()
                     if ("ok" == result) {
+                        adapterdata.clear()
                         val likes = response.getJSONArray("likes")
                         for (i in 0..likes.length() - 1) {
                             var json = likes[i] as JSONObject
