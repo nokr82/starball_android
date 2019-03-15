@@ -8,8 +8,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.ListView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
 import com.devstories.starball_android.adapter.ChattingRoomAdapter
@@ -28,8 +26,8 @@ import com.baoyz.swipemenulistview.SwipeMenuCreator
 import android.graphics.Color
 import android.util.Log
 import android.widget.AbsListView
+import android.widget.ImageView
 import com.baoyz.swipemenulistview.SwipeMenuListView
-import com.devstories.starball_android.adapter.GroupChattingRoomAdapter
 
 
 //채팅화면
@@ -39,22 +37,15 @@ class ChattingFragment : Fragment() {
     lateinit var myContext: Context
     private var progressDialog: ProgressDialog? = null
 
-    lateinit var header: View
-    lateinit var footer: View
-
-    lateinit var plusIV: ImageView
-    lateinit var groupLV: ListView
-    lateinit var storyLV: ListView
 
     var member_id = -1
-
+    lateinit var header: View
     var page = 1
     var totalPage = 1
-    lateinit var GrouproomAdapter: GroupChattingRoomAdapter
     lateinit var roomAdapter: ChattingRoomAdapter
     var roomAdapterData = ArrayList<JSONObject>()
     var GrouproomAdapterData = ArrayList<JSONObject>()
-
+    lateinit var plusIV: ImageView
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         this.myContext = container!!.context
@@ -67,26 +58,11 @@ class ChattingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         header = View.inflate(myContext, R.layout.item_chatting_head, null)
-//        footer = View.inflate(myContext, R.layout.item_chatting_foot, null)
-
         plusIV = header.findViewById(R.id.plusIV)
-        groupLV = header.findViewById(R.id.groupLV)
-//        storyLV = footer.findViewById(R.id.storyLV)
-
-        GrouproomAdapter = GroupChattingRoomAdapter(myContext, R.layout.item_chat_profile, GrouproomAdapterData)
-        groupLV.adapter = GrouproomAdapter
-
-        chattingLV.addHeaderView(header)
-//        chattingLV.addHeaderView(footer)
-
-        plusIV.setOnClickListener {
-            val intent = Intent(context, GrouptMakeActivity::class.java)
-            startActivity(intent)
-        }
-
-
-        roomAdapter = ChattingRoomAdapter(myContext, R.layout.item_chat_profile, roomAdapterData)
+        roomAdapter = ChattingRoomAdapter(myContext, R.layout.item_chat_profile, roomAdapterData,1)
         chattingLV.adapter = roomAdapter
+        chattingLV.addHeaderView(header)
+
 
         val creator = SwipeMenuCreator { menu ->
             // create "open" item
@@ -134,23 +110,9 @@ class ChattingFragment : Fragment() {
 
         member_id = PrefUtils.getIntPreference(myContext, "member_id")
 
-        groupLV.setOnItemClickListener { parent, view, position, id ->
-
-            val json = GrouproomAdapterData[position]
-
-
-            Log.d("ajsls",json.toString())
-            val Group = json.getJSONObject("Group")
-
-            var intent = Intent(context, GroupChattingActivity::class.java)
-            intent.putExtra("room_id", Utils.getInt(Group, "id"))
+        plusIV.setOnClickListener {
+            val intent = Intent(context, GrouptMakeActivity::class.java)
             startActivity(intent)
-
-            /*  val lastChatting = json.getJSONObject("LastChatting")
-             lastChatting.put("read_yn", "Y")*/
-
-            roomAdapter.notifyDataSetChanged()
-
         }
 
 
@@ -176,22 +138,37 @@ class ChattingFragment : Fragment() {
                 return@setOnItemClickListener
             }
 
-            val json = roomAdapterData[position - 1]
+            var json = roomAdapterData[position -1]
+            val type = Utils.getInt(json, "type")
 
-            val room = json.getJSONObject("Room")
+            if (type==1){
+                Log.d("ajsls",json.toString())
+                val Group = json.getJSONObject("Group")
 
-            var intent = Intent(context, FriendChattingActivity::class.java)
-            intent.putExtra("room_id", Utils.getInt(room, "id"))
-            startActivity(intent)
+                var intent = Intent(context, GroupChattingActivity::class.java)
+                intent.putExtra("room_id", Utils.getInt(Group, "id"))
+                startActivity(intent)
 
-            val lastChatting = json.getJSONObject("LastChatting")
-            lastChatting.put("read_yn", "Y")
 
-            roomAdapter.notifyDataSetChanged()
+                roomAdapter.notifyDataSetChanged()
+
+            }else{
+                val room = json.getJSONObject("Room")
+
+                var intent = Intent(context, FriendChattingActivity::class.java)
+                intent.putExtra("room_id", Utils.getInt(room, "id"))
+                startActivity(intent)
+
+                val lastChatting = json.getJSONObject("LastChatting")
+                lastChatting.put("read_yn", "Y")
+                roomAdapter.notifyDataSetChanged()
+
+
+            }
 
         }
         loadGroupData()
-        loadData()
+
 
     }
 
@@ -216,10 +193,15 @@ class ChattingFragment : Fragment() {
                         val list = response.getJSONArray("list")
 
                         for (i in 0 until list.length()) {
-                            GrouproomAdapterData.add(list[i] as JSONObject)
+//                            GrouproomAdapterData.add(list[i] as JSONObject)
+
+                            val json = list[i] as JSONObject
+                            json.put("type", 1)
+
+                            roomAdapterData.add(json)
                         }
 
-                        GrouproomAdapter.notifyDataSetChanged()
+                        roomAdapter.notifyDataSetChanged()
 
                     } else {
 
@@ -228,6 +210,8 @@ class ChattingFragment : Fragment() {
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
+
+                loadData()
 
             }
 
@@ -320,16 +304,21 @@ class ChattingFragment : Fragment() {
                         page = Utils.getInt(response, "page")
                         totalPage = Utils.getInt(response, "totalPage")
 
-                        if (page == 1) {
-                            roomAdapterData.clear()
-                            roomAdapter.notifyDataSetChanged()
-                        }
+//                        if (page == 1) {
+//                            roomAdapterData.clear()
+//                            roomAdapter.notifyDataSetChanged()
+//                        }
 
                         val chat = response.getJSONArray("chat")
-
+                        val data = chat[0] as JSONObject
+                        data.put("title", "chatting_title")
                         for (i in 0 until chat.length()) {
-                            roomAdapterData.add(chat[i] as JSONObject)
+                            val data = chat[i] as JSONObject
+                            data.put("type", 2)
+
+                            roomAdapterData.add(data)
                         }
+
 
                         roomAdapter.notifyDataSetChanged()
 

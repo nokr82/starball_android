@@ -77,13 +77,13 @@
 
 
 
-                <ListView
+             <!--   <ListView
                     android:id="@+id/groupLV"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1">
 
-                </ListView>
+                </ListView>-->
 
 
 
@@ -95,15 +95,7 @@
 
         </LinearLayout>
 
-        <TextView
-            android:paddingLeft="10dp"
-            android:layout_marginTop="6.5dp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:textColor="#333333"
-            android:text="대화" />
+
 
     </LinearLayout>
 
