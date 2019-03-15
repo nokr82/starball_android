@@ -10,11 +10,13 @@ import android.util.Log
 import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.MemberAction
+import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
+import com.nostra13.universalimageloader.core.ImageLoader
 import cz.msebera.android.httpclient.Header
 import kotlinx.android.synthetic.main.activity_search_setting.*
 import kotlinx.android.synthetic.main.dlg_crush.*
@@ -34,8 +36,7 @@ class DlgCrushActivity : RootActivity() {
 
     var like_member_id = -1
     private val _active = true
-
-
+    var profiledata = ArrayList<JSONObject>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,10 +46,10 @@ class DlgCrushActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
-        like_member_id = intent.getIntExtra("like_member_id",-1)
+        like_member_id = intent.getIntExtra("like_member_id", -1)
 
-        Log.d("라이크",like_member_id.toString())
-
+        Log.d("라이크", like_member_id.toString())
+        get_user_info()
         get_info()
         noTV.setOnClickListener {
             finish()
@@ -89,14 +90,14 @@ class DlgCrushActivity : RootActivity() {
         }
 
         giftTV.setOnClickListener {
-            if (use_starball<0){
-                Toast.makeText(context,"스타볼을 입력해주세요.",Toast.LENGTH_SHORT).show()
+            if (use_starball < 0) {
+                Toast.makeText(context, "스타볼을 입력해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (like_member_id>0){
+            if (like_member_id > 0) {
                 use_starball()
-            }else{
-                Toast.makeText(context,"오류 발생",Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "오류 발생", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -110,8 +111,9 @@ class DlgCrushActivity : RootActivity() {
         starball20IV.setImageResource(R.mipmap.radio_off)
         starball50IV.setImageResource(R.mipmap.radio_off)
     }
+
     fun get_info() {
-        val member_id = PrefUtils.getIntPreference(context,"member_id")
+        val member_id = PrefUtils.getIntPreference(context, "member_id")
         val params = RequestParams()
         params.put("member_id", member_id)
 
@@ -121,7 +123,7 @@ class DlgCrushActivity : RootActivity() {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
-                Log.d("스타볼",response.toString())
+                Log.d("스타볼", response.toString())
                 try {
                     val result = response!!.getString("result")
                     if ("ok" == result) {
@@ -209,20 +211,124 @@ class DlgCrushActivity : RootActivity() {
         })
     }
 
+    fun get_user_info() {
+        val params = RequestParams()
+        params.put("member_id", like_member_id)
+
+        MemberAction.get_info(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                Log.d("스타볼", response.toString())
+                try {
+                    val result = response!!.getString("result")
+                    if ("ok" == result) {
+                        var profiles = response.getJSONArray("profiles")
+                        val like_count = response.getString("like_count")
+                        for (i in 0 until profiles.length()) {
+                            profiledata.add(profiles[i] as JSONObject)
+                        }
+                        var image_uri = Utils.getString(profiledata[0], "image_uri")
+                        ImageLoader.getInstance().displayImage(Config.url + image_uri, likeIV, Utils.UILoptionsProfile)
+                        like_countTV.text = like_count + getString(R.string.dlg_crush_content)
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
     fun use_starball() {
-        val member_id = PrefUtils.getIntPreference(context,"member_id")
-        if (use_starballET.length()>0){
+        val member_id = PrefUtils.getIntPreference(context, "member_id")
+        if (use_starballET.length() > 0) {
             use_starball = Utils.getInt(use_starballET)
         }
 
-        if (use_starball>starball){
-            Toast.makeText(context,"스타볼이 부족합니다.",Toast.LENGTH_SHORT).show()
+        if (use_starball > starball) {
+            Toast.makeText(context, "스타볼이 부족합니다.", Toast.LENGTH_SHORT).show()
             return
         }
         val params = RequestParams()
         params.put("member_id", member_id)
-        params.put("like_member_id",like_member_id)
-        params.put("type",2)
+        params.put("like_member_id", like_member_id)
+        params.put("type", 2)
         params.put("starball", use_starball)
 
         MemberAction.like(params, object : JsonHttpResponseHandler() {
@@ -231,7 +337,7 @@ class DlgCrushActivity : RootActivity() {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
-                Log.d("스타볼사용",response.toString())
+                Log.d("스타볼사용", response.toString())
                 try {
                     val result = response!!.getString("result")
                     if ("ok" == result) {

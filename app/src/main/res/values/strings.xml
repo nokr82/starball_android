@@ -247,7 +247,7 @@
     <string name="report_blcok">차단 및 신고</string>
     <string name="characcter_info">Character info.</string>
     <string name="left_starball2">보유한 Starball :</string>
-    <string name="dlg_crush_content">15명이 호감을 보냈습니다.</string>
+    <string name="dlg_crush_content">명이 호감을 보냈습니다.</string>
     <string name="dlg_crush_content2">무료로 +1 Starball 받기</string>
     <string name="dlg_crush_content3">보낼 Starball은</string>
     <string name="dlg_crush_content4">상대방이 수락해야만, 차감</string>

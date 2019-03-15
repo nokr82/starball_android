@@ -24,14 +24,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/likeIV"
                     android:layout_marginTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:scaleType="centerCrop"
                     android:src="@mipmap/comm_profile_pic"/>
 
                 <TextView
+                    android:id="@+id/like_countTV"
                     android:paddingTop="8.5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
