@@ -78,9 +78,20 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
             if (type == 2) {
                 item.otherImageIV.visibility = View.VISIBLE
                 item.otherContentsLL.visibility = View.GONE
+                item.otherVoiceLL.visibility = View.GONE
+            } else if (type == 3) {
+                item.otherImageIV.visibility = View.GONE
+                item.otherContentsLL.visibility = View.GONE
+                item.otherVoiceLL.visibility = View.VISIBLE
+
+                item.otherVoiceIV.setOnClickListener {
+                    activity.playing(Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
+                }
+
             } else {
                 item.otherImageIV.visibility = View.GONE
                 item.otherContentsLL.visibility = View.VISIBLE
+                item.otherVoiceLL.visibility = View.GONE
             }
 
         } else {
@@ -91,14 +102,23 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
             item.myCreatedTV.text = created
 
             if (type == 2) {
-
                 ImageLoader.getInstance().displayImage(Config.url + Utils.getString(chatting, "image_uri"), item.myImageIV, Utils.UILoptionsPosting)
 
                 item.myImageIV.visibility = View.VISIBLE
                 item.myContentsLL.visibility = View.GONE
-            } else {
+                item.myVoiceLL.visibility = View.GONE
+            } else if (type == 3) {
+                item.myImageIV.visibility = View.GONE
+                item.myContentsLL.visibility = View.GONE
+                item.myVoiceLL.visibility = View.VISIBLE
+                item.myVoiceIV.setOnClickListener {
+                    activity.playing(Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
+                }
+
+            }else {
                 item.myImageIV.visibility = View.GONE
                 item.myContentsLL.visibility = View.VISIBLE
+                item.myVoiceLL.visibility = View.GONE
             }
         }
 
@@ -138,12 +158,16 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
         var otherCreatedTV: TextView
         var translationTV: TextView
         var otherImageIV: ImageView
+        var otherVoiceLL: LinearLayout
+        var otherVoiceIV: ImageView
 
         var myLL: LinearLayout
         var myContentsLL: LinearLayout
         var myContentsTV: TextView
         var myCreatedTV: TextView
         var myImageIV: ImageView
+        var myVoiceLL: LinearLayout
+        var myVoiceIV: ImageView
 
         var profileIV: CircleImageView
 
@@ -158,12 +182,16 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
             otherCreatedTV = v.findViewById(R.id.otherCreatedTV)
             translationTV = v.findViewById(R.id.translationTV)
             otherImageIV = v.findViewById(R.id.otherImageIV)
+            otherVoiceLL = v.findViewById(R.id.otherVoiceLL)
+            otherVoiceIV = v.findViewById(R.id.otherVoiceIV)
 
             myLL = v.findViewById(R.id.myLL)
             myContentsLL = v.findViewById(R.id.myContentsLL)
             myContentsTV = v.findViewById(R.id.myContentsTV)
             myCreatedTV = v.findViewById(R.id.myCreatedTV)
             myImageIV = v.findViewById(R.id.myImageIV)
+            myVoiceLL = v.findViewById(R.id.myVoiceLL)
+            myVoiceIV = v.findViewById(R.id.myVoiceIV)
 
             profileIV = v.findViewById(R.id.profileIV)
             likeIV = v.findViewById(R.id.likeIV)
