@@ -5,7 +5,9 @@ import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 
 object ChattingAction {
-
+    fun del_group_member(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/del_group_member", params, handler)
+    }
     fun group_chatting(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/chattings/group_chatting", params, handler)
     }
@@ -18,6 +20,9 @@ object ChattingAction {
 
     fun chatting(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/chattings/chatting", params, handler)
+    }
+    fun group_detail(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/group_detail", params, handler)
     }
 
     fun detail(params: RequestParams, handler: JsonHttpResponseHandler) {

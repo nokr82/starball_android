@@ -12,23 +12,24 @@ import android.os.Handler
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.util.Log
 import android.view.View
-import android.widget.AbsListView
-import android.widget.BaseAdapter
-import android.widget.LinearLayout
+import android.widget.*
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
-import com.devstories.starball_android.adapter.AdverbAdapter
 import com.devstories.starball_android.adapter.GroupChattingAdapter
+import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
+import com.nostra13.universalimageloader.core.ImageLoader
 import cz.msebera.android.httpclient.Header
 import kotlinx.android.synthetic.main.activity_group_chatting.*
 import org.json.JSONException
 import org.json.JSONObject
+import java.io.ByteArrayInputStream
 import java.util.*
 
 class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
@@ -47,12 +48,14 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
     var first_id = -1
     var last_id = -1
 
+    var member_count = -1
+
     var translation_yn = ""
 
     lateinit var adapter: GroupChattingAdapter
     var adapterData = ArrayList<JSONObject>()
 
-//    lateinit var adverbAdapter: AdverbAdapter
+    //    lateinit var adverbAdapter: AdverbAdapter
     var adverbAdapterData = ArrayList<JSONObject>()
 
     internal var loadDataHandler: Handler = object : Handler() {
@@ -67,8 +70,6 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
     private val REQUEST_PERMISSION_READ_EXTERNAL_STORAGE = 2
     private var selectedImage: Bitmap? = null
 
-    lateinit var groupmemberLL: LinearLayout
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,9 +77,11 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         this.context = this
         progressDialog = ProgressDialog(context)
 
+
+
         member_id = PrefUtils.getIntPreference(context, "member_id")
 //        member_list =  intent.getStringExtra("member_list")
-        room_id = intent.getIntExtra("room_id",-1)
+        room_id = intent.getIntExtra("room_id", -1)
 
         adapter = GroupChattingAdapter(context, R.layout.item_group_chatting, adapterData, this)
         groupLV.adapter = adapter
@@ -137,7 +140,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 return@setOnClickListener
             }
 
-//            sendChatting(1)
+            sendChatting(1)
 
         }
 
@@ -160,7 +163,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
         }
 
-//        detail()
+        detail()
         timerStart()
         adverb()
 
@@ -221,7 +224,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
                             selectedImage = Utils.getImage(context!!.contentResolver, picturePath)
 
-//                            sendChatting(2)
+                            sendChatting(2)
 
                         }
                     }
@@ -252,6 +255,98 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 }
             }
         }
+    }
+
+
+    fun sendChatting(type: Int) {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("group_id", room_id)
+        params.put("type", type)
+        params.put("chatting_type", 2)
+        params.put("contents", Utils.getString(contentsET))
+
+        if (type == 2) {
+            if (selectedImage != null) {
+                val selectedImg = ByteArrayInputStream(Utils.getByteArray(selectedImage))
+                params.put("upload", selectedImg)
+            }
+        }
+
+        ChattingAction.send_chatting(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                Log.d("채팅", response.toString())
+                try {
+                    val result = response!!.getString("result")
+
+                    selectedImage = null
+                    contentsET.setText("")
+
+                    if ("ok" == result) {
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+//                val listViewHeight = Utils.getListViewHeightBasedOnItems(chatLV)
+//
+//                if (chatLV.height < listViewHeight) {
+//                    chatLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL
+//                } else {
+//                    chatLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_NORMAL
+//                }
+            }
+
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
     }
 
     fun timerStart() {
@@ -419,14 +514,12 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         })
     }
 
-
-  /*  fun detail() {
+    fun detail() {
 
         val params = RequestParams()
-        params.put("member_id", member_id)
-        params.put("room_id", room_id)
+        params.put("group_id", room_id)
 
-        ChattingAction.detail(params, object : JsonHttpResponseHandler() {
+        ChattingAction.group_detail(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
                 if (progressDialog != null) {
@@ -437,53 +530,36 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                     val result = response!!.getString("result")
 
                     if ("ok" == result) {
+                        val list = response.getJSONArray("GroupMembers")
+                        val Group = response.getJSONObject("Group")
+                        val title = Utils.getString(Group, "title")
+                        titleTV.text = title
+                        member_count = list.length()
+                        countTV.text = member_count.toString()
+                        groupmemberLL.removeAllViews()
 
-                        val room = response.getJSONObject("Room")
+                        for (i in 0 until list.length()) {
+                            val data = list.get(i) as JSONObject
+                            val GroupMember = data.getJSONObject("GroupMember")
+                            val Member = data.getJSONObject("Member")
+                            var Profile = data.getJSONObject("Profile")
+                            val name = Utils.getString(Member, "name")
+                            val group_member_id = Utils.getInt(GroupMember, "id")
+                            val image_uri = Utils.getString(Profile, "image_uri")
 
-                        val founderMemberObj = response.getJSONObject("founderMember")
-                        val founderMember = founderMemberObj.getJSONObject("Member")
-                        val founderProfile = founderMemberObj.getJSONObject("Profile")
+                            val userView = View.inflate(context, R.layout.item_group_member, null)
+                            var profileIV: ImageView = userView.findViewById(R.id.profileIV)
+                            var nameTV: TextView = userView.findViewById(R.id.nameTV)
+                            var delIV: ImageView = userView.findViewById(R.id.delIV)
+                            delIV.setOnClickListener {
+                                del_group_member(group_member_id)
+                            }
 
-                        val attendMemberObj = response.getJSONObject("attendMember")
-                        val attendMember = attendMemberObj.getJSONObject("Member")
-                        val attendProfile = attendMemberObj.getJSONObject("Profile")
+                            ImageLoader.getInstance()
+                                .displayImage(Config.url + image_uri, profileIV, Utils.UILoptionsProfile)
+                            nameTV.text = name
+                            groupmemberLL.addView(userView)
 
-                        val founder_member_id = Utils.getInt(room, "founder_member_id")
-                        val attend_member_id = Utils.getInt(room, "attend_member_id")
-
-                        var name = Utils.getString(founderMember, "name")
-                        var birth = Utils.getString(founderMember, "birth")
-
-                        if (member_id == founder_member_id) {
-                            name = Utils.getString(attendMember, "name")
-                            birth = Utils.getString(attendMember, "birth")
-
-                            translation_yn = Utils.getString(room, "founder_translation_yn")
-                            other_member_id = attend_member_id
-                        } else {
-                            translation_yn = Utils.getString(room, "attend_translation_yn")
-                            other_member_id = founder_member_id
-                        }
-
-                        val births = birth.split("-")
-                        var age = 0
-
-                        if (births.count() == 3) {
-
-                            var now = System.currentTimeMillis()
-                            var date = Date(now)
-                            val sdfNow = SimpleDateFormat("yyyy")
-                            val year = sdfNow.format(date)
-
-                            age = year.toInt() - births[0].toInt()
-                        }
-
-                        titleTV.text = name + " " + age
-
-                        if (translation_yn == "Y") {
-                            globalIV.setImageResource(R.mipmap.global_on)
-                        } else {
-                            globalIV.setImageResource(R.mipmap.global)
                         }
 
                     } else {
@@ -535,16 +611,15 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 }
             }
         })
-    }*/
+    }
 
-   /* fun editRoom() {
+
+    fun del_group_member(member_id: Int) {
 
         val params = RequestParams()
-        params.put("member_id", member_id)
-        params.put("room_id", room_id)
-        params.put("translation_yn", translation_yn)
+        params.put("group_member_id", member_id)
 
-        ChattingAction.edit_room(params, object : JsonHttpResponseHandler() {
+        ChattingAction.del_group_member(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
                 if (progressDialog != null) {
@@ -555,15 +630,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                     val result = response!!.getString("result")
 
                     if ("ok" == result) {
-
-                        if (translation_yn == "Y") {
-                            globalIV.setImageResource(R.mipmap.global_on)
-                        } else {
-                            globalIV.setImageResource(R.mipmap.global)
-                        }
-
-                        adapter.notifyDataSetChanged()
-
+                        detail()
                     } else {
 
                     }
@@ -613,7 +680,85 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 }
             }
         })
-    }*/
+    }
+
+    /* fun editRoom() {
+
+         val params = RequestParams()
+         params.put("member_id", member_id)
+         params.put("room_id", room_id)
+         params.put("translation_yn", translation_yn)
+
+         ChattingAction.edit_room(params, object : JsonHttpResponseHandler() {
+
+             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                 if (progressDialog != null) {
+                     progressDialog!!.dismiss()
+                 }
+
+                 try {
+                     val result = response!!.getString("result")
+
+                     if ("ok" == result) {
+
+                         if (translation_yn == "Y") {
+                             globalIV.setImageResource(R.mipmap.global_on)
+                         } else {
+                             globalIV.setImageResource(R.mipmap.global)
+                         }
+
+                         adapter.notifyDataSetChanged()
+
+                     } else {
+
+                     }
+
+                 } catch (e: JSONException) {
+                     e.printStackTrace()
+                 }
+
+             }
+
+             override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                 // System.out.println(responseString);
+             }
+
+             private fun error() {
+                 // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+             }
+
+             override fun onFailure(
+                 statusCode: Int,
+                 headers: Array<Header>?,
+                 responseString: String?,
+                 throwable: Throwable
+             ) {
+                 if (progressDialog != null) {
+                     progressDialog!!.dismiss()
+                 }
+
+                 // System.out.println(responseString);
+
+                 throwable.printStackTrace()
+                 error()
+             }
+
+
+             override fun onStart() {
+                 // show dialog
+ //                if (progressDialog != null) {
+ //                    progressDialog!!.show()
+ //                }
+             }
+
+             override fun onFinish() {
+                 if (progressDialog != null) {
+                     progressDialog!!.dismiss()
+                 }
+             }
+         })
+     }*/
 
     fun group_chatting() {
 
@@ -635,7 +780,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
         }
         val params = RequestParams()
-        params.put("group_id",room_id)
+        params.put("group_id", room_id)
         params.put("first_id", first_id)
         params.put("last_id", last_id)
 
@@ -651,17 +796,14 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
                     if ("ok" == result) {
                         val list = response.getJSONArray("chattings")
-
                         if (first_id > 0) {
                             for (i in 0 until list.length()) {
                                 val data = list.get(i) as JSONObject
                                 adapterData.add(0, data)
 
-
                             }
 
-                        }
-                        else {
+                        } else {
                             for (i in 0 until list.length()) {
 
                                 val data = list.get(i) as JSONObject
@@ -739,95 +881,6 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
         })
     }
-
-    /*fun sendChatting(type: Int) {
-
-        val params = RequestParams()
-        params.put("member_id", member_id)
-        params.put("room_id", room_id)
-        params.put("type", type)
-        params.put("contents", Utils.getString(contentsET))
-
-        if (type == 2) {
-            if (selectedImage != null) {
-                val selectedImg = ByteArrayInputStream(Utils.getByteArray(selectedImage))
-                params.put("upload", selectedImg)
-            }
-        }
-
-        ChattingAction.send_chatting(params, object : JsonHttpResponseHandler() {
-
-            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
-                if (progressDialog != null) {
-                    progressDialog!!.dismiss()
-                }
-
-                try {
-                    val result = response!!.getString("result")
-
-                    selectedImage = null
-                    contentsET.setText("")
-
-                    if ("ok" == result) {
-
-                    } else {
-
-                    }
-
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
-
-//                val listViewHeight = Utils.getListViewHeightBasedOnItems(chatLV)
-//
-//                if (chatLV.height < listViewHeight) {
-//                    chatLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL
-//                } else {
-//                    chatLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_NORMAL
-//                }
-            }
-
-
-            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
-
-                // System.out.println(responseString);
-            }
-
-            private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
-            }
-
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                responseString: String?,
-                throwable: Throwable
-            ) {
-                if (progressDialog != null) {
-                    progressDialog!!.dismiss()
-                }
-
-                // System.out.println(responseString);
-
-                throwable.printStackTrace()
-                error()
-            }
-
-
-            override fun onStart() {
-                // show dialog
-//                if (progressDialog != null) {
-//                    progressDialog!!.show()
-//                }
-            }
-
-            override fun onFinish() {
-                if (progressDialog != null) {
-                    progressDialog!!.dismiss()
-                }
-            }
-        })
-    }*/
 
     override fun onScroll(view: AbsListView?, firstVisibleItem: Int, visibleItemCount: Int, totalItemCount: Int) {
         lastItemVisibleFlag = totalItemCount > 0 && firstVisibleItem + visibleItemCount >= totalItemCount

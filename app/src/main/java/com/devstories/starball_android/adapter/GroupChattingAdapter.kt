@@ -1,21 +1,14 @@
 package com.devstories.starball_android.adapter
 
 import android.content.Context
-import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.devstories.starball_android.R
-import com.devstories.starball_android.activities.FriendChattingActivity
 import com.devstories.starball_android.activities.GroupChattingActivity
-import com.devstories.starball_android.base.Config
-import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
-import com.nostra13.universalimageloader.core.ImageLoader
-import de.hdodenhof.circleimageview.CircleImageView
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
@@ -47,7 +40,7 @@ open class GroupChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
 
         val json = data[position]
         val chatting = json.getJSONObject("GroupChatting")
-        val read_count = Utils.getString(json, "read_count")
+        val read_count = Utils.getInt(json, "read_count")
         val time = Utils.getInt(json, "time")
 
         val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
@@ -63,7 +56,9 @@ open class GroupChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
 
         item.contentsTV.text = contents
         item.createTV.text = created
-        item.readcountTV.text = read_count
+
+        var read_cnt = activity.member_count - read_count
+        item.readcountTV.text = activity.member_count.toString()+" / "+ read_cnt.toString()
         if (time!=0){
             item.timerLL.visibility = View.VISIBLE
         }else{
