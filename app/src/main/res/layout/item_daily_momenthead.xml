@@ -39,7 +39,7 @@
                     android:textSize="12dp"
                     android:gravity="center"
                     android:textColor="#ffff"
-                    android:text="@string/friend_invite"/>
+                    android:text="내 게시물"/>
 
         </LinearLayout>
 

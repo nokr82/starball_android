@@ -56,8 +56,10 @@ class GrouptMakeActivity : RootActivity()  {
 
                 }
             }
+            val intent = Intent(context, GroupChattingActivity::class.java)
+            startActivity(intent)
             Log.d("아뒤",member_list.toString())
-            group_make()
+//            group_make()
 
 
         }
@@ -218,9 +220,7 @@ class GrouptMakeActivity : RootActivity()  {
 
                     Log.d("결과",result.toString())
                     if ("ok" == result) {
-                        val intent = Intent(context, GroupChattingActivity::class.java)
-                        intent.putExtra("member_list",member_list)
-                        startActivity(intent)
+
                     } else {
 
                     }

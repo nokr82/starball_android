@@ -62,7 +62,7 @@
                         android:layout_marginRight="24dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@mipmap/lounge_subscribe"/>
+                        android:src="@mipmap/mark_subscribe_need"/>
 
                 <ImageView
                         android:paddingRight="20dp"

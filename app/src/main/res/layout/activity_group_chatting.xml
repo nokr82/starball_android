@@ -19,6 +19,7 @@
             android:id="@+id/backIV"/>
 
         <TextView
+            android:id="@+id/titleTV"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -180,6 +181,7 @@
             android:src="@mipmap/chatting_mic"/>
 
         <ImageView
+            android:id="@+id/sendImageIV"
             android:layout_marginRight="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -193,6 +195,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/contentsET"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:textColorHint="#bbbbbb"
@@ -202,6 +205,7 @@
                 android:textSize="14dp"/>
 
             <LinearLayout
+                android:id="@+id/sendLL"
                 android:layout_marginRight="5dp"
                 android:layout_centerInParent="true"
                 android:layout_alignParentRight="true"
@@ -314,6 +318,7 @@
                 android:paddingLeft="10dp"/>
 
             <EditText
+                android:id="@+id/adverbET"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
@@ -328,6 +333,7 @@
         </RelativeLayout>
 
         <LinearLayout
+            android:id="@+id/addAdverbLL"
             android:layout_marginTop="12.5dp"
             android:layout_marginBottom="15dp"
             android:layout_width="match_parent"
