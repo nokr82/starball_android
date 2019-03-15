@@ -1420,6 +1420,46 @@ public class Utils {
         return "0일 0시간 0분 0초";
     }
 
+    public static String dateString2(int timer) {
+        // Set up touch listener for non-text box views to hide keyboard.
+
+        if (timer > 0) {
+            int h = timer / 60 / 60;
+            int m = timer / 60 % 60;
+            int s = timer % 60;
+
+            String txt_d = "0";
+            String txt_h = "";
+            String txt_m = "";
+            String txt_s = "";
+
+            if (h < 10) {
+                txt_h = "0" + h;
+            } else if (h > 24) {
+                txt_d = "" + h / 24;
+                txt_h = "" + h % 24;
+            } else {
+                txt_h = "" + h;
+            }
+
+            if (m < 10) {
+                txt_m = "0" + m;
+            } else {
+                txt_m = "" + m;
+            }
+
+            if (s < 10) {
+                txt_s = "0" + s;
+            } else {
+                txt_s = "" + s;
+            }
+
+            return  txt_m + ":" + txt_s;
+        }
+
+        return "0일 0시간 0분 0초";
+    }
+
     /**
      * A one color image.
      * @param width

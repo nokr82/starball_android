@@ -1,6 +1,7 @@
 package com.devstories.starball_android.adapter
 
 import android.content.Context
+import android.os.Handler
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -13,14 +14,32 @@ import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
 
-open class GroupChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObject>, activity: GroupChattingActivity) : ArrayAdapter<JSONObject>(context, view, data) {
-
+open class GroupChattingAdapter(
+    context: Context,
+    view: Int,
+    data: ArrayList<JSONObject>,
+    activity: GroupChattingActivity
+) : ArrayAdapter<JSONObject>(context, view, data) {
+    private var timer = 0
     private lateinit var item: ViewHolder
-    var view:Int = view
-    var data:ArrayList<JSONObject> = data
+    var view: Int = view
+    var data: ArrayList<JSONObject> = data
     var activity: GroupChattingActivity = activity
 
-    override fun getView(position: Int, convertView: View?, parent : ViewGroup?): View {
+    internal var timerHandler: Handler = object : Handler() {
+        override fun handleMessage(msg: android.os.Message) {
+
+            item.timerTV.setText(Utils.dateString2(timer))
+
+            if (timer == 0) {
+                item.timerLL.visibility = View.GONE
+            }
+
+            timer--
+            this.sendEmptyMessageDelayed(0, 1000)
+        }
+    }
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
         lateinit var retView: View
 
@@ -41,8 +60,8 @@ open class GroupChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
         val json = data[position]
         val chatting = json.getJSONObject("GroupChatting")
         val read_count = Utils.getInt(json, "read_count")
-        val time = Utils.getInt(json, "time")
-
+        timer = Utils.getInt(json, "time")
+        timerHandler.sendEmptyMessage(0)
         val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
         val dateFormat2 = SimpleDateFormat("MM/dd hh:mm a", Locale.US)
 
@@ -59,14 +78,14 @@ open class GroupChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
         item.createTV.text = created
 
         var read_cnt = activity.member_count - read_count
-        item.readcountTV.text = activity.member_count.toString()+" / "+ read_cnt.toString()
-        if (time!=0){
+        item.readcountTV.text = activity.member_count.toString() + " / " + read_cnt.toString()
+        if (timer != 0) {
             item.timerLL.visibility = View.VISIBLE
             item.cancelTV.setOnClickListener {
                 activity.cancel_group_chatting(chatting_id)
                 item.timerLL.visibility = View.GONE
             }
-        }else{
+        } else {
             item.timerLL.visibility = View.GONE
         }
 
@@ -76,6 +95,8 @@ open class GroupChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
 
         return retView
     }
+
+
 
     override fun getItem(position: Int): JSONObject {
         return data[position]
@@ -88,6 +109,7 @@ open class GroupChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
     override fun getCount(): Int {
         return data.size
     }
+
     class ViewHolder(v: View) {
         var timerLL: LinearLayout
         var translationLL: LinearLayout
@@ -99,19 +121,16 @@ open class GroupChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
         var contentsTV: TextView
 
 
-
         init {
 
-            timerLL= v.findViewById(R.id.timeLL)
-            timerTV= v.findViewById(R.id.timerTV)
-            cancelTV= v.findViewById(R.id.cancelTV)
-            createTV= v.findViewById(R.id.createTV)
-            translationTV= v.findViewById(R.id.translationTV)
-            readcountTV= v.findViewById(R.id.readcountTV)
-            translationLL= v.findViewById(R.id.translationLL)
-            contentsTV= v.findViewById(R.id.contentsTV)
-
-
+            timerLL = v.findViewById(R.id.timeLL)
+            timerTV = v.findViewById(R.id.timerTV)
+            cancelTV = v.findViewById(R.id.cancelTV)
+            createTV = v.findViewById(R.id.createTV)
+            translationTV = v.findViewById(R.id.translationTV)
+            readcountTV = v.findViewById(R.id.readcountTV)
+            translationLL = v.findViewById(R.id.translationLL)
+            contentsTV = v.findViewById(R.id.contentsTV)
 
 
         }
