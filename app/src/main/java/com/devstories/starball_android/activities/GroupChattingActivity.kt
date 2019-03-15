@@ -28,8 +28,6 @@ import cz.msebera.android.httpclient.Header
 import kotlinx.android.synthetic.main.activity_group_chatting.*
 import org.json.JSONException
 import org.json.JSONObject
-import java.io.ByteArrayInputStream
-import java.text.SimpleDateFormat
 import java.util.*
 
 class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
@@ -58,7 +56,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
     internal var loadDataHandler: Handler = object : Handler() {
         override fun handleMessage(msg: android.os.Message) {
-            chatting()
+            group_chatting()
         }
     }
 
@@ -76,6 +74,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
         member_id = PrefUtils.getIntPreference(context, "member_id")
 //        member_list =  intent.getStringExtra("member_list")
+        room_id = intent.getIntExtra("room_id",-1)
 
         adapter = GroupChattingAdapter(context, R.layout.item_group_chatting, adapterData, this)
         groupLV.adapter = adapter
@@ -99,7 +98,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         globalIV.setOnClickListener {
             translation_yn = if (translation_yn == "Y") "N" else "Y"
 
-            editRoom()
+//            editRoom()
         }
 
         plusLL.setOnClickListener {
@@ -134,7 +133,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 return@setOnClickListener
             }
 
-            sendChatting(1)
+//            sendChatting(1)
 
         }
 
@@ -157,7 +156,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
         }
 
-        detail()
+//        detail()
         timerStart()
         adverb()
 
@@ -218,7 +217,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
                             selectedImage = Utils.getImage(context!!.contentResolver, picturePath)
 
-                            sendChatting(2)
+//                            sendChatting(2)
 
                         }
                     }
@@ -416,7 +415,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         })
     }
 
-    fun chattingLike(chatting_id: Int, like_yn: String) {
+ /*   fun chattingLike(chatting_id: Int, like_yn: String) {
 
         val params = RequestParams()
         params.put("member_id", member_id)
@@ -503,9 +502,9 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 }
             }
         })
-    }
+    }*/
 
-    fun detail() {
+  /*  fun detail() {
 
         val params = RequestParams()
         params.put("member_id", member_id)
@@ -620,9 +619,9 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 }
             }
         })
-    }
+    }*/
 
-    fun editRoom() {
+   /* fun editRoom() {
 
         val params = RequestParams()
         params.put("member_id", member_id)
@@ -698,35 +697,15 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 }
             }
         })
-    }
+    }*/
 
-    fun chatting() {
-
-        if (first_id < 1) {
-            if (adapterData.size > 0) {
-                try {
-                    try {
-                        val lastMSG = adapterData.get(adapterData.size - 1)
-                        val chatting = lastMSG.getJSONObject("Chatting")
-                        last_id = Utils.getInt(chatting, "id")
-                    } catch (e: JSONException) {
-                        e.printStackTrace()
-                    }
-
-                } catch (e: NumberFormatException) {
-
-                }
-
-            }
-        }
+    fun group_chatting() {
 
         val params = RequestParams()
-        params.put("member_id", PrefUtils.getIntPreference(context, "member_id"))
-        params.put("room_id", room_id)
-        params.put("first_id", first_id)
-        params.put("last_id", last_id)
+        params.put("group_id",room_id)
 
-        ChattingAction.chatting(params, object : JsonHttpResponseHandler() {
+
+        ChattingAction.group_chatting(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
                 if (progressDialog != null) {
@@ -824,18 +803,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         })
     }
 
-    fun addChatting(chatting: JSONObject): Boolean {
-        for (i in 0 until adapterData.size) {
-            val data = adapterData[i]
-            val chat = data.getJSONObject("Chatting")
-            if (Utils.getInt(chat, "id") == Utils.getInt(chatting, "id")) {
-                return false
-            }
-        }
-        return true
-    }
-
-    fun sendChatting(type: Int) {
+    /*fun sendChatting(type: Int) {
 
         val params = RequestParams()
         params.put("member_id", member_id)
@@ -922,7 +890,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 }
             }
         })
-    }
+    }*/
 
     override fun onScroll(view: AbsListView?, firstVisibleItem: Int, visibleItemCount: Int, totalItemCount: Int) {
         lastItemVisibleFlag = totalItemCount > 0 && firstVisibleItem + visibleItemCount >= totalItemCount

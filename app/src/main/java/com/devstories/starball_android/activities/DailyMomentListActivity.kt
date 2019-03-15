@@ -42,13 +42,12 @@ class DailyMomentListActivity : RootActivity() {
     private val FROM_ALBUM = 101
     private val REQUEST_PERMISSION_READ_EXTERNAL_STORAGE = 2
     private var selectedImage: Bitmap? = null
-
+    private var result = false
     lateinit var header: View
     lateinit var backIV: ImageView
     lateinit var videoLL: LinearLayout
     lateinit var photoLL: LinearLayout
     lateinit var headRL: RelativeLayout
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily_mement_list)
@@ -91,6 +90,7 @@ class DailyMomentListActivity : RootActivity() {
 
 
 
+
         backIV.setOnClickListener {
             finish()
         }
@@ -115,7 +115,11 @@ class DailyMomentListActivity : RootActivity() {
         TedPermission.with(this)
             .setPermissionListener(permissionlistener)
             .setDeniedMessage("[설정] > [권한] 에서 권한을 허용할 수 있습니다.")
-            .setPermissions(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+            .setPermissions(
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                android.Manifest.permission.CAMERA,
+                android.Manifest.permission.READ_EXTERNAL_STORAGE
+            )
             .check();
 
     }
@@ -169,22 +173,21 @@ class DailyMomentListActivity : RootActivity() {
                             val columnIndex = cursor.getColumnIndex(filePathColumn[0])
                             val picturePath = cursor.getString(columnIndex)
                             cursor.close()
-
                             selectedImage = Utils.getImage(context!!.contentResolver, picturePath)
+                            result = true
 
                         }
-                        val intent = Intent(context, DlgLogoutActivity::class.java)
-                        intent.putExtra("selectedImage",selectedImage)
-                        intent.putExtra("type",1)
-                        startActivityForResult(intent, UPDATE_TIME_LINE)
+
                     }
                 }
+                UPDATE_TIME_LINE -> {
+                    if (data != null && data.data != null) {
 
+                    }
+                }
             }
         }
     }
-
-
 
 
     override fun onDestroy() {
