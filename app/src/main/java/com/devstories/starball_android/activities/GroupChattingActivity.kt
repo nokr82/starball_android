@@ -72,18 +72,14 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
     private val REQUEST_PERMISSION_READ_EXTERNAL_STORAGE = 2
     private var selectedImage: Bitmap? = null
 
-    private var t_timer = 0
-
     internal var timerHandler: Handler = object : Handler() {
         override fun handleMessage(msg: android.os.Message) {
             for (i in adapterData.indices) {
+
                 val json = adapterData.get(i)
+
                 try {
-                    t_timer = json.getInt("time")
-
-
-                    adapterData.get(i).put("time", t_timer - 1)
-                    Log.d("타임", t_timer.toString())
+                    json.put("time", json.getInt("time") - 1)
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -205,7 +201,6 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         backIV.setOnClickListener {
             finish()
         }
-
 
     }
 
@@ -388,12 +383,13 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         val task = object : TimerTask() {
             override fun run() {
                 loadDataHandler.sendEmptyMessage(0)
-                timerHandler.sendEmptyMessage(0)
             }
         }
 
         timer = Timer()
         timer!!.schedule(task, 0, 2000)
+
+        timerHandler.sendEmptyMessage(0)
 
     }
 
