@@ -91,6 +91,7 @@ class SettingActivity : RootActivity() {
 
         logoutLL.setOnClickListener {
             var intent = Intent(context, DlgLogoutActivity::class.java)
+            intent.putExtra("type",2)
             startActivityForResult(intent, LOGOUT_CONFIRM)
         }
 

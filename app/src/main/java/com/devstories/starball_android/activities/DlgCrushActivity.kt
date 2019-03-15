@@ -226,13 +226,20 @@ class DlgCrushActivity : RootActivity() {
                     val result = response!!.getString("result")
                     if ("ok" == result) {
                         var profiles = response.getJSONArray("profiles")
-                        val like_count = response.getString("like_count")
+                        var like_count = response.getString("like_count")
                         for (i in 0 until profiles.length()) {
                             profiledata.add(profiles[i] as JSONObject)
                         }
-                        var image_uri = Utils.getString(profiledata[0], "image_uri")
+                        var image_uri = Utils.getString(profiledata[1], "image_uri")
+                        Log.d("이미지",profiledata[1].toString())
+                        Log.d("라이크",like_count)
+
                         ImageLoader.getInstance().displayImage(Config.url + image_uri, likeIV, Utils.UILoptionsProfile)
-                        like_countTV.text = like_count + getString(R.string.dlg_crush_content)
+                        if (like_count!=null||like_count!=""||like_count!="-1"){
+                            like_countTV.text = like_count + getString(R.string.dlg_crush_content)
+                        }else{
+                            like_countTV.text = "0" + getString(R.string.dlg_crush_content)
+                        }
 
                     } else {
 

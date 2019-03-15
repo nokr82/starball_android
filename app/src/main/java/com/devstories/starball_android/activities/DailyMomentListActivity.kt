@@ -1,6 +1,7 @@
 package com.devstories.starball_android.activities
 
 import android.Manifest
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
@@ -14,13 +15,22 @@ import android.support.v4.content.ContextCompat
 import android.view.View
 import android.widget.*
 import com.devstories.starball_android.R
+import com.devstories.starball_android.actions.ReportAction
 import com.devstories.starball_android.adapter.DaillyAdapter
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
+import com.loopj.android.http.JsonHttpResponseHandler
+import com.loopj.android.http.RequestParams
+import cz.msebera.android.httpclient.Header
 import kotlinx.android.synthetic.main.activity_daily_mement_list.*
+import kotlinx.android.synthetic.main.activity_report.*
 import kotlinx.android.synthetic.main.item_daily_momenthead.*
+import org.json.JSONException
+import org.json.JSONObject
+import java.io.ByteArrayInputStream
 
 class DailyMomentListActivity : RootActivity() {
 
@@ -28,7 +38,7 @@ class DailyMomentListActivity : RootActivity() {
     private var progressDialog: ProgressDialog? = null
 
     lateinit var DaillyAdapter: DaillyAdapter
-
+    private val UPDATE_TIME_LINE = 995
     private val FROM_ALBUM = 101
     private val REQUEST_PERMISSION_READ_EXTERNAL_STORAGE = 2
     private var selectedImage: Bitmap? = null
@@ -147,6 +157,8 @@ class DailyMomentListActivity : RootActivity() {
             when (requestCode) {
                 FROM_ALBUM -> {
                     if (data != null && data.data != null) {
+
+
                         val selectedImageUri = data.data
 
                         val filePathColumn = arrayOf(MediaStore.MediaColumns.DATA)
@@ -161,12 +173,19 @@ class DailyMomentListActivity : RootActivity() {
                             selectedImage = Utils.getImage(context!!.contentResolver, picturePath)
 
                         }
+                        val intent = Intent(context, DlgLogoutActivity::class.java)
+                        intent.putExtra("selectedImage",selectedImage)
+                        intent.putExtra("type",1)
+                        startActivityForResult(intent, UPDATE_TIME_LINE)
                     }
                 }
 
             }
         }
     }
+
+
+
 
     override fun onDestroy() {
         super.onDestroy()
