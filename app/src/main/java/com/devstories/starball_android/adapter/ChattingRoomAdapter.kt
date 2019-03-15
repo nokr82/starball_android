@@ -1,10 +1,12 @@
 package com.devstories.starball_android.adapter
 
 import android.content.Context
+import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import de.hdodenhof.circleimageview.CircleImageView
 import org.json.JSONObject
@@ -15,13 +17,16 @@ import com.devstories.starball_android.base.Utils
 import com.nostra13.universalimageloader.core.ImageLoader
 import java.text.SimpleDateFormat
 
-open class ChattingRoomAdapter (context: Context, view:Int, data:ArrayList<JSONObject>) : ArrayAdapter<JSONObject>(context, view, data) {
+open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSONObject>, type: Int) :
+    ArrayAdapter<JSONObject>(context, view, data) {
 
     private lateinit var item: ViewHolder
-    var view:Int = view
+    var view: Int = view
     var data: ArrayList<JSONObject> = data
+    var type: Int = type
 
-    override fun getView(position: Int, convertView: View?, parent : ViewGroup?): View {
+    var group_members = ArrayList<JSONObject>()
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
         lateinit var retView: View
 
@@ -41,52 +46,107 @@ open class ChattingRoomAdapter (context: Context, view:Int, data:ArrayList<JSONO
 
         val json = data[position]
 
-        val room = json.getJSONObject("Room")
-        val lastChatting = json.getJSONObject("LastChatting")
+        val type = Utils.getInt(json, "type")
 
-        val founderMemberObj = json.getJSONObject("FounderMember")
-        val founderMember = founderMemberObj.getJSONObject("Member")
-        val founderProfile = founderMemberObj.getJSONObject("Profile")
+        if (type == 1) {
 
-        val attendMemberObj = json.getJSONObject("AttendMember")
-        val attendMember = attendMemberObj.getJSONObject("Member")
-        val attendProfile = attendMemberObj.getJSONObject("Profile")
+            val Group = json.getJSONObject("Group")
+            var title = Utils.getString(Group, "title")
+            var created_at = Utils.getString(Group, "created_at")
+            val GroupMembers = json.getJSONArray("GroupMembers")
 
-        val member_id = PrefUtils.getIntPreference(context, "member_id")
 
-        var profile = Utils.getString(founderProfile, "image_uri")
-        var name = Utils.getString(founderMember, "name")
+//        val member_id = PrefUtils.getIntPreference(context, "member_id")
 
-        if (Utils.getInt(lastChatting, "member_id") != member_id) {
-            item.chattingIV.setImageResource(R.mipmap.lounge_message_recie)
-        } else {
-            item.chattingIV.setImageResource(R.mipmap.lounge_message_send)
-        }
 
-        if (Utils.getInt(room, "founder_member_id") == member_id) {
-            profile = Utils.getString(attendProfile, "image_uri")
-            name = Utils.getString(attendMember, "name")
-        }
+            for (i in 0 until GroupMembers.length()) {
+                group_members.add(GroupMembers[i] as JSONObject)
 
-        ImageLoader.getInstance().displayImage(Config.url + profile, item.profileIV, Utils.UILoptionsProfile)
-        item.nameTV.text = name
+            }
+            val MemberProfile = group_members[0].getJSONObject("MemberProfile")
+            val profile = Utils.getString(MemberProfile, "image_uri")
 
-        item.contentsTV.text = Utils.getString(lastChatting, "contents")
+            /* if (Utils.getInt(lastChatting, "member_id") != member_id) {
+                 item.chattingIV.setImageResource(R.mipmap.lounge_message_recie)
+             } else {
+                 item.chattingIV.setImageResource(R.mipmap.lounge_message_send)
+             }*/
 
-        val created_at = Utils.getString(lastChatting, "created_at")
+            /*if (Utils.getInt(room, "founder_member_id") == member_id) {
+                profile = Utils.getString(attendProfile, "image_uri")
+                name = Utils.getString(attendMember, "name")
+            }*/
 
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
-        val dateFormat2 = SimpleDateFormat("yy.MM.dd    HH:mm")
-        val created = dateFormat.parse(created_at)
+            ImageLoader.getInstance().displayImage(Config.url + profile, item.profileIV, Utils.UILoptionsProfile)
+            item.nameTV.text = title + " " + GroupMembers.length().toString()
 
-        item.createdTV.text = dateFormat2.format(created)
 
-        val read_yn = Utils.getString(lastChatting, "read_yn")
+            item.itemLL.setBackgroundColor(Color.parseColor("#ededed"))
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+            val dateFormat2 = SimpleDateFormat("yy.MM.dd    HH:mm")
+            val created = dateFormat.parse(created_at)
 
-        if ("Y" == read_yn) {
+            item.createdTV.text = dateFormat2.format(created)
+
             item.newIV.visibility = View.GONE
-        } else {
-            item.newIV.visibility = View.VISIBLE
+
+        }
+        else {
+
+            val json = data[position]
+            val title = Utils.getString(json, "title")
+            if (title =="chatting_title"){
+                item.titleTV.visibility = View.VISIBLE
+            }else{
+                item.titleTV.visibility = View.GONE
+            }
+            val room = json.getJSONObject("Room")
+            val lastChatting = json.getJSONObject("LastChatting")
+
+            val founderMemberObj = json.getJSONObject("FounderMember")
+            val founderMember = founderMemberObj.getJSONObject("Member")
+            val founderProfile = founderMemberObj.getJSONObject("Profile")
+
+            val attendMemberObj = json.getJSONObject("AttendMember")
+            val attendMember = attendMemberObj.getJSONObject("Member")
+            val attendProfile = attendMemberObj.getJSONObject("Profile")
+
+            val member_id = PrefUtils.getIntPreference(context, "member_id")
+
+            var profile = Utils.getString(founderProfile, "image_uri")
+            var name = Utils.getString(founderMember, "name")
+
+            if (Utils.getInt(lastChatting, "member_id") != member_id) {
+                item.chattingIV.setImageResource(R.mipmap.lounge_message_recie)
+            } else {
+                item.chattingIV.setImageResource(R.mipmap.lounge_message_send)
+            }
+
+            if (Utils.getInt(room, "founder_member_id") == member_id) {
+                profile = Utils.getString(attendProfile, "image_uri")
+                name = Utils.getString(attendMember, "name")
+            }
+
+            ImageLoader.getInstance().displayImage(Config.url + profile, item.profileIV, Utils.UILoptionsProfile)
+            item.nameTV.text = name
+
+            item.contentsTV.text = Utils.getString(lastChatting, "contents")
+
+            val created_at = Utils.getString(lastChatting, "created_at")
+
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+            val dateFormat2 = SimpleDateFormat("yy.MM.dd    HH:mm")
+            val created = dateFormat.parse(created_at)
+
+            item.createdTV.text = dateFormat2.format(created)
+
+            val read_yn = Utils.getString(lastChatting, "read_yn")
+
+            if ("Y" == read_yn) {
+                item.newIV.visibility = View.GONE
+            } else {
+                item.newIV.visibility = View.VISIBLE
+            }
         }
 
         return retView
@@ -108,18 +168,19 @@ open class ChattingRoomAdapter (context: Context, view:Int, data:ArrayList<JSONO
 
         var profileIV: CircleImageView
 
-        var nameTV:TextView
-        var contentsTV:TextView
+        var nameTV: TextView
+        var contentsTV: TextView
         var createdTV: TextView
-
+        var titleTV: TextView
+        var itemLL: LinearLayout
         var chattingIV: ImageView
         var pinIV: ImageView
         var newIV: ImageView
 
         init {
-
+            titleTV = v.findViewById(R.id.titleTV)
             profileIV = v.findViewById(R.id.profileIV)
-
+            itemLL = v.findViewById(R.id.itemLL)
             nameTV = v.findViewById(R.id.nameTV)
             contentsTV = v.findViewById(R.id.contentsTV)
             createdTV = v.findViewById(R.id.createdTV)

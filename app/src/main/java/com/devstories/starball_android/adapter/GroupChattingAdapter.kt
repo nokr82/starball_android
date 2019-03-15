@@ -73,6 +73,7 @@ open class GroupChattingAdapter(
             item.timerTV.text = Utils.dateString2(t_timer)
             item.cancelTV.setOnClickListener {
                 activity.cancel_group_chatting(chatting_id)
+                item.itemLL.visibility = View.GONE
                 item.timerLL.visibility = View.GONE
             }
         } else {
@@ -109,10 +110,11 @@ open class GroupChattingAdapter(
         var timerTV: TextView
         var readcountTV: TextView
         var contentsTV: TextView
+        var itemLL: LinearLayout
 
 
         init {
-
+            itemLL = v.findViewById(R.id.itemLL)
             timerLL = v.findViewById(R.id.timeLL)
             timerTV = v.findViewById(R.id.timerTV)
             cancelTV = v.findViewById(R.id.cancelTV)

@@ -4,8 +4,19 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <TextView
+        android:id="@+id/titleTV"
+        android:visibility="gone"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="6.5dp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:textColor="#333333"
+        android:text="대화" />
     <LinearLayout
+        android:id="@+id/itemLL"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:gravity="center_vertical"
