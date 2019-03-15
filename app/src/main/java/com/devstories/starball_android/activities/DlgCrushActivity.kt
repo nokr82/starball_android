@@ -336,8 +336,8 @@ class DlgCrushActivity : RootActivity() {
         val params = RequestParams()
         params.put("member_id", member_id)
         params.put("like_member_id", like_member_id)
-        params.put("type", 2)
-        params.put("starball", use_starball)
+        params.put("type", 2)//타입1
+        params.put("starball", use_starball)//starball1개
 
         MemberAction.like(params, object : JsonHttpResponseHandler() {
 
