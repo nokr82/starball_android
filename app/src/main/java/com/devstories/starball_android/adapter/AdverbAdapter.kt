@@ -12,12 +12,14 @@ import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.DlgAdverbDeleteConfirmActivity
 import com.devstories.starball_android.activities.FriendChattingActivity
 import com.devstories.starball_android.base.Utils
+import kotlinx.android.synthetic.main.activity_friend_chatting.*
 import org.json.JSONObject
 
-class AdverbAdapter(data: ArrayList<JSONObject>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AdverbAdapter(data: ArrayList<JSONObject>, activity: FriendChattingActivity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val data: ArrayList<JSONObject> = data
     private lateinit var context: Context
+    private var activity :FriendChattingActivity = activity
 
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): RecyclerView.ViewHolder {
         var view = LayoutInflater.from(parent.context)
@@ -43,16 +45,22 @@ class AdverbAdapter(data: ArrayList<JSONObject>) : RecyclerView.Adapter<Recycler
             (context as FriendChattingActivity).startActivityForResult(intent, 100)
         }
 
+        holder.LL.setOnClickListener {
+            activity.contentsET.setText(Utils.getString(adverb, "content"))
+        }
+
     }
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
         var contentTV:TextView
         var delLL:LinearLayout
+        var LL:LinearLayout
 
         init {
             contentTV = v.findViewById(R.id.contentTV)
             delLL = v.findViewById(R.id.delLL)
+            LL = v.findViewById(R.id.LL)
         }
     }
 

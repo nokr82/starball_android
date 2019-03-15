@@ -44,4 +44,8 @@ object ChattingAction {
     fun like(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/chattings/like", params, handler)
     }
+
+    fun del_chatting(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/del_chatting", params, handler)
+    }
 }
