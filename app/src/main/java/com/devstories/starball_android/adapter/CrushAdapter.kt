@@ -42,6 +42,7 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
         var starballIV = itemView.findViewById<View>(R.id.starballIV) as ImageView
         var sendIV = itemView.findViewById<View>(R.id.sendIV) as ImageView
         var nameTV = itemView.findViewById<View>(R.id.nameTV) as TextView
+        var starballTV = itemView.findViewById<View>(R.id.starballTV) as TextView
     }
 
     // Create new views (invoked by the layout manager)
@@ -62,7 +63,8 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
             val Like = json.getJSONObject( "Like")
             val LikeMember = json.getJSONObject( "LikeMember")
             val LikeMemberProfile = json.getJSONObject( "LikeMemberProfile")
-//        val Member = json.getJSONObject( "Member")
+//        val Member = json.getJSONObject( "Member" )
+            val starball = Utils.getString(json, "starball")
             val created_at = Utils.getString(Like, "created_at")
             val name = Utils.getString(LikeMember, "name")
             val birth = Utils.getString(LikeMember, "birth")
@@ -86,6 +88,7 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
             holder.nameTV.text = name + " " + age
 
             if (a_type==2){
+                holder.starballTV.text ="+"+starball
                 holder.sendIV.setImageResource(R.mipmap.bi)
                 holder.sendIV.setOnClickListener {
                     if (fragment.starball>0){
@@ -99,6 +102,7 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
 
                 }
             }else{
+                holder.starballTV.text = "+"+starball
                 holder.sendIV.setImageResource(R.mipmap.send_heart)
                 holder.sendIV.setOnClickListener {
 

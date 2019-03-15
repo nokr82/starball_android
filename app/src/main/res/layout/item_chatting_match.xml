@@ -121,6 +121,7 @@
                 android:background="#40000000"/>
 
             <TextView
+                android:id="@+id/starballTV"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="15dp"
                 android:layout_alignParentBottom="true"

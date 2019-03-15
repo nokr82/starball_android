@@ -31,11 +31,13 @@ class ChattingSendCrushFragment : Fragment() {
     var page = 1
     var member_id = -1
     lateinit var crushAdapter: CrushAdapter
-    var adapterdata  = ArrayList<JSONObject>()
+    var adapterdata = ArrayList<JSONObject>()
     var starball = -1
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         this.myContext = container!!.context
         progressDialog = ProgressDialog(myContext)
@@ -45,11 +47,11 @@ class ChattingSendCrushFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         member_id = PrefUtils.getIntPreference(context, "member_id")
-        sendlikeLV.layoutManager = LinearLayoutManager (context)
+        sendlikeLV.layoutManager = LinearLayoutManager(context)
 
         like_list()
         get_info()
-        crushAdapter = CrushAdapter(this,ChattingCrushFragment(), adapterdata,2)
+        crushAdapter = CrushAdapter(this, ChattingCrushFragment(), adapterdata, 2)
         sendlikeLV.adapter = crushAdapter
 
 
@@ -80,12 +82,12 @@ class ChattingSendCrushFragment : Fragment() {
                         val likes = response.getJSONArray("likes")
                         for (i in 0..likes.length() - 1) {
                             var json = likes[i] as JSONObject
-                            Log.d("제이슨",json.toString())
+                            Log.d("제이슨", json.toString())
                             adapterdata.add(json)
                         }
                         crushAdapter.notifyDataSetChanged()
-                        Log.d("제이슨",adapterdata.count().toString())
-                        Log.d("제이슨",adapterdata.toString())
+                        Log.d("제이슨", adapterdata.count().toString())
+                        Log.d("제이슨", adapterdata.toString())
 
                     } else {
 
@@ -170,7 +172,7 @@ class ChattingSendCrushFragment : Fragment() {
 
 
     private fun get_info() {
-        val member_id = PrefUtils.getIntPreference(myContext,"member_id")
+        val member_id = PrefUtils.getIntPreference(myContext, "member_id")
         val params = RequestParams()
         params.put("member_id", member_id)
 
@@ -180,12 +182,12 @@ class ChattingSendCrushFragment : Fragment() {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
-                Log.d("스타볼",response.toString())
+                Log.d("스타볼", response.toString())
                 try {
                     val result = response!!.getString("result")
                     if ("ok" == result) {
                         starball = Utils.getInt(response, "starball")
-                        Log.d("스타볼",starball.toString())
+                        Log.d("스타볼", starball.toString())
 
                     } else {
 
