@@ -27,7 +27,29 @@
             android:text="@string/make_group_title"/>
 
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:visibility="visible"
+        android:layout_marginTop="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/background_border_strock10_ededed"
+        android:orientation="vertical">
 
+        <EditText
+            android:id="@+id/titleET"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="그룹명을 입력해주세요"
+            android:background="@null"
+            android:textColorHint="#bbbbbb"
+            android:gravity="center|center_vertical"
+            android:textSize="14dp"/>
+
+    </RelativeLayout>
     <RelativeLayout
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"

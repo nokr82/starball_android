@@ -1,6 +1,7 @@
 package com.devstories.starball_android.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.RecyclerView.ViewHolder
 import android.view.LayoutInflater
@@ -10,6 +11,10 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.devstories.starball_android.R
+import com.devstories.starball_android.activities.ChattingCrushFragment
+import com.devstories.starball_android.activities.ChattingSendCrushFragment
+import com.devstories.starball_android.activities.DlgCrushActivity
+import com.devstories.starball_android.activities.DlgStarballLackActivity
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.Utils
 import com.nostra13.universalimageloader.core.ImageLoader
@@ -18,11 +23,13 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class CrushAdapter(view: Int, data: ArrayList<JSONObject>,a_type:Int) :
+class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFragment,data: ArrayList<JSONObject>, a_type:Int) :
     RecyclerView.Adapter<ViewHolder>() {
     private var a_type = a_type
     private var data = data
     private lateinit var context: Context
+    private var fragment = fragment
+
 
 
     class Crush(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -35,6 +42,7 @@ class CrushAdapter(view: Int, data: ArrayList<JSONObject>,a_type:Int) :
         var starballIV = itemView.findViewById<View>(R.id.starballIV) as ImageView
         var sendIV = itemView.findViewById<View>(R.id.sendIV) as ImageView
         var nameTV = itemView.findViewById<View>(R.id.nameTV) as TextView
+        var starballTV = itemView.findViewById<View>(R.id.starballTV) as TextView
     }
 
     // Create new views (invoked by the layout manager)
@@ -55,10 +63,12 @@ class CrushAdapter(view: Int, data: ArrayList<JSONObject>,a_type:Int) :
             val Like = json.getJSONObject( "Like")
             val LikeMember = json.getJSONObject( "LikeMember")
             val LikeMemberProfile = json.getJSONObject( "LikeMemberProfile")
-//        val Member = json.getJSONObject( "Member")
+//        val Member = json.getJSONObject( "Member" )
+            val starball = Utils.getString(json, "starball")
             val created_at = Utils.getString(Like, "created_at")
             val name = Utils.getString(LikeMember, "name")
             val birth = Utils.getString(LikeMember, "birth")
+            val like_member_id = Utils.getString(LikeMember, "id")
             val gender = Utils.getString(LikeMember, "gender")
             val image_uri = Utils.getString(LikeMemberProfile, "image_uri")
             var bitmap = Config.url + image_uri
@@ -78,9 +88,25 @@ class CrushAdapter(view: Int, data: ArrayList<JSONObject>,a_type:Int) :
             holder.nameTV.text = name + " " + age
 
             if (a_type==2){
+                holder.starballTV.text ="+"+starball
                 holder.sendIV.setImageResource(R.mipmap.bi)
+                holder.sendIV.setOnClickListener {
+                    if (fragment.starball>0){
+                        val intent = Intent(context, DlgCrushActivity::class.java)
+                        intent.putExtra("like_member_id",like_member_id)
+                        context.startActivity(intent)
+                    }else{
+                        val intent = Intent(context, DlgStarballLackActivity::class.java)
+                        context.startActivity(intent)
+                    }
+
+                }
             }else{
-                holder.sendIV.setImageResource(R.mipmap.send_btn)
+                holder.starballTV.text = "+"+starball
+                holder.sendIV.setImageResource(R.mipmap.send_heart)
+                holder.sendIV.setOnClickListener {
+
+                }
             }
             holder.timeTV.text = created_at.substring(0,10).replace("-",".")
             ImageLoader.getInstance().displayImage(Config.url + image_uri, holder.likeIV, Utils.UILoptions)

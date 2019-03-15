@@ -38,8 +38,8 @@ import java.util.*
 import java.text.SimpleDateFormat
 
 
-class FriendChattingActivity : RootActivity(), AbsListView.OnScrollListener {
-
+class FriendChattingActivity : RootActivity()
+    , AbsListView.OnScrollListener {
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 

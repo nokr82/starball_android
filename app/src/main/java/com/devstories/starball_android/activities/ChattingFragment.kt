@@ -22,13 +22,14 @@ import kotlinx.android.synthetic.main.fragment_chatting.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-import android.graphics.drawable.ColorDrawable
 import com.facebook.FacebookSdk.getApplicationContext
 import com.baoyz.swipemenulistview.SwipeMenuItem
-import com.baoyz.swipemenulistview.SwipeMenu
 import com.baoyz.swipemenulistview.SwipeMenuCreator
 import android.graphics.Color
+import android.util.Log
+import android.widget.AbsListView
 import com.baoyz.swipemenulistview.SwipeMenuListView
+import com.devstories.starball_android.adapter.GroupChattingRoomAdapter
 
 
 //채팅화면
@@ -49,9 +50,10 @@ class ChattingFragment : Fragment() {
 
     var page = 1
     var totalPage = 1
-
+    lateinit var GrouproomAdapter: GroupChattingRoomAdapter
     lateinit var roomAdapter: ChattingRoomAdapter
     var roomAdapterData = ArrayList<JSONObject>()
+    var GrouproomAdapterData = ArrayList<JSONObject>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -71,6 +73,9 @@ class ChattingFragment : Fragment() {
         groupLV = header.findViewById(R.id.groupLV)
 //        storyLV = footer.findViewById(R.id.storyLV)
 
+        GrouproomAdapter = GroupChattingRoomAdapter(myContext, R.layout.item_chat_profile, GrouproomAdapterData)
+        groupLV.adapter = GrouproomAdapter
+
         chattingLV.addHeaderView(header)
 //        chattingLV.addHeaderView(footer)
 
@@ -78,6 +83,8 @@ class ChattingFragment : Fragment() {
             val intent = Intent(context, GrouptMakeActivity::class.java)
             startActivity(intent)
         }
+
+
         roomAdapter = ChattingRoomAdapter(myContext, R.layout.item_chat_profile, roomAdapterData)
         chattingLV.adapter = roomAdapter
 
@@ -127,6 +134,42 @@ class ChattingFragment : Fragment() {
 
         member_id = PrefUtils.getIntPreference(myContext, "member_id")
 
+        groupLV.setOnItemClickListener { parent, view, position, id ->
+
+            val json = GrouproomAdapterData[position]
+
+
+            Log.d("ajsls",json.toString())
+            val Group = json.getJSONObject("Group")
+
+            var intent = Intent(context, GroupChattingActivity::class.java)
+            intent.putExtra("room_id", Utils.getInt(Group, "id"))
+            startActivity(intent)
+
+            /*  val lastChatting = json.getJSONObject("LastChatting")
+             lastChatting.put("read_yn", "Y")*/
+
+            roomAdapter.notifyDataSetChanged()
+
+        }
+
+
+        chattingLV.setOnScrollListener(object : AbsListView.OnScrollListener {
+            override fun onScroll(p0: AbsListView?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onScrollStateChanged(absListView: AbsListView, newState: Int) {
+                if (!chattingLV.canScrollVertically(-1)) {
+
+                } else if (!chattingLV.canScrollVertically(1)) {
+                    if (totalPage > page) {
+                        page++
+                        loadData()
+                    }
+                } else {
+                }
+            }
+        })
         chattingLV.setOnItemClickListener { parent, view, position, id ->
 
             if (position < 1) {
@@ -147,12 +190,116 @@ class ChattingFragment : Fragment() {
             roomAdapter.notifyDataSetChanged()
 
         }
-
+        loadGroupData()
         loadData()
 
     }
 
-    fun loadData(){
+
+    fun loadGroupData() {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+
+        ChattingAction.group(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+
+                        val list = response.getJSONArray("list")
+
+                        for (i in 0 until list.length()) {
+                            GrouproomAdapterData.add(list[i] as JSONObject)
+                        }
+
+                        GrouproomAdapter.notifyDataSetChanged()
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(myContext, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+//                 System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
+    fun loadData() {
 
         val params = RequestParams()
         params.put("member_id", member_id)
@@ -198,14 +345,19 @@ class ChattingFragment : Fragment() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
 
-                 System.out.println(responseString);
+                System.out.println(responseString);
             }
 
             private fun error() {
-                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                Utils.alert(myContext, "조회중 장애가 발생하였습니다.")
             }
 
-            override fun onFailure(statusCode: Int, headers: Array<Header>?, responseString: String?, throwable: Throwable) {
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -216,7 +368,12 @@ class ChattingFragment : Fragment() {
                 error()
             }
 
-            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONObject?) {
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -225,7 +382,12 @@ class ChattingFragment : Fragment() {
                 error()
             }
 
-            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONArray?) {
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }

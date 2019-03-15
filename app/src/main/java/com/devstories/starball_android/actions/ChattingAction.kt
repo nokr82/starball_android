@@ -6,12 +6,28 @@ import com.loopj.android.http.RequestParams
 
 object ChattingAction {
 
+    fun cancel_group_chatting(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/cancel_group_chatting", params, handler)
+    }
+
+    fun del_group_member(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/del_group_member", params, handler)
+    }
+    fun group_chatting(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/group_chatting", params, handler)
+    }
+    fun group(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/group", params, handler)
+    }
     fun index(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/chattings/index", params, handler)
     }
 
     fun chatting(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/chattings/chatting", params, handler)
+    }
+    fun group_detail(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/group_detail", params, handler)
     }
 
     fun detail(params: RequestParams, handler: JsonHttpResponseHandler) {
@@ -32,6 +48,10 @@ object ChattingAction {
 
     fun del_adverb(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/chattings/del_adverb", params, handler)
+    }
+
+    fun add_group(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/add_group", params, handler)
     }
 
     fun add_adverb(params: RequestParams, handler: JsonHttpResponseHandler) {

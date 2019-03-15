@@ -39,7 +39,7 @@
                     android:textSize="12dp"
                     android:gravity="center"
                     android:textColor="#ffff"
-                    android:text="@string/friend_invite"/>
+                    android:text="내 게시물"/>
 
         </LinearLayout>
 
@@ -133,6 +133,7 @@ already dragged card into that plate looks like.
 
         </LinearLayout>
         <LinearLayout
+                android:visibility="gone"
                 android:layout_width="0dp"
                 android:background="@drawable/background_border_moment"
                 android:layout_height="match_parent"

@@ -29,16 +29,13 @@
                     android:layout_height="wrap_content"
                     android:src="@mipmap/setting_center"/>
 
-            <TextView
-                    android:layout_marginRight="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:background="@drawable/background_border_strock5_0c040000"
-                    android:textSize="12dp"
-                    android:gravity="center"
-                    android:textColor="#ffff"
-                    android:text="친구초대"/>
+            <ImageView
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:src="@mipmap/lounge_daily_more"
+                />
 
         </LinearLayout>
 
