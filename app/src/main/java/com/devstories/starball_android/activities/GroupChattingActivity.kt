@@ -15,6 +15,7 @@ import android.support.v4.content.ContextCompat
 import android.view.View
 import android.widget.AbsListView
 import android.widget.BaseAdapter
+import android.widget.LinearLayout
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
 import com.devstories.starball_android.adapter.AdverbAdapter
@@ -66,6 +67,9 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
     private val REQUEST_PERMISSION_READ_EXTERNAL_STORAGE = 2
     private var selectedImage: Bitmap? = null
 
+    lateinit var groupmemberLL: LinearLayout
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_chatting)
@@ -76,7 +80,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 //        member_list =  intent.getStringExtra("member_list")
         room_id = intent.getIntExtra("room_id",-1)
 
-        adapter = GroupChattingAdapter(context, R.layout.item_chatting, adapterData, this)
+        adapter = GroupChattingAdapter(context, R.layout.item_group_chatting, adapterData, this)
         groupLV.adapter = adapter
         groupLV.setOnScrollListener(this)
         groupLV.setOnItemClickListener { parent, view, position, id ->
@@ -415,94 +419,6 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         })
     }
 
- /*   fun chattingLike(chatting_id: Int, like_yn: String) {
-
-        val params = RequestParams()
-        params.put("member_id", member_id)
-        params.put("chatting_id", chatting_id)
-        params.put("like_yn", like_yn)
-
-        ChattingAction.like(params, object : JsonHttpResponseHandler() {
-
-            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
-                if (progressDialog != null) {
-                    progressDialog!!.dismiss()
-                }
-
-                try {
-                    val result = response!!.getString("result")
-
-                    if ("ok" == result) {
-
-                        if (like_yn == "Y") {
-                            val intent = Intent(context, LikedNotiActivity::class.java)
-                            startActivity(intent)
-                            overridePendingTransition(0, 0)
-                        }
-
-                        for (i in 0 until adapterData.size) {
-                            val data = adapterData[i]
-                            val chatting = data.getJSONObject("Chatting")
-                            val id = Utils.getInt(chatting, "id")
-
-                            if (id == chatting_id) {
-                                chatting.put("like_yn", like_yn)
-                                break
-                            }
-                        }
-
-                        adapter.notifyDataSetChanged()
-
-                    } else {
-
-                    }
-
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
-
-            }
-
-            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
-
-                // System.out.println(responseString);
-            }
-
-            private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
-            }
-
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                responseString: String?,
-                throwable: Throwable
-            ) {
-                if (progressDialog != null) {
-                    progressDialog!!.dismiss()
-                }
-
-                // System.out.println(responseString);
-
-                throwable.printStackTrace()
-                error()
-            }
-
-
-            override fun onStart() {
-                // show dialog
-//                if (progressDialog != null) {
-//                    progressDialog!!.show()
-//                }
-            }
-
-            override fun onFinish() {
-                if (progressDialog != null) {
-                    progressDialog!!.dismiss()
-                }
-            }
-        })
-    }*/
 
   /*  fun detail() {
 
@@ -701,9 +617,27 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
     fun group_chatting() {
 
+        if (first_id < 1) {
+            if (adapterData.size > 0) {
+                try {
+                    try {
+                        val lastMSG = adapterData.get(adapterData.size - 1)
+                        val chatting = lastMSG.getJSONObject("GroupChatting")
+                        last_id = Utils.getInt(chatting, "id")
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+
+                } catch (e: NumberFormatException) {
+
+                }
+
+            }
+        }
         val params = RequestParams()
         params.put("group_id",room_id)
-
+        params.put("first_id", first_id)
+        params.put("last_id", last_id)
 
         ChattingAction.group_chatting(params, object : JsonHttpResponseHandler() {
 
@@ -722,9 +656,12 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                             for (i in 0 until list.length()) {
                                 val data = list.get(i) as JSONObject
                                 adapterData.add(0, data)
+
+
                             }
 
-                        } else {
+                        }
+                        else {
                             for (i in 0 until list.length()) {
 
                                 val data = list.get(i) as JSONObject
@@ -736,7 +673,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
                         if (adapterData.size > 0) {
                             val data = adapterData[adapterData.size - 1]
-                            val chatting = data.getJSONObject("Chatting")
+                            val chatting = data.getJSONObject("GroupChatting")
                             last_id = Utils.getInt(chatting, "id")
                         }
 
@@ -899,7 +836,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             if (adapterData.size > 0) {
                 try {
                     val firstMSG = adapterData[0]
-                    val chatting = firstMSG.getJSONObject("Chatting")
+                    val chatting = firstMSG.getJSONObject("GroupChatting")
                     first_id = Utils.getInt(chatting, "id")
                 } catch (e: JSONException) {
                     e.printStackTrace()
@@ -911,7 +848,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 if (adapterData.size > 0) {
                     try {
                         val lastMSG = adapterData[adapterData.size - 1]
-                        val chatting = lastMSG.getJSONObject("Chatting")
+                        val chatting = lastMSG.getJSONObject("GroupChatting")
                         last_id = Utils.getInt(chatting, "id")
                     } catch (e: JSONException) {
                         e.printStackTrace()
@@ -927,7 +864,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             if (adapterData.size > 0) {
                 try {
                     val lastMSG = adapterData[adapterData.size - 1]
-                    val chatting = lastMSG.getJSONObject("Chatting")
+                    val chatting = lastMSG.getJSONObject("GroupChatting")
                     last_id = Utils.getInt(chatting, "id")
                 } catch (e: JSONException) {
                     e.printStackTrace()
@@ -956,7 +893,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                     val lastMSG = adapterData[adapterData.size - 1]
                     first_id = -1
                     try {
-                        val chatting = lastMSG.getJSONObject("Chatting")
+                        val chatting = lastMSG.getJSONObject("GroupChatting")
                         last_id = Utils.getInt(chatting, "id")
                     } catch (e: NumberFormatException) {
                     } catch (e: JSONException) {
