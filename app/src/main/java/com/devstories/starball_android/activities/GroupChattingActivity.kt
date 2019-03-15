@@ -12,11 +12,13 @@ import android.os.Handler
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 import android.widget.*
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
+import com.devstories.starball_android.adapter.GroupAdverbAdapter
 import com.devstories.starball_android.adapter.GroupChattingAdapter
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.PrefUtils
@@ -54,7 +56,8 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
     lateinit var adapter: GroupChattingAdapter
     var adapterData = ArrayList<JSONObject>()
-    //    lateinit var adverbAdapter: AdverbAdapter
+
+    lateinit var adverbAdapter: GroupAdverbAdapter
     var adverbAdapterData = ArrayList<JSONObject>()
 
     internal var loadDataHandler: Handler = object : Handler() {
@@ -70,17 +73,17 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
     private var selectedImage: Bitmap? = null
 
     private var t_timer = 0
-    private var c_timer = ""
+
     internal var timerHandler: Handler = object : Handler() {
         override fun handleMessage(msg: android.os.Message) {
             for (i in adapterData.indices) {
                 val json = adapterData.get(i)
                 try {
-                     t_timer = json.getInt("time")
+                    t_timer = json.getInt("time")
 
 
-                    adapterData.get(i).put("time",t_timer -1)
-                    Log.d("타임",t_timer.toString())
+                    adapterData.get(i).put("time", t_timer - 1)
+                    Log.d("타임", t_timer.toString())
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
@@ -91,6 +94,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             adapter.notifyDataSetChanged()
         }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_chatting)
@@ -102,6 +106,11 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         member_id = PrefUtils.getIntPreference(context, "member_id")
 //        member_list =  intent.getStringExtra("member_list")
         room_id = intent.getIntExtra("room_id", -1)
+
+
+        adverbRV.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        adverbAdapter = GroupAdverbAdapter(adverbAdapterData)
+        adverbRV.adapter = adverbAdapter
 
         adapter = GroupChattingAdapter(context, R.layout.item_group_chatting, adapterData, this)
         groupLV.adapter = adapter
@@ -146,6 +155,12 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 languageIV.setImageResource(R.mipmap.bubble)
                 languageLL.visibility = View.GONE
             }
+        }
+
+        globalIV.setOnClickListener {
+            translation_yn = if (translation_yn == "Y") "N" else "Y"
+
+            editRoom()
         }
 
         backIV.setOnClickListener {
@@ -269,7 +284,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
                         }
 
-//                        adverbAdapter.notifyDataSetChanged()
+                        adverbAdapter.notifyDataSetChanged()
                     }
 
                 }
@@ -703,83 +718,84 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         })
     }
 
-    /* fun editRoom() {
+    fun editRoom() {
 
-         val params = RequestParams()
-         params.put("member_id", member_id)
-         params.put("room_id", room_id)
-         params.put("translation_yn", translation_yn)
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("room_id", room_id)
+        params.put("translation_yn", translation_yn)
 
-         ChattingAction.edit_room(params, object : JsonHttpResponseHandler() {
+        ChattingAction.edit_room(params, object : JsonHttpResponseHandler() {
 
-             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
-                 if (progressDialog != null) {
-                     progressDialog!!.dismiss()
-                 }
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
 
-                 try {
-                     val result = response!!.getString("result")
+                try {
+                    val result = response!!.getString("result")
 
-                     if ("ok" == result) {
+                    if ("ok" == result) {
 
-                         if (translation_yn == "Y") {
-                             globalIV.setImageResource(R.mipmap.global_on)
-                         } else {
-                             globalIV.setImageResource(R.mipmap.global)
-                         }
+                        if (translation_yn == "Y") {
+                            globalIV.setImageResource(R.mipmap.global_on)
+                        } else {
+                            globalIV.setImageResource(R.mipmap.global)
+                        }
 
-                         adapter.notifyDataSetChanged()
+                        adapter.notifyDataSetChanged()
 
-                     } else {
+                    } else {
 
-                     }
+                    }
 
-                 } catch (e: JSONException) {
-                     e.printStackTrace()
-                 }
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
 
-             }
+            }
 
-             override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
 
-                 // System.out.println(responseString);
-             }
+                // System.out.println(responseString);
+            }
 
-             private fun error() {
-                 // Utils.alert(context, "조회중 장애가 발생하였습니다.")
-             }
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
 
-             override fun onFailure(
-                 statusCode: Int,
-                 headers: Array<Header>?,
-                 responseString: String?,
-                 throwable: Throwable
-             ) {
-                 if (progressDialog != null) {
-                     progressDialog!!.dismiss()
-                 }
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
 
-                 // System.out.println(responseString);
+                // System.out.println(responseString);
 
-                 throwable.printStackTrace()
-                 error()
-             }
+                throwable.printStackTrace()
+                error()
+            }
 
 
-             override fun onStart() {
-                 // show dialog
- //                if (progressDialog != null) {
- //                    progressDialog!!.show()
- //                }
-             }
+            override fun onStart() {
+                // show dialog
+                //                if (progressDialog != null) {
+                //                    progressDialog!!.show()
+                //                }
+            }
 
-             override fun onFinish() {
-                 if (progressDialog != null) {
-                     progressDialog!!.dismiss()
-                 }
-             }
-         })
-     }*/
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
     fun cancel_group_chatting(chatting_id: Int) {
 
         val params = RequestParams()
@@ -847,7 +863,6 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
         })
     }
-
 
 
     fun group_chatting() {
