@@ -12,14 +12,13 @@ import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
+import android.widget.*
 import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.DaillyAdapter
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
+import com.gun0912.tedpermission.PermissionListener
+import com.gun0912.tedpermission.TedPermission
 import kotlinx.android.synthetic.main.activity_daily_mement_list.*
 import kotlinx.android.synthetic.main.item_daily_momenthead.*
 
@@ -70,7 +69,7 @@ class DailyMomentListActivity : RootActivity() {
 
         }
         videoLL.setOnClickListener {
-
+            permissionvideo()
         }
         photoLL.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
@@ -86,6 +85,28 @@ class DailyMomentListActivity : RootActivity() {
             finish()
         }
 
+
+    }
+
+    private fun permissionvideo() {
+
+        val permissionlistener = object : PermissionListener {
+            override fun onPermissionGranted() {
+                val intent = Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI)
+                startActivityForResult(intent, FROM_ALBUM)
+            }
+
+            override fun onPermissionDenied(deniedPermissions: List<String>) {
+                Toast.makeText(context, "권한설정을 해주셔야 합니다.", Toast.LENGTH_SHORT).show()
+            }
+
+        }
+
+        TedPermission.with(this)
+            .setPermissionListener(permissionlistener)
+            .setDeniedMessage("[설정] > [권한] 에서 권한을 허용할 수 있습니다.")
+            .setPermissions(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+            .check();
 
     }
 

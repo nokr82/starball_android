@@ -24,14 +24,14 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-class GrouptMakeActivity : RootActivity()  {
+class GrouptMakeActivity : RootActivity() {
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
     lateinit var GroupAdapter: GroupAdapter
-    var adapterdata  = ArrayList<JSONObject>()
-    var member_list  = ArrayList<String>()
+    var adapterdata = ArrayList<JSONObject>()
+    var member_list = ArrayList<String>()
     var size = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,49 +44,30 @@ class GrouptMakeActivity : RootActivity()  {
         groupLV.adapter = GroupAdapter
 
         nextTV.setOnClickListener {
-
-            for (i in 0 until adapterdata.size) {
-                var json = adapterdata[i] as JSONObject
-                val Member = json.getJSONObject("Member")
-                var member_id = Utils.getString(Member, "id")
-                val isSelectedOp = json.getBoolean("isSelectedOp")
-                if (isSelectedOp){
-                    member_list.add(member_id)
-                }else{
-
-                }
-            }
-            val intent = Intent(context, GroupChattingActivity::class.java)
-            startActivity(intent)
-            Log.d("아뒤",member_list.toString())
-//            group_make()
-
-
+            group_make()
         }
 
         groupLV.setOnItemClickListener { parent, view, position, id ->
 
             val json = adapterdata.get(position)
-            Log.d("클릭",json.toString())
+            Log.d("클릭", json.toString())
             val Member = json.getJSONObject("Member")
             val isSelectedOp = json.getBoolean("isSelectedOp")
             var member_id = Utils.getString(Member, "id")
 
 
-            if (isSelectedOp){
-                adapterdata[position].put("isSelectedOp",false)
+            if (isSelectedOp) {
+                adapterdata[position].put("isSelectedOp", false)
                 size--
-            }else{
-                if (size>2){
-                    Toast.makeText(context,"그룹당 3명까지만 선택할수있습니다",Toast.LENGTH_SHORT).show()
+            } else {
+                if (size > 2) {
+                    Toast.makeText(context, "그룹당 3명까지만 선택할수있습니다", Toast.LENGTH_SHORT).show()
                     return@setOnItemClickListener
                 }
-                adapterdata[position].put("isSelectedOp",true)
+                adapterdata[position].put("isSelectedOp", true)
                 size++
             }
 
-            Log.d("사이즈",size.toString())
-            Log.d("클릭",member_list.toString())
             GroupAdapter.notifyDataSetChanged()
 
         }
@@ -95,9 +76,6 @@ class GrouptMakeActivity : RootActivity()  {
         backIV.setOnClickListener {
             finish()
         }
-
-
-
 
 
     }
@@ -203,24 +181,49 @@ class GrouptMakeActivity : RootActivity()  {
     }
 
     fun group_make() {
+
+        for (i in 0 until adapterdata.size) {
+            var json = adapterdata[i] as JSONObject
+            val Member = json.getJSONObject("Member")
+            var member_id = Utils.getString(Member, "id")
+            val isSelectedOp = json.getBoolean("isSelectedOp")
+            if (isSelectedOp) {
+                member_list.add(member_id)
+            } else {
+
+            }
+        }
+
         var member_id = PrefUtils.getIntPreference(context, "member_id")
+        var title = Utils.getString(titleET)
+        if (title.length < 0) {
+            Toast.makeText(context, "그룹명을 입력해주세요.", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (member_list.size < 1) {
+            Toast.makeText(context, "두명이상 선택해주세요", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        Log.d("아뒤", member_list.toString())
         val params = RequestParams()
         params.put("member_id", member_id)
-        params.put("member_list", member_list)
+        params.put("title", title)
+        params.put("attend_member_id", member_list.joinToString())
 
-        JoinAction.final_join(params, object : JsonHttpResponseHandler() {
+        ChattingAction.add_group(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
-
+                Log.d("그룹", response.toString())
                 try {
                     val result = response!!.getString("result")
 
-                    Log.d("결과",result.toString())
                     if ("ok" == result) {
-
+                        val intent = Intent(context, GroupChattingActivity::class.java)
+                        startActivity(intent)
                     } else {
 
                     }
@@ -229,6 +232,7 @@ class GrouptMakeActivity : RootActivity()  {
                     e.printStackTrace()
                 }
             }
+
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
                 super.onSuccess(statusCode, headers, response)
             }
@@ -241,7 +245,6 @@ class GrouptMakeActivity : RootActivity()  {
             private fun error() {
                 Utils.alert(context, "조회중 장애가 발생하였습니다.")
             }
-
 
 
             override fun onFailure(
@@ -308,9 +311,9 @@ class GrouptMakeActivity : RootActivity()  {
                         adapterdata.clear()
                         for (i in 0..chats.length() - 1) {
                             var json = chats[i] as JSONObject
-                            Log.d("제이슨",json.toString())
+                            Log.d("제이슨", json.toString())
                             adapterdata.add(json)
-                            adapterdata[i].put("isSelectedOp",false)
+                            adapterdata[i].put("isSelectedOp", false)
                         }
                         GroupAdapter.notifyDataSetChanged()
 
