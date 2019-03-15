@@ -5,6 +5,11 @@ import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 
 object ChattingAction {
+
+    fun cancel_group_chatting(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/cancel_group_chatting", params, handler)
+    }
+
     fun del_group_member(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/chattings/del_group_member", params, handler)
     }

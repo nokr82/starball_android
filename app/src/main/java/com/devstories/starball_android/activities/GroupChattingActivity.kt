@@ -759,6 +759,75 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
              }
          })
      }*/
+    fun cancel_group_chatting(chatting_id: Int) {
+
+        val params = RequestParams()
+        params.put("group_chatting_id", chatting_id)
+
+        ChattingAction.cancel_group_chatting(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
+
 
     fun group_chatting() {
 

@@ -46,6 +46,7 @@ open class GroupChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
         val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
         val dateFormat2 = SimpleDateFormat("MM/dd hh:mm a", Locale.US)
 
+        val chatting_id = Utils.getInt(chatting, "id")
         val type = Utils.getInt(chatting, "type")
         val contents = Utils.getString(chatting, "contents")
         val created_at = Utils.getString(chatting, "created_at")
@@ -61,9 +62,14 @@ open class GroupChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
         item.readcountTV.text = activity.member_count.toString()+" / "+ read_cnt.toString()
         if (time!=0){
             item.timerLL.visibility = View.VISIBLE
+            item.cancelTV.setOnClickListener {
+                activity.cancel_group_chatting(chatting_id)
+                item.timerLL.visibility = View.GONE
+            }
         }else{
             item.timerLL.visibility = View.GONE
         }
+
 
 
 
