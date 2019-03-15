@@ -51,7 +51,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
     lateinit var adapter: GroupChattingAdapter
     var adapterData = ArrayList<JSONObject>()
 
-    lateinit var adverbAdapter: AdverbAdapter
+//    lateinit var adverbAdapter: AdverbAdapter
     var adverbAdapterData = ArrayList<JSONObject>()
 
     internal var loadDataHandler: Handler = object : Handler() {
@@ -76,7 +76,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 //        member_list =  intent.getStringExtra("member_list")
         room_id = intent.getIntExtra("room_id",-1)
 
-        adapter = GroupChattingAdapter(context, R.layout.item_group_chatting, adapterData, this)
+        adapter = GroupChattingAdapter(context, R.layout.item_chatting, adapterData, this)
         groupLV.adapter = adapter
         groupLV.setOnScrollListener(this)
         groupLV.setOnItemClickListener { parent, view, position, id ->
@@ -242,7 +242,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
                         }
 
-                        adverbAdapter.notifyDataSetChanged()
+//                        adverbAdapter.notifyDataSetChanged()
                     }
 
                 }
@@ -291,7 +291,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
                     }
 
-                    adverbAdapter.notifyDataSetChanged()
+//                    adverbAdapter.notifyDataSetChanged()
 
                 } catch (e: JSONException) {
                     e.printStackTrace()
@@ -362,7 +362,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
                         val adverb = response.getJSONObject("adverb")
                         adverbAdapterData.add(0, adverb)
-                        adverbAdapter.notifyDataSetChanged()
+//                        adverbAdapter.notifyDataSetChanged()
 
                     } else {
 

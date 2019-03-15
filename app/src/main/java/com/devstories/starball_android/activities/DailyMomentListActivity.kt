@@ -42,7 +42,6 @@ class DailyMomentListActivity : RootActivity() {
     private val FROM_ALBUM = 101
     private val REQUEST_PERMISSION_READ_EXTERNAL_STORAGE = 2
     private var selectedImage: Bitmap? = null
-    private var result = false
     lateinit var header: View
     lateinit var backIV: ImageView
     lateinit var videoLL: LinearLayout
@@ -97,6 +96,14 @@ class DailyMomentListActivity : RootActivity() {
 
 
     }
+
+    private fun dlg_view(){
+        val intent = Intent(context, DlgLogoutActivity::class.java)
+        intent.putExtra("selectedImage",selectedImage)
+        intent.putExtra("type",1)
+        startActivity(intent)
+    }
+
 
     private fun permissionvideo() {
 
@@ -174,10 +181,8 @@ class DailyMomentListActivity : RootActivity() {
                             val picturePath = cursor.getString(columnIndex)
                             cursor.close()
                             selectedImage = Utils.getImage(context!!.contentResolver, picturePath)
-                            result = true
-
                         }
-
+                        dlg_view()
                     }
                 }
                 UPDATE_TIME_LINE -> {

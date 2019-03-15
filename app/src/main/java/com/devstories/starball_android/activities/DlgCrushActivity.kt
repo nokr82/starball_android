@@ -35,6 +35,7 @@ class DlgCrushActivity : RootActivity() {
     var use_starball = -1
 
     var like_member_id = -1
+    var like_count = -1
     private val _active = true
     var profiledata = ArrayList<JSONObject>()
 
@@ -226,17 +227,17 @@ class DlgCrushActivity : RootActivity() {
                     val result = response!!.getString("result")
                     if ("ok" == result) {
                         var profiles = response.getJSONArray("profiles")
-                        var like_count = response.getString("like_count")
+//                         like_count = response.getInt("like_count")
                         for (i in 0 until profiles.length()) {
                             profiledata.add(profiles[i] as JSONObject)
                         }
                         var image_uri = Utils.getString(profiledata[1], "image_uri")
-                        Log.d("이미지",profiledata[1].toString())
-                        Log.d("라이크",like_count)
+                        Log.d("이미지",profiledata[0].toString())
+//                        Log.d("라이크",like_count)
 
                         ImageLoader.getInstance().displayImage(Config.url + image_uri, likeIV, Utils.UILoptionsProfile)
-                        if (like_count!=null||like_count!=""||like_count!="-1"){
-                            like_countTV.text = like_count + getString(R.string.dlg_crush_content)
+                        if (like_count!= -1){
+                            like_countTV.text = like_count.toString() + getString(R.string.dlg_crush_content)
                         }else{
                             like_countTV.text = "0" + getString(R.string.dlg_crush_content)
                         }

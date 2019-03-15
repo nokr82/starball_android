@@ -26,6 +26,7 @@ import com.facebook.FacebookSdk.getApplicationContext
 import com.baoyz.swipemenulistview.SwipeMenuItem
 import com.baoyz.swipemenulistview.SwipeMenuCreator
 import android.graphics.Color
+import android.util.Log
 import android.widget.AbsListView
 import com.baoyz.swipemenulistview.SwipeMenuListView
 import com.devstories.starball_android.adapter.GroupChattingRoomAdapter
@@ -135,12 +136,10 @@ class ChattingFragment : Fragment() {
 
         groupLV.setOnItemClickListener { parent, view, position, id ->
 
-            if (position < 1) {
-                return@setOnItemClickListener
-            }
+            val json = GrouproomAdapterData[position]
 
-            val json = GrouproomAdapterData[position - 1]
 
+            Log.d("ajsls",json.toString())
             val Group = json.getJSONObject("Group")
 
             var intent = Intent(context, GroupChattingActivity::class.java)
