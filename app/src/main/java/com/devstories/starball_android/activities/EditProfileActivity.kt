@@ -21,6 +21,10 @@ import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
+import com.facebook.accountkit.AccountKitLoginResult
+import com.facebook.accountkit.ui.AccountKitActivity
+import com.facebook.accountkit.ui.AccountKitConfiguration
+import com.facebook.accountkit.ui.LoginType
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import com.loopj.android.http.JsonHttpResponseHandler
@@ -44,8 +48,8 @@ class EditProfileActivity : RootActivity() {
     private val SELECT_PICTURE_REQUEST = 1002
     private val SELECT_NATION = 1005
     private val SELECT_TRAVEL = 1006
-
     private val SAVE_JOIN = 1007
+    private var APP_REQUEST_CODE = 1008
 
     private var pictures = arrayListOf<JSONObject>()
 
@@ -295,8 +299,9 @@ class EditProfileActivity : RootActivity() {
 
 
         phoneLL.setOnClickListener {
-            val intent = Intent(context, PhoneCertiActivity::class.java)
-            startActivity(intent)
+            // val intent = Intent(context, PhoneCertiActivity::class.java)
+            // startActivity(intent)
+            certiPhone()
         }
         saveLL.setOnClickListener {
             val intent = Intent(context, SaveJoinActivity::class.java)
@@ -1276,9 +1281,43 @@ class EditProfileActivity : RootActivity() {
                     }
                 }
             }
+            APP_REQUEST_CODE -> {
+                val loginResult: AccountKitLoginResult = data!!.getParcelableExtra(AccountKitLoginResult.RESULT_KEY)
 
+                var toastMessage = ""
+                if (loginResult.error != null) {
+                    toastMessage = loginResult.error!!.errorType.message
+                } else if (loginResult.wasCancelled()) {
+                    toastMessage = "Login Cancelled"
+                } else {
+                    if (loginResult.accessToken != null) {
+                        toastMessage = "Success:" + loginResult.accessToken!!.accountId
+                    } else {
+                        toastMessage = String.format(
+                            "Success:%s...",
+                            loginResult.authorizationCode!!.substring(0,10))
+                    }
+                }
+
+                // Surface the result to your user in an appropriate way.
+                Toast.makeText(this, toastMessage, Toast.LENGTH_LONG).show()
+            }
 
         }
+    }
+
+
+    private fun certiPhone() {
+        val intent = Intent(this, AccountKitActivity::class.java)
+        val configurationBuilder = AccountKitConfiguration.AccountKitConfigurationBuilder(
+            LoginType.PHONE,
+            AccountKitActivity.ResponseType.CODE) // or .ResponseType.TOKEN
+
+        intent.putExtra(
+            AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
+            configurationBuilder.build())
+
+        startActivityForResult(intent, APP_REQUEST_CODE)
     }
 
 }

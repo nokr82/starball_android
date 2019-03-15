@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Starball</string>
-    <string name="facebook_app_id">249192249348195</string>
-    <string name="fb_login_protocol_scheme">fb249192249348195</string>
+    <string name="FACEBOOK_APP_ID">630512880727589</string>
+    <string name="ACCOUNT_KIT_CLIENT_TOKEN">60f8fdb472860e21556f0f0261ebf128</string>
 
     <string name="cash">Cash 요청</string>
     <string name="starball">보유 Starball :</string>
