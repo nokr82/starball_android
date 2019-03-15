@@ -42,6 +42,11 @@ class ChattingFragment : Fragment() {
     lateinit var header: View
     var page = 1
     var totalPage = 1
+
+    var pin_yn = ""
+    var room_id = -1
+
+
     lateinit var roomAdapter: ChattingRoomAdapter
     var roomAdapterData = ArrayList<JSONObject>()
     var GrouproomAdapterData = ArrayList<JSONObject>()
@@ -172,6 +177,77 @@ class ChattingFragment : Fragment() {
 
     }
 
+
+
+    fun editRoom() {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("room_id", room_id)
+        params.put("pin_yn", pin_yn)
+
+        ChattingAction.edit_room(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
 
     fun loadGroupData() {
 
