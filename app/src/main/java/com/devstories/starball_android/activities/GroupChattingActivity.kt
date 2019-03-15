@@ -111,10 +111,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         adapter = GroupChattingAdapter(context, R.layout.item_group_chatting, adapterData, this)
         groupLV.adapter = adapter
         groupLV.setOnScrollListener(this)
-        groupLV.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(context, DlgProposeActivity::class.java)
-            startActivity(intent)
-        }
+
 
         starballIV.setOnClickListener {
             val intent = Intent(context, DlgSendProposeActivity::class.java)
@@ -808,7 +805,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                     val result = response!!.getString("result")
 
                     if ("ok" == result) {
-
+                        adapter.notifyDataSetChanged()
                     } else {
 
                     }
