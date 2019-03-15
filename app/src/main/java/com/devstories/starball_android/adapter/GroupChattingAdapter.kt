@@ -2,6 +2,7 @@ package com.devstories.starball_android.adapter
 
 import android.content.Context
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -20,25 +21,13 @@ open class GroupChattingAdapter(
     data: ArrayList<JSONObject>,
     activity: GroupChattingActivity
 ) : ArrayAdapter<JSONObject>(context, view, data) {
-    private var timer = 0
+
     private lateinit var item: ViewHolder
     var view: Int = view
     var data: ArrayList<JSONObject> = data
     var activity: GroupChattingActivity = activity
 
-    internal var timerHandler: Handler = object : Handler() {
-        override fun handleMessage(msg: android.os.Message) {
 
-            item.timerTV.setText(Utils.dateString2(timer))
-
-            if (timer == 0) {
-                item.timerLL.visibility = View.GONE
-            }
-
-            timer--
-            this.sendEmptyMessageDelayed(0, 1000)
-        }
-    }
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
         lateinit var retView: View
@@ -60,16 +49,16 @@ open class GroupChattingAdapter(
         val json = data[position]
         val chatting = json.getJSONObject("GroupChatting")
         val read_count = Utils.getInt(json, "read_count")
-        timer = Utils.getInt(json, "time")
-        timerHandler.sendEmptyMessage(0)
+
         val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
         val dateFormat2 = SimpleDateFormat("MM/dd hh:mm a", Locale.US)
+        val t_timer = Utils.getInt(json, "time")
 
+        Log.d("제이슨",json.toString())
         val chatting_id = Utils.getInt(chatting, "id")
         val type = Utils.getInt(chatting, "type")
         val contents = Utils.getString(chatting, "contents")
         val created_at = Utils.getString(chatting, "created_at")
-
         val created_dt = dateFormat.parse(created_at)
         val created = dateFormat2.format(created_dt)
 
@@ -79,8 +68,9 @@ open class GroupChattingAdapter(
 
         var read_cnt = activity.member_count - read_count
         item.readcountTV.text = activity.member_count.toString() + " / " + read_cnt.toString()
-        if (timer != 0) {
+        if (t_timer > 0) {
             item.timerLL.visibility = View.VISIBLE
+            item.timerTV.text = Utils.dateString2(t_timer)
             item.cancelTV.setOnClickListener {
                 activity.cancel_group_chatting(chatting_id)
                 item.timerLL.visibility = View.GONE

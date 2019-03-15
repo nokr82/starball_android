@@ -142,7 +142,7 @@
             android:textStyle="bold"
             android:textColor="#ff0000"
             android:gravity="end"
-            android:text="4:16"
+            android:text=""
             />
 
         <TextView

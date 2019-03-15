@@ -1457,7 +1457,7 @@ public class Utils {
             return  txt_m + ":" + txt_s;
         }
 
-        return "0일 0시간 0분 0초";
+        return "";
     }
 
     /**
