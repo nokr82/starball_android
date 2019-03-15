@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -28,12 +29,12 @@ class ChattingSendCrushFragment : Fragment() {
     lateinit var myContext: Context
     private var progressDialog: ProgressDialog? = null
     lateinit var header: View
-    var page = 1
     var member_id = -1
     lateinit var crushAdapter: CrushAdapter
     var adapterdata = ArrayList<JSONObject>()
     var starball = -1
-
+    var page = 1
+    var totalPage = 1
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -53,7 +54,19 @@ class ChattingSendCrushFragment : Fragment() {
         get_info()
         crushAdapter = CrushAdapter(this, ChattingCrushFragment(), adapterdata, 2)
         sendlikeLV.adapter = crushAdapter
+        sendlikeLV.setOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (!sendlikeLV.canScrollVertically(-1)) {
 
+                } else if (!sendlikeLV.canScrollVertically(1)) {
+                    if (totalPage > page) {
+                        page++
+                        like_list()
+                    }
+                } else {
+                }
+            }
+        })
 
     }
 
@@ -77,8 +90,15 @@ class ChattingSendCrushFragment : Fragment() {
                 }
                 try {
                     val result = response!!.getString("result")
+
                     if ("ok" == result) {
-                        adapterdata.clear()
+
+                        page = Utils.getInt(response, "page")
+                        totalPage = Utils.getInt(response, "totalPage")
+                        if (page == 1) {
+                            adapterdata.clear()
+                            crushAdapter.notifyDataSetChanged()
+                        }
                         val likes = response.getJSONArray("likes")
                         for (i in 0..likes.length() - 1) {
                             var json = likes[i] as JSONObject

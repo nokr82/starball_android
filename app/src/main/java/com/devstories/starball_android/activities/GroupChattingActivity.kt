@@ -77,7 +77,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         member_id = PrefUtils.getIntPreference(context, "member_id")
 //        member_list =  intent.getStringExtra("member_list")
 
-        adapter = GroupChattingAdapter(context, R.layout.item_group_chatting, adapterData,this)
+        adapter = GroupChattingAdapter(context, R.layout.item_group_chatting, adapterData, this)
         groupLV.adapter = adapter
         groupLV.setOnScrollListener(this)
         groupLV.setOnItemClickListener { parent, view, position, id ->
@@ -166,9 +166,6 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         }
 
 
-
-
-
     }
 
     private fun loadPermissions(perm: String, requestCode: Int) {
@@ -211,7 +208,8 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
                         val filePathColumn = arrayOf(MediaStore.MediaColumns.DATA)
 
-                        val cursor = context!!.contentResolver.query(selectedImageUri!!, filePathColumn, null, null, null)
+                        val cursor =
+                            context!!.contentResolver.query(selectedImageUri!!, filePathColumn, null, null, null)
                         if (cursor!!.moveToFirst()) {
                             val columnIndex = cursor.getColumnIndex(filePathColumn[0])
                             val picturePath = cursor.getString(columnIndex)
@@ -226,7 +224,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                     }
                 }
 
-                DELETE_ADBERB-> {
+                DELETE_ADBERB -> {
 
                     if (data != null) {
                         var adverb_id = data.getIntExtra("adverb_id", -1)
@@ -253,7 +251,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         }
     }
 
-    fun timerStart(){
+    fun timerStart() {
         val task = object : TimerTask() {
             override fun run() {
                 loadDataHandler.sendEmptyMessage(0)
@@ -437,7 +435,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
                     if ("ok" == result) {
 
-                        if(like_yn == "Y") {
+                        if (like_yn == "Y") {
                             val intent = Intent(context, LikedNotiActivity::class.java)
                             startActivity(intent)
                             overridePendingTransition(0, 0)
@@ -446,7 +444,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                         for (i in 0 until adapterData.size) {
                             val data = adapterData[i]
                             val chatting = data.getJSONObject("Chatting")
-                            val id = Utils.getInt(chatting,"id")
+                            val id = Utils.getInt(chatting, "id")
 
                             if (id == chatting_id) {
                                 chatting.put("like_yn", like_yn)
@@ -826,7 +824,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         })
     }
 
-    fun addChatting(chatting: JSONObject) : Boolean {
+    fun addChatting(chatting: JSONObject): Boolean {
         for (i in 0 until adapterData.size) {
             val data = adapterData[i]
             val chat = data.getJSONObject("Chatting")
@@ -925,6 +923,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
         })
     }
+
     override fun onScroll(view: AbsListView?, firstVisibleItem: Int, visibleItemCount: Int, totalItemCount: Int) {
         lastItemVisibleFlag = totalItemCount > 0 && firstVisibleItem + visibleItemCount >= totalItemCount
 

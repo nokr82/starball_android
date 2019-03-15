@@ -5,10 +5,12 @@ import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AbsListView
 import android.widget.ListView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.MemberAction
@@ -29,13 +31,19 @@ class ChattingCrushFragment : Fragment() {
     lateinit var myContext: Context
     private var progressDialog: ProgressDialog? = null
 
-    var page = 1
+    private var userScrolled = false
+    private var lastItemVisibleFlag = false
+
     var member_id = -1
     lateinit var crushAdapter: CrushAdapter
-    var adapterdata  = ArrayList<JSONObject>()
+    var adapterdata = ArrayList<JSONObject>()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    var page = 1
+    var totalPage = 1
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
 
         this.myContext = container!!.context
         progressDialog = ProgressDialog(myContext)
@@ -45,11 +53,24 @@ class ChattingCrushFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         member_id = PrefUtils.getIntPreference(context, "member_id")
-        likeLV.layoutManager = LinearLayoutManager (context)
+        likeLV.layoutManager = LinearLayoutManager(context)
+        likeLV.setOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (!likeLV.canScrollVertically(-1)) {
+
+                } else if (!likeLV.canScrollVertically(1)) {
+                    if (totalPage > page) {
+                        page++
+                        like_list()
+                    }
+                } else {
+                }
+            }
+        })
 
         like_list()
 
-        crushAdapter = CrushAdapter(ChattingSendCrushFragment(),this,adapterdata,1)
+        crushAdapter = CrushAdapter(ChattingSendCrushFragment(), this, adapterdata, 1)
         likeLV.adapter = crushAdapter
 
 
@@ -57,7 +78,6 @@ class ChattingCrushFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
 
 
     }
@@ -77,17 +97,24 @@ class ChattingCrushFragment : Fragment() {
                 }
                 try {
                     val result = response!!.getString("result")
+
                     adapterdata.clear()
                     if ("ok" == result) {
+                        page = Utils.getInt(response, "page")
+                        totalPage = Utils.getInt(response, "totalPage")
+                        if (page == 1) {
+                            adapterdata.clear()
+                            crushAdapter.notifyDataSetChanged()
+                        }
                         val likes = response.getJSONArray("likes")
                         for (i in 0..likes.length() - 1) {
                             var json = likes[i] as JSONObject
-                            Log.d("제이슨",json.toString())
+                            Log.d("제이슨", json.toString())
                             adapterdata.add(json)
                         }
                         crushAdapter.notifyDataSetChanged()
-                        Log.d("제이슨",adapterdata.count().toString())
-                        Log.d("제이슨",adapterdata.toString())
+                        Log.d("제이슨", adapterdata.count().toString())
+                        Log.d("제이슨", adapterdata.toString())
 
                     } else {
 
@@ -177,3 +204,4 @@ class ChattingCrushFragment : Fragment() {
         }
     }
 }
+

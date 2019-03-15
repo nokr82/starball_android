@@ -28,6 +28,7 @@ import com.baoyz.swipemenulistview.SwipeMenuItem
 import com.baoyz.swipemenulistview.SwipeMenu
 import com.baoyz.swipemenulistview.SwipeMenuCreator
 import android.graphics.Color
+import android.widget.AbsListView
 import com.baoyz.swipemenulistview.SwipeMenuListView
 
 
@@ -127,6 +128,22 @@ class ChattingFragment : Fragment() {
 
         member_id = PrefUtils.getIntPreference(myContext, "member_id")
 
+        chattingLV.setOnScrollListener(object : AbsListView.OnScrollListener {
+            override fun onScroll(p0: AbsListView?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onScrollStateChanged(absListView: AbsListView, newState: Int) {
+                if (!chattingLV.canScrollVertically(-1)) {
+
+                } else if (!chattingLV.canScrollVertically(1)) {
+                    if (totalPage > page) {
+                        page++
+                        loadData()
+                    }
+                } else {
+                }
+            }
+        })
         chattingLV.setOnItemClickListener { parent, view, position, id ->
 
             if (position < 1) {
@@ -152,7 +169,7 @@ class ChattingFragment : Fragment() {
 
     }
 
-    fun loadData(){
+    fun loadData() {
 
         val params = RequestParams()
         params.put("member_id", member_id)
@@ -198,14 +215,19 @@ class ChattingFragment : Fragment() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
 
-                 System.out.println(responseString);
+                System.out.println(responseString);
             }
 
             private fun error() {
                 Utils.alert(myContext, "조회중 장애가 발생하였습니다.")
             }
 
-            override fun onFailure(statusCode: Int, headers: Array<Header>?, responseString: String?, throwable: Throwable) {
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -216,7 +238,12 @@ class ChattingFragment : Fragment() {
                 error()
             }
 
-            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONObject?) {
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -225,7 +252,12 @@ class ChattingFragment : Fragment() {
                 error()
             }
 
-            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONArray?) {
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }

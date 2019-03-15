@@ -5,12 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.TextView
+import android.widget.AbsListView
 import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
-import com.devstories.starball_android.actions.JoinAction
 import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.adapter.GroupAdapter
 import com.devstories.starball_android.base.PrefUtils
@@ -33,6 +31,10 @@ class GrouptMakeActivity : RootActivity() {
     var adapterdata = ArrayList<JSONObject>()
     var member_list = ArrayList<String>()
     var size = 0
+
+    var page = 1
+    var totalPage = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_make)
@@ -42,7 +44,22 @@ class GrouptMakeActivity : RootActivity() {
         chat_user_list()
         GroupAdapter = GroupAdapter(context, R.layout.item_group_profile, adapterdata)
         groupLV.adapter = GroupAdapter
+        groupLV.setOnScrollListener(object : AbsListView.OnScrollListener {
+            override fun onScroll(p0: AbsListView?, p1: Int, p2: Int, p3: Int) {
+            }
 
+            override fun onScrollStateChanged(absListView: AbsListView, newState: Int) {
+                if (!groupLV.canScrollVertically(-1)) {
+
+                } else if (!groupLV.canScrollVertically(1)) {
+                    if (totalPage > page) {
+                        page++
+                        chat_user_list()
+                    }
+                } else {
+                }
+            }
+        })
         nextTV.setOnClickListener {
             group_make()
         }
@@ -73,13 +90,12 @@ class GrouptMakeActivity : RootActivity() {
         }
 
 
+
         backIV.setOnClickListener {
             finish()
         }
 
-
     }
-
 
     fun get_info() {
         var member_id = PrefUtils.getIntPreference(context, "member_id")
@@ -307,8 +323,14 @@ class GrouptMakeActivity : RootActivity() {
                     Log.d("결과", response.toString())
                     if ("ok" == result) {
 
+                        page = Utils.getInt(response, "page")
+                        totalPage = Utils.getInt(response, "totalPage")
+
                         val chats = response.getJSONArray("chat")
-                        adapterdata.clear()
+                        if (page == 1) {
+                            adapterdata.clear()
+                            GroupAdapter.notifyDataSetChanged()
+                        }
                         for (i in 0..chats.length() - 1) {
                             var json = chats[i] as JSONObject
                             Log.d("제이슨", json.toString())
