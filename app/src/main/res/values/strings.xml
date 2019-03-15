@@ -379,4 +379,6 @@
     <string name="add_adverb">상용 등록</string>
     <string name="clipboard">클립보드에 복사되었습니다.</string>
 
+    <string name="remaining_time">%1$d시간 %2$d분 남음</string>
+
 </resources>
