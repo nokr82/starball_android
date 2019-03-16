@@ -2,6 +2,9 @@
     <string name="app_name">Starball</string>
     <string name="FACEBOOK_APP_ID">630512880727589</string>
     <string name="ACCOUNT_KIT_CLIENT_TOKEN">60f8fdb472860e21556f0f0261ebf128</string>
+    <string name="ADMOB_APP_ID">ca-app-pub-5255137978301486~7156522176</string>
+    <string name="ADMOB_UNIT_ID_REAL">ca-app-pub-5255137978301486/8650223780</string>
+    <string name="ADMOB_UNIT_ID">ca-app-pub-3940256099942544/1033173712</string>
 
     <string name="cash">Cash 요청</string>
     <string name="starball">보유 Starball :</string>

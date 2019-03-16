@@ -14,6 +14,7 @@ import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import com.devstories.starball_android.actions.MemberAction
+import com.devstories.starball_android.base.AdmobUtils
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
@@ -113,6 +114,11 @@ class MainActivity : RootActivity() {
 
         loadData()
 
+
+        AdmobUtils.loadAd(mContext) {
+            println("admob closed")
+            // finish()
+        }
     }
 
 

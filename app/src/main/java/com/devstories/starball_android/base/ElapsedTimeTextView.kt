@@ -15,8 +15,6 @@ class ElapsedTimeTextView(context: Context?, attrs: AttributeSet?) : TextView(co
 
     init {
 
-        println("attrs : $attrs")
-
         var input:String? = null
 
         val ta = context?.obtainStyledAttributes(attrs, R.styleable.app, 0, 0)
@@ -27,9 +25,6 @@ class ElapsedTimeTextView(context: Context?, attrs: AttributeSet?) : TextView(co
         }
 
         Timer().schedule(0, 1000 * 60) {
-
-            println("RRR : $text")
-
             if(input != null) {
 
                 val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREAN)
@@ -50,7 +45,7 @@ class ElapsedTimeTextView(context: Context?, attrs: AttributeSet?) : TextView(co
     }
 
 
-    fun convertFromDuration(timeInSeconds: Long): TimeInHours {
+    private fun convertFromDuration(timeInSeconds: Long): TimeInHours {
         var time = timeInSeconds / 1000
         val hours = time / 3600
         time %= 3600

@@ -68,4 +68,8 @@ object ChattingAction {
     fun del_chatting(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/chattings/del_chatting", params, handler)
     }
+
+    fun saveTranslate(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/save_translate", params, handler)
+    }
 }
