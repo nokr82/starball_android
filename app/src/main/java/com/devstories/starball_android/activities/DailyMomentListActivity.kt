@@ -12,9 +12,11 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.devstories.starball_android.R
+import com.devstories.starball_android.actions.DailyAction
 import com.devstories.starball_android.actions.ReportAction
 import com.devstories.starball_android.adapter.DaillyAdapter
 import com.devstories.starball_android.base.PrefUtils
@@ -37,7 +39,13 @@ class DailyMomentListActivity : RootActivity() {
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
-    lateinit var DaillyAdapter: DaillyAdapter
+    lateinit var daillyAdapter: DaillyAdapter
+    var adapterdata = ArrayList<JSONObject>()
+
+    var page = 1
+    var totalPage = 1
+
+
     private val UPDATE_TIME_LINE = 995
     private val FROM_ALBUM = 101
     private val REQUEST_PERMISSION_READ_EXTERNAL_STORAGE = 2
@@ -54,10 +62,12 @@ class DailyMomentListActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
-        DaillyAdapter = DaillyAdapter(context, R.layout.item_daily_list, 6)
-        dailyLV.adapter = DaillyAdapter
+        daillyAdapter = DaillyAdapter(context, R.layout.item_daily_list, adapterdata)
+        dailyLV.adapter = daillyAdapter
 
 
+
+        daily_list()
 
         dailyLV.setOnItemClickListener { parent, view, position, id ->
             val intent = Intent(context, DlgAlbumPayActivity::class.java)
@@ -99,7 +109,6 @@ class DailyMomentListActivity : RootActivity() {
 
     private fun dlg_view(){
         val intent = Intent(context, DlgLogoutActivity::class.java)
-        intent.putExtra("selectedImage",selectedImage)
         intent.putExtra("type",1)
         startActivity(intent)
     }
@@ -181,17 +190,174 @@ class DailyMomentListActivity : RootActivity() {
                             val picturePath = cursor.getString(columnIndex)
                             cursor.close()
                             selectedImage = Utils.getImage(context!!.contentResolver, picturePath)
+
+
                         }
                         dlg_view()
                     }
                 }
-                UPDATE_TIME_LINE -> {
-                    if (data != null && data.data != null) {
 
+                UPDATE_TIME_LINE -> {
+                    if (data != null) {
+                        update()
                     }
                 }
             }
         }
+    }
+
+
+    fun daily_list() {
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("page", page)
+
+        DailyAction.list(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                Log.d("아우스0",response.toString())
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+                        if (page == 1) {
+                            adapterdata.clear()
+                        }
+                        val list = response.getJSONArray("list")
+                        for (i in 0..list.length() - 1) {
+                            var json = list[i] as JSONObject
+                            Log.d("제이슨", json.toString())
+                            adapterdata.add(json)
+                        }
+                        daillyAdapter.notifyDataSetChanged()
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
+
+
+    fun update() {
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("type", 1)
+        params.put("upload", ByteArrayInputStream(Utils.getByteArray(selectedImage)))
+
+        DailyAction.add_content(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                Log.d("아우스0",response.toString())
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+                      Toast.makeText(context,"등록되었습니다.",Toast.LENGTH_SHORT).show()
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
     }
 
 

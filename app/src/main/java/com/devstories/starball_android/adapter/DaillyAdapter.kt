@@ -4,16 +4,17 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
+import android.widget.TextView
+import com.devstories.starball_android.R
+import org.json.JSONObject
 
 
-
-
-open class DaillyAdapter (context: Context, view:Int, data:Int) : ArrayAdapter<Int>(context, view, data) {
+open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>) : ArrayAdapter<JSONObject>(context, view, data) {
 
     private lateinit var item: ViewHolder
     var view:Int = view
-    var data: Int = data
-
+    var data:ArrayList<JSONObject> = data
 
     override fun getView(position: Int, convertView: View?, parent : ViewGroup?): View {
 
@@ -35,28 +36,30 @@ open class DaillyAdapter (context: Context, view:Int, data:Int) : ArrayAdapter<I
 
 
 
+        item.delLL.setOnClickListener {
+            data.removeAt(position)
+            notifyDataSetChanged()
+        }
 
         return retView
     }
 
-    override fun getItem(position: Int): Int {
-        return data
-    }
-
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
+    override fun getItem(position: Int): JSONObject {
+        return data[position]
     }
 
     override fun getCount(): Int {
-        return data
+        return data.size
     }
+
     class ViewHolder(v: View) {
 
-
+        var optionTV: TextView
+        var delLL: LinearLayout
 
         init {
-
-
+            optionTV = v.findViewById(R.id.optionTV)
+            delLL = v.findViewById(R.id.delLL)
         }
     }
 }

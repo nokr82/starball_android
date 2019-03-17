@@ -32,8 +32,8 @@ class DailyMomentViewListActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
-        DaillyAdapter = DaillyAdapter(context,R.layout.item_view_daily_list, 6)
-        dailyLV.adapter = DaillyAdapter
+//        DaillyAdapter = DaillyAdapter(context,R.layout.item_view_daily_list, 6)
+//        dailyLV.adapter = DaillyAdapter
 
 
         header = View.inflate(this, R.layout.item_daily_moment_view_head, null)

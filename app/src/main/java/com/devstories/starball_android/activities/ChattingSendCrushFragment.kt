@@ -97,7 +97,6 @@ class ChattingSendCrushFragment : Fragment() {
                         totalPage = Utils.getInt(response, "totalPage")
                         if (page == 1) {
                             adapterdata.clear()
-                            crushAdapter.notifyDataSetChanged()
                         }
                         val likes = response.getJSONArray("likes")
                         for (i in 0..likes.length() - 1) {
