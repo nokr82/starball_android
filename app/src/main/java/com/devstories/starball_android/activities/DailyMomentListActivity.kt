@@ -40,8 +40,7 @@ class DailyMomentListActivity : RootActivity() {
 
     var page = 1
     var totalPage = 1
-
-
+    var type = 1
     private val UPDATE_TIME_LINE = 995
     private val FROM_ALBUM = 101
     private val REQUEST_PERMISSION_READ_EXTERNAL_STORAGE = 2
@@ -83,9 +82,11 @@ class DailyMomentListActivity : RootActivity() {
 
         }
         videoLL.setOnClickListener {
+            type=2
             permissionvideo()
         }
         photoLL.setOnClickListener {
+            type=1
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
                 loadPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_PERMISSION_READ_EXTERNAL_STORAGE)
             } else {
@@ -174,6 +175,8 @@ class DailyMomentListActivity : RootActivity() {
                 FROM_ALBUM -> {
                     if (data != null && data.data != null) {
 
+                        Log.d("덩영성",data.toString())
+                        Log.d("덩영성",data.data.toString())
 
                         val selectedImageUri = data.data
 
@@ -186,8 +189,6 @@ class DailyMomentListActivity : RootActivity() {
                             val picturePath = cursor.getString(columnIndex)
                             cursor.close()
                             selectedImage = Utils.getImage(context!!.contentResolver, picturePath)
-
-
                         }
                         dlg_view()
                     }
@@ -244,11 +245,11 @@ class DailyMomentListActivity : RootActivity() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
 
-                // System.out.println(responseString);
+                 System.out.println(responseString);
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                 Utils.alert(context, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -261,7 +262,7 @@ class DailyMomentListActivity : RootActivity() {
                     progressDialog!!.dismiss()
                 }
 
-                // System.out.println(responseString);
+                 System.out.println(responseString);
 
                 throwable.printStackTrace()
                 error()
@@ -289,7 +290,7 @@ class DailyMomentListActivity : RootActivity() {
         var member_id = PrefUtils.getIntPreference(context, "member_id")
         val params = RequestParams()
         params.put("member_id", member_id)
-        params.put("type", 1)
+        params.put("type", type)
         Log.d("스트립",selectedImage.toString())
         params.put("upload", ByteArrayInputStream(Utils.getByteArray(selectedImage)))
 
