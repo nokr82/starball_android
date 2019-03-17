@@ -6,11 +6,14 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.GroupChattingActivity
+import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.Utils
+import com.nostra13.universalimageloader.core.ImageLoader
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
@@ -79,7 +82,25 @@ open class GroupChattingAdapter(
             item.timerLL.visibility = View.GONE
         }
 
+        if (type == 2) {
+            ImageLoader.getInstance().displayImage(Config.url + Utils.getString(chatting, "image_uri"), item.myImageIV, Utils.UILoptionsPosting)
 
+            item.myImageIV.visibility = View.VISIBLE
+            item.myContentsLL.visibility = View.GONE
+            item.myVoiceLL.visibility = View.GONE
+        } else if (type == 3) {
+            item.myImageIV.visibility = View.GONE
+            item.myContentsLL.visibility = View.GONE
+            item.myVoiceLL.visibility = View.VISIBLE
+            item.myVoiceIV.setOnClickListener {
+                activity.playing(Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
+            }
+
+        }else {
+            item.myImageIV.visibility = View.GONE
+            item.myContentsLL.visibility = View.VISIBLE
+            item.myVoiceLL.visibility = View.GONE
+        }
 
 
 
@@ -110,10 +131,14 @@ open class GroupChattingAdapter(
         var readcountTV: TextView
         var contentsTV: TextView
         var itemLL: LinearLayout
-
-
+        var myContentsLL: LinearLayout
+        var myImageIV:ImageView
+        var myVoiceLL: LinearLayout
+        var myVoiceIV: ImageView
         init {
+            myImageIV = v.findViewById(R.id.myImageIV)
             itemLL = v.findViewById(R.id.itemLL)
+            myContentsLL = v.findViewById(R.id.myContentsLL)
             timerLL = v.findViewById(R.id.timeLL)
             timerTV = v.findViewById(R.id.timerTV)
             cancelTV = v.findViewById(R.id.cancelTV)
@@ -122,7 +147,8 @@ open class GroupChattingAdapter(
             readcountTV = v.findViewById(R.id.readcountTV)
             translationLL = v.findViewById(R.id.translationLL)
             contentsTV = v.findViewById(R.id.contentsTV)
-
+            myVoiceLL = v.findViewById(R.id.myVoiceLL)
+            myVoiceIV = v.findViewById(R.id.myVoiceIV)
 
         }
     }
