@@ -2,6 +2,8 @@ package com.devstories.starball_android.activities
 
 import android.Manifest
 import android.app.ProgressDialog
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -75,6 +77,9 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
     private var timer: Timer? = null
 
+
+    private val EDIT_CHATTING = 300
+
     private val FROM_ALBUM = 101
     private val REQUEST_PERMISSION_READ_EXTERNAL_STORAGE = 2
     private var selectedImage: Bitmap? = null
@@ -130,6 +135,29 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         groupLV.adapter = adapter
         groupLV.setOnScrollListener(this)
 
+
+        groupLV.setOnItemLongClickListener { parent, view, position, id ->
+
+            val data = adapterData[position]
+            val chatting = data.getJSONObject("GroupChatting")
+            val chatting_member_id = Utils.getInt(chatting, "member_id")
+
+            if (Utils.getInt(chatting, "type") != 1) {
+                return@setOnItemLongClickListener true
+            }
+
+            var delete = false
+            if (chatting_member_id == member_id) {
+                delete = true
+            }
+
+            var intent = Intent(context, DlgChattingActivity::class.java)
+            intent.putExtra("chatting_id", Utils.getInt(chatting, "id"))
+            intent.putExtra("chatting_contents", Utils.getString(chatting, "contents"))
+            intent.putExtra("delete", delete)
+            startActivityForResult(intent, EDIT_CHATTING)
+            return@setOnItemLongClickListener true
+        }
 
         starballIV.setOnClickListener {
             val intent = Intent(context, DlgSendProposeActivity::class.java)
@@ -205,7 +233,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 return@setOnClickListener
             }
 
-            addAdverb()
+            addAdverb(adverb)
 
         }
 
@@ -274,7 +302,29 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                         }
                     }
                 }
+                EDIT_CHATTING -> {
+                    if (data != null) {
 
+                        val type = data.getIntExtra("type", 1)
+                        val chatting_id = data.getIntExtra("chatting_id", -1)
+                        val chatting_contents= data.getStringExtra("chatting_contents")
+
+                        if (type == 1) {
+                            val clipboardManager: ClipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+                            var clipData: ClipData = ClipData.newPlainText("label", chatting_contents)
+                            clipboardManager.setPrimaryClip(clipData);
+
+                            Toast.makeText(context, context.getString(R.string.clipboard), Toast.LENGTH_SHORT).show();
+                        } else if (type == 2) {
+                            deleteChatting(chatting_id)
+                        } else if (type == 3) {
+                            contentsET.setText(chatting_contents)
+                        } else {
+                            addAdverb(chatting_contents)
+                        }
+
+                    }
+                }
                 DELETE_ADBERB -> {
 
                     if (data != null) {
@@ -303,6 +353,89 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
     }
 
 
+    fun deleteChatting(chatting_id: Int) {
+
+        val params = RequestParams()
+        params.put("chatting_id", chatting_id)
+
+        ChattingAction.del_chatting(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+
+                        for (i in 0 until adapterData.size) {
+                            val data = adapterData[i]
+                            val chatting = data.getJSONObject("GroupChatting")
+
+                            val chat_id = Utils.getInt(chatting, "id")
+
+                            if (chatting_id == chat_id) {
+                                adapterData.removeAt(i)
+                                break
+                            }
+                        }
+
+                        adapter.notifyDataSetChanged()
+
+                    } else {
+
+                    }
+
+                    adverbAdapter.notifyDataSetChanged()
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
     fun sendChatting(type: Int) {
 
         val params = RequestParams()
@@ -509,11 +642,11 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         })
     }
 
-    fun addAdverb() {
+    fun addAdverb(content: String) {
 
         val params = RequestParams()
         params.put("member_id", member_id)
-        params.put("content", Utils.getString(adverbET))
+        params.put("content", content)
 
         ChattingAction.add_adverb(params, object : JsonHttpResponseHandler() {
 
