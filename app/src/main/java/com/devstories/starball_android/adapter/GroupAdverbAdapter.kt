@@ -33,7 +33,7 @@ class GroupAdverbAdapter(data: ArrayList<JSONObject>, activity: GroupChattingAct
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        val holder = holder as AdverbAdapter.ViewHolder
+        val holder = holder as GroupAdverbAdapter.ViewHolder
 
         val adverb = data[position]
 
