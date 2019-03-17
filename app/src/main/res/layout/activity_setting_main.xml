@@ -56,6 +56,7 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/profileIV"
+                    android:scaleType="centerCrop"
                     android:paddingTop="90dp"
                     android:layout_width="90dp"
                     android:layout_height="180dp"
