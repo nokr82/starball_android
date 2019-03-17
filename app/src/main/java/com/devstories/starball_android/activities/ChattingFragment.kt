@@ -150,13 +150,20 @@ class ChattingFragment : Fragment() {
 
                 var json = roomAdapterData[position]
                 val type = Utils.getInt(json, "type")
-
+                val pin_yn_op = Utils.getString(json, "pin_yn_op")
                 when (index) {
                     0 -> {
 
                     }
                     1 -> {
-                        json.put("pin_yn_op", "Y")
+                        if (pin_yn_op.equals("Y")){
+                            pin_yn="N"
+                            json.put("pin_yn_op", pin_yn)
+                        }else{
+                            pin_yn="Y"
+                            json.put("pin_yn_op", pin_yn)
+                        }
+
                         if (type == 1) {
                             val Group = json.getJSONObject("Group")
                             val group_id = Utils.getInt(Group, "id")
@@ -234,6 +241,7 @@ class ChattingFragment : Fragment() {
 
                     if ("ok" == result) {
                         Toast.makeText(myContext, "고정되었습니다.", Toast.LENGTH_SHORT).show()
+                        roomAdapter.notifyDataSetChanged()
                     } else {
 
                     }

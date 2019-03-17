@@ -48,6 +48,15 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
 
         val type = Utils.getInt(json, "type")
 
+        val pin_yn_op = Utils.getString(json, "pin_yn_op")
+
+        if (pin_yn_op == "Y"){
+            item.pinIV.visibility=View.VISIBLE
+        }else{
+            item.pinIV.visibility=View.GONE
+        }
+
+
         if (type == 1) {
 
             val Group = json.getJSONObject("Group")
