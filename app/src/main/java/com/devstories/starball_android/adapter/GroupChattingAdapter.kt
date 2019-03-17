@@ -73,8 +73,7 @@ open class GroupChattingAdapter(
             item.timerTV.text = Utils.dateString2(t_timer)
             item.cancelTV.setOnClickListener {
                 activity.cancel_group_chatting(chatting_id)
-                item.itemLL.visibility = View.GONE
-                item.timerLL.visibility = View.GONE
+                activity.adapterData.removeAt(position)
             }
         } else {
             item.timerLL.visibility = View.GONE

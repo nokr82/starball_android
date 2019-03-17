@@ -103,11 +103,16 @@ class ChattingFragment : Fragment() {
             pinItem.setIcon(R.mipmap.lounge_pin)
             // add to menu
             menu.addMenuItem(pinItem)
+
+
         }
+
+
 
         // set creator
         chattingLV.setMenuCreator(creator)
-        chattingLV.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
+        chattingLV.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT)
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -119,6 +124,8 @@ class ChattingFragment : Fragment() {
             val intent = Intent(context, GrouptMakeActivity::class.java)
             startActivity(intent)
         }
+
+
 
 
         chattingLV.setOnScrollListener(object : AbsListView.OnScrollListener {
