@@ -123,7 +123,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
 
         adverbRV.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
-        adverbAdapter = GroupAdverbAdapter(adverbAdapterData)
+        adverbAdapter = GroupAdverbAdapter(adverbAdapterData,this)
         adverbRV.adapter = adverbAdapter
 
         adapter = GroupChattingAdapter(context, R.layout.item_group_chatting, adapterData, this)
