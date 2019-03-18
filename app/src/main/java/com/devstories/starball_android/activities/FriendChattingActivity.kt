@@ -45,7 +45,6 @@ import java.text.DateFormat
 import java.util.*
 import java.text.SimpleDateFormat
 
-
 class FriendChattingActivity : RootActivity()
     , AbsListView.OnScrollListener {
     lateinit var context: Context
