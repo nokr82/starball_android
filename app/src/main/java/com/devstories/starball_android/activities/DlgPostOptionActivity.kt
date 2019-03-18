@@ -13,7 +13,7 @@ class DlgPostOptionActivity : RootActivity() {
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
-
+    private var REPORT = 1001
     var content_id = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +24,11 @@ class DlgPostOptionActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
         content_id = intent.getIntExtra("content_id", -1)
+
+        reportTV.setOnClickListener {
+            val intent = Intent(context, ReportActivity::class.java)
+            startActivityForResult(intent, REPORT)
+        }
 
        delTV.setOnClickListener {
            set_result()

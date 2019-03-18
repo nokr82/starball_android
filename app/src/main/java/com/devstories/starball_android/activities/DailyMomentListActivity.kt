@@ -123,19 +123,13 @@ class DailyMomentListActivity : RootActivity() {
         }
         videoLL.setOnClickListener {
             type=2
-            var intent = Intent(context, FindPictureGridActivity::class.java)
-            intent.putExtra("type", 2)
+            var intent = Intent(context, FindVideoGridActivity::class.java)
+            intent.putExtra("type", 3)
             intent.putExtra("pictureCnt", pictures.count())
             startActivityForResult(intent, SELECT_PICTURE_REQUEST)
-            permissionvideo()
         }
         photoLL.setOnClickListener {
             type=1
-          /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-                loadPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_PERMISSION_READ_EXTERNAL_STORAGE)
-            } else {
-                imageFromGallery()
-            }*/
             var intent = Intent(context, FindPictureGridActivity::class.java)
             intent.putExtra("type", 2)
             intent.putExtra("pictureCnt", pictures.count())
@@ -360,7 +354,6 @@ class DailyMomentListActivity : RootActivity() {
                     val mediaType = Utils.getInt(picture!!, "mediaType")
 
                     if (mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
-                        type = 1
                         var bitmap = Utils.getImage(context.contentResolver, path)
                         Log.d("이미지", bitmap.toString())
                         params.put(
@@ -369,9 +362,9 @@ class DailyMomentListActivity : RootActivity() {
                             "${System.currentTimeMillis()}.png"
                         )
                     } else {
-                        type = 2
                         val file = File(path)
                         var videoBytes = file.readBytes()
+                        Log.d("동영상",videoBytes.toString())
                         params.put(
                             "uploads[$idx]",
                             ByteArrayInputStream(videoBytes),

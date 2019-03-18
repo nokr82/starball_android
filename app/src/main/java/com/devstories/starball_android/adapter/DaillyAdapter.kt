@@ -2,12 +2,11 @@ package com.devstories.starball_android.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.media.MediaPlayer
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.DlgAlbumPayActivity
 import com.devstories.starball_android.activities.DlgPostOptionActivity
@@ -16,6 +15,7 @@ import com.devstories.starball_android.base.DateUtils
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
 import com.nostra13.universalimageloader.core.ImageLoader
+import com.yqritc.scalablevideoview.ScalableVideoView
 import org.json.JSONObject
 
 
@@ -60,15 +60,32 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>)
         val type = Utils.getInt(content, "type")
         val like_member_id = Utils.getInt(content, "member_id")
         val image_uri = Utils.getString(content, "image_uri")
-        val created_at = Utils.getInt(content, "created_at")
+        val video_uri = Utils.getString(content, "video_uri")
+        val created_at = Utils.getString(content, "created_at")
         val content_id = Utils.getInt(content, "id")
 
         Log.d("컨텐츠",image_uri.toString())
         Log.d("프로필",profile_image_uri.toString())
 
         item.nameTV.text = name+" "+age
+        if (type==1){
+            item.videoRL.visibility = View.GONE
+            item.videoVV.visibility = View.GONE
+            item.contentIV.visibility = View.VISIBLE
+            ImageLoader.getInstance().displayImage(Config.url + image_uri, item.contentIV, Utils.UILoptionsProfile)
+        }else{
+            item.contentIV.visibility = View.GONE
+            item.videoRL.visibility = View.VISIBLE
+            item.videoVV.visibility = View.VISIBLE
+            item.videoVV.setDataSource(Config.url + video_uri)
+//            item.videoVV.prepare(MediaPlayer.OnPreparedListener {  item.videoVV.seekTo(1)})
+            item.videoVV.prepareAsync()
+        }
+        item.playIV.setOnClickListener {
+            item.playIV.visibility = View.GONE
+            item.videoVV.start()
+        }
         ImageLoader.getInstance().displayImage(Config.url + profile_image_uri, item.profileIV, Utils.UILoptionsProfile)
-        ImageLoader.getInstance().displayImage(Config.url + image_uri, item.contentIV, Utils.UILoptionsProfile)
         item.likecntTV.text = likecnt.toString()
         item.contentIV.setOnClickListener {
             val intent = Intent(context, DlgAlbumPayActivity::class.java)
@@ -112,9 +129,15 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>)
         var contentIV: ImageView
         var likeIV: ImageView
         var likecntTV: TextView
+        var videoVV: ScalableVideoView
+        var videoRL: RelativeLayout
+        var playIV: ImageView
 
 
         init {
+            playIV= v.findViewById(R.id.playIV)
+            videoRL= v.findViewById(R.id.videoRL)
+            videoVV = v.findViewById(R.id.videoVV)
             nameTV = v.findViewById(R.id.nameTV)
             timeTV = v.findViewById(R.id.timeTV)
             profileIV = v.findViewById(R.id.profileIV)

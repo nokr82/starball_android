@@ -85,6 +85,10 @@
                 android:theme="@style/NoTitleDialog"
                 android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
+            android:name=".activities.FindVideoGridActivity"
+            android:theme="@style/NoTitleDialog"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity
                 android:name=".activities.JoinStep2NameActivity"
                 android:theme="@style/NoTitleDialog"
                 android:windowSoftInputMode="adjustResize|stateHidden"/>
