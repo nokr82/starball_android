@@ -74,6 +74,8 @@ class MainActivity : RootActivity() {
         }
     }
 
+    var member_id = -1
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,6 +85,8 @@ class MainActivity : RootActivity() {
 
         progressDialog = ProgressDialog(mContext, com.devstories.starball_android.R.style.CustomProgressBar)
         progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
+
+        member_id = PrefUtils.getIntPreference(mContext, "member_id")
 
         var filter1 = IntentFilter("STARBALL_USE")
         registerReceiver(usestarballreciver, filter1)
@@ -150,11 +154,13 @@ class MainActivity : RootActivity() {
             // finish()
         }
 
+        get_proposes()
+
     }
 
 
     private fun get_info() {
-        val member_id = PrefUtils.getIntPreference(mContext,"member_id")
+
         val params = RequestParams()
         params.put("member_id", member_id)
 
@@ -254,8 +260,6 @@ class MainActivity : RootActivity() {
 
     private fun loadData() {
 
-        val member_id = PrefUtils.getIntPreference(mContext,"member_id")
-
         val params = RequestParams()
         params.put("member_id", member_id)
         params.put("latitude", latitude)
@@ -269,8 +273,6 @@ class MainActivity : RootActivity() {
                 }
 
                 try {
-
-                    println(response)
 
                     val result =   Utils.getString(response,"result")
                     if ("ok" == result) {
@@ -400,7 +402,6 @@ class MainActivity : RootActivity() {
         oa1.start()
     }
 
-
     private fun initGPS() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
             loadPermissions(Manifest.permission.ACCESS_FINE_LOCATION, REQUEST_FINE_LOCATION)
@@ -502,6 +503,114 @@ class MainActivity : RootActivity() {
             loadData()
         }
 
+    }
+
+    fun get_proposes() {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+
+        MemberAction.get_proposes(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                Log.d("스타볼",response.toString())
+                try {
+                    val result = response!!.getString("result")
+                    if ("ok" == result) {
+
+                        var list = response.getJSONArray("list")
+
+                        for (i in 0 until list.length()) {
+                            val data = list[i] as JSONObject
+
+                            var intent = Intent(mContext, DlgProposeActivity::class.java)
+                            intent.putExtra("propose_id", Utils.getInt(data, "id"))
+                            startActivity(intent)
+
+                        }
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
     }
 
 }

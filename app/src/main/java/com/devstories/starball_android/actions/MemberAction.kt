@@ -59,4 +59,16 @@ object MemberAction {
         HttpClient.post("/members/propose", params, handler)
     }
 
+    fun get_proposes(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/get_proposes", params, handler)
+    }
+
+    fun get_propose(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/get_propose", params, handler)
+    }
+
+    fun propose_confirm(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/propose_confirm", params, handler)
+    }
+
 }
