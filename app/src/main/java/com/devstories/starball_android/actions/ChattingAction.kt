@@ -6,6 +6,10 @@ import com.loopj.android.http.RequestParams
 
 object ChattingAction {
 
+    fun confirm(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chattings/confirm", params, handler)
+    }
+
     fun created_room(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/chattings/created_room", params, handler)
     }

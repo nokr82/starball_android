@@ -134,7 +134,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
             holder.sendIV.visibility = View.VISIBLE
             holder.sendIV.setImageResource(R.mipmap.send_btn)
             holder.sendIV.setOnClickListener {
-
+                fragment.confirm(room_id,like_member_id)
             }
         }else{
             holder.sendIV.visibility = View.GONE
