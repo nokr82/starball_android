@@ -2,6 +2,7 @@
 <LinearLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -83,6 +84,20 @@
                 android:textSize="14dp"
                 android:textColor="#f91212"
                 android:text="13시간 28분 남음"
+                />
+            <com.devstories.starball_android.base.ElapsedTimeTextView
+                android:id="@+id/op_timeTV"
+                android:visibility="gone"
+                app:dest_date_time="2019-03-16 12:56:23"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#59040000"
+                android:shadowDx="1.2246467991473532e-16"
+                android:shadowDy="2"
+                android:shadowRadius="5"
+                android:textSize="14dp"
+                android:textColor="#f91212"
                 />
 
         </LinearLayout>
@@ -195,7 +210,7 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:visibility="gone"
+            android:visibility="visible"
             android:background="#efefef"
             android:id="@+id/menuLL"
             android:layout_marginRight="10dp"

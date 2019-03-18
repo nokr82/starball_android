@@ -1,6 +1,5 @@
 package com.devstories.starball_android.activities
 
-import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.database.Cursor
@@ -12,30 +11,24 @@ import android.support.v4.content.CursorLoader
 import android.support.v4.content.FileProvider
 import android.util.Log
 import android.view.View
-import android.widget.*
-import bolts.Bolts
+import android.widget.AdapterView
+import android.widget.BaseAdapter
+import android.widget.Toast
 import com.devstories.adapter.ImageAdapter
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.ImageLoader
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
-import com.google.android.gms.vision.Frame
-import com.google.android.gms.vision.face.FaceDetector
-import com.google.cloud.translate.Translate
-import com.google.cloud.translate.TranslateOptions
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_find_picture_grid.*
-import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 import java.io.IOException
-import java.lang.ref.WeakReference
 import java.util.*
 import kotlin.collections.ArrayList
 
-class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListener {
+class FindVideoGridActivity() : RootActivity(), AdapterView.OnItemClickListener {
     private lateinit var context: Context
-    private var progressDialog: ProgressDialog? = null
 
     private var photoList: ArrayList<ImageAdapter.PhotoData> = ArrayList<ImageAdapter.PhotoData>()
 
@@ -72,38 +65,35 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
 
         context = this
 
-        progressDialog = ProgressDialog(context, R.style.CustomProgressBar)
-        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
-
         pictureCnt = intent.getIntExtra("pictureCnt", 0)
         type = intent.getIntExtra("type", -1)
 
-        if (type==2){
-            titleTV.text = "사진 올리기"
+        if (type==3){
+            titleTV.text = "동영상 올리기"
         }
 
 
-        mAuth = FirebaseAuth.getInstance()
+        mAuth = FirebaseAuth.getInstance();
         var cursor: Cursor? = null
         val resolver = contentResolver
 
         try {
             val proj = arrayOf(
-                    MediaStore.Images.Media._ID,
-                    MediaStore.Images.Media.DATA,
-                    MediaStore.Images.Media.DISPLAY_NAME,
-                    MediaStore.Images.Media.ORIENTATION,
-                    MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
-                    MediaStore.Video.Media._ID,
-                    MediaStore.Video.Media.DATA,
-                    MediaStore.Video.Media.DISPLAY_NAME,
-                    MediaStore.Video.Media.BUCKET_DISPLAY_NAME,
-                    MediaStore.Video.Media.MINI_THUMB_MAGIC,
-                    MediaStore.Files.FileColumns.MEDIA_TYPE
+                MediaStore.Images.Media._ID,
+                MediaStore.Images.Media.DATA,
+                MediaStore.Images.Media.DISPLAY_NAME,
+                MediaStore.Images.Media.ORIENTATION,
+                MediaStore.Images.Media.BUCKET_DISPLAY_NAME,
+                MediaStore.Video.Media._ID,
+                MediaStore.Video.Media.DATA,
+                MediaStore.Video.Media.DISPLAY_NAME,
+                MediaStore.Video.Media.BUCKET_DISPLAY_NAME,
+                MediaStore.Video.Media.MINI_THUMB_MAGIC,
+                MediaStore.Files.FileColumns.MEDIA_TYPE
             )
             val idx = IntArray(proj.size)
 
-            val selection = MediaStore.Files.FileColumns.MEDIA_TYPE + "=" + MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE + " OR " + MediaStore.Files.FileColumns.MEDIA_TYPE + "=" + MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO
+            val selection = MediaStore.Files.FileColumns.MEDIA_TYPE + "=" + MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO
 
             /*
             cursor = MediaStore.Images.Media.query(
@@ -122,7 +112,7 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
                     selection,
                     null, // Selection args (none).
                     MediaStore.Files.FileColumns.DATE_ADDED + " DESC" // Sort order.
-            )
+            );
 
             val cursor = cursorLoader.loadInBackground()
 
@@ -158,11 +148,7 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
 
                     if (displayName != null) {
                         photo = ImageAdapter.PhotoData()
-                        photo.photoID = photoID
-                        photo.photoPath = photoPath
-                        photo.displayName = displayName
-                        photo.orientation = orientation
-                        photo.bucketPhotoName = bucketDisplayName
+
 
                         photo.videoID = videoID
                         photo.videoPath = videoPath
@@ -171,8 +157,7 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
 
                         photo.mediaType = mediaType
 
-                        // photo.type = "i"
-                        photoList.add(photo)
+                        photoList!!.add(photo)
                     }
 
                 } while (cursor.moveToNext())
@@ -180,7 +165,6 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
                 cursor.close()
             }
         } catch (ex: Exception) {
-            // Log the exception's message or whatever you like
         } finally {
             try {
                 if (cursor != null && !cursor.isClosed) {
@@ -191,54 +175,7 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
 
         }
 
-//        try {
-//            val proj = arrayOf(MediaStore.Video.Media._ID, MediaStore.Video.Media.DATA, MediaStore.Video.Media.DISPLAY_NAME,MediaStore.Video.Media.BUCKET_DISPLAY_NAME)
-//            val idx = IntArray(proj.size)
-//
-////            val selection = MediaStore.Video.Media.BUCKET_DISPLAY_NAME + " = '" + bucketName + "'"
-//
-//
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                cursor = resolver.query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, proj, null, null, MediaStore.Video.Media.DATE_ADDED + " DESC")
-//                println(" cursor : " + cursor.count)
-//            } else {
-//                cursor = MediaStore.Video.query(resolver, MediaStore.Video.Media.EXTERNAL_CONTENT_URI, null)
-//            }
-////                    cursor = MediaStore.Images.Media.query(resolver, MediaStore.Video.Media.EXTERNAL_CONTENT_URI, proj, selection, MediaStore.Video.Media.DATE_ADDED + " DESC")
-//            if (cursor != null && cursor.moveToFirst()) {
-//                idx[0] = cursor.getColumnIndex(proj[0])
-//                idx[1] = cursor.getColumnIndex(proj[1])
-//                idx[2] = cursor.getColumnIndex(proj[2])
-//                idx[3] = cursor.getColumnIndex(proj[3])
-//
-//                do {
-//                    val photoID = cursor.getInt(idx[0])
-//                    val photoPath = cursor.getString(idx[1])
-//                    val displayName = cursor.getString(idx[2])
-//                    val orientation = cursor.getInt(idx[3])
-//                    if (displayName != null) {
-//                        val video = ImageAdapter.PhotoData()
-//                        video.photoID = photoID
-//                        video.photoPath = photoPath
-//                        video.orientation = orientation
-//                        video.type = "v"
-//                        photoList.add(video)
-//                    }
-//                } while (cursor.moveToNext())
-//            }
-//        } catch (ex: Exception) {
-//            // Log the exception's message or whatever you like
-//        } finally {
-//            try {
-//                if (cursor != null && !cursor.isClosed) {
-//                    cursor.close()
-//                }
-//            } catch (ex: Exception) {
-//            }
-//
-//        }
-
-        selectGV.onItemClickListener = this
+        selectGV.setOnItemClickListener(this)
 
         val imageLoader: ImageLoader = ImageLoader(resolver)
 
@@ -329,7 +266,7 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
 
                 countTV.text = selected.size.toString()
 
-                val adapter = selectGV.adapter
+                val adapter = selectGV.getAdapter()
                 if (adapter != null) {
                     val f = adapter as ImageAdapter
                     (f as BaseAdapter).notifyDataSetChanged()
@@ -341,25 +278,15 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
                     return
                 }
 
-                DetectFaceAsyncTask(context, photoList, strPo, progressRL, object: DetectFaceAsyncTaskListener {
-                    override fun onResult(result: Boolean) {
-                        if(result) {
-                            selected.add(strPo)
-                        } else {
-                            Toast.makeText(context, "얼굴 사진만 등록가능합니다.", Toast.LENGTH_SHORT).show()
-                            return
-                        }
+                selected.add(strPo)
 
-                        countTV.text = selected.size.toString()
+                countTV.text = selected.size.toString()
 
-                        val adapter = selectGV.adapter
-                        if (adapter != null) {
-                            val f = adapter as ImageAdapter
-                            (f as BaseAdapter).notifyDataSetChanged()
-                        }
-                    }
-                }).execute()
-
+                val adapter = selectGV.getAdapter()
+                if (adapter != null) {
+                    val f = adapter as ImageAdapter
+                    (f as BaseAdapter).notifyDataSetChanged()
+                }
             }
         }
     }
@@ -394,12 +321,12 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
         }
     }
 
-    companion object CREATOR : Parcelable.Creator<FindPictureGridActivity> {
-        override fun createFromParcel(parcel: Parcel): FindPictureGridActivity {
-            return FindPictureGridActivity(parcel)
+    companion object CREATOR : Parcelable.Creator<FindVideoGridActivity> {
+        override fun createFromParcel(parcel: Parcel): FindVideoGridActivity {
+            return FindVideoGridActivity(parcel)
         }
 
-        override fun newArray(size: Int): Array<FindPictureGridActivity?> {
+        override fun newArray(size: Int): Array<FindVideoGridActivity?> {
             return arrayOfNulls(size)
         }
     }
@@ -408,83 +335,5 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
             finish()
             Utils.hideKeyboard(context)
     }
-
-    interface DetectFaceAsyncTaskListener {
-        fun onResult(result: Boolean)
-    }
-
-    class DetectFaceAsyncTask internal constructor(
-        context: Context,
-        photoList: ArrayList<ImageAdapter.PhotoData>,
-        strPo: String,
-        progressRL: RelativeLayout,
-        detectFaceAsyncTaskListener:DetectFaceAsyncTaskListener
-    ) : AsyncTask<Void, String, Boolean>() {
-
-        private val contextReference: WeakReference<Context> = WeakReference(context)
-        private val photoListReference: WeakReference<ArrayList<ImageAdapter.PhotoData>> = WeakReference(photoList)
-        private val strPoReference: WeakReference<String> = WeakReference(strPo)
-        private val progressRLReference: WeakReference<RelativeLayout> = WeakReference(progressRL)
-        private val detectFaceAsyncTaskListenerReference: WeakReference<DetectFaceAsyncTaskListener> = WeakReference(detectFaceAsyncTaskListener)
-
-        override fun onPreExecute() {
-            progressRLReference.get()?.visibility = View.VISIBLE
-        }
-
-        override fun doInBackground(vararg params: Void?): Boolean {
-            // val scale = Resources.getSystem().displayMetrics.density
-            val scale = 1
-
-            val detector = FaceDetector.Builder(contextReference.get())
-                .setTrackingEnabled(false)
-                .setLandmarkType(FaceDetector.ALL_LANDMARKS)
-                .build()
-
-            val photo = photoListReference.get()!![Integer.parseInt(strPoReference.get())]
-
-            if(photo.mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO) {
-                return true
-            }
-
-            var bitmap = Utils.getImage(contextReference.get()!!.contentResolver, photo.photoPath)
-
-            val frame = Frame.Builder().setBitmap(bitmap).build()
-            val faces = detector.detect(frame)
-
-            println("faces.size() : ${faces.size()}")
-
-            val landmarks = JSONArray()
-
-            for (i in 0 until faces.size()) {
-                val face = faces.valueAt(i)
-                for (landmark in face.landmarks) {
-                    val type = landmark.type
-                    val x = (landmark.position.x * scale)
-                    val y = (landmark.position.y * scale)
-
-                    val landmarkJSON = JSONObject()
-                    landmarkJSON.put("type", type)
-                    landmarkJSON.put("x", x)
-                    landmarkJSON.put("y", y)
-
-                    landmarks.put(landmarkJSON)
-                }
-            }
-
-            photo.landmarks = landmarks
-
-            detector.release()
-
-            return faces.size() > 0
-        }
-
-        override fun onPostExecute(result: Boolean) {
-            progressRLReference.get()?.visibility = View.GONE
-
-            detectFaceAsyncTaskListenerReference.get()?.onResult(result)
-        }
-
-    }
-
 
 }

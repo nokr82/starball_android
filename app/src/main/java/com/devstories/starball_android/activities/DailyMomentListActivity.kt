@@ -2,8 +2,10 @@ package com.devstories.starball_android.activities
 
 import android.Manifest
 import android.app.ProgressDialog
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Build
@@ -58,6 +60,18 @@ class DailyMomentListActivity : RootActivity() {
 
     var items= ArrayList<String>()
 
+    internal var reloadReciver: BroadcastReceiver? = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent?) {
+            if (intent != null) {
+                page = 1
+                daily_list()
+            }
+        }
+    }
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily_mement_list)
@@ -65,7 +79,10 @@ class DailyMomentListActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
-        daillyAdapter = DaillyAdapter(context, R.layout.item_daily_list, adapterdata)
+        var filter1 = IntentFilter("DEL_POST")
+        registerReceiver(reloadReciver, filter1)
+
+        daillyAdapter = DaillyAdapter(context, R.layout.item_daily_list, adapterdata,this)
         dailyLV.adapter = daillyAdapter
 
 
@@ -106,15 +123,13 @@ class DailyMomentListActivity : RootActivity() {
         }
         videoLL.setOnClickListener {
             type=2
-            permissionvideo()
+            var intent = Intent(context, FindVideoGridActivity::class.java)
+            intent.putExtra("type", 3)
+            intent.putExtra("pictureCnt", pictures.count())
+            startActivityForResult(intent, SELECT_PICTURE_REQUEST)
         }
         photoLL.setOnClickListener {
             type=1
-          /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-                loadPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_PERMISSION_READ_EXTERNAL_STORAGE)
-            } else {
-                imageFromGallery()
-            }*/
             var intent = Intent(context, FindPictureGridActivity::class.java)
             intent.putExtra("type", 2)
             intent.putExtra("pictureCnt", pictures.count())
@@ -318,7 +333,75 @@ class DailyMomentListActivity : RootActivity() {
         })
     }
 
+    fun like(content_id:Int) {
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("content_id", content_id)
 
+        DailyAction.like(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                Log.d("아우스0",response.toString())
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+                        daily_list()
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
 
     fun update() {
         var member_id = PrefUtils.getIntPreference(context, "member_id")
@@ -339,7 +422,6 @@ class DailyMomentListActivity : RootActivity() {
                     val mediaType = Utils.getInt(picture!!, "mediaType")
 
                     if (mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
-                        type = 1
                         var bitmap = Utils.getImage(context.contentResolver, path)
                         Log.d("이미지", bitmap.toString())
                         params.put(
@@ -348,9 +430,9 @@ class DailyMomentListActivity : RootActivity() {
                             "${System.currentTimeMillis()}.png"
                         )
                     } else {
-                        type = 2
                         val file = File(path)
                         var videoBytes = file.readBytes()
+                        Log.d("동영상",videoBytes.toString())
                         params.put(
                             "uploads[$idx]",
                             ByteArrayInputStream(videoBytes),
@@ -436,6 +518,9 @@ class DailyMomentListActivity : RootActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        if (reloadReciver!=null){
+            unregisterReceiver(reloadReciver)
+        }
         if (progressDialog != null) {
             progressDialog!!.dismiss()
         }

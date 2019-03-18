@@ -48,23 +48,23 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
 
         val type = Utils.getInt(json, "type")
 
-        val pin_yn_op = Utils.getString(json, "pin_yn_op")
 
-        if (pin_yn_op == "Y"){
-            item.pinIV.visibility=View.VISIBLE
-        }else{
-            item.pinIV.visibility=View.GONE
-        }
+
 
 
         if (type == 1) {
 
             val Group = json.getJSONObject("Group")
             var title = Utils.getString(Group, "title")
+            var pin_yn = Utils.getString(Group, "pin_yn")
             var created_at = Utils.getString(Group, "created_at")
             val GroupMembers = json.getJSONArray("GroupMembers")
 
-
+            if (pin_yn=="Y"){
+                item.pinIV.visibility = View.VISIBLE
+            }else{
+                item.pinIV.visibility = View.GONE
+            }
 //        val member_id = PrefUtils.getIntPreference(context, "member_id")
 
 
@@ -86,6 +86,8 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
                 name = Utils.getString(attendMember, "name")
             }*/
 
+
+
             ImageLoader.getInstance().displayImage(Config.url + profile, item.profileIV, Utils.UILoptionsProfile)
             item.nameTV.text = title + " " + GroupMembers.length().toString()
 
@@ -101,7 +103,13 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
 
         }
         else {
-
+            val pin_yn = json.getString("pin_yn")
+            if (pin_yn=="Y"){
+                item.pinIV.visibility = View.VISIBLE
+            }else{
+                item.pinIV.visibility = View.GONE
+            }
+            val founder_yn = json.getString("founder_yn")
             val json = data[position]
             val title = Utils.getString(json, "title")
             if (title =="chatting_title"){

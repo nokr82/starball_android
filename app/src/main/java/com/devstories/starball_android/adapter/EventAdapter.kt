@@ -50,16 +50,16 @@ open class EventAdapter (context: Context, view:Int, data:Int,type:Int) : ArrayA
         }
 
 
-        MatchAdapter = MatchAdapter(context,R.layout.item_match, 1)
-        item.chattingLV.adapter = MatchAdapter
+//        MatchAdapter = MatchAdapter(context,R.layout.item_match,1)
+//        item.chattingLV.adapter = MatchAdapter
 
 
         item.micLL.setOnClickListener {
-            item.chattingLV.visibility = View.VISIBLE
+//            item.chattingLV.visibility = View.VISIBLE
             item.menuLL.visibility = View.GONE
         }
         item.sendLL.setOnClickListener {
-            item.chattingLV.visibility = View.VISIBLE
+//            item.chattingLV.visibility = View.VISIBLE
             item.menuLL.visibility = View.GONE
             item.imgIV.visibility = View.VISIBLE
 
@@ -95,7 +95,7 @@ open class EventAdapter (context: Context, view:Int, data:Int,type:Int) : ArrayA
         var sendLL: LinearLayout
         var sendIV: ImageView
         var starballIV: ImageView
-        var chattingLV: ListView
+//        var chattingLV: ListView
         var menuLL: LinearLayout
         var starIV: ImageView
         var heartIV: ImageView
@@ -105,7 +105,7 @@ open class EventAdapter (context: Context, view:Int, data:Int,type:Int) : ArrayA
             imgIV=  v.findViewById(R.id.imgIV) as ImageView
             starIV=  v.findViewById(R.id.starIV) as ImageView
             heartIV=  v.findViewById(R.id.heartIV) as ImageView
-            chattingLV =  v.findViewById(R.id.chattingLV) as ListView
+//            chattingLV =  v.findViewById(R.id.chattingLV) as ListView
             micLL =  v.findViewById(R.id.micLL) as LinearLayout
             menuLL =  v.findViewById(R.id.menuLL) as LinearLayout
             sendLL =  v.findViewById(R.id.sendLL) as LinearLayout
