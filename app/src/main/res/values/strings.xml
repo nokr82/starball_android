@@ -390,5 +390,8 @@
     <string name="settings">설정</string>
 
     <string name="api_error">조회중 장애가 발생하였습니다.</string>
+    <string name="detecting_face">Detecting face...</string>
+    <string name="already_matched">이미 매칭된 상태입니다.</string>
+    <string name="in_translate">번역중...</string>
 
 </resources>
