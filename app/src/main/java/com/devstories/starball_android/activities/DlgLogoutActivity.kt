@@ -47,6 +47,9 @@ class DlgLogoutActivity : RootActivity() {
                 finish()
             }
             cancelTV.setOnClickListener {
+                var intent = Intent()
+                intent.putExtra("result","fail")
+                setResult(Activity.RESULT_OK, intent)
                 finish()
             }
         }else{
