@@ -237,6 +237,21 @@
 
 
             <LinearLayout
+                android:id="@+id/edit_chatLL"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:paddingLeft="10dp"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/msgET"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/chatLL"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:paddingLeft="10dp"
@@ -259,6 +274,7 @@
                     android:textColor="#c2c2c2"
                     android:text="인사가 수락되어야만 대화창이 생깁니다"
                     />
+
 
 
             </LinearLayout>
