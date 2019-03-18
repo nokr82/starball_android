@@ -269,6 +269,10 @@
                 android:screenOrientation="unspecified"
                 android:theme="@style/full_screen_dialog1"/>
         <activity
+                android:name=".activities.DlgRecommendActivity"
+                android:screenOrientation="unspecified"
+                android:theme="@style/full_screen_dialog1"/>
+        <activity
                 android:name=".activities.DlgAdverbDeleteConfirmActivity"
                 android:screenOrientation="unspecified"
                 android:theme="@style/full_screen_dialog"/>
