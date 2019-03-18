@@ -401,6 +401,11 @@ class ChattingMatchFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
+
+        if (reloadReciver != null){
+            myContext.unregisterReceiver(reloadReciver)
+        }
+
         if (progressDialog != null) {
             progressDialog!!.dismiss()
         }
