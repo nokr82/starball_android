@@ -44,6 +44,8 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
         var sendIV = itemView.findViewById<View>(R.id.sendIV) as ImageView
         var nameTV = itemView.findViewById<View>(R.id.nameTV) as TextView
         var starballTV = itemView.findViewById<View>(R.id.starballTV) as TextView
+        var op_timeTV = itemView.findViewById<View>(R.id.op_timeTV) as TextView
+
     }
 
     // Create new views (invoked by the layout manager)
@@ -91,6 +93,7 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
             if (a_type==2){
                 holder.starballTV.text ="+"+starball
                 holder.sendIV.setImageResource(R.mipmap.bi)
+                holder.timeTV.text = created_at.substring(0,10).replace("-",".")
                 holder.sendIV.setOnClickListener {
                     if (fragment.starball>0){
                         val intent = Intent(context, DlgCrushActivity::class.java)
@@ -103,6 +106,9 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
 
                 }
             }else{
+                holder.timeTV.visibility = View.GONE
+                holder.op_timeTV.visibility = View.VISIBLE
+                holder.op_timeTV.text = created_at.substring(0,10).replace("-",".")
                 holder.starballTV.text = "+"+starball
                 holder.sendIV.setImageResource(R.mipmap.send_heart)
                 holder.sendIV.setOnClickListener {
@@ -116,7 +122,7 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
 
                 }
             }
-            holder.timeTV.text = created_at.substring(0,10).replace("-",".")
+
             ImageLoader.getInstance().displayImage(Config.url + image_uri, holder.likeIV, Utils.UILoptions)
         }else{
         }

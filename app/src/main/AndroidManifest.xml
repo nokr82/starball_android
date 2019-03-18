@@ -87,6 +87,10 @@
                 android:theme="@style/NoTitleDialog"
                 android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
+            android:name=".activities.DlgPostOptionActivity"
+            android:theme="@style/NoTitleDialog"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity
                 android:name=".activities.JoinStep3GenderActivity"
                 android:theme="@style/NoTitleDialog"
                 android:windowSoftInputMode="adjustResize|stateHidden"/>
