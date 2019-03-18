@@ -16,5 +16,9 @@ object DailyAction {
     fun del_content(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/dailys/del_content", params, handler)
     }
+    fun like(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/dailys/like", params, handler)
+    }
+
 
 }

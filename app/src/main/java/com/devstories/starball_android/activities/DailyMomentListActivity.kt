@@ -82,7 +82,7 @@ class DailyMomentListActivity : RootActivity() {
         var filter1 = IntentFilter("DEL_POST")
         registerReceiver(reloadReciver, filter1)
 
-        daillyAdapter = DaillyAdapter(context, R.layout.item_daily_list, adapterdata)
+        daillyAdapter = DaillyAdapter(context, R.layout.item_daily_list, adapterdata,this)
         dailyLV.adapter = daillyAdapter
 
 
@@ -333,7 +333,78 @@ class DailyMomentListActivity : RootActivity() {
         })
     }
 
+    fun like(content_id:Int) {
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("content_id", content_id)
 
+        DailyAction.like(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                Log.d("아우스0",response.toString())
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+                        var intent = Intent()
+                        intent.action = "DEL_POST"
+                        sendBroadcast(intent)
+                        finish()
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
 
     fun update() {
         var member_id = PrefUtils.getIntPreference(context, "member_id")

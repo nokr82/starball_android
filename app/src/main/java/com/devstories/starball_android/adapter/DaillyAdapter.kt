@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.devstories.starball_android.R
+import com.devstories.starball_android.activities.DailyMomentListActivity
 import com.devstories.starball_android.activities.DlgAlbumPayActivity
 import com.devstories.starball_android.activities.DlgPostOptionActivity
 import com.devstories.starball_android.base.Config
@@ -19,11 +20,12 @@ import com.yqritc.scalablevideoview.ScalableVideoView
 import org.json.JSONObject
 
 
-open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>) : ArrayAdapter<JSONObject>(context, view, data) {
+open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>,activity: DailyMomentListActivity) : ArrayAdapter<JSONObject>(context, view, data) {
 
     private lateinit var item: ViewHolder
     var view:Int = view
     var data:ArrayList<JSONObject> = data
+    var activity:DailyMomentListActivity =activity
 
     override fun getView(position: Int, convertView: View?, parent : ViewGroup?): View {
 
@@ -47,6 +49,7 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>)
         val json = data[position]
 
         val likecnt = json.getInt("ContentLikeCount")
+        val like_yn = json.getString("LikeYn")
 
         val member = json.getJSONObject("Member")
         val name = Utils.getString(member, "name")
@@ -64,6 +67,25 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>)
         val created_at = Utils.getString(content, "created_at")
         val content_id = Utils.getInt(content, "id")
 
+        val today = Utils.todayStr()
+        var split = created_at.split("T")
+        if (split.get(0) == today){
+            var timesplit = split.get(1).split(":")
+            var noon = "오전"
+            if (timesplit.get(0).toInt() >= 12){
+                noon = "오후"
+            }
+            var time = noon + " " + timesplit.get(0) + ":" + timesplit.get(1)
+
+
+            item.timeTV.setText(time)
+        } else {
+            var since = Utils.since(created_at)
+
+            item.timeTV.setText(since)
+        }
+
+
         Log.d("컨텐츠",image_uri.toString())
         Log.d("프로필",profile_image_uri.toString())
 
@@ -78,7 +100,7 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>)
             item.videoRL.visibility = View.VISIBLE
             item.videoVV.visibility = View.VISIBLE
             item.videoVV.setDataSource(Config.url + video_uri)
-//            item.videoVV.prepare(MediaPlayer.OnPreparedListener {  item.videoVV.seekTo(1)})
+            item.videoVV.prepare(MediaPlayer.OnPreparedListener {  item.videoVV.seekTo(1)})
             item.videoVV.prepareAsync()
         }
         item.playIV.setOnClickListener {
@@ -86,15 +108,33 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>)
             item.videoVV.start()
         }
         ImageLoader.getInstance().displayImage(Config.url + profile_image_uri, item.profileIV, Utils.UILoptionsProfile)
-        item.likecntTV.text = likecnt.toString()
         item.contentIV.setOnClickListener {
             val intent = Intent(context, DlgAlbumPayActivity::class.java)
             intent.putExtra("like_member_id",like_member_id)
            context.startActivity(intent)
         }
-        item.likeIV.setOnClickListener {
-
+        if (like_yn=="N"){
+            item.likeIV.setImageResource(R.mipmap.lounge_heart_like)
+        }else{
+            item.likeIV.setImageResource(R.mipmap.profile_pre_super_like)
         }
+
+
+        item.likeIV.setOnClickListener {
+            if (like_yn=="N"){
+                likecnt + 1
+                activity.like(content_id)
+                item.likeIV.setImageResource(R.mipmap.profile_pre_super_like)
+                activity.daillyAdapter.notifyDataSetChanged()
+            }else{
+                likecnt - 1
+                activity.like(content_id)
+                item.likeIV.setImageResource(R.mipmap.lounge_heart_like)
+                activity.daillyAdapter.notifyDataSetChanged()
+            }
+        }
+        item.likecntTV.text = likecnt.toString()
+
         item.subIV.setOnClickListener {
 
         }

@@ -59,6 +59,8 @@ class DlgPostOptionActivity : RootActivity() {
 
     }
 
+
+
     fun del_content() {
         val params = RequestParams()
         params.put("content_id", content_id)
