@@ -1,5 +1,6 @@
 package com.devstories.starball_android.activities
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.database.Cursor
@@ -9,12 +10,10 @@ import android.os.*
 import android.provider.MediaStore
 import android.support.v4.content.CursorLoader
 import android.support.v4.content.FileProvider
-import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
-import android.widget.AdapterView
-import android.widget.BaseAdapter
-import android.widget.Toast
+import android.widget.*
+import bolts.Bolts
 import com.devstories.adapter.ImageAdapter
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.ImageLoader
@@ -22,16 +21,21 @@ import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import com.google.android.gms.vision.Frame
 import com.google.android.gms.vision.face.FaceDetector
+import com.google.cloud.translate.Translate
+import com.google.cloud.translate.TranslateOptions
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_find_picture_grid.*
+import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
 import java.io.IOException
+import java.lang.ref.WeakReference
 import java.util.*
 import kotlin.collections.ArrayList
 
 class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListener {
     private lateinit var context: Context
+    private var progressDialog: ProgressDialog? = null
 
     private var photoList: ArrayList<ImageAdapter.PhotoData> = ArrayList<ImageAdapter.PhotoData>()
 
@@ -67,6 +71,9 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
         setContentView(R.layout.activity_find_picture_grid)
 
         context = this
+
+        progressDialog = ProgressDialog(context, R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
 
         pictureCnt = intent.getIntExtra("pictureCnt", 0)
         type = intent.getIntExtra("type", -1)
@@ -334,20 +341,25 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
                     return
                 }
 
-                if(isFace(strPo)) {
-                    selected.add(strPo)
-                } else {
-                    Toast.makeText(context, "얼굴 사진만 등록가능합니다.", Toast.LENGTH_SHORT).show()
-                    return
-                }
+                DetectFaceAsyncTask(context, photoList, strPo, progressRL, object: DetectFaceAsyncTaskListener {
+                    override fun onResult(result: Boolean) {
+                        if(result) {
+                            selected.add(strPo)
+                        } else {
+                            Toast.makeText(context, "얼굴 사진만 등록가능합니다.", Toast.LENGTH_SHORT).show()
+                            return
+                        }
 
-                countTV.text = selected.size.toString()
+                        countTV.text = selected.size.toString()
 
-                val adapter = selectGV.adapter
-                if (adapter != null) {
-                    val f = adapter as ImageAdapter
-                    (f as BaseAdapter).notifyDataSetChanged()
-                }
+                        val adapter = selectGV.adapter
+                        if (adapter != null) {
+                            val f = adapter as ImageAdapter
+                            (f as BaseAdapter).notifyDataSetChanged()
+                        }
+                    }
+                }).execute()
+
             }
         }
     }
@@ -397,33 +409,82 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
             Utils.hideKeyboard(context)
     }
 
-    private fun isFace(path: String): Boolean {
+    interface DetectFaceAsyncTaskListener {
+        fun onResult(result: Boolean)
+    }
 
-        val scale = DisplayMetrics().density
+    class DetectFaceAsyncTask internal constructor(
+        context: Context,
+        photoList: ArrayList<ImageAdapter.PhotoData>,
+        strPo: String,
+        progressRL: RelativeLayout,
+        detectFaceAsyncTaskListener:DetectFaceAsyncTaskListener
+    ) : AsyncTask<Void, String, Boolean>() {
 
-        val detector = FaceDetector.Builder(context)
-            .setTrackingEnabled(false)
-            .setLandmarkType(FaceDetector.ALL_LANDMARKS)
-            .build()
+        private val contextReference: WeakReference<Context> = WeakReference(context)
+        private val photoListReference: WeakReference<ArrayList<ImageAdapter.PhotoData>> = WeakReference(photoList)
+        private val strPoReference: WeakReference<String> = WeakReference(strPo)
+        private val progressRLReference: WeakReference<RelativeLayout> = WeakReference(progressRL)
+        private val detectFaceAsyncTaskListenerReference: WeakReference<DetectFaceAsyncTaskListener> = WeakReference(detectFaceAsyncTaskListener)
 
-        var bitmap = Utils.getImage(context.contentResolver, path)
-
-        val frame = Frame.Builder().setBitmap(bitmap).build()
-        val faces = detector.detect(frame)
-
-        for (i in 0..faces.size()) {
-            val face = faces.valueAt(i)
-            for (landmark in face.landmarks) {
-                val cx = (landmark.position.x * scale)
-                val cy = (landmark.position.y * scale)
-
-                println("cx : $cx, cy : $cy")
-            }
+        override fun onPreExecute() {
+            progressRLReference.get()?.visibility = View.VISIBLE
         }
 
-        detector.release()
+        override fun doInBackground(vararg params: Void?): Boolean {
+            // val scale = Resources.getSystem().displayMetrics.density
+            val scale = 1
 
-        return faces.size() > 0
+            val detector = FaceDetector.Builder(contextReference.get())
+                .setTrackingEnabled(false)
+                .setLandmarkType(FaceDetector.ALL_LANDMARKS)
+                .build()
+
+            val photo = photoListReference.get()!![Integer.parseInt(strPoReference.get())]
+
+            if(photo.mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO) {
+                return true
+            }
+
+            var bitmap = Utils.getImage(contextReference.get()!!.contentResolver, photo.photoPath)
+
+            val frame = Frame.Builder().setBitmap(bitmap).build()
+            val faces = detector.detect(frame)
+
+            println("faces.size() : ${faces.size()}")
+
+            val landmarks = JSONArray()
+
+            for (i in 0 until faces.size()) {
+                val face = faces.valueAt(i)
+                for (landmark in face.landmarks) {
+                    val type = landmark.type
+                    val x = (landmark.position.x * scale)
+                    val y = (landmark.position.y * scale)
+
+                    val landmarkJSON = JSONObject()
+                    landmarkJSON.put("type", type)
+                    landmarkJSON.put("x", x)
+                    landmarkJSON.put("y", y)
+
+                    landmarks.put(landmarkJSON)
+                }
+            }
+
+            photo.landmarks = landmarks
+
+            detector.release()
+
+            return faces.size() > 0
+        }
+
+        override fun onPostExecute(result: Boolean) {
+            progressRLReference.get()?.visibility = View.GONE
+
+            detectFaceAsyncTaskListenerReference.get()?.onResult(result)
+        }
+
     }
+
 
 }
