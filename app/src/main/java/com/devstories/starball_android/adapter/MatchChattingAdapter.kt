@@ -13,6 +13,7 @@ import android.widget.TextView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
 import com.devstories.starball_android.actions.MemberAction
+import com.devstories.starball_android.activities.ChattingMatchFragment
 import com.devstories.starball_android.activities.FriendChattingActivity
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.PrefUtils
@@ -32,11 +33,12 @@ import java.lang.ref.WeakReference
 import java.text.SimpleDateFormat
 import java.util.*
 
-open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObject>) : ArrayAdapter<JSONObject>(context, view, data) {
+open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObject>,fragment: ChattingMatchFragment) : ArrayAdapter<JSONObject>(context, view, data) {
 
     private lateinit var item: ViewHolder
     var view:Int = view
     var data:ArrayList<JSONObject> = data
+    var fragment:ChattingMatchFragment = fragment
 
     override fun getView(position: Int, convertView: View?, parent : ViewGroup?): View {
 
@@ -57,11 +59,25 @@ open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
         }
 
         val json = data[position]
+        Log.d("매치채팅0",json.toString())
+        val type = json.getInt("type")
+
         val contents = json.getString("contents")
+        val voice_uri = json.getString("voice_uri")
         val translate_in_english = json.getString("translate_in_english")
         val Profile = json.getJSONObject("Profile")
         val image_uri = Profile.getString("image_uri")
-
+        if (type == 3) {
+            item.contentTV.visibility = View.GONE
+            item.transTV.visibility = View.GONE
+            item.myVoiceLL.visibility = View.VISIBLE
+            item.myVoiceIV.setOnClickListener {
+                fragment.playing(Config.url + voice_uri)
+            }
+        }else{
+            item.contentTV.visibility = View.VISIBLE
+            item.transTV.visibility = View.VISIBLE
+        }
         ImageLoader.getInstance().displayImage(Config.url + image_uri, item.profileIV, Utils.UILoptionsProfile)
 
         item.contentTV.text = contents

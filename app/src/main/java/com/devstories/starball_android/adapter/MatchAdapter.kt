@@ -113,7 +113,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
 
 
         holder.chattingLV.visibility  = View.VISIBLE
-        matchChattingAdapter = MatchChattingAdapter(context, R.layout.item_match, adapterdata)
+        matchChattingAdapter = MatchChattingAdapter(context, R.layout.item_match, adapterdata,fragment)
         holder.chattingLV.adapter = matchChattingAdapter
         adapterdata.clear()
         if (send_chatting =="Y"){
@@ -184,7 +184,6 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
             fragment.sendChatting(1,content,like_member_id)
             holder.menuLL.visibility = View.GONE
         }
-
         ImageLoader.getInstance().displayImage(Config.url + image_uri, holder.likeIV, Utils.UILoptions)
 
 
