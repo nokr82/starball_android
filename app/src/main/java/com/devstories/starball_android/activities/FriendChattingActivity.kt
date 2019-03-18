@@ -57,6 +57,8 @@ class FriendChattingActivity : RootActivity()
 
     var member_id = -1
     var other_member_id = -1
+    var other_name = ""
+    var other_profile = ""
     var room_id = -1
 
     var first_id = -1
@@ -144,6 +146,9 @@ class FriendChattingActivity : RootActivity()
 
         starballIV.setOnClickListener {
             val intent = Intent(context, DlgSendProposeActivity::class.java)
+            intent.putExtra("propose_member_id", other_member_id)
+            intent.putExtra("name", other_name)
+            intent.putExtra("profile", other_profile)
             startActivity(intent)
         }
 
@@ -850,11 +855,13 @@ class FriendChattingActivity : RootActivity()
                         val founder_member_id = Utils.getInt(room, "founder_member_id")
                         val attend_member_id = Utils.getInt(room, "attend_member_id")
 
-                        var name = Utils.getString(founderMember, "name")
+                        other_name = Utils.getString(founderMember, "name")
+                        other_profile = Utils.getString(founderProfile, "image_uri")
                         var birth = Utils.getString(founderMember, "birth")
 
                         if (member_id == founder_member_id) {
-                            name = Utils.getString(attendMember, "name")
+                            other_name = Utils.getString(attendMember, "name")
+                            other_profile = Utils.getString(attendProfile, "image_uri")
                             birth = Utils.getString(attendMember, "birth")
 
                             translation_yn = Utils.getString(room, "founder_translation_yn")
@@ -877,7 +884,7 @@ class FriendChattingActivity : RootActivity()
                             age = year.toInt() - births[0].toInt()
                         }
 
-                        titleTV.text = name + " " + age
+                        titleTV.text = other_name + " " + age
 
                         if (translation_yn == "Y") {
                             globalIV.setImageResource(R.mipmap.global_on)

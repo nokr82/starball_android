@@ -26,6 +26,7 @@
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/proposeMemberIV"
                     android:layout_marginTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -49,13 +50,28 @@
                     android:layout_height="0.5dp"
                     android:background="#1f1f1f"/>
 
-                <TextView
-                    android:layout_marginLeft="10dp"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:textColor="#333333"
-                    android:text="@string/dlg_send_prose_content"/>
+                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/userNameTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14dp"
+                        android:textColor="#333333"/>
+
+                    <TextView
+                        android:id="@+id/contentsTY"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14dp"
+                        android:textColor="#333333"
+                        android:text="@string/dlg_send_prose_content"/>
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_marginTop="25dp"
@@ -83,12 +99,13 @@
                         android:text="@string/left_starball2"/>
 
                     <TextView
+                        android:id="@+id/myStarballTV"
                         android:layout_width="wrap_content"
                         android:textStyle="bold"
                         android:layout_height="wrap_content"
                         android:textSize="15dp"
                         android:textColor="#0056cd"
-                        android:text="10"/>
+                        android:text="0"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -152,12 +169,14 @@
                         android:layout_height="wrap_content">
 
                         <LinearLayout
+                            android:id="@+id/starball2LL"
                             android:gravity="center"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
 
                             <ImageView
+                                android:id="@+id/starball2IV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@mipmap/radio_off"/>
@@ -172,12 +191,14 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/starball5LL"
                             android:gravity="center"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
 
                             <ImageView
+                                android:id="@+id/starball5IV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@mipmap/radio_off"/>
@@ -192,12 +213,14 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/starball10LL"
                             android:gravity="center"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
 
                             <ImageView
+                                android:id="@+id/starball10IV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@mipmap/radio_off"/>
@@ -212,12 +235,14 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/starball30LL"
                             android:gravity="center"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
 
                             <ImageView
+                                android:id="@+id/starball30IV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@mipmap/radio_off"/>
@@ -232,12 +257,14 @@
                         </LinearLayout>
 
                         <LinearLayout
+                            android:id="@+id/starball50LL"
                             android:gravity="center"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1">
 
                             <ImageView
+                                android:id="@+id/starball50IV"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:src="@mipmap/radio_on"/>
@@ -270,9 +297,12 @@
                             android:text="@string/direct_input"/>
 
                         <EditText
+                            android:id="@+id/starballET"
                             android:layout_marginLeft="12dp"
                             android:layout_width="140dp"
                             android:layout_height="20dp"
+                            android:inputType="number"
+                            android:singleLine="true"
                             android:background="@drawable/background_border_strock6ddddd"/>
 
                     </LinearLayout>
@@ -295,11 +325,14 @@
 
                 <TextView
                     android:id="@+id/noTV"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="15dp"
                     android:textSize="10dp"
                     android:textColor="#333333"
                     android:text="@string/dlg_prose_no"/>
