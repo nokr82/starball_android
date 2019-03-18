@@ -163,7 +163,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
                 fragment.recordStop(3,"",like_member_id)
 
                 holder.micLL.setBackgroundColor(Color.parseColor("#ffffff"))
-
+                holder.menuLL.visibility = View.GONE
             } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
                     val perms = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO)
