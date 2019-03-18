@@ -25,8 +25,11 @@ import com.baoyz.swipemenulistview.SwipeMenuItem
 import com.baoyz.swipemenulistview.SwipeMenuCreator
 import android.graphics.Color
 import android.util.Log
+import android.view.MenuItem
 import android.widget.AbsListView
 import android.widget.ImageView
+import android.widget.Toast
+import com.baoyz.swipemenulistview.SwipeMenu
 import com.baoyz.swipemenulistview.SwipeMenuListView
 
 
@@ -42,6 +45,11 @@ class ChattingFragment : Fragment() {
     lateinit var header: View
     var page = 1
     var totalPage = 1
+
+    var pin_yn = ""
+    var room_id = -1
+
+
     lateinit var roomAdapter: ChattingRoomAdapter
     var roomAdapterData = ArrayList<JSONObject>()
     var GrouproomAdapterData = ArrayList<JSONObject>()
@@ -59,7 +67,7 @@ class ChattingFragment : Fragment() {
 
         header = View.inflate(myContext, R.layout.item_chatting_head, null)
         plusIV = header.findViewById(R.id.plusIV)
-        roomAdapter = ChattingRoomAdapter(myContext, R.layout.item_chat_profile, roomAdapterData,1)
+        roomAdapter = ChattingRoomAdapter(myContext, R.layout.item_chat_profile, roomAdapterData, 1)
         chattingLV.adapter = roomAdapter
         chattingLV.addHeaderView(header)
 
@@ -98,11 +106,15 @@ class ChattingFragment : Fragment() {
             pinItem.setIcon(R.mipmap.lounge_pin)
             // add to menu
             menu.addMenuItem(pinItem)
+
+
         }
+
 
         // set creator
         chattingLV.setMenuCreator(creator)
-        chattingLV.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
+        chattingLV.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT)
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -114,7 +126,6 @@ class ChattingFragment : Fragment() {
             val intent = Intent(context, GrouptMakeActivity::class.java)
             startActivity(intent)
         }
-
 
         chattingLV.setOnScrollListener(object : AbsListView.OnScrollListener {
             override fun onScroll(p0: AbsListView?, p1: Int, p2: Int, p3: Int) {
@@ -132,17 +143,52 @@ class ChattingFragment : Fragment() {
                 }
             }
         })
+
+        chattingLV.setOnMenuItemClickListener(object : SwipeMenuListView.OnMenuItemClickListener {
+
+            override fun onMenuItemClick(position: Int, menu: SwipeMenu, index: Int): Boolean {
+
+                var json = roomAdapterData[position]
+                val type = Utils.getInt(json, "type")
+                val pin_yn_op = Utils.getString(json, "pin_yn_op")
+                when (index) {
+                    0 -> {
+
+                    }
+                    1 -> {
+                        if (pin_yn_op.equals("Y")){
+                            pin_yn="N"
+                            json.put("pin_yn_op", pin_yn)
+                        }else{
+                            pin_yn="Y"
+                            json.put("pin_yn_op", pin_yn)
+                        }
+
+                        if (type == 1) {
+                            val Group = json.getJSONObject("Group")
+                            val group_id = Utils.getInt(Group, "id")
+                            editRoom(group_id)
+                        } else {
+                            val Room = json.getJSONObject("Room")
+                            val room_id = Utils.getInt(Room, "id")
+                            editRoom(room_id)
+                        }
+                    }
+                }
+                return false
+            }
+        })
+
         chattingLV.setOnItemClickListener { parent, view, position, id ->
 
             if (position < 1) {
                 return@setOnItemClickListener
             }
 
-            var json = roomAdapterData[position -1]
+            var json = roomAdapterData[position - 1]
             val type = Utils.getInt(json, "type")
 
-            if (type==1){
-                Log.d("ajsls",json.toString())
+            if (type == 1) {
                 val Group = json.getJSONObject("Group")
 
                 var intent = Intent(context, GroupChattingActivity::class.java)
@@ -152,7 +198,7 @@ class ChattingFragment : Fragment() {
 
                 roomAdapter.notifyDataSetChanged()
 
-            }else{
+            } else {
                 val room = json.getJSONObject("Room")
 
                 var intent = Intent(context, FriendChattingActivity::class.java)
@@ -172,6 +218,80 @@ class ChattingFragment : Fragment() {
 
     }
 
+
+    fun editRoom(room_id: Int) {
+
+        if (room_id < 1) {
+            return
+        }
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("room_id", room_id)
+        params.put("pin_yn", pin_yn)
+
+        ChattingAction.edit_room(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+                        Toast.makeText(myContext, "고정되었습니다.", Toast.LENGTH_SHORT).show()
+                        roomAdapter.notifyDataSetChanged()
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
 
     fun loadGroupData() {
 
@@ -408,3 +528,5 @@ class ChattingFragment : Fragment() {
         }
     }
 }
+
+

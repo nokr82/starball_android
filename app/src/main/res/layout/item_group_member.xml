@@ -10,7 +10,7 @@
 		android:layout_height="wrap_content">
 
 		<de.hdodenhof.circleimageview.CircleImageView
-
+			android:scaleType="centerCrop"
 			android:id="@+id/profileIV"
 			android:layout_marginRight="10dp"
 			android:paddingLeft="10dp"
@@ -20,18 +20,18 @@
 
 		<ImageView
 			android:id="@+id/delIV"
-			android:layout_marginLeft="30dp"
-			android:layout_marginTop="40dp"
+			android:layout_marginLeft="35dp"
+			android:layout_marginTop="35dp"
 			android:layout_width="20dp"
 			android:layout_height="20dp"
 			android:src="@mipmap/profile_pic_bg_del"/>
 
 		<TextView
 			android:id="@+id/nameTV"
-			android:layout_marginRight="10dp"
 			android:gravity="center"
-			android:layout_alignParentBottom="true"
-			android:layout_width="match_parent"
+            android:layout_marginLeft="15dp"
+			android:layout_below="@+id/profileIV"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textSize="12dp"
 			android:textColor="#333333"

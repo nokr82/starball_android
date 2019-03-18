@@ -15,11 +15,13 @@ import android.widget.LinearLayout
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.adapter.AdverAdapter
+import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
+import com.nostra13.universalimageloader.core.ImageLoader
 import cz.msebera.android.httpclient.Header
 import kotlinx.android.synthetic.main.activity_setting_main.*
 import org.json.JSONArray
@@ -33,6 +35,9 @@ class SettingMainActivity : RootActivity() {
     var adverImagePaths = ArrayList<String>()
     private lateinit var adverAdapter: AdverAdapter
     var adPosition = 0
+
+
+    var profiledata = ArrayList<JSONObject>()
 
     private var adTime = 0
     private var handler: Handler? = null
@@ -153,6 +158,17 @@ class SettingMainActivity : RootActivity() {
 
                         val member = response.getJSONObject("member")
                         val name = Utils.getString(member, "name")
+                        var profiles = response.getJSONArray("profiles")
+//                         like_count = response.getInt("like_count")
+                        for (i in 0 until profiles.length()) {
+                            profiledata.add(profiles[i] as JSONObject)
+                        }
+                        var image_uri = Utils.getString(profiledata[1], "image_uri")
+                        Log.d("이미지",profiledata[0].toString())
+
+                        ImageLoader.getInstance().displayImage(Config.url + image_uri, profileIV, Utils.UILoptionsProfile)
+
+
                         nameTV.text = name
 
                         starballTV.text = Utils.getInt(response, "starball").toString()

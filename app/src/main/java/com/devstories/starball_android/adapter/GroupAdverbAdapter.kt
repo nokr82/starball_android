@@ -10,16 +10,16 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.DlgAdverbDeleteConfirmActivity
-import com.devstories.starball_android.activities.FriendChattingActivity
 import com.devstories.starball_android.activities.GroupChattingActivity
 import com.devstories.starball_android.base.Utils
+import kotlinx.android.synthetic.main.activity_group_chatting.*
 import org.json.JSONObject
 
-class GroupAdverbAdapter(data: ArrayList<JSONObject>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class GroupAdverbAdapter(data: ArrayList<JSONObject>, activity: GroupChattingActivity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val data: ArrayList<JSONObject> = data
     private lateinit var context: Context
-
+    private var activity :GroupChattingActivity = activity
     override fun onCreateViewHolder(parent: ViewGroup, p1: Int): RecyclerView.ViewHolder {
         var view = LayoutInflater.from(parent.context)
             .inflate(com.devstories.starball_android.R.layout.item_adverb, parent, false)
@@ -33,7 +33,7 @@ class GroupAdverbAdapter(data: ArrayList<JSONObject>) : RecyclerView.Adapter<Rec
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        val holder = holder as ViewHolder
+        val holder = holder as GroupAdverbAdapter.ViewHolder
 
         val adverb = data[position]
 
@@ -44,16 +44,21 @@ class GroupAdverbAdapter(data: ArrayList<JSONObject>) : RecyclerView.Adapter<Rec
             (context as GroupChattingActivity).startActivityForResult(intent, 100)
         }
 
+        holder.LL.setOnClickListener {
+            activity.contentsET.setText(Utils.getString(adverb, "content"))
+        }
+
     }
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
-
         var contentTV:TextView
         var delLL:LinearLayout
+        var LL:LinearLayout
 
         init {
             contentTV = v.findViewById(R.id.contentTV)
             delLL = v.findViewById(R.id.delLL)
+            LL = v.findViewById(R.id.LL)
         }
     }
 

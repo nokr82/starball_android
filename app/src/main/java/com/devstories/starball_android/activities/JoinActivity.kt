@@ -45,7 +45,7 @@ class JoinActivity : RootActivity() {
     private var facebook_NAME: String? = null
 
     // google
-    private lateinit var mAuth: FirebaseAuth;
+    private lateinit var mAuth: FirebaseAuth
     private var mGoogleSignInClient: GoogleSignInClient? = null
     private val RC_SIGN_IN = 1000
 
@@ -66,7 +66,7 @@ class JoinActivity : RootActivity() {
             .requestId()
             .requestProfile()
             .build()
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
 
         FirebaseApp.initializeApp(this)
         mAuth = FirebaseAuth.getInstance()
@@ -77,7 +77,7 @@ class JoinActivity : RootActivity() {
              intent.putExtra("jointype",jointype)
              startActivity(intent)*/
 //            val signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient)
-            val signInIntent = mGoogleSignInClient!!.getSignInIntent()
+            val signInIntent = mGoogleSignInClient!!.signInIntent
             startActivityForResult(signInIntent, RC_SIGN_IN)
         }
 
@@ -153,11 +153,6 @@ class JoinActivity : RootActivity() {
         }
 
         callbackManager!!.onActivityResult(requestCode, resultCode, data)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
     }
 
     // 페이스북 로그아웃
@@ -287,7 +282,7 @@ class JoinActivity : RootActivity() {
                     } else {
 
 
-                        Toast.makeText(context, response!!.getString("message"), Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, response.getString("message"), Toast.LENGTH_LONG).show()
 
                     }
 
@@ -295,10 +290,6 @@ class JoinActivity : RootActivity() {
                     e.printStackTrace()
                 }
 
-            }
-
-            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
-                super.onSuccess(statusCode, headers, response)
             }
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {

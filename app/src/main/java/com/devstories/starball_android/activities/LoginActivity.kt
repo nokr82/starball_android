@@ -23,7 +23,6 @@ class LoginActivity : RootActivity() {
     private var progressDialog: ProgressDialog? = null
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -51,7 +50,7 @@ class LoginActivity : RootActivity() {
         }
     }
 
-    fun login(){
+    fun login() {
         var email = emailET.text.toString()
         var passwd = passwdET.text.toString()
 
@@ -66,9 +65,9 @@ class LoginActivity : RootActivity() {
         }
 
         val params = RequestParams()
-        params.put("email",email)
-        params.put("passwd",passwd)
-        params.put("join_type",1)
+        params.put("email", email)
+        params.put("passwd", passwd)
+        params.put("join_type", 1)
 
         MemberAction.login(params, object : JsonHttpResponseHandler() {
 
@@ -167,8 +166,6 @@ class LoginActivity : RootActivity() {
                 }
             }
         })
-
-
 
 
     }

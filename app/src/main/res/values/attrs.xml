@@ -3,6 +3,7 @@
     <declare-styleable name="app">
         <attr name="ratio" format="string"/>
         <attr name="adjustHeight" format="boolean"/>
+        <attr name="dest_date_time" format="string"/>
     </declare-styleable>
 
     <declare-styleable name="FancyCoverFlow">

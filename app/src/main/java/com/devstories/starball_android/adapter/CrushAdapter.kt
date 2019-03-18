@@ -29,6 +29,7 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
     private var data = data
     private lateinit var context: Context
     private var fragment = fragment
+    private var fragment2 = fragment2
 
 
 
@@ -68,7 +69,7 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
             val created_at = Utils.getString(Like, "created_at")
             val name = Utils.getString(LikeMember, "name")
             val birth = Utils.getString(LikeMember, "birth")
-            val like_member_id = Utils.getString(LikeMember, "id")
+            val like_member_id = Utils.getInt(LikeMember, "id")
             val gender = Utils.getString(LikeMember, "gender")
             val image_uri = Utils.getString(LikeMemberProfile, "image_uri")
             var bitmap = Config.url + image_uri
@@ -105,6 +106,13 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
                 holder.starballTV.text = "+"+starball
                 holder.sendIV.setImageResource(R.mipmap.send_heart)
                 holder.sendIV.setOnClickListener {
+                    if (fragment2.starball>0){
+                        fragment2.use_starball(like_member_id)
+//                        fragment2.adapterdata.removeAt(position)
+                    }else{
+                        val intent = Intent(context, DlgStarballLackActivity::class.java)
+                        context.startActivity(intent)
+                    }
 
                 }
             }

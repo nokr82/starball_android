@@ -8,13 +8,14 @@ import com.devstories.starball_android.R
 import com.devstories.starball_android.adapter.DaillyAdapter
 import com.devstories.starball_android.base.RootActivity
 import kotlinx.android.synthetic.main.activity_daily_view_subscriblist.*
+import org.json.JSONObject
 
 class DailyMomentSubVIewListActivity : RootActivity() {
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
     lateinit var DaillyAdapter: DaillyAdapter
-
+    var adapterdata = ArrayList<JSONObject>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily_view_subscriblist)
@@ -23,8 +24,8 @@ class DailyMomentSubVIewListActivity : RootActivity() {
 
 
 
-        DaillyAdapter = DaillyAdapter(context,R.layout.item_view_daily_sub_list, 6)
-        dailyGV.adapter = DaillyAdapter
+//        DaillyAdapter = DaillyAdapter(context,R.layout.item_view_daily_sub_list, 6)
+//        dailyGV.adapter = DaillyAdapter
 
 
         timelineTV.setOnClickListener {
