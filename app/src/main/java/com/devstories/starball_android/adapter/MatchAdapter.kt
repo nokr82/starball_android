@@ -42,6 +42,9 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
         var chattingLV = itemView.findViewById<View>(R.id.chattingLV) as ListView
         var menuLL = itemView.findViewById<View>(R.id.menuLL) as LinearLayout
         var micLL = itemView.findViewById<View>(R.id.micLL) as LinearLayout
+        var msgET = itemView.findViewById<View>(R.id.msgET) as EditText
+        var edit_chatLL = itemView.findViewById<View>(R.id.edit_chatLL) as LinearLayout
+        var chatLL = itemView.findViewById<View>(R.id.chatLL) as LinearLayout
 
     }
 
@@ -88,38 +91,47 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
 
             age = year.toInt() - births[0].toInt()
         }
-        if (send_chatting =="Y"){
 
-        }else{
-
-        }
 
         if (room_id>0){
 
         }else{
 
         }
+        holder.chattingLV.visibility  = View.VISIBLE
 
-        if (make_room_yn =="Y"){
-
-        }else{
-
-        }
+        holder.chattingLV.adapter
 
         holder.timeTV.visibility = View.GONE
         holder.op_timeTV.visibility = View.VISIBLE
         holder.op_timeTV.text = created_at.substring(0, 10).replace("-", ".")
-        holder.menuLL.visibility = View.VISIBLE
-        holder.chattingLV.visibility  = View.VISIBLE
+
+
         holder.sendtitleLL.visibility = View.GONE
         holder.nameTV.text = name + " " + age
         holder.starballTV.text = "+"
-        holder.sendIV.setImageResource(R.mipmap.send_btn)
-        holder.sendIV.setOnClickListener {
 
+        if (make_room_yn =="Y"){
+            holder.sendIV.visibility = View.VISIBLE
+            holder.sendIV.setImageResource(R.mipmap.send_btn)
+            holder.sendIV.setOnClickListener {
 
+            }
+        }else{
+            holder.sendIV.visibility = View.GONE
         }
 
+        holder.chatLL.setOnClickListener {
+            holder.chatLL.visibility = View.GONE
+            holder.edit_chatLL.visibility = View.VISIBLE
+        }
+
+
+        if (send_chatting =="Y"){
+            holder.menuLL.visibility = View.GONE
+        }else{
+            holder.menuLL.visibility = View.VISIBLE
+        }
 
         ImageLoader.getInstance().displayImage(Config.url + image_uri, holder.likeIV, Utils.UILoptions)
 
