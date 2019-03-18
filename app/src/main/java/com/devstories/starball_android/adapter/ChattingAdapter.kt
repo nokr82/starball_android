@@ -88,8 +88,9 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
                 item.translationTV.visibility = View.VISIBLE
                 item.translationTV.text = translate_in_my
 
-                item.translationTV.tag = chatting
-                translate(chatting, item.translationTV)
+                if(translate_in_my == context.getString(R.string.in_translate)) {
+                    translate(chatting, item.translationTV)
+                }
 
             } else {
                 item.translationTV.visibility = View.GONE
