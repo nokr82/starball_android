@@ -76,7 +76,22 @@ class DailyMomentListActivity : RootActivity() {
            /* val intent = Intent(context, DlgAlbumPayActivity::class.java)
             startActivity(intent)*/
         }
+        dailyLV.setOnScrollListener(object : AbsListView.OnScrollListener {
+            override fun onScroll(p0: AbsListView?, p1: Int, p2: Int, p3: Int) {
 
+            }
+            override fun onScrollStateChanged(listView: AbsListView, newState: Int) {
+                if (!dailyLV.canScrollVertically(-1)) {
+
+                } else if (!dailyLV.canScrollVertically(1)) {
+                    if (totalPage > page) {
+                        page++
+                        daily_list()
+                    }
+                } else {
+                }
+            }
+        })
 
 
 
@@ -189,7 +204,6 @@ class DailyMomentListActivity : RootActivity() {
                 SELECT_PICTURE_REQUEST -> {
 
                     items = data?.getStringArrayListExtra("items")!!
-                    println("--------item"+items.toString())
                     for (i in 0..(items!!.size - 1)) {
 
                         val item = JSONObject(items[i])
@@ -204,27 +218,6 @@ class DailyMomentListActivity : RootActivity() {
                     }
                     dlg_view()
 
-                }
-                FROM_ALBUM -> {
-                    if (data != null && data.data != null) {
-
-                        Log.d("덩영성",data.toString())
-                        Log.d("덩영성",data.data.toString())
-
-                        val selectedImageUri = data.data
-
-                        val filePathColumn = arrayOf(MediaStore.MediaColumns.DATA)
-
-                        val cursor =
-                            context!!.contentResolver.query(selectedImageUri!!, filePathColumn, null, null, null)
-                        if (cursor!!.moveToFirst()) {
-                            val columnIndex = cursor.getColumnIndex(filePathColumn[0])
-                            val picturePath = cursor.getString(columnIndex)
-                            cursor.close()
-                            selectedImage = Utils.getImage(context!!.contentResolver, picturePath)
-                        }
-                        dlg_view()
-                    }
                 }
 
                 UPDATE_TIME_LINE -> {
@@ -262,6 +255,7 @@ class DailyMomentListActivity : RootActivity() {
                     val result = response!!.getString("result")
 
                     if ("ok" == result) {
+                        totalPage = Utils.getInt(response, "totalPage")
                         if (page == 1) {
                             adapterdata.clear()
                         }
@@ -330,8 +324,7 @@ class DailyMomentListActivity : RootActivity() {
         var member_id = PrefUtils.getIntPreference(context, "member_id")
         val params = RequestParams()
         params.put("member_id", member_id)
-//        params.put("upload", ByteArrayInputStream(Utils.getByteArray(selectedImage)))
-        params.put("type", type)
+
         var picturesArr = ArrayList<String>()
         for (picture in pictures) {
             picturesArr.add(picture.toString())
@@ -346,6 +339,7 @@ class DailyMomentListActivity : RootActivity() {
                     val mediaType = Utils.getInt(picture!!, "mediaType")
 
                     if (mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
+                        type = 1
                         var bitmap = Utils.getImage(context.contentResolver, path)
                         Log.d("이미지", bitmap.toString())
                         params.put(
@@ -354,6 +348,7 @@ class DailyMomentListActivity : RootActivity() {
                             "${System.currentTimeMillis()}.png"
                         )
                     } else {
+                        type = 2
                         val file = File(path)
                         var videoBytes = file.readBytes()
                         params.put(
@@ -370,8 +365,7 @@ class DailyMomentListActivity : RootActivity() {
             }
 
         }
-
-
+        params.put("type", type)
 
 
         DailyAction.add_content(params, object : JsonHttpResponseHandler() {
