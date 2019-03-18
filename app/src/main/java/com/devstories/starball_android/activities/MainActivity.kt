@@ -1,18 +1,28 @@
 package com.devstories.starball_android.activities
 
+import android.Manifest
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
-import android.os.Bundle
+import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
+import android.location.Location
+import android.os.*
+import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
+import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.base.AdmobUtils
 import com.devstories.starball_android.base.PrefUtils
@@ -20,10 +30,10 @@ import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import com.devstories.starball_android.swipestack.SwipeStack
 import com.devstories.starball_android.swipestack.SwipeStackAdapter
+import com.google.android.gms.location.*
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 import cz.msebera.android.httpclient.Header
-import kotlinx.android.synthetic.main.activity_cash_request.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -31,6 +41,9 @@ import org.json.JSONObject
 import java.util.*
 
 class MainActivity : RootActivity() {
+
+    val REQUEST_ACCESS_COARSE_LOCATION = 101
+    val REQUEST_FINE_LOCATION = 100
 
     lateinit var mContext:Context
     private var progressDialog: ProgressDialog? = null
@@ -45,6 +58,12 @@ class MainActivity : RootActivity() {
     private val rightBottomStarballTimer = Timer()
     //현재보유스타볼
     var starball = -1
+
+    var latitude = 37.5203175
+    var longitude = 126.9107831
+
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var locationCallback: LocationCallback
 
     internal var usestarballreciver: BroadcastReceiver? = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
@@ -83,8 +102,6 @@ class MainActivity : RootActivity() {
             startActivity(intent)
         }
 
-        get_info()
-
         val swipeStack = swipeStack as SwipeStack
         swipeStackAdapter = SwipeStackAdapter(mContext, this, data, swipeStack.getmSwipeHelper())
         swipeStack.adapter = swipeStackAdapter
@@ -112,13 +129,28 @@ class MainActivity : RootActivity() {
 
         startAnimation()
 
-        loadData()
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
+        locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult?) {
 
+                fusedLocationClient.removeLocationUpdates(locationCallback)
+
+                locationResult ?: return
+                onLocationUpdated(locationResult?.lastLocation)
+            }
+        }
+
+        initGPS()
+
+        get_info()
+
+        /*
         AdmobUtils.loadAd(mContext) {
             println("admob closed")
             // finish()
         }
+        */
     }
 
 
@@ -227,6 +259,8 @@ class MainActivity : RootActivity() {
 
         val params = RequestParams()
         params.put("member_id", member_id)
+        params.put("latitude", latitude)
+        params.put("longitude", longitude)
 
         MemberAction.list(params, object : JsonHttpResponseHandler() {
 
@@ -365,6 +399,114 @@ class MainActivity : RootActivity() {
             }
         })
         oa1.start()
+    }
+
+
+    private fun initGPS() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+            loadPermissions(Manifest.permission.ACCESS_FINE_LOCATION, REQUEST_FINE_LOCATION)
+        } else {
+            checkGPs()
+        }
+    }
+
+    private fun checkGPs() {
+        if (Utils.availableLocationService(mContext)) {
+            startLocation()
+        } else {
+            gpsCheckAlert.sendEmptyMessage(0)
+        }
+    }
+
+    internal var gpsCheckAlert: Handler = object : Handler() {
+        override fun handleMessage(msg: Message) {
+            val mainGpsSearchCount = 0
+
+            if (mainGpsSearchCount == 0) {
+                latitude = -1.0
+                longitude = -1.0
+
+                val builder = AlertDialog.Builder(mContext)
+                builder.setTitle("확인")
+                builder.setMessage("위치 서비스 이용이 제한되어 있습니다.\n설정에서 위치 서비스 이용을 허용해주세요.")
+                builder.setCancelable(true)
+                builder.setNegativeButton("취소") { dialog, id ->
+                    dialog.cancel()
+
+                    latitude = 37.5203175
+                    longitude = 126.9107831
+
+                }
+                builder.setPositiveButton(getString(R.string.settings)) { dialog, id ->
+                    dialog.cancel()
+                    startActivity(Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+                }
+                val alert = builder.create()
+                alert.show()
+            }
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private fun startLocation() {
+
+        if (progressDialog != null) {
+            // show dialog
+            //progressDialog.setMessage("현재 위치 확인 중...");
+            progressDialog!!.show()
+        }
+
+        val locationRequest = LocationRequest.create()
+        locationRequest.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        locationRequest.interval = 10 * 1000  /* 10 secs */
+        locationRequest.fastestInterval = 2000 /* 2 sec */
+
+        fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper());
+
+    }
+
+    private fun loadPermissions(perm: String, requestCode: Int) {
+        if (ContextCompat.checkSelfPermission(mContext, perm) !== PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(perm), requestCode)
+        } else {
+            if (Manifest.permission.ACCESS_FINE_LOCATION == perm) {
+                loadPermissions(Manifest.permission.ACCESS_COARSE_LOCATION, REQUEST_ACCESS_COARSE_LOCATION)
+            } else if (Manifest.permission.ACCESS_COARSE_LOCATION == perm) {
+                checkGPs()
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when (requestCode) {
+            REQUEST_FINE_LOCATION -> if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                loadPermissions(android.Manifest.permission.ACCESS_COARSE_LOCATION, REQUEST_ACCESS_COARSE_LOCATION)
+            }
+            REQUEST_ACCESS_COARSE_LOCATION -> if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                checkGPs()
+            }
+        }
+
+    }
+
+    fun onLocationUpdated(location: Location?) {
+
+        println("location : $location")
+
+        if(isFinishing || isDestroyed) {
+            return
+        }
+
+        if (location != null) {
+
+            latitude = location.latitude
+            longitude = location.longitude
+
+            loadData()
+        }
+
     }
 
 }
