@@ -29,8 +29,8 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file("/Users/wangbumlee/CloudStation/android_keystore/starball/starball")
-//            storeFile file("D:/CloudStation/android_keystore/starball/starball")
+//            storeFile file("/Users/theclub/CloudStation/android_keystore/starball/starball")
+            storeFile file("D:/CloudStation/android_keystore/starball/starball")
             keyAlias "starball"
             keyPassword "123456"
             storePassword '123456'
@@ -111,6 +111,6 @@ dependencies {
         exclude group: 'commons-logging', module: 'commons-logging'
         exclude module: 'httpclient'
     }
-
+    implementation 'com.yqritc:android-scalablevideoview:1.0.4'
 }
 apply plugin: 'com.google.gms.google-services'
