@@ -145,12 +145,11 @@ class MainActivity : RootActivity() {
 
         get_info()
 
-        /*
         AdmobUtils.loadAd(mContext) {
             println("admob closed")
             // finish()
         }
-        */
+
     }
 
 
@@ -418,33 +417,29 @@ class MainActivity : RootActivity() {
         }
     }
 
-    internal var gpsCheckAlert: Handler = object : Handler() {
-        override fun handleMessage(msg: Message) {
-            val mainGpsSearchCount = 0
+    private var gpsCheckAlert: Handler = Handler {
+        latitude = -99999.0
+        longitude = -99999.0
 
-            if (mainGpsSearchCount == 0) {
-                latitude = -1.0
-                longitude = -1.0
+        val builder = AlertDialog.Builder(mContext)
+        builder.setTitle("확인")
+        builder.setMessage("위치 서비스 이용이 제한되어 있습니다.\n설정에서 위치 서비스 이용을 허용해주세요.")
+        builder.setCancelable(true)
+        builder.setNegativeButton("취소") { dialog, id ->
+            dialog.cancel()
 
-                val builder = AlertDialog.Builder(mContext)
-                builder.setTitle("확인")
-                builder.setMessage("위치 서비스 이용이 제한되어 있습니다.\n설정에서 위치 서비스 이용을 허용해주세요.")
-                builder.setCancelable(true)
-                builder.setNegativeButton("취소") { dialog, id ->
-                    dialog.cancel()
+            latitude = 37.5203175
+            longitude = 126.9107831
 
-                    latitude = 37.5203175
-                    longitude = 126.9107831
-
-                }
-                builder.setPositiveButton(getString(R.string.settings)) { dialog, id ->
-                    dialog.cancel()
-                    startActivity(Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS))
-                }
-                val alert = builder.create()
-                alert.show()
-            }
         }
+        builder.setPositiveButton(getString(R.string.settings)) { dialog, id ->
+            dialog.cancel()
+            startActivity(Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS))
+        }
+        val alert = builder.create()
+        alert.show()
+
+        return@Handler true
     }
 
     @SuppressLint("MissingPermission")
