@@ -21,7 +21,9 @@ import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
+import com.facebook.*
 import com.facebook.accountkit.*
+import com.facebook.accountkit.AccessToken
 import com.facebook.accountkit.ui.AccountKitActivity
 import com.facebook.accountkit.ui.AccountKitConfiguration
 import com.facebook.accountkit.ui.LoginType
@@ -211,9 +213,7 @@ class EditProfileActivity : RootActivity() {
     }
 
     private fun fetchUserData() {
-        val request = GraphRequest.newMeRequest(
-            accessToken
-        ) { `object`, response ->
+        val request = GraphRequest.newMeRequest(accessToken) { `object`, response ->
             var id: String = ""
             var name: String? = null
             var eamil: String? = ""
