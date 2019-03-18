@@ -150,7 +150,7 @@ class DlgProposeActivity : RootActivity() {
         params.put("propose_id", propose_id)
         params.put("accept_yn", accept_yn)
 
-        MemberAction.get_propose(params, object : JsonHttpResponseHandler() {
+        MemberAction.propose_confirm(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
                 if (progressDialog != null) {

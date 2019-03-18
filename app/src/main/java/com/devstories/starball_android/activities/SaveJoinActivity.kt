@@ -208,9 +208,11 @@ class SaveJoinActivity : RootActivity() {
                         iapHelper?.consume(purchaseToken)
 
                         get_info()
+
                         val intent = Intent()
                         intent.putExtra("result", "result")
                         setResult(Activity.RESULT_OK, intent)
+
                     } else {
 
                     }
