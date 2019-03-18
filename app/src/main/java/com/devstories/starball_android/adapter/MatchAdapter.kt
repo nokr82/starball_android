@@ -6,10 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.ChattingMatchFragment
 import com.devstories.starball_android.activities.DlgCrushActivity
@@ -42,6 +39,9 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
         var nameTV = itemView.findViewById<View>(R.id.nameTV) as TextView
         var starballTV = itemView.findViewById<View>(R.id.starballTV) as TextView
         var op_timeTV = itemView.findViewById<View>(R.id.op_timeTV) as TextView
+        var chattingLV = itemView.findViewById<View>(R.id.chattingLV) as ListView
+        var menuLL = itemView.findViewById<View>(R.id.menuLL) as LinearLayout
+        var micLL = itemView.findViewById<View>(R.id.micLL) as LinearLayout
 
     }
 
@@ -64,7 +64,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
         val image_uri = Utils.getString(Profile, "image_uri")
 
         val send_chatting = json.getString("send_chatting")
-        val room_id = json.getString("room_id")
+        val room_id = json.getInt("room_id")
         val make_room_yn = json.getString("make_room_yn")
 
         val Member = json.getJSONObject("Member")
@@ -88,30 +88,37 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
 
             age = year.toInt() - births[0].toInt()
         }
+        if (send_chatting =="Y"){
 
-        holder.sendtitleLL.visibility = View.GONE
-
-        holder.nameTV.text = name + " " + age
-
-
-        holder.starballTV.text = "+"
-        holder.sendIV.setImageResource(R.mipmap.bi)
-        holder.timeTV.text = created_at.substring(0, 10).replace("-", ".")
-        holder.sendIV.setOnClickListener {
-        /*    if (fragment.starball > 0) {
-                val intent = Intent(context, DlgCrushActivity::class.java)
-                intent.putExtra("like_member_id", like_member_id)
-                context.startActivity(intent)
-            } else {
-                val intent = Intent(context, DlgStarballLackActivity::class.java)
-                context.startActivity(intent)
-            }*/
+        }else{
 
         }
+
+        if (room_id>0){
+
+        }else{
+
+        }
+
+        if (make_room_yn =="Y"){
+
+        }else{
+
+        }
+
         holder.timeTV.visibility = View.GONE
         holder.op_timeTV.visibility = View.VISIBLE
         holder.op_timeTV.text = created_at.substring(0, 10).replace("-", ".")
-        holder.sendIV.setImageResource(R.mipmap.send_heart)
+        holder.menuLL.visibility = View.VISIBLE
+        holder.chattingLV.visibility  = View.VISIBLE
+        holder.sendtitleLL.visibility = View.GONE
+        holder.nameTV.text = name + " " + age
+        holder.starballTV.text = "+"
+        holder.sendIV.setImageResource(R.mipmap.send_btn)
+        holder.sendIV.setOnClickListener {
+
+
+        }
 
 
         ImageLoader.getInstance().displayImage(Config.url + image_uri, holder.likeIV, Utils.UILoptions)

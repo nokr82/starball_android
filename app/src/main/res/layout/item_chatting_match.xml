@@ -210,7 +210,7 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:visibility="gone"
+            android:visibility="visible"
             android:background="#efefef"
             android:id="@+id/menuLL"
             android:layout_marginRight="10dp"
