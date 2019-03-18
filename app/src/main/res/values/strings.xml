@@ -381,7 +381,13 @@
     <string name="send_cancel">보내기 취소</string>
     <string name="add_adverb">상용 등록</string>
     <string name="clipboard">클립보드에 복사되었습니다.</string>
+    <string name="facebook_connect">페이스북 계정과 연결되었습니다.</string>
+    <string name="facebook_connect_already">페이스북 계정과 이미 연결된 계정이 있습니다.</string>
+    <string name="insta_connect">인스타그램 계정과 연결되었습니다.</string>
+    <string name="insta_connect_already">인스타그램 계정과 이미 연결된 계정이 있습니다.</string>
 
     <string name="remaining_time">%1$d시간 %2$d분 남음</string>
+
+    <string name="api_error">조회중 장애가 발생하였습니다.</string>
 
 </resources>

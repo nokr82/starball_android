@@ -67,6 +67,7 @@ class ChattingFragment : Fragment() {
 
         header = View.inflate(myContext, R.layout.item_chatting_head, null)
         plusIV = header.findViewById(R.id.plusIV)
+
         roomAdapter = ChattingRoomAdapter(myContext, R.layout.item_chat_profile, roomAdapterData, 1)
         chattingLV.adapter = roomAdapter
         chattingLV.addHeaderView(header)
@@ -208,7 +209,6 @@ class ChattingFragment : Fragment() {
                 val lastChatting = json.getJSONObject("LastChatting")
                 lastChatting.put("read_yn", "Y")
                 roomAdapter.notifyDataSetChanged()
-
 
             }
 
