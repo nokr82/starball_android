@@ -77,7 +77,7 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
         val created_dt = dateFormat.parse(created_at)
         val created = dateFormat2.format(created_dt)
 
-        if (chatting_member_id == member_id) {
+        if (chatting_member_id != member_id) {
             item.otherLL.visibility = View.VISIBLE
             item.myLL.visibility = View.GONE
 
@@ -107,7 +107,7 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
                 item.otherVoiceLL.visibility = View.VISIBLE
 
                 item.otherVoiceIV.setOnClickListener {
-                    activity.playing(Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
+                    activity.playing(Config.url + Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
                 }
 
             } else {
@@ -134,7 +134,7 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
                 item.myContentsLL.visibility = View.GONE
                 item.myVoiceLL.visibility = View.VISIBLE
                 item.myVoiceIV.setOnClickListener {
-                    activity.playing(Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
+                    activity.playing(Config.url + Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
                 }
 
             } else {

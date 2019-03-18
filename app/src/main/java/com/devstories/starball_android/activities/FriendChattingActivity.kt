@@ -328,6 +328,8 @@ class FriendChattingActivity : RootActivity()
 
         try {
 
+            recorder = MediaRecorder()
+
             val date = Date()
             val time = date.time
 
@@ -367,11 +369,11 @@ class FriendChattingActivity : RootActivity()
 
             record = true
 
-            try {
-                recorder.prepare()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+//            try {
+//                recorder.prepare()
+//            } catch (e: Exception) {
+//                e.printStackTrace()
+//            }
 
         } catch (e: IllegalStateException) {
             e.printStackTrace()
@@ -1178,8 +1180,8 @@ class FriendChattingActivity : RootActivity()
                 val player = MediaPlayer()
 
                 val fis = FileInputStream(file)
-                val `is` = ByteArrayInputStream(Utils.getByteArray(fis))
-                params.put("voice", `is`)
+                val filinput = ByteArrayInputStream(Utils.getByteArray(fis))
+                params.put("voice", filinput)
 
                 player.setDataSource(record_path)
                 player.prepare()
