@@ -76,7 +76,7 @@ class DlgPostOptionActivity : RootActivity() {
 
     fun match_cancel() {
         val params = RequestParams()
-        params.put("like_id ", like_id)
+        params.put("like_id", like_id)
 
         MemberAction.match_cancel(params, object : JsonHttpResponseHandler() {
 
