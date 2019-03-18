@@ -77,7 +77,7 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
         val created_dt = dateFormat.parse(created_at)
         val created = dateFormat2.format(created_dt)
 
-        if (chatting_member_id == member_id) {
+        if (chatting_member_id != member_id) {
             item.otherLL.visibility = View.VISIBLE
             item.myLL.visibility = View.GONE
 
