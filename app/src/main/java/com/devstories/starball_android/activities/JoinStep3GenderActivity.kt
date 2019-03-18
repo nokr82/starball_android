@@ -19,7 +19,7 @@ class JoinStep3GenderActivity : RootActivity() {
     var email = ""
     var passwd = ""
     var name = ""
-    var gender = "F"
+    var gender = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,16 +28,21 @@ class JoinStep3GenderActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
+        nextTV.setBackgroundResource(R.drawable.background_border_strock2)
+
 //        gender= PrefUtils.getStringPreference(context,"gender")
         Log.d("패스",gender)
         if (PrefUtils.getStringPreference(context,"join_gender")!=null){
             gender = PrefUtils.getStringPreference(context,"join_gender")
+            nextTV.setBackgroundColor(Color.BLACK)
                 setGenderView()
         }
+
 
         maleTV.setOnClickListener {
 
             gender = "M"
+            nextTV.setBackgroundColor(Color.BLACK)
             setGenderView()
 
         }
@@ -45,6 +50,7 @@ class JoinStep3GenderActivity : RootActivity() {
         femaleTV.setOnClickListener {
 
             gender = "F"
+            nextTV.setBackgroundColor(Color.BLACK)
             setGenderView()
 
         }
@@ -67,7 +73,7 @@ class JoinStep3GenderActivity : RootActivity() {
         if (gender == "M") {
             maleTV.setBackgroundResource(R.drawable.background_gender_male)
             maleTV.setTextColor(Color.parseColor("#FFFFFF"))
-        } else {
+        } else if (gender=="F"){
             femaleTV.setBackgroundResource(R.drawable.background_gender_female)
             femaleTV.setTextColor(Color.parseColor("#FFFFFF"))
         }

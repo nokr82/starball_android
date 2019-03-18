@@ -38,6 +38,7 @@ class JoinStep11PicActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
+        nextTV.setBackgroundResource(R.drawable.background_border_strock2)
         val spanText = getString(R.string.picture_content)
 
         if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.N) {
@@ -90,6 +91,12 @@ class JoinStep11PicActivity : RootActivity() {
             for (sp in  splited) {
                 try {
                     pictures.add(JSONObject(sp))
+                    if (pictures.size<3){
+                        nextTV.setBackgroundResource(R.drawable.background_border_strock2)
+                    }else{
+                        nextTV.setBackgroundColor(Color.BLACK)
+                    }
+
                 } catch (e:Exception) {
 
                 }
@@ -148,6 +155,11 @@ class JoinStep11PicActivity : RootActivity() {
                 SELECT_PICTURE_REQUEST -> {
 
                     val items = data?.getStringArrayListExtra("items")
+                    if (items!!.size<3){
+                        nextTV.setBackgroundResource(R.drawable.background_border_strock2)
+                    }else{
+                        nextTV.setBackgroundColor(Color.BLACK)
+                    }
                     for (i in 0..(items!!.size - 1)) {
 
                         val item = JSONObject(items[i])
@@ -155,6 +167,7 @@ class JoinStep11PicActivity : RootActivity() {
                         pictures.add(item)
 
                         println(item)
+
 
 
 

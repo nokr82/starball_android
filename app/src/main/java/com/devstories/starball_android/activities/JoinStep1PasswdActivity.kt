@@ -3,6 +3,7 @@ package com.devstories.starball_android.activities
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -36,8 +37,11 @@ class JoinStep1PasswdActivity : RootActivity() {
             if (Utils.containsAlpha(passwd) && Utils.containsNumber(passwd) && passwd.count() > 5 && passwd.count() < 13) {
                 passwdConfirmTV.visibility = View.VISIBLE
                 passwdConfirmTV.text = getString(R.string.pwd_confirm)
+                nextTV.setBackgroundColor(Color.BLACK)
             } else {
                 passwdConfirmTV.visibility = View.GONE
+                nextTV.setBackgroundResource(R.drawable.background_border_strock2)
+
             }
         }
 
@@ -50,8 +54,10 @@ class JoinStep1PasswdActivity : RootActivity() {
                 if (Utils.containsAlpha(passwd) && Utils.containsNumber(passwd) && passwd.count() > 5 && passwd.count() < 13) {
                     passwdConfirmTV.visibility = View.VISIBLE
                     passwdConfirmTV.text = getString(R.string.pwd_confirm)
+                    nextTV.setBackgroundColor(Color.BLACK)
                 } else {
                     passwdConfirmTV.visibility = View.GONE
+                    nextTV.setBackgroundResource(R.drawable.background_border_strock2)
                 }
             }
 

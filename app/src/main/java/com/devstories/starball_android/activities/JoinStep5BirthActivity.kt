@@ -3,6 +3,7 @@ package com.devstories.starball_android.activities
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -33,6 +34,8 @@ class JoinStep5BirthActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
 
+        nextTV.setBackgroundResource(R.drawable.background_border_strock2)
+
         birth = PrefUtils.getStringPreference(context, "join_birth", "")
         if (birth.isNotEmpty()) {
 
@@ -56,6 +59,7 @@ class JoinStep5BirthActivity : RootActivity() {
                                 if(birth.length > 8) {
                                     day1ET.setText(birth.substring(8, 9))
                                     if(birth.length > 9) {
+                                        nextTV.setBackgroundColor(Color.BLACK)
                                         day2ET.setText(birth.substring(9, 10))
                                     }
 
@@ -340,7 +344,15 @@ class JoinStep5BirthActivity : RootActivity() {
 
         day2ET.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if (year1ET.length()>0&&year2ET.length()>0&&year3ET.length()>0 &&year4ET.length()>0
+                    &&month1ET.length()>0&&month2ET.length()>0
+                    &&day1ET.length()>0&&day2ET.length()>0){
+                    nextTV.setBackgroundColor(Color.BLACK)
+                }else{
+                    nextTV.setBackgroundResource(R.drawable.background_border_strock2)
+                }
+            }
 
             override fun afterTextChanged(s: Editable) {
 
