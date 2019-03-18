@@ -757,7 +757,7 @@ class FriendChattingActivity : RootActivity()
                     if ("ok" == result) {
 
                         if(like_yn == "Y") {
-                            val intent = Intent(context, LikedNotiActivity::class.java)
+                            val intent = Intent(context, ChatNotiActivity::class.java)
                             startActivity(intent)
                             overridePendingTransition(0, 0)
                         }

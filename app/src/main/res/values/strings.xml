@@ -263,9 +263,11 @@
     <string name="direct_input">직접입력</string>
     <string name="dlg_crush_gift">네. Starball 선물합니다.</string>
     <string name="dlg_crush_no">아니오. 다시 생각해볼게요.</string>
-    <string name="dlg_prose_title">축하합니다.! 님께서 프로포즈하셨습니다.</string>
+    <string name="dlg_prose_title1">축하합니다.! </string>
+    <string name="dlg_prose_title2">님께서 프로포즈하셨습니다.</string>
     <string name="dlg_prose_ok">수락 하시겠습니까?</string>
-    <string name="dlg_prose_content">수락시 회원님에게 200 Starall을 선물 드리며, 1주일간 오직 신청하신 회원님만 대화하실 수 있습니다.</string>
+    <string name="dlg_prose_content1">수락시 회원님에게 </string>
+    <string name="dlg_prose_content3"> Starall을 선물 드리며, 1주일간 오직 신청하신 회원님만 대화하실 수 있습니다.</string>
     <string name="dlg_prose_content2">(다른 회원과 호감/ 채팅불가)</string>
     <string name="dlg_prose_yes">네, 기쁩니다</string>
     <string name="dlg_send_prose">프로포즈 하시겠습니까?</string>
