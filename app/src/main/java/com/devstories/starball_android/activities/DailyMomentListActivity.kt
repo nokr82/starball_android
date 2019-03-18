@@ -32,11 +32,15 @@ import java.io.ByteArrayInputStream
 
 class DailyMomentListActivity : RootActivity() {
 
+    private val SELECT_PICTURE_REQUEST = 1001
+
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
     lateinit var daillyAdapter: DaillyAdapter
     var adapterdata = ArrayList<JSONObject>()
+
+    private var pictures = arrayListOf<JSONObject>()
 
     var page = 1
     var totalPage = 1
@@ -87,11 +91,15 @@ class DailyMomentListActivity : RootActivity() {
         }
         photoLL.setOnClickListener {
             type=1
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+          /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
                 loadPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_PERMISSION_READ_EXTERNAL_STORAGE)
             } else {
                 imageFromGallery()
-            }
+            }*/
+            var intent = Intent(context, FindPictureGridActivity::class.java)
+            intent.putExtra("type", 2)
+            intent.putExtra("pictureCnt", pictures.count())
+            startActivityForResult(intent, SELECT_PICTURE_REQUEST)
         }
 
 
@@ -172,6 +180,26 @@ class DailyMomentListActivity : RootActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             when (requestCode) {
+
+                SELECT_PICTURE_REQUEST -> {
+
+                    val items = data?.getStringArrayListExtra("items")
+                    println("--------item"+items.toString())
+                    for (i in 0..(items!!.size - 1)) {
+
+                        val item = JSONObject(items[i])
+
+                        pictures.add(item)
+
+
+
+
+
+                        // reset(str, i, "picture", mediaType, id, -1, null)
+                    }
+
+
+                }
                 FROM_ALBUM -> {
                     if (data != null && data.data != null) {
 

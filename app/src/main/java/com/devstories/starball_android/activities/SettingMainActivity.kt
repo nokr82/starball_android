@@ -163,7 +163,7 @@ class SettingMainActivity : RootActivity() {
                         for (i in 0 until profiles.length()) {
                             profiledata.add(profiles[i] as JSONObject)
                         }
-                        var image_uri = Utils.getString(profiledata[1], "image_uri")
+                        var image_uri = Utils.getString(profiledata[0], "image_uri")
                         Log.d("이미지",profiledata[0].toString())
 
                         ImageLoader.getInstance().displayImage(Config.url + image_uri, profileIV, Utils.UILoptionsProfile)

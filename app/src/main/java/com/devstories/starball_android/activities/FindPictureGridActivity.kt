@@ -49,7 +49,7 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
     private lateinit var mAuth: FirebaseAuth
 
     private var selectedImage: Bitmap? = null
-
+    private var type = -1
     constructor(parcel: Parcel) : this() {
         imageUri = parcel.readParcelable(Uri::class.java.classLoader)
         FROM_CAMERA = parcel.readInt()
@@ -66,6 +66,9 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
         context = this
 
         pictureCnt = intent.getIntExtra("pictureCnt", 0)
+        type = intent.getIntExtra("type", -1)
+
+
 
         mAuth = FirebaseAuth.getInstance();
         var cursor: Cursor? = null
