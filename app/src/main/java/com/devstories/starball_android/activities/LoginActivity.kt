@@ -179,7 +179,7 @@ class LoginActivity : RootActivity() {
             PrefUtils.setPreference(context, "passwd", Utils.getString(data, "passwd"))
             PrefUtils.setPreference(context, "sns_key", Utils.getString(data, "sns_key"))
             PrefUtils.setPreference(context, "join_type", Utils.getInt(data, "join_type"))
-            PrefUtils.setPreference(context, "savejoin_yn", Utils.getInt(data, "savejoin_yn"))
+            // PrefUtils.setPreference(context, "savejoin_yn", Utils.getInt(data, "savejoin_yn"))
             PrefUtils.setPreference(context, "login_check", true)
             PrefUtils.setPreference(context, "autoLogin", true)
 

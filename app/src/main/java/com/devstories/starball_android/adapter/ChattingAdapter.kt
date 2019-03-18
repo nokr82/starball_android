@@ -68,12 +68,16 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
 
         val type = Utils.getInt(chatting, "type")
         val contents = Utils.getString(chatting, "contents")
+        var translate_in_my = Utils.getString(chatting, "translate_in_my")
+        if(translate_in_my.isEmpty()) {
+            translate_in_my = context.getString(R.string.in_translate)
+        }
         val created_at = Utils.getString(chatting, "created_at")
 
         val created_dt = dateFormat.parse(created_at)
         val created = dateFormat2.format(created_dt)
 
-        if (chatting_member_id != member_id) {
+        if (chatting_member_id == member_id) {
             item.otherLL.visibility = View.VISIBLE
             item.myLL.visibility = View.GONE
 
@@ -82,10 +86,11 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
 
             if (activity.translation_yn == "Y") {
                 item.translationTV.visibility = View.VISIBLE
-                item.translationTV.text = contents
+                item.translationTV.text = translate_in_my
 
-                item.translationTV.tag = chatting
-                translate(chatting, item.translationTV)
+                if(translate_in_my == context.getString(R.string.in_translate)) {
+                    translate(chatting, item.translationTV)
+                }
 
             } else {
                 item.translationTV.visibility = View.GONE
@@ -132,7 +137,7 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
                     activity.playing(Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
                 }
 
-            }else {
+            } else {
                 item.myImageIV.visibility = View.GONE
                 item.myContentsLL.visibility = View.VISIBLE
                 item.myVoiceLL.visibility = View.GONE
@@ -232,7 +237,7 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
             private val translatedTVReference: WeakReference<TextView> = WeakReference(translatedTV)
 
             override fun onPreExecute() {
-
+                println("onPreExecute onPreExecute")
             }
 
             override fun doInBackground(vararg params: Void?): Pair<String, String> {
@@ -249,7 +254,7 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
                     Translate.TranslateOption.targetLanguage(myLanguage))
 
                 // english
-                var englishLanguage = Locale.getDefault().language
+                var englishLanguage = Locale.ENGLISH.language
                 val englishTranslation = translate.translate(
                     contents,
                     Translate.TranslateOption.targetLanguage(englishLanguage))

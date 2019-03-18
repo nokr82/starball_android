@@ -108,7 +108,7 @@ class FriendChattingActivity : RootActivity()
 
         room_id = intent.getIntExtra("room_id", -1)
 
-        adverbRV.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        adverbRV.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         adverbAdapter = AdverbAdapter(adverbAdapterData, this)
         adverbRV.adapter = adverbAdapter
 
@@ -281,7 +281,7 @@ class FriendChattingActivity : RootActivity()
             isPlaying = true
         } else if (length > 0) {
 
-            if (length > player!!.getDuration()) {
+            if (length > player!!.duration) {
                 length = 0
             }
             player!!.seekTo(length)
@@ -295,7 +295,7 @@ class FriendChattingActivity : RootActivity()
     private fun playingPause() {
         if (isPlaying) {
             player!!.pause()
-            length = player!!.getCurrentPosition()
+            length = player!!.currentPosition
         }
     }
 
@@ -331,7 +331,7 @@ class FriendChattingActivity : RootActivity()
             val date = Date()
             val time = date.time
 
-            record_path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/starball/"
+            record_path = Environment.getExternalStorageDirectory().absolutePath + "/starball/"
 
             val file = File(record_path)
 
@@ -350,7 +350,7 @@ class FriendChattingActivity : RootActivity()
             recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
 
             //이것은 코덱을 설정하는 것이라고 생각하면된다.
-            record_path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/starball/" + time + "_record.aac"
+            record_path = Environment.getExternalStorageDirectory().absolutePath + "/starball/" + time + "_record.aac"
 
             recorder.setOutputFile(record_path)
 
@@ -361,7 +361,7 @@ class FriendChattingActivity : RootActivity()
             recorder.start()
 
             //시작하면된다.
-            Toast.makeText(context, "녹음을 시작합니다.", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "녹음을 시작합니다.", Toast.LENGTH_LONG).show()
 
             voiceLL.setBackgroundColor(Color.parseColor("#333333"))
 
@@ -422,14 +422,14 @@ class FriendChattingActivity : RootActivity()
 
                         val filePathColumn = arrayOf(MediaStore.MediaColumns.DATA)
 
-                        val cursor = context!!.contentResolver.query(selectedImageUri!!, filePathColumn, null, null, null)
+                        val cursor = context.contentResolver.query(selectedImageUri!!, filePathColumn, null, null, null)
                         if (cursor!!.moveToFirst()) {
                             val columnIndex = cursor.getColumnIndex(filePathColumn[0])
                             val picturePath = cursor.getString(columnIndex)
 
                             cursor.close()
 
-                            selectedImage = Utils.getImage(context!!.contentResolver, picturePath)
+                            selectedImage = Utils.getImage(context.contentResolver, picturePath)
 
                             sendChatting(2)
 
@@ -468,10 +468,10 @@ class FriendChattingActivity : RootActivity()
 
                         if (type == 1) {
                             val clipboardManager: ClipboardManager = getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-                            var clipData: ClipData = ClipData.newPlainText("label", chatting_contents);
-                            clipboardManager.setPrimaryClip(clipData);
+                            var clipData: ClipData = ClipData.newPlainText("label", chatting_contents)
+                            clipboardManager.primaryClip = clipData
 
-                            Toast.makeText(context, context.getString(R.string.clipboard), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, context.getString(R.string.clipboard), Toast.LENGTH_SHORT).show()
                         } else if (type == 2) {
                             deleteChatting(chatting_id)
                         } else if (type == 3) {
@@ -1186,8 +1186,8 @@ class FriendChattingActivity : RootActivity()
 
                 var millis = player.duration
 
-                var minutes = ( millis % (1000*60*60) ) / (1000*60);
-                var seconds = ( ( millis % (1000*60*60) ) % (1000*60) ) / 1000;
+                var minutes = ( millis % (1000*60*60) ) / (1000*60)
+                var seconds = ( ( millis % (1000*60*60) ) % (1000*60) ) / 1000
 
                 params.put("voice_time", minutes.toString() + ":" + seconds.toString())
 

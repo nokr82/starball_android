@@ -21,10 +21,6 @@ class ChattingExActivity : RootActivity() {
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
-    lateinit var GroupAdapter: ChattingAdapter
-
-    lateinit var TalkAdapter: ChattingRoomAdapter
-
     lateinit var EventAdapter: EventAdapter
 
     var type = -1

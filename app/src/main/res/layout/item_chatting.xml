@@ -274,17 +274,17 @@
                     android:layout_marginRight="8dp">
 
                     <ImageView
-                        android:id="@+id/volummIV"
+                        android:id="@+id/volummIV2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@mipmap/volumm"/>
 
                     <ImageView
-                        android:id="@+id/volummGraphIV"
+                        android:id="@+id/volummGraphIV2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/volummIV"
-                        android:layout_alignBottom="@+id/volummIV"
+                        android:layout_toRightOf="@+id/volummIV2"
+                        android:layout_alignBottom="@+id/volummIV2"
                         android:src="@mipmap/volumm_graph"/>
 
                 </RelativeLayout>

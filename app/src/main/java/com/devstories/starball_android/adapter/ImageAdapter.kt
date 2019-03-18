@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.ImageLoader
+import org.json.JSONArray
 import java.util.*
 
 
@@ -40,6 +41,8 @@ open class ImageAdapter(context: Context, data:ArrayList<PhotoData>, imageLoader
         var videoBucketDisplayName: String? = null
 
         var mediaType = -1
+
+        var landmarks = JSONArray()
     }
 
 
