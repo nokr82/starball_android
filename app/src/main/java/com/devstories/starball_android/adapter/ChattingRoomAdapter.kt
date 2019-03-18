@@ -150,15 +150,17 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
             item.contentsTV.text = Utils.getString(lastChatting, "contents")
 
             val created_at = Utils.getString(lastChatting, "created_at")
+            if(created_at.isNotEmpty()) {
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+                val dateFormat2 = SimpleDateFormat("yy.MM.dd    HH:mm")
+                val created = dateFormat.parse(created_at)
 
-            val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
-            val dateFormat2 = SimpleDateFormat("yy.MM.dd    HH:mm")
-            val created = dateFormat.parse(created_at)
-
-            item.createdTV.text = dateFormat2.format(created)
+                item.createdTV.text = dateFormat2.format(created)
+            } else {
+                item.createdTV.text = ""
+            }
 
             val read_yn = Utils.getString(lastChatting, "read_yn")
-
             if ("Y" == read_yn) {
                 item.newIV.visibility = View.GONE
             } else {

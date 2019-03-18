@@ -16,7 +16,6 @@ class MatchedActivity : RootActivity() {
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.devstories.starball_android.R.layout.activity_matched)

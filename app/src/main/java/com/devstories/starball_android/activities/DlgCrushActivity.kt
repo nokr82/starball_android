@@ -353,10 +353,12 @@ class DlgCrushActivity : RootActivity() {
                         var intent = Intent()
                         intent.action = "STARBALL_USE"
                         sendBroadcast(intent)
-                        finish()
-                    } else {
 
+                    } else {
+                        Toast.makeText(context, getString(R.string.already_matched), Toast.LENGTH_SHORT).show()
                     }
+
+                    finish()
 
                 } catch (e: JSONException) {
                     e.printStackTrace()

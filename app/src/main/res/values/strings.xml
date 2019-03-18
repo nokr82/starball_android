@@ -269,7 +269,7 @@
     <string name="dlg_prose_content2">(다른 회원과 호감/ 채팅불가)</string>
     <string name="dlg_prose_yes">네, 기쁩니다</string>
     <string name="dlg_send_prose">프로포즈 하시겠습니까?</string>
-    <string name="dlg_send_prose_content">Cedrica님께서 수락시 1주일간 오직 회원님하고만 대화 하실 수 있습니다. (다른 회원에게서 호감/ 채팅불가)</string>
+    <string name="dlg_send_prose_content">님께서 수락시 1주일간 오직 회원님하고만 대화 하실 수 있습니다. (다른 회원에게서 호감/ 채팅불가)</string>
     <string name="dlg_send_prose_content2">선물할 Starball</string>
     <string name="dlg_prose_no">아니오. 다시 생각해볼게요.</string>
     <string name="starball_lack">Starball이 부족합니다.</string>
@@ -386,10 +386,15 @@
     <string name="insta_connect">인스타그램 계정과 연결되었습니다.</string>
     <string name="insta_connect_already">인스타그램 계정과 이미 연결된 계정이 있습니다.</string>
     <string name="free_starball">무료 스타볼을 받았습니다.</string>
+    <string name="fall_starball">스타볼이 부족합니다.</string>
+    <string name="propose_ok">님께 프로포즈를 하였습니다.</string>
 
     <string name="remaining_time">%1$d시간 %2$d분 남음</string>
     <string name="settings">설정</string>
 
     <string name="api_error">조회중 장애가 발생하였습니다.</string>
+    <string name="detecting_face">Detecting face...</string>
+    <string name="already_matched">이미 매칭된 상태입니다.</string>
+    <string name="in_translate">번역중...</string>
 
 </resources>

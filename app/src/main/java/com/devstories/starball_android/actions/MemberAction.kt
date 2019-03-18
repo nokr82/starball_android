@@ -51,4 +51,8 @@ object MemberAction {
         HttpClient.post("/members/sns_connect", params, handler)
     }
 
+    fun propose(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/propose", params, handler)
+    }
+
 }
