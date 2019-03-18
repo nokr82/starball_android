@@ -124,7 +124,7 @@ class EditProfileActivity : RootActivity() {
     var travel_cal = ""
 
     private lateinit var callbackManager: CallbackManager
-    private var accessToken: AccessToken? = null
+    private var accessToken: com.facebook.AccessToken? = null
 
     var member_id = -1
 
@@ -182,15 +182,15 @@ class EditProfileActivity : RootActivity() {
 
     // 페이스북 로그아웃
     fun disconnectFromFacebook() {
-        GraphRequest(AccessToken.getCurrentAccessToken(), "/me/permissions/", null, HttpMethod.DELETE, GraphRequest.Callback {
+        GraphRequest(com.facebook.AccessToken.getCurrentAccessToken(), "/me/permissions/", null, HttpMethod.DELETE, GraphRequest.Callback {
             LoginManager.getInstance().logOut()
             doStartWithFacebook()
         }).executeAsync()
     }
 
     private fun doStartWithFacebook() {
-        if (AccessToken.getCurrentAccessToken() != null) {
-            this.accessToken = AccessToken.getCurrentAccessToken()
+        if (com.facebook.AccessToken.getCurrentAccessToken() != null) {
+            this.accessToken = com.facebook.AccessToken.getCurrentAccessToken()
             fetchUserData()
         } else {
             LoginManager.getInstance().logInWithReadPermissions(this@EditProfileActivity, Arrays.asList("public_profile", "email"))
