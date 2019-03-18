@@ -194,7 +194,7 @@ class ChattingMatchFragment : Fragment() {
                     val result = response!!.getString("result")
 
                     record_path = ""
-
+                    loadData()
                     if ("ok" == result) {
 
                     } else {
@@ -252,6 +252,7 @@ class ChattingMatchFragment : Fragment() {
 //        sendChatting(3)
 
     }
+
     fun voiceclick(){
         if (record) {
             // 녹음 끝
@@ -271,6 +272,7 @@ class ChattingMatchFragment : Fragment() {
             }
         }
     }
+
     private fun loadPermissions(perms: Array<String>, requestCode: Int) {
         if (ContextCompat.checkSelfPermission(myContext, perms[0]) != PackageManager.PERMISSION_GRANTED
             && ContextCompat.checkSelfPermission(myContext,perms[1]) != PackageManager.PERMISSION_GRANTED) {

@@ -149,6 +149,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
             intent.putExtra("like_member_id",like_member_id)
             intent.putExtra("like_id",like_id)
             fragment.startActivity(intent)
+
         }
 
 
@@ -156,7 +157,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
         holder.sendLL.setOnClickListener {
             var content = Utils.getString(holder.msgET)
             fragment.sendChatting(1,content,like_member_id)
-
+            holder.menuLL.visibility = View.GONE
         }
 
         ImageLoader.getInstance().displayImage(Config.url + image_uri, holder.likeIV, Utils.UILoptions)
