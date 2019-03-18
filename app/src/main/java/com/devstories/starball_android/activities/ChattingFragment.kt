@@ -46,8 +46,8 @@ class ChattingFragment : Fragment() {
     var page = 1
     var totalPage = 1
 
-    var pin_yn = ""
-    var del_yn = ""
+    var pin_yn = "N"
+    var del_yn = "N"
     var room_id = -1
 
 
@@ -165,11 +165,15 @@ class ChattingFragment : Fragment() {
                             del_yn="Y"
                             editRoom(room_id)
                         }
+                        roomAdapterData.removeAt(position)
+                        roomAdapter.notifyDataSetChanged()
+
                     }
                     1 -> {
                         if (type == 1) {
                             val Group = json.getJSONObject("Group")
                             val group_id = Utils.getInt(Group, "id")
+                            pin_yn = Utils.getString(Group, "pin_yn")
                             if (pin_yn.equals("Y")){
                                 pin_yn="N"
                                 Group.put("pin_yn", pin_yn)
@@ -260,7 +264,7 @@ class ChattingFragment : Fragment() {
                     val result = response!!.getString("result")
 
                     if ("ok" == result) {
-                        del_yn = ""
+                        del_yn = "N"
                         roomAdapter.notifyDataSetChanged()
                     } else {
 
@@ -335,7 +339,7 @@ class ChattingFragment : Fragment() {
                     val result = response!!.getString("result")
 
                     if ("ok" == result) {
-                        del_yn = ""
+                        del_yn = "N"
                         roomAdapter.notifyDataSetChanged()
                     } else {
 

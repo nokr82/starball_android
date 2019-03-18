@@ -60,9 +60,9 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
             var created_at = Utils.getString(Group, "created_at")
             val GroupMembers = json.getJSONArray("GroupMembers")
 
-            if (pin_yn=="Y"){
+            if (pin_yn == "Y") {
                 item.pinIV.visibility = View.VISIBLE
-            }else{
+            } else {
                 item.pinIV.visibility = View.GONE
             }
 //        val member_id = PrefUtils.getIntPreference(context, "member_id")
@@ -85,8 +85,7 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
                 profile = Utils.getString(attendProfile, "image_uri")
                 name = Utils.getString(attendMember, "name")
             }*/
-
-
+            item.chattingIV.setImageResource(R.mipmap.lounge_message_send)
 
             ImageLoader.getInstance().displayImage(Config.url + profile, item.profileIV, Utils.UILoptionsProfile)
             item.nameTV.text = title + " " + GroupMembers.length().toString()
@@ -101,20 +100,19 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
 
             item.newIV.visibility = View.GONE
 
-        }
-        else {
+        } else {
             val pin_yn = json.getString("pin_yn")
-            if (pin_yn=="Y"){
+            if (pin_yn == "Y") {
                 item.pinIV.visibility = View.VISIBLE
-            }else{
+            } else {
                 item.pinIV.visibility = View.GONE
             }
             val founder_yn = json.getString("founder_yn")
             val json = data[position]
             val title = Utils.getString(json, "title")
-            if (title =="chatting_title"){
+            if (title == "chatting_title") {
                 item.titleTV.visibility = View.VISIBLE
-            }else{
+            } else {
                 item.titleTV.visibility = View.GONE
             }
             val room = json.getJSONObject("Room")
@@ -150,7 +148,7 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
             item.contentsTV.text = Utils.getString(lastChatting, "contents")
 
             val created_at = Utils.getString(lastChatting, "created_at")
-            if(created_at.isNotEmpty()) {
+            if (created_at.isNotEmpty()) {
                 val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
                 val dateFormat2 = SimpleDateFormat("yy.MM.dd    HH:mm")
                 val created = dateFormat.parse(created_at)
