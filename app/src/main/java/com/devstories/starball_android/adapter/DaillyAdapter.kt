@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.DlgAlbumPayActivity
+import com.devstories.starball_android.activities.DlgPostOptionActivity
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.DateUtils
 import com.devstories.starball_android.base.PrefUtils
@@ -81,6 +82,13 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>)
 
         }
         item.menuIV.setOnClickListener {
+            if (like_member_id == member_id){
+                val intent = Intent(context, DlgPostOptionActivity::class.java)
+                intent.putExtra("content_id",content_id)
+                context.startActivity(intent)
+            }else{
+                return@setOnClickListener
+            }
 
         }
 

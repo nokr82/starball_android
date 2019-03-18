@@ -2,8 +2,10 @@ package com.devstories.starball_android.activities
 
 import android.Manifest
 import android.app.ProgressDialog
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Build
@@ -58,12 +60,27 @@ class DailyMomentListActivity : RootActivity() {
 
     var items= ArrayList<String>()
 
+    internal var reloadReciver: BroadcastReceiver? = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent?) {
+            if (intent != null) {
+                page = 1
+                daily_list()
+            }
+        }
+    }
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily_mement_list)
         this.context = this
         progressDialog = ProgressDialog(context)
 
+
+        var filter1 = IntentFilter("DEL_POST")
+        registerReceiver(reloadReciver, filter1)
 
         daillyAdapter = DaillyAdapter(context, R.layout.item_daily_list, adapterdata)
         dailyLV.adapter = daillyAdapter
@@ -106,6 +123,10 @@ class DailyMomentListActivity : RootActivity() {
         }
         videoLL.setOnClickListener {
             type=2
+            var intent = Intent(context, FindPictureGridActivity::class.java)
+            intent.putExtra("type", 2)
+            intent.putExtra("pictureCnt", pictures.count())
+            startActivityForResult(intent, SELECT_PICTURE_REQUEST)
             permissionvideo()
         }
         photoLL.setOnClickListener {
@@ -436,6 +457,9 @@ class DailyMomentListActivity : RootActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+        if (reloadReciver!=null){
+            unregisterReceiver(reloadReciver)
+        }
         if (progressDialog != null) {
             progressDialog!!.dismiss()
         }

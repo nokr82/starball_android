@@ -68,6 +68,9 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
         pictureCnt = intent.getIntExtra("pictureCnt", 0)
         type = intent.getIntExtra("type", -1)
 
+        if (type==2){
+            titleTV.text = "사진 올리기"
+        }
 
 
         mAuth = FirebaseAuth.getInstance();
