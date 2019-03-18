@@ -29,14 +29,19 @@ import kotlinx.android.synthetic.main.activity_daily_mement_list.*
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.ByteArrayInputStream
+import java.io.File
 
 class DailyMomentListActivity : RootActivity() {
+
+    private val SELECT_PICTURE_REQUEST = 1001
 
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
     lateinit var daillyAdapter: DaillyAdapter
     var adapterdata = ArrayList<JSONObject>()
+
+    private var pictures = arrayListOf<JSONObject>()
 
     var page = 1
     var totalPage = 1
@@ -50,6 +55,9 @@ class DailyMomentListActivity : RootActivity() {
     lateinit var videoLL: LinearLayout
     lateinit var photoLL: LinearLayout
     lateinit var headRL: RelativeLayout
+
+    var items= ArrayList<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_daily_mement_list)
@@ -65,10 +73,25 @@ class DailyMomentListActivity : RootActivity() {
         daily_list()
 
         dailyLV.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(context, DlgAlbumPayActivity::class.java)
-            startActivity(intent)
+           /* val intent = Intent(context, DlgAlbumPayActivity::class.java)
+            startActivity(intent)*/
         }
+        dailyLV.setOnScrollListener(object : AbsListView.OnScrollListener {
+            override fun onScroll(p0: AbsListView?, p1: Int, p2: Int, p3: Int) {
 
+            }
+            override fun onScrollStateChanged(listView: AbsListView, newState: Int) {
+                if (!dailyLV.canScrollVertically(-1)) {
+
+                } else if (!dailyLV.canScrollVertically(1)) {
+                    if (totalPage > page) {
+                        page++
+                        daily_list()
+                    }
+                } else {
+                }
+            }
+        })
 
 
 
@@ -87,11 +110,15 @@ class DailyMomentListActivity : RootActivity() {
         }
         photoLL.setOnClickListener {
             type=1
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+          /*  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
                 loadPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, REQUEST_PERMISSION_READ_EXTERNAL_STORAGE)
             } else {
                 imageFromGallery()
-            }
+            }*/
+            var intent = Intent(context, FindPictureGridActivity::class.java)
+            intent.putExtra("type", 2)
+            intent.putExtra("pictureCnt", pictures.count())
+            startActivityForResult(intent, SELECT_PICTURE_REQUEST)
         }
 
 
@@ -107,6 +134,7 @@ class DailyMomentListActivity : RootActivity() {
     private fun dlg_view(){
         val intent = Intent(context, DlgLogoutActivity::class.java)
         intent.putExtra("type",1)
+
         startActivityForResult(intent,UPDATE_TIME_LINE)
     }
 
@@ -172,31 +200,36 @@ class DailyMomentListActivity : RootActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             when (requestCode) {
-                FROM_ALBUM -> {
-                    if (data != null && data.data != null) {
 
-                        Log.d("덩영성",data.toString())
-                        Log.d("덩영성",data.data.toString())
+                SELECT_PICTURE_REQUEST -> {
 
-                        val selectedImageUri = data.data
+                    items = data?.getStringArrayListExtra("items")!!
+                    for (i in 0..(items!!.size - 1)) {
 
-                        val filePathColumn = arrayOf(MediaStore.MediaColumns.DATA)
+                        val item = JSONObject(items[i])
 
-                        val cursor =
-                            context!!.contentResolver.query(selectedImageUri!!, filePathColumn, null, null, null)
-                        if (cursor!!.moveToFirst()) {
-                            val columnIndex = cursor.getColumnIndex(filePathColumn[0])
-                            val picturePath = cursor.getString(columnIndex)
-                            cursor.close()
-                            selectedImage = Utils.getImage(context!!.contentResolver, picturePath)
-                        }
-                        dlg_view()
+                        pictures.add(item)
+
+
+
+
+
+                        // reset(str, i, "picture", mediaType, id, -1, null)
                     }
+                    dlg_view()
+
                 }
 
                 UPDATE_TIME_LINE -> {
                     if (data != null) {
-                        update()
+                        val result = data.getStringExtra("result")
+                        Log.d("결과",result)
+                        if (result == "ok"){
+                            update()
+                        }else{
+                            pictures.clear()
+                        }
+
                     }
                 }
             }
@@ -222,6 +255,7 @@ class DailyMomentListActivity : RootActivity() {
                     val result = response!!.getString("result")
 
                     if ("ok" == result) {
+                        totalPage = Utils.getInt(response, "totalPage")
                         if (page == 1) {
                             adapterdata.clear()
                         }
@@ -290,9 +324,49 @@ class DailyMomentListActivity : RootActivity() {
         var member_id = PrefUtils.getIntPreference(context, "member_id")
         val params = RequestParams()
         params.put("member_id", member_id)
+
+        var picturesArr = ArrayList<String>()
+        for (picture in pictures) {
+            picturesArr.add(picture.toString())
+        }
+        if (picturesArr.isNotEmpty()) {
+            for ((idx, sp) in picturesArr.withIndex()) {
+                try {
+                    val picture = JSONObject(sp)
+
+                    val id = Utils.getInt(picture!!, "id")
+                    val path = Utils.getString(picture!!, "path")
+                    val mediaType = Utils.getInt(picture!!, "mediaType")
+
+                    if (mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
+                        type = 1
+                        var bitmap = Utils.getImage(context.contentResolver, path)
+                        Log.d("이미지", bitmap.toString())
+                        params.put(
+                            "uploads[$idx]",
+                            ByteArrayInputStream(Utils.getByteArray(bitmap)),
+                            "${System.currentTimeMillis()}.png"
+                        )
+                    } else {
+                        type = 2
+                        val file = File(path)
+                        var videoBytes = file.readBytes()
+                        params.put(
+                            "uploads[$idx]",
+                            ByteArrayInputStream(videoBytes),
+                            "${System.currentTimeMillis()}.mp4"
+                        )
+                    }
+//                    params.put("media_types[$idx]", mediaType)
+
+                } catch (e: Exception) {
+
+                }
+            }
+
+        }
         params.put("type", type)
-        Log.d("스트립",selectedImage.toString())
-        params.put("upload", ByteArrayInputStream(Utils.getByteArray(selectedImage)))
+
 
         DailyAction.add_content(params, object : JsonHttpResponseHandler() {
 
@@ -320,11 +394,11 @@ class DailyMomentListActivity : RootActivity() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
 
-                // System.out.println(responseString);
+                 System.out.println(responseString);
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                 Utils.alert(context, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -337,7 +411,7 @@ class DailyMomentListActivity : RootActivity() {
                     progressDialog!!.dismiss()
                 }
 
-                // System.out.println(responseString);
+                 System.out.println(responseString);
 
                 throwable.printStackTrace()
                 error()
@@ -345,7 +419,7 @@ class DailyMomentListActivity : RootActivity() {
 
 
             override fun onStart() {
-                // show dialog
+//                 show dialog
 //                if (progressDialog != null) {
 //                    progressDialog!!.show()
 //                }

@@ -21,8 +21,7 @@ import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
-import com.facebook.*
-import com.facebook.accountkit.AccountKitLoginResult
+import com.facebook.accountkit.*
 import com.facebook.accountkit.ui.AccountKitActivity
 import com.facebook.accountkit.ui.AccountKitConfiguration
 import com.facebook.accountkit.ui.LoginType
@@ -1504,11 +1503,18 @@ class EditProfileActivity : RootActivity() {
                     toastMessage = "Login Cancelled"
                 } else {
                     if (loginResult.accessToken != null) {
-                        toastMessage = "Success:" + loginResult.accessToken!!.accountId
-                    } else {
-                        toastMessage = String.format(
-                            "Success:%s...",
-                            loginResult.authorizationCode!!.substring(0,10))
+                        AccountKit.getCurrentAccount(object : AccountKitCallback<Account> {
+                            override fun onSuccess(account: Account?) {
+                                val phoneNumber = account?.phoneNumber
+
+                                println("phoneNumber $phoneNumber")
+
+                            }
+
+                            override fun onError(error: AccountKitError?) {
+
+                            }
+                        })
                     }
                 }
 
@@ -1524,7 +1530,7 @@ class EditProfileActivity : RootActivity() {
         val intent = Intent(this, AccountKitActivity::class.java)
         val configurationBuilder = AccountKitConfiguration.AccountKitConfigurationBuilder(
             LoginType.PHONE,
-            AccountKitActivity.ResponseType.CODE) // or .ResponseType.TOKEN
+            AccountKitActivity.ResponseType.TOKEN) // or .ResponseType.TOKEN
 
         intent.putExtra(
             AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
