@@ -93,7 +93,7 @@ open class GroupChattingAdapter(
             item.myContentsLL.visibility = View.GONE
             item.myVoiceLL.visibility = View.VISIBLE
             item.myVoiceIV.setOnClickListener {
-                activity.playing(Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
+                activity.playing(Config.url + Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
             }
 
         }else {
