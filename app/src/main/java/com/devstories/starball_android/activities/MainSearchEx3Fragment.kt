@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import com.devstories.starball_android.R
 import kotlinx.android.synthetic.main.fragment_main_search3.*
 
-
 class MainSearchEx3Fragment : Fragment() {
 
     private var progressDialog: ProgressDialog? = null
