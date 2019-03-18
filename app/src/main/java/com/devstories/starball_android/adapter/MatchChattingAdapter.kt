@@ -85,9 +85,12 @@ open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
         var contentTV : TextView
         var transTV: TextView
         var profileIV: ImageView
+        var myVoiceLL: LinearLayout
+        var myVoiceIV: ImageView
 
         init {
-
+            myVoiceLL = v.findViewById(R.id.myVoiceLL)
+            myVoiceIV = v.findViewById(R.id.myVoiceIV)
             contentTV= v.findViewById(R.id.contentTV)
             transTV= v.findViewById(R.id.transTV)
             profileIV = v.findViewById(R.id.profileIV)
