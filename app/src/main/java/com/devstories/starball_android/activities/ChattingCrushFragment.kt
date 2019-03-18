@@ -180,16 +180,15 @@ class ChattingCrushFragment : Fragment() {
     }
 
 
-    fun use_starball(like_member_id:Int) {
+    fun like_confirm(like_member_id:Int) {
         val member_id = PrefUtils.getIntPreference(context, "member_id")
 
         val params = RequestParams()
         params.put("member_id", member_id)
         params.put("like_member_id", like_member_id)
-        params.put("type", 1)
-        params.put("starball", 1)
 
-        MemberAction.like(params, object : JsonHttpResponseHandler() {
+
+        MemberAction.like_confirm(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
                 if (progressDialog != null) {
@@ -200,7 +199,6 @@ class ChattingCrushFragment : Fragment() {
                     val result = response!!.getString("result")
                     if ("ok" == result) {
                         crushAdapter.notifyDataSetChanged()
-
                         val intent = Intent(context, MatchedActivity::class.java)
                         startActivity(intent)
                     } else {

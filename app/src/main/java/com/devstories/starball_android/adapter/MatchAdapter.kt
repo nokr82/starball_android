@@ -1,7 +1,6 @@
 package com.devstories.starball_android.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,14 +8,13 @@ import android.view.ViewGroup
 import android.widget.*
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.ChattingMatchFragment
-import com.devstories.starball_android.activities.DlgCrushActivity
-import com.devstories.starball_android.activities.DlgStarballLackActivity
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.Utils
 import com.nostra13.universalimageloader.core.ImageLoader
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObject>) :
@@ -25,7 +23,8 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
     private var data = data
     private lateinit var context: Context
     private var fragment = fragment
-
+    private lateinit var matchChattingAdapter: MatchChattingAdapter
+    private var adapterdata = ArrayList<JSONObject>()
 
     class Match(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var itemLL = itemView.findViewById<View>(R.id.itemLL) as LinearLayout
@@ -45,6 +44,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
         var msgET = itemView.findViewById<View>(R.id.msgET) as EditText
         var edit_chatLL = itemView.findViewById<View>(R.id.edit_chatLL) as LinearLayout
         var chatLL = itemView.findViewById<View>(R.id.chatLL) as LinearLayout
+        var sendLL = itemView.findViewById<View>(R.id.sendLL) as LinearLayout
 
     }
 
@@ -71,12 +71,14 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
         val make_room_yn = json.getString("make_room_yn")
 
         val Member = json.getJSONObject("Member")
+        val like_member_id = Utils.getInt(Member, "id")
         val name = Utils.getString(Member, "name")
         val birth = Utils.getString(Member, "birth")
         val gender = Utils.getString(Member, "gender")
 
         val Like = json.getJSONObject("Like")
         val created_at = Utils.getString(Like, "created_at")
+
 
 
         val births = birth.split("-")
@@ -99,8 +101,17 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
 
         }
         holder.chattingLV.visibility  = View.VISIBLE
+        matchChattingAdapter = MatchChattingAdapter(context, R.layout.item_match, adapterdata)
+        holder.chattingLV.adapter = matchChattingAdapter
 
-        holder.chattingLV.adapter
+        if (send_chatting =="Y"){
+            val LastChatting = json.getJSONObject("LastChatting")
+            adapterdata.add(LastChatting)
+            holder.menuLL.visibility = View.GONE
+        }else{
+            holder.menuLL.visibility = View.VISIBLE
+        }
+
 
         holder.timeTV.visibility = View.GONE
         holder.op_timeTV.visibility = View.VISIBLE
@@ -127,10 +138,12 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
         }
 
 
-        if (send_chatting =="Y"){
-            holder.menuLL.visibility = View.GONE
-        }else{
-            holder.menuLL.visibility = View.VISIBLE
+
+
+        holder.sendLL.setOnClickListener {
+            var content = Utils.getString(holder.msgET)
+            fragment.sendChatting(1,content,like_member_id)
+
         }
 
         ImageLoader.getInstance().displayImage(Config.url + image_uri, holder.likeIV, Utils.UILoptions)

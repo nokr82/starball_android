@@ -113,8 +113,8 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
                 holder.sendIV.setImageResource(R.mipmap.send_heart)
                 holder.sendIV.setOnClickListener {
                     if (fragment2.starball>0){
-                        fragment2.use_starball(like_member_id)
-//                        fragment2.adapterdata.removeAt(position)
+                        fragment2.like_confirm(like_member_id)
+                        fragment2.adapterdata.removeAt(position)
                     }else{
                         val intent = Intent(context, DlgStarballLackActivity::class.java)
                         context.startActivity(intent)
