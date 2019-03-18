@@ -59,7 +59,10 @@ open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
         val json = data[position]
         val contents = json.getString("contents")
         val translate_in_english = json.getString("translate_in_english")
+        val Profile = json.getJSONObject("Profile")
+        val image_uri = Profile.getString("image_uri")
 
+        ImageLoader.getInstance().displayImage(Config.url + image_uri, item.profileIV, Utils.UILoptionsProfile)
 
         item.contentTV.text = contents
         item.transTV.text = translate_in_english
