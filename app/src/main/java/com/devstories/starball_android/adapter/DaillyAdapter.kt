@@ -100,8 +100,9 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>,
             item.videoRL.visibility = View.VISIBLE
             item.videoVV.visibility = View.VISIBLE
             item.videoVV.setDataSource(Config.url + video_uri)
-            item.videoVV.prepare(MediaPlayer.OnPreparedListener {  item.videoVV.seekTo(1)})
-            item.videoVV.prepareAsync()
+            Log.d("동영상",Config.url + video_uri.toString())
+//            item.videoVV.prepare(MediaPlayer.OnPreparedListener {  item.videoVV.seekTo(1)})
+//            item.videoVV.prepareAsync()
         }
         item.playIV.setOnClickListener {
             item.playIV.visibility = View.GONE
