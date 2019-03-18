@@ -47,6 +47,7 @@ class ChattingFragment : Fragment() {
     var totalPage = 1
 
     var pin_yn = ""
+    var del_yn = ""
     var room_id = -1
 
 
@@ -151,29 +152,49 @@ class ChattingFragment : Fragment() {
 
                 var json = roomAdapterData[position]
                 val type = Utils.getInt(json, "type")
-                val pin_yn_op = Utils.getString(json, "pin_yn_op")
                 when (index) {
                     0 -> {
-
-                    }
-                    1 -> {
-                        if (pin_yn_op.equals("Y")){
-                            pin_yn="N"
-                            json.put("pin_yn_op", pin_yn)
-                        }else{
-                            pin_yn="Y"
-                            json.put("pin_yn_op", pin_yn)
-                        }
-
                         if (type == 1) {
                             val Group = json.getJSONObject("Group")
                             val group_id = Utils.getInt(Group, "id")
-                            editRoom(group_id)
+                            del_yn="Y"
+                            editGroupRoom(group_id)
                         } else {
                             val Room = json.getJSONObject("Room")
                             val room_id = Utils.getInt(Room, "id")
+                            del_yn="Y"
                             editRoom(room_id)
                         }
+                    }
+                    1 -> {
+                        if (type == 1) {
+                            val Group = json.getJSONObject("Group")
+                            val group_id = Utils.getInt(Group, "id")
+                            if (pin_yn.equals("Y")){
+                                pin_yn="N"
+                                Group.put("pin_yn", pin_yn)
+                            }else{
+                                pin_yn="Y"
+                                Group.put("pin_yn", pin_yn)
+                            }
+                            editGroupRoom(group_id)
+
+                        } else {
+                             pin_yn = Utils.getString(json, "pin_yn")
+                            val Room = json.getJSONObject("Room")
+                            val room_id = Utils.getInt(Room, "id")
+                            if (pin_yn.equals("Y")){
+                                pin_yn="N"
+                                json.put("pin_yn", pin_yn)
+                            }else{
+                                pin_yn="Y"
+                                json.put("pin_yn", pin_yn)
+                            }
+                            editRoom(room_id)
+                        }
+
+
+
                     }
                 }
                 return false
@@ -218,6 +239,79 @@ class ChattingFragment : Fragment() {
 
     }
 
+    fun editGroupRoom(room_id: Int) {
+
+        if (room_id < 1) {
+            return
+        }
+        val params = RequestParams()
+        params.put("group_id", room_id)
+        params.put("pin_yn", pin_yn)
+        params.put("del_yn", del_yn)
+
+        ChattingAction.edit_group(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+                        del_yn = ""
+                        roomAdapter.notifyDataSetChanged()
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
 
     fun editRoom(room_id: Int) {
 
@@ -228,6 +322,7 @@ class ChattingFragment : Fragment() {
         params.put("member_id", member_id)
         params.put("room_id", room_id)
         params.put("pin_yn", pin_yn)
+        params.put("del_yn", del_yn)
 
         ChattingAction.edit_room(params, object : JsonHttpResponseHandler() {
 
@@ -240,7 +335,7 @@ class ChattingFragment : Fragment() {
                     val result = response!!.getString("result")
 
                     if ("ok" == result) {
-                        Toast.makeText(myContext, "고정되었습니다.", Toast.LENGTH_SHORT).show()
+                        del_yn = ""
                         roomAdapter.notifyDataSetChanged()
                     } else {
 

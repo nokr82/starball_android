@@ -123,15 +123,15 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>,
 
         item.likeIV.setOnClickListener {
             if (like_yn=="N"){
-                likecnt + 1
+//                likecnt + 1
                 activity.like(content_id)
                 item.likeIV.setImageResource(R.mipmap.profile_pre_super_like)
-                activity.daillyAdapter.notifyDataSetChanged()
+//                activity.daillyAdapter.notifyDataSetChanged()
             }else{
-                likecnt - 1
+//                likecnt - 1
                 activity.like(content_id)
                 item.likeIV.setImageResource(R.mipmap.lounge_heart_like)
-                activity.daillyAdapter.notifyDataSetChanged()
+//                activity.daillyAdapter.notifyDataSetChanged()
             }
         }
         item.likecntTV.text = likecnt.toString()

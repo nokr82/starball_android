@@ -351,10 +351,7 @@ class DailyMomentListActivity : RootActivity() {
                     val result = response!!.getString("result")
 
                     if ("ok" == result) {
-                        var intent = Intent()
-                        intent.action = "DEL_POST"
-                        sendBroadcast(intent)
-                        finish()
+                        daily_list()
                     } else {
 
                     }
