@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.MemberAction
+import com.devstories.starball_android.base.AdmobUtils
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
@@ -99,6 +100,17 @@ class StarballPayActivity : RootActivity() {
             iapHelper.buy("starball_500")
         }
 
+        recommendTV.setOnClickListener {
+
+        }
+
+        adverTV.setOnClickListener {
+
+            AdmobUtils.loadAd(context) {
+                freeStarball(2)
+            }
+
+        }
     }
 
     fun buyStarball(starball: Int, purchaseToken: String) {
@@ -157,6 +169,91 @@ class StarballPayActivity : RootActivity() {
                  throwable.printStackTrace()
                  error()
              }*/
+
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONArray?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
+    fun freeStarball(cate: Int) {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("starball", 1)
+        params.put("cate", cate)
+
+        MemberAction.free_starball(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+                        Toast.makeText(context, getString(R.string.free_starball), Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(context, getString(R.string.api_error), Toast.LENGTH_SHORT).show()
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, getString(R.string.api_error))
+            }
+
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, responseString: String?, throwable: Throwable) {
+                 if (progressDialog != null) {
+                     progressDialog!!.dismiss()
+                 }
+
+                  System.out.println(responseString);
+
+                 throwable.printStackTrace()
+                 error()
+             }
 
             override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONObject?) {
                 if (progressDialog != null) {

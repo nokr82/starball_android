@@ -16,7 +16,6 @@ class DlgProposeActivity : RootActivity() {
 
     private val _active = true
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dlg_propose)
@@ -26,7 +25,6 @@ class DlgProposeActivity : RootActivity() {
         noTV.setOnClickListener {
             finish()
         }
-
 
     }
 
