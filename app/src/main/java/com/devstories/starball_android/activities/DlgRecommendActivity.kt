@@ -103,6 +103,7 @@ class DlgRecommendActivity : RootActivity() {
         }
     }
 
+
     private fun doShareFacebook() {
 
         var uri = Config.url + share_image_uri
