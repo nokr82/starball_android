@@ -126,6 +126,8 @@ class EditProfileActivity : RootActivity() {
     private lateinit var callbackManager: CallbackManager
     private var accessToken: com.facebook.AccessToken? = null
 
+
+
     var member_id = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -171,6 +173,12 @@ class EditProfileActivity : RootActivity() {
         facebookLL.setOnClickListener {
             if (facebook_yn == "N") {
                 disconnectFromFacebook()
+            }
+        }
+
+        instaLL.setOnClickListener {
+            if (insta_yn == "N") {
+
             }
         }
 
