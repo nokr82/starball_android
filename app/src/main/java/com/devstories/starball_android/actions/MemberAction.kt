@@ -6,6 +6,9 @@ import com.loopj.android.http.RequestParams
 
 object MemberAction {
 
+    fun match_list(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/match_list", params, handler)
+    }
     fun login(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/members/login", params, handler)
     }
