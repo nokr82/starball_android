@@ -73,8 +73,8 @@ class DailyMomentListActivity : RootActivity() {
         daily_list()
 
         dailyLV.setOnItemClickListener { parent, view, position, id ->
-            val intent = Intent(context, DlgAlbumPayActivity::class.java)
-            startActivity(intent)
+           /* val intent = Intent(context, DlgAlbumPayActivity::class.java)
+            startActivity(intent)*/
         }
 
 

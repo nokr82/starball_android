@@ -8,10 +8,10 @@ object DailyAction {
 
 
     fun add_content(params: RequestParams, handler: JsonHttpResponseHandler) {
-        HttpClient.post("/api/dailys/add_content", params, handler)
+        HttpClient.post("/dailys/add_content", params, handler)
     }
     fun list(params: RequestParams, handler: JsonHttpResponseHandler) {
-        HttpClient.post("/api/dailys/list", params, handler)
+        HttpClient.post("/dailys/list", params, handler)
     }
 
 }
