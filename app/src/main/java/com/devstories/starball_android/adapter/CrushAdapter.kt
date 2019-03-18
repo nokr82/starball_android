@@ -63,18 +63,40 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
         val type = Utils.getString(json, "type")
         val holder = holder as Crush
         if (type ==null||type ==""){
-            val Like = json.getJSONObject( "Like")
-            val LikeMember = json.getJSONObject( "LikeMember")
             val LikeMemberProfile = json.getJSONObject( "LikeMemberProfile")
-//        val Member = json.getJSONObject( "Member" )
             val starball = Utils.getString(json, "starball")
+
+            val Member = json.getJSONObject( "Member" )
+            val recive_name = Utils.getString(Member, "name")
+            val recive_birth = Utils.getString(Member, "birth")
+            val recive_id = Utils.getInt(Member, "id")
+            val recive_gender = Utils.getString(Member, "gender")
+            val MemberProfile = json.getJSONObject( "MemberProfile")
+            val recive_image_uri = Utils.getString(MemberProfile, "image_uri")
+
+            val Like = json.getJSONObject( "Like")
             val created_at = Utils.getString(Like, "created_at")
+            val LikeMember = json.getJSONObject( "LikeMember")
             val name = Utils.getString(LikeMember, "name")
             val birth = Utils.getString(LikeMember, "birth")
             val like_member_id = Utils.getInt(LikeMember, "id")
             val gender = Utils.getString(LikeMember, "gender")
             val image_uri = Utils.getString(LikeMemberProfile, "image_uri")
-            var bitmap = Config.url + image_uri
+
+            val recive_births = recive_birth.split("-")
+            var recive_age = 0
+
+            if (recive_births.count() == 3) {
+
+                var now = System.currentTimeMillis()
+                var date = Date(now)
+                val sdfNow = SimpleDateFormat("yyyy")
+                val year = sdfNow.format(date)
+
+                recive_age = year.toInt() - recive_births[0].toInt()
+            }
+
+
             val births = birth.split("-")
             var age = 0
 
@@ -88,9 +110,10 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
                 age = year.toInt() - births[0].toInt()
             }
 
-            holder.nameTV.text = name + " " + age
+
 
             if (a_type==2){
+                holder.nameTV.text = name + " " + age
                 holder.starballTV.text ="+"+starball
                 holder.sendIV.setImageResource(R.mipmap.bi)
                 holder.timeTV.text = created_at.substring(0,10).replace("-",".")
@@ -105,23 +128,25 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
                     }
 
                 }
+
+                ImageLoader.getInstance().displayImage(Config.url + image_uri, holder.likeIV, Utils.UILoptions)
             }else{
+                holder.nameTV.text = recive_name + " " + recive_age
                 holder.timeTV.text = created_at.substring(0,10).replace("-",".")
                 holder.starballTV.text = "+"+starball
                 holder.sendIV.setImageResource(R.mipmap.send_heart)
+                ImageLoader.getInstance().displayImage(Config.url + recive_image_uri, holder.likeIV, Utils.UILoptions)
                 holder.sendIV.setOnClickListener {
                     if (fragment2.starball>0){
-                        fragment2.like_confirm(like_member_id)
+                        fragment2.like_confirm(recive_id)
                         fragment2.adapterdata.removeAt(position)
                     }else{
                         val intent = Intent(context, DlgStarballLackActivity::class.java)
                         context.startActivity(intent)
                     }
-
                 }
             }
 
-            ImageLoader.getInstance().displayImage(Config.url + image_uri, holder.likeIV, Utils.UILoptions)
         }else{
         }
 
