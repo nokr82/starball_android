@@ -9,6 +9,7 @@ import android.os.*
 import android.provider.MediaStore
 import android.support.v4.content.CursorLoader
 import android.support.v4.content.FileProvider
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
@@ -19,6 +20,8 @@ import com.devstories.starball_android.R
 import com.devstories.starball_android.base.ImageLoader
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
+import com.google.android.gms.vision.Frame
+import com.google.android.gms.vision.face.FaceDetector
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_find_picture_grid.*
 import org.json.JSONObject
@@ -73,7 +76,7 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
         }
 
 
-        mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance()
         var cursor: Cursor? = null
         val resolver = contentResolver
 
@@ -112,7 +115,7 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
                     selection,
                     null, // Selection args (none).
                     MediaStore.Files.FileColumns.DATE_ADDED + " DESC" // Sort order.
-            );
+            )
 
             val cursor = cursorLoader.loadInBackground()
 
@@ -162,7 +165,7 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
                         photo.mediaType = mediaType
 
                         // photo.type = "i"
-                        photoList!!.add(photo)
+                        photoList.add(photo)
                     }
 
                 } while (cursor.moveToNext())
@@ -228,7 +231,7 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
 //
 //        }
 
-        selectGV.setOnItemClickListener(this)
+        selectGV.onItemClickListener = this
 
         val imageLoader: ImageLoader = ImageLoader(resolver)
 
@@ -319,7 +322,7 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
 
                 countTV.text = selected.size.toString()
 
-                val adapter = selectGV.getAdapter()
+                val adapter = selectGV.adapter
                 if (adapter != null) {
                     val f = adapter as ImageAdapter
                     (f as BaseAdapter).notifyDataSetChanged()
@@ -331,11 +334,16 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
                     return
                 }
 
-                selected.add(strPo)
+                if(isFace(strPo)) {
+                    selected.add(strPo)
+                } else {
+                    Toast.makeText(context, "얼굴 사진만 등록가능합니다.", Toast.LENGTH_SHORT).show()
+                    return
+                }
 
                 countTV.text = selected.size.toString()
 
-                val adapter = selectGV.getAdapter()
+                val adapter = selectGV.adapter
                 if (adapter != null) {
                     val f = adapter as ImageAdapter
                     (f as BaseAdapter).notifyDataSetChanged()
@@ -387,6 +395,35 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
     override fun onBackPressed() {
             finish()
             Utils.hideKeyboard(context)
+    }
+
+    private fun isFace(path: String): Boolean {
+
+        val scale = DisplayMetrics().density
+
+        val detector = FaceDetector.Builder(context)
+            .setTrackingEnabled(false)
+            .setLandmarkType(FaceDetector.ALL_LANDMARKS)
+            .build()
+
+        var bitmap = Utils.getImage(context.contentResolver, path)
+
+        val frame = Frame.Builder().setBitmap(bitmap).build()
+        val faces = detector.detect(frame)
+
+        for (i in 0..faces.size()) {
+            val face = faces.valueAt(i)
+            for (landmark in face.landmarks) {
+                val cx = (landmark.position.x * scale)
+                val cy = (landmark.position.y * scale)
+
+                println("cx : $cx, cy : $cy")
+            }
+        }
+
+        detector.release()
+
+        return faces.size() > 0
     }
 
 }
