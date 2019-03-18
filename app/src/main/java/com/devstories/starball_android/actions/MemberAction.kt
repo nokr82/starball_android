@@ -6,6 +6,10 @@ import com.loopj.android.http.RequestParams
 
 object MemberAction {
 
+    fun match_cancel(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/match_cancel", params, handler)
+    }
+
     fun like_confirm(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/members/like_confirm", params, handler)
     }

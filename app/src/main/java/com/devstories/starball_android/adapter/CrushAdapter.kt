@@ -106,9 +106,7 @@ class CrushAdapter(fragment: ChattingSendCrushFragment,fragment2:ChattingCrushFr
 
                 }
             }else{
-                holder.timeTV.visibility = View.GONE
-                holder.op_timeTV.visibility = View.VISIBLE
-                holder.op_timeTV.text = created_at.substring(0,10).replace("-",".")
+                holder.timeTV.text = created_at.substring(0,10).replace("-",".")
                 holder.starballTV.text = "+"+starball
                 holder.sendIV.setImageResource(R.mipmap.send_heart)
                 holder.sendIV.setOnClickListener {

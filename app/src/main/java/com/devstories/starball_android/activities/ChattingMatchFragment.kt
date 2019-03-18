@@ -2,7 +2,10 @@ package com.devstories.starball_android.activities
 
 import android.Manifest
 import android.app.ProgressDialog
+import android.content.BroadcastReceiver
 import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.media.MediaPlayer
@@ -56,6 +59,14 @@ class ChattingMatchFragment : Fragment() {
     private val MY_PERMISSIONS_REQUEST_READ_CONTACTS = 100
     private var record = false
     var record_path = ""
+    internal var reloadReciver: BroadcastReceiver? = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent?) {
+            if (intent != null) {
+                page = 1
+                loadData()
+            }
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -75,6 +86,9 @@ class ChattingMatchFragment : Fragment() {
         matchLV.layoutManager = LinearLayoutManager(context)
         matchAdapter = MatchAdapter(this, adapterdata)
         matchLV.adapter = matchAdapter
+
+        var filter1 = IntentFilter("DEL_POST")
+        myContext.registerReceiver(reloadReciver, filter1)
 
 
         loadData()
