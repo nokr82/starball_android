@@ -53,12 +53,12 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>)
         val age = DateUtils.getYearDiffCount(birth, DateUtils.getToday("yyyyMMdd"), "yyyyMMdd")
 
         val profile = json.getJSONObject("Profile")
-        val profile_image_uri = Utils.getInt(profile, "image_uri")
+        val profile_image_uri = Utils.getString(profile, "image_uri")
 
         val content = json.getJSONObject("Content")
         val type = Utils.getInt(content, "type")
         val like_member_id = Utils.getInt(content, "member_id")
-        val image_uri = Utils.getInt(content, "image_uri")
+        val image_uri = Utils.getString(content, "image_uri")
         val created_at = Utils.getInt(content, "created_at")
         val content_id = Utils.getInt(content, "id")
 
