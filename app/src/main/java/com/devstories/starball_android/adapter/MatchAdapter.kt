@@ -48,6 +48,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
         var edit_chatLL = itemView.findViewById<View>(R.id.edit_chatLL) as LinearLayout
         var chatLL = itemView.findViewById<View>(R.id.chatLL) as LinearLayout
         var sendLL = itemView.findViewById<View>(R.id.sendLL) as LinearLayout
+        var menuIV = itemView.findViewById<View>(R.id.menuIV) as ImageView
 
     }
 
@@ -105,16 +106,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
 
         }
 
-        holder.menuLL.setOnClickListener {
-            if (like_member_id == member_id){
-                val intent = Intent(context, DlgPostOptionActivity::class.java)
-                intent.putExtra("like_member_id",like_member_id)
-                intent.putExtra("like_id",like_id)
-                context.startActivity(intent)
-            }else{
-                return@setOnClickListener
-            }
-        }
+
 
 
         holder.chattingLV.visibility  = View.VISIBLE
@@ -152,7 +144,12 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
             holder.chatLL.visibility = View.GONE
             holder.edit_chatLL.visibility = View.VISIBLE
         }
-
+        holder.menuIV.setOnClickListener {
+            val intent = Intent(context, DlgPostOptionActivity::class.java)
+            intent.putExtra("like_member_id",like_member_id)
+            intent.putExtra("like_id",like_id)
+            fragment.startActivity(intent)
+        }
 
 
 

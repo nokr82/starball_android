@@ -87,7 +87,7 @@ class ChattingMatchFragment : Fragment() {
         matchAdapter = MatchAdapter(this, adapterdata)
         matchLV.adapter = matchAdapter
 
-        var filter1 = IntentFilter("DEL_POST")
+        var filter1 = IntentFilter("DEL_MATCH")
         myContext.registerReceiver(reloadReciver, filter1)
 
 

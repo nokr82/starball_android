@@ -41,6 +41,8 @@ class DlgPostOptionActivity : RootActivity() {
         like_id = intent.getIntExtra("like_id", -1)
 
         if (like_id != -1){
+            delTV.text = "매치 취소"
+
             reportTV.setOnClickListener {
                 val intent = Intent(context, ReportActivity::class.java)
                 intent.putExtra("like_member_id",like_member_id)
@@ -89,7 +91,7 @@ class DlgPostOptionActivity : RootActivity() {
 
                     if ("ok" == result) {
                         var intent = Intent()
-                        intent.action = "DEL_POST"
+                        intent.action = "DEL_MATCH"
                         sendBroadcast(intent)
                         finish()
                     } else {
