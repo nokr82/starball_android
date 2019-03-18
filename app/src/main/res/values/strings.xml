@@ -387,6 +387,7 @@
     <string name="insta_connect_already">인스타그램 계정과 이미 연결된 계정이 있습니다.</string>
 
     <string name="remaining_time">%1$d시간 %2$d분 남음</string>
+    <string name="settings">설정</string>
 
     <string name="api_error">조회중 장애가 발생하였습니다.</string>
 

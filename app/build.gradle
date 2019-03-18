@@ -76,15 +76,14 @@ dependencies {
     implementation 'com.loopj.android:android-async-http:1.4.9'
     implementation 'com.github.paolorotolo:expandableheightlistview:1.0.0'
     implementation 'com.mcxiaoke.volley:library:1.0.8'
-    implementation('io.nlopez.smartlocation:library:3.3.3') {
-        transitive = false
-    }
+
     // google
     implementation 'com.google.firebase:firebase-core:16.0.7'
     implementation 'com.google.firebase:firebase-messaging:17.4.0'
     implementation 'com.google.firebase:firebase-auth:16.2.0'
-    implementation 'com.google.android.gms:play-services-auth:16.0.1'
     implementation 'com.google.firebase:firebase-ads:17.2.0'
+    implementation 'com.google.android.gms:play-services-auth:16.0.1'
+    implementation 'com.google.android.gms:play-services-location:16.0.0'
 
     //페이스북로그인
     implementation 'com.facebook.android:facebook-login:4.40.0'
