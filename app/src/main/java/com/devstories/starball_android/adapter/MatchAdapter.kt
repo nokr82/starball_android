@@ -1,6 +1,7 @@
 package com.devstories.starball_android.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,9 @@ import android.view.ViewGroup
 import android.widget.*
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.ChattingMatchFragment
+import com.devstories.starball_android.activities.DlgPostOptionActivity
 import com.devstories.starball_android.base.Config
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
 import com.nostra13.universalimageloader.core.ImageLoader
 import org.json.JSONObject
@@ -58,11 +61,11 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val member_id = PrefUtils.getIntPreference(context, "member_id")
 
         val json = data[position]
         val type = Utils.getString(json, "type")
         val holder = holder as Match
-
         val Profile = json.getJSONObject("Profile")
         val image_uri = Utils.getString(Profile, "image_uri")
 
@@ -77,6 +80,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
         val gender = Utils.getString(Member, "gender")
 
         val Like = json.getJSONObject("Like")
+        val like_id = Utils.getInt(Like, "id")
         val created_at = Utils.getString(Like, "created_at")
 
 
@@ -100,13 +104,27 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
         }else{
 
         }
+
+        holder.menuLL.setOnClickListener {
+            if (like_member_id == member_id){
+                val intent = Intent(context, DlgPostOptionActivity::class.java)
+                intent.putExtra("like_member_id",like_member_id)
+                intent.putExtra("like_id",like_id)
+                context.startActivity(intent)
+            }else{
+                return@setOnClickListener
+            }
+        }
+
+
         holder.chattingLV.visibility  = View.VISIBLE
         matchChattingAdapter = MatchChattingAdapter(context, R.layout.item_match, adapterdata)
         holder.chattingLV.adapter = matchChattingAdapter
-
+        adapterdata.clear()
         if (send_chatting =="Y"){
             val LastChatting = json.getJSONObject("LastChatting")
             adapterdata.add(LastChatting)
+            matchChattingAdapter.notifyDataSetChanged()
             holder.menuLL.visibility = View.GONE
         }else{
             holder.menuLL.visibility = View.VISIBLE
@@ -117,10 +135,8 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
         holder.op_timeTV.visibility = View.VISIBLE
         holder.op_timeTV.text = created_at.substring(0, 10).replace("-", ".")
 
-
         holder.sendtitleLL.visibility = View.GONE
         holder.nameTV.text = name + " " + age
-        holder.starballTV.text = "+"
 
         if (make_room_yn =="Y"){
             holder.sendIV.visibility = View.VISIBLE

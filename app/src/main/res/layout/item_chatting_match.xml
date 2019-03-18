@@ -124,6 +124,7 @@
                 android:layout_height="wrap_content"
                 android:src="@mipmap/lounge_daily_more"/>
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/starballIV"
                 android:layout_marginLeft="5dp"
                 android:layout_marginBottom="40dp"
@@ -142,6 +143,7 @@
                 android:background="#40000000"/>
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/starballTV"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="15dp"
@@ -165,7 +167,7 @@
                 android:scrollbars="none"
                 android:layout_centerInParent="true"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="80dp"
+                android:layout_marginBottom="150dp"
                 android:layout_width="match_parent"
                 android:layout_height="100dp">
             </ListView>
@@ -210,7 +212,7 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:visibility="visible"
+            android:visibility="gone"
             android:background="#efefef"
             android:id="@+id/menuLL"
             android:layout_marginRight="10dp"

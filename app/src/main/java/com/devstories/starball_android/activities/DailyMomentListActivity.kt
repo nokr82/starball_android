@@ -79,7 +79,7 @@ class DailyMomentListActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 
-        var filter1 = IntentFilter("DEL_POST")
+        var filter1 = IntentFilter("visible")
         registerReceiver(reloadReciver, filter1)
 
         daillyAdapter = DaillyAdapter(context, R.layout.item_daily_list, adapterdata,this)
