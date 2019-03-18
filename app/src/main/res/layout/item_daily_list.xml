@@ -6,39 +6,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
+    <LinearLayout
+        android:background="#ffffff"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
         <LinearLayout
-                android:background="#ffffff"
-                android:layout_marginBottom="20dp"
-                android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
-
-
-        
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
 
             <LinearLayout
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/profileIV"
-                        android:paddingLeft="10dp"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@mipmap/comm_profile_pic"/>
+                    android:id="@+id/profileIV"
+                    android:paddingLeft="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/comm_profile_pic"/>
+
                 <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
                         android:id="@+id/nameTV"
                         android:paddingLeft="10dp"
                         android:textStyle="bold"
@@ -46,113 +44,101 @@
                         android:layout_height="wrap_content"
                         android:textSize="12dp"
                         android:textColor="#555555"
-                        android:text="Nick Taylor   24"
-                        />
+                        android:text="Nick Taylor   24"/>
 
 
                     <TextView
-                            android:id="@+id/timeTV"
-                            android:paddingLeft="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="11dp"
-                            android:textColor="#bebebe"
-                            android:text="@string/before_hour"
-                            />
+                        android:id="@+id/timeTV"
+                        android:paddingLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="11dp"
+                        android:textColor="#bebebe"
+                        android:text="@string/before_hour"/>
 
                 </LinearLayout>
 
                 <ImageView
-                        android:id="@+id/subIV"
-                        android:layout_marginRight="24dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/mark_subscribe_need"/>
-
-                <ImageView
-                        android:id="@+id/menuIV"
-                        android:paddingRight="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/lounge_more"/>
-
-
-            </LinearLayout>
-
-
-            
-        </LinearLayout>
-            <RelativeLayout
-                android:id="@+id/videoRL"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone">
-
-                <com.yqritc.scalablevideoview.ScalableVideoView
-                    android:id="@+id/videoVV"
-                    android:layout_width="match_parent"
-                    android:layout_height="330dp"
-                    android:layout_centerHorizontal="true"
-                    app:scalableType="centerCrop"/>
-
-                <ImageView
-                    android:id="@+id/playIV"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:src="@drawable/play_icon"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
-
-
-            <ImageView
-                    android:id="@+id/contentIV"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:scaleType="centerCrop"
-                    android:layout_width="match_parent"
-                    android:layout_height="330dp"
-                    android:src="@mipmap/lounge_daily_photo"/>
-
-
-            <LinearLayout
-                    android:layout_marginTop="10dp"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="10dp"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                <ImageView
-                        android:id="@+id/likeIV"
-                        android:paddingLeft="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@mipmap/lounge_heart_like"/>
-                <TextView
-                    android:id="@+id/likecntTV"
-                    android:textStyle="bold"
-                    android:paddingLeft="4dp"
+                    android:id="@+id/subIV"
+                    android:layout_marginRight="24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12dp"
-                    android:textColor="#555555"
-                    />
-                <TextView
-                        android:textStyle="bold"
-                        android:paddingLeft="4dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="12dp"
-                        android:textColor="#555555"
-                        android:text="@string/like"
-                        />
+                    android:src="@mipmap/mark_subscribe_need"/>
+
+                <ImageView
+                    android:id="@+id/menuIV"
+                    android:paddingRight="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/lounge_more"/>
+
             </LinearLayout>
-
-
-
 
         </LinearLayout>
 
+        <RelativeLayout
+            android:id="@+id/videoRL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
 
+            <com.yqritc.scalablevideoview.ScalableVideoView
+                android:id="@+id/videoVV"
+                android:layout_width="match_parent"
+                android:layout_height="330dp"
+                android:layout_centerHorizontal="true"
+                app:scalableType="centerCrop"/>
+
+            <ImageView
+                android:id="@+id/playIV"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/play_icon"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/contentIV"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="330dp"
+            android:src="@mipmap/lounge_daily_photo"/>
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/likeIV"
+                android:paddingLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/lounge_heart_like"/>
+
+            <TextView
+                android:id="@+id/likecntTV"
+                android:textStyle="bold"
+                android:paddingLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#555555"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:paddingLeft="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:textColor="#555555"
+                android:text="@string/like"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
