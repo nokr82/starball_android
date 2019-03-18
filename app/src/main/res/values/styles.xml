@@ -105,14 +105,16 @@
         <item name="com_accountkit_primary_text_color">@color/colorText</item>
         <item name="com_accountkit_secondary_text_color">@color/colorText</item>
         <item name="com_accountkit_background_color">@color/colorBackgroundContent</item>
-        <item name="com_accountkit_input_background_color">@color/colorInput</item>
         <item name="com_accountkit_input_border_color">@color/colorInput</item>
-        <item name="com_accountkit_input_text_color">@color/colorText</item>
         <item name="com_accountkit_text_color">@color/colorText</item>
-        <item name="com_accountkit_button_background_color">@color/colorActionButton</item>
         <item name="com_accountkit_button_border_color">@color/colorActionButton</item>
-        <item name="com_accountkit_button_text_color">@color/colorButtonText</item>
         <item name="com_accountkit_input_accent_color">@color/colorText</item -->
+
+        <item name="com_accountkit_input_background_color">#f8f8f8</item>
+        <item name="com_accountkit_input_text_color">#000000</item>
+        <item name="com_accountkit_button_background_color">#d4d4d4</item>
+        <item name="com_accountkit_button_text_color">#333333</item>
+
     </style>
 
 

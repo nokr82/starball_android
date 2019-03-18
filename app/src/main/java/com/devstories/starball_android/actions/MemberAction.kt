@@ -41,4 +41,8 @@ object MemberAction {
         HttpClient.post("/members/like_list", params, handler)
     }
 
+    fun sns_connect(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/sns_connect", params, handler)
+    }
+
 }

@@ -21,10 +21,13 @@ import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
+import com.facebook.*
 import com.facebook.accountkit.*
 import com.facebook.accountkit.ui.AccountKitActivity
 import com.facebook.accountkit.ui.AccountKitConfiguration
 import com.facebook.accountkit.ui.LoginType
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import com.loopj.android.http.JsonHttpResponseHandler
@@ -37,6 +40,7 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.io.ByteArrayInputStream
 import java.io.File
+import java.util.*
 
 class EditProfileActivity : RootActivity() {
 
@@ -118,15 +122,22 @@ class EditProfileActivity : RootActivity() {
     var travel = ""
     var travel_cal = ""
 
+    private lateinit var callbackManager: CallbackManager
+    private var accessToken: com.facebook.AccessToken? = null
+
+    var member_id = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
+
         this.context = this
         progressDialog = ProgressDialog(context)
 
+        member_id = PrefUtils.getIntPreference(context, "member_id")
 
-
+        FacebookSdk.sdkInitialize(applicationContext)
+        callbackManager = CallbackManager.Factory.create()
 
         languageAdapter = LanguageAdapter(context, R.layout.item_language, adapterData)
         languageGV.adapter = languageAdapter
@@ -157,13 +168,212 @@ class EditProfileActivity : RootActivity() {
         }
 
         facebookLL.setOnClickListener {
-
+            if (facebook_yn == "N") {
+                disconnectFromFacebook()
+            }
         }
 
         profileclick()
         click()
 
         get_info()
+    }
+
+    // 페이스북 로그아웃
+    fun disconnectFromFacebook() {
+        GraphRequest(com.facebook.AccessToken.getCurrentAccessToken(), "/me/permissions/", null, HttpMethod.DELETE, GraphRequest.Callback {
+            LoginManager.getInstance().logOut()
+            doStartWithFacebook()
+        }).executeAsync()
+    }
+
+    private fun doStartWithFacebook() {
+        if (com.facebook.AccessToken.getCurrentAccessToken() != null) {
+            this.accessToken = com.facebook.AccessToken.getCurrentAccessToken()
+            fetchUserData()
+        } else {
+            LoginManager.getInstance().logInWithReadPermissions(this@EditProfileActivity, Arrays.asList("public_profile", "email"))
+            LoginManager.getInstance().registerCallback(callbackManager,
+                object : FacebookCallback<LoginResult> {
+                    override fun onSuccess(loginResult: LoginResult) {
+                        accessToken = loginResult.accessToken
+                        fetchUserData()
+                    }
+
+                    override fun onCancel() {
+                        Toast.makeText(context, "페이스북 로그인 취소", Toast.LENGTH_LONG).show()
+                    }
+
+                    override fun onError(exception: FacebookException) {
+                        Toast.makeText(context, exception.message, Toast.LENGTH_LONG).show()
+                    }
+                })
+        }
+    }
+
+    private fun fetchUserData() {
+        val request = GraphRequest.newMeRequest(
+            accessToken
+        ) { `object`, response ->
+            var id: String = ""
+            var name: String? = null
+            var eamil: String? = ""
+
+            try {
+                if (`object`.has("id") && !`object`.isNull("id")) {
+                    id = `object`.getString("id")
+                }
+
+                if (`object`.has("name") && !`object`.isNull("name")) {
+                    name = `object`.getString("name")
+                }
+
+                if (`object`.has("email") && !`object`.isNull("email")) {
+                    eamil = `object`.getString("email")
+                }
+
+            } catch (e: JSONException) {
+                e.printStackTrace()
+            }
+
+            sns_connect("facebook", id)
+
+        }
+
+        val parameters = Bundle()
+        parameters.putString("fields", "id,name,link, email")
+        request.parameters = parameters
+        request.executeAsync()
+
+    }
+
+    fun sns_connect(type: String, sns_key: String) {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("type", type)
+        params.put("sns_key", sns_key)
+
+        MemberAction.sns_connect(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+
+                        if ("facebook" == type) {
+
+                            facebook_yn == "Y"
+
+                            Toast.makeText(context, getString(R.string.facebook_connect), Toast.LENGTH_LONG).show()
+
+                            facebookTV.text = "인증되었습니다"
+                            facebookTV.setTextColor(Color.parseColor("#923b9f"))
+                            facebookIV.setImageResource(R.mipmap.op_drop)
+
+                        } else {
+
+                            insta_yn == "Y"
+
+                            Toast.makeText(context, getString(R.string.insta_connect), Toast.LENGTH_LONG).show()
+
+                            instaTV.text = "인증되었습니다"
+                            instaTV.setTextColor(Color.parseColor("#923b9f"))
+                            instaIV.setImageResource(R.mipmap.op_drop)
+                        }
+
+                    } else if ("already" == result) {
+
+                        if ("facebook" == type) {
+                            Toast.makeText(context, getString(R.string.facebook_connect_already), Toast.LENGTH_LONG).show()
+                        } else {
+                            Toast.makeText(context, getString(R.string.insta_connect_already), Toast.LENGTH_LONG).show()
+                        }
+
+                    } else {
+                        Toast.makeText(context, getString(R.string.api_error), Toast.LENGTH_LONG).show()
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, getString(R.string.api_error))
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
     }
 
     fun profileclick() {
@@ -206,6 +416,11 @@ class EditProfileActivity : RootActivity() {
     }
 
     fun click() {
+
+        backLL.setOnClickListener {
+            finish()
+        }
+
         nextTV.setOnClickListener {
             edit_info()
         }
@@ -272,10 +487,6 @@ class EditProfileActivity : RootActivity() {
             step = 10
             intent.putExtra("step", step)
             startActivityForResult(intent, WORK_SELECT)
-        }
-
-        backIV.setOnClickListener {
-            finish()
         }
 
         charmRL.setOnClickListener {
@@ -1116,6 +1327,8 @@ class EditProfileActivity : RootActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+
+        callbackManager.onActivityResult(requestCode, resultCode, data);
 
         when (requestCode) {
 
