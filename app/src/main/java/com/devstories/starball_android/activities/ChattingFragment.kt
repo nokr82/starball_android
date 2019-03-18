@@ -404,7 +404,10 @@ class ChattingFragment : Fragment() {
                     val result = response!!.getString("result")
 
                     if ("ok" == result) {
-
+                        if (page == 1) {
+                            roomAdapterData.clear()
+                            roomAdapter.notifyDataSetChanged()
+                        }
                         val list = response.getJSONArray("list")
 
                         for (i in 0 until list.length()) {
@@ -416,7 +419,6 @@ class ChattingFragment : Fragment() {
                             roomAdapterData.add(json)
                         }
 
-                        roomAdapter.notifyDataSetChanged()
 
                     } else {
 
@@ -519,10 +521,7 @@ class ChattingFragment : Fragment() {
                         page = Utils.getInt(response, "page")
                         totalPage = Utils.getInt(response, "totalPage")
 
-//                        if (page == 1) {
-//                            roomAdapterData.clear()
-//                            roomAdapter.notifyDataSetChanged()
-//                        }
+
 
                         val chat = response.getJSONArray("chat")
                         val data = chat[0] as JSONObject

@@ -212,11 +212,11 @@ class GrouptMakeActivity : RootActivity() {
 
         var member_id = PrefUtils.getIntPreference(context, "member_id")
         var title = Utils.getString(titleET)
-        if (title.length < 0) {
+        if (title.length < 1) {
             Toast.makeText(context, "그룹명을 입력해주세요.", Toast.LENGTH_SHORT).show()
             return
         }
-        if (member_list.size < 1) {
+        if (member_list.size < 2) {
             Toast.makeText(context, "두명이상 선택해주세요", Toast.LENGTH_SHORT).show()
             return
         }
