@@ -102,6 +102,9 @@ class StarballPayActivity : RootActivity() {
 
         recommendTV.setOnClickListener {
 
+            var intent = Intent(context, DlgRecommendActivity::class.java)
+            startActivity(intent)
+
         }
 
         adverTV.setOnClickListener {
