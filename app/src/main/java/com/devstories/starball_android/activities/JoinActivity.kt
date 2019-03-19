@@ -10,8 +10,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.Toast
-import com.devstories.starball_android.actions.JoinAction
 import com.devstories.starball_android.R
+import com.devstories.starball_android.actions.JoinAction
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
@@ -131,8 +131,6 @@ class JoinActivity : RootActivity() {
             startActivity(intent)
         }
 
-        elapsedTTV.dest_date_time = "2019-03-19 12:56:23"
-        elapsedTTV.start()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
