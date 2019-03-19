@@ -670,7 +670,10 @@ class DailyMomentListActivity : RootActivity() {
                         }
                         daillyAdapter.notifyDataSetChanged()
 
-                    } else {
+                    }else if ("empty" == result){
+                        adapterdata.clear()
+                        daillyAdapter.notifyDataSetChanged()
+                    }else{
 
                     }
 
