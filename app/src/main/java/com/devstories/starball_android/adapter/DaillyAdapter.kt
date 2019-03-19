@@ -209,6 +209,7 @@ open class DaillyAdapter(
 
         }
 
+
         ImageLoader.getInstance().displayImage(Config.url + profile_image_uri, item.profileIV, Utils.UILoptionsProfile)
         item.contentIV.setOnClickListener {
             val intent = Intent(context, DlgAlbumPayActivity::class.java)
@@ -258,6 +259,11 @@ open class DaillyAdapter(
             item.menuIV.visibility = View.VISIBLE
             item.timeTV.visibility = View.VISIBLE
             item.profileIV.visibility = View.VISIBLE
+            item.profileIV.setOnClickListener {
+                var intent = Intent(context, DailyMomentViewListActivity::class.java)
+                intent.putExtra("daily_member_id",like_member_id)
+                context.startActivity(intent)
+            }
 
         } else {
             item.subIV.visibility = View.GONE
