@@ -79,6 +79,25 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
     class MainSearchType3(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var infoLL = itemView.findViewById<View>(R.id.infoLL) as LinearLayout
+        var charmLL = itemView.findViewById<View>(R.id.charmLL) as LinearLayout
+        var meetLL = itemView.findViewById<View>(R.id.meetLL) as LinearLayout
+        var youcharmLL = itemView.findViewById<View>(R.id.youcharmLL) as LinearLayout
+        var imgIV = itemView.findViewById<View>(R.id.imgIV) as ImageView
+        var videoVV = itemView.findViewById<View>(R.id.videoVV) as PlayerView
+        var hereIV = itemView.findViewById<View>(R.id.hereIV) as ImageView
+        var safeIV = itemView.findViewById<View>(R.id.safeIV) as ImageView
+        var distanceTV = itemView.findViewById<View>(R.id.distanceTV) as TextView
+        var infoIV = itemView.findViewById<View>(R.id.infoIV) as ImageView
+        var nameTV = itemView.findViewById<View>(R.id.nameTV) as TextView
+        var ageTV = itemView.findViewById<View>(R.id.ageTV) as TextView
+        var fitRateTV = itemView.findViewById<View>(R.id.fitRateTV) as TextView
+        var charmIV = itemView.findViewById<View>(R.id.charmIV) as ImageView
+
+    }
+
+    class MainSearchType4(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        var infoLL = itemView.findViewById<View>(R.id.infoLL) as LinearLayout
 
         var imgIV = itemView.findViewById<View>(R.id.imgIV) as ImageView
         var videoVV = itemView.findViewById<View>(R.id.videoVV) as PlayerView
@@ -107,11 +126,15 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 val itemView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_main_search2, parent, false) as View
                 return MainSearchType2(itemView)
             }
+
+            2 -> {
+                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_main_search3, parent, false) as View
+                return MainSearchType3(itemView)
+            }
         }
 
-        var itemView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_main_search3, parent, false) as View
-
-        return MainSearchType3(itemView)
+        var itemView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_main_search4, parent, false) as View
+        return MainSearchType4(itemView)
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -356,8 +379,139 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
 
             }
 
-            else -> {
+            2 -> {
                 val holder = holder as MainSearchType3
+
+                if(preview) {
+                    holder.infoLL.visibility = View.GONE
+                } else {
+                    holder.infoLL.visibility = View.VISIBLE
+                }
+
+                if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
+
+                    if(preview && bitmap != null) {
+                        holder.imgIV.setImageBitmap(bitmap)
+                    } else {
+                        ImageLoader.getInstance().displayImage(Config.url + path, holder.imgIV, Utils.UILoptions)
+                    }
+
+                    holder.imgIV.visibility = View.VISIBLE
+                    holder.videoVV.visibility = View.GONE
+
+                } else {
+
+                    var dataSource = path
+                    if(!preview) {
+                        dataSource = Config.url + path
+                    }
+
+                    println("dataSource 2 : $dataSource")
+
+                    val (mediaSource, player) = createExoPlayer(dataSource)
+
+                    // holder.videoVV.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM)
+                    holder.videoVV.requestFocus()
+
+                    holder.videoVV.player = player
+                    player.playWhenReady = false
+                    player.prepare(mediaSource)
+
+                    holder.imgIV.visibility = View.GONE
+                    holder.videoVV.visibility = View.VISIBLE
+                }
+
+                val like_member_id  = Utils.getInt(memberInfo,"id")
+                val email = Utils.getString(memberInfo, "email")
+                val name = Utils.getString(memberInfo, "name")
+                val gender = Utils.getString(memberInfo, "gender")
+                val height = Utils.getString(memberInfo, "height")
+                val birth = Utils.getString(memberInfo, "birth")
+
+                val age = DateUtils.getYearDiffCount(birth, DateUtils.getToday("yyyyMMdd"), "yyyyMMdd")
+
+                val language = Utils.getString(memberInfo, "language")
+                val job = Utils.getString(memberInfo, "job")
+                val school = Utils.getString(memberInfo, "school")
+                val intro = Utils.getString(memberInfo, "intro")
+
+                Log.d("멤버정보",memberInfo.toString())
+
+                val languages = member.getJSONArray("languages")
+                val my_charms = member.getJSONArray("my_charms")
+                val your_charms = member.getJSONArray("your_charms")
+                val meets = member.getJSONArray("meets")
+                holder.charmLL.removeAllViews()
+                for (i in 0 until my_charms.length()){
+
+                    val my_charm = my_charms.get(i) as JSONObject
+
+                    val charmView = View.inflate(context, R.layout.item_main_charm_point, null)
+                    var charmTV: TextView = charmView.findViewById(R.id.charmTV)
+                    charmTV.text = Utils.getString(my_charm,"charm")
+
+                    holder.charmLL.addView(charmView)
+                }
+
+                holder.youcharmLL.removeAllViews()
+                for (i in 0 until your_charms.length()){
+
+                    val youcharm = your_charms.get(i) as JSONObject
+
+                    val charmView = View.inflate(context, R.layout.item_main_charm_point, null)
+                    var charmTV: TextView = charmView.findViewById(R.id.charmTV)
+                    charmTV.text = Utils.getString(youcharm,"charm")
+
+                    holder.youcharmLL.addView(charmView)
+                }
+
+                holder.meetLL.removeAllViews()
+                for (i in 0 until meets.length()){
+
+                    val meet = meets.get(i) as JSONObject
+
+                    val charmView = View.inflate(context, R.layout.item_main_charm_point, null)
+                    var charmTV: TextView = charmView.findViewById(R.id.charmTV)
+                    charmTV.text = Utils.getString(meet,"meet")
+
+                    holder.meetLL.addView(charmView)
+                }
+
+                holder.distanceTV.text = "17Km"
+                holder.nameTV.text = name
+                holder.ageTV.text = age.toString()
+                holder.fitRateTV.text = "23%"
+                holder.charmIV.setOnClickListener {
+                    Log.d("스타볼",starball.toString())
+                    if (starball>0){
+                        val intent = Intent(context, DlgCrushActivity::class.java)
+                        intent.putExtra("like_member_id",like_member_id)
+                        context.startActivity(intent)
+                    }else{
+                        val intent = Intent(context, DlgStarballLackActivity::class.java)
+                        context.startActivity(intent)
+                    }
+
+                    /*  val intent = Intent(context, MatchedActivity::class.java)
+                      context.startActivity(intent)*/
+                }
+                holder.infoIV.setOnClickListener {
+
+                    val intent = Intent(context, LikedNotiActivity::class.java)
+                    activity.startActivity(intent)
+                    activity.overridePendingTransition(0, 0)
+
+
+                    /*
+                    val intent = Intent("LIKED_NOTI")
+                    context.sendBroadcast(intent)
+                    */
+                }
+
+            }
+
+            else -> {
+                val holder = holder as MainSearchType4
 
                 if(preview) {
                     holder.infoLL.visibility = View.GONE

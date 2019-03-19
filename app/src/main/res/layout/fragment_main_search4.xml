@@ -25,9 +25,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="19.5dp"
+        android:layout_marginStart="19.5dp"
+        android:layout_marginEnd="19.5dp"
         android:layout_marginBottom="35dp"
-        android:background="#000000"
         android:layout_alignParentBottom="true"
         android:visibility="visible">
 
@@ -112,68 +112,87 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:shadowColor="#99040000"
-            android:shadowRadius="6"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:text="@string/iam"/>
-
         <LinearLayout
-            android:id="@+id/charmLL"
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="33.5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/picoe"/>
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/pic_3"/>
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/pic_4"/>
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/picoe"/>
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/pic_3"/>
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/pic_4"/>
+
+                </LinearLayout>
 
 
+            </LinearLayout>
+
+            <ImageView
+                android:paddingTop="15dp"
+                android:layout_marginRight="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/main_thumnail_more"/>
 
         </LinearLayout>
 
-        <TextView
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:shadowColor="#99040000"
-            android:shadowRadius="6"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:text="@string/we_meet"
-            />
-
-        <LinearLayout
-            android:id="@+id/meetLL"
+        <com.fuzzproductions.ratingbar.RatingBar
+            android:id="@+id/rating_bar"
             android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="#99040000"
-            android:shadowRadius="6"
-            android:textSize="12sp"
-            android:textColor="#ffffff"
-            android:text="@string/want_people"
-            />
-
-        <LinearLayout
-            android:id="@+id/youcharmLL"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-
-
-        </LinearLayout>
+            app:minAllowedStars="1"
+            app:numStars="5"
+            app:starSize="50dp"
+            app:starSpacing="12dp"
+            app:rating="0"
+            app:isIndicator="false"
+            app:emptyDrawable="@mipmap/star_empty"
+            app:filledDrawable="@drawable/icn_rating_star_green"
+            app:stepSize="0.5"/>
 
     </LinearLayout>
 
@@ -186,7 +205,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="9.5dp"
-        android:layout_marginBottom="178dp"/>
+        android:layout_marginBottom="150dp"/>
 
 
 </RelativeLayout>
