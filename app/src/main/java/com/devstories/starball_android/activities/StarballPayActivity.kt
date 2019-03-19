@@ -135,7 +135,8 @@ class StarballPayActivity : RootActivity() {
                     val result = response!!.getString("result")
 
                     if ("ok" == result) {
-                        Toast.makeText(context, "가입되었습니다", Toast.LENGTH_SHORT).show()
+
+                        Toast.makeText(context, getString(R.string.starball_buy_done), Toast.LENGTH_SHORT).show()
 
                         iapHelper.consume(purchaseToken)
 

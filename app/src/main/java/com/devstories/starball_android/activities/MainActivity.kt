@@ -281,8 +281,13 @@ class MainActivity : RootActivity() {
                         val members = response!!.getJSONArray("members")
                         for (idx in 0 until members.length()){
                             val member = members.get(idx) as JSONObject
+                            Log.d("멤버",member.toString())
                             member.put("starball",starball)
                             member.put("pages", member.getJSONArray("profiles"))
+                            member.put("languages", member.getJSONArray("languages"))
+                            member.put("my_charms", member.getJSONArray("my_charms"))
+                            member.put("your_charms", member.getJSONArray("your_charms"))
+                            member.put("meets", member.getJSONArray("meets"))
                             data.add(member)
                         }
                     }

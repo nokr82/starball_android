@@ -60,6 +60,8 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
         val json = data[position]
         val chatting = json.getJSONObject("Chatting")
 
+        val profile = json.getJSONObject("Profile")
+
         val chatting_member_id = Utils.getInt(chatting, "member_id")
         val member_id = PrefUtils.getIntPreference(context, "member_id")
 
@@ -81,6 +83,7 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
             item.otherLL.visibility = View.VISIBLE
             item.myLL.visibility = View.GONE
 
+            item.profileIV
             item.otherContentsTV.text = contents
             item.otherCreatedTV.text = created
 
@@ -115,7 +118,7 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
                 item.otherContentsLL.visibility = View.VISIBLE
                 item.otherVoiceLL.visibility = View.GONE
             }
-
+            ImageLoader.getInstance().displayImage(Config.url + Utils.getString(profile, "image_uri"), item.profileIV, Utils.UILoptionsPosting)
         } else {
             item.otherLL.visibility = View.GONE
             item.myLL.visibility = View.VISIBLE
@@ -124,8 +127,6 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
             item.myCreatedTV.text = created
 
             if (type == 2) {
-                ImageLoader.getInstance().displayImage(Config.url + Utils.getString(chatting, "image_uri"), item.myImageIV, Utils.UILoptionsPosting)
-
                 item.myImageIV.visibility = View.VISIBLE
                 item.myContentsLL.visibility = View.GONE
                 item.myVoiceLL.visibility = View.GONE
@@ -142,6 +143,8 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
                 item.myContentsLL.visibility = View.VISIBLE
                 item.myVoiceLL.visibility = View.GONE
             }
+            ImageLoader.getInstance().displayImage(Config.url + Utils.getString(profile, "image_uri"), item.myImageIV, Utils.UILoptionsPosting)
+
         }
 
         var like_yn = Utils.getString(chatting, "like_yn")

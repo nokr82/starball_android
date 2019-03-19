@@ -130,6 +130,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/month6LL"
                         android:background="@drawable/background_border_strock1_923b9f"
                         android:layout_width="0dp"
                         android:layout_weight="1"
@@ -170,6 +171,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/year1LL"
                         android:background="#f2f2f2"
                         android:layout_width="0dp"
                         android:layout_weight="1"

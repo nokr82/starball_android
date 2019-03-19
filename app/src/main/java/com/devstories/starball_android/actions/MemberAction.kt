@@ -86,6 +86,10 @@ object MemberAction {
         HttpClient.post("/members/propose_confirm", params, handler)
     }
 
+    fun join_membership(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/join_membership", params, handler)
+    }
+
     fun regist_token(params: RequestParams, handler: JsonHttpResponseHandler) {
 
     }
