@@ -78,11 +78,11 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>,
             var time = noon + " " + timesplit.get(0) + ":" + timesplit.get(1)
 
 
-            item.timeTV.setText(time)
+            item.timeTV.text = time
         } else {
             var since = Utils.since(created_at)
 
-            item.timeTV.setText(since)
+            item.timeTV.text = since
         }
 
 
@@ -90,33 +90,42 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>,
         Log.d("프로필",profile_image_uri.toString())
 
         item.nameTV.text = name+" "+age
-        if (type==1){
+        if (type==1) {
             item.videoRL.visibility = View.GONE
             item.videoVV.visibility = View.GONE
             item.contentIV.visibility = View.VISIBLE
             ImageLoader.getInstance().displayImage(Config.url + image_uri, item.contentIV, Utils.UILoptionsProfile)
-        }else{
+        } else {
             item.contentIV.visibility = View.GONE
             item.videoRL.visibility = View.VISIBLE
             item.videoVV.visibility = View.VISIBLE
             item.videoVV.setDataSource(Config.url + video_uri)
+
             Log.d("동영상",Config.url + video_uri.toString())
-//            item.videoVV.prepare(MediaPlayer.OnPreparedListener {  item.videoVV.seekTo(1)})
-//            item.videoVV.prepareAsync()
+
+            item.videoVV.release()
+
+            item.videoVV.prepare {
+                item.videoVV.seekTo(1)
+            }
+
+            item.playIV.setOnClickListener {
+                item.playIV.visibility = View.GONE
+                item.videoVV.start()
+            }
+
         }
-        item.playIV.setOnClickListener {
-            item.playIV.visibility = View.GONE
-            item.videoVV.start()
-        }
+
         ImageLoader.getInstance().displayImage(Config.url + profile_image_uri, item.profileIV, Utils.UILoptionsProfile)
         item.contentIV.setOnClickListener {
             val intent = Intent(context, DlgAlbumPayActivity::class.java)
             intent.putExtra("like_member_id",like_member_id)
            context.startActivity(intent)
         }
+
         if (like_yn=="N"){
             item.likeIV.setImageResource(R.mipmap.lounge_heart_like)
-        }else{
+        } else {
             item.likeIV.setImageResource(R.mipmap.profile_pre_super_like)
         }
 

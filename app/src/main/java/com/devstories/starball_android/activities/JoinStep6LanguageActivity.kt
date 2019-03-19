@@ -5,6 +5,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
+import android.graphics.Color
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -34,7 +35,7 @@ class JoinStep6LanguageActivity : RootActivity() {
 
         this.context = this
         progressDialog = ProgressDialog(context)
-
+        nextTV.setBackgroundResource(R.drawable.background_border_strock2)
         languageTV.setOnClickListener {
             val intent = Intent(context, DlgSelectLanguageActivity::class.java)
             startActivityForResult(intent, SELECT_LANGUAGE_REQUST_CODE)
@@ -50,6 +51,7 @@ class JoinStep6LanguageActivity : RootActivity() {
 
         val joinLanguage = PrefUtils.getStringPreference(context, "join_language", "")
         if(joinLanguage.isNotEmpty()) {
+            nextTV.setBackgroundColor(Color.BLACK)
             val splited = joinLanguage.split(",")
             for (language in splited) {
                 adapterData.add(language.trim())
@@ -82,6 +84,7 @@ class JoinStep6LanguageActivity : RootActivity() {
             SELECT_LANGUAGE_REQUST_CODE -> {
                 if (resultCode == Activity.RESULT_OK) {
                     if(data != null) {
+                        nextTV.setBackgroundColor(Color.BLACK)
                         adapterData.add(data.getStringExtra("selectedLanguage"))
                         languageAdapter.notifyDataSetChanged()
                     }

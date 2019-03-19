@@ -1,6 +1,7 @@
 package com.devstories.starball_android.activities
 
 import android.Manifest
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -31,7 +32,6 @@ import com.devstories.starball_android.base.Utils
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 import cz.msebera.android.httpclient.Header
-import kotlinx.android.synthetic.main.activity_friend_chatting.*
 import kotlinx.android.synthetic.main.fragment_chatting_match.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -56,8 +56,12 @@ class ChattingMatchFragment : Fragment() {
     var page = 1
     var totalPage = 1
 
-    private val MY_PERMISSIONS_REQUEST_READ_CONTACTS = 100
-    private var record = false
+    var length = -1
+    var isPlaying = false
+    var player: MediaPlayer? = null
+
+    val MY_PERMISSIONS_REQUEST_READ_CONTACTS = 100
+    var record = false
     var record_path = ""
     internal var reloadReciver: BroadcastReceiver? = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
@@ -93,16 +97,90 @@ class ChattingMatchFragment : Fragment() {
 
         loadData()
 
+    }
+
+
+    fun playing(recordPath: String) {
+
+        if (isPlaying == false) {
+
+            try {
+
+                if (player != null) {
+                    player!!.release()
+                }
+                player = MediaPlayer()
+
+                player!!.setDataSource(recordPath)
+                player!!.prepare()
+                player!!.start()
+
+                player!!.setOnCompletionListener(MediaPlayer.OnCompletionListener {
+                    isPlaying = false
+                })
+
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+
+            isPlaying = true
+        } else if (length > 0) {
+
+            if (length > player!!.duration) {
+                length = 0
+            }
+            player!!.seekTo(length)
+            player!!.start()
+            length = -1
+        } else {
+            playingPause()
+        }
+    }
+
+    private fun playingPause() {
+        if (isPlaying) {
+            player!!.pause()
+            length = player!!.currentPosition
+        }
+    }
+
+    private fun playStop() {
+        if (isPlaying) {
+            player!!.stop()
+        }
+    }
+
+    fun recordStop(type: Int,content:String,receiver_member_id:Int){
+
+        recorder.stop()
+
+        sendChatting(type,content,receiver_member_id)
 
     }
+
+    fun loadPermissions(perms: Array<String>, requestCode: Int) {
+        if (ContextCompat.checkSelfPermission(myContext, perms[0]) != PackageManager.PERMISSION_GRANTED
+            && ContextCompat.checkSelfPermission(myContext,perms[1]) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(myContext as Activity, perms, requestCode)
+        } else {
+            // 다음 부분은 항상 허용일 경우에 해당이 됩니다.
+            // 녹음 시작
+            record_start()
+        }
+    }
+
+
+
     fun record_start() {
 
         try {
 
+            recorder = MediaRecorder()
+
             val date = Date()
             val time = date.time
 
-            record_path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/starball/"
+            record_path = Environment.getExternalStorageDirectory().absolutePath + "/starball/"
 
             val file = File(record_path)
 
@@ -121,7 +199,7 @@ class ChattingMatchFragment : Fragment() {
             recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
 
             //이것은 코덱을 설정하는 것이라고 생각하면된다.
-            record_path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/starball/" + time + "_record.aac"
+            record_path = Environment.getExternalStorageDirectory().absolutePath + "/starball/" + time + "_record.aac"
 
             recorder.setOutputFile(record_path)
 
@@ -132,17 +210,13 @@ class ChattingMatchFragment : Fragment() {
             recorder.start()
 
             //시작하면된다.
-            Toast.makeText(context, "녹음을 시작합니다.", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "녹음을 시작합니다.", Toast.LENGTH_LONG).show()
 
-            voiceLL.setBackgroundColor(Color.parseColor("#333333"))
+//            voiceLL.setBackgroundColor(Color.parseColor("#333333"))
 
             record = true
 
-            try {
-                recorder.prepare()
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+
 
         } catch (e: IllegalStateException) {
             e.printStackTrace()
@@ -151,6 +225,8 @@ class ChattingMatchFragment : Fragment() {
         }
 
     }
+
+
 
     fun sendChatting(type: Int,content:String,receiver_member_id:Int) {
         member_id = PrefUtils.getIntPreference(context,"member_id")
@@ -194,7 +270,7 @@ class ChattingMatchFragment : Fragment() {
                     val result = response!!.getString("result")
 
                     record_path = ""
-
+                    loadData()
                     if ("ok" == result) {
 
                     } else {
@@ -245,42 +321,6 @@ class ChattingMatchFragment : Fragment() {
         })
     }
 
-    fun recordStop(){
-
-        recorder.stop()
-
-//        sendChatting(3)
-
-    }
-    fun voiceclick(){
-        if (record) {
-            // 녹음 끝
-            record = false
-
-            recordStop()
-
-            voiceLL.setBackgroundColor(Color.parseColor("#00000000"))
-
-        } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-                val perms = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO)
-                loadPermissions(perms, MY_PERMISSIONS_REQUEST_READ_CONTACTS)
-            } else {
-                // 녹음 시작
-                record_start()
-            }
-        }
-    }
-    private fun loadPermissions(perms: Array<String>, requestCode: Int) {
-        if (ContextCompat.checkSelfPermission(myContext, perms[0]) != PackageManager.PERMISSION_GRANTED
-            && ContextCompat.checkSelfPermission(myContext,perms[1]) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this!!.activity!!, perms, requestCode)
-        } else {
-            // 다음 부분은 항상 허용일 경우에 해당이 됩니다.
-            // 녹음 시작
-            record_start()
-        }
-    }
 
     private fun loadData() {
 
@@ -397,7 +437,108 @@ class ChattingMatchFragment : Fragment() {
     }
 
 
+    fun confirm(room_id:Int,like_member_id:Int) {
 
+        val member_id = PrefUtils.getIntPreference(context,"member_id")
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("room_id", room_id)
+        params.put("like_member_id", like_member_id)
+
+        ChattingAction.confirm(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+
+
+                    val result =   Utils.getString(response,"result")
+                    if ("ok" == result) {
+
+
+                    }
+
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+                    // progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+
+    }
 
     override fun onDestroy() {
         super.onDestroy()

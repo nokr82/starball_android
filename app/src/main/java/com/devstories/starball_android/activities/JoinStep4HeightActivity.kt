@@ -3,12 +3,14 @@ package com.devstories.starball_android.activities
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.KeyEvent
 import android.widget.Toast
+import com.devstories.starball_android.R
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
@@ -31,10 +33,11 @@ class JoinStep4HeightActivity : RootActivity() {
         progressDialog = ProgressDialog(context)
 
 //        height= PrefUtils.getStringPreference(context,"height")
-        Log.d("패스",height)
 
+        nextTV.setBackgroundResource(R.drawable.background_border_strock2)
         height = PrefUtils.getStringPreference(context,"join_height", "")
         if(height.isNotEmpty()) {
+            nextTV.setBackgroundColor(Color.BLACK)
             height1ET.setText(height.substring(0,1))
 
             if(height.length > 1) {
@@ -91,7 +94,11 @@ class JoinStep4HeightActivity : RootActivity() {
         height3ET.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-
+                if (height1ET.length()>0&&height2ET.length()>0&&height3ET.length()>0){
+                    nextTV.setBackgroundColor(Color.BLACK)
+                }else{
+                    nextTV.setBackgroundResource(R.drawable.background_border_strock2)
+                }
             }
             override fun afterTextChanged(s: Editable) {}
         })
@@ -104,6 +111,7 @@ class JoinStep4HeightActivity : RootActivity() {
                 }
             }
         }
+
 
 
 

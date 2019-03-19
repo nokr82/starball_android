@@ -1,7 +1,10 @@
 package com.devstories.starball_android.adapter
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -110,7 +113,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
 
 
         holder.chattingLV.visibility  = View.VISIBLE
-        matchChattingAdapter = MatchChattingAdapter(context, R.layout.item_match, adapterdata)
+        matchChattingAdapter = MatchChattingAdapter(context, R.layout.item_match, adapterdata,fragment)
         holder.chattingLV.adapter = matchChattingAdapter
         adapterdata.clear()
         if (send_chatting =="Y"){
@@ -134,7 +137,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
             holder.sendIV.visibility = View.VISIBLE
             holder.sendIV.setImageResource(R.mipmap.send_btn)
             holder.sendIV.setOnClickListener {
-
+                fragment.confirm(room_id,like_member_id)
             }
         }else{
             holder.sendIV.visibility = View.GONE
@@ -149,16 +152,38 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
             intent.putExtra("like_member_id",like_member_id)
             intent.putExtra("like_id",like_id)
             fragment.startActivity(intent)
+
         }
+
+        holder.micLL.setOnClickListener {
+            if (fragment.record) {
+                // 녹음 끝
+                fragment.record = false
+
+                fragment.recordStop(3,"",like_member_id)
+
+                holder.micLL.setBackgroundColor(Color.parseColor("#ffffff"))
+                holder.menuLL.visibility = View.GONE
+            } else {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
+                    val perms = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO)
+                    fragment.loadPermissions(perms, fragment.MY_PERMISSIONS_REQUEST_READ_CONTACTS)
+                } else {
+                    // 녹음 시작
+                    fragment.record_start()
+                }
+            }
+
+        }
+
 
 
 
         holder.sendLL.setOnClickListener {
             var content = Utils.getString(holder.msgET)
             fragment.sendChatting(1,content,like_member_id)
-
+            holder.menuLL.visibility = View.GONE
         }
-
         ImageLoader.getInstance().displayImage(Config.url + image_uri, holder.likeIV, Utils.UILoptions)
 
 

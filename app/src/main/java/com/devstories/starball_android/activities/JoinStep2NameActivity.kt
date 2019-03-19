@@ -3,6 +3,7 @@ package com.devstories.starball_android.activities
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -31,6 +32,12 @@ class JoinStep2NameActivity : RootActivity() {
 
         Log.d("패스",name)
         if (PrefUtils.getStringPreference(context,"join_name")!=null){
+            if (PrefUtils.getStringPreference(context,"join_name").length>2){
+                nextTV.setBackgroundColor(Color.BLACK)
+            }else{
+                nextTV.setBackgroundResource(R.drawable.background_border_strock2)
+            }
+
             nameET.setText(PrefUtils.getStringPreference(context,"join_name"))
             nameTV.text = PrefUtils.getStringPreference(context,"join_name")
         }
@@ -39,6 +46,11 @@ class JoinStep2NameActivity : RootActivity() {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
 
                 nameTV.text = Utils.getString(nameET)
+                if (s.length>2){
+                    nextTV.setBackgroundColor(Color.BLACK)
+                }else{
+                    nextTV.setBackgroundResource(R.drawable.background_border_strock2)
+                }
 
             }
 

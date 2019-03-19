@@ -131,6 +131,8 @@ class JoinActivity : RootActivity() {
             startActivity(intent)
         }
 
+        elapsedTTV.dest_date_time = "2019-03-19 12:56:23"
+        elapsedTTV.start()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
