@@ -91,6 +91,13 @@ class MainActivity : RootActivity() {
         var filter1 = IntentFilter("STARBALL_USE")
         registerReceiver(usestarballreciver, filter1)
 
+        logoIV.setOnClickListener {
+            val intent = Intent(mContext, StarballMemberShipActivity::class.java)
+            startActivity(intent)
+        }
+
+
+
         chatIV.setOnClickListener {
             val intent = Intent(this, ChattingActivity::class.java)
             startActivity(intent)
@@ -102,8 +109,8 @@ class MainActivity : RootActivity() {
         }
 
         prevIV.setOnClickListener {
-            val intent = Intent(this, StarballReceivedActivity::class.java)
-            startActivity(intent)
+            /*val intent = Intent(this, StarballReceivedActivity::class.java)
+            startActivity(intent)*/
         }
 
         val swipeStack = swipeStack as SwipeStack
