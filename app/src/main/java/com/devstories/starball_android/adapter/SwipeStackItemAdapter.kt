@@ -321,7 +321,7 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 holder.fitRateTV.text = "23%"
 
                 holder.heightTV.text = height+"cm"
-                holder.languageTV.text = langs.toString()
+                holder.languageTV.text = langs.toString().replace("[","").replace("]","")
                 holder.jobTV.text = "Job-"+job
                 holder.moneyTV.text = "수입" + work
 
