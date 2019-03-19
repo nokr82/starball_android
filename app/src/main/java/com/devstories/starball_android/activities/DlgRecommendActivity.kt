@@ -18,6 +18,7 @@ import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.RootActivity
+import com.devstories.starball_android.utils.FreeStarball
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
@@ -88,7 +89,7 @@ class DlgRecommendActivity : RootActivity() {
         val shareDialog = ShareDialog(this)
         shareDialog.registerCallback(callbackManager, object: FacebookCallback<Sharer.Result> {
             override fun onSuccess(result: Sharer.Result?) {
-                println("onSuccess : $result")
+                FreeStarball.freeStraball(context, 3)
             }
 
             override fun onError(error: FacebookException?) {
@@ -133,7 +134,7 @@ class DlgRecommendActivity : RootActivity() {
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
                 INSTAGRAM_REQUEST_CODE -> {
-
+                    FreeStarball.freeStraball(context, 8)
                 }
             }
         }
