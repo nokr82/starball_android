@@ -18,7 +18,6 @@ class CharmPointActivity : RootActivity() {
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
-
     var adapterData = ArrayList<String>()
     var type = -1
 
