@@ -137,7 +137,13 @@ class MainActivity : RootActivity() {
 
             override fun onViewSwipedToTop(position: Int) {
                 Log.d("멤버다",data[position].toString())
-                dislike()
+                var like_member = data[position].getJSONObject("member")
+                var like_member_id = Utils.getInt(like_member,"id")
+                if (member_id!=like_member_id){
+                    dislike(like_member_id)
+                }else{
+                    return
+                }
             }
 
             override fun onViewSwipedToBottom(position: Int) {
@@ -762,6 +768,7 @@ class MainActivity : RootActivity() {
         params.put("member_id", member_id)
         params.put("like_member_id",like_member_id)
         params.put("type", 1)
+        params.put("like_type", 1)
         params.put("starball", 1)
 
         MemberAction.like(params, object : JsonHttpResponseHandler() {
@@ -854,9 +861,103 @@ class MainActivity : RootActivity() {
         })
     }
 
+    fun dislike(like_member_id:Int) {
+        val member_id = PrefUtils.getIntPreference(mContext, "member_id")
 
-    fun dislike() {
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("like_member_id",like_member_id)
+        params.put("type", 1)
+        params.put("like_type", 2)
 
+        MemberAction.like(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                try {
+                    val result = response!!.getString("result")
+                    if ("ok" == result) {
+
+                    } else {
+
+                    }
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
     }
 
 
