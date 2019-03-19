@@ -98,7 +98,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
+//    @RequiresApi(api = Build.VERSION_CODES.O)
     private fun createChannel(
             notificationManager: NotificationManager,
             channelId: String,

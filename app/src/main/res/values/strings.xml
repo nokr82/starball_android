@@ -333,13 +333,13 @@
     <string name="charm_point_talk">대화를 잘해요</string>
     <string name="charm_point_activity">적극적인 사람</string>
     <string name="charm_point_onlylove">나만 좋아해주는 사람</string>
-    <string name="peristalsis">: 연동</string>
-    <string name="peristalsis_no">: 연동안됨</string>
-    <string name="dislike">: 싫어함</string>
-    <string name="dog">: 강아지</string>
-    <string name="none">: 없음</string>
-    <string name="not">: 안함</string>
-    <string name="golf">: 골프</string>
+    <string name="peristalsis">연동</string>
+    <string name="peristalsis_no">연동안됨</string>
+    <string name="dislike">싫어함</string>
+    <string name="dog">강아지</string>
+    <string name="none">없음</string>
+    <string name="not">안함</string>
+    <string name="golf">골프</string>
     <string name="christian">: 기독교</string>
 
 

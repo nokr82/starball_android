@@ -55,6 +55,7 @@
                             android:src="@mipmap/main_char_phone"/>
 
                         <TextView
+                            android:id="@+id/phoneTV"
                             android:paddingLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -78,6 +79,7 @@
                             android:src="@mipmap/main_char_mail"/>
 
                         <TextView
+                            android:id="@+id/emailTV"
                             android:paddingLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -114,6 +116,7 @@
                             android:src="@mipmap/main_char_religion"/>
 
                         <TextView
+                            android:id="@+id/regionTV"
                             android:paddingLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -136,9 +139,10 @@
                             android:src="@mipmap/main_char_politics"/>
 
                         <TextView
+                            android:id="@+id/policyTV"
                             android:paddingLeft="10dp"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:textSize="13dp"
                             android:textColor="#333333"
                             android:letterSpacing="-0.03"
@@ -174,6 +178,7 @@
                             android:src="@mipmap/main_char_baby"/>
 
                         <TextView
+                            android:id="@+id/babyTV"
                             android:paddingLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -196,6 +201,7 @@
                             android:src="@mipmap/main_char_animal"/>
 
                         <TextView
+                            android:id="@+id/dogTV"
                             android:paddingLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -233,6 +239,7 @@
                             android:src="@mipmap/main_char_smoke"/>
 
                         <TextView
+                            android:id="@+id/smokeTV"
                             android:paddingLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -255,6 +262,7 @@
                             android:src="@mipmap/main_char_alcohol"/>
 
                         <TextView
+                            android:id="@+id/drinkTV"
                             android:paddingLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -292,6 +300,7 @@
                             android:src="@mipmap/main_char_exercise"/>
 
                         <TextView
+                            android:id="@+id/healthTV"
                             android:paddingLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -314,6 +323,7 @@
                             android:src="@mipmap/main_char_sports"/>
 
                         <TextView
+                            android:id="@+id/sportTV"
                             android:paddingLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -352,6 +362,7 @@
                             android:src="@mipmap/main_char_height"/>
 
                         <TextView
+                            android:id="@+id/heightTV"
                             android:paddingLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -389,6 +400,7 @@
                             android:src="@mipmap/main_char_fb"/>
 
                         <TextView
+                            android:id="@+id/facebookTV"
                             android:paddingLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -411,6 +423,7 @@
                             android:src="@mipmap/main_char_ins"/>
 
                         <TextView
+                            android:id="@+id/instaTV"
                             android:paddingLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -449,6 +462,7 @@
                             android:src="@mipmap/main_char_dollar"/>
 
                         <TextView
+                            android:id="@+id/workTV"
                             android:paddingLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -486,6 +500,7 @@
                             android:src="@mipmap/main_char_airplan"/>
 
                         <TextView
+                            android:id="@+id/travelTV"
                             android:paddingLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -501,14 +516,14 @@
             </LinearLayout>
 
             <LinearLayout
-                android:paddingTop="23dp"
                 android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:layout_marginBottom="15dp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
                     android:id="@+id/reportTV"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
