@@ -288,6 +288,7 @@ class MainActivity : RootActivity() {
                             member.put("my_charms", member.getJSONArray("my_charms"))
                             member.put("your_charms", member.getJSONArray("your_charms"))
                             member.put("meets", member.getJSONArray("meets"))
+                            member.put("dailys", member.getJSONArray("dailys"))
                             data.add(member)
                         }
                     }

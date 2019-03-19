@@ -18,6 +18,7 @@ import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.*
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.DateUtils
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.ExoPlayerFactory
@@ -79,7 +80,7 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
     class MainSearchType3(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var infoLL = itemView.findViewById<View>(R.id.infoLL) as LinearLayout
-
+        var dailyLL = itemView.findViewById<View>(R.id.dailyLL) as LinearLayout
         var imgIV = itemView.findViewById<View>(R.id.imgIV) as ImageView
         var videoVV = itemView.findViewById<View>(R.id.videoVV) as PlayerView
         var hereIV = itemView.findViewById<View>(R.id.hereIV) as ImageView
@@ -92,7 +93,6 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
         var charmIV = itemView.findViewById<View>(R.id.charmIV) as ImageView
 
     }
-
 
     // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -397,6 +397,32 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                     holder.imgIV.visibility = View.GONE
                     holder.videoVV.visibility = View.VISIBLE
                 }
+                val dailys = member.getJSONArray("dailys")
+                if (dailys.length()<1){
+                    holder.dailyLL.visibility = View.GONE
+                }
+                val daily_member_id  = Utils.getInt(memberInfo,"id")
+                holder.dailyLL.setOnClickListener {
+                    var intent = Intent(context, DailyMomentViewListActivity::class.java)
+                    intent.putExtra("daily_member_id",daily_member_id)
+                    context.startActivity(intent)
+                }
+                holder.dailyLL.removeAllViews()
+                for (i in 0 until dailys.length()){
+                    val daily = dailys.get(i) as JSONObject
+                    val type = Utils.getInt(daily,"type")
+                    if (type==1){
+                        val image_uri = Utils.getString(daily,"image_uri")
+                        val dailyView = View.inflate(context, R.layout.item_main_daily, null)
+                        var dailyIV: ImageView = dailyView.findViewById(R.id.dailyIV)
+                        ImageLoader.getInstance().displayImage(Config.url + image_uri,dailyIV, Utils.UILoptions)
+                        holder.dailyLL.addView(dailyView)
+                    }
+
+                }
+
+
+
                 Log.d("멤버정보",memberInfo.toString())
                 val like_member_id  = Utils.getInt(memberInfo,"id")
                 val email = Utils.getString(memberInfo, "email")
