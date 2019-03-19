@@ -23,6 +23,7 @@ import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.FacebookSdk
 import com.facebook.share.Sharer
+import com.facebook.share.model.ShareMediaContent
 import com.facebook.share.model.SharePhoto
 import com.facebook.share.model.SharePhotoContent
 import com.facebook.share.widget.ShareDialog
@@ -119,7 +120,7 @@ class DlgRecommendActivity : RootActivity() {
 
 //        facebookShareImageUri = Uri.parse("android.resource://" + packageName + "/" + R.mipmap.main_starball);
 
-        var bm = BitmapFactory.decodeResource(getResources(), R.mipmap.main_starball);
+        var bm = BitmapFactory.decodeResource(getResources(), R.drawable.share);
 
         var extStorageDirectory = Environment.getExternalStorageDirectory().toString();
         var file = File(extStorageDirectory, "starball.png");
@@ -141,9 +142,11 @@ class DlgRecommendActivity : RootActivity() {
         val photo = SharePhoto.Builder()
             .setImageUrl(facebookShareImageUri)
             .build();
+
         val content = SharePhotoContent.Builder()
             .addPhoto(photo)
             .build();
+
         val shareDialog = ShareDialog(this)
 
         shareDialog.registerCallback(callbackManager, object: FacebookCallback<Sharer.Result> {
@@ -215,7 +218,7 @@ class DlgRecommendActivity : RootActivity() {
 
     private fun doShareInstagram() {
 
-        var bm = BitmapFactory.decodeResource(getResources(), R.mipmap.main_starball);
+        var bm = BitmapFactory.decodeResource(getResources(), R.drawable.share);
 
         var extStorageDirectory = Environment.getExternalStorageDirectory().toString();
         var file = File(extStorageDirectory, "starball.png");
