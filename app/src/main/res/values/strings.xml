@@ -402,4 +402,8 @@
     <string name="facebook_required">페이스북이 설치되어 있지 않습니다.</string>
     <string name="allow_permission">권한을 허용해주세요.</string>
 
+    <string name="advertise_text1">Straball이 드리는 가치는</string>
+    <string name="advertise_text2">존중,배려,환원</string>
+    <string name="advertise_text3">입니다.</string>
+
 </resources>
