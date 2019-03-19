@@ -122,7 +122,7 @@ class DailyMomentViewListActivity : RootActivity() {
                         val Like = response.getJSONObject("Like")
                         var created_at = Utils.getString(Like,"created_at")
 
-                        createdTV.text = created_at.substring(0, 10).replace("-", ".")
+                        createdTV.text = created_at.substring(0, 10).replace("-", ".")+"에 좋아요를 보냈습니다."
 
                         val list = response.getJSONArray("list")
                         for (i in 0..list.length() - 1) {

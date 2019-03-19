@@ -260,9 +260,14 @@ open class DaillyAdapter(
             item.timeTV.visibility = View.VISIBLE
             item.profileIV.visibility = View.VISIBLE
             item.profileIV.setOnClickListener {
-                var intent = Intent(context, DailyMomentViewListActivity::class.java)
-                intent.putExtra("daily_member_id",like_member_id)
-                context.startActivity(intent)
+                if (member_id!=like_member_id){
+                    var intent = Intent(context, DailyMomentViewListActivity::class.java)
+                    intent.putExtra("daily_member_id",like_member_id)
+                    context.startActivity(intent)
+                }else{
+                    return@setOnClickListener
+                }
+
             }
 
         } else {
