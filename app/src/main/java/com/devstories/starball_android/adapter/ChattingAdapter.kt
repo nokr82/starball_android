@@ -105,15 +105,15 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
                         activity.playing(Config.url + Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
                     }
 
-                    val voice_progress = Utils.getInt(chatting, "voice_progress")
+                    val voiceProgress = Utils.getInt(chatting, "voice_progress")
 
                     item.otherVoicePB.max = Utils.getInt(chatting, "voice_duration")
-                    item.otherVoicePB.progress = voice_progress
+                    item.otherVoicePB.progress = voiceProgress
 
-                    var minutes = ( voice_progress % (1000*60*60) ) / (1000*60)
-                    var seconds = ( ( voice_progress % (1000*60*60) ) % (1000*60) ) / 1000
+                    val minutes = ( voiceProgress % (1000*60*60) ) / (1000*60)
+                    val seconds = ( ( voiceProgress % (1000*60*60) ) % (1000*60) ) / 1000
 
-                    item.otherProgressTV.text = "${minutes}:${seconds}"
+                    item.otherProgressTV.text = "$minutes:$seconds"
                     item.otherVoiceTimeTV.text = Utils.getString(chatting, "voice_time")
 
                 }
@@ -133,45 +133,49 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
             item.myContentsTV.text = contents
             item.myCreatedTV.text = created
 
-            if (type == 2) {
+            when (type) {
+                2 -> {
 
-                ImageLoader.getInstance().displayImage(Config.url + Utils.getString(chatting, "image_uri"), item.myImageIV, Utils.UILoptionsPosting)
+                    ImageLoader.getInstance().displayImage(Config.url + Utils.getString(chatting, "image_uri"), item.myImageIV, Utils.UILoptionsPosting)
 
-                item.myImageIV.visibility = View.VISIBLE
-                item.myContentsLL.visibility = View.GONE
-                item.myVoiceLL.visibility = View.GONE
+                    item.myImageIV.visibility = View.VISIBLE
+                    item.myContentsLL.visibility = View.GONE
+                    item.myVoiceLL.visibility = View.GONE
 
-            } else if (type == 3) {
-                item.myImageIV.visibility = View.GONE
-                item.myContentsLL.visibility = View.GONE
-                item.myVoiceLL.visibility = View.VISIBLE
-
-                item.myVoiceIV.setOnClickListener {
-                    activity.playing(Config.url + Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
                 }
+                3 -> {
+                    item.myImageIV.visibility = View.GONE
+                    item.myContentsLL.visibility = View.GONE
+                    item.myVoiceLL.visibility = View.VISIBLE
 
-                val voice_progress = Utils.getInt(chatting, "voice_progress")
+                    item.myVoiceIV.setOnClickListener {
+                        activity.playing(Config.url + Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
+                    }
 
-                item.myVoicePB.max = Utils.getInt(chatting, "voice_duration")
-                item.myVoicePB.progress = voice_progress
+                    val voiceProgress = Utils.getInt(chatting, "voice_progress")
 
-                var minutes = ( voice_progress % (1000*60*60) ) / (1000*60)
-                var seconds = ( ( voice_progress % (1000*60*60) ) % (1000*60) ) / 1000
+                    item.myVoicePB.max = Utils.getInt(chatting, "voice_duration")
+                    item.myVoicePB.progress = voiceProgress
 
-                item.myProgressTV.text = "${minutes}:${seconds}"
-                item.myVoiceTimeTV.text = Utils.getString(chatting, "voice_time")
+                    val minutes = ( voiceProgress % (1000*60*60) ) / (1000*60)
+                    val seconds = ( ( voiceProgress % (1000*60*60) ) % (1000*60) ) / 1000
 
-            } else {
+                    item.myProgressTV.text = "${minutes}:${seconds}"
+                    item.myVoiceTimeTV.text = Utils.getString(chatting, "voice_time")
 
-                item.myImageIV.visibility = View.GONE
-                item.myContentsLL.visibility = View.VISIBLE
-                item.myVoiceLL.visibility = View.GONE
+                }
+                else -> {
 
+                    item.myImageIV.visibility = View.GONE
+                    item.myContentsLL.visibility = View.VISIBLE
+                    item.myVoiceLL.visibility = View.GONE
+
+                }
             }
         }
 
-        var like_yn = Utils.getString(chatting, "like_yn")
-        if (like_yn == "Y") {
+        val likeYn = Utils.getString(chatting, "like_yn")
+        if (likeYn == "Y") {
             item.likeIV.setImageResource(R.mipmap.lounge_heart_like)
             item.likeIV.setBackgroundColor(Color.parseColor("#000000"))
         } else {
@@ -180,8 +184,8 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
         }
 
         item.likeLL.setOnClickListener {
-            var edit_like_yn = if (like_yn == "Y") "N" else "Y"
-            activity.chattingLike(Utils.getInt(chatting, "id"), edit_like_yn)
+            val editLikeYn = if (likeYn == "Y") "N" else "Y"
+            activity.chattingLike(Utils.getInt(chatting, "id"), editLikeYn)
         }
 
         return retView
@@ -240,7 +244,6 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
     companion object {
         class TranslateAsyncTask internal constructor(context: Context, json: JSONObject, translatedTV: TextView) : AsyncTask<Void, String, Pair<String, String>>() {
 
-            private val contextReference: WeakReference<Context> = WeakReference(context)
             private val jsonReference: WeakReference<JSONObject> = WeakReference(json)
             private val translatedTVReference: WeakReference<TextView> = WeakReference(translatedTV)
 
@@ -251,18 +254,18 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
             override fun doInBackground(vararg params: Void?): Pair<String, String> {
                 val translate = TranslateOptions.newBuilder().setApiKey("AIzaSyAHMbqyG5pv-GEDv8K3ceD1xZBohrzO6aU").build().service
 
-                var contents = Utils.getString(jsonReference.get(),"contents")
+                val contents = Utils.getString(jsonReference.get(),"contents")
 
                 println("contents : $contents")
 
                 // my
-                var myLanguage = Locale.getDefault().language
+                val myLanguage = Locale.getDefault().language
                 val myTranslation = translate.translate(
                     contents,
                     Translate.TranslateOption.targetLanguage(myLanguage))
 
                 // english
-                var englishLanguage = Locale.ENGLISH.language
+                val englishLanguage = Locale.ENGLISH.language
                 val englishTranslation = translate.translate(
                     contents,
                     Translate.TranslateOption.targetLanguage(englishLanguage))
@@ -283,14 +286,14 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
 
         private fun saveTranslate(json:JSONObject) {
 
-            val chatting_id = Utils.getInt(json, "id")
-            val translate_in_my = Utils.getString(json, "translate_in_my")
-            val translate_in_english = Utils.getString(json, "translate_in_english")
+            val chattingId = Utils.getInt(json, "id")
+            val translateInMy = Utils.getString(json, "translate_in_my")
+            val translateInEnglish = Utils.getString(json, "translate_in_english")
 
             val params = RequestParams()
-            params.put("chatting_id", chatting_id)
-            params.put("translate_in_my", translate_in_my)
-            params.put("translate_in_english", translate_in_english)
+            params.put("chatting_id", chattingId)
+            params.put("translate_in_my", translateInMy)
+            params.put("translate_in_english", translateInEnglish)
 
             ChattingAction.saveTranslate(params, object : JsonHttpResponseHandler() {
 
@@ -310,10 +313,6 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
                         e.printStackTrace()
                     }
 
-                }
-
-                override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
-                    super.onSuccess(statusCode, headers, response)
                 }
 
                 override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
