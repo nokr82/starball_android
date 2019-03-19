@@ -454,13 +454,15 @@ class ChattingMatchFragment : Fragment() {
                     progressDialog!!.dismiss()
                 }
 
+                Log.d("매칭제발",response.toString())
                 try {
 
 
                     val result =   Utils.getString(response,"result")
                     if ("ok" == result) {
-
-
+                        var intent = Intent(context, FriendChattingActivity::class.java)
+                        intent.putExtra("room_id", room_id)
+                        myContext.startActivity(intent)
                     }
 
 
