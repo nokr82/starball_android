@@ -37,7 +37,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 
-class SwipeStackItemAdapter(private val context:Context, private val activity:Activity, private val memberInfo:JSONObject, private val data: JSONArray, private val preview:Boolean,private val starball:Int) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SwipeStackItemAdapter(private val context:Context, private val activity:Activity, private val member:JSONObject, private val data: JSONArray, private val preview:Boolean,private val starball:Int) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     class MainSearchType1(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -60,7 +60,9 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
     class MainSearchType2(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var infoLL = itemView.findViewById<View>(R.id.infoLL) as LinearLayout
-
+        var charmLL = itemView.findViewById<View>(R.id.charmLL) as LinearLayout
+        var meetLL = itemView.findViewById<View>(R.id.meetLL) as LinearLayout
+        var youcharmLL = itemView.findViewById<View>(R.id.youcharmLL) as LinearLayout
         var imgIV = itemView.findViewById<View>(R.id.imgIV) as ImageView
         var videoVV = itemView.findViewById<View>(R.id.videoVV) as PlayerView
         var hereIV = itemView.findViewById<View>(R.id.hereIV) as ImageView
@@ -116,6 +118,8 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         val item = data.get(position) as JSONObject
+
+        var memberInfo = member.getJSONObject("member")
 
         val id = Utils.getInt(item, "id")
         var path = Utils.getString(item, "path")
@@ -178,6 +182,9 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                     holder.imgIV.visibility = View.GONE
                     holder.videoVV.visibility = View.VISIBLE
                 }
+
+
+
                 val like_member_id  = Utils.getInt(memberInfo,"id")
                 val email = Utils.getString(memberInfo, "email")
                 val name = Utils.getString(memberInfo, "name")
@@ -275,6 +282,46 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 val intro = Utils.getString(memberInfo, "intro")
 
                 Log.d("멤버정보",memberInfo.toString())
+
+                val languages = member.getJSONArray("languages")
+                val my_charms = member.getJSONArray("my_charms")
+                val your_charms = member.getJSONArray("your_charms")
+                val meets = member.getJSONArray("meets")
+                holder.charmLL.removeAllViews()
+                for (i in 0 until my_charms.length()){
+
+                    val my_charm = my_charms.get(i) as JSONObject
+
+                    val charmView = View.inflate(context, R.layout.item_main_charm_point, null)
+                    var charmTV: TextView = charmView.findViewById(R.id.charmTV)
+                    charmTV.text = Utils.getString(my_charm,"charm")
+
+                    holder.charmLL.addView(charmView)
+                }
+
+                holder.youcharmLL.removeAllViews()
+                for (i in 0 until your_charms.length()){
+
+                    val youcharm = your_charms.get(i) as JSONObject
+
+                    val charmView = View.inflate(context, R.layout.item_main_charm_point, null)
+                    var charmTV: TextView = charmView.findViewById(R.id.charmTV)
+                    charmTV.text = Utils.getString(youcharm,"charm")
+
+                    holder.youcharmLL.addView(charmView)
+                }
+
+                holder.meetLL.removeAllViews()
+                for (i in 0 until meets.length()){
+
+                    val meet = meets.get(i) as JSONObject
+
+                    val charmView = View.inflate(context, R.layout.item_main_charm_point, null)
+                    var charmTV: TextView = charmView.findViewById(R.id.charmTV)
+                    charmTV.text = Utils.getString(meet,"meet")
+
+                    holder.meetLL.addView(charmView)
+                }
 
                 holder.distanceTV.text = "17Km"
                 holder.nameTV.text = name

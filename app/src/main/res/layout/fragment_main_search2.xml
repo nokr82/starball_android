@@ -27,8 +27,9 @@
         android:orientation="vertical"
         android:layout_marginLeft="19.5dp"
         android:layout_marginBottom="35dp"
+        android:background="#000000"
         android:layout_alignParentBottom="true"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -123,49 +124,11 @@
             android:text="@string/iam"/>
 
         <LinearLayout
+            android:id="@+id/charmLL"
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_marginRight="10dp"
-                android:padding="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="11dp"
-                android:background="@drawable/background_border_strock4_78678b"
-                android:textColor="#ffffff"
-                android:text="@string/charm_point_only"/>
-
-            <TextView
-                android:layout_marginRight="10dp"
-                android:padding="5dp"
-                android:background="@drawable/background_border_strock4_78678b"
-                android:textColor="#ffffff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="11dp"
-                android:text="@string/charm_point_frank"/>
-
-            <TextView
-                android:layout_marginRight="10dp"
-                android:padding="5dp"
-                android:background="@drawable/background_border_strock4_78678b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="11dp"
-                android:textColor="#ffffff"
-                android:text="@string/charm_point_bigeye"/>
-
-            <TextView
-                android:layout_marginRight="10dp"
-                android:padding="5dp"
-                android:background="@drawable/background_border_strock4_78678b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="11dp"
-                android:textColor="#ffffff"
-                android:text="@string/charm_point_talk"/>
 
 
         </LinearLayout>
@@ -183,39 +146,10 @@
             />
 
         <LinearLayout
+            android:id="@+id/meetLL"
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_marginRight="10dp"
-                android:padding="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="11dp"
-                android:background="@drawable/background_border_strock4_78678b"
-                android:textColor="#ffffff"
-                android:text="@string/charm_point_restaurant"/>
-
-            <TextView
-                android:layout_marginRight="10dp"
-                android:padding="5dp"
-                android:background="@drawable/background_border_strock4_78678b"
-                android:textColor="#ffffff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="11dp"
-                android:text="@string/charm_point_dosirak"/>
-
-            <TextView
-                android:layout_marginRight="10dp"
-                android:padding="5dp"
-                android:background="@drawable/background_border_strock4_78678b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="11dp"
-                android:textColor="#ffffff"
-                android:text="@string/charm_point_picnic"/>
 
 
         </LinearLayout>
@@ -233,39 +167,10 @@
             />
 
         <LinearLayout
+            android:id="@+id/youcharmLL"
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_marginRight="10dp"
-                android:padding="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="11dp"
-                android:background="@drawable/background_border_strock4_78678b"
-                android:textColor="#ffffff"
-                android:text="@string/charm_point_onlylove"/>
-
-            <TextView
-                android:layout_marginRight="10dp"
-                android:padding="5dp"
-                android:background="@drawable/background_border_strock4_78678b"
-                android:textColor="#ffffff"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="11dp"
-                android:text="@string/charm_point_activity"/>
-
-            <TextView
-                android:layout_marginRight="10dp"
-                android:padding="5dp"
-                android:background="@drawable/background_border_strock4_78678b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="11dp"
-                android:textColor="#ffffff"
-                android:text="@string/charm_point_comicwant"/>
 
 
         </LinearLayout>
