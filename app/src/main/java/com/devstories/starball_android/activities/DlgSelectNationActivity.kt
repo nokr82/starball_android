@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.NumberPicker
+import com.devstories.starball_android.R
 import com.devstories.starball_android.base.RootActivity
 import kotlinx.android.synthetic.main.dlg_select_language.*
 import java.util.*
@@ -21,6 +22,7 @@ class DlgSelectNationActivity : RootActivity() {
     private var ticketAdapter: ArrayAdapter<String>? = null
 
     private var selectedNation = ""
+    var type = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +32,14 @@ class DlgSelectNationActivity : RootActivity() {
 
         this.myContext = this
         progressDialog = ProgressDialog(myContext)
+
+        type =  intent.getIntExtra("type",-1)
+        if (type==1){
+            titleTV.text = "당신의 국적은?"
+        }else{
+            titleTV.text = "당신의 선호하는 국적를 알려 주세요."
+        }
+
 
         val locales = Locale.getAvailableLocales()
         val nations = ArrayList<String>()

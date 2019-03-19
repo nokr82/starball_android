@@ -14,9 +14,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:src="@mipmap/setting_character_icon_01"/>
+        android:src="@mipmap/setting_character_icon_global"/>
 
     <TextView
+        android:id="@+id/titleTV"
         android:textStyle="bold"
         android:paddingTop="25dp"
         android:layout_width="wrap_content"

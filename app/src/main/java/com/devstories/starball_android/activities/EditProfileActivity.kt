@@ -590,6 +590,7 @@ class EditProfileActivity : RootActivity() {
 
         nationRL.setOnClickListener {
             val intent = Intent(context, DlgSelectNationActivity::class.java)
+            intent.putExtra("type",1)
             startActivityForResult(intent, SELECT_NATION)
         }
         travelRL.setOnClickListener {
