@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -28,8 +29,7 @@
         android:layout_marginStart="19.5dp"
         android:layout_marginEnd="19.5dp"
         android:layout_marginBottom="35dp"
-        android:layout_alignParentBottom="true"
-        android:visibility="visible">
+        android:layout_alignParentBottom="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,7 +72,7 @@
                 android:id="@+id/infoIV"
                 android:paddingRight="7.5dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="28dp"
                 android:src="@mipmap/main_info"/>
 
             <TextView
@@ -112,87 +112,38 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/heightTV"
+            android:paddingTop="15dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_marginTop="15dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="33.5dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:layout_width="45dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_height="match_parent"
-                        android:src="@mipmap/picoe"/>
-
-                    <ImageView
-                        android:layout_width="45dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_height="match_parent"
-                        android:src="@mipmap/pic_3"/>
-
-                    <ImageView
-                        android:layout_width="45dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_height="match_parent"
-                        android:src="@mipmap/pic_4"/>
-
-                    <ImageView
-                        android:layout_width="45dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_height="match_parent"
-                        android:src="@mipmap/picoe"/>
-
-                    <ImageView
-                        android:layout_width="45dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_height="match_parent"
-                        android:src="@mipmap/pic_3"/>
-
-                    <ImageView
-                        android:layout_width="45dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_height="match_parent"
-                        android:src="@mipmap/pic_4"/>
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-            <ImageView
-                android:paddingTop="15dp"
-                android:layout_marginRight="20dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:src="@mipmap/main_thumnail_more"/>
-
-        </LinearLayout>
-
-        <com.fuzzproductions.ratingbar.RatingBar
-            android:id="@+id/rating_bar"
-            android:layout_width="match_parent"
+            android:textSize="12dp"
+            android:textColor="#ffffff"
+            android:text=""/>
+        <TextView
+            android:id="@+id/languageTV"
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:minAllowedStars="1"
-            app:numStars="5"
-            app:starSize="50dp"
-            app:starSpacing="12dp"
-            app:rating="0"
-            app:isIndicator="false"
-            app:emptyDrawable="@mipmap/star_empty"
-            app:filledDrawable="@drawable/icn_rating_star_green"
-            app:stepSize="0.5"/>
+            android:textSize="12dp"
+            android:textColor="#ffffff"
+            android:text=""/>
+        <TextView
+            android:id="@+id/jobTV"
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:textColor="#ffffff"
+            android:text=""/>
+        <TextView
+            android:id="@+id/moneyTV"
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:textColor="#ffffff"
+            android:text=""/>
 
     </LinearLayout>
 
@@ -205,7 +156,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="9.5dp"
-        android:layout_marginBottom="150dp"/>
+        android:layout_marginBottom="116dp"/>
 
 
 </RelativeLayout>
