@@ -8,11 +8,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.devstories.starball_android.base.ElapsedTimeTextView
-        android:id="@+id/elapsedTTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
     <TextView
         android:layout_marginTop="15.5dp"
         android:layout_width="match_parent"
