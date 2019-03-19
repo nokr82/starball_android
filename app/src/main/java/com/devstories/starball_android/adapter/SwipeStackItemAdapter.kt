@@ -45,7 +45,6 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
     class MainSearchType1(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var infoLL = itemView.findViewById<View>(R.id.infoLL) as LinearLayout
-
         var imgIV = itemView.findViewById<View>(R.id.imgIV) as ImageView
         var videoVV = itemView.findViewById<View>(R.id.videoVV) as PlayerView
         var hereIV = itemView.findViewById<View>(R.id.hereIV) as ImageView
@@ -243,9 +242,12 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 holder.introTV.text = intro
 
                 holder.infoIV.setOnClickListener {
-                    val intent = Intent(context, ChatNotiActivity::class.java)
+                    /*val intent = Intent(context, ChatNotiActivity::class.java)
                     activity.startActivity(intent)
-                    activity.overridePendingTransition(0, 0)
+                    activity.overridePendingTransition(0, 0)*/
+                    val intent = Intent(context, DlgCharInfoActivity::class.java)
+                    intent.putExtra("like_member_id",like_member_id)
+                    context.startActivity(intent)
                 }
 
                 holder.charmIV.setOnClickListener {
@@ -348,9 +350,9 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 holder.moneyTV.text = "수입" + work
 
                 holder.infoIV.setOnClickListener {
-                    val intent = Intent(context, ChatNotiActivity::class.java)
-                    activity.startActivity(intent)
-                    activity.overridePendingTransition(0, 0)
+                    val intent = Intent(context, DlgCharInfoActivity::class.java)
+                    intent.putExtra("like_member_id",like_member_id)
+                    context.startActivity(intent)
                 }
 
                 holder.charmIV.setOnClickListener {
@@ -366,7 +368,6 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
 
 
             }
-
             2 -> {
                 val holder = holder as MainSearchType2
 
@@ -429,7 +430,11 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 val intro = Utils.getString(memberInfo, "intro")
 
                 Log.d("멤버정보",memberInfo.toString())
-
+                holder.infoIV.setOnClickListener {
+                    val intent = Intent(context, DlgCharInfoActivity::class.java)
+                    intent.putExtra("like_member_id",like_member_id)
+                    context.startActivity(intent)
+                }
 
                 if (type !=1){
                     val my_charms = member.getJSONArray("my_charms")
@@ -493,12 +498,9 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                       context.startActivity(intent)*/
                 }
                 holder.infoIV.setOnClickListener {
-
-                    val intent = Intent(context, LikedNotiActivity::class.java)
-                    activity.startActivity(intent)
-                    activity.overridePendingTransition(0, 0)
-
-
+                    val intent = Intent(context, DlgCharInfoActivity::class.java)
+                    intent.putExtra("like_member_id",like_member_id)
+                    context.startActivity(intent)
                     /*
                     val intent = Intent("LIKED_NOTI")
                     context.sendBroadcast(intent)
@@ -506,7 +508,6 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 }
 
             }
-
             else -> {
                 val holder = holder as MainSearchType3
 
@@ -603,6 +604,12 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 holder.nameTV.text = name
                 holder.ageTV.text = age.toString()
                 holder.fitRateTV.text = "23%"
+
+                holder.infoIV.setOnClickListener {
+                    val intent = Intent(context, DlgCharInfoActivity::class.java)
+                    intent.putExtra("like_member_id",like_member_id)
+                    context.startActivity(intent)
+                }
 
                 holder.charmIV.setOnClickListener {
                     Log.d("스타볼",starball.toString())
