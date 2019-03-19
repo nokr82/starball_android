@@ -6,27 +6,32 @@ import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.Config
-import com.devstories.starball_android.base.DownloadFileAsyncTask
 import com.devstories.starball_android.base.RootActivity
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.FacebookSdk
 import com.facebook.share.Sharer
+import com.facebook.share.model.ShareMediaContent
 import com.facebook.share.model.SharePhoto
 import com.facebook.share.model.SharePhotoContent
-import com.facebook.share.model.ShareVideo
-import com.facebook.share.model.ShareVideoContent
 import com.facebook.share.widget.ShareDialog
 import kotlinx.android.synthetic.main.dlg_recommend.*
+import java.io.File
+import java.io.FileNotFoundException
+import java.io.FileOutputStream
+import java.io.IOException
 
 class DlgRecommendActivity : RootActivity() {
 
@@ -113,48 +118,64 @@ class DlgRecommendActivity : RootActivity() {
             return
         }
 
-        DownloadFileAsyncTask(context, DownloadFileAsyncTask.DownloadedListener { uri ->
-            facebookShareImageUri = uri
+//        facebookShareImageUri = Uri.parse("android.resource://" + packageName + "/" + R.mipmap.main_starball);
 
-            runOnUiThread(Runnable {
+        var bm = BitmapFactory.decodeResource(getResources(), R.drawable.share);
 
-                val photo = SharePhoto.Builder()
-                    .setImageUrl(uri)
-                    .build();
-                val content = SharePhotoContent.Builder()
-                    .addPhoto(photo)
-                    .build();
-                val shareDialog = ShareDialog(this)
+        var extStorageDirectory = Environment.getExternalStorageDirectory().toString();
+        var file = File(extStorageDirectory, "starball.png");
+        var outStream: FileOutputStream? = null;
+            try {
+                outStream = FileOutputStream(file);
+                bm.compress(Bitmap.CompressFormat.PNG, 100, outStream);
+                outStream.flush();
+                outStream.close();
 
-                shareDialog.registerCallback(callbackManager, object: FacebookCallback<Sharer.Result> {
-                    override fun onSuccess(result: Sharer.Result?) {
-                        contentResolver.delete(facebookShareImageUri, null, null)
-                    }
+            } catch (e: FileNotFoundException) {
+                e.printStackTrace();
+            } catch (e: IOException) {
+                e.printStackTrace();
+            }
 
-                    override fun onError(error: FacebookException?) {
-                        contentResolver.delete(facebookShareImageUri, null, null)
-                    }
+        facebookShareImageUri = Uri.fromFile(file);
 
-                    override fun onCancel() {
-                        contentResolver.delete(facebookShareImageUri, null, null)
-                    }
-                })
+        val photo = SharePhoto.Builder()
+            .setImageUrl(facebookShareImageUri)
+            .build();
 
-                if (ShareDialog.canShow(SharePhotoContent::class.java)) {
-                    shareDialog.show(content);
-                } else{
+        val content = SharePhotoContent.Builder()
+            .addPhoto(photo)
+            .build();
 
-                    contentResolver.delete(facebookShareImageUri, null, null)
+        val shareDialog = ShareDialog(this)
 
-                    Toast.makeText(context, getString(R.string.facebook_required), Toast.LENGTH_SHORT).show()
-                }
+        shareDialog.registerCallback(callbackManager, object: FacebookCallback<Sharer.Result> {
+            override fun onSuccess(result: Sharer.Result?) {
+                contentResolver.delete(facebookShareImageUri, null, null)
+            }
 
-                Handler().postDelayed({
-                    contentResolver.delete(facebookShareImageUri, null, null)
-                }, 1000 * 30)
+            override fun onError(error: FacebookException?) {
+                contentResolver.delete(facebookShareImageUri, null, null)
+            }
 
-            })
-        }).execute(uri);
+            override fun onCancel() {
+                contentResolver.delete(facebookShareImageUri, null, null)
+            }
+        })
+
+        if (ShareDialog.canShow(SharePhotoContent::class.java)) {
+            shareDialog.show(content);
+        } else{
+
+            contentResolver.delete(facebookShareImageUri, null, null)
+
+            Toast.makeText(context, getString(R.string.facebook_required), Toast.LENGTH_SHORT).show()
+        }
+
+        Handler().postDelayed({
+            contentResolver.delete(facebookShareImageUri, null, null)
+        }, 1000 * 30)
+
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
@@ -197,25 +218,37 @@ class DlgRecommendActivity : RootActivity() {
 
     private fun doShareInstagram() {
 
-        var uri = Config.url + share_image_uri
+        var bm = BitmapFactory.decodeResource(getResources(), R.drawable.share);
 
-        DownloadFileAsyncTask(context, DownloadFileAsyncTask.DownloadedListener { uri ->
-            instaShareImageUri = uri
+        var extStorageDirectory = Environment.getExternalStorageDirectory().toString();
+        var file = File(extStorageDirectory, "starball.png");
+        var outStream: FileOutputStream? = null;
 
-            runOnUiThread(Runnable {
-                val shareIntent = Intent(Intent.ACTION_SEND)
-                shareIntent.type = "image/*"
-                shareInstagramReally(shareIntent)
-            })
-        }).execute(uri);
+        try {
+
+            outStream = FileOutputStream(file);
+            bm.compress(Bitmap.CompressFormat.PNG, 100, outStream);
+            outStream.flush();
+            outStream.close();
+
+        } catch (e: FileNotFoundException) {
+            e.printStackTrace();
+        } catch (e: IOException) {
+            e.printStackTrace();
+        }
+
+        instaShareImageUri = Uri.fromFile(file);
+
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.type = "image/*"
+        shareInstagramReally(shareIntent)
+
     }
 
     private fun shareInstagramReally(shareIntent: Intent) {
         try {
 
             // shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + path));
-
-            println("instaShareImageUri::::::::::::::::::::::::::${instaShareImageUri}")
 
             shareIntent.putExtra(Intent.EXTRA_STREAM, instaShareImageUri);
             shareIntent.setPackage("com.instagram.android")
@@ -245,6 +278,8 @@ class DlgRecommendActivity : RootActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
                 INSTAGRAM_REQUEST_CODE -> {
@@ -254,8 +289,6 @@ class DlgRecommendActivity : RootActivity() {
                 }
             }
         }
-
-        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
 }

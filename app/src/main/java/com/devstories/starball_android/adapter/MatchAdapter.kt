@@ -138,6 +138,8 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
             holder.sendIV.setImageResource(R.mipmap.send_btn)
             holder.sendIV.setOnClickListener {
                 fragment.confirm(room_id,like_member_id)
+                fragment.adapterdata.removeAt(position)
+                fragment.matchAdapter.notifyDataSetChanged()
             }
         }else{
             holder.sendIV.visibility = View.GONE

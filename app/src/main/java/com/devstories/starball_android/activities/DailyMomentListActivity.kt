@@ -1,6 +1,5 @@
 package com.devstories.starball_android.activities
 
-import android.Manifest
 import android.app.ProgressDialog
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -8,7 +7,6 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
@@ -55,8 +53,11 @@ class DailyMomentListActivity : RootActivity() {
     lateinit var header: View
     lateinit var backIV: ImageView
     lateinit var videoLL: LinearLayout
+    lateinit var mypostTV: TextView
+    lateinit var nameTV: TextView
     lateinit var photoLL: LinearLayout
     lateinit var headRL: RelativeLayout
+    lateinit var profileIV: ImageView
 
     var items= ArrayList<String>()
 
@@ -82,7 +83,9 @@ class DailyMomentListActivity : RootActivity() {
         var filter1 = IntentFilter("DEL_POST")
         registerReceiver(reloadReciver, filter1)
 
-        daillyAdapter = DaillyAdapter(context, R.layout.item_daily_list, adapterdata,this)
+        daillyAdapter = DaillyAdapter(context, R.layout.item_daily_list, adapterdata,this,
+            DailyMomentViewListActivity(),1
+        )
         dailyLV.adapter = daillyAdapter
 
 
@@ -117,7 +120,18 @@ class DailyMomentListActivity : RootActivity() {
         headRL = header.findViewById(R.id.headRL)
         videoLL = header.findViewById(R.id.videoLL)
         photoLL = header.findViewById(R.id.photoLL)
+        profileIV = header.findViewById(R.id.profileIV)
+        mypostTV = header.findViewById(R.id.mypostTV)
+        nameTV = header.findViewById(R.id.nameTV)
         dailyLV.addHeaderView(header)
+
+        mypostTV.setOnClickListener {
+            var intent = Intent(context, DailyMomentViewListActivity::class.java)
+            intent.putExtra("daily_member_id",PrefUtils.getIntPreference(context, "member_id"))
+            startActivity(intent)
+
+        }
+
         headRL.setOnClickListener {
 
         }

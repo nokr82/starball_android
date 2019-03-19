@@ -322,13 +322,6 @@
                     android:background="#000000"/>
 
             </RelativeLayout>
-
-            <GridView
-                android:id="@+id/languageGV"
-                android:numColumns="3"
-                android:scrollbars="none"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
             <LinearLayout
                 android:id="@id/languageLL"
                 android:layout_marginTop="30.5dp"
@@ -353,10 +346,59 @@
 
             </LinearLayout>
 
+            <GridView
+                android:id="@+id/languageGV"
+                android:numColumns="3"
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:layout_marginTop="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:textColor="#333333"
+                android:text="당신의 선호하는 국적를 알려 주세요."/>
+
+            <RelativeLayout
+                android:id="@+id/nationRL"
+                android:layout_marginTop="11.5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp">
+
+                <TextView
+                    android:id="@+id/nationTV"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:background="@null"
+                    android:textSize="14dp"
+                    android:textColor="#555555"
+                    android:text="@string/select_hint"/>
+
+                <ImageView
+                    android:paddingLeft="50dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/op_drop"/>
+
+                <View
+                    android:layout_marginTop="5dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000"/>
+
+            </RelativeLayout>
+
 
             <LinearLayout
                 android:id="@+id/nationLL"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="40dp"
                 android:layout_width="match_parent"
                 android:gravity="center_vertical"
                 android:layout_height="wrap_content">

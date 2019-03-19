@@ -63,6 +63,11 @@
                 android:label="@string/app_name"/>
 
         <activity
+                android:name=".activities.StarballAdvertiseActivity"
+                android:theme="@style/NoTitleDialog"
+                android:windowSoftInputMode="adjustResize|stateHidden"/>
+
+        <activity
                 android:name=".activities.FindPasswordActivity"
                 android:theme="@style/NoTitleDialog"
                 android:windowSoftInputMode="adjustResize|stateHidden">
