@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.*
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
-import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.activities.FriendChattingActivity
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.PrefUtils
@@ -21,7 +20,6 @@ import com.loopj.android.http.RequestParams
 import com.nostra13.universalimageloader.core.ImageLoader
 import cz.msebera.android.httpclient.Header
 import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.fragment_charmpoint_work.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -29,12 +27,9 @@ import java.lang.ref.WeakReference
 import java.text.SimpleDateFormat
 import java.util.*
 
-open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObject>, activity: FriendChattingActivity) : ArrayAdapter<JSONObject>(context, view, data) {
+open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<JSONObject>, val activity: FriendChattingActivity) : ArrayAdapter<JSONObject>(context, view, data) {
 
     private lateinit var item: ViewHolder
-    var view:Int = view
-    var data:ArrayList<JSONObject> = data
-    var activity: FriendChattingActivity = activity
 
     override fun getView(position: Int, convertView: View?, parent : ViewGroup?): View {
 
@@ -46,8 +41,7 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
             retView.tag = item
         } else {
             retView = convertView
-            item = convertView.tag as ViewHolder
-            if (item == null) {
+            if (convertView.tag == null) {
                 retView = View.inflate(context, view, null)
                 item = ViewHolder(retView)
                 retView.tag = item
@@ -59,24 +53,24 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
 
         val profile = json.getJSONObject("Profile")
 
-        val chatting_member_id = Utils.getInt(chatting, "member_id")
-        val member_id = PrefUtils.getIntPreference(context, "member_id")
+        val chattingMemberId = Utils.getInt(chatting, "member_id")
+        val memberId = PrefUtils.getIntPreference(context, "member_id")
 
         val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
         val dateFormat2 = SimpleDateFormat("MM/dd hh:mm a", Locale.US)
 
         val type = Utils.getInt(chatting, "type")
         val contents = Utils.getString(chatting, "contents")
-        var translate_in_my = Utils.getString(chatting, "translate_in_my")
-        if(translate_in_my.isEmpty()) {
-            translate_in_my = context.getString(R.string.in_translate)
+        var translateInMy = Utils.getString(chatting, "translate_in_my")
+        if(translateInMy.isEmpty()) {
+            translateInMy = context.getString(R.string.in_translate)
         }
-        val created_at = Utils.getString(chatting, "created_at")
+        val createdAt = Utils.getString(chatting, "created_at")
 
-        val created_dt = dateFormat.parse(created_at)
-        val created = dateFormat2.format(created_dt)
+        val createdDt = dateFormat.parse(createdAt)
+        val created = dateFormat2.format(createdDt)
 
-        if (chatting_member_id != member_id) {
+        if (chattingMemberId == memberId) {
             item.otherLL.visibility = View.VISIBLE
             item.myLL.visibility = View.GONE
 
@@ -85,9 +79,9 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
 
             if (activity.translation_yn == "Y") {
                 item.translationTV.visibility = View.VISIBLE
-                item.translationTV.text = translate_in_my
+                item.translationTV.text = translateInMy
 
-                if(translate_in_my == context.getString(R.string.in_translate)) {
+                if(translateInMy == context.getString(R.string.in_translate)) {
                     translate(chatting, item.translationTV)
                 }
 
@@ -96,34 +90,38 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
                 item.translationTV.text = contents
             }
 
-            if (type == 2) {
-                item.otherImageIV.visibility = View.VISIBLE
-                item.otherContentsLL.visibility = View.GONE
-                item.otherVoiceLL.visibility = View.GONE
-            } else if (type == 3) {
-                item.otherImageIV.visibility = View.GONE
-                item.otherContentsLL.visibility = View.GONE
-                item.otherVoiceLL.visibility = View.VISIBLE
-
-                item.otherVoiceIV.setOnClickListener {
-                    activity.playing(Config.url + Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
+            when (type) {
+                2 -> {
+                    item.otherImageIV.visibility = View.VISIBLE
+                    item.otherContentsLL.visibility = View.GONE
+                    item.otherVoiceLL.visibility = View.GONE
                 }
+                3 -> {
+                    item.otherImageIV.visibility = View.GONE
+                    item.otherContentsLL.visibility = View.GONE
+                    item.otherVoiceLL.visibility = View.VISIBLE
 
-                val voice_progress = Utils.getInt(chatting, "voice_progress")
+                    item.otherVoiceIV.setOnClickListener {
+                        activity.playing(Config.url + Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
+                    }
 
-                item.otherVoicePB.max = Utils.getInt(chatting, "voice_duration")
-                item.otherVoicePB.progress = voice_progress
+                    val voice_progress = Utils.getInt(chatting, "voice_progress")
 
-                var minutes = ( voice_progress % (1000*60*60) ) / (1000*60)
-                var seconds = ( ( voice_progress % (1000*60*60) ) % (1000*60) ) / 1000
+                    item.otherVoicePB.max = Utils.getInt(chatting, "voice_duration")
+                    item.otherVoicePB.progress = voice_progress
 
-                item.otherProgressTV.text = "${minutes}:${seconds}"
-                item.otherVoiceTimeTV.text = Utils.getString(chatting, "voice_time")
+                    var minutes = ( voice_progress % (1000*60*60) ) / (1000*60)
+                    var seconds = ( ( voice_progress % (1000*60*60) ) % (1000*60) ) / 1000
 
-            } else {
-                item.otherImageIV.visibility = View.GONE
-                item.otherContentsLL.visibility = View.VISIBLE
-                item.otherVoiceLL.visibility = View.GONE
+                    item.otherProgressTV.text = "${minutes}:${seconds}"
+                    item.otherVoiceTimeTV.text = Utils.getString(chatting, "voice_time")
+
+                }
+                else -> {
+                    item.otherImageIV.visibility = View.GONE
+                    item.otherContentsLL.visibility = View.VISIBLE
+                    item.otherVoiceLL.visibility = View.GONE
+                }
             }
 
             ImageLoader.getInstance().displayImage(Config.url + Utils.getString(profile, "image_uri"), item.profileIV, Utils.UILoptionsPosting)
@@ -203,64 +201,34 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
 
     class ViewHolder(v: View) {
 
-        var otherLL: LinearLayout
-        var otherContentsLL: LinearLayout
-        var otherContentsTV: TextView
-        var otherCreatedTV: TextView
-        var translationTV: TextView
-        var otherImageIV: ImageView
-        var otherVoiceLL: LinearLayout
-        var otherVoiceIV: ImageView
-        var otherVoicePB: ProgressBar
-        var otherProgressTV: TextView
-        var otherVoiceTimeTV: TextView
+        var otherLL: LinearLayout = v.findViewById(R.id.otherLL)
+        var otherContentsLL: LinearLayout = v.findViewById(R.id.otherContentsLL)
+        var otherContentsTV: TextView = v.findViewById(R.id.otherContentsTV)
+        var otherCreatedTV: TextView = v.findViewById(R.id.otherCreatedTV)
+        var translationTV: TextView = v.findViewById(R.id.translationTV)
+        var otherImageIV: ImageView = v.findViewById(R.id.otherImageIV)
+        var otherVoiceLL: LinearLayout = v.findViewById(R.id.otherVoiceLL)
+        var otherVoiceIV: ImageView = v.findViewById(R.id.otherVoiceIV)
+        var otherVoicePB: ProgressBar = v.findViewById(R.id.otherVoicePB)
+        var otherProgressTV: TextView = v.findViewById(R.id.otherProgressTV)
+        var otherVoiceTimeTV: TextView = v.findViewById(R.id.otherVoiceTimeTV)
 
-        var myLL: LinearLayout
-        var myContentsLL: LinearLayout
-        var myContentsTV: TextView
-        var myCreatedTV: TextView
-        var myImageIV: ImageView
-        var myVoiceLL: LinearLayout
-        var myVoiceIV: ImageView
-        var myVoicePB: ProgressBar
-        var myProgressTV: TextView
-        var myVoiceTimeTV: TextView
+        var myLL: LinearLayout = v.findViewById(R.id.myLL)
+        var myContentsLL: LinearLayout = v.findViewById(R.id.myContentsLL)
+        var myContentsTV: TextView = v.findViewById(R.id.myContentsTV)
+        var myCreatedTV: TextView = v.findViewById(R.id.myCreatedTV)
+        var myImageIV: ImageView = v.findViewById(R.id.myImageIV)
+        var myVoiceLL: LinearLayout = v.findViewById(R.id.myVoiceLL)
+        var myVoiceIV: ImageView = v.findViewById(R.id.myVoiceIV)
+        var myVoicePB: ProgressBar = v.findViewById(R.id.myVoicePB)
+        var myProgressTV: TextView = v.findViewById(R.id.myProgressTV)
+        var myVoiceTimeTV: TextView = v.findViewById(R.id.myVoiceTimeTV)
 
-        var profileIV: CircleImageView
+        var profileIV: CircleImageView = v.findViewById(R.id.profileIV)
 
-        var likeIV: ImageView
-        var likeLL: LinearLayout
+        var likeIV: ImageView = v.findViewById(R.id.likeIV)
+        var likeLL: LinearLayout = v.findViewById(R.id.likeLL)
 
-        init {
-
-            otherLL = v.findViewById(R.id.otherLL)
-            otherContentsLL = v.findViewById(R.id.otherContentsLL)
-            otherContentsTV = v.findViewById(R.id.otherContentsTV)
-            otherCreatedTV = v.findViewById(R.id.otherCreatedTV)
-            translationTV = v.findViewById(R.id.translationTV)
-            otherImageIV = v.findViewById(R.id.otherImageIV)
-            otherVoiceLL = v.findViewById(R.id.otherVoiceLL)
-            otherVoiceIV = v.findViewById(R.id.otherVoiceIV)
-            otherVoicePB = v.findViewById(R.id.otherVoicePB)
-            otherProgressTV = v.findViewById(R.id.otherProgressTV)
-            otherVoiceTimeTV = v.findViewById(R.id.otherVoiceTimeTV)
-
-            myLL = v.findViewById(R.id.myLL)
-            myContentsLL = v.findViewById(R.id.myContentsLL)
-            myContentsTV = v.findViewById(R.id.myContentsTV)
-            myCreatedTV = v.findViewById(R.id.myCreatedTV)
-            myImageIV = v.findViewById(R.id.myImageIV)
-            myVoiceLL = v.findViewById(R.id.myVoiceLL)
-            myVoiceIV = v.findViewById(R.id.myVoiceIV)
-            myVoicePB = v.findViewById(R.id.myVoicePB)
-            myProgressTV = v.findViewById(R.id.myProgressTV)
-            myVoiceTimeTV = v.findViewById(R.id.myVoiceTimeTV)
-
-            profileIV = v.findViewById(R.id.profileIV)
-            likeIV = v.findViewById(R.id.likeIV)
-            likeLL = v.findViewById(R.id.likeLL)
-
-        }
     }
 
     private fun translate(data:JSONObject, translatedTV:TextView) {
@@ -281,7 +249,7 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
             }
 
             override fun doInBackground(vararg params: Void?): Pair<String, String> {
-                val translate = TranslateOptions.newBuilder().setApiKey("AIzaSyCLwg17uTRmdqs-fwD6paGGgji32cIFVi4").build().service
+                val translate = TranslateOptions.newBuilder().setApiKey("AIzaSyAHMbqyG5pv-GEDv8K3ceD1xZBohrzO6aU").build().service
 
                 var contents = Utils.getString(jsonReference.get(),"contents")
 
