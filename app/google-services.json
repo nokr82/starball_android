@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "783605474338",
-    "firebase_url": "https://dev-starball-1550876460167.firebaseio.com",
-    "project_id": "dev-starball-1550876460167",
-    "storage_bucket": "dev-starball-1550876460167.appspot.com"
+    "project_number": "156092687388",
+    "firebase_url": "https://starball-387de.firebaseio.com",
+    "project_id": "starball-387de",
+    "storage_bucket": "starball-387de.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:783605474338:android:1c62ce1c8fa29d03",
+        "mobilesdk_app_id": "1:156092687388:android:1c62ce1c8fa29d03",
         "android_client_info": {
           "package_name": "com.devstories.starball_android"
         }
       },
       "oauth_client": [
         {
-          "client_id": "783605474338-lhj8tur8826vrjgpbci6jlgoutea4jvn.apps.googleusercontent.com",
+          "client_id": "156092687388-htg238kai76rivlei4gli2svfq3jot0n.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.devstories.starball_android",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "783605474338-cf4099se6psvucnt1n7kb5rh48diq1h4.apps.googleusercontent.com",
+          "client_id": "156092687388-6o29lff9arlfrmeniqh26nqr104ajcmq.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCLwg17uTRmdqs-fwD6paGGgji32cIFVi4"
+          "current_key": "AIzaSyAHMbqyG5pv-GEDv8K3ceD1xZBohrzO6aU"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "783605474338-cf4099se6psvucnt1n7kb5rh48diq1h4.apps.googleusercontent.com",
+              "client_id": "156092687388-6o29lff9arlfrmeniqh26nqr104ajcmq.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
