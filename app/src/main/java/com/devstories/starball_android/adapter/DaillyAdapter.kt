@@ -220,7 +220,7 @@ open class DaillyAdapter(
         if (like_yn == "N") {
             item.likeIV.setImageResource(R.mipmap.lounge_heart_like)
         } else {
-            item.likeIV.setImageResource(R.mipmap.profile_pre_super_like)
+            item.likeIV.setImageResource(R.mipmap.lounge_heart_like_on)
         }
 
 
@@ -233,7 +233,7 @@ open class DaillyAdapter(
                     activity2.like(content_id)
                 }
 
-                item.likeIV.setImageResource(R.mipmap.profile_pre_super_like)
+                item.likeIV.setImageResource(R.mipmap.lounge_heart_like_on)
             } else {
                 if (v_type == 1) {
                     activity.like(content_id)
