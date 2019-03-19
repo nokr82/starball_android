@@ -258,8 +258,7 @@ open class DaillyAdapter(
             item.menuIV.visibility = View.VISIBLE
             item.timeTV.visibility = View.VISIBLE
             item.profileIV.visibility = View.VISIBLE
-            ImageLoader.getInstance().displayImage(Config.url + profile_image_uri,activity.profileIV, Utils.UILoptionsProfile)
-            activity.nameTV.text = name
+
         } else {
             item.subIV.visibility = View.GONE
             item.menuIV.visibility = View.GONE
