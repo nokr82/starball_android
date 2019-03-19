@@ -22,7 +22,6 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import android.support.v4.content.ContextCompat
 
 class SearchSettingActivity : RootActivity() {
@@ -38,10 +37,12 @@ class SearchSettingActivity : RootActivity() {
 
     var search_gender = ""
     var gender = ""
-
+    var like_nation = ""
     var vvipview_yn = "N"
     var saveview_yn = "N"
     var other_nation = "N"
+    private val SELECT_NATION = 1005
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +57,12 @@ class SearchSettingActivity : RootActivity() {
             adapterData.removeAt(position)
 
             languageAdapter.notifyDataSetChanged()
+        }
+
+
+        nationRL.setOnClickListener {
+            val intent = Intent(context, DlgSelectNationActivity::class.java)
+            startActivityForResult(intent, SELECT_NATION)
         }
 
         ageSB.setOnRangeSeekbarChangeListener { minValue, maxValue ->
@@ -182,9 +189,11 @@ class SearchSettingActivity : RootActivity() {
 
 
     fun edit_search() {
+        like_nation = Utils.getString(nationTV)
         var member_id = PrefUtils.getIntPreference(context, "member_id")
 
         val params = RequestParams()
+        params.put("like_nation", like_nation)
         params.put("member_id", member_id)
         params.put("vvipview_yn", vvipview_yn)
         params.put("saveview_yn", saveview_yn)
@@ -211,6 +220,8 @@ class SearchSettingActivity : RootActivity() {
                     Log.d("결과", result.toString())
                     if ("ok" == result) {
                         Toast.makeText(context, "변경되었습니다", Toast.LENGTH_SHORT).show()
+                        get_info()
+
                     } else {
 
                     }
@@ -318,7 +329,10 @@ class SearchSettingActivity : RootActivity() {
                         other_nation = Utils.getString(member, "other_nation")
                         gender = Utils.getString(member, "gender")
                         search_gender = Utils.getString(member, "search_gender")
-
+                        like_nation = Utils.getString(member, "like_nation")
+                        if (like_nation != ""){
+                            nationTV.text = like_nation
+                        }
                         adapterData.clear()
 
                         val like_languages = response.getJSONArray("like_languages")
@@ -483,6 +497,15 @@ class SearchSettingActivity : RootActivity() {
                     if (data != null) {
                         adapterData.add(data.getStringExtra("selectedLanguage"))
                         languageAdapter.notifyDataSetChanged()
+                    }
+                }
+            }
+
+            SELECT_NATION -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    if (data != null) {
+                        nationTV.text = data.getStringExtra("selectedNation")
+
                     }
                 }
             }
