@@ -49,6 +49,7 @@ class EditProfileActivity : RootActivity() {
     private var progressDialog: ProgressDialog? = null
 
 
+
     private val SELECT_LANGUAGE_REQUST_CODE = 1004
     private val SELECT_PICTURE_REQUEST = 1002
     private val SELECT_NATION = 1005
@@ -116,12 +117,13 @@ class EditProfileActivity : RootActivity() {
     var cross_yn = ""
     var ghost_yn = ""
     var savejoin_yn = ""
-    var phone_yn = ""
+    var phone_yn = "N"
     var email_yn = ""
     var facebook_yn = ""
     var insta_yn = ""
     var travel = ""
     var travel_cal = ""
+    var phone = ""
 
     private lateinit var callbackManager: CallbackManager
     private var accessToken: com.facebook.AccessToken? = null
@@ -526,8 +528,8 @@ class EditProfileActivity : RootActivity() {
             startActivityForResult(intent,SAVE_JOIN)
         }
         emailLL.setOnClickListener {
-            val intent = Intent(context, EmailConnectActivity::class.java)
-            startActivity(intent)
+                val intent = Intent(context, EmailConnectActivity::class.java)
+                startActivity(intent)
         }
         ghostIV.setOnClickListener {
             setmenu()
@@ -729,7 +731,7 @@ class EditProfileActivity : RootActivity() {
                         sport = Utils.getString(member, "sport")
                         animal = Utils.getString(member, "animal")
                         work = Utils.getString(member, "work")
-
+                        phone = Utils.getString(member, "phone")
 
                         vvip_yn = Utils.getString(member, "vvip_yn")
                         know_yn = Utils.getString(member, "know_yn")
@@ -745,6 +747,12 @@ class EditProfileActivity : RootActivity() {
                         travel = Utils.getString(member, "travel")
                         travel_cal = Utils.getString(member, "travel_cal")
 
+
+                        if (phone_yn=="Y"){
+                            phoneTV.text = phone
+                            phoneTV.setTextColor(Color.parseColor("#923b9f"))
+                            phoneIV.setImageResource(R.mipmap.op_drop)
+                        }
 
                         if (savejoin_yn=="Y"){
                             saveTV.text = "인증되었습니다"
@@ -989,6 +997,9 @@ class EditProfileActivity : RootActivity() {
             picturesArr.add(picture.toString())
         }
         params.put("member_id", member_id)
+        params.put("phone", phone)
+        params.put("phone_yn", phone_yn)
+
         params.put("language", adapterData.joinToString())
         params.put("meet", adapterData3.joinToString())
         params.put("charm", adapterData2.joinToString())
@@ -1058,6 +1069,7 @@ class EditProfileActivity : RootActivity() {
 
                     Log.d("결과", result.toString())
                     if ("ok" == result) {
+                        get_info()
                         Toast.makeText(context, "저장되었습니다", Toast.LENGTH_SHORT).show()
                     } else {
 
@@ -1515,7 +1527,12 @@ class EditProfileActivity : RootActivity() {
                             override fun onSuccess(account: Account?) {
                                 val phoneNumber = account?.phoneNumber
 
+                                phone = phoneNumber.toString()
+                                phone_yn = "Y"
+                                Log.d("인증",phone)
                                 println("phoneNumber $phoneNumber")
+
+                                edit_info()
 
                             }
 
@@ -1532,6 +1549,7 @@ class EditProfileActivity : RootActivity() {
 
         }
     }
+
 
 
     private fun certiPhone() {
