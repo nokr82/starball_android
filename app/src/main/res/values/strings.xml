@@ -398,7 +398,7 @@
     <string name="detecting_face">Detecting face...</string>
     <string name="already_matched">이미 매칭된 상태입니다.</string>
     <string name="in_translate">번역중...</string>
-    <string name="instagram_not_installed">인스타그램이 설치되어 있지 않습니다.</string>
+    <string name="instagram_required">인스타그램이 설치되어 있지 않습니다.</string>
     <string name="facebook_required">페이스북이 설치되어 있지 않습니다.</string>
     <string name="allow_permission">권한을 허용해주세요.</string>
 

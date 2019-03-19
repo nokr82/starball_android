@@ -113,11 +113,11 @@ class MainActivity : RootActivity() {
             }
 
             override fun onViewSwipedToTop(position: Int) {
-
+                dislike()
             }
 
             override fun onViewSwipedToBottom(position: Int) {
-
+                like()
             }
 
             override fun onViewSwipedToLeft(position: Int) {
@@ -693,4 +693,11 @@ class MainActivity : RootActivity() {
         })
     }
 
+    fun like() {
+
+    }
+
+    fun dislike() {
+
+    }
 }
