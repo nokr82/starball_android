@@ -6,10 +6,7 @@ import android.os.AsyncTask
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
 import com.devstories.starball_android.actions.MemberAction
@@ -83,7 +80,6 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
             item.otherLL.visibility = View.VISIBLE
             item.myLL.visibility = View.GONE
 
-            item.profileIV
             item.otherContentsTV.text = contents
             item.otherCreatedTV.text = created
 
@@ -113,12 +109,25 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
                     activity.playing(Config.url + Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
                 }
 
+                val voice_progress = Utils.getInt(chatting, "voice_progress")
+
+                item.otherVoicePB.max = Utils.getInt(chatting, "voice_duration")
+                item.otherVoicePB.progress = voice_progress
+
+                var minutes = ( voice_progress % (1000*60*60) ) / (1000*60)
+                var seconds = ( ( voice_progress % (1000*60*60) ) % (1000*60) ) / 1000
+
+                item.otherProgressTV.text = "${minutes}:${seconds}"
+                item.otherVoiceTimeTV.text = Utils.getString(chatting, "voice_time")
+
             } else {
                 item.otherImageIV.visibility = View.GONE
                 item.otherContentsLL.visibility = View.VISIBLE
                 item.otherVoiceLL.visibility = View.GONE
             }
+
             ImageLoader.getInstance().displayImage(Config.url + Utils.getString(profile, "image_uri"), item.profileIV, Utils.UILoptionsPosting)
+
         } else {
             item.otherLL.visibility = View.GONE
             item.myLL.visibility = View.VISIBLE
@@ -127,24 +136,40 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
             item.myCreatedTV.text = created
 
             if (type == 2) {
+
+                ImageLoader.getInstance().displayImage(Config.url + Utils.getString(chatting, "image_uri"), item.myImageIV, Utils.UILoptionsPosting)
+
                 item.myImageIV.visibility = View.VISIBLE
                 item.myContentsLL.visibility = View.GONE
                 item.myVoiceLL.visibility = View.GONE
+
             } else if (type == 3) {
                 item.myImageIV.visibility = View.GONE
                 item.myContentsLL.visibility = View.GONE
                 item.myVoiceLL.visibility = View.VISIBLE
+
                 item.myVoiceIV.setOnClickListener {
                     activity.playing(Config.url + Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
                 }
 
+                val voice_progress = Utils.getInt(chatting, "voice_progress")
+
+                item.myVoicePB.max = Utils.getInt(chatting, "voice_duration")
+                item.myVoicePB.progress = voice_progress
+
+                var minutes = ( voice_progress % (1000*60*60) ) / (1000*60)
+                var seconds = ( ( voice_progress % (1000*60*60) ) % (1000*60) ) / 1000
+
+                item.myProgressTV.text = "${minutes}:${seconds}"
+                item.myVoiceTimeTV.text = Utils.getString(chatting, "voice_time")
+
             } else {
+
                 item.myImageIV.visibility = View.GONE
                 item.myContentsLL.visibility = View.VISIBLE
                 item.myVoiceLL.visibility = View.GONE
-            }
-            ImageLoader.getInstance().displayImage(Config.url + Utils.getString(profile, "image_uri"), item.myImageIV, Utils.UILoptionsPosting)
 
+            }
         }
 
         var like_yn = Utils.getString(chatting, "like_yn")
@@ -186,6 +211,9 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
         var otherImageIV: ImageView
         var otherVoiceLL: LinearLayout
         var otherVoiceIV: ImageView
+        var otherVoicePB: ProgressBar
+        var otherProgressTV: TextView
+        var otherVoiceTimeTV: TextView
 
         var myLL: LinearLayout
         var myContentsLL: LinearLayout
@@ -194,6 +222,9 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
         var myImageIV: ImageView
         var myVoiceLL: LinearLayout
         var myVoiceIV: ImageView
+        var myVoicePB: ProgressBar
+        var myProgressTV: TextView
+        var myVoiceTimeTV: TextView
 
         var profileIV: CircleImageView
 
@@ -210,6 +241,9 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
             otherImageIV = v.findViewById(R.id.otherImageIV)
             otherVoiceLL = v.findViewById(R.id.otherVoiceLL)
             otherVoiceIV = v.findViewById(R.id.otherVoiceIV)
+            otherVoicePB = v.findViewById(R.id.otherVoicePB)
+            otherProgressTV = v.findViewById(R.id.otherProgressTV)
+            otherVoiceTimeTV = v.findViewById(R.id.otherVoiceTimeTV)
 
             myLL = v.findViewById(R.id.myLL)
             myContentsLL = v.findViewById(R.id.myContentsLL)
@@ -218,6 +252,9 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
             myImageIV = v.findViewById(R.id.myImageIV)
             myVoiceLL = v.findViewById(R.id.myVoiceLL)
             myVoiceIV = v.findViewById(R.id.myVoiceIV)
+            myVoicePB = v.findViewById(R.id.myVoicePB)
+            myProgressTV = v.findViewById(R.id.myProgressTV)
+            myVoiceTimeTV = v.findViewById(R.id.myVoiceTimeTV)
 
             profileIV = v.findViewById(R.id.profileIV)
             likeIV = v.findViewById(R.id.likeIV)
