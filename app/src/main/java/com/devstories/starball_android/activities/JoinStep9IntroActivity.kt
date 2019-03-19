@@ -63,18 +63,14 @@ class JoinStep9IntroActivity : RootActivity() {
                 Toast.makeText(context, "당신을 표현할 수 있는 말을 입력해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
             PrefUtils.setPreference(context, "join_intro", intro)
-
-            val intent = Intent(context, JoinStep10Activity::class.java)
+            val intent = Intent(context, JoinStep11PicActivity::class.java)
             startActivity(intent)
         }
 
         skipTV.setOnClickListener {
-
             PrefUtils.removePreference(context, "join_intro")
-
-            val intent = Intent(context, JoinStep10Activity::class.java)
+            val intent = Intent(context, JoinStep11PicActivity::class.java)
             startActivity(intent)
         }
     }
