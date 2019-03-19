@@ -111,11 +111,8 @@ class MainActivity : RootActivity() {
         swipeStack.adapter = swipeStackAdapter
         swipeStack.setListener(object : SwipeStack.SwipeStackListener {
             override fun onStackEmpty() {
-                page++
 
-                loadData()
-
-                if(my_membership == "1member") {
+                if(my_membership == "member") {
 
                     AdmobUtils.loadAd(mContext) {
                         println("admob closed")
@@ -125,6 +122,11 @@ class MainActivity : RootActivity() {
                 } else {
                     val intent = Intent(mContext, StarballAdvertiseActivity::class.java)
                     startActivity(intent)
+                }
+
+                Utils.delay(mContext, 1000) {
+                    page++
+                    loadData()
                 }
             }
 
