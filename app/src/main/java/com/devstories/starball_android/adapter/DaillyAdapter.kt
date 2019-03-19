@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.*
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.DailyMomentListActivity
+import com.devstories.starball_android.activities.DailyMomentViewListActivity
 import com.devstories.starball_android.activities.DlgAlbumPayActivity
 import com.devstories.starball_android.activities.DlgPostOptionActivity
 import com.devstories.starball_android.base.Config
@@ -20,14 +21,22 @@ import com.yqritc.scalablevideoview.ScalableVideoView
 import org.json.JSONObject
 
 
-open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>,activity: DailyMomentListActivity) : ArrayAdapter<JSONObject>(context, view, data) {
+open class DaillyAdapter(
+    context: Context,
+    view: Int,
+    data: ArrayList<JSONObject>,
+    activity: DailyMomentListActivity,
+    activity2: DailyMomentViewListActivity,
+    v_type: Int
+) : ArrayAdapter<JSONObject>(context, view, data) {
 
     private lateinit var item: ViewHolder
-    var view:Int = view
-    var data:ArrayList<JSONObject> = data
-    var activity:DailyMomentListActivity =activity
-
-    override fun getView(position: Int, convertView: View?, parent : ViewGroup?): View {
+    var view: Int = view
+    var data: ArrayList<JSONObject> = data
+    var activity: DailyMomentListActivity = activity
+    var activity2: DailyMomentViewListActivity = activity2
+    var v_type: Int = v_type
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
         lateinit var retView: View
 
@@ -69,10 +78,10 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>,
 
         val today = Utils.todayStr()
         var split = created_at.split("T")
-        if (split.get(0) == today){
+        if (split.get(0) == today) {
             var timesplit = split.get(1).split(":")
             var noon = "오전"
-            if (timesplit.get(0).toInt() >= 12){
+            if (timesplit.get(0).toInt() >= 12) {
                 noon = "오후"
             }
             var time = noon + " " + timesplit.get(0) + ":" + timesplit.get(1)
@@ -86,11 +95,11 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>,
         }
 
 
-        Log.d("컨텐츠",image_uri.toString())
-        Log.d("프로필",profile_image_uri.toString())
+        Log.d("컨텐츠", image_uri.toString())
+        Log.d("프로필", profile_image_uri.toString())
 
-        item.nameTV.text = name+" "+age
-        if (type==1) {
+        item.nameTV.text = name + " " + age
+        if (type == 1) {
             item.videoRL.visibility = View.GONE
             item.videoVV.visibility = View.GONE
             item.contentIV.visibility = View.VISIBLE
@@ -98,49 +107,55 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>,
         } else {
             item.contentIV.visibility = View.GONE
             item.videoRL.visibility = View.VISIBLE
-            item.videoVV.visibility = View.VISIBLE
-            item.videoVV.setDataSource(Config.url + video_uri)
-
-            Log.d("동영상",Config.url + video_uri.toString())
-
-            item.videoVV.release()
-
-            item.videoVV.prepare {
-                item.videoVV.seekTo(1)
-            }
-
-            item.playIV.setOnClickListener {
-                item.playIV.visibility = View.GONE
-                item.videoVV.start()
-            }
+//            item.videoVV.visibility = View.VISIBLE
+//            item.videoVV.setDataSource(Config.url + video_uri)
+//
+//            Log.d("동영상", Config.url + video_uri.toString())
+//
+//            item.videoVV.release()
+//
+//            item.videoVV.prepare {
+//                item.videoVV.seekTo(1)
+//            }
+//
+//            item.playIV.setOnClickListener {
+//                item.playIV.visibility = View.GONE
+//                item.videoVV.start()
+//            }
 
         }
 
         ImageLoader.getInstance().displayImage(Config.url + profile_image_uri, item.profileIV, Utils.UILoptionsProfile)
         item.contentIV.setOnClickListener {
             val intent = Intent(context, DlgAlbumPayActivity::class.java)
-            intent.putExtra("like_member_id",like_member_id)
-           context.startActivity(intent)
+            intent.putExtra("like_member_id", like_member_id)
+            context.startActivity(intent)
         }
 
-        if (like_yn=="N"){
+        if (like_yn == "N") {
             item.likeIV.setImageResource(R.mipmap.lounge_heart_like)
         } else {
             item.likeIV.setImageResource(R.mipmap.profile_pre_super_like)
         }
 
 
+
         item.likeIV.setOnClickListener {
-            if (like_yn=="N"){
-//                likecnt + 1
-                activity.like(content_id)
+            if (like_yn == "N") {
+                if (v_type == 1) {
+                    activity.like(content_id)
+                } else {
+                    activity2.like(content_id)
+                }
+
                 item.likeIV.setImageResource(R.mipmap.profile_pre_super_like)
-//                activity.daillyAdapter.notifyDataSetChanged()
-            }else{
-//                likecnt - 1
-                activity.like(content_id)
+            } else {
+                if (v_type == 1) {
+                    activity.like(content_id)
+                } else {
+                    activity2.like(content_id)
+                }
                 item.likeIV.setImageResource(R.mipmap.lounge_heart_like)
-//                activity.daillyAdapter.notifyDataSetChanged()
             }
         }
         item.likecntTV.text = likecnt.toString()
@@ -149,11 +164,24 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>,
 
         }
         item.menuIV.setOnClickListener {
-                val intent = Intent(context, DlgPostOptionActivity::class.java)
-                intent.putExtra("like_member_id",like_member_id)
-                intent.putExtra("content_id",content_id)
-                context.startActivity(intent)
+            val intent = Intent(context, DlgPostOptionActivity::class.java)
+            intent.putExtra("like_member_id", like_member_id)
+            intent.putExtra("content_id", content_id)
+            context.startActivity(intent)
         }
+        if (v_type == 1) {
+            item.subIV.visibility = View.VISIBLE
+            item.menuIV.visibility = View.VISIBLE
+            item.timeTV.visibility = View.VISIBLE
+            item.profileIV.visibility = View.VISIBLE
+        } else {
+            item.subIV.visibility = View.GONE
+            item.menuIV.visibility = View.GONE
+            item.timeTV.visibility = View.GONE
+            item.profileIV.visibility = View.GONE
+            item.nameTV.text = created_at.substring(0, 10).replace("-", ".")
+        }
+
 
         return retView
     }
@@ -167,7 +195,7 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>,
     }
 
     class ViewHolder(v: View) {
-        var nameTV : TextView
+        var nameTV: TextView
         var timeTV: TextView
         var profileIV: ImageView
         var subIV: ImageView
@@ -181,8 +209,8 @@ open class DaillyAdapter(context: Context, view:Int, data:ArrayList<JSONObject>,
 
 
         init {
-            playIV= v.findViewById(R.id.playIV)
-            videoRL= v.findViewById(R.id.videoRL)
+            playIV = v.findViewById(R.id.playIV)
+            videoRL = v.findViewById(R.id.videoRL)
             videoVV = v.findViewById(R.id.videoVV)
             nameTV = v.findViewById(R.id.nameTV)
             timeTV = v.findViewById(R.id.timeTV)

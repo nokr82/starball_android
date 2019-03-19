@@ -6,7 +6,9 @@ import com.loopj.android.http.RequestParams
 
 object DailyAction {
 
-
+    fun daily(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/dailys/daily", params, handler)
+    }
     fun add_content(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/dailys/add_content", params, handler)
     }
