@@ -214,13 +214,13 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 }
 
 
-
                 val like_member_id  = Utils.getInt(memberInfo,"id")
                 val email = Utils.getString(memberInfo, "email")
                 val name = Utils.getString(memberInfo, "name")
                 val gender = Utils.getString(memberInfo, "gender")
                 val height = Utils.getString(memberInfo, "height")
                 val birth = Utils.getString(memberInfo, "birth")
+                val savejoin_yn = Utils.getString(memberInfo,"savejoin_yn")
 
                 val age = DateUtils.getYearDiffCount(birth, DateUtils.getToday("yyyyMMdd"), "yyyyMMdd")
 
@@ -228,6 +228,13 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 val job = Utils.getString(memberInfo, "job")
                 val school = Utils.getString(memberInfo, "school")
                 val intro = Utils.getString(memberInfo, "intro")
+
+                if (savejoin_yn=="N"){
+                    holder.safeIV.visibility = View.GONE
+                }else{
+                    holder.safeIV.visibility = View.VISIBLE
+                }
+
 
                 holder.distanceTV.text = "17Km"
                 holder.nameTV.text = name
@@ -296,7 +303,12 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                     holder.videoVV.visibility = View.VISIBLE
                 }
 
-
+                val savejoin_yn = Utils.getString(memberInfo,"savejoin_yn")
+                if (savejoin_yn=="N"){
+                    holder.safeIV.visibility = View.GONE
+                }else{
+                    holder.safeIV.visibility = View.VISIBLE
+                }
 
                 val like_member_id  = Utils.getInt(memberInfo,"id")
                 val email = Utils.getString(memberInfo, "email")
@@ -396,7 +408,12 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                     holder.imgIV.visibility = View.GONE
                     holder.videoVV.visibility = View.VISIBLE
                 }
-
+                val savejoin_yn = Utils.getString(memberInfo,"savejoin_yn")
+                if (savejoin_yn=="N"){
+                    holder.safeIV.visibility = View.GONE
+                }else{
+                    holder.safeIV.visibility = View.VISIBLE
+                }
                 val like_member_id  = Utils.getInt(memberInfo,"id")
                 val email = Utils.getString(memberInfo, "email")
                 val name = Utils.getString(memberInfo, "name")
@@ -559,7 +576,12 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
 
                 }
 
-
+                val savejoin_yn = Utils.getString(memberInfo,"savejoin_yn")
+                if (savejoin_yn=="N"){
+                    holder.safeIV.visibility = View.GONE
+                }else{
+                    holder.safeIV.visibility = View.VISIBLE
+                }
 
 
                 Log.d("멤버정보",memberInfo.toString())
