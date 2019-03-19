@@ -406,4 +406,7 @@
     <string name="advertise_text2">존중,배려,환원</string>
     <string name="advertise_text3">입니다.</string>
 
+    <string name="starball_buy_done">스타볼을 구입하였습니다.</string>
+    <string name="membership_join_done">가입되었습니다.</string>
+
 </resources>

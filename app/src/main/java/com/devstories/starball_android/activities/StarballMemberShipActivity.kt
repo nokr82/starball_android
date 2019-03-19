@@ -10,11 +10,21 @@ import android.support.v4.view.ViewPager
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Toast
 import com.devstories.starball_android.R
+import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.adapter.AdverAdapter
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
+import com.devstories.starball_android.billing.IAPHelper
+import com.loopj.android.http.JsonHttpResponseHandler
+import com.loopj.android.http.RequestParams
+import cz.msebera.android.httpclient.Header
 import kotlinx.android.synthetic.main.activity_starball_membership.*
+import org.json.JSONArray
+import org.json.JSONException
+import org.json.JSONObject
 
 class StarballMemberShipActivity : RootActivity() {
 
@@ -27,12 +37,39 @@ class StarballMemberShipActivity : RootActivity() {
     private var adTime = 0
     private var handler: Handler? = null
 
+    private var iapHelper: IAPHelper? = null
+
+    var member_id = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_starball_membership)
 
         this.context = this
         progressDialog = ProgressDialog(context)
+
+        member_id = PrefUtils.getIntPreference(context, "member_id")
+
+        iapHelper = IAPHelper(this, object : IAPHelper.BuyListener {
+
+            override fun bought(sku: String, purchaseToken: String) {
+
+                if (sku == "membership_1month") {
+                    joinMembership(1, 30000, purchaseToken)
+                } else if (sku == "membership_1years") {
+                    joinMembership(3, 180000, purchaseToken)
+                } else {
+                    joinMembership(2, 90000, purchaseToken)
+                }
+
+            }
+
+            override fun failed(e: Exception) {
+                e.printStackTrace()
+
+                Utils.alert(context, "구매 중 장애가 발생하였습니다. " + e.localizedMessage)
+            }
+        })
 
         adverImagePaths.add("1")
         adverImagePaths.add("2")
@@ -79,6 +116,108 @@ class StarballMemberShipActivity : RootActivity() {
             startActivity(intent)
         }
 
+        month1LL.setOnClickListener {
+            iapHelper?.buy("membership_1month")
+        }
+
+        month6LL.setOnClickListener {
+            iapHelper?.buy("membership_6month")
+        }
+
+        year1LL.setOnClickListener {
+            iapHelper?.buy("membership_1years")
+        }
+
+    }
+
+    fun joinMembership(term_type: Int, price: Int, purchaseToken: String) {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("membership_type", 1)
+        params.put("term_type", term_type)
+        params.put("price", price)
+        params.put("state", 1)
+        params.put("purchaseToken", purchaseToken)
+
+        MemberAction.join_membership(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+                        Toast.makeText(context, getString(R.string.membership_join_done), Toast.LENGTH_SHORT).show()
+
+                        iapHelper!!.consume(purchaseToken)
+                    } else {
+                        Toast.makeText(context, getString(R.string.api_error), Toast.LENGTH_SHORT).show()
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, getString(R.string.api_error))
+            }
+
+            /* override fun onFailure(statusCode: Int, headers: Array<Header>?, responseString: String?, throwable: Throwable) {
+                 if (progressDialog != null) {
+                     progressDialog!!.dismiss()
+                 }
+                 Log.d("에러", responseString.toString())
+                 // System.out.println(responseString);
+
+                 throwable.printStackTrace()
+                 error()
+             }*/
+
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONArray?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
     }
 
     private fun timer() {
