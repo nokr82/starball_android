@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.devstories.starball_android.R
-import kotlinx.android.synthetic.main.fragment_main_search3.*
+import kotlinx.android.synthetic.main.fragment_main_search4.*
 
 class MainSearchEx3Fragment : Fragment() {
 
@@ -22,7 +22,7 @@ class MainSearchEx3Fragment : Fragment() {
         this.myContext = container!!.context
         progressDialog = ProgressDialog(myContext)
 
-        return inflater.inflate(R.layout.fragment_main_search3, container, false)
+        return inflater.inflate(R.layout.fragment_main_search4, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

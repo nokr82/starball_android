@@ -88,10 +88,6 @@ class DailyMomentListActivity : RootActivity() {
         )
         dailyLV.adapter = daillyAdapter
 
-
-
-        daily_list()
-
         dailyLV.setOnItemClickListener { parent, view, position, id ->
            /* val intent = Intent(context, DlgAlbumPayActivity::class.java)
             startActivity(intent)*/
@@ -157,6 +153,8 @@ class DailyMomentListActivity : RootActivity() {
             finish()
         }
 
+
+        daily_list()
 
     }
 
@@ -279,7 +277,7 @@ class DailyMomentListActivity : RootActivity() {
                     progressDialog!!.dismiss()
                 }
 
-                Log.d("아우스0",response.toString())
+                // Log.d("아우스0",response.toString())
                 try {
                     val result = response!!.getString("result")
 
@@ -289,9 +287,10 @@ class DailyMomentListActivity : RootActivity() {
                             adapterdata.clear()
                         }
                         val list = response.getJSONArray("list")
-                        for (i in 0..list.length() - 1) {
+
+                        for (i in 0 until list.length()) {
                             var json = list[i] as JSONObject
-                            Log.d("제이슨", json.toString())
+                            // Log.d("제이슨", json.toString())
                             adapterdata.add(json)
                         }
                         daillyAdapter.notifyDataSetChanged()
