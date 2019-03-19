@@ -62,6 +62,7 @@ class SearchSettingActivity : RootActivity() {
 
         nationRL.setOnClickListener {
             val intent = Intent(context, DlgSelectNationActivity::class.java)
+            intent.putExtra("type",2)
             startActivityForResult(intent, SELECT_NATION)
         }
 
