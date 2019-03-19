@@ -86,4 +86,8 @@ object MemberAction {
         HttpClient.post("/members/propose_confirm", params, handler)
     }
 
+    fun regist_token(params: RequestParams, handler: JsonHttpResponseHandler) {
+
+    }
+
 }
