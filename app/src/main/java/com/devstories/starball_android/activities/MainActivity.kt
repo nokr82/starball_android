@@ -28,6 +28,7 @@ import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.base.*
 import com.devstories.starball_android.swipestack.SwipeStack
 import com.devstories.starball_android.swipestack.SwipeStackAdapter
+import com.devstories.starball_android.utils.Coomon
 import com.google.android.gms.location.*
 import com.google.firebase.iid.FirebaseInstanceId
 import com.loopj.android.http.JsonHttpResponseHandler
@@ -76,7 +77,6 @@ class MainActivity : RootActivity() {
 
     var member_id = -1
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.devstories.starball_android.R.layout.activity_main)
@@ -95,8 +95,6 @@ class MainActivity : RootActivity() {
             val intent = Intent(mContext, StarballMemberShipActivity::class.java)
             startActivity(intent)
         }
-
-
 
         chatIV.setOnClickListener {
             val intent = Intent(this, ChattingActivity::class.java)
@@ -196,6 +194,26 @@ class MainActivity : RootActivity() {
         get_info()
 
         get_proposes()
+
+        pushCheck()
+
+    }
+
+    fun pushCheck() {
+        val FROM_PUSH = PrefUtils.getBooleanPreference(mContext, "FROM_PUSH")
+
+        if (FROM_PUSH) {
+
+            val PUSH_TYPE = PrefUtils.getStringPreference(mContext, "PUSH_TYPE")
+
+            if (PUSH_TYPE == "chatting") {
+                val intent = Intent(mContext, FriendChattingActivity::class.java)
+                startActivity(intent)
+            }
+
+        } else {
+            Coomon.prefPushDataClear(mContext)
+        }
 
     }
 

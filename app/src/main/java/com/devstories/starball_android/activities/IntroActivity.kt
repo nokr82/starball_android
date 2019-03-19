@@ -30,6 +30,7 @@ class IntroActivity : RootActivity() {
 
     private var context: Context? = null
 
+    private var FROM_PUSH = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
