@@ -90,7 +90,7 @@ class FriendChattingActivity : RootActivity()
                     val voice_progress = Utils.getInt(chatting, "voice_progress")
                     val voice_duration = Utils.getInt(chatting, "voice_duration")
 
-                    if (voice_progress < voice_duration) {
+                    if (voice_progress <= voice_duration) {
                         chatting.put("isPlaying", true)
                         chatting.put("voice_progress",  voice_progress + 1000)
                     } else {
