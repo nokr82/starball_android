@@ -90,4 +90,8 @@ object MemberAction {
         HttpClient.post("/members/join_membership", params, handler)
     }
 
+    fun regist_token(params: RequestParams, handler: JsonHttpResponseHandler) {
+
+    }
+
 }

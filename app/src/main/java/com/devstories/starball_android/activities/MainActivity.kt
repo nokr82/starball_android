@@ -24,13 +24,11 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.MemberAction
-import com.devstories.starball_android.base.AdmobUtils
-import com.devstories.starball_android.base.PrefUtils
-import com.devstories.starball_android.base.RootActivity
-import com.devstories.starball_android.base.Utils
+import com.devstories.starball_android.base.*
 import com.devstories.starball_android.swipestack.SwipeStack
 import com.devstories.starball_android.swipestack.SwipeStackAdapter
 import com.google.android.gms.location.*
+import com.google.firebase.iid.FirebaseInstanceId
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 import cz.msebera.android.httpclient.Header
@@ -144,6 +142,9 @@ class MainActivity : RootActivity() {
                 onLocationUpdated(locationResult?.lastLocation)
             }
         }
+
+
+        updateToken()
 
         initGPS()
 
@@ -609,6 +610,79 @@ class MainActivity : RootActivity() {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
+            }
+        })
+    }
+
+    private fun updateToken() {
+
+        val member_id = PrefUtils.getIntPreference(mContext, "member_id")
+        val member_token = FirebaseInstanceId.getInstance().getToken()
+
+        if (member_id == -1 || null == member_token || "" == member_token || member_token.isEmpty()) {
+            return
+        }
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("token", member_token)
+        params.put("device", Config.device)
+
+        println("member_token : $member_token")
+        println("device : ${Config.device}")
+
+        MemberAction.regist_token(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+
+                PrefUtils.setPreference(mContext, "token", member_token)
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {}
+
+            private fun error() {
+
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+            }
+
+            override fun onFinish() {
             }
         })
     }
