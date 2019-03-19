@@ -40,6 +40,7 @@ class DailyMomentViewListActivity : RootActivity() {
     lateinit var profileIV: ImageView
     lateinit var starballIV: ImageView
     lateinit var nameTV: TextView
+    lateinit var createdTV: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +62,7 @@ class DailyMomentViewListActivity : RootActivity() {
         secretTV = header.findViewById(R.id.secretTV)
         profileIV= header.findViewById(R.id.profileIV)
         starballIV =  header.findViewById(R.id.starballIV)
+        createdTV=  header.findViewById(R.id.createdTV)
         dailyLV.addHeaderView(header)
 
         my_daily_list()
@@ -117,6 +119,11 @@ class DailyMomentViewListActivity : RootActivity() {
                         if (page == 1) {
                             adapterdata.clear()
                         }
+                        val Like = response.getJSONObject("Like")
+                        var created_at = Utils.getString(Like,"created_at")
+
+                        createdTV.text = created_at.substring(0, 10).replace("-", ".")+"에 좋아요를 보냈습니다."
+
                         val list = response.getJSONArray("list")
                         for (i in 0..list.length() - 1) {
                             var json = list[i] as JSONObject

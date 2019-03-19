@@ -131,10 +131,7 @@ class DailyMomentListActivity : RootActivity() {
 
 
         mypostTV.setOnClickListener {
-            var intent = Intent(context, DailyMomentViewListActivity::class.java)
-            intent.putExtra("daily_member_id", PrefUtils.getIntPreference(context, "member_id"))
-            startActivity(intent)
-
+            my_daily_list()
         }
 
         headRL.setOnClickListener {
@@ -628,6 +625,89 @@ class DailyMomentListActivity : RootActivity() {
 
             override fun onStart() {
 //                 show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
+
+    fun my_daily_list() {
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("daily_member_id", member_id)
+        params.put("page", page)
+
+        DailyAction.daily(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                Log.d("아우스0", response.toString())
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+                        totalPage = Utils.getInt(response, "totalPage")
+                        if (page == 1) {
+                            adapterdata.clear()
+                        }
+                        val list = response.getJSONArray("list")
+                        for (i in 0..list.length() - 1) {
+                            var json = list[i] as JSONObject
+                            Log.d("제이슨", json.toString())
+                            adapterdata.add(json)
+                        }
+                        daillyAdapter.notifyDataSetChanged()
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
 //                if (progressDialog != null) {
 //                    progressDialog!!.show()
 //                }

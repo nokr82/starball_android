@@ -209,6 +209,7 @@ open class DaillyAdapter(
 
         }
 
+
         ImageLoader.getInstance().displayImage(Config.url + profile_image_uri, item.profileIV, Utils.UILoptionsProfile)
         item.contentIV.setOnClickListener {
             val intent = Intent(context, DlgAlbumPayActivity::class.java)
@@ -219,7 +220,7 @@ open class DaillyAdapter(
         if (like_yn == "N") {
             item.likeIV.setImageResource(R.mipmap.lounge_heart_like)
         } else {
-            item.likeIV.setImageResource(R.mipmap.profile_pre_super_like)
+            item.likeIV.setImageResource(R.mipmap.lounge_heart_like_on)
         }
 
 
@@ -232,7 +233,7 @@ open class DaillyAdapter(
                     activity2.like(content_id)
                 }
 
-                item.likeIV.setImageResource(R.mipmap.profile_pre_super_like)
+                item.likeIV.setImageResource(R.mipmap.lounge_heart_like_on)
             } else {
                 if (v_type == 1) {
                     activity.like(content_id)
@@ -258,6 +259,16 @@ open class DaillyAdapter(
             item.menuIV.visibility = View.VISIBLE
             item.timeTV.visibility = View.VISIBLE
             item.profileIV.visibility = View.VISIBLE
+            item.profileIV.setOnClickListener {
+                if (member_id!=like_member_id){
+                    var intent = Intent(context, DailyMomentViewListActivity::class.java)
+                    intent.putExtra("daily_member_id",like_member_id)
+                    context.startActivity(intent)
+                }else{
+                    return@setOnClickListener
+                }
+
+            }
 
         } else {
             item.subIV.visibility = View.GONE

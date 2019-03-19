@@ -36,10 +36,12 @@ import com.nostra13.universalimageloader.core.ImageLoader
 import org.json.JSONArray
 import org.json.JSONObject
 
+//type  = 1이면 가입화면
 
-class SwipeStackItemAdapter(private val context:Context, private val activity:Activity, private val member:JSONObject, private val data: JSONArray, private val preview:Boolean,private val starball:Int) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+class SwipeStackItemAdapter(private val context:Context, private val activity:Activity, private val member:JSONObject, private val data: JSONArray, private val preview:Boolean,private val starball:Int,private val type:Int) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var langs = ArrayList<String>()
-
+    var memberInfo = JSONObject()
     class MainSearchType1(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var infoLL = itemView.findViewById<View>(R.id.infoLL) as LinearLayout
@@ -143,7 +145,11 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
 
         val item = data.get(position) as JSONObject
 
-        var memberInfo = member.getJSONObject("member")
+        if (type ==1){
+            memberInfo = member
+        }else{
+            memberInfo = member.getJSONObject("member")
+        }
 
         val id = Utils.getInt(item, "id")
         var path = Utils.getString(item, "path")
@@ -208,13 +214,13 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 }
 
 
-
                 val like_member_id  = Utils.getInt(memberInfo,"id")
                 val email = Utils.getString(memberInfo, "email")
                 val name = Utils.getString(memberInfo, "name")
                 val gender = Utils.getString(memberInfo, "gender")
                 val height = Utils.getString(memberInfo, "height")
                 val birth = Utils.getString(memberInfo, "birth")
+                val savejoin_yn = Utils.getString(memberInfo,"savejoin_yn")
 
                 val age = DateUtils.getYearDiffCount(birth, DateUtils.getToday("yyyyMMdd"), "yyyyMMdd")
 
@@ -222,6 +228,13 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 val job = Utils.getString(memberInfo, "job")
                 val school = Utils.getString(memberInfo, "school")
                 val intro = Utils.getString(memberInfo, "intro")
+
+                if (savejoin_yn=="N"){
+                    holder.safeIV.visibility = View.GONE
+                }else{
+                    holder.safeIV.visibility = View.VISIBLE
+                }
+
 
                 holder.distanceTV.text = "17Km"
                 holder.nameTV.text = name
@@ -290,7 +303,12 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                     holder.videoVV.visibility = View.VISIBLE
                 }
 
-
+                val savejoin_yn = Utils.getString(memberInfo,"savejoin_yn")
+                if (savejoin_yn=="N"){
+                    holder.safeIV.visibility = View.GONE
+                }else{
+                    holder.safeIV.visibility = View.VISIBLE
+                }
 
                 val like_member_id  = Utils.getInt(memberInfo,"id")
                 val email = Utils.getString(memberInfo, "email")
@@ -304,16 +322,20 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
 
                 val job = Utils.getString(memberInfo, "job")
                 val school = Utils.getString(memberInfo, "school")
-                val languages = member.getJSONArray("languages")
-                langs.clear()
-                for (i in 0 until languages.length()){
+                if (type !=1){
+                    val languages = member.getJSONArray("languages")
+                    langs.clear()
+                    for (i in 0 until languages.length()){
 
-                    val language = languages.get(i) as JSONObject
+                        val language = languages.get(i) as JSONObject
 
-                    var lang= Utils.getString(language,"language")
+                        var lang= Utils.getString(language,"language")
 
-                    langs.add(lang)
+                        langs.add(lang)
+                    }
+                    holder.languageTV.text = langs.toString().replace("[","").replace("]","")
                 }
+
 
                 holder.distanceTV.text = "17Km"
                 holder.nameTV.text = name
@@ -321,7 +343,7 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 holder.fitRateTV.text = "23%"
 
                 holder.heightTV.text = height+"cm"
-                holder.languageTV.text = langs.toString()
+
                 holder.jobTV.text = "Job-"+job
                 holder.moneyTV.text = "수입" + work
 
@@ -386,7 +408,12 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                     holder.imgIV.visibility = View.GONE
                     holder.videoVV.visibility = View.VISIBLE
                 }
-
+                val savejoin_yn = Utils.getString(memberInfo,"savejoin_yn")
+                if (savejoin_yn=="N"){
+                    holder.safeIV.visibility = View.GONE
+                }else{
+                    holder.safeIV.visibility = View.VISIBLE
+                }
                 val like_member_id  = Utils.getInt(memberInfo,"id")
                 val email = Utils.getString(memberInfo, "email")
                 val name = Utils.getString(memberInfo, "name")
@@ -403,45 +430,49 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
 
                 Log.d("멤버정보",memberInfo.toString())
 
-                val languages = member.getJSONArray("languages")
-                val my_charms = member.getJSONArray("my_charms")
-                val your_charms = member.getJSONArray("your_charms")
-                val meets = member.getJSONArray("meets")
-                holder.charmLL.removeAllViews()
-                for (i in 0 until my_charms.length()){
 
-                    val my_charm = my_charms.get(i) as JSONObject
+                if (type !=1){
+                    val my_charms = member.getJSONArray("my_charms")
+                    val your_charms = member.getJSONArray("your_charms")
+                    val meets = member.getJSONArray("meets")
+                    holder.charmLL.removeAllViews()
+                    for (i in 0 until my_charms.length()){
 
-                    val charmView = View.inflate(context, R.layout.item_main_charm_point, null)
-                    var charmTV: TextView = charmView.findViewById(R.id.charmTV)
-                    charmTV.text = Utils.getString(my_charm,"charm")
+                        val my_charm = my_charms.get(i) as JSONObject
 
-                    holder.charmLL.addView(charmView)
+                        val charmView = View.inflate(context, R.layout.item_main_charm_point, null)
+                        var charmTV: TextView = charmView.findViewById(R.id.charmTV)
+                        charmTV.text = Utils.getString(my_charm,"charm")
+
+                        holder.charmLL.addView(charmView)
+                    }
+
+                    holder.youcharmLL.removeAllViews()
+                    for (i in 0 until your_charms.length()){
+
+                        val youcharm = your_charms.get(i) as JSONObject
+
+                        val charmView = View.inflate(context, R.layout.item_main_charm_point, null)
+                        var charmTV: TextView = charmView.findViewById(R.id.charmTV)
+                        charmTV.text = Utils.getString(youcharm,"charm")
+
+                        holder.youcharmLL.addView(charmView)
+                    }
+
+                    holder.meetLL.removeAllViews()
+                    for (i in 0 until meets.length()){
+
+                        val meet = meets.get(i) as JSONObject
+
+                        val charmView = View.inflate(context, R.layout.item_main_charm_point, null)
+                        var charmTV: TextView = charmView.findViewById(R.id.charmTV)
+                        charmTV.text = Utils.getString(meet,"meet")
+
+                        holder.meetLL.addView(charmView)
+                    }
                 }
 
-                holder.youcharmLL.removeAllViews()
-                for (i in 0 until your_charms.length()){
 
-                    val youcharm = your_charms.get(i) as JSONObject
-
-                    val charmView = View.inflate(context, R.layout.item_main_charm_point, null)
-                    var charmTV: TextView = charmView.findViewById(R.id.charmTV)
-                    charmTV.text = Utils.getString(youcharm,"charm")
-
-                    holder.youcharmLL.addView(charmView)
-                }
-
-                holder.meetLL.removeAllViews()
-                for (i in 0 until meets.length()){
-
-                    val meet = meets.get(i) as JSONObject
-
-                    val charmView = View.inflate(context, R.layout.item_main_charm_point, null)
-                    var charmTV: TextView = charmView.findViewById(R.id.charmTV)
-                    charmTV.text = Utils.getString(meet,"meet")
-
-                    holder.meetLL.addView(charmView)
-                }
 
                 holder.distanceTV.text = "17Km"
                 holder.nameTV.text = name
@@ -517,30 +548,40 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                     holder.imgIV.visibility = View.GONE
                     holder.videoVV.visibility = View.VISIBLE
                 }
-                val dailys = member.getJSONArray("dailys")
-                if (dailys.length()<1){
-                    holder.dailyLL.visibility = View.GONE
-                }
-                val daily_member_id  = Utils.getInt(memberInfo,"id")
-                holder.dailyLL.setOnClickListener {
-                    var intent = Intent(context, DailyMomentViewListActivity::class.java)
-                    intent.putExtra("daily_member_id",daily_member_id)
-                    context.startActivity(intent)
-                }
-                holder.dailyLL.removeAllViews()
-                for (i in 0 until dailys.length()){
-                    val daily = dailys.get(i) as JSONObject
-                    val type = Utils.getInt(daily,"type")
-                    if (type==1){
-                        val image_uri = Utils.getString(daily,"image_uri")
-                        val dailyView = View.inflate(context, R.layout.item_main_daily, null)
-                        var dailyIV: ImageView = dailyView.findViewById(R.id.dailyIV)
-                        ImageLoader.getInstance().displayImage(Config.url + image_uri,dailyIV, Utils.UILoptions)
-                        holder.dailyLL.addView(dailyView)
+                if (type != 1){
+                    val dailys = member.getJSONArray("dailys")
+                    if (dailys.length()<1){
+                        holder.dailyLL.visibility = View.GONE
+                    }
+                    val daily_member_id  = Utils.getInt(memberInfo,"id")
+                    holder.dailyLL.setOnClickListener {
+                        var intent = Intent(context, DailyMomentViewListActivity::class.java)
+                        intent.putExtra("daily_member_id",daily_member_id)
+                        context.startActivity(intent)
+                    }
+
+                    holder.dailyLL.removeAllViews()
+                    for (i in 0 until dailys.length()){
+                        val daily = dailys.get(i) as JSONObject
+                        val type = Utils.getInt(daily,"type")
+                        if (type==1){
+                            val image_uri = Utils.getString(daily,"image_uri")
+                            val dailyView = View.inflate(context, R.layout.item_main_daily, null)
+                            var dailyIV: ImageView = dailyView.findViewById(R.id.dailyIV)
+                            ImageLoader.getInstance().displayImage(Config.url + image_uri,dailyIV, Utils.UILoptions)
+                            holder.dailyLL.addView(dailyView)
+                        }
+
                     }
 
                 }
 
+                val savejoin_yn = Utils.getString(memberInfo,"savejoin_yn")
+                if (savejoin_yn=="N"){
+                    holder.safeIV.visibility = View.GONE
+                }else{
+                    holder.safeIV.visibility = View.VISIBLE
+                }
 
 
                 Log.d("멤버정보",memberInfo.toString())

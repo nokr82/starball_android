@@ -46,9 +46,6 @@ class MainActivity : RootActivity() {
     lateinit var mContext:Context
     private var progressDialog: ProgressDialog? = null
 
-    internal var MAX_PAGE = 3                         //View Pager의 총 페이지 갯수를 나타내는 변수 선언
-    internal var cur_fragment = Fragment()   //현재 Viewpager가 가리키는 Fragment를 받을 변수 선언
-
     var data = ArrayList<JSONObject>()
     lateinit var swipeStackAdapter:SwipeStackAdapter
 
@@ -110,14 +107,26 @@ class MainActivity : RootActivity() {
         swipeStack.setListener(object : SwipeStack.SwipeStackListener {
             override fun onStackEmpty() {
                 loadData()
+
+                if(1 == 1) {
+
+                    AdmobUtils.loadAd(mContext) {
+                        println("admob closed")
+                        // finish()
+                    }
+
+                } else {
+                    val intent = Intent(mContext, StarballAdvertiseActivity::class.java)
+                    startActivity(intent)
+                }
             }
 
             override fun onViewSwipedToTop(position: Int) {
-
+                dislike()
             }
 
             override fun onViewSwipedToBottom(position: Int) {
-
+                like()
             }
 
             override fun onViewSwipedToLeft(position: Int) {
@@ -150,11 +159,6 @@ class MainActivity : RootActivity() {
 
         get_info()
 
-        AdmobUtils.loadAd(mContext) {
-            println("admob closed")
-            // finish()
-        }
-
         get_proposes()
 
     }
@@ -175,7 +179,10 @@ class MainActivity : RootActivity() {
                 try {
                     val result = response!!.getString("result")
                     if ("ok" == result) {
+
                         starball = Utils.getInt(response, "starball")
+
+
                         Log.d("스타볼",starball.toString())
 
                     } else {
@@ -693,4 +700,11 @@ class MainActivity : RootActivity() {
         })
     }
 
+    fun like() {
+
+    }
+
+    fun dislike() {
+
+    }
 }
