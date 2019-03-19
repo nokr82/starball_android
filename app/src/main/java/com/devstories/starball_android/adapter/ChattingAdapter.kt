@@ -70,7 +70,7 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
         val createdDt = dateFormat.parse(createdAt)
         val created = dateFormat2.format(createdDt)
 
-        if (chattingMemberId == memberId) {
+        if (chattingMemberId != memberId) {
             item.otherLL.visibility = View.VISIBLE
             item.myLL.visibility = View.GONE
 

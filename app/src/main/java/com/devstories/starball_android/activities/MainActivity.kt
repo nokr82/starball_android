@@ -681,9 +681,6 @@ class MainActivity : RootActivity() {
         params.put("token", member_token)
         params.put("device", Config.device)
 
-        println("member_token : $member_token")
-        println("device : ${Config.device}")
-
         MemberAction.regist_token(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {

@@ -91,7 +91,7 @@ object MemberAction {
     }
 
     fun regist_token(params: RequestParams, handler: JsonHttpResponseHandler) {
-
+        HttpClient.post("/members/regist_token", params, handler)
     }
 
     fun update_location(params: RequestParams, handler: JsonHttpResponseHandler) {
