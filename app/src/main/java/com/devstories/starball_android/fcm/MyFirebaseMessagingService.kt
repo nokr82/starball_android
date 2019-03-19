@@ -44,16 +44,18 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         val data = remoteMessage.data ?: return
 
+        println("data:::::::::::::::::::::::::::::::${data}")
+
         val title = data["title"]
         val body = data["body"]
 //        val channelId = getString(R.string.default_notification_channel_id)
-        val channelId = "노마드노트"
+        val channelId = "Starball"
         val group = channelId
 
         val intent = Intent(this, IntroActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.putExtra("last_id", data["last_id"])
-        intent.putExtra("created", data["created"])
+//        intent.putExtra("last_id", data["last_id"])
+//        intent.putExtra("created", data["created"])
 //        intent.putExtra("chatting_member_id", data["chatting_member_id"])
 //        intent.putExtra("content_id", data["content_id"])
 //        intent.putExtra("friend_id", data["friend_id"])
