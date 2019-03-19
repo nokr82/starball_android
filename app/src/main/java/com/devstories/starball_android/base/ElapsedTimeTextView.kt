@@ -13,22 +13,14 @@ import java.util.*
 
 class ElapsedTimeTextView(context: Context?, attrs: AttributeSet?) : TextView(context, attrs) {
 
-    init {
+    var dest_date_time:String? = null
 
-        var input:String? = null
-
-        val ta = context?.obtainStyledAttributes(attrs, R.styleable.app, 0, 0)
-        try {
-            input = ta?.getString(R.styleable.app_dest_date_time)
-        } finally {
-            ta?.recycle()
-        }
-
+    fun start() {
         Timer().schedule(0, 1000 * 60) {
-            if(input != null) {
+            if(dest_date_time != null) {
 
                 val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREAN)
-                val destDateTime = formatter.parse(input)
+                val destDateTime = formatter.parse(dest_date_time)
 
                 val currentTime = Date()
 
@@ -41,9 +33,7 @@ class ElapsedTimeTextView(context: Context?, attrs: AttributeSet?) : TextView(co
 
             }
         }
-
     }
-
 
     private fun convertFromDuration(timeInSeconds: Long): TimeInHours {
         var time = timeInSeconds / 1000
