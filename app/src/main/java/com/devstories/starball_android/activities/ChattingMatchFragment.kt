@@ -347,6 +347,7 @@ class ChattingMatchFragment : Fragment() {
 
                         if (page == 1) {
                             adapterdata.clear()
+                            matchAdapter.notifyDataSetChanged()
                         }
 
                         val list = response!!.getJSONArray("list")
