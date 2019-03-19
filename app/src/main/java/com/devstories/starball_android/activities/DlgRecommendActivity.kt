@@ -44,7 +44,6 @@ class DlgRecommendActivity : RootActivity() {
 
     var instaShareImageUri:Uri? = null
     var facebookShareImageUri:Uri? = null
-    var share_image_uri = "/media/33bcfb43cde84c6fb2abde58518cf1.png"
 
     val INSTAGRAM_REQUEST_CODE = 1001
 
@@ -110,8 +109,6 @@ class DlgRecommendActivity : RootActivity() {
 
 
     private fun doShareFacebook() {
-
-        var uri = Config.url + share_image_uri
 
         if (!ShareDialog.canShow(SharePhotoContent::class.java)) {
             Toast.makeText(context, getString(R.string.facebook_required), Toast.LENGTH_SHORT).show()
