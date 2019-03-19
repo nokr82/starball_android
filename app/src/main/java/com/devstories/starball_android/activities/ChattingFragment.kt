@@ -31,6 +31,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import com.baoyz.swipemenulistview.SwipeMenu
 import com.baoyz.swipemenulistview.SwipeMenuListView
+import com.devstories.starball_android.utils.Coomon
 
 
 //채팅화면
@@ -238,9 +239,33 @@ class ChattingFragment : Fragment() {
             }
 
         }
+
         loadGroupData()
 
+        pushCheck()
 
+    }
+
+    fun pushCheck() {
+        val FROM_PUSH = PrefUtils.getBooleanPreference(myContext, "FROM_PUSH")
+
+        if (FROM_PUSH) {
+
+            val PUSH_TYPE = PrefUtils.getStringPreference(myContext, "PUSH_TYPE")
+
+            if (PUSH_TYPE == "chatting") {
+                val room_id = PrefUtils.getIntPreference(myContext, "room_id")
+
+                val intent = Intent(myContext, FriendChattingActivity::class.java)
+                intent.putExtra("room_id", room_id)
+                startActivity(intent)
+
+                Coomon.prefPushDataClear(myContext)
+            }
+
+        } else {
+            Coomon.prefPushDataClear(myContext)
+        }
     }
 
     fun editGroupRoom(room_id: Int) {

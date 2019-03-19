@@ -2,38 +2,23 @@ package com.devstories.starball_android.activities
 
 import android.app.Activity
 import android.app.ProgressDialog
-import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
-import android.os.Handler
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
 import android.widget.Toast
 import com.devstories.starball_android.R
-import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.RootActivity
-import com.devstories.starball_android.utils.FreeStarball
+import com.devstories.starball_android.utils.Coomon
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
-import com.facebook.FacebookSdk
 import com.facebook.share.Sharer
-import com.facebook.share.model.ShareLinkContent
-import com.facebook.share.model.ShareMediaContent
 import com.facebook.share.model.SharePhoto
 import com.facebook.share.model.SharePhotoContent
 import com.facebook.share.widget.ShareDialog
 import kotlinx.android.synthetic.main.dlg_recommend.*
-import java.io.File
-import java.io.FileNotFoundException
-import java.io.FileOutputStream
-import java.io.IOException
 
 class DlgRecommendActivity : RootActivity() {
 
@@ -89,7 +74,7 @@ class DlgRecommendActivity : RootActivity() {
         val shareDialog = ShareDialog(this)
         shareDialog.registerCallback(callbackManager, object: FacebookCallback<Sharer.Result> {
             override fun onSuccess(result: Sharer.Result?) {
-                FreeStarball.freeStraball(context, 3)
+                Coomon.freeStraball(context, 3)
             }
 
             override fun onError(error: FacebookException?) {
@@ -134,7 +119,7 @@ class DlgRecommendActivity : RootActivity() {
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
                 INSTAGRAM_REQUEST_CODE -> {
-                    FreeStarball.freeStraball(context, 8)
+                    Coomon.freeStraball(context, 8)
                 }
             }
         }

@@ -14,7 +14,7 @@ import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 
-class FreeStarball {
+class Coomon {
 
     companion object {
 
@@ -105,6 +105,12 @@ class FreeStarball {
                     }
                 }
             })
+        }
+
+        fun prefPushDataClear(context: Context) {
+            PrefUtils.removePreference(context, "FROM_PUSH")
+            PrefUtils.removePreference(context, "PUSH_TYPE")
+            PrefUtils.removePreference(context, "room_id")
         }
 
     }

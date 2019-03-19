@@ -14,6 +14,7 @@ import android.support.annotation.RequiresApi
 import android.support.v4.app.NotificationCompat
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.IntroActivity
+import com.devstories.starball_android.base.PrefUtils
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
@@ -59,7 +60,15 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //        intent.putExtra("chatting_member_id", data["chatting_member_id"])
 //        intent.putExtra("content_id", data["content_id"])
 //        intent.putExtra("friend_id", data["friend_id"])
+
         intent.putExtra("FROM_PUSH", true)
+
+        if (data["type"] == "chatting") {
+            PrefUtils.setPreference(this, "room_id", data["room_id"]!!.toInt())
+        }
+
+        PrefUtils.setPreference(this, "PUSH_TYPE", data["type"])
+        PrefUtils.setPreference(this, "FROM_PUSH", true)
 
         val pendingIntent = PendingIntent.getActivity(this, System.currentTimeMillis().toInt(), intent, 0)
 
