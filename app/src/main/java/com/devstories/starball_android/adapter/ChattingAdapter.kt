@@ -57,6 +57,8 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
         val json = data[position]
         val chatting = json.getJSONObject("Chatting")
 
+        val profile = json.getJSONObject("Profile")
+
         val chatting_member_id = Utils.getInt(chatting, "member_id")
         val member_id = PrefUtils.getIntPreference(context, "member_id")
 
@@ -123,6 +125,8 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
                 item.otherContentsLL.visibility = View.VISIBLE
                 item.otherVoiceLL.visibility = View.GONE
             }
+
+            ImageLoader.getInstance().displayImage(Config.url + Utils.getString(profile, "image_uri"), item.profileIV, Utils.UILoptionsPosting)
 
         } else {
             item.otherLL.visibility = View.GONE

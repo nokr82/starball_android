@@ -91,10 +91,8 @@ dependencies {
     implementation 'com.facebook.android:facebook-android-sdk:4.40.0'
     implementation 'com.facebook.android:account-kit-sdk:4.26.0'
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'gun0912.ted:tedpermission:2.2.2'
+
     implementation 'com.google.android.exoplayer:exoplayer:2.7.3'
     implementation 'com.github.fuzz-productions:RatingBar:1.0.3'
 

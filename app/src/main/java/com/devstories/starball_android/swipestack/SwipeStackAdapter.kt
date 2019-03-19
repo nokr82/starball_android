@@ -55,7 +55,7 @@ class SwipeStackAdapter(private val context: Context, private val activity: Main
             layoutManager = noScrollLinearLayoutManager
 
             // specify an viewAdapter (ee also next example)
-            adapter = SwipeStackItemAdapter(context, activity, item.getJSONObject("member"), item.getJSONArray("pages"), false,activity.starball)
+            adapter = SwipeStackItemAdapter(context, activity, item, item.getJSONArray("pages"), false,activity.starball)
 
             PagerSnapHelper().attachToRecyclerView(this)
 
@@ -95,8 +95,6 @@ class SwipeStackAdapter(private val context: Context, private val activity: Main
                             val member_id = Utils.getInt(item!!, "member")
                             val path = Utils.getString(item!!, "image_uri")
                             val mediaType = Utils.getInt(item!!, "type")
-                            Log.d("아뒤",member_id.toString())
-                            Log.d("아뒤",member_id.toString())
                             if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO) {
 
                                 layoutManager!!.findViewByPosition(position)

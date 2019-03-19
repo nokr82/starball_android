@@ -19,13 +19,17 @@ import com.loopj.android.http.RequestParams
 import cz.msebera.android.httpclient.Header
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.DailyAction
+import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.adapter.DaillyAdapter
+import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
+import com.nostra13.universalimageloader.core.ImageLoader
 import kotlinx.android.synthetic.main.activity_daily_mement_list.*
+import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.io.ByteArrayInputStream
@@ -59,7 +63,9 @@ class DailyMomentListActivity : RootActivity() {
     lateinit var headRL: RelativeLayout
     lateinit var profileIV: ImageView
 
-    var items= ArrayList<String>()
+    var items = ArrayList<String>()
+
+    var profiledata = ArrayList<JSONObject>()
 
     internal var reloadReciver: BroadcastReceiver? = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
@@ -69,8 +75,6 @@ class DailyMomentListActivity : RootActivity() {
             }
         }
     }
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -83,23 +87,21 @@ class DailyMomentListActivity : RootActivity() {
         var filter1 = IntentFilter("DEL_POST")
         registerReceiver(reloadReciver, filter1)
 
-        daillyAdapter = DaillyAdapter(context, R.layout.item_daily_list, adapterdata,this,
-            DailyMomentViewListActivity(),1
+        daillyAdapter = DaillyAdapter(
+            context, R.layout.item_daily_list, adapterdata, this,
+            DailyMomentViewListActivity(), 1
         )
         dailyLV.adapter = daillyAdapter
 
-
-
-        daily_list()
-
         dailyLV.setOnItemClickListener { parent, view, position, id ->
-           /* val intent = Intent(context, DlgAlbumPayActivity::class.java)
-            startActivity(intent)*/
+            /* val intent = Intent(context, DlgAlbumPayActivity::class.java)
+             startActivity(intent)*/
         }
         dailyLV.setOnScrollListener(object : AbsListView.OnScrollListener {
             override fun onScroll(p0: AbsListView?, p1: Int, p2: Int, p3: Int) {
 
             }
+
             override fun onScrollStateChanged(listView: AbsListView, newState: Int) {
                 if (!dailyLV.canScrollVertically(-1)) {
 
@@ -125,9 +127,12 @@ class DailyMomentListActivity : RootActivity() {
         nameTV = header.findViewById(R.id.nameTV)
         dailyLV.addHeaderView(header)
 
+
+
+
         mypostTV.setOnClickListener {
             var intent = Intent(context, DailyMomentViewListActivity::class.java)
-            intent.putExtra("daily_member_id",PrefUtils.getIntPreference(context, "member_id"))
+            intent.putExtra("daily_member_id", PrefUtils.getIntPreference(context, "member_id"))
             startActivity(intent)
 
         }
@@ -136,14 +141,14 @@ class DailyMomentListActivity : RootActivity() {
 
         }
         videoLL.setOnClickListener {
-            type=2
+            type = 2
             var intent = Intent(context, FindVideoGridActivity::class.java)
             intent.putExtra("type", 3)
             intent.putExtra("pictureCnt", pictures.count())
             startActivityForResult(intent, SELECT_PICTURE_REQUEST)
         }
         photoLL.setOnClickListener {
-            type=1
+            type = 1
             var intent = Intent(context, FindPictureGridActivity::class.java)
             intent.putExtra("type", 2)
             intent.putExtra("pictureCnt", pictures.count())
@@ -157,14 +162,16 @@ class DailyMomentListActivity : RootActivity() {
             finish()
         }
 
+        get_info()
+        daily_list()
 
     }
 
-    private fun dlg_view(){
+    private fun dlg_view() {
         val intent = Intent(context, DlgLogoutActivity::class.java)
-        intent.putExtra("type",1)
+        intent.putExtra("type", 1)
 
-        startActivityForResult(intent,UPDATE_TIME_LINE)
+        startActivityForResult(intent, UPDATE_TIME_LINE)
     }
 
 
@@ -240,9 +247,6 @@ class DailyMomentListActivity : RootActivity() {
                         pictures.add(item)
 
 
-
-
-
                         // reset(str, i, "picture", mediaType, id, -1, null)
                     }
                     dlg_view()
@@ -252,10 +256,10 @@ class DailyMomentListActivity : RootActivity() {
                 UPDATE_TIME_LINE -> {
                     if (data != null) {
                         val result = data.getStringExtra("result")
-                        Log.d("결과",result)
-                        if (result == "ok"){
+                        Log.d("결과", result)
+                        if (result == "ok") {
                             update()
-                        }else{
+                        } else {
                             pictures.clear()
                         }
 
@@ -265,6 +269,113 @@ class DailyMomentListActivity : RootActivity() {
         }
     }
 
+    private fun get_info() {
+        val member_id = PrefUtils.getIntPreference(context, "member_id")
+        val params = RequestParams()
+        params.put("member_id", member_id)
+
+        MemberAction.get_info(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                try {
+                    val result = response!!.getString("result")
+                    if ("ok" == result) {
+                        val member = response.getJSONObject("member")
+                        val name = Utils.getString(member, "name")
+
+                        var profiles = response.getJSONArray("profiles")
+//                         like_count = response.getInt("like_count")
+                        for (i in 0 until profiles.length()) {
+                            profiledata.add(profiles[i] as JSONObject)
+                        }
+                        var image_uri = Utils.getString(profiledata[0], "image_uri")
+                        Log.d("이미지", profiledata[0].toString())
+                        ImageLoader.getInstance()
+                            .displayImage(Config.url + image_uri, profileIV, Utils.UILoptionsProfile)
+                        nameTV.text = name
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
 
     fun daily_list() {
         var member_id = PrefUtils.getIntPreference(context, "member_id")
@@ -279,7 +390,7 @@ class DailyMomentListActivity : RootActivity() {
                     progressDialog!!.dismiss()
                 }
 
-                Log.d("아우스0",response.toString())
+                // Log.d("아우스0",response.toString())
                 try {
                     val result = response!!.getString("result")
 
@@ -289,9 +400,10 @@ class DailyMomentListActivity : RootActivity() {
                             adapterdata.clear()
                         }
                         val list = response.getJSONArray("list")
-                        for (i in 0..list.length() - 1) {
+
+                        for (i in 0 until list.length()) {
                             var json = list[i] as JSONObject
-                            Log.d("제이슨", json.toString())
+                            // Log.d("제이슨", json.toString())
                             adapterdata.add(json)
                         }
                         daillyAdapter.notifyDataSetChanged()
@@ -308,11 +420,11 @@ class DailyMomentListActivity : RootActivity() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
 
-                 System.out.println(responseString);
+                System.out.println(responseString);
             }
 
             private fun error() {
-                 Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -325,7 +437,7 @@ class DailyMomentListActivity : RootActivity() {
                     progressDialog!!.dismiss()
                 }
 
-                 System.out.println(responseString);
+                System.out.println(responseString);
 
                 throwable.printStackTrace()
                 error()
@@ -347,7 +459,7 @@ class DailyMomentListActivity : RootActivity() {
         })
     }
 
-    fun like(content_id:Int) {
+    fun like(content_id: Int) {
         var member_id = PrefUtils.getIntPreference(context, "member_id")
         val params = RequestParams()
         params.put("member_id", member_id)
@@ -360,7 +472,7 @@ class DailyMomentListActivity : RootActivity() {
                     progressDialog!!.dismiss()
                 }
 
-                Log.d("아우스0",response.toString())
+                Log.d("아우스0", response.toString())
                 try {
                     val result = response!!.getString("result")
 
@@ -446,7 +558,7 @@ class DailyMomentListActivity : RootActivity() {
                     } else {
                         val file = File(path)
                         var videoBytes = file.readBytes()
-                        Log.d("동영상",videoBytes.toString())
+                        Log.d("동영상", videoBytes.toString())
                         params.put(
                             "uploads[$idx]",
                             ByteArrayInputStream(videoBytes),
@@ -471,13 +583,13 @@ class DailyMomentListActivity : RootActivity() {
                     progressDialog!!.dismiss()
                 }
 
-                Log.d("아우스0",response.toString())
+                Log.d("아우스0", response.toString())
                 try {
                     val result = response!!.getString("result")
 
                     if ("ok" == result) {
                         daily_list()
-                      Toast.makeText(context,"등록되었습니다.",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "등록되었습니다.", Toast.LENGTH_SHORT).show()
                     } else {
 
                     }
@@ -490,11 +602,11 @@ class DailyMomentListActivity : RootActivity() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
 
-                 System.out.println(responseString);
+                System.out.println(responseString);
             }
 
             private fun error() {
-                 Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -507,7 +619,7 @@ class DailyMomentListActivity : RootActivity() {
                     progressDialog!!.dismiss()
                 }
 
-                 System.out.println(responseString);
+                System.out.println(responseString);
 
                 throwable.printStackTrace()
                 error()
@@ -532,7 +644,7 @@ class DailyMomentListActivity : RootActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        if (reloadReciver!=null){
+        if (reloadReciver != null) {
             unregisterReceiver(reloadReciver)
         }
         if (progressDialog != null) {

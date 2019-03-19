@@ -79,15 +79,22 @@
         <RelativeLayout
             android:id="@+id/videoRL"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="330dp"
             android:visibility="gone">
 
-            <com.yqritc.scalablevideoview.ScalableVideoView
+            <!-- com.yqritc.scalablevideoview.ScalableVideoView
                 android:id="@+id/videoVV"
                 android:layout_width="match_parent"
-                android:layout_height="330dp"
+                android:layout_height="match_parent"
+                app:scalableType="centerCrop"/ -->
+
+            <com.google.android.exoplayer2.ui.PlayerView
+                android:id="@+id/videoVV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
-                app:scalableType="centerCrop"/>
+                app:resize_mode="fit"
+                app:use_controller="false"/>
 
             <ImageView
                 android:id="@+id/playIV"

@@ -3,6 +3,7 @@ package com.devstories.starball_android.adapter
 import android.content.Context
 import android.content.Intent
 import android.media.MediaPlayer
+import android.net.Uri
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,19 @@ import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.DateUtils
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
+import com.google.android.exoplayer2.*
+import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory
+import com.google.android.exoplayer2.source.ExtractorMediaSource
+import com.google.android.exoplayer2.source.TrackGroupArray
+import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
+import com.google.android.exoplayer2.trackselection.TrackSelectionArray
+import com.google.android.exoplayer2.ui.PlayerView
+import com.google.android.exoplayer2.upstream.DataSource
+import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
+import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.google.android.exoplayer2.upstream.TransferListener
+import com.google.android.exoplayer2.util.Util
 import com.nostra13.universalimageloader.core.ImageLoader
 import com.yqritc.scalablevideoview.ScalableVideoView
 import org.json.JSONObject
@@ -36,6 +50,8 @@ open class DaillyAdapter(
     var activity: DailyMomentListActivity = activity
     var activity2: DailyMomentViewListActivity = activity2
     var v_type: Int = v_type
+    private var playedPlayIV: ImageView? = null
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
         lateinit var retView: View
@@ -89,9 +105,9 @@ open class DaillyAdapter(
 
             item.timeTV.text = time
         } else {
-            var since = Utils.since(created_at)
+            // var since = Utils.since(created_at)
 
-            item.timeTV.text = since
+            // item.timeTV.text = since
         }
 
 
@@ -101,27 +117,95 @@ open class DaillyAdapter(
         item.nameTV.text = name + " " + age
         if (type == 1) {
             item.videoRL.visibility = View.GONE
-            item.videoVV.visibility = View.GONE
+            // item.videoVV.visibility = View.GONE
             item.contentIV.visibility = View.VISIBLE
             ImageLoader.getInstance().displayImage(Config.url + image_uri, item.contentIV, Utils.UILoptionsProfile)
         } else {
             item.contentIV.visibility = View.GONE
             item.videoRL.visibility = View.VISIBLE
-//            item.videoVV.visibility = View.VISIBLE
-//            item.videoVV.setDataSource(Config.url + video_uri)
-//
-//            Log.d("동영상", Config.url + video_uri.toString())
-//
-//            item.videoVV.release()
-//
-//            item.videoVV.prepare {
-//                item.videoVV.seekTo(1)
-//            }
-//
-//            item.playIV.setOnClickListener {
-//                item.playIV.visibility = View.GONE
-//                item.videoVV.start()
-//            }
+            // item.videoVV.visibility = View.VISIBLE
+
+            val dataSource = com.devstories.starball_android.base.Config.url + video_uri.toString()
+
+            Log.d("동영상11", Config.url + video_uri.toString())
+
+            // item.videoVV.release()
+            // item.videoVV.reset()
+
+            /*
+            item.videoVV.setDataSource(Config.url + video_uri)
+            // item.videoVV.setDataSource(context, Uri.parse(Config.url + video_uri))
+
+            item.videoVV.prepare {
+                item.videoVV.seekTo(1)
+            }
+            */
+
+            val (mediaSource, player) = createExoPlayer(dataSource)
+
+            // holder.videoVV.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM)
+            item.videoVV.requestFocus()
+
+            item.videoVV.player = player
+            player.playWhenReady = false
+            player.prepare(mediaSource)
+            player.addListener(object : Player.EventListener {
+                override fun onLoadingChanged(isLoading: Boolean) {
+
+                }
+
+                override fun onPlayerError(error: ExoPlaybackException?) {
+
+                }
+
+                override fun onPlayerStateChanged(playWhenReady: Boolean, playbackState: Int) {
+                    if(playbackState == Player.STATE_ENDED) {
+                        playedPlayIV?.visibility = View.VISIBLE
+                    }
+                }
+
+                override fun onPlaybackParametersChanged(playbackParameters: PlaybackParameters?) {
+
+                }
+
+                override fun onSeekProcessed() {
+
+                }
+
+                override fun onTracksChanged(trackGroups: TrackGroupArray?, trackSelections: TrackSelectionArray?) {
+
+                }
+
+                override fun onPositionDiscontinuity(reason: Int) {
+
+                }
+
+                override fun onRepeatModeChanged(repeatMode: Int) {
+
+                }
+
+                override fun onShuffleModeEnabledChanged(shuffleModeEnabled: Boolean) {
+
+                }
+
+                override fun onTimelineChanged(timeline: Timeline?, manifest: Any?, reason: Int) {
+
+                }
+            })
+
+            item.playIV.setOnClickListener {
+
+                it.visibility = View.GONE
+
+                playedPlayIV = it as ImageView
+
+                val videoVV = (it.parent as RelativeLayout).findViewById<PlayerView>(R.id.videoVV)
+
+                videoVV.player.seekTo(0);
+
+                videoVV.player.playWhenReady = true
+            }
+
 
         }
 
@@ -174,8 +258,7 @@ open class DaillyAdapter(
             item.menuIV.visibility = View.VISIBLE
             item.timeTV.visibility = View.VISIBLE
             item.profileIV.visibility = View.VISIBLE
-            ImageLoader.getInstance().displayImage(Config.url + profile_image_uri,activity.profileIV, Utils.UILoptionsProfile)
-            activity.nameTV.text = name
+
         } else {
             item.subIV.visibility = View.GONE
             item.menuIV.visibility = View.GONE
@@ -207,7 +290,7 @@ open class DaillyAdapter(
         var contentIV: ImageView
         var likeIV: ImageView
         var likecntTV: TextView
-        var videoVV: ScalableVideoView
+        var videoVV: PlayerView
         var videoRL: RelativeLayout
         var playIV: ImageView
 
@@ -228,4 +311,27 @@ open class DaillyAdapter(
 
         }
     }
+
+
+    private fun createExoPlayer(dataSource: String?): Pair<ExtractorMediaSource, SimpleExoPlayer> {
+        val bandwidthMeter = DefaultBandwidthMeter()
+        val extractorsFactory = DefaultExtractorsFactory()
+        val videoTrackSelectionFactory = AdaptiveTrackSelection.Factory(bandwidthMeter)
+        val mediaDataSourceFactory = DefaultDataSourceFactory(
+            context,
+            Util.getUserAgent(context, "mediaPlayerSample"),
+            bandwidthMeter as TransferListener<in DataSource>
+        )
+        val mediaSource = ExtractorMediaSource(
+            Uri.parse(dataSource),
+            mediaDataSourceFactory, extractorsFactory, null, null
+        )
+
+        val trackSelector = DefaultTrackSelector(videoTrackSelectionFactory)
+
+        val player = ExoPlayerFactory.newSimpleInstance(context, trackSelector)
+        player.videoScalingMode = C.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING
+        return Pair(mediaSource, player)
+    }
+
 }

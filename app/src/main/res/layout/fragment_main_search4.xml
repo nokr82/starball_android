@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -25,10 +26,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="19.5dp"
+        android:layout_marginStart="19.5dp"
+        android:layout_marginEnd="19.5dp"
         android:layout_marginBottom="35dp"
-        android:layout_alignParentBottom="true"
-        android:visibility="visible">
+        android:layout_alignParentBottom="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,7 +72,7 @@
                 android:id="@+id/infoIV"
                 android:paddingRight="7.5dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="28dp"
                 android:src="@mipmap/main_info"/>
 
             <TextView
@@ -112,67 +113,37 @@
         </LinearLayout>
 
         <TextView
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp"
+            android:id="@+id/heightTV"
+            android:paddingTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="#99040000"
-            android:shadowRadius="6"
-            android:textSize="12sp"
+            android:textSize="12dp"
             android:textColor="#ffffff"
-            android:text="@string/iam"/>
-
-        <LinearLayout
-            android:id="@+id/charmLL"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-
-
-
-        </LinearLayout>
-
+            android:text=""/>
         <TextView
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp"
+            android:id="@+id/languageTV"
+            android:paddingTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="#99040000"
-            android:shadowRadius="6"
-            android:textSize="12sp"
+            android:textSize="12dp"
             android:textColor="#ffffff"
-            android:text="@string/we_meet"
-            />
-
-        <LinearLayout
-            android:id="@+id/meetLL"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-
-
-        </LinearLayout>
-
+            android:text=""/>
         <TextView
-            android:layout_marginTop="15dp"
-            android:layout_marginBottom="5dp"
+            android:id="@+id/jobTV"
+            android:paddingTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:shadowColor="#99040000"
-            android:shadowRadius="6"
-            android:textSize="12sp"
+            android:textSize="12dp"
             android:textColor="#ffffff"
-            android:text="@string/want_people"
-            />
-
-        <LinearLayout
-            android:id="@+id/youcharmLL"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-
-
-        </LinearLayout>
+            android:text=""/>
+        <TextView
+            android:id="@+id/moneyTV"
+            android:paddingTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12dp"
+            android:textColor="#ffffff"
+            android:text=""/>
 
     </LinearLayout>
 
@@ -185,7 +156,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="9.5dp"
-        android:layout_marginBottom="178dp"/>
+        android:layout_marginBottom="116dp"/>
 
 
 </RelativeLayout>
