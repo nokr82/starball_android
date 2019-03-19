@@ -94,6 +94,7 @@ class FriendChattingActivity : RootActivity()
                         chatting.put("isPlaying", true)
                         chatting.put("voice_progress",  voice_progress + 1000)
                     } else {
+                        chatting.put("isPlaying", false)
                         this.removeMessages(0)
                     }
 
@@ -258,8 +259,8 @@ class FriendChattingActivity : RootActivity()
 
                 recordStop()
 
-                voiceLL.setBackgroundColor(Color.parseColor("#00000000"))
-
+//                voiceLL.setBackgroundColor(Color.parseColor("#00000000"))
+                recordIV.setImageResource(R.mipmap.chatting_mic)
             } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
                     val perms = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO)
@@ -287,6 +288,7 @@ class FriendChattingActivity : RootActivity()
             }
 
             isPlaying = false
+            length = -1
 
             playerHandler.removeMessages(0)
         }
@@ -321,6 +323,7 @@ class FriendChattingActivity : RootActivity()
                 val chatting = data.getJSONObject("Chatting")
 
                 if (Utils.getInt(chatting, "id") == chatting_id) {
+                    chatting.put("isPlaying", false)
                     chatting.put("voice_progress", 0)
                     break
                 }
@@ -343,7 +346,20 @@ class FriendChattingActivity : RootActivity()
             playerHandler.sendEmptyMessage(0)
 
         } else {
+
             playingPause()
+
+            for (i in 0 until adapterData.size) {
+                val data = adapterData[i]
+                val chatting = data.getJSONObject("Chatting")
+
+                if (Utils.getInt(chatting, "id") == chatting_id) {
+                    chatting.put("isPlaying", false)
+                    break
+                }
+            }
+
+            adapter.notifyDataSetChanged()
 
             playerHandler.removeMessages(0)
         }
@@ -422,8 +438,8 @@ class FriendChattingActivity : RootActivity()
             //시작하면된다.
             Toast.makeText(context, "녹음을 시작합니다.", Toast.LENGTH_LONG).show()
 
-            voiceLL.setBackgroundColor(Color.parseColor("#333333"))
-
+//            voiceLL.setBackgroundColor(Color.parseColor("#333333"))
+            recordIV.setImageResource(R.mipmap.chatting_pause)
             record = true
 
 //            try {

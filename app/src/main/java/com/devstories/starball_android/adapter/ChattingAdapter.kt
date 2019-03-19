@@ -120,6 +120,12 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
                 item.otherProgressTV.text = "${minutes}:${seconds}"
                 item.otherVoiceTimeTV.text = Utils.getString(chatting, "voice_time")
 
+                if (Utils.getBoolen(chatting, "isPlaying")) {
+                    item.otherVoiceIV.setImageResource(R.mipmap.player_pause)
+                } else {
+                    item.otherVoiceIV.setImageResource(R.mipmap.player_play)
+                }
+
             } else {
                 item.otherImageIV.visibility = View.GONE
                 item.otherContentsLL.visibility = View.VISIBLE
@@ -163,6 +169,12 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
                 item.myProgressTV.text = "${minutes}:${seconds}"
                 item.myVoiceTimeTV.text = Utils.getString(chatting, "voice_time")
 
+                if (Utils.getBoolen(chatting, "isPlaying")) {
+                    item.myVoiceIV.setImageResource(R.mipmap.player_pause)
+                } else {
+                    item.myVoiceIV.setImageResource(R.mipmap.player_play)
+                }
+
             } else {
 
                 item.myImageIV.visibility = View.GONE
@@ -175,10 +187,8 @@ open class ChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObjec
         var like_yn = Utils.getString(chatting, "like_yn")
         if (like_yn == "Y") {
             item.likeIV.setImageResource(R.mipmap.lounge_heart_like)
-            item.likeIV.setBackgroundColor(Color.parseColor("#000000"))
         } else {
-            item.likeIV.setImageResource(R.mipmap.lounge_heart_like)
-            item.likeIV.setBackgroundColor(Color.parseColor("#00000000"))
+            item.likeIV.setImageResource(R.mipmap.lounge_heart_like_on)
         }
 
         item.likeLL.setOnClickListener {
