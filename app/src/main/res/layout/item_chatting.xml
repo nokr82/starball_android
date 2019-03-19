@@ -92,14 +92,7 @@
                         android:src="@mipmap/player_play_btn"/>
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:textSize="6dp"
-                        android:textColor="#333333"
-                        android:text="00:00"/>
-
-                    <TextView
+                        android:id="@+id/otherProgressTV"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
@@ -115,8 +108,25 @@
                         android:layout_marginRight="2dp"
                         android:background="#e2e2e2">
 
+                        <ProgressBar
+                            android:id="@+id/otherVoicePB"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:progress="50"
+                            android:progressDrawable="@drawable/progressbar_voice"
+                            android:scrollbarThumbHorizontal="@mipmap/player_btn"/>
 
                     </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/otherVoiceTimeTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="3.5dp"
+                        android:textSize="6dp"
+                        android:textColor="#333333"
+                        android:text="00:00"/>
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
@@ -242,6 +252,7 @@
                     android:src="@mipmap/player_play_btn"/>
 
                 <TextView
+                    android:id="@+id/myProgressTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="3dp"
@@ -249,24 +260,26 @@
                     android:textColor="#333333"
                     android:text="00:00"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:textSize="6dp"
-                    android:textColor="#333333"
-                    android:text="00:00"/>
-
-                <LinearLayout
+                <ProgressBar
+                    android:id="@+id/myVoicePB"
                     android:layout_width="0dp"
                     android:layout_height="5.5dp"
                     android:layout_weight="1"
                     android:layout_marginLeft="2dp"
                     android:layout_marginRight="2dp"
-                    android:background="#e2e2e2">
+                    style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/progressbar_voice"
+                    android:scrollbarThumbHorizontal="@mipmap/player_btn"/>
 
-
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/myVoiceTimeTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="3.5dp"
+                    android:textSize="6dp"
+                    android:textColor="#333333"
+                    android:text="00:00"/>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"

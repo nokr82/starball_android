@@ -78,6 +78,38 @@ class FriendChattingActivity : RootActivity()
         }
     }
 
+    internal var playerHandler: Handler = object : Handler() {
+        override fun handleMessage(msg: android.os.Message) {
+
+            for (i in 0 until adapterData.size) {
+
+                val data = adapterData[i]
+                val chatting = data.getJSONObject("Chatting")
+
+                if (chatting_id == Utils.getInt(chatting, "id")) {
+                    val voice_progress = Utils.getInt(chatting, "voice_progress")
+                    val voice_duration = Utils.getInt(chatting, "voice_duration")
+
+                    if (voice_progress < voice_duration) {
+                        chatting.put("isPlaying", true)
+                        chatting.put("voice_progress",  voice_progress + 1000)
+                    } else {
+                        this.removeMessages(0)
+                    }
+
+                } else {
+                    chatting.put("isPlaying", false)
+                    chatting.put("voice_progress", 0)
+                }
+
+            }
+
+            adapter.notifyDataSetChanged()
+
+            this.sendEmptyMessageDelayed(0, 1000)
+        }
+    }
+
     private var timer: Timer? = null
 
     private val EDIT_CHATTING = 300
@@ -255,6 +287,8 @@ class FriendChattingActivity : RootActivity()
             }
 
             isPlaying = false
+
+            playerHandler.removeMessages(0)
         }
 
         if (isPlaying == false) {
@@ -265,6 +299,8 @@ class FriendChattingActivity : RootActivity()
                     player!!.release()
                 }
                 player = MediaPlayer()
+
+                this.chatting_id = chatting_id
 
                 player!!.setDataSource(recordPath)
                 player!!.prepare()
@@ -279,16 +315,37 @@ class FriendChattingActivity : RootActivity()
             }
 
             isPlaying = true
+
+            for (i in 0 until adapterData.size) {
+                val data = adapterData[i]
+                val chatting = data.getJSONObject("Chatting")
+
+                if (Utils.getInt(chatting, "id") == chatting_id) {
+                    chatting.put("voice_progress", 0)
+                    break
+                }
+            }
+
+            adapter.notifyDataSetChanged()
+
+            playerHandler.sendEmptyMessage(0)
+
         } else if (length > 0) {
 
             if (length > player!!.duration) {
                 length = 0
             }
+
             player!!.seekTo(length)
             player!!.start()
             length = -1
+
+            playerHandler.sendEmptyMessage(0)
+
         } else {
             playingPause()
+
+            playerHandler.removeMessages(0)
         }
     }
 
@@ -382,7 +439,6 @@ class FriendChattingActivity : RootActivity()
         }
 
     }
-
 
     private fun loadPermissions(perm: String, requestCode: Int) {
         if (ContextCompat.checkSelfPermission(this, perm) !== PackageManager.PERMISSION_GRANTED) {
@@ -1192,6 +1248,7 @@ class FriendChattingActivity : RootActivity()
                 var seconds = ( ( millis % (1000*60*60) ) % (1000*60) ) / 1000
 
                 params.put("voice_time", minutes.toString() + ":" + seconds.toString())
+                params.put("voice_duration", player.duration)
 
             }
         }
