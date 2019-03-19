@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Toast
 import com.devstories.starball_android.actions.ChargeAction
 import com.devstories.starball_android.R
@@ -19,6 +20,8 @@ import kotlinx.android.synthetic.main.dlg_starball_lack.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import java.text.SimpleDateFormat
+import java.util.*
 
 class DlgStarballLackActivity : RootActivity() {
 
@@ -27,7 +30,36 @@ class DlgStarballLackActivity : RootActivity() {
 
     private var iapHelper: IAPHelper? = null
 
+    private var timer: Timer? = null
+
     var member_id = -1
+
+    internal var timerHandler: Handler = object : Handler() {
+        override fun handleMessage(msg: android.os.Message) {
+
+            try {
+                var formatter = SimpleDateFormat("HH:mm", Locale.KOREA)
+                var t_time = Utils.timeStr()
+                val d1 = formatter.parse(t_time)
+                val d2 = formatter.parse("12:00")
+                var diff = d2.time - d1.time
+                if (diff<0){
+                    diff =  d1.time - d2.time
+                    timeTV.text = Utils.dateString3(diff.toInt())
+                }else{
+                    timeTV.text = Utils.dateString3(diff.toInt())
+                }
+
+
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+
+            this.sendEmptyMessageDelayed(0, 60000)
+
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -86,6 +118,9 @@ class DlgStarballLackActivity : RootActivity() {
         starball24hLL.setOnClickListener {
             iapHelper?.buy("startball_24h")
         }
+
+
+        timerStart()
 
     }
 
@@ -275,5 +310,16 @@ class DlgStarballLackActivity : RootActivity() {
         })
     }
 
+    fun timerStart() {
+        val task = object : TimerTask() {
+            override fun run() {
+                timerHandler.sendEmptyMessage(0)
+            }
+        }
+
+        timer = Timer()
+        timer!!.schedule(task, 0, 2000)
+
+    }
 
 }
