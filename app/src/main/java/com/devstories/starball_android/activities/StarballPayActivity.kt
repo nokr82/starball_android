@@ -12,6 +12,7 @@ import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import com.devstories.starball_android.billing.IAPHelper
+import com.devstories.starball_android.utils.FreeStarball
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 import cz.msebera.android.httpclient.Header
@@ -110,7 +111,8 @@ class StarballPayActivity : RootActivity() {
         adverTV.setOnClickListener {
 
             AdmobUtils.loadAd(context) {
-                freeStarball(2)
+                // freeStarball(2)
+                FreeStarball.freeStraball(context, 2)
             }
 
         }

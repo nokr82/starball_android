@@ -268,8 +268,10 @@ public class SwipeStack extends ViewGroup {
             mTopView = null;
         }
 
-        if (getChildCount() == 2) {
-            if (mListener != null) mListener.onStackEmpty();
+        if (getChildCount() == 0) {
+            if (mListener != null) {
+                mListener.onStackEmpty();
+            }
         }
     }
 
