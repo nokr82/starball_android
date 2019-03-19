@@ -54,8 +54,10 @@ class DailyMomentListActivity : RootActivity() {
     lateinit var backIV: ImageView
     lateinit var videoLL: LinearLayout
     lateinit var mypostTV: TextView
+    lateinit var nameTV: TextView
     lateinit var photoLL: LinearLayout
     lateinit var headRL: RelativeLayout
+    lateinit var profileIV: ImageView
 
     var items= ArrayList<String>()
 
@@ -81,7 +83,9 @@ class DailyMomentListActivity : RootActivity() {
         var filter1 = IntentFilter("DEL_POST")
         registerReceiver(reloadReciver, filter1)
 
-        daillyAdapter = DaillyAdapter(context, R.layout.item_daily_list, adapterdata,this,DailyMomentViewListActivity(),1)
+        daillyAdapter = DaillyAdapter(context, R.layout.item_daily_list, adapterdata,this,
+            DailyMomentViewListActivity(),1
+        )
         dailyLV.adapter = daillyAdapter
 
 
@@ -116,7 +120,9 @@ class DailyMomentListActivity : RootActivity() {
         headRL = header.findViewById(R.id.headRL)
         videoLL = header.findViewById(R.id.videoLL)
         photoLL = header.findViewById(R.id.photoLL)
+        profileIV = header.findViewById(R.id.profileIV)
         mypostTV = header.findViewById(R.id.mypostTV)
+        nameTV = header.findViewById(R.id.nameTV)
         dailyLV.addHeaderView(header)
 
         mypostTV.setOnClickListener {

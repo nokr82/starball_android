@@ -39,7 +39,7 @@ class DailyMomentViewListActivity : RootActivity() {
     lateinit var secretTV: TextView
     lateinit var profileIV: ImageView
     lateinit var starballIV: ImageView
-
+    lateinit var nameTV: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +56,7 @@ class DailyMomentViewListActivity : RootActivity() {
 
         header = View.inflate(this, R.layout.item_daily_moment_view_head, null)
         backIV = header.findViewById(R.id.backIV)
+        nameTV  = header.findViewById(R.id.nameTV)
         timelineTV = header.findViewById(R.id.timelineTV)
         secretTV = header.findViewById(R.id.secretTV)
         profileIV= header.findViewById(R.id.profileIV)
