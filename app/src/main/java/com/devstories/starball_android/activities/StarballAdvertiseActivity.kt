@@ -17,7 +17,7 @@ class StarballAdvertiseActivity : RootActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_agree)
+        setContentView(R.layout.activity_starball_advertise)
 
         this.context = this
         progressDialog = ProgressDialog(context)
