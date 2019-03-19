@@ -756,11 +756,11 @@ class FriendChattingActivity : RootActivity()
 
                     if ("ok" == result) {
 
-                        if(like_yn == "Y") {
-                            val intent = Intent(context, ChatNotiActivity::class.java)
-                            startActivity(intent)
-                            overridePendingTransition(0, 0)
-                        }
+//                        if(like_yn == "Y") {
+//                            val intent = Intent(context, ChatNotiActivity::class.java)
+//                            startActivity(intent)
+//                            overridePendingTransition(0, 0)
+//                        }
 
                         for (i in 0 until adapterData.size) {
                             val data = adapterData[i]
