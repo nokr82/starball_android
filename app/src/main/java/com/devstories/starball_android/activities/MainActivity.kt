@@ -12,12 +12,12 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
-import android.location.Address
-import android.location.Geocoder
 import android.location.Location
-import android.os.*
+import android.os.Build
+import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.support.v4.app.ActivityCompat
-import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.view.animation.AccelerateDecelerateInterpolator
@@ -56,6 +56,10 @@ class MainActivity : RootActivity() {
 
     var latitude = 37.5203175
     var longitude = 126.9107831
+
+    var page = 1
+
+    private var my_membership = "member"
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
@@ -106,9 +110,11 @@ class MainActivity : RootActivity() {
         swipeStack.adapter = swipeStackAdapter
         swipeStack.setListener(object : SwipeStack.SwipeStackListener {
             override fun onStackEmpty() {
+                page++
+
                 loadData()
 
-                if(1 == 1) {
+                if(my_membership == "1member") {
 
                     AdmobUtils.loadAd(mContext) {
                         println("admob closed")
@@ -153,9 +159,9 @@ class MainActivity : RootActivity() {
         }
 
 
-        updateToken()
-
         initGPS()
+
+        updateToken()
 
         get_info()
 
@@ -163,11 +169,12 @@ class MainActivity : RootActivity() {
 
     }
 
-
     private fun get_info() {
 
         val params = RequestParams()
         params.put("member_id", member_id)
+        params.put("latitude", latitude)
+        params.put("longitude", longitude)
 
         MemberAction.get_info(params, object : JsonHttpResponseHandler() {
 
@@ -181,6 +188,8 @@ class MainActivity : RootActivity() {
                     if ("ok" == result) {
 
                         starball = Utils.getInt(response, "starball")
+
+                        my_membership = Utils.getString(response, "my_membership")
 
 
                         Log.d("스타볼",starball.toString())
@@ -272,6 +281,7 @@ class MainActivity : RootActivity() {
         params.put("member_id", member_id)
         params.put("latitude", latitude)
         params.put("longitude", longitude)
+        params.put("page", page)
 
         MemberAction.list(params, object : JsonHttpResponseHandler() {
 
@@ -515,6 +525,8 @@ class MainActivity : RootActivity() {
             longitude = location.longitude
 
             loadData()
+
+            update_location()
         }
 
     }
@@ -707,4 +719,79 @@ class MainActivity : RootActivity() {
     fun dislike() {
 
     }
+
+    private fun update_location() {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("latitude", latitude)
+        params.put("longitude", longitude)
+
+        MemberAction.update_location(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+
+                try {
+                    val result = response!!.getString("result")
+                    if ("ok" == result) {
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                throwable.printStackTrace()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                throwable.printStackTrace()
+            }
+
+            override fun onStart() {
+
+            }
+
+            override fun onFinish() {
+
+            }
+        })
+    }
+
 }

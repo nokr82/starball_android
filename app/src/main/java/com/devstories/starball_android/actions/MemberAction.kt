@@ -94,4 +94,8 @@ object MemberAction {
 
     }
 
+    fun update_location(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/update_location", params, handler)
+    }
+
 }
