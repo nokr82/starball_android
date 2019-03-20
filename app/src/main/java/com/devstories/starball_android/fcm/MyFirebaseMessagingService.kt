@@ -75,11 +75,19 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 broadcastIntent.putExtra("created", data["created_at"])
                 broadcastIntent.action = "PUSH_CHATTING"
                 this.sendBroadcast(broadcastIntent)
+            } else if (push_type == "propose") {
+                val broadcastIntent = Intent()
+                broadcastIntent.putExtra("propose_id", data["propose_id"]!!.toInt())
+                broadcastIntent.action = "PROPOSE"
+                this.sendBroadcast(broadcastIntent)
             }
 
         }
         if (push_type == "chatting") {
             intent.putExtra("room_id", data["room_id"]!!.toInt())
+            intent.putExtra("chatting_member_id", data["chatting_member_id"]!!.toInt())
+        } else if (push_type == "propose") {
+            intent.putExtra("propose_id", data["propose_id"]!!.toInt())
         }
 
         intent.putExtra("FROM_PUSH", true)

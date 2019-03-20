@@ -1280,14 +1280,25 @@ class FriendChattingActivity : RootActivity()
                 try {
                     val result = response!!.getString("result")
 
-                    selectedImage = null
-                    record_path = ""
-                    contentsET.setText("")
-
                     if ("ok" == result) {
 
-                    } else {
+                        val contents = Utils.getString(response, "contents")
+                        val created_at = Utils.getString(response, "created_at")
 
+                        selectedImage = null
+                        record_path = ""
+                        contentsET.setText("")
+
+                        var intent = Intent()
+                        intent.putExtra("room_id", room_id)
+                        intent.putExtra("contents", contents)
+                        intent.putExtra("created_at", created_at)
+                        intent.putExtra("member_id", member_id)
+                        intent.setAction("PUSH_CHATTING")
+                        sendBroadcast(intent)
+
+                    } else {
+                        Toast.makeText(context, getString(R.string.api_error), Toast.LENGTH_LONG).show()
                     }
 
                 } catch (e: JSONException) {

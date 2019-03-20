@@ -75,6 +75,22 @@ class MainActivity : RootActivity() {
         }
     }
 
+    internal var proposeReceiver: BroadcastReceiver? = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent?) {
+            if (intent != null) {
+
+                var propose_id = intent.getIntExtra("propose_id", -1)
+
+                if (propose_id > 0) {
+                    val intent2 = Intent(context, DlgProposeActivity::class.java)
+                    intent2.putExtra("propose_id", propose_id)
+                    startActivity(intent2)
+                }
+
+            }
+        }
+    }
+
     var member_id = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,6 +106,9 @@ class MainActivity : RootActivity() {
 
         var filter1 = IntentFilter("STARBALL_USE")
         registerReceiver(usestarballreciver, filter1)
+
+        var filter2 = IntentFilter("PROPOSE")
+        registerReceiver(proposeReceiver, filter2)
 
         logoIV.setOnClickListener {
             val intent = Intent(mContext, StarballMemberShipActivity::class.java)
@@ -193,7 +212,7 @@ class MainActivity : RootActivity() {
 
         get_info()
 
-        get_proposes()
+//        get_proposes()
 
         Coomon.pushCheck(mContext, intent)
 
@@ -217,7 +236,7 @@ class MainActivity : RootActivity() {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
-                Log.d("스타볼",response.toString())
+
                 try {
                     val result = response!!.getString("result")
                     if ("ok" == result) {
@@ -226,8 +245,7 @@ class MainActivity : RootActivity() {
 
                         my_membership = Utils.getString(response, "my_membership")
 
-
-                        Log.d("스타볼",starball.toString())
+                        Log.d("스타볼", starball.toString())
 
                     } else {
 
