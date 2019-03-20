@@ -65,22 +65,26 @@
         <activity
             android:name=".activities.StarballAdvertiseActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
 
         <activity
             android:name=".activities.FindPasswordActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden">
         </activity>
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden">
         </activity>
 
         <activity
             android:name=".activities.IntroActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -91,250 +95,280 @@
         <activity
             android:name=".activities.JoinActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.AgreeActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.JoinStep1PasswdActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.FindVideoGridActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.JoinStep2NameActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.DlgPostOptionActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.JoinStep3GenderActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.JoinStep4HeightActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
         <activity
             android:name=".activities.JoinStep5BirthActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
         <activity
             android:name=".activities.JoinStep6LanguageActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.JoinStep7JobActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
         <activity
             android:name=".activities.JoinStep8SchoolActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
         <activity
             android:name=".activities.JoinStep9IntroActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateAlwaysVisible"/>
         <activity
             android:name=".activities.JoinStep10Activity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.JoinStep11PicActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.FindPictureGridActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.JoinStep12PreviewActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.CharmpointSettingAcitivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.JoinResultActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.MainActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.MainSearchActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.CashRequestActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.CharmPointActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.WeMeetActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.ChattingActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.ChattingExActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.DailyMomentListActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.DailyMomentSubVIewListActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.DailyMomentViewListActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.EditProfileActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.EmailConnectActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.GroupChattingActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.PhoneCertiActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.PhoneCerti2Activity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.ReportActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.SaveJoinActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.SaveJoinCancleActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.SaveJoinOverActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.SearchSettingActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.SettingActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.SettingMainActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.StarballMemberShipActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.VVIPJoinActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.VersionActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.GrouptMakeActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.StarballPayActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.FriendChattingActivity"
             android:theme="@style/NoTitleDialog"
+            android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
         <activity
             android:name=".activities.DlgLogoutActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.DlgChattingActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.DlgRecommendActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.DlgAdverbDeleteConfirmActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog"/>
         <activity
             android:name=".activities.DlgAlertCommonActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.DlgSecessionActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.DlgCharInfoActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.DlgSelectNationActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.DlgCharmpointActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.DlgSendProposeActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.DlgCrushActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.DlgStarballHistoryActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.DlgStarballLackActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.DlgAlbumPayActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.DlgProposeActivity"
-            android:screenOrientation="unspecified"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.DlgSelectLanguageActivity"
@@ -358,6 +392,7 @@
 
         <activity
             android:name="com.facebook.accountkit.ui.AccountKitActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppLoginTheme"
             tools:replace="android:theme"/>
 
