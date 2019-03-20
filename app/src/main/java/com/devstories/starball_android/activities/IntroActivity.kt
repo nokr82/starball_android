@@ -31,6 +31,8 @@ class IntroActivity : RootActivity() {
     private var context: Context? = null
 
     private var FROM_PUSH = false
+    private var PUSH_TYPE = ""
+    private var room_id = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +52,10 @@ class IntroActivity : RootActivity() {
         val buldle = intent.extras
         if (buldle != null) {
             try {
+
+                FROM_PUSH = buldle.getBoolean("FROM_PUSH", false)
+                PUSH_TYPE = buldle.getString("PUSH_TYPE", "")
+                room_id = buldle.getInt("room_id", -1)
 
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -160,6 +166,9 @@ class IntroActivity : RootActivity() {
         val memberId = PrefUtils.getIntPreference(context, "member_id")
         if(memberId > 0) {
             val intent = Intent(context, MainActivity::class.java)
+            intent.putExtra("FROM_PUSH", FROM_PUSH)
+            intent.putExtra("PUSH_TYPE", PUSH_TYPE)
+            intent.putExtra("room_id", room_id)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         } else {

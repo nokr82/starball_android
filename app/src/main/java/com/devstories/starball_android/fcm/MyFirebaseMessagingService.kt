@@ -49,8 +49,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         val data = remoteMessage.data ?: return
 
-        val title = data["title"]
-        val body = data["body"]
+        val title = remoteMessage.notification!!.title
+        val body = remoteMessage.notification!!.body
 //        val channelId = getString(R.string.default_notification_channel_id)
         val channelId = "Starball"
         val group = channelId
@@ -64,9 +64,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //        intent.putExtra("friend_id", data["friend_id"])
 //        intent.putExtra("FROM_PUSH", true)
 
+        val push_type = data["type"]
+
         if (isAppRunning(this)) {
 
-            if (data["type"] == "chatting") {
+            if (push_type == "chatting") {
                 val broadcastIntent = Intent()
                 broadcastIntent.putExtra("room_id", data["room_id"]!!.toInt())
                 broadcastIntent.putExtra("contents", data["contents"])
@@ -76,12 +78,13 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             }
 
         } else {
-            if (data["type"] == "chatting") {
-                PrefUtils.setPreference(this, "room_id", data["room_id"]!!.toInt())
+            if (push_type == "chatting") {
+                intent.putExtra("room_id", data["room_id"]!!.toInt())
             }
 
-            PrefUtils.setPreference(this, "PUSH_TYPE", data["type"])
-            PrefUtils.setPreference(this, "FROM_PUSH", true)
+            intent.putExtra("FROM_PUSH", true)
+            intent.putExtra("PUSH_TYPE", data["type"])
+
         }
 
         val pendingIntent = PendingIntent.getActivity(this, System.currentTimeMillis().toInt(), intent, PendingIntent.FLAG_ONE_SHOT)

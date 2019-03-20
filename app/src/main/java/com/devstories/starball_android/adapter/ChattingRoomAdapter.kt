@@ -48,10 +48,6 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
 
         val type = Utils.getInt(json, "type")
 
-
-
-
-
         if (type == 1) {
 
             val Group = json.getJSONObject("Group")
@@ -100,7 +96,14 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
 
             item.newIV.visibility = View.GONE
 
+        } else if (type == 3) {
+
+            item.titleTV.visibility = View.VISIBLE
+
         } else {
+
+            item.titleTV.visibility = View.GONE
+
             val pin_yn = json.getString("pin_yn")
             if (pin_yn == "Y") {
                 item.pinIV.visibility = View.VISIBLE
@@ -109,12 +112,12 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
             }
             val founder_yn = json.getString("founder_yn")
             val json = data[position]
-            val title = Utils.getString(json, "title")
-            if (title == "chatting_title") {
-                item.titleTV.visibility = View.VISIBLE
-            } else {
-                item.titleTV.visibility = View.GONE
-            }
+//            val title = Utils.getString(json, "title")
+//            if (title == "chatting_title") {
+//                item.titleTV.visibility = View.VISIBLE
+//            } else {
+//                item.titleTV.visibility = View.GONE
+//            }
             val room = json.getJSONObject("Room")
             val lastChatting = json.getJSONObject("LastChatting")
 
