@@ -410,5 +410,6 @@
     <string name="buy_booster_buy_done">Booster Mode 를 구입하였습니다.</string>
     <string name="membership_join_done">가입되었습니다.</string>
     <string name="block">차단하기</string>
+    <string name="propose_member">프로포즈를 받은 회원입니다.</string>
 
 </resources>
