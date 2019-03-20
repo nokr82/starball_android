@@ -128,71 +128,73 @@
 
     </LinearLayout>
 
-
     <LinearLayout
-            android:layout_marginRight="10dp"
-            android:layout_gravity="end"
-            android:id="@+id/myVoiceLL"
-            android:layout_width="190dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="14.6dp"
-            android:background="@mipmap/player_bg"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:visibility="gone">
+        android:id="@+id/myVoiceLL"
+        android:layout_width="190dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="end"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14.6dp"
+        android:background="@mipmap/player_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="visible">
 
         <ImageView
-                android:id="@+id/myVoiceIV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:src="@mipmap/player_play_btn"/>
+            android:id="@+id/myVoiceIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:src="@mipmap/player_play_btn"/>
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:textSize="6dp"
-                android:textColor="#333333"
-                android:text="00:00"/>
+            android:id="@+id/myProgressTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="3dp"
+            android:textSize="6dp"
+            android:textColor="#333333"
+            android:text="00:00"/>
+
+        <ProgressBar
+            android:id="@+id/myVoicePB"
+            android:layout_width="0dp"
+            android:layout_height="5.5dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:progress="50"
+            android:progressDrawable="@drawable/progressbar_voice"
+            android:scrollbarThumbHorizontal="@mipmap/player_btn"/>
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="3dp"
-                android:textSize="6dp"
-                android:textColor="#333333"
-                android:text="00:00"/>
-
-        <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="5.5dp"
-                android:layout_weight="1"
-                android:layout_marginLeft="2dp"
-                android:layout_marginRight="2dp"
-                android:background="#e2e2e2">
-
-
-        </LinearLayout>
+            android:id="@+id/myVoiceTimeTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="3.5dp"
+            android:textSize="6dp"
+            android:textColor="#333333"
+            android:text="00:00"/>
 
         <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp">
+
+            <ImageView
+                android:id="@+id/volummIV2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="8dp">
+                android:src="@mipmap/volumm"/>
 
             <ImageView
-                    android:id="@+id/volummIV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/volumm"/>
-
-            <ImageView
-                    android:id="@+id/volummGraphIV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/volummIV"
-                    android:layout_alignBottom="@+id/volummIV"
-                    android:src="@mipmap/volumm_graph"/>
+                android:id="@+id/volummGraphIV2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/volummIV2"
+                android:layout_alignBottom="@+id/volummIV2"
+                android:src="@mipmap/volumm_graph"/>
 
         </RelativeLayout>
 

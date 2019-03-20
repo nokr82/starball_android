@@ -5,10 +5,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.GroupChattingActivity
 import com.devstories.starball_android.base.Config
@@ -88,12 +85,31 @@ open class GroupChattingAdapter(
             item.myImageIV.visibility = View.VISIBLE
             item.myContentsLL.visibility = View.GONE
             item.myVoiceLL.visibility = View.GONE
-        } else if (type == 3) {
+        }
+        else if (type == 3) {
             item.myImageIV.visibility = View.GONE
             item.myContentsLL.visibility = View.GONE
             item.myVoiceLL.visibility = View.VISIBLE
+
             item.myVoiceIV.setOnClickListener {
                 activity.playing(Config.url + Utils.getString(chatting, "voice_uri"), Utils.getInt(chatting, "id"))
+            }
+
+            val voiceProgress = Utils.getInt(chatting, "voice_progress")
+
+            item.myVoicePB.max = Utils.getInt(chatting, "voice_duration")
+            item.myVoicePB.progress = voiceProgress
+
+            val minutes = ( voiceProgress % (1000*60*60) ) / (1000*60)
+            val seconds = ( ( voiceProgress % (1000*60*60) ) % (1000*60) ) / 1000
+
+            item.myProgressTV.text = "${minutes}:${seconds}"
+            item.myVoiceTimeTV.text = Utils.getString(chatting, "voice_time")
+
+            if (Utils.getBoolen(chatting, "isPlaying")) {
+                item.myVoiceIV.setImageResource(R.mipmap.player_pause)
+            } else {
+                item.myVoiceIV.setImageResource(R.mipmap.player_play)
             }
 
         }else {
@@ -133,8 +149,11 @@ open class GroupChattingAdapter(
         var itemLL: LinearLayout
         var myContentsLL: LinearLayout
         var myImageIV:ImageView
-        var myVoiceLL: LinearLayout
-        var myVoiceIV: ImageView
+        var myVoiceLL: LinearLayout = v.findViewById(R.id.myVoiceLL)
+        var myVoiceIV: ImageView = v.findViewById(R.id.myVoiceIV)
+        var myVoicePB: ProgressBar = v.findViewById(R.id.myVoicePB)
+        var myProgressTV: TextView = v.findViewById(R.id.myProgressTV)
+        var myVoiceTimeTV: TextView = v.findViewById(R.id.myVoiceTimeTV)
         init {
             myImageIV = v.findViewById(R.id.myImageIV)
             itemLL = v.findViewById(R.id.itemLL)
