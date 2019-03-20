@@ -6,6 +6,7 @@ import android.content.Intent
 import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.MemberAction
+import com.devstories.starball_android.activities.DlgProposeActivity
 import com.devstories.starball_android.activities.FriendChattingActivity
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
@@ -118,7 +119,11 @@ class Coomon {
 
                 if (PUSH_TYPE == "chatting") {
                     val intent1 = Intent(context, FriendChattingActivity::class.java)
-                    intent1.putExtra("room_id", PrefUtils.getIntPreference(context, "room_id"))
+                    intent1.putExtra("room_id", intent.getIntExtra("room_id", -1))
+                    context.startActivity(intent1)
+                } else if (PUSH_TYPE == "propose") {
+                    val intent1 = Intent(context, DlgProposeActivity::class.java)
+                    intent1.putExtra("propose_id", intent.getIntExtra("propose_id", -1))
                     context.startActivity(intent1)
                 }
 

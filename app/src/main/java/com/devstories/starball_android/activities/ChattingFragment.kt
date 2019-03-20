@@ -742,6 +742,11 @@ class ChattingFragment : Fragment() {
         if (progressDialog != null) {
             progressDialog!!.dismiss()
         }
+
+        if (chattingReceiver != null) {
+            myContext.unregisterReceiver(chattingReceiver)
+        }
+
     }
 }
 
