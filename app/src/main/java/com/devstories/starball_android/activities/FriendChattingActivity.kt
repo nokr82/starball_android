@@ -21,6 +21,7 @@ import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.devstories.starball_android.R
@@ -66,8 +67,10 @@ class FriendChattingActivity : RootActivity()
 
     var translation_yn = ""
 
+
     lateinit var adapter: ChattingAdapter
     var adapterData = ArrayList<JSONObject>()
+
 
     lateinit var adverbAdapter: AdverbAdapter
     var adverbAdapterData = ArrayList<JSONObject>()
@@ -145,12 +148,21 @@ class FriendChattingActivity : RootActivity()
 
     private val MY_PERMISSIONS_REQUEST_READ_CONTACTS = 100
 
+    var blockdata = ArrayList<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_friend_chatting)
 
         this.context = this
         progressDialog = ProgressDialog(context)
+
+        blockdata.add("Wechat")
+        blockdata.add("kakaotalk")
+        blockdata.add("line")
+        blockdata.add("whatsapp")
+        blockdata.add("zalo")
+        blockdata.add("viber")
 
         member_id = PrefUtils.getIntPreference(context, "member_id")
 
@@ -269,6 +281,14 @@ class FriendChattingActivity : RootActivity()
         sendLL.setOnClickListener {
 
             val contents = Utils.getString(contentsET)
+
+            for (i in 0 until blockdata.size) {
+                Log.d("사이코",blockdata[i])
+                if (contents.contains(blockdata[i])){
+                    Toast.makeText(context,"주의:상대방이 다른 메신져를 이용해서 사기 또는 금전을 요구할 가능성이 있으니 신중하십시오.\n" +
+                            "타른 수단에서 발생한 피해는 책임지지 않습니다.\n",Toast.LENGTH_SHORT).show()
+                }
+            }
 
             if ("" == contents) {
                 return@setOnClickListener

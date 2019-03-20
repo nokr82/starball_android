@@ -322,16 +322,25 @@ class JoinStep5BirthActivity : RootActivity() {
                     return
                 }
 
-                if(validateDate()) {
+                val day2 = Utils.getInt(day2ET, 0)
+                if(day2 > 0) {
+                    if(validateDate()) {
+                        setDayTV()
+
+                        if (day1ET.length() == 1) {
+                            day2ET.requestFocus()
+                        }
+
+                    } else {
+                        Log.d("생일","")
+                        day1ET.setText("")
+                    }
+                } else {
                     setDayTV()
 
                     if (day1ET.length() == 1) {
                         day2ET.requestFocus()
                     }
-
-                } else {
-                    Log.d("생일","")
-                    day1ET.setText("")
                 }
             }
         })

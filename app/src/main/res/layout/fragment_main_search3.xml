@@ -149,7 +149,7 @@
             app:minAllowedStars="1"
             app:numStars="5"
             app:starSize="50dp"
-            app:starSpacing="12dp"
+            app:starSpacing="7dp"
             app:rating="0"
             app:isIndicator="false"
             app:emptyDrawable="@mipmap/star_empty"

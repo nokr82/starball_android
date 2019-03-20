@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RatingBar
 import android.widget.TextView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.*
@@ -79,7 +80,7 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
     }
 
     class MainSearchType3(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+        var rating_bar = itemView.findViewById<View>(R.id.rating_bar) as com.fuzzproductions.ratingbar.RatingBar
         var infoLL = itemView.findViewById<View>(R.id.infoLL) as LinearLayout
         var dailyLL = itemView.findViewById<View>(R.id.dailyLL) as LinearLayout
         var imgIV = itemView.findViewById<View>(R.id.imgIV) as ImageView
@@ -528,7 +529,8 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                     holder.imgIV.visibility = View.VISIBLE
                     holder.videoVV.visibility = View.GONE
 
-                } else {
+                }
+                else {
 
                     var dataSource = path
                     if(!preview) {
@@ -624,6 +626,11 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
 
                     /*  val intent = Intent(context, MatchedActivity::class.java)
                       context.startActivity(intent)*/
+                }
+
+                holder.rating_bar.setOnRatingBarChangeListener { ratingBar, fl, b ->
+                    Log.d("레이팅",fl.toString())
+                    Log.d("레이팅",b.toString())
                 }
             }
         }
