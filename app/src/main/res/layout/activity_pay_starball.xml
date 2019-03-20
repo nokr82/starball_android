@@ -544,7 +544,7 @@
                                 android:textSize="16dp"
                                 android:textColor="#e47100"
                                 android:gravity="center_horizontal"
-                                android:text="500"/>
+                                android:text="200"/>
 
                             <TextView
                                 android:textStyle="bold"
@@ -565,10 +565,10 @@
                             android:textSize="16dp"
                             android:textColor="#555555"
                             android:gravity="center_horizontal"
-                            android:text="10,000,000원"/>
+                            android:text="400,000원"/>
 
                         <TextView
-                            android:id="@+id/starball500TV"
+                            android:id="@+id/starball200TV"
                             android:padding="6dp"
                             android:layout_marginTop="9.5dp"
                             android:layout_width="wrap_content"
