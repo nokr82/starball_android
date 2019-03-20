@@ -606,7 +606,10 @@ class EditProfileActivity : RootActivity() {
     }
 
     fun datedlg() {
-        DatePickerDialog(context, dateSetListener, year, month, day).show()
+        var day = Utils.todayStr()
+        var days =    day.split("-")
+
+        DatePickerDialog(context, dateSetListener, days[0].toInt(), days[1].toInt(), days[2].toInt()).show()
     }
 
     private val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
