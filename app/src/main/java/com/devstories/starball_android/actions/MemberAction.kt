@@ -100,4 +100,8 @@ object MemberAction {
         HttpClient.post("/members/update_location", params, handler)
     }
 
+    fun buy_booster(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/buy_booster", params, handler)
+    }
+
 }

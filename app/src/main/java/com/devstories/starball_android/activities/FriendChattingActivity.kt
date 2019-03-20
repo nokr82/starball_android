@@ -209,6 +209,10 @@ class FriendChattingActivity : RootActivity()
         }
 
         adverbBtnLL.setOnClickListener {
+
+            emoticonIV.setImageResource(R.mipmap.emoticon)
+            emoticonLL.visibility = View.GONE
+
             if (adverbLL.visibility == View.GONE) {
                 adverbIV.setImageResource(R.mipmap.bubble_on)
                 adverbLL.visibility = View.VISIBLE
@@ -219,6 +223,9 @@ class FriendChattingActivity : RootActivity()
         }
 
         emoticonBtnLL.setOnClickListener {
+
+            adverbIV.setImageResource(R.mipmap.bubble)
+            adverbLL.visibility = View.GONE
 
             if (emoticonLL.visibility == View.GONE) {
                 emoticonIV.setImageResource(R.mipmap.emoticon_on)

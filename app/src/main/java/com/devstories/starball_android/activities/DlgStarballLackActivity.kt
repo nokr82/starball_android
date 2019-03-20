@@ -90,6 +90,8 @@ class DlgStarballLackActivity : RootActivity() {
 
                     if (starballs[1] == "24h") {
 
+                        boosterMode(purchaseToken)
+
                     } else {
                         starball = starballs[1].toInt()
 
@@ -121,15 +123,15 @@ class DlgStarballLackActivity : RootActivity() {
 
 
         starballO2LL.setOnClickListener {
-            iapHelper?.buy("startball_02")
+            iapHelper?.buy("starball_02")
         }
 
         starball20LL.setOnClickListener {
-            iapHelper?.buy("startball_20")
+            iapHelper?.buy("starball_20")
         }
 
         starball24hLL.setOnClickListener {
-            iapHelper?.buy("startball_24h")
+            iapHelper?.buy("starball_24h")
         }
 
 
@@ -158,6 +160,95 @@ class DlgStarballLackActivity : RootActivity() {
                     if ("ok" == result) {
 
                         Toast.makeText(mContext, getString(R.string.starball_buy_done), Toast.LENGTH_SHORT).show()
+
+                        iapHelper!!.consume(purchaseToken)
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(mContext, getString(R.string.api_error))
+            }
+
+            /* override fun onFailure(statusCode: Int, headers: Array<Header>?, responseString: String?, throwable: Throwable) {
+                 if (progressDialog != null) {
+                     progressDialog!!.dismiss()
+                 }
+                 Log.d("에러", responseString.toString())
+                 // System.out.println(responseString);
+
+                 throwable.printStackTrace()
+                 error()
+             }*/
+
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONArray?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
+    fun boosterMode(purchaseToken: String) {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("price", 9900)
+        params.put("purchaseToken", purchaseToken)
+
+        MemberAction.buy_booster(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+
+                        Toast.makeText(mContext, getString(R.string.buy_booster_buy_done), Toast.LENGTH_SHORT).show()
 
                         iapHelper!!.consume(purchaseToken)
 
