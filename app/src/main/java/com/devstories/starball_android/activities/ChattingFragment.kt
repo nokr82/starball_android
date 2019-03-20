@@ -82,20 +82,26 @@ class ChattingFragment : Fragment() {
 
                             var pin_yn = Utils.getString(data, "pin_yn")
 
+                            val room = data.getJSONObject("Room")
+                            val Chatting = data.getJSONObject("Chatting")
+
+                            val id = Utils.getInt(room, "id")
+
                             if (type2_position < 1 && pin_yn == "N") {
                                 type2_position = i
                             }
 
-                            val room = data.getJSONObject("Room")
-
-                            val id = Utils.getInt(room, "id")
-
                             if (id == room_id) {
                                 has = true
-                                room.put("contents", contents)
-                                room.put("created", created_at)
-                                roomAdapterData.removeAt(i)
-                                roomAdapterData.add(type2_position, data)
+
+                                Chatting.put("contents", contents)
+                                Chatting.put("created", created_at)
+
+                                if (type2_position > 0) {
+                                    roomAdapterData.removeAt(i)
+                                    roomAdapterData.add(type2_position, data)
+                                }
+
                                 break
                             }
 
@@ -221,7 +227,7 @@ class ChattingFragment : Fragment() {
                             val group_id = Utils.getInt(Group, "id")
                             del_yn="Y"
                             editGroupRoom(group_id)
-                        } else {
+                        } else if (type == 2) {
                             val Room = json.getJSONObject("Room")
                             val room_id = Utils.getInt(Room, "id")
                             del_yn="Y"
@@ -245,7 +251,7 @@ class ChattingFragment : Fragment() {
                             }
                             editGroupRoom(group_id)
 
-                        } else {
+                        } else if (type == 2) {
                              pin_yn = Utils.getString(json, "pin_yn")
                             val Room = json.getJSONObject("Room")
                             val room_id = Utils.getInt(Room, "id")
@@ -283,10 +289,9 @@ class ChattingFragment : Fragment() {
                 intent.putExtra("room_id", Utils.getInt(Group, "id"))
                 startActivity(intent)
 
-
                 roomAdapter.notifyDataSetChanged()
 
-            } else {
+            } else if (type == 2) {
                 val room = json.getJSONObject("Room")
 
                 var intent = Intent(context, FriendChattingActivity::class.java)

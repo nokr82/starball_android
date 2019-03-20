@@ -57,6 +57,10 @@ class IntroActivity : RootActivity() {
                 PUSH_TYPE = buldle.getString("PUSH_TYPE", "")
                 room_id = buldle.getInt("room_id", -1)
 
+                println("FROM_PUSH:::::::::::::::::::::::::::::::::::$FROM_PUSH")
+                println("PUSH_TYPE:::::::::::::::::::::::::::::::::::$PUSH_TYPE")
+                println("room_id:::::::::::::::::::::::::::::::::::$room_id")
+
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -164,6 +168,7 @@ class IntroActivity : RootActivity() {
     private fun stopIntro() {
 
         val memberId = PrefUtils.getIntPreference(context, "member_id")
+
         if(memberId > 0) {
             val intent = Intent(context, MainActivity::class.java)
             intent.putExtra("FROM_PUSH", FROM_PUSH)
