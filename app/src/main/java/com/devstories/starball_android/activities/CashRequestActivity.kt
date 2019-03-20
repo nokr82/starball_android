@@ -6,15 +6,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.MemberAction
+import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
+import com.nostra13.universalimageloader.core.ImageLoader
 import cz.msebera.android.httpclient.Header
 import kotlinx.android.synthetic.main.activity_cash_request.*
 import org.json.JSONArray
@@ -28,6 +31,7 @@ class CashRequestActivity : RootActivity() {
 
     var member_id = -1
     var myCashStarball = -1
+    var profiledata = ArrayList<JSONObject>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -117,7 +121,15 @@ class CashRequestActivity : RootActivity() {
 
                         var starball = Utils.getInt(response, "starball")
                         myCashStarball = Utils.getInt(response, "cashStarball")
+                        var profiles = response.getJSONArray("profiles")
+//                         like_count = response.getInt("like_count")
+                        for (i in 0 until profiles.length()) {
+                            profiledata.add(profiles[i] as JSONObject)
+                        }
+                        var image_uri = Utils.getString(profiledata[0], "image_uri")
+                        Log.d("이미지",profiledata[0].toString())
 
+                        ImageLoader.getInstance().displayImage(Config.url + image_uri, profileIV, Utils.UILoptionsProfile)
                         if (starball < 1) {
                             starball = 0
                         }
