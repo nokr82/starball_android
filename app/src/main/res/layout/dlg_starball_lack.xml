@@ -47,6 +47,7 @@
                     android:text="Geex Arts님을 놓치지 싫으시면\n스타볼을 이용하세요"/>
 
                 <TextView
+                    android:id="@+id/timeTV"
                     android:paddingTop="13dp"
                     android:paddingBottom="35dp"
                     android:layout_width="wrap_content"
