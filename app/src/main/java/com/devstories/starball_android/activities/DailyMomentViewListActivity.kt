@@ -65,7 +65,7 @@ class DailyMomentViewListActivity : RootActivity() {
         profileIV= header.findViewById(R.id.profileIV)
         starballIV =  header.findViewById(R.id.starballIV)
         createdTV=  header.findViewById(R.id.createdTV)
-        menuIV=  header.findViewById(R.id.createdTV)
+        menuIV=  header.findViewById(R.id.menuIV)
         dailyLV.addHeaderView(header)
 
         my_daily_list()
