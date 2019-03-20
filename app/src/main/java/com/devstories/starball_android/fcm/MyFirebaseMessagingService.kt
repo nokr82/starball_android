@@ -14,11 +14,13 @@ import android.os.Build
 import android.os.Handler
 import android.support.annotation.RequiresApi
 import android.support.v4.app.NotificationCompat
-import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.IntroActivity
 import com.devstories.starball_android.base.PrefUtils
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import android.app.NotificationChannelGroup
+
+
 
 /**
  * Created by dev1 on 2017-12-15.
@@ -87,7 +89,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(com.devstories.starball_android.R.mipmap.ic_launcher)
                 .setContentTitle(title)
                 .setContentText(body)
                 .setAutoCancel(true)
@@ -98,15 +100,14 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         notificationBuilder.setSound(defaultSoundUri)
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createChannel(notificationManager, channelId, title, body)
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             val gnotificationBuilder = NotificationCompat.Builder(this, channelId)
-                    .setSmallIcon(R.mipmap.ic_launcher)
-                    .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher))
+                    .setSmallIcon(com.devstories.starball_android.R.mipmap.ic_launcher)
+                    .setLargeIcon(BitmapFactory.decodeResource(resources, com.devstories.starball_android.R.mipmap.ic_launcher))
                     .setGroup(group)
                     .setGroupSummary(true)
                     .setAutoCancel(true)
@@ -120,12 +121,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private fun createChannel(
-            notificationManager: NotificationManager,
-            channelId: String,
-            title: String?,
-            body: String?
-    ) {
+    private fun createChannel(notificationManager: NotificationManager, channelId: String, title: String?, body: String?) {
+
         val importance = NotificationManager.IMPORTANCE_DEFAULT
 
         val mChannel = NotificationChannel(channelId, title, importance)

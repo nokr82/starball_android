@@ -338,7 +338,6 @@
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.DlgSelectLanguageActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/full_screen_dialog1"/>
         <activity
             android:name=".activities.ChatNotiActivity"

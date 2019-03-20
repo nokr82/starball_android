@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat
 import kotlin.concurrent.schedule
 import android.os.Looper
 import android.os.Handler
+import android.util.Log
 import java.util.*
 
 
@@ -19,15 +20,17 @@ class ElapsedTimeTextView(context: Context?, attrs: AttributeSet?) : TextView(co
         Timer().schedule(0, 1000 * 60) {
             if(dest_date_time != null) {
 
-                val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREAN)
+                val formatter = SimpleDateFormat("HH:mm", Locale.KOREAN)
                 val destDateTime = formatter.parse(dest_date_time)
 
-                val currentTime = Date()
+                val currentTime = formatter.parse(Utils.timeStr())
+
 
                 val result = convertFromDuration(destDateTime.time - currentTime.time)
 
                 val handler = Handler(Looper.getMainLooper())
                 handler.post(Runnable {
+                    Log.d("스타트","")
                     text = String.format(context!!.resources.getString(R.string.remaining_time), result.hours, result.minutes)
                 })
 

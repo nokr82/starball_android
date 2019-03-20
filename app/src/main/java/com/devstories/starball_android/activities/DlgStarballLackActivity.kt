@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.Toast
 import com.devstories.starball_android.actions.ChargeAction
 import com.devstories.starball_android.R
@@ -34,32 +35,24 @@ class DlgStarballLackActivity : RootActivity() {
 
     var member_id = -1
 
-    internal var timerHandler: Handler = object : Handler() {
+
+ /*   internal var timerHandler: Handler = object : Handler() {
         override fun handleMessage(msg: android.os.Message) {
 
             try {
-                var formatter = SimpleDateFormat("HH:mm", Locale.KOREA)
-                var t_time = Utils.timeStr()
-                val d1 = formatter.parse(t_time)
-                val d2 = formatter.parse("12:00")
-                var diff = d2.time - d1.time
+                Log.d("타이머",diff.toString())
                 if (diff<0){
                     diff =  d1.time - d2.time
-                    timeTV.text = Utils.dateString3(diff.toInt())
+                    timeTV.text = Utils.dateString3(diff.toInt()-60000)+" 남음"
+                    Log.d("타이머",diff.toString())
                 }else{
-                    timeTV.text = Utils.dateString3(diff.toInt())
+                    timeTV.text = Utils.dateString3(diff.toInt()-60000)+" 남음"
                 }
-
-
-
             } catch (e: Exception) {
                 e.printStackTrace()
             }
-
-            this.sendEmptyMessageDelayed(0, 60000)
-
         }
-    }
+    }*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -83,6 +76,22 @@ class DlgStarballLackActivity : RootActivity() {
 //                } else if ("startball_24h" == sku) {
 //                    setCharge(1024*1024*600, purchaseToken)
 //                }
+
+                var formatter = SimpleDateFormat("HH:mm", Locale.KOREA)
+                var t_time = Utils.timeStr()
+                val d1 = formatter.parse(t_time)
+                val d2 = formatter.parse("12:00")
+                var diff = d2.time - d1.time
+
+                if (diff<0){
+                    timeTV.dest_date_time = "24:00"
+                    timeTV.start()
+                }else{
+                    timeTV.dest_date_time = "12:00"
+                    timeTV.start()
+                }
+
+
 
                 var starball = 0
 
@@ -120,7 +129,7 @@ class DlgStarballLackActivity : RootActivity() {
         }
 
 
-        timerStart()
+//        timerStart()
 
     }
 
@@ -310,7 +319,7 @@ class DlgStarballLackActivity : RootActivity() {
         })
     }
 
-    fun timerStart() {
+    /*fun timerStart() {
         val task = object : TimerTask() {
             override fun run() {
                 timerHandler.sendEmptyMessage(0)
@@ -318,8 +327,8 @@ class DlgStarballLackActivity : RootActivity() {
         }
 
         timer = Timer()
-        timer!!.schedule(task, 0, 2000)
+        timer!!.schedule(task, 0, 60000)
 
-    }
+    }*/
 
 }

@@ -37,7 +37,7 @@ class DlgSelectNationActivity : RootActivity() {
         if (type==1){
             titleTV.text = "당신의 국적은?"
         }else{
-            titleTV.text = "당신의 선호하는 국적를 알려 주세요."
+            titleTV.text = "당신의 선호하는 나라를 알려 주세요."
         }
 
 
