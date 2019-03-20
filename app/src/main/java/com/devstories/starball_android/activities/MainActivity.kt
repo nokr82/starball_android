@@ -195,25 +195,7 @@ class MainActivity : RootActivity() {
 
         get_proposes()
 
-        pushCheck()
-
-    }
-
-    fun pushCheck() {
-        val FROM_PUSH = PrefUtils.getBooleanPreference(mContext, "FROM_PUSH")
-
-        if (FROM_PUSH) {
-
-            val PUSH_TYPE = PrefUtils.getStringPreference(mContext, "PUSH_TYPE")
-
-            if (PUSH_TYPE == "chatting") {
-                val intent = Intent(mContext, FriendChattingActivity::class.java)
-                startActivity(intent)
-            }
-
-        } else {
-            Coomon.prefPushDataClear(mContext)
-        }
+        Coomon.pushCheck(mContext)
 
     }
 
@@ -1034,6 +1016,17 @@ class MainActivity : RootActivity() {
 
             }
         })
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+
+        try {
+            if (usestarballreciver != null) {
+                unregisterReceiver(usestarballreciver)
+            }
+        } catch (e: IllegalArgumentException) {
+        }
     }
 
 }

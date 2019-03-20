@@ -2,9 +2,11 @@ package com.devstories.starball_android.utils
 
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.Intent
 import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.MemberAction
+import com.devstories.starball_android.activities.FriendChattingActivity
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
 import com.loopj.android.http.JsonHttpResponseHandler
@@ -105,6 +107,26 @@ class Coomon {
                     }
                 }
             })
+        }
+
+        fun pushCheck(context: Context) {
+            val FROM_PUSH = PrefUtils.getBooleanPreference(context, "FROM_PUSH")
+
+            if (FROM_PUSH) {
+
+                val PUSH_TYPE = PrefUtils.getStringPreference(context, "PUSH_TYPE")
+
+                if (PUSH_TYPE == "chatting") {
+                    val intent1 = Intent(context, FriendChattingActivity::class.java)
+                    intent1.putExtra("room_id", PrefUtils.getIntPreference(context, "room_id"))
+                    context.startActivity(intent1)
+
+                    prefPushDataClear(context)
+                }
+
+            } else {
+                prefPushDataClear(context)
+            }
         }
 
         fun prefPushDataClear(context: Context) {
