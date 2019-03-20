@@ -212,7 +212,7 @@ class MainActivity : RootActivity() {
 
         get_info()
 
-//        get_proposes()
+        get_proposes()
 
         Coomon.pushCheck(mContext, intent)
 

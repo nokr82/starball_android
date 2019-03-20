@@ -121,10 +121,6 @@ class Coomon {
                     val intent1 = Intent(context, FriendChattingActivity::class.java)
                     intent1.putExtra("room_id", intent.getIntExtra("room_id", -1))
                     context.startActivity(intent1)
-                } else if (PUSH_TYPE == "propose") {
-                    val intent1 = Intent(context, DlgProposeActivity::class.java)
-                    intent1.putExtra("propose_id", intent.getIntExtra("propose_id", -1))
-                    context.startActivity(intent1)
                 }
 
             }
