@@ -117,9 +117,6 @@ class Coomon {
                 val PUSH_TYPE = PrefUtils.getStringPreference(context, "PUSH_TYPE")
 
                 if (PUSH_TYPE == "chatting") {
-                    val intent = Intent(context, FriendChattingActivity::class.java)
-                    context.startActivity(intent)
-
                     val intent1 = Intent(context, FriendChattingActivity::class.java)
                     intent1.putExtra("room_id", PrefUtils.getIntPreference(context, "room_id"))
                     context.startActivity(intent1)

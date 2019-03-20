@@ -242,7 +242,7 @@ class ChattingFragment : Fragment() {
 
         loadGroupData()
 
-        Coomon.pushCheck(myContext)
+//        Coomon.pushCheck(myContext)
 
     }
 
