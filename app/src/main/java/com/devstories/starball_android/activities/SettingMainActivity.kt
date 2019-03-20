@@ -3,9 +3,11 @@ package com.devstories.starball_android.activities
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.provider.MediaStore
 import android.support.v4.view.ViewPager
 import android.util.Log
 import android.view.View
@@ -23,6 +25,7 @@ import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 import com.nostra13.universalimageloader.core.ImageLoader
 import cz.msebera.android.httpclient.Header
+import kotlinx.android.synthetic.main.activity_join_picture.*
 import kotlinx.android.synthetic.main.activity_setting_main.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -256,6 +259,71 @@ class SettingMainActivity : RootActivity() {
                 }
             }
         })
+    }
+
+
+   /* private fun updateGrades() {
+        // Basic – 최소 3장만 채웠을 경우
+        // Plus – 3장 이상 채웠을 경우
+        // Premium – 9장 이상을 채웠을 경우
+        // VVIP – 9장에 사진과 동영상으로 구성했을 경우
+
+        val pictureCnt = pictures.size
+        if(pictureCnt == 3) {
+            drawBasic()
+        } else if(pictureCnt in 4..8) {
+            drawPlus()
+        } else if(pictureCnt > 8) {
+
+            var videoContains = false
+            for (picture in pictures) {
+                val mediaType = Utils.getInt(picture!!, "mediaType")
+                if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO) {
+                    videoContains = true
+                    break
+                }
+            }
+
+            if(videoContains) {
+                drawVVIP()
+            } else {
+                drawPremium()
+            }
+        } else {
+            initGrades()
+        }
+
+    }*/
+
+    private fun drawBasic() {
+        initGrades()
+        basicV.setBackgroundColor(Color.parseColor("#903ba0"))
+        plusV.setBackgroundColor(Color.parseColor("#903ba0"))
+    }
+
+    private fun drawPlus() {
+        initGrades()
+        plusV.setBackgroundColor(Color.parseColor("#903ba0"))
+        premiumV.setBackgroundColor(Color.parseColor("#903ba0"))
+    }
+
+    private fun drawPremium() {
+        initGrades()
+        premiumV.setBackgroundColor(Color.parseColor("#903ba0"))
+        vvipV.setBackgroundColor(Color.parseColor("#903ba0"))
+    }
+
+    private fun drawVVIP() {
+        initGrades()
+        premiumV.setBackgroundColor(Color.parseColor("#903ba0"))
+        vvipV.setBackgroundColor(Color.parseColor("#903ba0"))
+    }
+
+    private fun initGrades() {
+        basicV.setBackgroundColor(Color.parseColor("#d4d4d4"))
+        plusV.setBackgroundColor(Color.parseColor("#d4d4d4"))
+        premiumV.setBackgroundColor(Color.parseColor("#d4d4d4"))
+        vvipV.setBackgroundColor(Color.parseColor("#d4d4d4"))
     }
 
 
