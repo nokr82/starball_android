@@ -60,8 +60,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //        intent.putExtra("chatting_member_id", data["chatting_member_id"])
 //        intent.putExtra("content_id", data["content_id"])
 //        intent.putExtra("friend_id", data["friend_id"])
-
-        intent.putExtra("FROM_PUSH", true)
+//        intent.putExtra("FROM_PUSH", true)
 
         if (data["type"] == "chatting") {
             PrefUtils.setPreference(this, "room_id", data["room_id"]!!.toInt())
@@ -70,7 +69,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         PrefUtils.setPreference(this, "PUSH_TYPE", data["type"])
         PrefUtils.setPreference(this, "FROM_PUSH", true)
 
-        val pendingIntent = PendingIntent.getActivity(this, System.currentTimeMillis().toInt(), intent, 0)
+        val pendingIntent = PendingIntent.getActivity(this, System.currentTimeMillis().toInt(), intent, PendingIntent.FLAG_ONE_SHOT)
 
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
@@ -107,7 +106,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     }
 
-//    @RequiresApi(api = Build.VERSION_CODES.O)
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private fun createChannel(
             notificationManager: NotificationManager,
             channelId: String,
