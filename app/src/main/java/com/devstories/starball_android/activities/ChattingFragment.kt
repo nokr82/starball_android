@@ -43,7 +43,6 @@ class ChattingFragment : Fragment() {
     lateinit var myContext: Context
     private var progressDialog: ProgressDialog? = null
 
-
     var member_id = -1
     lateinit var header: View
     var page = 1
@@ -297,6 +296,12 @@ class ChattingFragment : Fragment() {
                 roomAdapter.notifyDataSetChanged()
 
             } else if (type == 2) {
+
+                if (Utils.getString(json, "propose_yn") == "Y") {
+                    Toast.makeText(context, getString(R.string.propose_member), Toast.LENGTH_LONG).show()
+                    return@setOnItemClickListener
+                }
+
                 val room = json.getJSONObject("Room")
 
                 var intent = Intent(context, FriendChattingActivity::class.java)

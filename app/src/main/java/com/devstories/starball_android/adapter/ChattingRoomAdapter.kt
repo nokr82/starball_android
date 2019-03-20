@@ -106,6 +106,14 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
 
         } else {
 
+            val propose_yn = Utils.getString(json, "propose_yn")
+
+            if (propose_yn == "Y") {
+                item.itemLL.setBackgroundColor(Color.parseColor("#ededed"))
+            } else {
+                item.itemLL.setBackgroundColor(Color.parseColor("#FFFFFF"))
+            }
+
             item.titleTV.visibility = View.GONE
 
             val pin_yn = json.getString("pin_yn")
