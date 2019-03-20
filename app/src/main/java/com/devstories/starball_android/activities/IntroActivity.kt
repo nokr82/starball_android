@@ -57,10 +57,6 @@ class IntroActivity : RootActivity() {
                 PUSH_TYPE = buldle.getString("PUSH_TYPE", "")
                 room_id = buldle.getInt("room_id", -1)
 
-                println("FROM_PUSH:::::::::::::::::::::::::::::::::::$FROM_PUSH")
-                println("PUSH_TYPE:::::::::::::::::::::::::::::::::::$PUSH_TYPE")
-                println("room_id:::::::::::::::::::::::::::::::::::$room_id")
-
             } catch (e: Exception) {
                 e.printStackTrace()
             }

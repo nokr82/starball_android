@@ -51,6 +51,7 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
         if (type == 1) {
 
             val Group = json.getJSONObject("Group")
+            val lastChatting = json.getJSONObject("LastChatting")
             var title = Utils.getString(Group, "title")
             var pin_yn = Utils.getString(Group, "pin_yn")
             var created_at = Utils.getString(Group, "created_at")
@@ -81,11 +82,11 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
                 profile = Utils.getString(attendProfile, "image_uri")
                 name = Utils.getString(attendMember, "name")
             }*/
+
             item.chattingIV.setImageResource(R.mipmap.lounge_message_send)
 
             ImageLoader.getInstance().displayImage(Config.url + profile, item.profileIV, Utils.UILoptionsProfile)
             item.nameTV.text = title + " " + GroupMembers.length().toString()
-
 
             item.itemLL.setBackgroundColor(Color.parseColor("#ededed"))
             val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
@@ -95,6 +96,8 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
             item.createdTV.text = dateFormat2.format(created)
 
             item.newIV.visibility = View.GONE
+
+            item.contentsTV.text = Utils.getString(lastChatting, "contents")
 
         } else if (type == 3) {
 

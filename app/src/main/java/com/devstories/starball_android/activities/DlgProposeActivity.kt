@@ -37,7 +37,6 @@ class DlgProposeActivity : RootActivity() {
 
         propose_id = intent.getIntExtra("propose_id", -1)
 
-
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         this.context = this
@@ -80,6 +79,8 @@ class DlgProposeActivity : RootActivity() {
                         textTV.text = getString(R.string.dlg_prose_title1) + Utils.getString(member, "name") + getString(R.string.dlg_prose_title2)
                         text2TV.text = getString(R.string.dlg_prose_content1) + Utils.getString(propose, "starball") + getString(R.string.dlg_prose_content3)
 
+                    } else if ("confirm_done" == result){
+                        finish()
                     } else {
                         textTV.text = getString(R.string.dlg_prose_title1)+ " " + getString(R.string.dlg_prose_title2)
                         text2TV.text = getString(R.string.dlg_prose_content1) + " " + getString(R.string.dlg_prose_content3)

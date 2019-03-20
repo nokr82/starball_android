@@ -69,6 +69,7 @@ class ChattingFragment : Fragment() {
                     var has = false
 
                     var contents = intent.getStringExtra("contents")
+                    var member_id = intent.getIntExtra("member_id", -1)
                     val created_at = intent.getStringExtra("created_at")
 
                     var type2_position = -1
@@ -83,7 +84,7 @@ class ChattingFragment : Fragment() {
                             var pin_yn = Utils.getString(data, "pin_yn")
 
                             val room = data.getJSONObject("Room")
-                            val Chatting = data.getJSONObject("Chatting")
+                            val Chatting = data.getJSONObject("LastChatting")
 
                             val id = Utils.getInt(room, "id")
 
@@ -96,6 +97,10 @@ class ChattingFragment : Fragment() {
 
                                 Chatting.put("contents", contents)
                                 Chatting.put("created", created_at)
+
+                                if (member_id > 0) {
+                                    Chatting.put("member_id", member_id)
+                                }
 
                                 if (type2_position > 0) {
                                     roomAdapterData.removeAt(i)
@@ -737,6 +742,11 @@ class ChattingFragment : Fragment() {
         if (progressDialog != null) {
             progressDialog!!.dismiss()
         }
+
+        if (chattingReceiver != null) {
+            myContext.unregisterReceiver(chattingReceiver)
+        }
+
     }
 }
 
