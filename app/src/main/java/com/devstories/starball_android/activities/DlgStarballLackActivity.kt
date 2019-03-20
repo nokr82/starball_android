@@ -3,9 +3,11 @@ package com.devstories.starball_android.activities
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.view.ViewGroup
 import android.widget.Toast
 import com.devstories.starball_android.actions.ChargeAction
 import com.devstories.starball_android.R
@@ -57,6 +59,10 @@ class DlgStarballLackActivity : RootActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dlg_starball_lack)
+
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         this.mContext = this
         progressDialog = ProgressDialog(mContext)

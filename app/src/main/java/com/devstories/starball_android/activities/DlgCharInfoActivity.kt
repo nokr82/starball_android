@@ -3,9 +3,11 @@ package com.devstories.starball_android.activities
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.ViewGroup
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.adapter.infoAdapter
@@ -62,6 +64,10 @@ class DlgCharInfoActivity : RootActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dlg_charactor_info)
+
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         this.context = this
         progressDialog = ProgressDialog(context)
