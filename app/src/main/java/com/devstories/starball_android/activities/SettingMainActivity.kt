@@ -25,7 +25,6 @@ import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 import com.nostra13.universalimageloader.core.ImageLoader
 import cz.msebera.android.httpclient.Header
-import kotlinx.android.synthetic.main.activity_join_picture.*
 import kotlinx.android.synthetic.main.activity_setting_main.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -183,7 +182,7 @@ class SettingMainActivity : RootActivity() {
                     } else {
 
                     }
-
+                    updateGrades()
                 } catch (e: JSONException) {
                     e.printStackTrace()
                 }
@@ -262,13 +261,13 @@ class SettingMainActivity : RootActivity() {
     }
 
 
-   /* private fun updateGrades() {
+     private fun updateGrades() {
         // Basic – 최소 3장만 채웠을 경우
         // Plus – 3장 이상 채웠을 경우
         // Premium – 9장 이상을 채웠을 경우
         // VVIP – 9장에 사진과 동영상으로 구성했을 경우
 
-        val pictureCnt = pictures.size
+        val pictureCnt = profiledata.size
         if(pictureCnt == 3) {
             drawBasic()
         } else if(pictureCnt in 4..8) {
@@ -276,7 +275,7 @@ class SettingMainActivity : RootActivity() {
         } else if(pictureCnt > 8) {
 
             var videoContains = false
-            for (picture in pictures) {
+            for (picture in profiledata) {
                 val mediaType = Utils.getInt(picture!!, "mediaType")
                 if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO) {
                     videoContains = true
@@ -293,7 +292,7 @@ class SettingMainActivity : RootActivity() {
             initGrades()
         }
 
-    }*/
+    }
 
     private fun drawBasic() {
         initGrades()
