@@ -109,30 +109,20 @@ class Coomon {
             })
         }
 
-        fun pushCheck(context: Context) {
-            val FROM_PUSH = PrefUtils.getBooleanPreference(context, "FROM_PUSH")
+        fun pushCheck(context: Context, intent: Intent) {
+            val FROM_PUSH = intent.getBooleanExtra("FROM_PUSH", false)
 
             if (FROM_PUSH) {
 
-                val PUSH_TYPE = PrefUtils.getStringPreference(context, "PUSH_TYPE")
+                val PUSH_TYPE = intent.getStringExtra("PUSH_TYPE")
 
                 if (PUSH_TYPE == "chatting") {
                     val intent1 = Intent(context, FriendChattingActivity::class.java)
                     intent1.putExtra("room_id", PrefUtils.getIntPreference(context, "room_id"))
                     context.startActivity(intent1)
-
-                    prefPushDataClear(context)
                 }
 
-            } else {
-                prefPushDataClear(context)
             }
-        }
-
-        fun prefPushDataClear(context: Context) {
-            PrefUtils.removePreference(context, "FROM_PUSH")
-            PrefUtils.removePreference(context, "PUSH_TYPE")
-            PrefUtils.removePreference(context, "room_id")
         }
 
     }

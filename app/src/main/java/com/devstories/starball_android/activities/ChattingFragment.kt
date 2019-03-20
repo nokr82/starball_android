@@ -71,12 +71,20 @@ class ChattingFragment : Fragment() {
                     var contents = intent.getStringExtra("contents")
                     val created_at = intent.getStringExtra("created_at")
 
+                    var type2_position = -1
+
                     for (i in 0 until roomAdapterData.size) {
                         val data = roomAdapterData[i]
 
                         val type = Utils.getInt(data, "type")
 
                         if (type == 2) {
+
+                            var pin_yn = Utils.getString(data, "pin_yn")
+
+                            if (type2_position < 1 && pin_yn == "N") {
+                                type2_position = i
+                            }
 
                             val room = data.getJSONObject("Room")
 
@@ -87,7 +95,7 @@ class ChattingFragment : Fragment() {
                                 room.put("contents", contents)
                                 room.put("created", created_at)
                                 roomAdapterData.removeAt(i)
-                                roomAdapterData.add(0, data)
+                                roomAdapterData.add(type2_position, data)
                                 break
                             }
 
@@ -163,7 +171,6 @@ class ChattingFragment : Fragment() {
             pinItem.setIcon(R.mipmap.lounge_pin)
             // add to menu
             menu.addMenuItem(pinItem)
-
 
         }
 
@@ -311,7 +318,21 @@ class ChattingFragment : Fragment() {
                 if (result == "ok") {
                     val room = response.getJSONObject("room")
 
-                    roomAdapterData.add(0, room)
+                    var type2_position = -1
+
+                    for (i in 0 until roomAdapterData.size) {
+                        val data = roomAdapterData[i]
+                        val type = Utils.getInt(data,"type")
+
+                        val pin_yn = Utils.getString(data, "pin_yn")
+
+                        if (type == 2 && pin_yn == "N") {
+                            type2_position = i
+                            break
+                        }
+                    }
+
+                    roomAdapterData.add(type2_position, room)
                     roomAdapter.notifyDataSetChanged()
 
                 }
@@ -609,11 +630,14 @@ class ChattingFragment : Fragment() {
                         page = Utils.getInt(response, "page")
                         totalPage = Utils.getInt(response, "totalPage")
 
-
-
                         val chat = response.getJSONArray("chat")
                         val data = chat[0] as JSONObject
                         data.put("title", "chatting_title")
+
+                        val json = JSONObject()
+                        json.put("type", 3)
+                        roomAdapterData.add(json)
+
                         for (i in 0 until chat.length()) {
                             val data = chat[i] as JSONObject
                             data.put("type", 2)

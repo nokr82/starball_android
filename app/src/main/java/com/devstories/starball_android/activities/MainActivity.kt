@@ -195,7 +195,7 @@ class MainActivity : RootActivity() {
 
         get_proposes()
 
-        Coomon.pushCheck(mContext)
+        Coomon.pushCheck(mContext, intent)
 
     }
 
@@ -203,6 +203,7 @@ class MainActivity : RootActivity() {
         super.onResume()
         get_info()
     }
+
     private fun get_info() {
 
         val params = RequestParams()
