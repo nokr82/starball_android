@@ -758,6 +758,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
                 params.put("voice_time", minutes.toString() + ":" + seconds.toString())
 
+                params.put("voice_duration",player.duration)
             }
         }
         if (type == 4) {
