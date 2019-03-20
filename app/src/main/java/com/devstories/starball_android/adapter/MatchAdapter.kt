@@ -133,6 +133,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
         holder.nameTV.text = name + " " + age
 
         if (make_room_yn =="Y"){
+            holder.menuLL.visibility = View.GONE
             holder.sendIV.visibility = View.VISIBLE
             holder.sendIV.setImageResource(R.mipmap.send_btn)
             holder.sendIV.setOnClickListener {
