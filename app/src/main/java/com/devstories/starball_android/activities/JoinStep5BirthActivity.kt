@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.KeyEvent
 import android.widget.Toast
 import com.devstories.starball_android.R
@@ -315,6 +316,7 @@ class JoinStep5BirthActivity : RootActivity() {
                 }
 
                 if(s.toString().toInt() > 3) {
+                    Log.d("생일1","")
                     day1ET.setText("")
                     Toast.makeText(context, getString(R.string.birthday_fail), Toast.LENGTH_SHORT).show()
                     return
@@ -328,6 +330,7 @@ class JoinStep5BirthActivity : RootActivity() {
                     }
 
                 } else {
+                    Log.d("생일","")
                     day1ET.setText("")
                 }
             }
