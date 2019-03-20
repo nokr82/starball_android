@@ -30,7 +30,6 @@ class DlgSelectNationActivity : RootActivity() {
         setContentView(com.devstories.starball_android.R.layout.dlg_select_language)
 
 
-        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 

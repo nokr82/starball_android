@@ -24,7 +24,6 @@ class DlgAlertCommonActivity : RootActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dlg_alert_common)
 
-        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 

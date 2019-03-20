@@ -23,7 +23,6 @@ class DlgCharmpointActivity : RootActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dlg_charmpoint)
 
-        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
