@@ -77,15 +77,13 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 this.sendBroadcast(broadcastIntent)
             }
 
-        } else {
-            if (push_type == "chatting") {
-                intent.putExtra("room_id", data["room_id"]!!.toInt())
-            }
-
-            intent.putExtra("FROM_PUSH", true)
-            intent.putExtra("PUSH_TYPE", data["type"])
-
         }
+        if (push_type == "chatting") {
+            intent.putExtra("room_id", data["room_id"]!!.toInt())
+        }
+
+        intent.putExtra("FROM_PUSH", true)
+        intent.putExtra("PUSH_TYPE", data["type"])
 
         val pendingIntent = PendingIntent.getActivity(this, System.currentTimeMillis().toInt(), intent, PendingIntent.FLAG_ONE_SHOT)
 

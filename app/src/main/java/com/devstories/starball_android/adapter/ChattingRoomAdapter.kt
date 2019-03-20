@@ -99,6 +99,7 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
         } else if (type == 3) {
 
             item.titleTV.visibility = View.VISIBLE
+            item.itemLL.visibility = View.GONE
 
         } else {
 
