@@ -1,7 +1,7 @@
 package com.devstories.starball_android.adapter
 
 import android.content.Context
-import android.graphics.Color
+import android.content.Intent
 import android.os.AsyncTask
 import android.util.Log
 import android.view.View
@@ -10,7 +10,9 @@ import android.widget.*
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
 import com.devstories.starball_android.activities.ChattingMatchFragment
+import com.devstories.starball_android.activities.DailyMomentViewListActivity
 import com.devstories.starball_android.base.Config
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
 import com.google.cloud.translate.Translate
 import com.google.cloud.translate.TranslateOptions
@@ -49,6 +51,8 @@ open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
             }
         }
 
+        val member_id = PrefUtils.getIntPreference(context,"member_id")
+
         val json = data[position]
         Log.d("매치채팅0",json.toString())
         val type = json.getInt("type")
@@ -57,6 +61,8 @@ open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
         val voice_uri = json.getString("voice_uri")
 
         val translate_in_english = json.getString("translate_in_english")
+        val like_member_id = json.getInt("member_id")
+
         val Profile = json.getJSONObject("Profile")
         val image_uri = Profile.getString("image_uri")
         if (type == 3)  {
@@ -89,6 +95,14 @@ open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
             item.transTV.visibility = View.VISIBLE
         }
         ImageLoader.getInstance().displayImage(Config.url + image_uri, item.profileIV, Utils.UILoptionsProfile)
+
+        item.profileIV.setOnClickListener {
+            if (like_member_id != member_id){
+                var intent = Intent(context, DailyMomentViewListActivity::class.java)
+                intent.putExtra("daily_member_id",like_member_id)
+                context.startActivity(intent)
+            }
+        }
 
         item.contentTV.text = contents
         item.transTV.text = translate_in_english
