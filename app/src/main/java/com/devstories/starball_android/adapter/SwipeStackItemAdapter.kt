@@ -13,12 +13,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.RatingBar
 import android.widget.TextView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.*
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.DateUtils
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.ExoPlayerFactory
@@ -40,9 +40,12 @@ import org.json.JSONObject
 //type  = 1이면 가입화면
 
 
-class SwipeStackItemAdapter(private val context:Context, private val activity:Activity, private val member:JSONObject, private val data: JSONArray, private val preview:Boolean,private val starball:Int,private val type:Int) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SwipeStackItemAdapter(private val context:Context, private val activity:Activity, private val member:JSONObject,
+                            private val data: JSONArray, private val preview:Boolean,private val starball:Int
+                            ,private val type:Int,private val mainActivity: MainActivity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var langs = ArrayList<String>()
     var memberInfo = JSONObject()
+
     class MainSearchType1(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var infoLL = itemView.findViewById<View>(R.id.infoLL) as LinearLayout
@@ -602,6 +605,8 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 val school = Utils.getString(memberInfo, "school")
                 val intro = Utils.getString(memberInfo, "intro")
 
+                val member_id = PrefUtils.getIntPreference(context, "member_id")
+
                 holder.distanceTV.text = "17Km"
                 holder.nameTV.text = name
                 holder.ageTV.text = age.toString()
@@ -630,7 +635,10 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
 
                 holder.rating_bar.setOnRatingBarChangeListener { ratingBar, fl, b ->
                     Log.d("레이팅",fl.toString())
-                    Log.d("레이팅",b.toString())
+                    if (member_id != like_member_id){
+                        mainActivity.popular_vote(like_member_id,fl)
+                    }
+
                 }
             }
         }

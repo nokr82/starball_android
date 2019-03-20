@@ -2,7 +2,7 @@ package com.devstories.starball_android.base;
 
 public class Config {
 
-    public static String url = "http://starball.me:8000";
+    public static String url = "http://starball.me";
 
     public static String device = "A";
     public static String gcm_sender_id = "882000133096";

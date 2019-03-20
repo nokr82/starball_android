@@ -5,6 +5,13 @@ import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 
 object MemberAction {
+
+
+    fun popular_vote(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/popular_vote", params, handler)
+    }
+
+
     fun blocking(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/members/blocking", params, handler)
     }
