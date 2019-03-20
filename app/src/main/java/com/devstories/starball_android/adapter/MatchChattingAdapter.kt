@@ -6,17 +6,11 @@ import android.os.AsyncTask
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
-import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.activities.ChattingMatchFragment
-import com.devstories.starball_android.activities.FriendChattingActivity
 import com.devstories.starball_android.base.Config
-import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
 import com.google.cloud.translate.Translate
 import com.google.cloud.translate.TranslateOptions
@@ -24,13 +18,10 @@ import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 import com.nostra13.universalimageloader.core.ImageLoader
 import cz.msebera.android.httpclient.Header
-import de.hdodenhof.circleimageview.CircleImageView
-import kotlinx.android.synthetic.main.fragment_charmpoint_work.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
 import java.lang.ref.WeakReference
-import java.text.SimpleDateFormat
 import java.util.*
 
 open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSONObject>,fragment: ChattingMatchFragment) : ArrayAdapter<JSONObject>(context, view, data) {
@@ -64,16 +55,35 @@ open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
 
         val contents = json.getString("contents")
         val voice_uri = json.getString("voice_uri")
+
         val translate_in_english = json.getString("translate_in_english")
         val Profile = json.getJSONObject("Profile")
         val image_uri = Profile.getString("image_uri")
-        if (type == 3) {
+        if (type == 3)  {
+            item.myVoiceLL.visibility = View.VISIBLE
             item.contentTV.visibility = View.GONE
             item.transTV.visibility = View.GONE
-            item.myVoiceLL.visibility = View.VISIBLE
             item.myVoiceIV.setOnClickListener {
                 fragment.playing(Config.url + voice_uri)
             }
+
+//            val voiceProgress = json.getInt("voice_progress")
+
+//            item.myVoicePB.max = json.getInt("voice_duration")
+//            item.myVoicePB.progress = voiceProgress
+
+//            val minutes = ( voiceProgress % (1000*60*60) ) / (1000*60)
+//            val seconds = ( ( voiceProgress % (1000*60*60) ) % (1000*60) ) / 1000
+
+//            item.myProgressTV.text = "${minutes}:${seconds}"
+            item.myVoiceTimeTV.text = json.getString("voice_time")
+
+            if (Utils.getBoolen( json,"isPlaying")) {
+                item.myVoiceIV.setImageResource(R.mipmap.player_pause)
+            } else {
+                item.myVoiceIV.setImageResource(R.mipmap.player_play)
+            }
+
         }else{
             item.contentTV.visibility = View.VISIBLE
             item.transTV.visibility = View.VISIBLE
@@ -101,12 +111,12 @@ open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
         var contentTV : TextView
         var transTV: TextView
         var profileIV: ImageView
-        var myVoiceLL: LinearLayout
-        var myVoiceIV: ImageView
-
+        var myVoiceLL: LinearLayout = v.findViewById(R.id.myVoiceLL)
+        var myVoiceIV: ImageView = v.findViewById(R.id.myVoiceIV)
+        var myVoicePB: ProgressBar = v.findViewById(R.id.myVoicePB)
+        var myProgressTV: TextView = v.findViewById(R.id.myProgressTV)
+        var myVoiceTimeTV: TextView = v.findViewById(R.id.myVoiceTimeTV)
         init {
-            myVoiceLL = v.findViewById(R.id.myVoiceLL)
-            myVoiceIV = v.findViewById(R.id.myVoiceIV)
             contentTV= v.findViewById(R.id.contentTV)
             transTV= v.findViewById(R.id.transTV)
             profileIV = v.findViewById(R.id.profileIV)

@@ -1,6 +1,5 @@
 package com.devstories.starball_android.activities
 
-import android.Manifest
 import android.app.Activity
 import android.app.ProgressDialog
 import android.content.BroadcastReceiver
@@ -8,12 +7,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.media.MediaPlayer
 import android.media.MediaRecorder
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.os.Handler
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
@@ -63,6 +61,34 @@ class ChattingMatchFragment : Fragment() {
     val MY_PERMISSIONS_REQUEST_READ_CONTACTS = 100
     var record = false
     var record_path = ""
+
+    internal var playerHandler: Handler = object : Handler() {
+        override fun handleMessage(msg: android.os.Message) {
+
+            for (i in 0 until adapterdata.size) {
+
+                val data = adapterdata[i]
+                val chatting = data.getJSONObject("LastChatting")
+
+                    val voice_progress = Utils.getInt(chatting, "voice_progress")
+                    val voice_duration = Utils.getInt(chatting, "voice_duration")
+
+                    if (voice_progress <= voice_duration) {
+                        chatting.put("isPlaying", true)
+                        chatting.put("voice_progress",  voice_progress + 1000)
+                    } else {
+                        chatting.put("isPlaying", false)
+                        this.removeMessages(0)
+                    }
+
+            }
+
+            matchAdapter.notifyDataSetChanged()
+
+            this.sendEmptyMessageDelayed(0, 1000)
+        }
+    }
+
     internal var reloadReciver: BroadcastReceiver? = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
             if (intent != null) {
@@ -102,6 +128,16 @@ class ChattingMatchFragment : Fragment() {
 
     fun playing(recordPath: String) {
 
+
+            if (player != null) {
+                player!!.release()
+            }
+
+            isPlaying = false
+            length = -1
+
+            playerHandler.removeMessages(0)
+
         if (isPlaying == false) {
 
             try {
@@ -124,16 +160,47 @@ class ChattingMatchFragment : Fragment() {
             }
 
             isPlaying = true
-        } else if (length > 0) {
+
+            for (i in 0 until adapterdata.size) {
+                val data = adapterdata[i]
+                val chatting = data.getJSONObject("LastChatting")
+                    chatting.put("isPlaying", false)
+                    chatting.put("voice_progress", 0)
+                    break
+
+            }
+
+            matchAdapter.notifyDataSetChanged()
+
+            playerHandler.sendEmptyMessage(0)
+
+        }
+        else if (length > 0) {
 
             if (length > player!!.duration) {
                 length = 0
             }
+
             player!!.seekTo(length)
             player!!.start()
             length = -1
+
+            playerHandler.sendEmptyMessage(0)
+
         } else {
+
             playingPause()
+
+            for (i in 0 until adapterdata.size) {
+                val data = adapterdata[i]
+                val chatting = data.getJSONObject("LastChatting")
+
+
+            }
+
+            matchAdapter.notifyDataSetChanged()
+
+            playerHandler.removeMessages(0)
         }
     }
 
@@ -151,11 +218,8 @@ class ChattingMatchFragment : Fragment() {
     }
 
     fun recordStop(type: Int,content:String,receiver_member_id:Int){
-
         recorder.stop()
-
         sendChatting(type,content,receiver_member_id)
-
     }
 
     fun loadPermissions(perms: Array<String>, requestCode: Int) {
@@ -168,8 +232,6 @@ class ChattingMatchFragment : Fragment() {
             record_start()
         }
     }
-
-
 
     fun record_start() {
 
@@ -213,10 +275,13 @@ class ChattingMatchFragment : Fragment() {
             Toast.makeText(context, "녹음을 시작합니다.", Toast.LENGTH_LONG).show()
 
 //            voiceLL.setBackgroundColor(Color.parseColor("#333333"))
-
             record = true
 
-
+//            try {
+//                recorder.prepare()
+//            } catch (e: Exception) {
+//                e.printStackTrace()
+//            }
 
         } catch (e: IllegalStateException) {
             e.printStackTrace()
@@ -225,7 +290,6 @@ class ChattingMatchFragment : Fragment() {
         }
 
     }
-
 
 
     fun sendChatting(type: Int,content:String,receiver_member_id:Int) {
@@ -242,18 +306,19 @@ class ChattingMatchFragment : Fragment() {
                 val player = MediaPlayer()
 
                 val fis = FileInputStream(file)
-                val `is` = ByteArrayInputStream(Utils.getByteArray(fis))
-                params.put("voice", `is`)
+                val filinput = ByteArrayInputStream(Utils.getByteArray(fis))
+                params.put("voice", filinput)
 
                 player.setDataSource(record_path)
                 player.prepare()
 
                 var millis = player.duration
 
-                var minutes = ( millis % (1000*60*60) ) / (1000*60);
-                var seconds = ( ( millis % (1000*60*60) ) % (1000*60) ) / 1000;
+                var minutes = ( millis % (1000*60*60) ) / (1000*60)
+                var seconds = ( ( millis % (1000*60*60) ) % (1000*60) ) / 1000
 
                 params.put("voice_time", minutes.toString() + ":" + seconds.toString())
+                params.put("voice_duration", player.duration)
 
             }
         }

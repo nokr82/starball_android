@@ -3,7 +3,6 @@ package com.devstories.starball_android.adapter
 import android.Manifest
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Build
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -52,7 +51,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
         var chatLL = itemView.findViewById<View>(R.id.chatLL) as LinearLayout
         var sendLL = itemView.findViewById<View>(R.id.sendLL) as LinearLayout
         var menuIV = itemView.findViewById<View>(R.id.menuIV) as ImageView
-
+        var recordIV = itemView.findViewById<View>(R.id.recordIV) as ImageView
     }
 
     // Create new views (invoked by the layout manager)
@@ -134,6 +133,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
         holder.nameTV.text = name + " " + age
 
         if (make_room_yn =="Y"){
+            holder.menuLL.visibility = View.GONE
             holder.sendIV.visibility = View.VISIBLE
             holder.sendIV.setImageResource(R.mipmap.send_btn)
             holder.sendIV.setOnClickListener {
@@ -163,8 +163,8 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
                 fragment.record = false
 
                 fragment.recordStop(3,"",like_member_id)
+                holder.recordIV.setImageResource(R.mipmap.mic_op)
 
-                holder.micLL.setBackgroundColor(Color.parseColor("#ffffff"))
                 holder.menuLL.visibility = View.GONE
             } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
@@ -173,6 +173,7 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
                 } else {
                     // 녹음 시작
                     fragment.record_start()
+                    holder.recordIV.setImageResource(R.mipmap.chatting_pause)
                 }
             }
 
