@@ -5,11 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.devstories.starball_android.R
-import de.hdodenhof.circleimageview.CircleImageView
-import org.json.JSONObject
-import java.util.*
+import com.devstories.starball_android.base.Utils
+import com.nostra13.universalimageloader.core.ImageLoader
 
-open class EmoticonAdapter (context: Context, val view:Int, val data:ArrayList<JSONObject>) : ArrayAdapter<JSONObject>(context, view, data) {
+open class EmoticonAdapter (context: Context, val view:Int, val data: Array<Int>) : ArrayAdapter<Int>(context, view, data) {
 
     private lateinit var item: ViewHolder
 
@@ -30,10 +29,17 @@ open class EmoticonAdapter (context: Context, val view:Int, val data:ArrayList<J
             }
         }
 
+        var value = data[position]
+//        val lid = context.resources.getIdentifier("@drawable/"+value, "drawable", context.packageName)
+
+        ImageLoader.getInstance().displayImage("drawable://" + value, item.imageIV, Utils.UILoptionsPosting)
+
+//        item.imageIV.setImageResource(lid)
+
         return retView
     }
 
-    override fun getItem(position: Int): JSONObject {
+    override fun getItem(position: Int): Int {
         return data[position]
     }
 
@@ -46,7 +52,7 @@ open class EmoticonAdapter (context: Context, val view:Int, val data:ArrayList<J
     }
 
     class ViewHolder(v: View) {
-
+        val imageIV: ImageView = v.findViewById(R.id.imageIV)
     }
 
 }

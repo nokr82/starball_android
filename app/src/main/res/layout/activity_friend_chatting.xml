@@ -166,7 +166,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:gravity="center_vertical"
@@ -286,7 +286,8 @@
             android:id="@+id/emoticonLL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <GridView
                 android:id="@+id/emoticonGV"
