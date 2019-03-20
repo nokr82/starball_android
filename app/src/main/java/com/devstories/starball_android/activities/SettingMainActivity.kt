@@ -135,6 +135,10 @@ class SettingMainActivity : RootActivity() {
         get_info()
     }
 
+    override fun onResume() {
+        super.onResume()
+        get_info()
+    }
 
     fun get_info() {
 
@@ -253,6 +257,7 @@ class SettingMainActivity : RootActivity() {
             }
         })
     }
+
 
 
     private fun timer() {
