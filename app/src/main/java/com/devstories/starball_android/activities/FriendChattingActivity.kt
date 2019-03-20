@@ -155,8 +155,8 @@ class FriendChattingActivity : RootActivity()
         setContentView(R.layout.activity_friend_chatting)
 
         this.context = this
-        progressDialog = ProgressDialog(context)
-
+        progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
         blockdata.add("Wechat")
         blockdata.add("kakaotalk")
         blockdata.add("line")
@@ -291,10 +291,9 @@ class FriendChattingActivity : RootActivity()
             val contents = Utils.getString(contentsET)
 
             for (i in 0 until blockdata.size) {
-                Log.d("사이코",blockdata[i])
                 if (contents.contains(blockdata[i])){
                     Toast.makeText(context,"주의:상대방이 다른 메신져를 이용해서 사기 또는 금전을 요구할 가능성이 있으니 신중하십시오.\n" +
-                            "타른 수단에서 발생한 피해는 책임지지 않습니다.\n",Toast.LENGTH_SHORT).show()
+                            "타른 수단에서 발생한 피해는 책임지지 않습니다.",Toast.LENGTH_SHORT).show()
                 }
             }
 

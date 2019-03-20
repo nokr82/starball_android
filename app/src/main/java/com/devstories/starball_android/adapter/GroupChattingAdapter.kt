@@ -112,6 +112,10 @@ open class GroupChattingAdapter(
                 item.myVoiceIV.setImageResource(R.mipmap.player_play)
             }
 
+        }else if (type ==4){
+            ImageLoader.getInstance().displayImage(Config.url + Utils.getString(chatting, "emoticon_uri"), item.myImageIV, Utils.UILoptionsPosting)
+            item.myContentsLL.visibility = View.GONE
+            item.myVoiceLL.visibility = View.GONE
         }else {
             item.myImageIV.visibility = View.GONE
             item.myContentsLL.visibility = View.VISIBLE

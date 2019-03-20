@@ -61,7 +61,8 @@ class CharmpointHeightFragment : Fragment() {
         // Inflate the layout for this fragment
 
         this.myContext = container!!.context
-        progressDialog = ProgressDialog(myContext)
+        progressDialog = ProgressDialog(myContext, com.devstories.starball_android.R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
         return inflater.inflate(com.devstories.starball_android.R.layout.fragment_charmpoint_height, container, false)
     }
 

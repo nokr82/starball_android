@@ -49,7 +49,9 @@ class SearchSettingActivity : RootActivity() {
         setContentView(R.layout.activity_search_setting)
 
         this.context = this
-        progressDialog = ProgressDialog(context)
+
+        progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
 
         languageAdapter = LanguageAdapter(context, R.layout.item_language, adapterData)
         languageGV.adapter = languageAdapter

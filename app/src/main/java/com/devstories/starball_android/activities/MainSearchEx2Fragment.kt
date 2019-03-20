@@ -22,7 +22,8 @@ class MainSearchEx2Fragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         this.myContext = container!!.context
-        progressDialog = ProgressDialog(myContext)
+        progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
 
         return inflater.inflate(R.layout.fragment_main_search2, container, false)
     }

@@ -36,7 +36,8 @@ class JoinStep11PicActivity : RootActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join_picture)
         this.context = this
-        progressDialog = ProgressDialog(context)
+        progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
 
         nextTV.setBackgroundResource(R.drawable.background_border_strock2)
         val spanText = getString(R.string.picture_content)

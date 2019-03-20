@@ -26,7 +26,8 @@ class JoinStep9IntroActivity : RootActivity() {
         setContentView(R.layout.activity_join_step9_intro)
 
         this.context = this
-        progressDialog = ProgressDialog(context)
+        progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
 
 
         nextTV.setBackgroundResource(R.drawable.background_border_strock2)
