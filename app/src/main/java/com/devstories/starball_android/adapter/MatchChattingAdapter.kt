@@ -2,7 +2,6 @@ package com.devstories.starball_android.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.AsyncTask
 import android.util.Log
 import android.view.View
