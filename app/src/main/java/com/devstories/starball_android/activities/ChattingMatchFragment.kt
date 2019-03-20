@@ -62,6 +62,8 @@ class ChattingMatchFragment : Fragment() {
     var record = false
     var record_path = ""
 
+    var chatting_id = -1
+
     internal var playerHandler: Handler = object : Handler() {
         override fun handleMessage(msg: android.os.Message) {
 
@@ -70,6 +72,7 @@ class ChattingMatchFragment : Fragment() {
                 val data = adapterdata[i]
                 val chatting = data.getJSONObject("LastChatting")
 
+                if (chatting_id == Utils.getInt(chatting, "id")) {
                     val voice_progress = Utils.getInt(chatting, "voice_progress")
                     val voice_duration = Utils.getInt(chatting, "voice_duration")
 
@@ -80,6 +83,11 @@ class ChattingMatchFragment : Fragment() {
                         chatting.put("isPlaying", false)
                         this.removeMessages(0)
                     }
+
+                } else {
+                    chatting.put("isPlaying", false)
+                    chatting.put("voice_progress", 0)
+                }
 
             }
 
@@ -126,9 +134,9 @@ class ChattingMatchFragment : Fragment() {
 
     }
 
+    fun playing(recordPath: String, chatting_id: Int) {
 
-    fun playing(recordPath: String) {
-
+        if (this.chatting_id != chatting_id) {
 
             if (player != null) {
                 player!!.release()
@@ -138,6 +146,7 @@ class ChattingMatchFragment : Fragment() {
             length = -1
 
             playerHandler.removeMessages(0)
+        }
 
         if (isPlaying == false) {
 
@@ -147,6 +156,8 @@ class ChattingMatchFragment : Fragment() {
                     player!!.release()
                 }
                 player = MediaPlayer()
+
+                this.chatting_id = chatting_id
 
                 player!!.setDataSource(recordPath)
                 player!!.prepare()
@@ -165,18 +176,19 @@ class ChattingMatchFragment : Fragment() {
             for (i in 0 until adapterdata.size) {
                 val data = adapterdata[i]
                 val chatting = data.getJSONObject("LastChatting")
+
+                if (Utils.getInt(chatting, "id") == chatting_id) {
                     chatting.put("isPlaying", false)
                     chatting.put("voice_progress", 0)
                     break
-
+                }
             }
 
             matchAdapter.notifyDataSetChanged()
 
             playerHandler.sendEmptyMessage(0)
 
-        }
-        else if (length > 0) {
+        } else if (length > 0) {
 
             if (length > player!!.duration) {
                 length = 0
@@ -196,7 +208,10 @@ class ChattingMatchFragment : Fragment() {
                 val data = adapterdata[i]
                 val chatting = data.getJSONObject("LastChatting")
 
-
+                if (Utils.getInt(chatting, "id") == chatting_id) {
+                    chatting.put("isPlaying", false)
+                    break
+                }
             }
 
             matchAdapter.notifyDataSetChanged()
@@ -205,6 +220,7 @@ class ChattingMatchFragment : Fragment() {
         }
     }
 
+
     private fun playingPause() {
         if (isPlaying) {
             player!!.pause()
@@ -212,11 +228,6 @@ class ChattingMatchFragment : Fragment() {
         }
     }
 
-    private fun playStop() {
-        if (isPlaying) {
-            player!!.stop()
-        }
-    }
 
     fun recordStop(type: Int,content:String,receiver_member_id:Int){
         recorder.stop()
