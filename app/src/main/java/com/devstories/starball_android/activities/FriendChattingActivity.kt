@@ -75,17 +75,6 @@ class FriendChattingActivity : RootActivity()
     lateinit var adverbAdapter: AdverbAdapter
     var adverbAdapterData = ArrayList<JSONObject>()
 
-    var emoticonData = arrayOf(
-        "stic_001_15", "stic_001_16", "stic_001_17", "stic_001_18", "stic_001_19",
-        "stic_001_20", "stic_001_21", "stic_001_22", "stic_001_23",
-        "stic_002_07", "stic_002_08", "stic_002_09",
-        "stic_002_10", "stic_002_11", "stic_002_12",
-        "stic_003_07", "stic_003_08", "stic_003_09",
-        "stic_003_10", "stic_003_11", "stic_003_12", "stic_003_13", "stic_003_14",
-        "stic_004_08", "stic_004_09",
-        "stic_004_10", "stic_004_11", "stic_004_12", "stic_004_13", "stic_004_14", "stic_004_15", "stic_004_16", "stic_004_17"
-    )
-
     var emoticonData2 = arrayOf(
         R.drawable.stic_001_15, R.drawable.stic_001_16, R.drawable.stic_001_17, R.drawable.stic_001_18, R.drawable.stic_001_19,
         R.drawable.stic_001_20, R.drawable.stic_001_21, R.drawable.stic_001_22, R.drawable.stic_001_23,
@@ -214,6 +203,8 @@ class FriendChattingActivity : RootActivity()
                 delete = true
             }
 
+            playStop()
+
             var intent = Intent(context, DlgChattingActivity::class.java)
             intent.putExtra("chatting_id", Utils.getInt(chatting, "id"))
             intent.putExtra("chatting_contents", Utils.getString(chatting, "contents"))
@@ -228,6 +219,9 @@ class FriendChattingActivity : RootActivity()
         }
 
         starballIV.setOnClickListener {
+
+            playStop()
+
             val intent = Intent(context, DlgSendProposeActivity::class.java)
             intent.putExtra("propose_member_id", other_member_id)
             intent.putExtra("name", other_name)
@@ -236,6 +230,9 @@ class FriendChattingActivity : RootActivity()
         }
 
         reportIV.setOnClickListener {
+
+            playStop()
+
             val intent = Intent(context, ReportActivity::class.java)
             intent.putExtra("report_member_id", other_member_id)
             startActivity(intent)
@@ -540,6 +537,9 @@ class FriendChattingActivity : RootActivity()
     }
 
     private fun imageFromGallery() {
+
+        playStop()
+
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(intent, FROM_ALBUM)
     }
@@ -1543,6 +1543,13 @@ class FriendChattingActivity : RootActivity()
         if (timer != null) {
             timer!!.cancel()
         }
+    }
+
+    override fun finish() {
+        super.finish()
+
+        playStop()
+
     }
 
 }
