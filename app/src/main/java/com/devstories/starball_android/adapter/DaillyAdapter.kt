@@ -108,7 +108,7 @@ open class DaillyAdapter(
 
         }*/
 
-        var since = Utils.since(created_at)
+        var since = Utils.since(created_at.replace("T"," ").replace("Z",""))
         item.timeTV.text = since
 
         Log.d("컨텐츠", image_uri.toString())
@@ -212,9 +212,9 @@ open class DaillyAdapter(
 
         ImageLoader.getInstance().displayImage(Config.url + profile_image_uri, item.profileIV, Utils.UILoptionsProfile)
         item.contentIV.setOnClickListener {
-            val intent = Intent(context, DlgAlbumPayActivity::class.java)
+            /*val intent = Intent(context, DlgAlbumPayActivity::class.java)
             intent.putExtra("like_member_id", like_member_id)
-            context.startActivity(intent)
+            context.startActivity(intent)*/
         }
 
         if (like_yn == "N") {
@@ -255,7 +255,6 @@ open class DaillyAdapter(
             context.startActivity(intent)
         }
         if (v_type == 1) {
-            item.subIV.visibility = View.VISIBLE
             item.menuIV.visibility = View.VISIBLE
             item.timeTV.visibility = View.VISIBLE
             item.profileIV.visibility = View.VISIBLE
@@ -271,7 +270,6 @@ open class DaillyAdapter(
             }
 
         } else {
-            item.subIV.visibility = View.GONE
             item.menuIV.visibility = View.GONE
             item.timeTV.visibility = View.GONE
             item.profileIV.visibility = View.GONE
@@ -313,7 +311,6 @@ open class DaillyAdapter(
             nameTV = v.findViewById(R.id.nameTV)
             timeTV = v.findViewById(R.id.timeTV)
             profileIV = v.findViewById(R.id.profileIV)
-            subIV = v.findViewById(R.id.subIV)
             menuIV = v.findViewById(R.id.menuIV)
             subIV = v.findViewById(R.id.subIV)
             contentIV = v.findViewById(R.id.contentIV)
