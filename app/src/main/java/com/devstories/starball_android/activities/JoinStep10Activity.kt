@@ -18,7 +18,8 @@ class JoinStep10Activity : RootActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_join_shape)
         this.context = this
-        progressDialog = ProgressDialog(context)
+        progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
 
         val spanText = getString(R.string.shape_content)
 

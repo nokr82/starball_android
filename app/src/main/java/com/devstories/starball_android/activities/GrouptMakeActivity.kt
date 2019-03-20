@@ -39,7 +39,8 @@ class GrouptMakeActivity : RootActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_make)
         this.context = this
-        progressDialog = ProgressDialog(context)
+        progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
 
         chat_user_list()
         GroupAdapter = GroupAdapter(context, R.layout.item_group_profile, adapterdata)

@@ -175,8 +175,8 @@ class CharmpointSettingAcitivity : FragmentActivity() {
         setContentView(R.layout.activity_charmpoint_setting)
 
         this.context = this
-        progressDialog = ProgressDialog(context)
-
+        progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
         step = intent.getIntExtra("step", -1)
 
         Log.d("step", step.toString())

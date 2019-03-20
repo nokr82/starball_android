@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.os.Build
@@ -23,6 +24,7 @@ import android.view.View
 import android.widget.*
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
+import com.devstories.starball_android.adapter.EmoticonAdapter
 import com.devstories.starball_android.adapter.GroupAdverbAdapter
 import com.devstories.starball_android.adapter.GroupChattingAdapter
 import com.devstories.starball_android.base.Config
@@ -141,23 +143,55 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
     var isPlaying = false
     var length = -1
     var chatting_id = -1
+    var emoticonData2 = arrayOf(
+        R.drawable.stic_001_15, R.drawable.stic_001_16, R.drawable.stic_001_17, R.drawable.stic_001_18, R.drawable.stic_001_19,
+        R.drawable.stic_001_20, R.drawable.stic_001_21, R.drawable.stic_001_22, R.drawable.stic_001_23,
+        R.drawable.stic_002_07, R.drawable.stic_002_08, R.drawable.stic_002_09,
+        R.drawable.stic_002_10, R.drawable.stic_002_11, R.drawable.stic_002_12,
+        R.drawable.stic_003_07, R.drawable.stic_003_08, R.drawable.stic_003_09,
+        R.drawable.stic_003_10, R.drawable.stic_003_11, R.drawable.stic_003_12, R.drawable.stic_003_13, R.drawable.stic_003_14,
+        R.drawable.stic_004_08, R.drawable.stic_004_09,
+        R.drawable.stic_004_10, R.drawable.stic_004_11, R.drawable.stic_004_12, R.drawable.stic_004_13, R.drawable.stic_004_14, R.drawable.stic_004_15, R.drawable.stic_004_16, R.drawable.stic_004_17
+    )
+    private var selectedEmoticon: Bitmap? = null
 
+    lateinit var emoticonAdapter: EmoticonAdapter
     private var player: MediaPlayer? = null
 
     private val MY_PERMISSIONS_REQUEST_READ_CONTACTS = 100
 
+    var blockdata = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_chatting)
         this.context = this
-        progressDialog = ProgressDialog(context)
+        progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
 
-
+        blockdata.add("Wechat")
+        blockdata.add("kakaotalk")
+        blockdata.add("line")
+        blockdata.add("whatsapp")
+        blockdata.add("zalo")
+        blockdata.add("viber")
 
         member_id = PrefUtils.getIntPreference(context, "member_id")
 //        member_list =  intent.getStringExtra("member_list")
         room_id = intent.getIntExtra("room_id", -1)
+
+        emoticonAdapter = EmoticonAdapter(context, R.layout.item_emoticon, emoticonData2)
+        emoticonGV.adapter = emoticonAdapter
+        emoticonGV.setOnItemClickListener { parent, view, position, id ->
+
+            val emoticon = emoticonData2[position]
+//            val lid = context.resources.getIdentifier("@drawable/" + emoticon, "drawable", context.packageName)
+
+            selectedEmoticon = BitmapFactory.decodeResource(resources, emoticon)
+
+            sendChatting(4)
+
+        }
 
 
         adverbRV.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
@@ -218,14 +252,17 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
         }
 
-        languageIV.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                languageIV.setImageResource(R.mipmap.bubble_on)
-                languageLL.visibility = View.VISIBLE
+        adverbBtnLL.setOnClickListener {
+
+            emoticonIV.setImageResource(R.mipmap.emoticon)
+            emoticonLL.visibility = View.GONE
+
+            if (adverbLL.visibility == View.GONE) {
+                adverbIV.setImageResource(R.mipmap.bubble_on)
+                adverbLL.visibility = View.VISIBLE
             } else {
-                languageIV.setImageResource(R.mipmap.bubble)
-                languageLL.visibility = View.GONE
+                adverbIV.setImageResource(R.mipmap.bubble)
+                adverbLL.visibility = View.GONE
             }
         }
 
@@ -243,6 +280,12 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
             val contents = Utils.getString(contentsET)
 
+            for (i in 0 until blockdata.size) {
+                if (contents.contains(blockdata[i])){
+                    Toast.makeText(context,"주의:상대방이 다른 메신져를 이용해서 사기 또는 금전을 요구할 가능성이 있으니 신중하십시오.\n" +
+                            "타른 수단에서 발생한 피해는 책임지지 않습니다.",Toast.LENGTH_SHORT).show()
+                }
+            }
             if ("" == contents) {
                 return@setOnClickListener
             }
@@ -258,7 +301,20 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 imageFromGallery()
             }
         }
+        emoticonBtnLL.setOnClickListener {
 
+            adverbIV.setImageResource(R.mipmap.bubble)
+            adverbLL.visibility = View.GONE
+
+            if (emoticonLL.visibility == View.GONE) {
+                emoticonIV.setImageResource(R.mipmap.emoticon_on)
+                emoticonLL.visibility = View.VISIBLE
+            } else {
+                emoticonIV.setImageResource(R.mipmap.emoticon)
+                emoticonLL.visibility = View.GONE
+            }
+
+        }
         addAdverbLL.setOnClickListener {
             val adverb = Utils.getString(adverbET)
 
@@ -704,7 +760,12 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
             }
         }
-
+        if (type == 4) {
+            if (selectedEmoticon != null) {
+                val selectedImg = ByteArrayInputStream(Utils.getByteArray(selectedEmoticon))
+                params.put("emoticon", selectedImg)
+            }
+        }
         ChattingAction.send_chatting(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {

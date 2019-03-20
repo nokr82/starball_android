@@ -46,7 +46,8 @@ class StarballMemberShipActivity : RootActivity() {
         setContentView(R.layout.activity_starball_membership)
 
         this.context = this
-        progressDialog = ProgressDialog(context)
+        progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
 
         member_id = PrefUtils.getIntPreference(context, "member_id")
 

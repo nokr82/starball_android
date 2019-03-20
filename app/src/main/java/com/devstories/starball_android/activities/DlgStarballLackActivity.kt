@@ -64,7 +64,8 @@ class DlgStarballLackActivity : RootActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         this.mContext = this
-        progressDialog = ProgressDialog(mContext)
+        progressDialog = ProgressDialog(mContext, com.devstories.starball_android.R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
 
         member_id = PrefUtils.getIntPreference(mContext, "member_id")
 

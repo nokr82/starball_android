@@ -46,8 +46,8 @@ class ReportActivity : RootActivity() {
         setContentView(R.layout.activity_report)
 
         this.context = this
-        progressDialog = ProgressDialog(context)
-
+        progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
         member_id =  PrefUtils.getIntPreference(context, "member_id")
 
         report_member_id = intent.getIntExtra("report_member_id", -1)

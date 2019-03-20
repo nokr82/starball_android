@@ -68,8 +68,8 @@ class DlgCharInfoActivity : RootActivity() {
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         this.context = this
-        progressDialog = ProgressDialog(context)
-
+        progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
         like_member_id = intent.getIntExtra("like_member_id",-1)
 
         get_info()

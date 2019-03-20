@@ -35,7 +35,8 @@ class DlgSelectNationActivity : RootActivity() {
 
 
         this.myContext = this
-        progressDialog = ProgressDialog(myContext)
+        progressDialog = ProgressDialog(myContext, com.devstories.starball_android.R.style.CustomProgressBar)
+        progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
 
         type =  intent.getIntExtra("type",-1)
         if (type==1){
