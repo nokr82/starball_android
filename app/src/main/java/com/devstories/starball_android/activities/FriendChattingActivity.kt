@@ -203,6 +203,8 @@ class FriendChattingActivity : RootActivity()
                 delete = true
             }
 
+            recordStop()
+
             var intent = Intent(context, DlgChattingActivity::class.java)
             intent.putExtra("chatting_id", Utils.getInt(chatting, "id"))
             intent.putExtra("chatting_contents", Utils.getString(chatting, "contents"))
@@ -217,6 +219,9 @@ class FriendChattingActivity : RootActivity()
         }
 
         starballIV.setOnClickListener {
+
+            recordStop()
+
             val intent = Intent(context, DlgSendProposeActivity::class.java)
             intent.putExtra("propose_member_id", other_member_id)
             intent.putExtra("name", other_name)
@@ -225,6 +230,9 @@ class FriendChattingActivity : RootActivity()
         }
 
         reportIV.setOnClickListener {
+
+            recordStop()
+
             val intent = Intent(context, ReportActivity::class.java)
             intent.putExtra("report_member_id", other_member_id)
             startActivity(intent)
@@ -530,6 +538,9 @@ class FriendChattingActivity : RootActivity()
     }
 
     private fun imageFromGallery() {
+
+        recordStop()
+
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(intent, FROM_ALBUM)
     }
@@ -1533,6 +1544,13 @@ class FriendChattingActivity : RootActivity()
         if (timer != null) {
             timer!!.cancel()
         }
+    }
+
+    override fun finish() {
+        super.finish()
+
+        recordStop()
+
     }
 
 }
