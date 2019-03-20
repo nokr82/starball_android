@@ -103,7 +103,38 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         }
     }
 
+    internal var playerHandler: Handler = object : Handler() {
+        override fun handleMessage(msg: android.os.Message) {
 
+            for (i in 0 until adapterData.size) {
+
+                val data = adapterData[i]
+                val chatting = data.getJSONObject("GroupChatting")
+
+                if (chatting_id == Utils.getInt(chatting, "id")) {
+                    val voice_progress = Utils.getInt(chatting, "voice_progress")
+                    val voice_duration = Utils.getInt(chatting, "voice_duration")
+
+                    if (voice_progress <= voice_duration) {
+                        chatting.put("isPlaying", true)
+                        chatting.put("voice_progress",  voice_progress + 1000)
+                    } else {
+                        chatting.put("isPlaying", false)
+                        this.removeMessages(0)
+                    }
+
+                } else {
+                    chatting.put("isPlaying", false)
+                    chatting.put("voice_progress", 0)
+                }
+
+            }
+
+            adapter.notifyDataSetChanged()
+
+            this.sendEmptyMessageDelayed(0, 1000)
+        }
+    }
     private var recorder: MediaRecorder = MediaRecorder()
 
     private var record = false
@@ -247,8 +278,8 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
                 recordStop()
 
-                voiceLL.setBackgroundColor(Color.parseColor("#00000000"))
-
+//                voiceLL.setBackgroundColor(Color.parseColor("#00000000"))
+                recordIV.setImageResource(R.mipmap.chatting_mic)
             } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
                     val perms = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO)
@@ -385,6 +416,9 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
 
             isPlaying = false
+            length = -1
+
+            playerHandler.removeMessages(0)
         }
 
         if (isPlaying == false) {
@@ -395,6 +429,8 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                     player!!.release()
                 }
                 player = MediaPlayer()
+
+                this.chatting_id = chatting_id
 
                 player!!.setDataSource(recordPath)
                 player!!.prepare()
@@ -409,16 +445,51 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
 
             isPlaying = true
+
+            for (i in 0 until adapterData.size) {
+                val data = adapterData[i]
+                val chatting = data.getJSONObject("GroupChatting")
+
+                if (Utils.getInt(chatting, "id") == chatting_id) {
+                    chatting.put("isPlaying", false)
+                    chatting.put("voice_progress", 0)
+                    break
+                }
+            }
+
+            adapter.notifyDataSetChanged()
+
+            playerHandler.sendEmptyMessage(0)
+
         } else if (length > 0) {
 
             if (length > player!!.duration) {
                 length = 0
             }
+
             player!!.seekTo(length)
             player!!.start()
             length = -1
+
+            playerHandler.sendEmptyMessage(0)
+
         } else {
+
             playingPause()
+
+            for (i in 0 until adapterData.size) {
+                val data = adapterData[i]
+                val chatting = data.getJSONObject("GroupChatting")
+
+                if (Utils.getInt(chatting, "id") == chatting_id) {
+                    chatting.put("isPlaying", false)
+                    break
+                }
+            }
+
+            adapter.notifyDataSetChanged()
+
+            playerHandler.removeMessages(0)
         }
     }
 
@@ -495,8 +566,8 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             //시작하면된다.
             Toast.makeText(context, "녹음을 시작합니다.", Toast.LENGTH_LONG).show()
 
-            voiceLL.setBackgroundColor(Color.parseColor("#333333"))
-
+//            voiceLL.setBackgroundColor(Color.parseColor("#333333"))
+            recordIV.setImageResource(R.mipmap.chatting_pause)
             record = true
 
 //            try {
