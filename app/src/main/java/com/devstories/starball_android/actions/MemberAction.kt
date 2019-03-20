@@ -5,7 +5,9 @@ import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 
 object MemberAction {
-
+    fun blocking(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/blocking", params, handler)
+    }
     fun match_cancel(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/members/match_cancel", params, handler)
     }
