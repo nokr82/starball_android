@@ -92,6 +92,9 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
 
             when (type) {
                 2 -> {
+
+                    ImageLoader.getInstance().displayImage(Config.url + Utils.getString(chatting, "image_uri"), item.otherImageIV, Utils.UILoptionsPosting)
+
                     item.otherImageIV.visibility = View.VISIBLE
                     item.otherContentsLL.visibility = View.GONE
                     item.otherVoiceLL.visibility = View.GONE
@@ -122,6 +125,14 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
                         item.otherVoiceIV.setImageResource(R.mipmap.player_play)
                     }
 
+                }
+                4 -> {
+
+                    ImageLoader.getInstance().displayImage(Config.url + Utils.getString(chatting, "emoticon_uri"), item.otherImageIV, Utils.UILoptionsPosting)
+
+                    item.otherImageIV.visibility = View.VISIBLE
+                    item.otherContentsLL.visibility = View.GONE
+                    item.otherVoiceLL.visibility = View.GONE
                 }
                 else -> {
                     item.otherImageIV.visibility = View.GONE
@@ -174,6 +185,15 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
                     } else {
                         item.myVoiceIV.setImageResource(R.mipmap.player_play)
                     }
+
+                }
+                4 -> {
+
+                    ImageLoader.getInstance().displayImage(Config.url + Utils.getString(chatting, "emoticon_uri"), item.myImageIV, Utils.UILoptionsPosting)
+
+                    item.myImageIV.visibility = View.VISIBLE
+                    item.myContentsLL.visibility = View.GONE
+                    item.myVoiceLL.visibility = View.GONE
 
                 }
                 else -> {

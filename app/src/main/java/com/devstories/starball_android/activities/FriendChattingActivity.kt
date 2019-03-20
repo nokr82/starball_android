@@ -8,6 +8,9 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.os.Build
@@ -69,7 +72,28 @@ class FriendChattingActivity : RootActivity()
     lateinit var adverbAdapter: AdverbAdapter
     var adverbAdapterData = ArrayList<JSONObject>()
 
-    var emoticonData = ArrayList<JSONObject>()
+    var emoticonData = arrayOf(
+        "stic_001_15", "stic_001_16", "stic_001_17", "stic_001_18", "stic_001_19",
+        "stic_001_20", "stic_001_21", "stic_001_22", "stic_001_23",
+        "stic_002_07", "stic_002_08", "stic_002_09",
+        "stic_002_10", "stic_002_11", "stic_002_12",
+        "stic_003_07", "stic_003_08", "stic_003_09",
+        "stic_003_10", "stic_003_11", "stic_003_12", "stic_003_13", "stic_003_14",
+        "stic_004_08", "stic_004_09",
+        "stic_004_10", "stic_004_11", "stic_004_12", "stic_004_13", "stic_004_14", "stic_004_15", "stic_004_16", "stic_004_17"
+    )
+
+    var emoticonData2 = arrayOf(
+        R.drawable.stic_001_15, R.drawable.stic_001_16, R.drawable.stic_001_17, R.drawable.stic_001_18, R.drawable.stic_001_19,
+        R.drawable.stic_001_20, R.drawable.stic_001_21, R.drawable.stic_001_22, R.drawable.stic_001_23,
+        R.drawable.stic_002_07, R.drawable.stic_002_08, R.drawable.stic_002_09,
+        R.drawable.stic_002_10, R.drawable.stic_002_11, R.drawable.stic_002_12,
+        R.drawable.stic_003_07, R.drawable.stic_003_08, R.drawable.stic_003_09,
+        R.drawable.stic_003_10, R.drawable.stic_003_11, R.drawable.stic_003_12, R.drawable.stic_003_13, R.drawable.stic_003_14,
+        R.drawable.stic_004_08, R.drawable.stic_004_09,
+        R.drawable.stic_004_10, R.drawable.stic_004_11, R.drawable.stic_004_12, R.drawable.stic_004_13, R.drawable.stic_004_14, R.drawable.stic_004_15, R.drawable.stic_004_16, R.drawable.stic_004_17
+    )
+
     lateinit var emoticonAdapter: EmoticonAdapter
 
     internal var loadDataHandler: Handler = object : Handler() {
@@ -116,7 +140,9 @@ class FriendChattingActivity : RootActivity()
     private val EDIT_CHATTING = 300
     private val FROM_ALBUM = 101
     private val REQUEST_PERMISSION_READ_EXTERNAL_STORAGE = 2
+
     private var selectedImage: Bitmap? = null
+    private var selectedEmoticon: Bitmap? = null
 
     private var recorder: MediaRecorder = MediaRecorder()
 
@@ -141,7 +167,18 @@ class FriendChattingActivity : RootActivity()
 
         room_id = intent.getIntExtra("room_id", -1)
 
-        emoticonAdapter = EmoticonAdapter(context, R.layout.item_emoticon, emoticonData)
+        emoticonAdapter = EmoticonAdapter(context, R.layout.item_emoticon, emoticonData2)
+        emoticonGV.adapter = emoticonAdapter
+        emoticonGV.setOnItemClickListener { parent, view, position, id ->
+
+            val emoticon = emoticonData2[position]
+//            val lid = context.resources.getIdentifier("@drawable/" + emoticon, "drawable", context.packageName)
+
+            selectedEmoticon = BitmapFactory.decodeResource(resources, emoticon)
+
+            sendChatting(4)
+
+        }
 
         adverbRV.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         adverbAdapter = AdverbAdapter(adverbAdapterData, this)
@@ -150,7 +187,6 @@ class FriendChattingActivity : RootActivity()
         adapter = ChattingAdapter(context, R.layout.item_chatting, adapterData, this)
         listLV.adapter = adapter
         listLV.setOnScrollListener(this)
-
         listLV.setOnItemLongClickListener { parent, view, position, id ->
 
             val data = adapterData[position]
@@ -1265,7 +1301,6 @@ class FriendChattingActivity : RootActivity()
             }
         }
 
-
         if (type == 3) {
             if (record_path != "" && record_path != null) {
                 val file = File(record_path)
@@ -1289,6 +1324,13 @@ class FriendChattingActivity : RootActivity()
             }
         }
 
+        if (type == 4) {
+            if (selectedEmoticon != null) {
+                val selectedImg = ByteArrayInputStream(Utils.getByteArray(selectedEmoticon))
+                params.put("emoticon", selectedImg)
+            }
+        }
+
         ChattingAction.send_chatting(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
@@ -1305,6 +1347,7 @@ class FriendChattingActivity : RootActivity()
                         val created_at = Utils.getString(response, "created_at")
 
                         selectedImage = null
+                        selectedEmoticon = null
                         record_path = ""
                         contentsET.setText("")
 
