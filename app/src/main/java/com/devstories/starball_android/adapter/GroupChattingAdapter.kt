@@ -166,8 +166,6 @@ open class GroupChattingAdapter(
             readcountTV = v.findViewById(R.id.readcountTV)
             translationLL = v.findViewById(R.id.translationLL)
             contentsTV = v.findViewById(R.id.contentsTV)
-            myVoiceLL = v.findViewById(R.id.myVoiceLL)
-            myVoiceIV = v.findViewById(R.id.myVoiceIV)
 
         }
     }

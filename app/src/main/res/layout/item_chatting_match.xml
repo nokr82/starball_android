@@ -231,6 +231,7 @@
                 android:background="@drawable/background_border_strock10_000000">
 
                 <ImageView
+                    android:id="@+id/recordIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/mic_op"/>
