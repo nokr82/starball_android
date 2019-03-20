@@ -78,7 +78,7 @@ class StarballPayActivity : RootActivity() {
         }
 
         starball5TV.setOnClickListener {
-            iapHelper.buy("starball_5")
+            iapHelper.buy("starball_05")
         }
 
         starball10TV.setOnClickListener {
