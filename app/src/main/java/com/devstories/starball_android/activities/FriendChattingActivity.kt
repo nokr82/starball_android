@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.Color
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.os.Build
@@ -19,19 +18,16 @@ import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.view.MotionEvent
 import android.view.View
 import android.widget.*
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
 import com.devstories.starball_android.adapter.AdverbAdapter
 import com.devstories.starball_android.adapter.ChattingAdapter
+import com.devstories.starball_android.adapter.EmoticonAdapter
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
-import com.devstories.starball_android.utils.Coomon
-import com.google.android.exoplayer2.util.Util
 import com.loopj.android.http.JsonHttpResponseHandler
 import com.loopj.android.http.RequestParams
 import cz.msebera.android.httpclient.Header
@@ -42,9 +38,9 @@ import java.io.ByteArrayInputStream
 import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
-import java.text.DateFormat
 import java.util.*
 import java.text.SimpleDateFormat
+import kotlin.collections.ArrayList
 
 class FriendChattingActivity : RootActivity()
     , AbsListView.OnScrollListener {
@@ -72,6 +68,9 @@ class FriendChattingActivity : RootActivity()
 
     lateinit var adverbAdapter: AdverbAdapter
     var adverbAdapterData = ArrayList<JSONObject>()
+
+    var emoticonData = ArrayList<JSONObject>()
+    lateinit var emoticonAdapter: EmoticonAdapter
 
     internal var loadDataHandler: Handler = object : Handler() {
         override fun handleMessage(msg: android.os.Message) {
@@ -142,6 +141,8 @@ class FriendChattingActivity : RootActivity()
 
         room_id = intent.getIntExtra("room_id", -1)
 
+        emoticonAdapter = EmoticonAdapter(context, R.layout.item_emoticon, emoticonData)
+
         adverbRV.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         adverbAdapter = AdverbAdapter(adverbAdapterData, this)
         adverbRV.adapter = adverbAdapter
@@ -207,15 +208,26 @@ class FriendChattingActivity : RootActivity()
             }
         }
 
-        languageIV.setOnClickListener {
-            it.isSelected = !it.isSelected
-            if (it.isSelected) {
-                languageIV.setImageResource(R.mipmap.bubble_on)
-                languageLL.visibility = View.VISIBLE
+        adverbBtnLL.setOnClickListener {
+            if (adverbLL.visibility == View.GONE) {
+                adverbIV.setImageResource(R.mipmap.bubble_on)
+                adverbLL.visibility = View.VISIBLE
             } else {
-                languageIV.setImageResource(R.mipmap.bubble)
-                languageLL.visibility = View.GONE
+                adverbIV.setImageResource(R.mipmap.bubble)
+                adverbLL.visibility = View.GONE
             }
+        }
+
+        emoticonBtnLL.setOnClickListener {
+
+            if (emoticonLL.visibility == View.GONE) {
+                emoticonIV.setImageResource(R.mipmap.emoticon_on)
+                emoticonLL.visibility = View.VISIBLE
+            } else {
+                emoticonIV.setImageResource(R.mipmap.emoticon)
+                emoticonLL.visibility = View.GONE
+            }
+
         }
 
         backIV.setOnClickListener {

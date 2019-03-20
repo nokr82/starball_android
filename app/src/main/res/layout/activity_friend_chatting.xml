@@ -166,7 +166,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <LinearLayout
             android:gravity="center_vertical"
@@ -174,12 +174,14 @@
             android:layout_height="70dp">
 
             <LinearLayout
+                android:id="@+id/emoticonBtnLL"
                 android:layout_marginLeft="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <ImageView
+                    android:id="@+id/emoticonIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/emoticon"/>
@@ -195,15 +197,15 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/adverbBtnLL"
                 android:layout_marginLeft="30dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="left">
 
                 <ImageView
-                    android:id="@+id/languageIV"
+                    android:id="@+id/adverbIV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@mipmap/bubble"/>
@@ -221,7 +223,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/languageLL"
+            android:id="@+id/adverbLL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -277,6 +279,28 @@
 
 
             </android.support.v7.widget.RecyclerView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/emoticonLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <GridView
+                android:id="@+id/emoticonGV"
+                android:layout_width="match_parent"
+                android:layout_height="129.5dp"
+                android:numColumns="5"
+                android:verticalSpacing="10dp"
+                android:horizontalSpacing="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:scrollbars="none">
+
+            </GridView>
 
         </LinearLayout>
 
