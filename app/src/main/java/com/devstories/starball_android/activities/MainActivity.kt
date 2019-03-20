@@ -780,7 +780,7 @@ class MainActivity : RootActivity() {
                 try {
                     val result = response!!.getString("result")
                     if ("ok" == result) {
-
+                            get_info()
                     } else {
                         Toast.makeText(mContext, getString(R.string.already_matched), Toast.LENGTH_SHORT).show()
                     }
