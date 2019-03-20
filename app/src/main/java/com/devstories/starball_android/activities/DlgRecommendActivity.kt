@@ -119,8 +119,6 @@ class DlgRecommendActivity : RootActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        callbackManager.onActivityResult(requestCode, resultCode, data)
-
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
                 INSTAGRAM_REQUEST_CODE -> {
@@ -128,6 +126,8 @@ class DlgRecommendActivity : RootActivity() {
                 }
             }
         }
+
+        callbackManager.onActivityResult(requestCode, resultCode, data)
     }
 
 }
