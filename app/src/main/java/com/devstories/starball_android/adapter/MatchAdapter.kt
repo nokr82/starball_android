@@ -113,14 +113,16 @@ open class MatchAdapter(fragment: ChattingMatchFragment, data: ArrayList<JSONObj
         holder.chattingLV.adapter = matchChattingAdapter
         adapterdata.clear()
         if (send_chatting =="Y"){
-            val LastChatting = json.getJSONObject("LastChatting")
-            LastChatting.put("like_member_id",like_member_id)
-            adapterdata.add(LastChatting)
+            val lastChatting = json.getJSONObject("LastChatting")
+            lastChatting.put("like_member_id",like_member_id)
+            adapterdata.add(lastChatting)
             matchChattingAdapter.notifyDataSetChanged()
             holder.menuLL.visibility = View.GONE
         }else{
             holder.menuLL.visibility = View.VISIBLE
         }
+
+        matchChattingAdapter.notifyDataSetChanged()
 
 
         holder.timeTV.visibility = View.GONE
