@@ -92,7 +92,7 @@ open class DaillyAdapter(
         val created_at = Utils.getString(content, "created_at")
         val content_id = Utils.getInt(content, "id")
 
-        val today = Utils.todayStr()
+       /* val today = Utils.todayStr()
         var split = created_at.split("T")
         if (split.get(0) == today) {
             var timesplit = split.get(1).split(":")
@@ -105,11 +105,11 @@ open class DaillyAdapter(
 
             item.timeTV.text = time
         } else {
-            // var since = Utils.since(created_at)
 
-            // item.timeTV.text = since
-        }
+        }*/
 
+        var since = Utils.since(created_at)
+        item.timeTV.text = since
 
         Log.d("컨텐츠", image_uri.toString())
         Log.d("프로필", profile_image_uri.toString())
