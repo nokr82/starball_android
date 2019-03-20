@@ -91,6 +91,17 @@ class MainActivity : RootActivity() {
         }
     }
 
+    internal var chattingAnimationReceiver: BroadcastReceiver? = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent?) {
+            if (intent != null) {
+
+                var intent = Intent(context, ChatNotiActivity::class.java)
+                startActivity(intent)
+
+            }
+        }
+    }
+
     var member_id = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -109,6 +120,9 @@ class MainActivity : RootActivity() {
 
         var filter2 = IntentFilter("PROPOSE")
         registerReceiver(proposeReceiver, filter2)
+
+        var filter3 = IntentFilter("CHATTING_ANIMATION")
+        registerReceiver(chattingAnimationReceiver, filter3)
 
         logoIV.setOnClickListener {
             val intent = Intent(mContext, StarballMemberShipActivity::class.java)
@@ -1043,6 +1057,20 @@ class MainActivity : RootActivity() {
         try {
             if (usestarballreciver != null) {
                 unregisterReceiver(usestarballreciver)
+            }
+        } catch (e: IllegalArgumentException) {
+        }
+
+        try {
+            if (proposeReceiver != null) {
+                unregisterReceiver(proposeReceiver)
+            }
+        } catch (e: IllegalArgumentException) {
+        }
+
+        try {
+            if (chattingAnimationReceiver != null) {
+                unregisterReceiver(chattingAnimationReceiver)
             }
         } catch (e: IllegalArgumentException) {
         }
