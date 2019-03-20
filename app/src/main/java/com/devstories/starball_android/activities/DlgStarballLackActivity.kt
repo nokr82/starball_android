@@ -82,22 +82,6 @@ class DlgStarballLackActivity : RootActivity() {
 //                    setCharge(1024*1024*600, purchaseToken)
 //                }
 
-                var formatter = SimpleDateFormat("HH:mm", Locale.KOREA)
-                var t_time = Utils.timeStr()
-                val d1 = formatter.parse(t_time)
-                val d2 = formatter.parse("12:00")
-                var diff = d2.time - d1.time
-
-                if (diff<0){
-                    timeTV.dest_date_time = "24:00"
-                    timeTV.start()
-                }else{
-                    timeTV.dest_date_time = "12:00"
-                    timeTV.start()
-                }
-
-
-
                 var starball = 0
 
                 var starballs = sku.split("_")
@@ -120,6 +104,21 @@ class DlgStarballLackActivity : RootActivity() {
                 Utils.alert(mContext, "구매 중 장애가 발생하였습니다. " + e.localizedMessage)
             }
         })
+
+        var formatter = SimpleDateFormat("HH:mm", Locale.KOREA)
+        var t_time = Utils.timeStr()
+        val d1 = formatter.parse(t_time)
+        val d2 = formatter.parse("12:00")
+        var diff = d2.time - d1.time
+
+        if (diff<0){
+            timeTV.dest_date_time = "24:00"
+            timeTV.start()
+        }else{
+            timeTV.dest_date_time = "12:00"
+            timeTV.start()
+        }
+
 
         starballO2LL.setOnClickListener {
             iapHelper?.buy("startball_02")

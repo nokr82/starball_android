@@ -41,6 +41,8 @@ class DailyMomentViewListActivity : RootActivity() {
     lateinit var starballIV: ImageView
     lateinit var nameTV: TextView
     lateinit var createdTV: TextView
+    lateinit var menuIV: ImageView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,12 +65,23 @@ class DailyMomentViewListActivity : RootActivity() {
         profileIV= header.findViewById(R.id.profileIV)
         starballIV =  header.findViewById(R.id.starballIV)
         createdTV=  header.findViewById(R.id.createdTV)
+        menuIV=  header.findViewById(R.id.menuIV)
         dailyLV.addHeaderView(header)
 
         my_daily_list()
 
         DaillyAdapter = DaillyAdapter(context, R.layout.item_daily_list, adapterdata,DailyMomentListActivity(),this,2)
         dailyLV.adapter = DaillyAdapter
+
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
+        menuIV.setOnClickListener {
+            if (daily_member_id != member_id){
+                val intent = Intent(context, DlgPostOptionActivity::class.java)
+                intent.putExtra("daily_member_id",daily_member_id)
+                startActivity(intent)
+            }
+        }
+
 
         timelineTV.setOnClickListener {
             val intent = Intent(context, DailyMomentListActivity::class.java)

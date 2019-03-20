@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.DailyAction
 import com.devstories.starball_android.actions.MemberAction
@@ -30,6 +31,9 @@ class DlgPostOptionActivity : RootActivity() {
     var content_id = -1
     var like_member_id = -1
     var like_id = -1
+    var daily_member_id = -1
+    var member_id = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dlg_post_option)
@@ -39,8 +43,8 @@ class DlgPostOptionActivity : RootActivity() {
 
         this.context = this
         progressDialog = ProgressDialog(context)
-        val member_id = PrefUtils.getIntPreference(context, "member_id")
-
+        member_id = PrefUtils.getIntPreference(context, "member_id")
+        daily_member_id = intent.getIntExtra("daily_member_id", -1)
         content_id = intent.getIntExtra("content_id", -1)
         like_member_id = intent.getIntExtra("like_member_id", -1)
         like_id = intent.getIntExtra("like_id", -1)
@@ -50,14 +54,29 @@ class DlgPostOptionActivity : RootActivity() {
 
             reportTV.setOnClickListener {
                 val intent = Intent(context, ReportActivity::class.java)
-                intent.putExtra("like_member_id",like_member_id)
+                intent.putExtra("report_member_id",like_member_id)
                 startActivityForResult(intent, REPORT)
             }
 
             delTV.setOnClickListener {
                 match_cancel()
             }
-        }else{
+        }
+        else if (daily_member_id != -1){
+            delTV.visibility = View.GONE
+            reportTV.visibility = View.VISIBLE
+            blockTV.visibility = View.VISIBLE
+            reportTV.setOnClickListener {
+                val intent = Intent(context, ReportActivity::class.java)
+                intent.putExtra("report_member_id",daily_member_id)
+                startActivityForResult(intent, REPORT)
+            }
+            blockTV.setOnClickListener {
+                blocking()
+            }
+
+        }
+        else{
             if (like_member_id==member_id){
                 delTV.visibility = View.VISIBLE
                 reportTV.visibility = View.GONE
@@ -67,7 +86,7 @@ class DlgPostOptionActivity : RootActivity() {
             }
             reportTV.setOnClickListener {
                 val intent = Intent(context, ReportActivity::class.java)
-                intent.putExtra("like_member_id",like_member_id)
+                intent.putExtra("report_member_id",like_member_id)
                 startActivityForResult(intent, REPORT)
             }
 
@@ -78,6 +97,77 @@ class DlgPostOptionActivity : RootActivity() {
 
     }
 
+
+    fun blocking() {
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("block_member_id", daily_member_id)
+
+        MemberAction.blocking(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                Log.d("아우스0",response.toString())
+                try {
+                    val result = response!!.getString("result")
+
+                    if ("ok" == result) {
+                        Toast.makeText(context,"차단되었습니다.",Toast.LENGTH_SHORT).show()
+                        finish()
+                    } else if ("already" == result){
+                        Toast.makeText(context,"이미 차단상태입니다.",Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+
+            override fun onStart() {
+                // show dialog
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
 
     fun match_cancel() {
         val params = RequestParams()

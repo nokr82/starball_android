@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.Toast
 import com.devstories.starball_android.R
@@ -33,7 +34,7 @@ class DlgStarballHistoryActivity : RootActivity() {
     private var adapterData = ArrayList<JSONObject>()
 
     private var member_id = -1
-
+    var member_yn = "N"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dlg_starball_history)
@@ -47,8 +48,14 @@ class DlgStarballHistoryActivity : RootActivity() {
         member_id = PrefUtils.getIntPreference(context, "member_id")
 
         cashTV.setOnClickListener {
-            val intent = Intent(context, CashRequestActivity::class.java)
-            startActivity(intent)
+            if (member_yn=="Y"){
+                val intent = Intent(context, CashRequestActivity::class.java)
+                startActivity(intent)
+            }else{
+                val intent = Intent(context, StarballMemberShipActivity::class.java)
+                startActivity(intent)
+            }
+
         }
 
         closeTV.setOnClickListener {
@@ -64,7 +71,7 @@ class DlgStarballHistoryActivity : RootActivity() {
 
 
         loadData()
-
+        get_info()
     }
 
     fun loadData() {
@@ -177,5 +184,111 @@ class DlgStarballHistoryActivity : RootActivity() {
             }
         })
     }
+    fun get_info() {
 
+        var member_id = PrefUtils.getIntPreference(context, "member_id")
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+
+        MemberAction.get_info(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                try {
+                    val result = response!!.getString("result")
+
+                    Log.d("결과", result.toString())
+                    if ("ok" == result) {
+
+                        val member = response.getJSONObject("member")
+                        val membership = Utils.getString(member,"my_membership")
+
+                        if (membership == "membership"){
+                            member_yn = "Y"
+                        }else{
+                            member_yn = "N"
+                        }
+
+
+                    } else {
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
 }
