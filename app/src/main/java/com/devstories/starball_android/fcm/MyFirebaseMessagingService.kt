@@ -1,8 +1,10 @@
 package com.devstories.starball_android.fcm
 
+import android.app.ActivityManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -45,8 +47,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         val data = remoteMessage.data ?: return
 
-        println("data:::::::::::::::::::::::::::::::${data}")
-
         val title = data["title"]
         val body = data["body"]
 //        val channelId = getString(R.string.default_notification_channel_id)
@@ -62,12 +62,25 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 //        intent.putExtra("friend_id", data["friend_id"])
 //        intent.putExtra("FROM_PUSH", true)
 
-        if (data["type"] == "chatting") {
-            PrefUtils.setPreference(this, "room_id", data["room_id"]!!.toInt())
-        }
+        if (isAppRunning(this)) {
 
-        PrefUtils.setPreference(this, "PUSH_TYPE", data["type"])
-        PrefUtils.setPreference(this, "FROM_PUSH", true)
+            if (data["type"] == "chatting") {
+                val broadcastIntent = Intent()
+                broadcastIntent.putExtra("room_id", data["room_id"]!!.toInt())
+                broadcastIntent.putExtra("contents", data["contents"])
+                broadcastIntent.putExtra("created", data["created_at"])
+                broadcastIntent.action = "PUSH_CHATTING"
+                this.sendBroadcast(broadcastIntent)
+            }
+
+        } else {
+            if (data["type"] == "chatting") {
+                PrefUtils.setPreference(this, "room_id", data["room_id"]!!.toInt())
+            }
+
+            PrefUtils.setPreference(this, "PUSH_TYPE", data["type"])
+            PrefUtils.setPreference(this, "FROM_PUSH", true)
+        }
 
         val pendingIntent = PendingIntent.getActivity(this, System.currentTimeMillis().toInt(), intent, PendingIntent.FLAG_ONE_SHOT)
 
@@ -125,6 +138,26 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     companion object {
         private val TAG = "MyFirebaseMsgService"
+    }
+
+    private fun isAppRunning(context: Context): Boolean {
+        val PackageName = packageName
+        val manager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        val componentInfo: ComponentName?
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val tasks = manager.appTasks
+            componentInfo = tasks[0].taskInfo.topActivity
+        } else {
+            val tasks = manager.getRunningTasks(1)
+            componentInfo = tasks[0].topActivity
+        }
+
+        if (null != componentInfo) {
+            if (componentInfo.packageName == PackageName) {
+                return true
+            }
+        }
+        return false
     }
 
 }

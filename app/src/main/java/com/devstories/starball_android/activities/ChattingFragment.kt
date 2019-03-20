@@ -1,8 +1,10 @@
 package com.devstories.starball_android.activities
 
 import android.app.ProgressDialog
+import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -51,17 +53,67 @@ class ChattingFragment : Fragment() {
     var del_yn = "N"
     var room_id = -1
 
-
     lateinit var roomAdapter: ChattingRoomAdapter
     var roomAdapterData = ArrayList<JSONObject>()
     var GrouproomAdapterData = ArrayList<JSONObject>()
     lateinit var plusIV: ImageView
+
+    internal var chattingReceiver: BroadcastReceiver? = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent?) {
+            if (intent != null) {
+
+                var room_id = intent.getIntExtra("room_id", -1)
+
+                if (room_id > 0) {
+
+                    var has = false
+
+                    var contents = intent.getStringExtra("contents")
+                    val created_at = intent.getStringExtra("created_at")
+
+                    for (i in 0 until roomAdapterData.size) {
+                        val data = roomAdapterData[i]
+
+                        val type = Utils.getInt(data, "type")
+
+                        if (type == 2) {
+
+                            val room = data.getJSONObject("Room")
+
+                            val id = Utils.getInt(room, "id")
+
+                            if (id == room_id) {
+                                has = true
+                                room.put("contents", contents)
+                                room.put("created", created_at)
+                                roomAdapterData.removeAt(i)
+                                roomAdapterData.add(0, data)
+                                break
+                            }
+
+                        }
+
+                    }
+
+                    roomAdapter.notifyDataSetChanged()
+
+                    if (!has) {
+                        loadAddNewRoom(room_id)
+                    }
+
+                }
+
+            }
+        }
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         this.myContext = container!!.context
         progressDialog = ProgressDialog(myContext)
 
         return inflater.inflate(R.layout.fragment_chatting, container, false)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -70,10 +122,12 @@ class ChattingFragment : Fragment() {
         header = View.inflate(myContext, R.layout.item_chatting_head, null)
         plusIV = header.findViewById(R.id.plusIV)
 
+        var filter = IntentFilter("PUSH_CHATTING")
+        myContext.registerReceiver(chattingReceiver, filter)
+
         roomAdapter = ChattingRoomAdapter(myContext, R.layout.item_chat_profile, roomAdapterData, 1)
         chattingLV.adapter = roomAdapter
         chattingLV.addHeaderView(header)
-
 
         val creator = SwipeMenuCreator { menu ->
             // create "open" item
@@ -242,8 +296,35 @@ class ChattingFragment : Fragment() {
 
         loadGroupData()
 
-//        Coomon.pushCheck(myContext)
+    }
 
+    fun loadAddNewRoom(room_id: Int) {
+
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("room_id", room_id)
+
+        ChattingAction.load_add_new_chatting(params, object : JsonHttpResponseHandler() {
+            override fun onSuccess(statusCode: Int, headers: Array<out Header>?, response: JSONObject?) {
+                val result = response!!.getString("result")
+
+                if (result == "ok") {
+                    val room = response.getJSONObject("room")
+
+                    roomAdapterData.add(0, room)
+                    roomAdapter.notifyDataSetChanged()
+
+                }
+            }
+
+            override fun onFailure(statusCode: Int, headers: Array<out Header>?, responseString: String?, throwable: Throwable?) {
+                println(responseString)
+            }
+
+            override fun onFailure(statusCode: Int, headers: Array<out Header>?, throwable: Throwable?, errorResponse: JSONObject?) {
+                println(errorResponse)
+            }
+        })
     }
 
     fun editGroupRoom(room_id: Int) {

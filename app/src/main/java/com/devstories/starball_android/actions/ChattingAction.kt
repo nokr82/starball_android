@@ -6,6 +6,10 @@ import com.loopj.android.http.RequestParams
 
 object ChattingAction {
 
+    fun load_add_new_chatting(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/chatting/load_add_new_chatting.json", params, handler)
+    }
+
     fun confirm(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/chattings/confirm", params, handler)
     }
@@ -82,4 +86,5 @@ object ChattingAction {
     fun saveTranslate(params: RequestParams, handler: JsonHttpResponseHandler) {
         HttpClient.post("/chattings/save_translate", params, handler)
     }
+
 }
