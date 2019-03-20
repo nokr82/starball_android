@@ -347,7 +347,7 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 holder.heightTV.text = height+"cm"
 
                 holder.jobTV.text = "Job-"+job
-                holder.moneyTV.text = "수입" + work
+                holder.moneyTV.text = "수입-" + work
 
                 holder.infoIV.setOnClickListener {
                     val intent = Intent(context, DlgCharInfoActivity::class.java)
