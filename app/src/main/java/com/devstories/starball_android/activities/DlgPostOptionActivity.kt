@@ -30,6 +30,7 @@ class DlgPostOptionActivity : RootActivity() {
     var content_id = -1
     var like_member_id = -1
     var like_id = -1
+    var daily_member_id = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dlg_post_option)
@@ -40,7 +41,7 @@ class DlgPostOptionActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context)
         val member_id = PrefUtils.getIntPreference(context, "member_id")
-
+        daily_member_id = intent.getIntExtra("daily_member_id", -1)
         content_id = intent.getIntExtra("content_id", -1)
         like_member_id = intent.getIntExtra("like_member_id", -1)
         like_id = intent.getIntExtra("like_id", -1)
@@ -50,14 +51,28 @@ class DlgPostOptionActivity : RootActivity() {
 
             reportTV.setOnClickListener {
                 val intent = Intent(context, ReportActivity::class.java)
-                intent.putExtra("like_member_id",like_member_id)
+                intent.putExtra("report_member_id",like_member_id)
                 startActivityForResult(intent, REPORT)
             }
 
             delTV.setOnClickListener {
                 match_cancel()
             }
-        }else{
+        }
+        else if (daily_member_id != -1){
+            reportTV.visibility = View.VISIBLE
+            blockTV.visibility = View.VISIBLE
+            reportTV.setOnClickListener {
+                val intent = Intent(context, ReportActivity::class.java)
+                intent.putExtra("report_member_id",daily_member_id)
+                startActivityForResult(intent, REPORT)
+            }
+            blockTV.setOnClickListener {
+
+            }
+
+        }
+        else{
             if (like_member_id==member_id){
                 delTV.visibility = View.VISIBLE
                 reportTV.visibility = View.GONE
@@ -67,7 +82,7 @@ class DlgPostOptionActivity : RootActivity() {
             }
             reportTV.setOnClickListener {
                 val intent = Intent(context, ReportActivity::class.java)
-                intent.putExtra("like_member_id",like_member_id)
+                intent.putExtra("report_member_id",like_member_id)
                 startActivityForResult(intent, REPORT)
             }
 
