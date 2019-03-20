@@ -65,7 +65,6 @@ class DlgCharInfoActivity : RootActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dlg_charactor_info)
 
-
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         this.context = this

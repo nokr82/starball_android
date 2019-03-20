@@ -2,12 +2,27 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_margin="30dp"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
     android:layout_height="match_parent"
     android:background="@android:color/white">
+    <com.devstories.starball_android.base.RationalRelativeLayout
+        android:id="@+id/popup"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/background_round_ffffff"
+        app:ratio="330:600">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
 
     <ImageView
         android:layout_marginTop="30dp"
@@ -64,5 +79,7 @@
         android:gravity="center_horizontal"
         android:text="선택하기"
         android:padding="20dp"/>
-
+        </LinearLayout>
+        </ScrollView>
+    </com.devstories.starball_android.base.RationalRelativeLayout>
 </LinearLayout>
