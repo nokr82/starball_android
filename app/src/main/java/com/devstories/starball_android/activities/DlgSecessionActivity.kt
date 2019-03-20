@@ -31,7 +31,6 @@ class DlgSecessionActivity : RootActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dlg_secession)
 
-        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 

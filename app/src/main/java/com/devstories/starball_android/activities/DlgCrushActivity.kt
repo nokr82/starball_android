@@ -46,7 +46,6 @@ class DlgCrushActivity : RootActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dlg_crush)
 
-        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 

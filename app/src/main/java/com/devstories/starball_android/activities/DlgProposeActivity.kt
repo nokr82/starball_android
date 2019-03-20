@@ -37,7 +37,6 @@ class DlgProposeActivity : RootActivity() {
 
         propose_id = intent.getIntExtra("propose_id", -1)
 
-        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
