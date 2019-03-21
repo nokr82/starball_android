@@ -12,7 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:ratio="330:400">
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        app:ratio="330:361">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,7 +31,6 @@
                 android:src="@mipmap/comm_profile_pic"/>
 
             <TextView
-                android:id="@+id/textTV"
                 android:layout_marginTop="18.5dp"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
@@ -40,38 +41,56 @@
                 android:text="@string/dlg_prose_title1"/>
 
             <TextView
+                android:id="@+id/textTV"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:textColor="#555555"
+                android:gravity="center_horizontal"
+                android:text="@string/dlg_prose_title2"/>
+
+            <TextView
                 android:layout_gravity="center"
                 android:layout_marginTop="17dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
                 android:textColor="#013e92"
+                android:textStyle="bold"
                 android:gravity="center_horizontal"
                 android:text="@string/dlg_prose_ok"/>
 
-            <TextView
-                android:id="@+id/text2TV"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
                 android:layout_marginTop="20dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14dp"
-                android:textColor="#555555"
-                android:text="@string/dlg_prose_content1"/>
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="14dp"
-                android:textColor="#555555"
-                android:text="@string/dlg_prose_content2"/>
+                <TextView
+                    android:id="@+id/text2TV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="#555555"
+                    android:text="@string/dlg_prose_content1"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:textColor="#555555"
+                    android:text="@string/dlg_prose_content2"/>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/doneTV"
                 android:layout_marginLeft="90dp"
                 android:layout_marginRight="90dp"
-                android:layout_marginTop="61dp"
+                android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:textSize="14dp"

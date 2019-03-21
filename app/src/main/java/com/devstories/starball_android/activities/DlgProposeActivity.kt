@@ -85,13 +85,13 @@ class DlgProposeActivity : RootActivity() {
 
                         ImageLoader.getInstance().displayImage(Config.url + Utils.getString(profile, "image_uri"), proposeMemberIV, Utils.UILoptionsProfile)
 
-                        textTV.text = getString(R.string.dlg_prose_title1) + Utils.getString(member, "name") + getString(R.string.dlg_prose_title2)
+                        textTV.text = Utils.getString(member, "name") + getString(R.string.dlg_prose_title2)
                         text2TV.text = getString(R.string.dlg_prose_content1) + Utils.getString(propose, "starball") + getString(R.string.dlg_prose_content3)
 
                     } else if ("confirm_done" == result){
                         finish()
                     } else {
-                        textTV.text = getString(R.string.dlg_prose_title1)+ " " + getString(R.string.dlg_prose_title2)
+                        textTV.text = " " + getString(R.string.dlg_prose_title2)
                         text2TV.text = getString(R.string.dlg_prose_content1) + " " + getString(R.string.dlg_prose_content3)
 
                         Toast.makeText(context, getString(R.string.api_error), Toast.LENGTH_LONG).show()
