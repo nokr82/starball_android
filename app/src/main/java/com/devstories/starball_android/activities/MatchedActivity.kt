@@ -38,7 +38,6 @@ class MatchedActivity : RootActivity() {
             ImageLoader.getInstance().displayImage(Config.url + woman_url, womanIV, Utils.UILoptionsProfile)
         }
 
-
         val duration = 40L
 
         // val th01FadeIn = ObjectAnimator.ofFloat(th01IV, "alpha", 0f, 1f)
