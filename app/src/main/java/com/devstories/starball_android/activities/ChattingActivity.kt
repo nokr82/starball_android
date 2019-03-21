@@ -37,6 +37,9 @@ class ChattingActivity : FragmentActivity() {
     internal var loungeCountReceiver: BroadcastReceiver? = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
             if (intent != null) {
+
+                println("LOUNGE_COUNT::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+
                 loadData()
             }
         }
@@ -86,18 +89,26 @@ class ChattingActivity : FragmentActivity() {
 
                         if (send_like_read > 0) {
                             newSendIV.visibility = View.VISIBLE
+                        } else {
+                            newSendIV.visibility = View.GONE
                         }
 
                         if (receive_like_read > 0) {
                             newReceiveIV.visibility = View.VISIBLE
+                        } else {
+                            newReceiveIV.visibility = View.GONE
                         }
 
                         if (match_read > 0) {
                             newMatchIV.visibility = View.VISIBLE
+                        } else {
+                            newMatchIV.visibility = View.GONE
                         }
 
                         if (chatting_read > 0) {
                             newChattingIV.visibility = View.VISIBLE
+                        } else {
+                            newChattingIV.visibility = View.GONE
                         }
 
                     } else {
