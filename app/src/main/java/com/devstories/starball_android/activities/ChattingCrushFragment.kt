@@ -203,6 +203,11 @@ class ChattingCrushFragment : Fragment() {
                         val man_url = Utils.getString(response, "man_url")
                         val woman_url = Utils.getString(response, "woman_url")
 
+                        println("ChattingCrushFragment:::::::::::::::::::::::::::::::::::::::::::::::::::")
+                        println("man_url::::::::::::::::::::::::::::::::${man_url}")
+                        println("woman_url::::::::::::::::::::::::::::::::${woman_url}")
+                        println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+
                         val intent = Intent(context, MatchedActivity::class.java)
                         intent.putExtra("man_url", man_url)
                         intent.putExtra("woman_url", woman_url)

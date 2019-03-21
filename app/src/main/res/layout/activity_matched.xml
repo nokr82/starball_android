@@ -132,17 +132,48 @@
             android:scaleX="0.0"
             android:scaleY="0.0"/>
 
-        <ImageView
-            android:id="@+id/th17IV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/man"/>
+        <LinearLayout
+            android:id="@+id/th17LL"
+            android:layout_width="160dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true">
+            <RelativeLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp">
+                <ImageView
+                    android:id="@+id/manIV"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/main_left"/>
+                <ImageView
+                    android:id="@+id/th17IV"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/bg_stroke"/>
+            </RelativeLayout>
+        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/th18IV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/woman"/>
+        <LinearLayout
+            android:id="@+id/th18LL"
+            android:layout_width="160dp"
+            android:layout_height="140dp"
+            android:layout_centerInParent="true"
+            android:gravity="right|bottom">
+            <RelativeLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp">
+                <ImageView
+                    android:id="@+id/womanIV"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/main_left"/>
+                <ImageView
+                    android:id="@+id/th18IV"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/bg_stroke"/>
+            </RelativeLayout>
+        </LinearLayout>
 
     </RelativeLayout>
 
