@@ -12,8 +12,10 @@ import android.support.v4.content.CursorLoader
 import android.support.v4.content.FileProvider
 import android.util.Log
 import android.view.View
-import android.widget.*
-import bolts.Bolts
+import android.widget.AdapterView
+import android.widget.BaseAdapter
+import android.widget.RelativeLayout
+import android.widget.Toast
 import com.devstories.adapter.ImageAdapter
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.ImageLoader
@@ -21,8 +23,6 @@ import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import com.google.android.gms.vision.Frame
 import com.google.android.gms.vision.face.FaceDetector
-import com.google.cloud.translate.Translate
-import com.google.cloud.translate.TranslateOptions
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_find_picture_grid.*
 import org.json.JSONArray
@@ -343,12 +343,17 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
 
                 DetectFaceAsyncTask(context, photoList, strPo, progressRL, object: DetectFaceAsyncTaskListener {
                     override fun onResult(result: Boolean) {
+
+                        println("result : $result")
+
                         if(result) {
                             selected.add(strPo)
                         } else {
                             Toast.makeText(context, "얼굴 사진만 등록가능합니다.", Toast.LENGTH_SHORT).show()
                             return
                         }
+
+
 
                         countTV.text = selected.size.toString()
 
@@ -418,7 +423,7 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
         photoList: ArrayList<ImageAdapter.PhotoData>,
         strPo: String,
         progressRL: RelativeLayout,
-        detectFaceAsyncTaskListener:DetectFaceAsyncTaskListener
+        val detectFaceAsyncTaskListener:DetectFaceAsyncTaskListener
     ) : AsyncTask<Void, String, Boolean>() {
 
         private val contextReference: WeakReference<Context> = WeakReference(context)
@@ -480,8 +485,7 @@ class FindPictureGridActivity() : RootActivity(), AdapterView.OnItemClickListene
 
         override fun onPostExecute(result: Boolean) {
             progressRLReference.get()?.visibility = View.GONE
-
-            detectFaceAsyncTaskListenerReference.get()?.onResult(result)
+            detectFaceAsyncTaskListener.onResult(result)
         }
 
     }
