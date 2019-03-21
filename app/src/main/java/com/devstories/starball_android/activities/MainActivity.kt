@@ -75,6 +75,11 @@ class MainActivity : RootActivity() {
                 val man_url = intent.getStringExtra("man_url")
                 val woman_url = intent.getStringExtra("woman_url")
 
+                println("usestarballreciver:::::::::::::::::::::::::::::::::::::::::::::::::::::")
+                println("man_url::::::::::::::::::::::::::::::::::::::::::${man_url}")
+                println("woman_url::::::::::::::::::::::::::::::::::::::::::${woman_url}")
+                println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+
                 val intent = Intent(context, MatchedActivity::class.java)
                 intent.putExtra("man_url", man_url)
                 intent.putExtra("woman_url", woman_url)

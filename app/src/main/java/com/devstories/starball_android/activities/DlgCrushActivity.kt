@@ -357,6 +357,11 @@ class DlgCrushActivity : RootActivity() {
                     val result = response!!.getString("result")
                     if ("ok" == result) {
 
+                        println("DlgCrushActivity:::::::::::::::::::::::::::::::::::::::::::::::::::")
+                        println("man_url::::::::::::::::::::::::::::::::${Utils.getString(response, "man_url")}")
+                        println("woman_url::::::::::::::::::::::::::::::::${Utils.getString(response, "woman_url")}")
+                        println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+
                         var intent = Intent()
                         intent.putExtra("man_url", Utils.getString(response, "man_url"))
                         intent.putExtra("woman_url", Utils.getString(response, "woman_url"))
