@@ -489,7 +489,7 @@ class MainActivity : RootActivity() {
         val rightBottomStarballPeriod = 1000 * 20L
         rightBottomStarballTimer.scheduleAtFixedRate(object:TimerTask() {
             override fun run() {
-                if(swipeStack == null) {
+                if(swipeStack == null || swipeStack.yView == null) {
                     return
                 }
 
