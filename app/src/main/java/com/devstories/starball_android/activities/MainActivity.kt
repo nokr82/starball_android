@@ -61,6 +61,8 @@ class MainActivity : RootActivity() {
 
     var page = 1
 
+    var rightBottomAngle = 0.0f
+
     private var my_membership = "member"
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -174,9 +176,11 @@ class MainActivity : RootActivity() {
                 var like_member_id = Utils.getInt(like_member,"id")
                 if (member_id!=like_member_id){
                     dislike(like_member_id)
-                }else{
-                    return
+                } else{
+
                 }
+
+                rightBottomAngle = 0.0f
             }
 
             override fun onViewSwipedToBottom(position: Int) {
@@ -187,13 +191,12 @@ class MainActivity : RootActivity() {
                 if (starball>0){
                     if (member_id!=like_member_id){
                         like(like_member_id)
-                    }else{
-                        return
                     }
                 }else{
                     Toast.makeText(mContext,"스타볼이 부족합니다",Toast.LENGTH_SHORT).show()
-                    return
                 }
+
+                rightBottomAngle = 0.0f
             }
 
             override fun onViewSwipedToLeft(position: Int) {
@@ -204,6 +207,21 @@ class MainActivity : RootActivity() {
 
             }
         })
+        swipeStack.setSwipeProgressListener(object : SwipeStack.SwipeProgressListener {
+            override fun onSwipeProgress(position: Int, progress: Float) {
+                swipeStackAdapter.showLikePassByProgress(swipeStack.yView, progress)
+            }
+
+            override fun onSwipeStart(position: Int) {
+
+            }
+
+            override fun onSwipeEnd(position: Int) {
+
+            }
+        })
+
+
 
         startAnimation()
 
@@ -467,14 +485,22 @@ class MainActivity : RootActivity() {
             }
         }, topLogoPeriod, topLogoPeriod)
 
+
+        val rightBottomStarballPeriod = 1000 * 20L
         rightBottomStarballTimer.scheduleAtFixedRate(object:TimerTask() {
             override fun run() {
+                if(swipeStack == null) {
+                    return
+                }
+
                 runOnUiThread {
-                    // val intent = Intent("ROTATE_RIGHT_BOTTOM_STARBALL")
-                    // sendBroadcast(intent)
+
+                    swipeStackAdapter.rotateSuperLike(swipeStack.yView, rightBottomAngle)
+
+                    rightBottomAngle += (360 / 5)
                 }
             }
-        }, 0, 1000 * 5)
+        }, rightBottomStarballPeriod, rightBottomStarballPeriod)
 
     }
 
@@ -776,6 +802,107 @@ class MainActivity : RootActivity() {
         })
     }
 
+
+    fun popular_vote(receive_member_id:Int, score: Float) {
+        val member_id = PrefUtils.getIntPreference(mContext, "member_id")
+        val params = RequestParams()
+        params.put("member_id", member_id)
+        params.put("receive_member_id",receive_member_id)
+        params.put("score", score)
+
+        print("---------------------------pop"+score)
+        MemberAction.popular_vote(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                Log.d("투표결과",response.toString())
+                try {
+                    val result = response!!.getString("result")
+                    if ("ok" == result) {
+                        Toast.makeText(mContext,"투표하였습니다.",Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(mContext, getString(R.string.already_matched), Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
+                super.onSuccess(statusCode, headers, response)
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+//                Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                 System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+    }
+
+
     fun like(like_member_id:Int) {
         val member_id = PrefUtils.getIntPreference(mContext, "member_id")
 
@@ -864,7 +991,7 @@ class MainActivity : RootActivity() {
                 // show dialog
                 if (progressDialog != null) {
 
-                    progressDialog!!.show()
+                    // progressDialog!!.show()
                 }
             }
 
@@ -963,7 +1090,7 @@ class MainActivity : RootActivity() {
                 // show dialog
                 if (progressDialog != null) {
 
-                    progressDialog!!.show()
+                    // progressDialog!!.show()
                 }
             }
 

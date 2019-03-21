@@ -288,7 +288,7 @@ public class SwipeStack extends ViewGroup {
 
     public void onSwipeProgress(float progress) {
 
-        // System.out.println("getChildCount() : " + getChildCount() + ", progress : " + progress);
+        // System.out.println("getChildCount() : " + getChildCount() + ", showLikePassByProgress : " + showLikePassByProgress);
 
         if(getChildCount() > 2) {
             View childView = getChildAt(getChildCount() - 2);

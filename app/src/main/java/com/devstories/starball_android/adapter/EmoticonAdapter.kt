@@ -3,7 +3,8 @@ package com.devstories.starball_android.adapter
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.ImageView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.base.Utils
 import com.nostra13.universalimageloader.core.ImageLoader
@@ -14,6 +15,7 @@ open class EmoticonAdapter (context: Context, val view:Int, val data: Array<Int>
 
     override fun getView(position: Int, convertView: View?, parent : ViewGroup?): View {
 
+        /*
         lateinit var retView: View
 
         if (convertView == null) {
@@ -28,11 +30,17 @@ open class EmoticonAdapter (context: Context, val view:Int, val data: Array<Int>
                 retView.tag = item
             }
         }
+        */
 
-        var value = data[position]
+        var retView = View.inflate(context, view, null)
+        val imageIV: ImageView = retView.findViewById(R.id.imageIV)
+
+        val value = data[position]
 //        val lid = context.resources.getIdentifier("@drawable/"+value, "drawable", context.packageName)
 
-        ImageLoader.getInstance().displayImage("drawable://" + value, item.imageIV, Utils.UILoptionsPosting)
+        println("v $position : $value")
+
+        ImageLoader.getInstance().displayImage("drawable://$value", imageIV, Utils.UILoptionsPosting)
 
 //        item.imageIV.setImageResource(lid)
 
@@ -48,6 +56,9 @@ open class EmoticonAdapter (context: Context, val view:Int, val data: Array<Int>
     }
 
     override fun getCount(): Int {
+
+        println("data.size : ${data.size}")
+
         return data.size
     }
 

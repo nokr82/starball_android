@@ -87,7 +87,7 @@ class JoinStep12PreviewActivity : RootActivity() {
             layoutManager = noScrollLinearLayoutManager
 
             // specify an viewAdapter (ee also next example)
-            adapter = SwipeStackItemAdapter(context, activity, memberInfo, pages, true,0,1)
+            adapter = SwipeStackItemAdapter(context, activity, memberInfo, pages, true,0,1,MainActivity())
 
             PagerSnapHelper().attachToRecyclerView(this)
 

@@ -13,12 +13,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.RatingBar
 import android.widget.TextView
 import com.devstories.starball_android.R
 import com.devstories.starball_android.activities.*
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.DateUtils
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.ExoPlayerFactory
@@ -40,9 +40,12 @@ import org.json.JSONObject
 //type  = 1이면 가입화면
 
 
-class SwipeStackItemAdapter(private val context:Context, private val activity:Activity, private val member:JSONObject, private val data: JSONArray, private val preview:Boolean,private val starball:Int,private val type:Int) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SwipeStackItemAdapter(private val context:Context, private val activity:Activity, private val member:JSONObject,
+                            private val data: JSONArray, private val preview:Boolean,private val starball:Int
+                            ,private val type:Int,private val mainActivity: MainActivity) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var langs = ArrayList<String>()
     var memberInfo = JSONObject()
+
     class MainSearchType1(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var infoLL = itemView.findViewById<View>(R.id.infoLL) as LinearLayout
@@ -57,6 +60,8 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
         var fitRateTV = itemView.findViewById<View>(R.id.fitRateTV) as TextView
         var introTV = itemView.findViewById<View>(R.id.introTV) as TextView
         var charmIV = itemView.findViewById<View>(R.id.charmIV) as ImageView
+        var likeIV = itemView.findViewById<View>(R.id.likeIV) as ImageView
+        var passIV = itemView.findViewById<View>(R.id.passIV) as ImageView
 
     }
 
@@ -76,6 +81,8 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
         var ageTV = itemView.findViewById<View>(R.id.ageTV) as TextView
         var fitRateTV = itemView.findViewById<View>(R.id.fitRateTV) as TextView
         var charmIV = itemView.findViewById<View>(R.id.charmIV) as ImageView
+        var likeIV = itemView.findViewById<View>(R.id.likeIV) as ImageView
+        var passIV = itemView.findViewById<View>(R.id.passIV) as ImageView
 
     }
 
@@ -93,6 +100,8 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
         var ageTV = itemView.findViewById<View>(R.id.ageTV) as TextView
         var fitRateTV = itemView.findViewById<View>(R.id.fitRateTV) as TextView
         var charmIV = itemView.findViewById<View>(R.id.charmIV) as ImageView
+        var likeIV = itemView.findViewById<View>(R.id.likeIV) as ImageView
+        var passIV = itemView.findViewById<View>(R.id.passIV) as ImageView
 
     }
 
@@ -114,6 +123,8 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
         var languageTV = itemView.findViewById<View>(R.id.languageTV) as TextView
         var jobTV = itemView.findViewById<View>(R.id.jobTV) as TextView
         var moneyTV = itemView.findViewById<View>(R.id.moneyTV) as TextView
+        var likeIV = itemView.findViewById<View>(R.id.likeIV) as ImageView
+        var passIV = itemView.findViewById<View>(R.id.passIV) as ImageView
     }
 
     // Create new views (invoked by the layout manager)
@@ -216,6 +227,8 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
 
                 val like_member_id  = Utils.getInt(memberInfo,"id")
                 val email = Utils.getString(memberInfo, "email")
+                val distance = Utils.getString(memberInfo, "distance")
+                val distance_km = Utils.getDouble(memberInfo, "distance_km")
                 val name = Utils.getString(memberInfo, "name")
                 val gender = Utils.getString(memberInfo, "gender")
                 val height = Utils.getString(memberInfo, "height")
@@ -236,11 +249,17 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 }
 
 
-                holder.distanceTV.text = "17Km"
+                holder.distanceTV.text = distance
                 holder.nameTV.text = name
                 holder.ageTV.text = age.toString()
                 holder.fitRateTV.text = "23%"
                 holder.introTV.text = intro
+
+                if(distance_km <= 30) {
+                    holder.hereIV.visibility = View.VISIBLE
+                } else {
+                    holder.hereIV.visibility = View.GONE
+                }
 
                 holder.infoIV.setOnClickListener {
                     /*val intent = Intent(context, ChatNotiActivity::class.java)
@@ -315,6 +334,8 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
 
                 val like_member_id  = Utils.getInt(memberInfo,"id")
                 val email = Utils.getString(memberInfo, "email")
+                val distance = Utils.getString(memberInfo, "distance")
+                val distance_km = Utils.getDouble(memberInfo, "distance_km")
                 val name = Utils.getString(memberInfo, "name")
                 val gender = Utils.getString(memberInfo, "gender")
                 val height = Utils.getString(memberInfo, "height")
@@ -340,10 +361,16 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 }
 
 
-                holder.distanceTV.text = "17Km"
+                holder.distanceTV.text = distance
                 holder.nameTV.text = name
                 holder.ageTV.text = age.toString()
                 holder.fitRateTV.text = "23%"
+
+                if(distance_km <= 30) {
+                    holder.hereIV.visibility = View.VISIBLE
+                } else {
+                    holder.hereIV.visibility = View.GONE
+                }
 
                 holder.heightTV.text = height+"cm"
 
@@ -418,6 +445,8 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 }
                 val like_member_id  = Utils.getInt(memberInfo,"id")
                 val email = Utils.getString(memberInfo, "email")
+                val distance = Utils.getString(memberInfo, "distance")
+                val distance_km = Utils.getDouble(memberInfo, "distance_km")
                 val name = Utils.getString(memberInfo, "name")
                 val gender = Utils.getString(memberInfo, "gender")
                 val height = Utils.getString(memberInfo, "height")
@@ -480,10 +509,17 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
 
 
 
-                holder.distanceTV.text = "17Km"
+                holder.distanceTV.text = distance
                 holder.nameTV.text = name
                 holder.ageTV.text = age.toString()
                 holder.fitRateTV.text = "23%"
+
+                if(distance_km <= 30) {
+                    holder.hereIV.visibility = View.VISIBLE
+                } else {
+                    holder.hereIV.visibility = View.GONE
+                }
+
                 holder.charmIV.setOnClickListener {
                     Log.d("스타볼",starball.toString())
                     if (starball>0){
@@ -590,6 +626,8 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 Log.d("멤버정보",memberInfo.toString())
                 val like_member_id  = Utils.getInt(memberInfo,"id")
                 val email = Utils.getString(memberInfo, "email")
+                val distance = Utils.getString(memberInfo, "distance")
+                val distance_km = Utils.getDouble(memberInfo, "distance_km")
                 val name = Utils.getString(memberInfo, "name")
                 val gender = Utils.getString(memberInfo, "gender")
                 val height = Utils.getString(memberInfo, "height")
@@ -602,10 +640,18 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
                 val school = Utils.getString(memberInfo, "school")
                 val intro = Utils.getString(memberInfo, "intro")
 
-                holder.distanceTV.text = "17Km"
+                val member_id = PrefUtils.getIntPreference(context, "member_id")
+
+                holder.distanceTV.text = distance
                 holder.nameTV.text = name
                 holder.ageTV.text = age.toString()
                 holder.fitRateTV.text = "23%"
+
+                if(distance_km <= 30) {
+                    holder.hereIV.visibility = View.VISIBLE
+                } else {
+                    holder.hereIV.visibility = View.GONE
+                }
 
                 holder.infoIV.setOnClickListener {
                     val intent = Intent(context, DlgCharInfoActivity::class.java)
@@ -630,7 +676,10 @@ class SwipeStackItemAdapter(private val context:Context, private val activity:Ac
 
                 holder.rating_bar.setOnRatingBarChangeListener { ratingBar, fl, b ->
                     Log.d("레이팅",fl.toString())
-                    Log.d("레이팅",b.toString())
+                    if (member_id != like_member_id){
+                        mainActivity.popular_vote(like_member_id,fl)
+                    }
+
                 }
             }
         }

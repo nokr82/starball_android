@@ -54,6 +54,7 @@ open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
         val member_id = PrefUtils.getIntPreference(context,"member_id")
 
         val json = data[position]
+
         Log.d("매치채팅0",json.toString())
         val type = json.getInt("type")
 
@@ -70,18 +71,18 @@ open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
             item.contentTV.visibility = View.GONE
             item.transTV.visibility = View.GONE
             item.myVoiceIV.setOnClickListener {
-                fragment.playing(Config.url + voice_uri)
+                fragment.playing(Config.url + voice_uri,json.getInt("id"))
             }
 
-//            val voiceProgress = json.getInt("voice_progress")
+            val voiceProgress = Utils.getInt(json,"voice_progress")
 
-//            item.myVoicePB.max = json.getInt("voice_duration")
-//            item.myVoicePB.progress = voiceProgress
+            item.myVoicePB.max = Utils.getInt(json, "voice_duration")
+            item.myVoicePB.progress = voiceProgress
 
-//            val minutes = ( voiceProgress % (1000*60*60) ) / (1000*60)
-//            val seconds = ( ( voiceProgress % (1000*60*60) ) % (1000*60) ) / 1000
+            val minutes = ( voiceProgress % (1000*60*60) ) / (1000*60)
+            val seconds = ( ( voiceProgress % (1000*60*60) ) % (1000*60) ) / 1000
 
-//            item.myProgressTV.text = "${minutes}:${seconds}"
+            item.myProgressTV.text = "${minutes}:${seconds}"
             item.myVoiceTimeTV.text = json.getString("voice_time")
 
             if (Utils.getBoolen( json,"isPlaying")) {
