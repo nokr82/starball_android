@@ -19,6 +19,7 @@ import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 import android.widget.AbsListView
 import android.widget.Toast
@@ -882,7 +883,7 @@ class FriendChattingActivity : RootActivity()
         })
     }
 
-    fun chattingLike(chatting_id: Int, like_yn: String) {
+    fun chattingLike(chatting_id: Int, like_yn: String ,id:Int) {
 
         val params = RequestParams()
         params.put("member_id", member_id)
@@ -907,17 +908,14 @@ class FriendChattingActivity : RootActivity()
 //                            overridePendingTransition(0, 0)
 //                        }
 
-                        for (i in 0 until adapterData.size) {
-                            val data = adapterData[i]
+                            val data = adapterData[id]
                             val chatting = data.getJSONObject("Chatting")
                             val id = Utils.getInt(chatting,"id")
 
-                            if (id == chatting_id) {
-                                chatting.put("like_yn", like_yn)
-                                break
-                            }
+                        if (id == chatting_id) {
+                            chatting.put("like_yn", like_yn)
                         }
-
+                        Log.d("라이크",data.toString())
                         adapter.notifyDataSetChanged()
 
                     } else {

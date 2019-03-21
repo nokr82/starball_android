@@ -232,7 +232,7 @@ class DlgCrushActivity : RootActivity() {
                     val result = response!!.getString("result")
                     if ("ok" == result) {
                         var profiles = response.getJSONArray("profiles")
-//                         like_count = response.getInt("like_count")
+                         like_count =   Utils.getInt(response,"likeCount")
                         for (i in 0 until profiles.length()) {
                             profiledata.add(profiles[i] as JSONObject)
                         }
