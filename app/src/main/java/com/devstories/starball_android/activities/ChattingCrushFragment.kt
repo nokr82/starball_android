@@ -188,7 +188,6 @@ class ChattingCrushFragment : Fragment() {
         params.put("member_id", member_id)
         params.put("like_member_id", like_member_id)
 
-
         MemberAction.like_confirm(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
@@ -200,8 +199,20 @@ class ChattingCrushFragment : Fragment() {
                     val result = response!!.getString("result")
                     if ("ok" == result) {
                         crushAdapter.notifyDataSetChanged()
+
+                        val man_url = Utils.getString(response, "man_url")
+                        val woman_url = Utils.getString(response, "woman_url")
+
+                        println("ChattingCrushFragment:::::::::::::::::::::::::::::::::::::::::::::::::::")
+                        println("man_url::::::::::::::::::::::::::::::::${man_url}")
+                        println("woman_url::::::::::::::::::::::::::::::::${woman_url}")
+                        println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+
                         val intent = Intent(context, MatchedActivity::class.java)
+                        intent.putExtra("man_url", man_url)
+                        intent.putExtra("woman_url", woman_url)
                         startActivity(intent)
+
                     } else {
 
                     }
@@ -315,13 +326,13 @@ class ChattingCrushFragment : Fragment() {
                         }
                         crushAdapter.notifyDataSetChanged()
 
-                        var intent = Intent()
-                        intent.action = "LOUNGE_COUNT"
-                        myContext.sendBroadcast(intent)
-
                     } else {
 
                     }
+
+                    var intent = Intent()
+                    intent.action = "LOUNGE_COUNT"
+                    myContext.sendBroadcast(intent)
 
                 } catch (e: JSONException) {
                     e.printStackTrace()

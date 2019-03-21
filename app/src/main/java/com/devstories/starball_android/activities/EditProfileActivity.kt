@@ -1281,7 +1281,12 @@ class EditProfileActivity : RootActivity() {
                 if (mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_IMAGE) {
                     var bitmap = Utils.getImage(context.contentResolver, path)
                     imageIV.setImageBitmap(bitmap)
+                }else if (image_uri != null){
+                    var bitmap = Config.url + image_uri
+                    ImageLoader.getInstance().displayImage(bitmap, imageIV, Utils.UILoptionsPosting)
                 } else {
+                    val curThumb = MediaStore.Video.Thumbnails.getThumbnail(context.contentResolver, id.toLong(), MediaStore.Video.Thumbnails.MINI_KIND, null)
+                    imageIV.setImageBitmap(curThumb)
                   /*  val curThumb = MediaStore.Video.Thumbnails.getThumbnail(
                         context.contentResolver,
                         id.toLong(),
@@ -1291,11 +1296,7 @@ class EditProfileActivity : RootActivity() {
 //                    imageIV.setImageBitmap(curThumb)
                 }
             }
-            var bitmap = Config.url + image_uri
-            ImageLoader.getInstance().displayImage(bitmap, imageIV, Utils.UILoptionsPosting)
-
-
-            delIV.tag = idx
+        delIV.tag = idx
             delIV.setOnClickListener(null)
             delIV.setOnClickListener {
                 val tag = it.tag as Int

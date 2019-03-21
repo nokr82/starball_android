@@ -232,7 +232,7 @@ class DlgCrushActivity : RootActivity() {
                     val result = response!!.getString("result")
                     if ("ok" == result) {
                         var profiles = response.getJSONArray("profiles")
-//                         like_count = response.getInt("like_count")
+                         like_count =   Utils.getInt(response,"likeCount")
                         for (i in 0 until profiles.length()) {
                             profiledata.add(profiles[i] as JSONObject)
                         }
@@ -338,6 +338,7 @@ class DlgCrushActivity : RootActivity() {
             Toast.makeText(context, "스타볼이 부족합니다.", Toast.LENGTH_SHORT).show()
             return
         }
+
         val params = RequestParams()
         params.put("member_id", member_id)
         params.put("like_member_id", like_member_id)
@@ -356,7 +357,14 @@ class DlgCrushActivity : RootActivity() {
                     val result = response!!.getString("result")
                     if ("ok" == result) {
 
+                        println("DlgCrushActivity:::::::::::::::::::::::::::::::::::::::::::::::::::")
+                        println("man_url::::::::::::::::::::::::::::::::${Utils.getString(response, "man_url")}")
+                        println("woman_url::::::::::::::::::::::::::::::::${Utils.getString(response, "woman_url")}")
+                        println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+
                         var intent = Intent()
+                        intent.putExtra("man_url", Utils.getString(response, "man_url"))
+                        intent.putExtra("woman_url", Utils.getString(response, "woman_url"))
                         intent.action = "STARBALL_USE"
                         sendBroadcast(intent)
 

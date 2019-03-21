@@ -145,31 +145,27 @@ open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
 
 
     companion object {
-        class TranslateAsyncTask internal constructor(context: Context, json: JSONObject, translatedTV: TextView) : AsyncTask<Void, String, Pair<String, String>>() {
-
-            private val contextReference: WeakReference<Context> = WeakReference(context)
-            private val jsonReference: WeakReference<JSONObject> = WeakReference(json)
-            private val translatedTVReference: WeakReference<TextView> = WeakReference(translatedTV)
+        class TranslateAsyncTask internal constructor(context: Context, val json: JSONObject, val translatedTV: TextView) : AsyncTask<Void, String, Pair<String, String>>() {
 
             override fun onPreExecute() {
-
+                println("onPreExecute onPreExecute")
             }
 
             override fun doInBackground(vararg params: Void?): Pair<String, String> {
-                val translate = TranslateOptions.newBuilder().setApiKey("AIzaSyCLwg17uTRmdqs-fwD6paGGgji32cIFVi4").build().service
+                val translate = TranslateOptions.newBuilder().setApiKey("AIzaSyAHMbqyG5pv-GEDv8K3ceD1xZBohrzO6aU").build().service
 
-                var contents = Utils.getString(jsonReference.get(),"contents")
+                val contents = Utils.getString(json,"contents")
 
                 println("contents : $contents")
 
                 // my
-                var myLanguage = Locale.getDefault().language
+                val myLanguage = Locale.getDefault().language
                 val myTranslation = translate.translate(
                     contents,
                     Translate.TranslateOption.targetLanguage(myLanguage))
 
                 // english
-                var englishLanguage = Locale.getDefault().language
+                val englishLanguage = Locale.ENGLISH.language
                 val englishTranslation = translate.translate(
                     contents,
                     Translate.TranslateOption.targetLanguage(englishLanguage))
@@ -178,26 +174,26 @@ open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
             }
 
             override fun onPostExecute(result: Pair<String, String>) {
-                jsonReference.get()!!.put("translate_in_my", result.first)
-                jsonReference.get()!!.put("translate_in_english", result.second)
+                json.put("translate_in_my", result.first)
+                json.put("translate_in_english", result.second)
 
-                translatedTVReference.get()!!.text = result.first
+                translatedTV.text = result.first
 
-                saveTranslate(jsonReference.get()!!)
+                saveTranslate(json)
             }
 
         }
 
         private fun saveTranslate(json:JSONObject) {
 
-            val chatting_id = Utils.getInt(json, "id")
-            val translate_in_my = Utils.getString(json, "translate_in_my")
-            val translate_in_english = Utils.getString(json, "translate_in_english")
+            val chattingId = Utils.getInt(json, "id")
+            val translateInMy = Utils.getString(json, "translate_in_my")
+            val translateInEnglish = Utils.getString(json, "translate_in_english")
 
             val params = RequestParams()
-            params.put("chatting_id", chatting_id)
-            params.put("translate_in_my", translate_in_my)
-            params.put("translate_in_english", translate_in_english)
+            params.put("chatting_id", chattingId)
+            params.put("translate_in_my", translateInMy)
+            params.put("translate_in_english", translateInEnglish)
 
             ChattingAction.saveTranslate(params, object : JsonHttpResponseHandler() {
 
@@ -217,10 +213,6 @@ open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
                         e.printStackTrace()
                     }
 
-                }
-
-                override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONArray?) {
-                    super.onSuccess(statusCode, headers, response)
                 }
 
                 override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
@@ -267,6 +259,7 @@ open class MatchChattingAdapter (context: Context, view:Int, data:ArrayList<JSON
             })
         }
     }
+
 
 
 }

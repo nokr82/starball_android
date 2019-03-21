@@ -209,17 +209,18 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
         }
 
         val likeYn = Utils.getString(chatting, "like_yn")
+
+
+        item.likeLL.setOnClickListener {
+            var editLikeYn = if (likeYn == "Y") "N" else "Y"
+            Log.d("라이크",editLikeYn)
+            activity.chattingLike(Utils.getInt(chatting, "id"), editLikeYn,position)
+        }
         if (likeYn == "Y") {
             item.likeIV.setImageResource(R.mipmap.lounge_heart_like)
         } else {
             item.likeIV.setImageResource(R.mipmap.lounge_heart_like_on)
         }
-
-        item.likeLL.setOnClickListener {
-            val editLikeYn = if (likeYn == "Y") "N" else "Y"
-            activity.chattingLike(Utils.getInt(chatting, "id"), editLikeYn)
-        }
-
         return retView
     }
 

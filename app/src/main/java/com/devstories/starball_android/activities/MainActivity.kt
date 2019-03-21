@@ -71,7 +71,18 @@ class MainActivity : RootActivity() {
     internal var usestarballreciver: BroadcastReceiver? = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
             if (intent != null) {
+
+                val man_url = intent.getStringExtra("man_url")
+                val woman_url = intent.getStringExtra("woman_url")
+
+                println("usestarballreciver:::::::::::::::::::::::::::::::::::::::::::::::::::::")
+                println("man_url::::::::::::::::::::::::::::::::::::::::::${man_url}")
+                println("woman_url::::::::::::::::::::::::::::::::::::::::::${woman_url}")
+                println(":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
+
                 val intent = Intent(context, MatchedActivity::class.java)
+                intent.putExtra("man_url", man_url)
+                intent.putExtra("woman_url", woman_url)
                 startActivity(intent)
             }
         }
@@ -185,19 +196,6 @@ class MainActivity : RootActivity() {
             }
 
             override fun onViewSwipedToTop(position: Int) {
-                Log.d("멤버다",data[position].toString())
-                var like_member = data[position].getJSONObject("member")
-                var like_member_id = Utils.getInt(like_member,"id")
-                if (member_id!=like_member_id){
-                    dislike(like_member_id)
-                } else{
-
-                }
-
-                rightBottomAngle = 0.0f
-            }
-
-            override fun onViewSwipedToBottom(position: Int) {
 
                 var like_member = data[position].getJSONObject("member")
                 var like_member_id = Utils.getInt(like_member,"id")
@@ -207,8 +205,23 @@ class MainActivity : RootActivity() {
                         like(like_member_id)
                     }
                 }else{
-                    Toast.makeText(mContext,"스타볼이 부족합니다",Toast.LENGTH_SHORT).show()
+                    val intent = Intent(mContext, DlgStarballLackActivity::class.java)
+                    startActivity(intent)
+//                    Toast.makeText(mContext,"스타볼이 부족합니다",Toast.LENGTH_SHORT).show()
                 }
+                rightBottomAngle = 0.0f
+            }
+
+            override fun onViewSwipedToBottom(position: Int) {
+                Log.d("멤버다",data[position].toString())
+                var like_member = data[position].getJSONObject("member")
+                var like_member_id = Utils.getInt(like_member,"id")
+                if (member_id!=like_member_id){
+                    dislike(like_member_id)
+                } else{
+
+                }
+
 
                 rightBottomAngle = 0.0f
             }

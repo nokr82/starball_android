@@ -650,6 +650,9 @@ class ChattingFragment : Fragment() {
                         json.put("type", 3)
                         roomAdapterData.add(json)
 
+                        roomAdapter.setSwipeEnablePosition(roomAdapterData.size - 1)
+                        roomAdapter.isEnabled(roomAdapterData.size - 1)
+
                         for (i in 0 until chat.length()) {
                             val data = chat[i] as JSONObject
                             data.put("type", 2)
@@ -660,13 +663,13 @@ class ChattingFragment : Fragment() {
 
                         roomAdapter.notifyDataSetChanged()
 
-                        var intent = Intent()
-                        intent.action = "LOUNGE_COUNT"
-                        myContext.sendBroadcast(intent)
-
                     } else {
 
                     }
+
+                    var intent = Intent()
+                    intent.action = "LOUNGE_COUNT"
+                    myContext.sendBroadcast(intent)
 
                 } catch (e: JSONException) {
                     e.printStackTrace()
