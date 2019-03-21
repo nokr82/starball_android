@@ -142,8 +142,8 @@ class MainActivity : RootActivity() {
         }
 
         prevIV.setOnClickListener {
-            val intent = Intent(mContext, ProposedActivity::class.java)
-            startActivity(intent)
+            // val intent = Intent(mContext, ProposedActivity::class.java)
+            // startActivity(intent)
         }
 
         val swipeStack = swipeStack as SwipeStack
@@ -347,7 +347,7 @@ class MainActivity : RootActivity() {
                 // show dialog
                 if (progressDialog != null) {
 
-                    progressDialog!!.show()
+                    // progressDialog!!.show()
                 }
             }
 
