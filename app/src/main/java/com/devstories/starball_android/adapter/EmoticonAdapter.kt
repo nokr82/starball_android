@@ -15,7 +15,6 @@ open class EmoticonAdapter (context: Context, val view:Int, val data: Array<Int>
 
     override fun getView(position: Int, convertView: View?, parent : ViewGroup?): View {
 
-        /*
         lateinit var retView: View
 
         if (convertView == null) {
@@ -28,21 +27,14 @@ open class EmoticonAdapter (context: Context, val view:Int, val data: Array<Int>
                 retView = View.inflate(context, view, null)
                 item = ViewHolder(retView)
                 retView.tag = item
+            } else {
+                item = convertView.tag as ViewHolder
             }
         }
-        */
-
-        var retView = View.inflate(context, view, null)
-        val imageIV: ImageView = retView.findViewById(R.id.imageIV)
 
         val value = data[position]
-//        val lid = context.resources.getIdentifier("@drawable/"+value, "drawable", context.packageName)
 
-        println("v $position : $value")
-
-        ImageLoader.getInstance().displayImage("drawable://$value", imageIV, Utils.UILoptionsPosting)
-
-//        item.imageIV.setImageResource(lid)
+        ImageLoader.getInstance().displayImage("drawable://$value", item.imageIV, Utils.UILoptionsPosting)
 
         return retView
     }
@@ -56,9 +48,6 @@ open class EmoticonAdapter (context: Context, val view:Int, val data: Array<Int>
     }
 
     override fun getCount(): Int {
-
-        println("data.size : ${data.size}")
-
         return data.size
     }
 

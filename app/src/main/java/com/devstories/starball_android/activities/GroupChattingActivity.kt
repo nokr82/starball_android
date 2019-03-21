@@ -21,7 +21,10 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.AbsListView
+import android.widget.ImageView
+import android.widget.TextView
+import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
 import com.devstories.starball_android.adapter.EmoticonAdapter
@@ -45,7 +48,7 @@ import java.io.IOException
 import java.util.*
 
 class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
-    lateinit var context: Context
+    lateinit var mContext: Context
     private var progressDialog: ProgressDialog? = null
 
     val DELETE_ADBERB = 100
@@ -165,8 +168,8 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_chatting)
-        this.context = this
-        progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
+        this.mContext = this
+        progressDialog = ProgressDialog(mContext, com.devstories.starball_android.R.style.CustomProgressBar)
         progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
 
         blockdata.add("Wechat")
@@ -176,16 +179,16 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         blockdata.add("zalo")
         blockdata.add("viber")
 
-        member_id = PrefUtils.getIntPreference(context, "member_id")
+        member_id = PrefUtils.getIntPreference(mContext, "member_id")
 //        member_list =  intent.getStringExtra("member_list")
         room_id = intent.getIntExtra("room_id", -1)
 
-        emoticonAdapter = EmoticonAdapter(context, R.layout.item_emoticon, emoticonData2)
+        emoticonAdapter = EmoticonAdapter(mContext, R.layout.item_emoticon, emoticonData2)
         emoticonGV.adapter = emoticonAdapter
         emoticonGV.setOnItemClickListener { parent, view, position, id ->
 
             val emoticon = emoticonData2[position]
-//            val lid = context.resources.getIdentifier("@drawable/" + emoticon, "drawable", context.packageName)
+//            val lid = mContext.resources.getIdentifier("@drawable/" + emoticon, "drawable", mContext.packageName)
 
             selectedEmoticon = BitmapFactory.decodeResource(resources, emoticon)
 
@@ -194,11 +197,11 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         }
 
 
-        adverbRV.setLayoutManager(LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+        adverbRV.setLayoutManager(LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         adverbAdapter = GroupAdverbAdapter(adverbAdapterData,this)
         adverbRV.adapter = adverbAdapter
 
-        adapter = GroupChattingAdapter(context, R.layout.item_group_chatting, adapterData, this)
+        adapter = GroupChattingAdapter(mContext, R.layout.item_group_chatting, adapterData, this)
         groupLV.adapter = adapter
         groupLV.setOnScrollListener(this)
 
@@ -218,7 +221,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 delete = true
             }
 
-            var intent = Intent(context, DlgChattingActivity::class.java)
+            var intent = Intent(mContext, DlgChattingActivity::class.java)
             intent.putExtra("chatting_id", Utils.getInt(chatting, "id"))
             intent.putExtra("chatting_contents", Utils.getString(chatting, "contents"))
             intent.putExtra("delete", delete)
@@ -227,12 +230,12 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         }
 
         starballIV.setOnClickListener {
-            val intent = Intent(context, DlgSendProposeActivity::class.java)
+            val intent = Intent(mContext, DlgSendProposeActivity::class.java)
             startActivity(intent)
         }
 
         reportIV.setOnClickListener {
-            val intent = Intent(context, ReportActivity::class.java)
+            val intent = Intent(mContext, ReportActivity::class.java)
             intent.putExtra("report_member_id", other_member_id)
             startActivity(intent)
         }
@@ -273,6 +276,8 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         }
 
         backIV.setOnClickListener {
+            Utils.hideKeyboard(this)
+            playStop()
             finish()
         }
 
@@ -282,7 +287,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
 
             for (i in 0 until blockdata.size) {
                 if (contents.contains(blockdata[i])){
-                    Toast.makeText(context,"주의:상대방이 다른 메신져를 이용해서 사기 또는 금전을 요구할 가능성이 있으니 신중하십시오.\n" +
+                    Toast.makeText(mContext,"주의:상대방이 다른 메신져를 이용해서 사기 또는 금전을 요구할 가능성이 있으니 신중하십시오.\n" +
                             "타른 수단에서 발생한 피해는 책임지지 않습니다.",Toast.LENGTH_SHORT).show()
                 }
             }
@@ -398,14 +403,14 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                         val filePathColumn = arrayOf(MediaStore.MediaColumns.DATA)
 
                         val cursor =
-                            context!!.contentResolver.query(selectedImageUri!!, filePathColumn, null, null, null)
+                            mContext!!.contentResolver.query(selectedImageUri!!, filePathColumn, null, null, null)
                         if (cursor!!.moveToFirst()) {
                             val columnIndex = cursor.getColumnIndex(filePathColumn[0])
                             val picturePath = cursor.getString(columnIndex)
 
                             cursor.close()
 
-                            selectedImage = Utils.getImage(context!!.contentResolver, picturePath)
+                            selectedImage = Utils.getImage(mContext!!.contentResolver, picturePath)
 
                             sendChatting(2)
 
@@ -424,7 +429,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                             var clipData: ClipData = ClipData.newPlainText("label", chatting_contents)
                             clipboardManager.setPrimaryClip(clipData);
 
-                            Toast.makeText(context, context.getString(R.string.clipboard), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, mContext.getString(R.string.clipboard), Toast.LENGTH_SHORT).show();
                         } else if (type == 2) {
                             deleteChatting(chatting_id)
                         } else if (type == 3) {
@@ -619,7 +624,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             recorder.start()
 
             //시작하면된다.
-            Toast.makeText(context, "녹음을 시작합니다.", Toast.LENGTH_LONG).show()
+            Toast.makeText(mContext, "녹음을 시작합니다.", Toast.LENGTH_LONG).show()
 
 //            voiceLL.setBackgroundColor(Color.parseColor("#333333"))
             recordIV.setImageResource(R.mipmap.chatting_pause)
@@ -689,7 +694,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -807,7 +812,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -850,7 +855,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
         }
 
         timer = Timer()
-        timer!!.schedule(task, 0, 2000)
+        timer!!.schedule(task, 0, 1000)
 
         timerHandler.sendEmptyMessage(0)
 
@@ -899,7 +904,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -974,7 +979,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -1042,7 +1047,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                             val group_member_id = Utils.getInt(GroupMember, "id")
                             val image_uri = Utils.getString(Profile, "image_uri")
 
-                            val userView = View.inflate(context, R.layout.item_group_member, null)
+                            val userView = View.inflate(mContext, R.layout.item_group_member, null)
                             var profileIV: ImageView = userView.findViewById(R.id.profileIV)
                             var nameTV: TextView = userView.findViewById(R.id.nameTV)
                             var delIV: ImageView = userView.findViewById(R.id.delIV)
@@ -1073,7 +1078,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -1142,7 +1147,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -1220,7 +1225,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -1288,7 +1293,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -1373,18 +1378,20 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                                 val data = list.get(i) as JSONObject
                                 adapterData.add(data)
 
-                                groupLV.setSelection(adapter.count - 1)
+                                groupLV.post {
+                                    groupLV.setSelection(adapter.count - 1)
+                                }
                             }
+                        }
+
+                        if (list.length() > 0) {
+                            adapter.notifyDataSetChanged()
                         }
 
                         if (adapterData.size > 0) {
                             val data = adapterData[adapterData.size - 1]
                             val chatting = data.getJSONObject("GroupChatting")
                             last_id = Utils.getInt(chatting, "id")
-                        }
-
-                        if (list.length() > 0) {
-                            (adapter as BaseAdapter).notifyDataSetChanged()
                         }
 
                     } else {
@@ -1395,13 +1402,15 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                     e.printStackTrace()
                 }
 
-//                val listViewHeight = Utils.getListViewHeightBasedOnItems(chatLV)
-//
-//                if (chatLV.height < listViewHeight) {
-//                    chatLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL
-//                } else {
-//                    chatLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_NORMAL
-//                }
+                /*
+                val listViewHeight = Utils.getListViewHeightBasedOnItems(groupLV)
+
+                if (groupLV.height < listViewHeight) {
+                    groupLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL
+                } else {
+                    groupLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_NORMAL
+                }
+                */
             }
 
 
@@ -1411,7 +1420,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -1538,7 +1547,7 @@ class GroupChattingActivity : RootActivity(), AbsListView.OnScrollListener {
                 }
 
                 timer = Timer()
-                timer!!.schedule(task, 1000, 2000)
+                timer!!.schedule(task, 1000, 1000)
             }
 
         } else {
