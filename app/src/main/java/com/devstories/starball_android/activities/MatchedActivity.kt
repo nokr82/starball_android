@@ -7,8 +7,10 @@ import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
 import android.view.ViewGroup
+import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
+import com.nostra13.universalimageloader.core.ImageLoader
 import kotlinx.android.synthetic.main.activity_matched.*
 
 class MatchedActivity : RootActivity() {
@@ -25,6 +27,16 @@ class MatchedActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
         progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
+
+        if(intent.hasExtra("man_url")) {
+            val man_url = intent.getStringExtra("man_url")
+            ImageLoader.getInstance().displayImage(Config.url + man_url, manIV, Utils.UILoptionsProfile)
+        }
+
+        if(intent.hasExtra("woman_url")) {
+            val woman_url = intent.getStringExtra("woman_url")
+            ImageLoader.getInstance().displayImage(Config.url + woman_url, womanIV, Utils.UILoptionsProfile)
+        }
 
 
         val duration = 40L
@@ -113,16 +125,16 @@ class MatchedActivity : RootActivity() {
         // th17FadeIn.duration = duration
 
 
-        th17IV.x = -(screenWidth / 1.8).toFloat()
-        val th17FadeIn = ObjectAnimator.ofFloat(th17IV, "translationX", 0.toFloat())
+        th17LL.x = -(screenWidth / 1.8).toFloat()
+        val th17FadeIn = ObjectAnimator.ofFloat(th17LL, "translationX", 0.toFloat())
         // th17FadeIn.duration = Random.nextInt(600, 1600).toLong()
 
 
-        // val th18FadeIn = ObjectAnimator.ofFloat(th18IV, "alpha", 0f, 1f)
+        // val th18FadeIn = ObjectAnimator.ofFloat(th18LL, "alpha", 0f, 1f)
         // th17FadeIn.duration = duration * 20
 
-        th18IV.x = (screenWidth / 1.8).toFloat()
-        val th18FadeIn = ObjectAnimator.ofFloat(th18IV, "translationX", 0.toFloat())
+        th18LL.x = (screenWidth / 1.8).toFloat()
+        val th18FadeIn = ObjectAnimator.ofFloat(th18LL, "translationX", 0.toFloat())
 
         val animators1718 = ArrayList<Animator>()
         animators1718.add(th17FadeIn)
