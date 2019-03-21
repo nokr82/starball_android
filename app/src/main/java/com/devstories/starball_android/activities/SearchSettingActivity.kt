@@ -375,8 +375,7 @@ class SearchSettingActivity : RootActivity() {
                         minAgeTV.text = min_age.toString()
                         maxAgeTV.text = max_age.toString()
 
-                        ageSB.setMinStartValue(min_age.toFloat()).apply()
-                        ageSB.setMaxStartValue(max_age.toFloat()).apply()
+                        ageSB.setMinStartValue(min_age.toFloat()).setMaxStartValue(max_age.toFloat()).apply()
 
                         var min_distance = Utils.getInt(member, "min_distance")
                         var max_distance = Utils.getInt(member, "max_distance")
@@ -392,8 +391,7 @@ class SearchSettingActivity : RootActivity() {
                         minDistanceTV.text = min_distance.toString()
                         maxDistanceTV.text = max_distance.toString()
 
-                        distanceSB.setMinStartValue(min_distance.toFloat()).apply()
-                        distanceSB.setMaxStartValue(max_distance.toFloat()).apply()
+                        distanceSB.setMinStartValue(min_distance.toFloat()).setMaxStartValue(max_distance.toFloat()).apply()
 
                         var min_height = Utils.getInt(member, "min_height")
                         var max_height = Utils.getInt(member, "max_height")
@@ -409,8 +407,7 @@ class SearchSettingActivity : RootActivity() {
                         minHeightTV.text = min_height.toString()
                         maxHeightTV.text = max_height.toString()
 
-                        heightSB.setMinStartValue(min_height.toFloat()).apply()
-                        heightSB.setMaxStartValue(max_height.toFloat()).apply()
+                        heightSB.setMinStartValue(min_height.toFloat()).setMaxStartValue(max_height.toFloat()).apply()
 
                     } else {
 

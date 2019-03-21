@@ -237,6 +237,8 @@ class DlgSendProposeActivity : RootActivity() {
 
                     if ("ok" == result) {
                         Toast.makeText(context, name + getString(R.string.propose_ok), Toast.LENGTH_LONG).show()
+
+                        finish()
                     } else {
                         Toast.makeText(context, getString(R.string.api_error), Toast.LENGTH_LONG).show()
                     }
