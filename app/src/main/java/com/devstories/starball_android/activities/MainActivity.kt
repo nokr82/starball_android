@@ -200,7 +200,9 @@ class MainActivity : RootActivity() {
                         like(like_member_id)
                     }
                 }else{
-                    Toast.makeText(mContext,"스타볼이 부족합니다",Toast.LENGTH_SHORT).show()
+                    val intent = Intent(mContext, DlgStarballLackActivity::class.java)
+                    startActivity(intent)
+//                    Toast.makeText(mContext,"스타볼이 부족합니다",Toast.LENGTH_SHORT).show()
                 }
                 rightBottomAngle = 0.0f
             }
