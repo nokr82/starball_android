@@ -1,17 +1,21 @@
 package com.devstories.starball_android.activities
 
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Base64
 import android.util.Log
 import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.JoinAction
+import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
@@ -31,6 +35,8 @@ import kotlinx.android.synthetic.main.activity_join.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 import java.util.*
 
 class JoinActivity : RootActivity() {
@@ -48,6 +54,11 @@ class JoinActivity : RootActivity() {
     private lateinit var mAuth: FirebaseAuth
     private var mGoogleSignInClient: GoogleSignInClient? = null
     private val RC_SIGN_IN = 1000
+
+    var id: String? = null
+    var name: String? = null
+    var eamil: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,6 +82,7 @@ class JoinActivity : RootActivity() {
 
         FirebaseApp.initializeApp(this)
         mAuth = FirebaseAuth.getInstance()
+
 
         googleIV.setOnClickListener {
             /* val intent = Intent(context, Login2Activity::class.java)
@@ -143,7 +155,8 @@ class JoinActivity : RootActivity() {
                 val account = task.getResult(ApiException::class.java)
 
                 if (account != null) {
-                    toJoinStep2Name(account.email, 3, account.id, account.displayName, account.photoUrl)
+                    google_login( account.id,account.email,account.displayName, account.photoUrl)
+//                    toJoinStep2Name(account.email, 3, account.id, account.displayName, account.photoUrl)
                 }
 
 
@@ -155,7 +168,113 @@ class JoinActivity : RootActivity() {
 
         callbackManager!!.onActivityResult(requestCode, resultCode, data)
     }
+    private fun google_login( sns_key: String?,email:String?,name:String?,photo_url: Uri?) {
 
+        val params = RequestParams()
+        params.put("sns_key", sns_key)
+        params.put("join_type", 3)
+
+        MemberAction.login(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                println(response)
+
+                try {
+                    val result = response!!.getString("result")
+                    if ("ok" == result) {
+
+                        LoginActivity.processLoginData(context, response.getJSONObject("member"))
+                        Utils.hideKeyboard(context)
+                        val intent = Intent(context, MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+
+                    }else if ("empty"==result) {
+                        toJoinStep2Name(email, 3, sns_key,name,photo_url)
+                    }
+                    else {
+
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+
+
+    }
     // 페이스북 로그아웃
     fun disconnectFromFacebook() {
         GraphRequest(
@@ -198,9 +317,9 @@ class JoinActivity : RootActivity() {
         val request = GraphRequest.newMeRequest(
             accessToken
         ) { `object`, response ->
-            var id: String? = null
+          /*  var id: String? = null
             var name: String? = null
-            var eamil: String? = null
+            var eamil: String? = null*/
 
             try {
                 if (`object`.has("id") && !`object`.isNull("id")) {
@@ -222,7 +341,13 @@ class JoinActivity : RootActivity() {
             facebook_ID = id
             facebook_NAME = name
 
-            toJoinStep2Name(eamil!!, 2, facebook_ID, facebook_NAME, null)
+            if (eamil != null){
+                sns_login(2,facebook_ID,1)
+//                toJoinStep2Name(eamil!!, 2, facebook_ID, facebook_NAME, null)
+            }else{
+                sns_login(2,facebook_ID,2)
+//                toJoinnullemail(2, facebook_ID, facebook_NAME, null)
+            }
         }
         val parameters = Bundle()
         parameters.putString("fields", "id,name,link, email")
@@ -241,6 +366,134 @@ class JoinActivity : RootActivity() {
         val intent = Intent(context, JoinStep2NameActivity::class.java)
         startActivity(intent)
     }
+
+    private fun toJoinnullemail(join_type: Int, sns_key: String?, name: String?, photo_url: Uri?) {
+
+        PrefUtils.setPreference(context, "join_join_type", join_type)
+        PrefUtils.setPreference(context, "join_sns_key", sns_key)
+        PrefUtils.setPreference(context, "join_name", name)
+        PrefUtils.setPreference(context, "join_photo_url", photo_url.toString())
+
+        val intent = Intent(context, JoinStep2NameActivity::class.java)
+        startActivity(intent)
+    }
+
+
+    private fun sns_login(join_type: Int, sns_key: String?,type:Int) {
+
+        val params = RequestParams()
+        params.put("sns_key", sns_key)
+        params.put("join_type", join_type)
+
+        MemberAction.login(params, object : JsonHttpResponseHandler() {
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                println(response)
+
+                try {
+                    val result = response!!.getString("result")
+                    if ("ok" == result) {
+
+                        LoginActivity.processLoginData(context, response.getJSONObject("member"))
+                        Utils.hideKeyboard(context)
+                        val intent = Intent(context, MainActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+
+                    }else if ("empty"==result) {
+                        if (type == 1){
+                            toJoinStep2Name(eamil!!, 2, facebook_ID, facebook_NAME, null)
+                        }else if (type == 2){
+                            toJoinnullemail(2, facebook_ID, facebook_NAME, null)
+                        }
+
+
+                    }
+                    else {
+
+
+                    }
+
+                } catch (e: JSONException) {
+                    e.printStackTrace()
+                }
+
+            }
+
+            override fun onSuccess(statusCode: Int, headers: Array<Header>?, responseString: String?) {
+
+                // System.out.println(responseString);
+            }
+
+            private fun error() {
+                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                responseString: String?,
+                throwable: Throwable
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                // System.out.println(responseString);
+
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONObject?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onFailure(
+                statusCode: Int,
+                headers: Array<Header>?,
+                throwable: Throwable,
+                errorResponse: JSONArray?
+            ) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+                throwable.printStackTrace()
+                error()
+            }
+
+            override fun onStart() {
+                // show dialog
+                if (progressDialog != null) {
+
+                    progressDialog!!.show()
+                }
+            }
+
+            override fun onFinish() {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+            }
+        })
+
+
+    }
+
+
 
     fun sns_join_old(
         email: String?,
@@ -359,6 +612,7 @@ class JoinActivity : RootActivity() {
             }
         })
     }
+
 
 
     fun dlg(msg: String) {
