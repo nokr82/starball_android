@@ -2,6 +2,7 @@ package com.devstories.starball_android.activities
 
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -102,12 +103,13 @@ class ChattingSendCrushFragment : Fragment() {
                         val likes = response.getJSONArray("likes")
                         for (i in 0..likes.length() - 1) {
                             var json = likes[i] as JSONObject
-                            Log.d("제이슨", json.toString())
                             adapterdata.add(json)
                         }
                         crushAdapter.notifyDataSetChanged()
-                        Log.d("제이슨", adapterdata.count().toString())
-                        Log.d("제이슨", adapterdata.toString())
+
+                        var intent = Intent()
+                        intent.action = "LOUNGE_COUNT"
+                        myContext.sendBroadcast(intent)
 
                     } else {
 

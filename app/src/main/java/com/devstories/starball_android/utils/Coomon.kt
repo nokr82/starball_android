@@ -6,9 +6,7 @@ import android.content.Intent
 import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.MemberAction
-import com.devstories.starball_android.activities.ChatNotiActivity
-import com.devstories.starball_android.activities.DlgProposeActivity
-import com.devstories.starball_android.activities.FriendChattingActivity
+import com.devstories.starball_android.activities.*
 import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.Utils
 import com.loopj.android.http.JsonHttpResponseHandler
@@ -127,9 +125,12 @@ class Coomon {
                     val chatting_animation = intent.getBooleanExtra("chatting_animation", false)
 
                     if (chatting_animation) {
-                        val intent1 = Intent(context, ChatNotiActivity::class.java)
-                        context.startActivity(intent1)
+                        val intent2 = Intent(context, ChatNotiActivity::class.java)
+                        context.startActivity(intent2)
                     }
+                } else if (PUSH_TYPE == "like") {
+                    var intent1 = Intent(context, LikedNotiActivity::class.java)
+                    context.startActivity(intent1)
                 }
 
             }

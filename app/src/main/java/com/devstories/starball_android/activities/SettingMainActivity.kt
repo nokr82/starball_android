@@ -37,12 +37,14 @@ class SettingMainActivity : RootActivity() {
     var adverImagePaths = ArrayList<String>()
     private lateinit var adverAdapter: AdverAdapter
     var adPosition = 0
-
+    var popular_average: Double = 0.0
 
     var profiledata = ArrayList<JSONObject>()
 
     private var adTime = 0
     private var handler: Handler? = null
+
+    var vip_yn = "N"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -85,16 +87,18 @@ class SettingMainActivity : RootActivity() {
         timer()
 
 
-        popularLL.setOnClickListener {
-                it.isSelected = !it.isSelected
 
-                if (it.isSelected) {
-                    popular1LL.visibility = View.VISIBLE
-                    popular2LL.visibility = View.VISIBLE
-                } else {
-                    popular1LL.visibility = View.GONE
-                    popular2LL.visibility = View.GONE
-                }
+
+        popularLL.setOnClickListener {
+            it.isSelected = !it.isSelected
+
+            if (it.isSelected) {
+                popular1LL.visibility = View.VISIBLE
+                popular2LL.visibility = View.VISIBLE
+            } else {
+                popular1LL.visibility = View.GONE
+                popular2LL.visibility = View.GONE
+            }
         }
 
         finishIV.setOnClickListener {
@@ -161,18 +165,29 @@ class SettingMainActivity : RootActivity() {
 
                     Log.d("결과", result.toString())
                     if ("ok" == result) {
-
+                        val my_membership = response.getString("my_membership")
                         val member = response.getJSONObject("member")
                         val name = Utils.getString(member, "name")
                         var profiles = response.getJSONArray("profiles")
+                        popular_average = response.getDouble("popular_average")
+                        ratting_bar.rating = popular_average.toFloat()
+
+                        if (my_membership == "member") {
+                            vip_yn = "Y"
+                        } else {
+                            vip_yn = "N"
+                        }
+
+
 //                         like_count = response.getInt("like_count")
                         for (i in 0 until profiles.length()) {
                             profiledata.add(profiles[i] as JSONObject)
                         }
                         var image_uri = Utils.getString(profiledata[0], "image_uri")
-                        Log.d("이미지",profiledata[0].toString())
+                        Log.d("이미지", profiledata[0].toString())
 
-                        ImageLoader.getInstance().displayImage(Config.url + image_uri, profileIV, Utils.UILoptionsProfile)
+                        ImageLoader.getInstance()
+                            .displayImage(Config.url + image_uri, profileIV, Utils.UILoptionsProfile)
 
 
                         nameTV.text = name
@@ -182,6 +197,7 @@ class SettingMainActivity : RootActivity() {
                     } else {
 
                     }
+                    updatePopular()
                     updateGrades()
                 } catch (e: JSONException) {
                     e.printStackTrace()
@@ -260,36 +276,58 @@ class SettingMainActivity : RootActivity() {
         })
     }
 
+    private fun updatePopular() {
+        // Basic – 최소 3장만 채웠을 경우
+        // Plus – 3장 이상 채웠을 경우
+        // Premium – 9장 이상을 채웠을 경우
+        // VVIP – 9장에 사진과 동영상으로 구성했을 경우
+        popular_average
+        if (popular_average <= 2) {
+            drawBasic()
+        } else if (popular_average <= 3) {
+            drawPlus()
+        } else if (popular_average <= 4) {
 
-     private fun updateGrades() {
+            drawPremium()
+        } else if (popular_average <= 4.5 || vip_yn.equals("Y")) {
+            drawVVIP()
+
+        } else {
+            initGrades()
+        }
+
+    }
+
+
+    private fun updateGrades() {
         // Basic – 최소 3장만 채웠을 경우
         // Plus – 3장 이상 채웠을 경우
         // Premium – 9장 이상을 채웠을 경우
         // VVIP – 9장에 사진과 동영상으로 구성했을 경우
 
         val pictureCnt = profiledata.size
-        if(pictureCnt == 3) {
-            drawBasic()
-        } else if(pictureCnt in 4..8) {
-            drawPlus()
-        } else if(pictureCnt > 8) {
+        if (pictureCnt == 3) {
+            drawBasic2()
+        } else if (pictureCnt in 4..8) {
+            drawPlus2()
+        } else if (pictureCnt > 8) {
 
             var videoContains = false
             for (picture in profiledata) {
                 val mediaType = Utils.getInt(picture!!, "mediaType")
-                if(mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO) {
+                if (mediaType == MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO) {
                     videoContains = true
                     break
                 }
             }
 
-            if(videoContains) {
-                drawVVIP()
+            if (videoContains) {
+                drawVVIP2()
             } else {
-                drawPremium()
+                drawPremium2()
             }
         } else {
-            initGrades()
+            initGrades2()
         }
 
     }
@@ -325,11 +363,41 @@ class SettingMainActivity : RootActivity() {
         vvipV.setBackgroundColor(Color.parseColor("#d4d4d4"))
     }
 
+    private fun drawBasic2() {
+        initGrades2()
+        basicV2.setBackgroundColor(Color.parseColor("#903ba0"))
+        plusV2.setBackgroundColor(Color.parseColor("#903ba0"))
+    }
+
+    private fun drawPlus2() {
+        initGrades2()
+        plusV2.setBackgroundColor(Color.parseColor("#903ba0"))
+        premiumV2.setBackgroundColor(Color.parseColor("#903ba0"))
+    }
+
+    private fun drawPremium2() {
+        initGrades2()
+        premiumV2.setBackgroundColor(Color.parseColor("#903ba0"))
+        vvipV2.setBackgroundColor(Color.parseColor("#903ba0"))
+    }
+
+    private fun drawVVIP2() {
+        initGrades2()
+        premiumV2.setBackgroundColor(Color.parseColor("#903ba0"))
+        vvipV2.setBackgroundColor(Color.parseColor("#903ba0"))
+    }
+
+    private fun initGrades2() {
+        basicV2.setBackgroundColor(Color.parseColor("#d4d4d4"))
+        plusV2.setBackgroundColor(Color.parseColor("#d4d4d4"))
+        premiumV2.setBackgroundColor(Color.parseColor("#d4d4d4"))
+        vvipV2.setBackgroundColor(Color.parseColor("#d4d4d4"))
+    }
 
 
     private fun timer() {
 
-        if(handler != null) {
+        if (handler != null) {
             handler!!.removeCallbacksAndMessages(null);
         }
 
@@ -354,6 +422,7 @@ class SettingMainActivity : RootActivity() {
         }
         handler!!.sendEmptyMessage(0)
     }
+
     private fun addDot(circleLL: LinearLayout, selected: Boolean) {
         val iv = ImageView(context)
         if (selected) {

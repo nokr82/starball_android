@@ -111,4 +111,8 @@ object MemberAction {
         HttpClient.post("/members/buy_booster", params, handler)
     }
 
+    fun lounge_count(params: RequestParams, handler: JsonHttpResponseHandler) {
+        HttpClient.post("/members/lounge_count", params, handler)
+    }
+
 }

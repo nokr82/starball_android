@@ -311,12 +311,13 @@ class ChattingCrushFragment : Fragment() {
                         val likes = response.getJSONArray("likes")
                         for (i in 0..likes.length() - 1) {
                             var json = likes[i] as JSONObject
-                            Log.d("제이슨", json.toString())
                             adapterdata.add(json)
                         }
                         crushAdapter.notifyDataSetChanged()
-                        Log.d("제이슨", adapterdata.count().toString())
-                        Log.d("제이슨", adapterdata.toString())
+
+                        var intent = Intent()
+                        intent.action = "LOUNGE_COUNT"
+                        myContext.sendBroadcast(intent)
 
                     } else {
 

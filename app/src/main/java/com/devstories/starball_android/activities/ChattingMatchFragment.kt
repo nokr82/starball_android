@@ -434,6 +434,10 @@ class ChattingMatchFragment : Fragment() {
                         }
 
                         matchAdapter.notifyDataSetChanged()
+
+                        var intent = Intent()
+                        intent.action = "LOUNGE_COUNT"
+                        myContext.sendBroadcast(intent)
                     }
 
 

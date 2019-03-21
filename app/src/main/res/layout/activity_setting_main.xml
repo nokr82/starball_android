@@ -181,6 +181,7 @@
 
 
                     <RatingBar
+                        android:id="@+id/ratting_bar"
                         android:layout_marginTop="6dp"
                         android:layout_width="80dp"
                         android:layout_height="14.5dp"
@@ -314,20 +315,22 @@
             <LinearLayout
                 android:id="@+id/popular2LL"
                 android:visibility="gone"
-                android:layout_marginTop="24dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="10dp"
+                android:paddingBottom="36.5dp"
+                android:layout_marginTop="25dp"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_height="wrap_content">
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
                 <TextView
-                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
+                    android:textStyle="bold"
                     android:textColor="#333333"
-                    android:text="@string/introduce_rating"/>
+                    android:text="소개 등급"
+                    />
 
                 <LinearLayout
                     android:paddingTop="9.5dp"
@@ -335,6 +338,7 @@
                     android:layout_height="wrap_content">
 
                     <View
+                        android:id="@+id/basicV2"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="5dp"
@@ -346,6 +350,7 @@
                         android:background="#ffff"/>
 
                     <View
+                        android:id="@+id/plusV2"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="5dp"
@@ -357,10 +362,11 @@
                         android:background="#ffff"/>
 
                     <View
+                        android:id="@+id/premiumV2"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="5dp"
-                        android:background="#903ba0"/>
+                        android:background="#d4d4d4"/>
 
                     <View
                         android:layout_width="0.5dp"
@@ -368,16 +374,16 @@
                         android:background="#ffff"/>
 
                     <View
+                        android:id="@+id/vvipV2"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="5dp"
-                        android:background="#903ba0"/>
+                        android:background="#d4d4d4"/>
 
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:paddingTop="9.5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -387,8 +393,9 @@
                         android:layout_height="wrap_content"
                         android:textSize="10dp"
                         android:textColor="#555555"
-                        android:gravity="center"
-                        android:text="Basic"/>
+                        android:gravity="center_horizontal"
+                        android:text="Basic"
+                        />
 
                     <TextView
                         android:layout_width="0dp"
@@ -396,8 +403,9 @@
                         android:layout_height="wrap_content"
                         android:textSize="10dp"
                         android:textColor="#555555"
-                        android:gravity="center"
-                        android:text="Plus"/>
+                        android:gravity="center_horizontal"
+                        android:text="Plus"
+                        />
 
                     <TextView
                         android:layout_width="0dp"
@@ -405,7 +413,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="10dp"
                         android:textColor="#555555"
-                        android:gravity="center"
+                        android:gravity="center_horizontal"
                         android:text="Premium"/>
 
                     <TextView
@@ -414,12 +422,10 @@
                         android:layout_height="wrap_content"
                         android:textSize="10dp"
                         android:textColor="#555555"
-                        android:gravity="center"
-                        android:text="VViP"/>
-
+                        android:gravity="center_horizontal"
+                        android:text="VVIP"/>
 
                 </LinearLayout>
-
 
             </LinearLayout>
 

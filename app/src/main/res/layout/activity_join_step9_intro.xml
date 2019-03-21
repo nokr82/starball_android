@@ -94,7 +94,7 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="50dp"
-                    android:background="#c5c5c5"
+                    android:background="#000000"
                     android:text="@string/skip"
                     android:textStyle="bold"
                     android:gravity="center"

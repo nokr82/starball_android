@@ -26,15 +26,11 @@ import com.facebook.FacebookSdk.getApplicationContext
 import com.baoyz.swipemenulistview.SwipeMenuItem
 import com.baoyz.swipemenulistview.SwipeMenuCreator
 import android.graphics.Color
-import android.util.Log
-import android.view.MenuItem
 import android.widget.AbsListView
 import android.widget.ImageView
 import android.widget.Toast
 import com.baoyz.swipemenulistview.SwipeMenu
 import com.baoyz.swipemenulistview.SwipeMenuListView
-import com.devstories.starball_android.utils.Coomon
-
 
 //채팅화면
 
@@ -663,6 +659,10 @@ class ChattingFragment : Fragment() {
 
 
                         roomAdapter.notifyDataSetChanged()
+
+                        var intent = Intent()
+                        intent.action = "LOUNGE_COUNT"
+                        myContext.sendBroadcast(intent)
 
                     } else {
 
