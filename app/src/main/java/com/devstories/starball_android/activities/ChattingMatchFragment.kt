@@ -434,12 +434,11 @@ class ChattingMatchFragment : Fragment() {
                         }
 
                         matchAdapter.notifyDataSetChanged()
-
-                        var intent = Intent()
-                        intent.action = "LOUNGE_COUNT"
-                        myContext.sendBroadcast(intent)
                     }
 
+                    var intent = Intent()
+                    intent.action = "LOUNGE_COUNT"
+                    myContext.sendBroadcast(intent)
 
                 } catch (e: JSONException) {
                     e.printStackTrace()
@@ -457,7 +456,7 @@ class ChattingMatchFragment : Fragment() {
             }
 
             private fun error() {
-                Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                Utils.alert(context, getString(R.string.api_error))
             }
 
             override fun onFailure(
