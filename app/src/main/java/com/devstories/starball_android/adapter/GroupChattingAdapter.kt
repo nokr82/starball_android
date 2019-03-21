@@ -43,6 +43,8 @@ open class GroupChattingAdapter(
                 retView = View.inflate(context, view, null)
                 item = ViewHolder(retView)
                 retView.tag = item
+            }else {
+                item = convertView.tag as ViewHolder
             }
         }
 
