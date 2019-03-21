@@ -315,13 +315,13 @@ class ChattingCrushFragment : Fragment() {
                         }
                         crushAdapter.notifyDataSetChanged()
 
-                        var intent = Intent()
-                        intent.action = "LOUNGE_COUNT"
-                        myContext.sendBroadcast(intent)
-
                     } else {
 
                     }
+
+                    var intent = Intent()
+                    intent.action = "LOUNGE_COUNT"
+                    myContext.sendBroadcast(intent)
 
                 } catch (e: JSONException) {
                     e.printStackTrace()
