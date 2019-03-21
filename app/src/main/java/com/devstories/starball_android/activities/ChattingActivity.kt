@@ -224,7 +224,7 @@ class ChattingActivity : FragmentActivity() {
             menuLL.visibility = View.GONE
             supportFragmentManager.beginTransaction().replace(R.id.chattingFL, ChattingSendCrushFragment).commit()
         }
-        more2IV.setOnClickListener {
+        event2LL.setOnClickListener {
             menuLL.visibility = View.VISIBLE
             eventLL.visibility = View.GONE
             clickLL.visibility = View.GONE
