@@ -87,6 +87,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 broadcastIntent.putExtra("propose_id", data["propose_id"]!!.toInt())
                 broadcastIntent.action = "PROPOSE"
                 this.sendBroadcast(broadcastIntent)
+            } else if (push_type == "like") {
+                val broadcastIntent = Intent()
+                broadcastIntent.action = "LIKE_ANIMATION"
+                this.sendBroadcast(broadcastIntent)
             }
 
         }
@@ -97,6 +101,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             intent.putExtra("chatting_animation", data["chatting_animation"]!!.toBoolean())
         } else if (push_type == "propose") {
             intent.putExtra("propose_id", data["propose_id"]!!.toInt())
+        } else if (push_type == "like") {
+            intent.putExtra("like_animation", true)
         }
 
         intent.putExtra("FROM_PUSH", true)
