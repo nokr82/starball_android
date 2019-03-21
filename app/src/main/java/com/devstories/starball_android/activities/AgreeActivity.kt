@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.activity_agree.*
 
 class AgreeActivity : RootActivity() {
 
+
     lateinit var context: Context
     private var progressDialog: ProgressDialog? = null
 
