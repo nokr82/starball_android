@@ -409,6 +409,8 @@ class SearchSettingActivity : RootActivity() {
                         minHeightTV.text = min_height.toString()
                         maxHeightTV.text = max_height.toString()
 
+                        println("min_height:::::::::::::::::::::::${min_height.toString()}")
+
                         heightSB.setMinStartValue(min_height.toFloat()).apply()
                         heightSB.setMaxStartValue(max_height.toFloat()).apply()
 

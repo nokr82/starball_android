@@ -4,8 +4,10 @@ import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import com.devstories.starball_android.base.RootActivity
@@ -26,7 +28,6 @@ class ProposedActivity : RootActivity() {
         this.context = this
         progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
         progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
-
 
         val duration = 100L
 
@@ -61,5 +62,12 @@ class ProposedActivity : RootActivity() {
             overridePendingTransition(0, 0)
         }
 
+    }
+
+    override fun finish() {
+        super.finish()
+
+        var intent = Intent()
+        setResult(Activity.RESULT_OK, intent)
     }
 }

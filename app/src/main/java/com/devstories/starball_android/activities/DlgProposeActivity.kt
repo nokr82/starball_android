@@ -1,15 +1,18 @@
 package com.devstories.starball_android.activities
 
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.MemberAction
 import com.devstories.starball_android.base.Config
+import com.devstories.starball_android.base.PrefUtils
 import com.devstories.starball_android.base.RootActivity
 import com.devstories.starball_android.base.Utils
 import com.loopj.android.http.JsonHttpResponseHandler
@@ -30,18 +33,23 @@ class DlgProposeActivity : RootActivity() {
     private val _active = true
 
     private var propose_id = -1
+    private var member_id = -1
+
+    val PROPOSE_ANIMATION = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dlg_propose)
-
-        propose_id = intent.getIntExtra("propose_id", -1)
 
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         this.context = this
         progressDialog = ProgressDialog(context, com.devstories.starball_android.R.style.CustomProgressBar)
         progressDialog!!.setProgressStyle(android.R.style.Widget_DeviceDefault_Light_ProgressBar_Large)
+
+        member_id = PrefUtils.getIntPreference(context, "member_id")
+
+        propose_id = intent.getIntExtra("propose_id", -1)
 
         noTV.setOnClickListener {
             propose_confirm("N")
@@ -154,6 +162,7 @@ class DlgProposeActivity : RootActivity() {
     fun propose_confirm(accept_yn: String) {
 
         val params = RequestParams()
+        params.put("member_id", member_id)
         params.put("propose_id", propose_id)
         params.put("accept_yn", accept_yn)
 
@@ -168,8 +177,15 @@ class DlgProposeActivity : RootActivity() {
                     val result = response!!.getString("result")
                     if ("ok" == result) {
 
-                        finish()
+                        if ("Y" == accept_yn) {
+                            var intent = Intent(context, ProposedActivity::class.java)
+                            startActivityForResult(intent, PROPOSE_ANIMATION)
+                        } else {
+                            finish()
+                        }
 
+                    } else if (result == "proposed") {
+                        Toast.makeText(context, getString(R.string.proposed), Toast.LENGTH_LONG).show()
                     } else {
                         Toast.makeText(context, getString(R.string.api_error), Toast.LENGTH_LONG).show()
                     }
@@ -234,6 +250,19 @@ class DlgProposeActivity : RootActivity() {
                 }
             }
         })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK) {
+            when(requestCode) {
+                PROPOSE_ANIMATION -> {
+                    finish()
+                }
+            }
+        }
+
     }
 
 }
