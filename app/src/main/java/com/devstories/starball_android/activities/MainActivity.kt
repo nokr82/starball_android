@@ -167,8 +167,8 @@ class MainActivity : RootActivity() {
         }
 
         prevIV.setOnClickListener {
-            val intent = Intent(mContext, MatchedActivity::class.java)
-            startActivity(intent)
+            // val intent = Intent(mContext, MatchedActivity::class.java)
+            // startActivity(intent)
         }
 
         val swipeStack = swipeStack as SwipeStack

@@ -82,6 +82,7 @@
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:background">@android:color/transparent</item>
+		<item name="android:colorBackgroundCacheHint">@null</item>
     </style>
 
     <style name="CustomDialog" parent="android:Theme.Dialog">
