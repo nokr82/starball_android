@@ -142,8 +142,8 @@ class MainActivity : RootActivity() {
         }
 
         prevIV.setOnClickListener {
-            /*val intent = Intent(this, StarballReceivedActivity::class.java)
-            startActivity(intent)*/
+            val intent = Intent(mContext, ProposedActivity::class.java)
+            startActivity(intent)
         }
 
         val swipeStack = swipeStack as SwipeStack
@@ -247,7 +247,6 @@ class MainActivity : RootActivity() {
         get_proposes()
 
         Coomon.pushCheck(mContext, intent)
-
     }
 
     override fun onResume() {
