@@ -155,7 +155,7 @@
                             android:textSize="20dp"
                             android:textColor="#333333"
                             android:gravity="center_horizontal"
-                            android:text="15,000원"/>
+                            android:text="90,000원"/>
 
                         <TextView
                             android:textStyle="bold"
@@ -196,7 +196,7 @@
                             android:textSize="20dp"
                             android:textColor="#333333"
                             android:gravity="center_horizontal"
-                            android:text="15,000원"/>
+                            android:text="180,000원"/>
 
                         <TextView
                             android:textStyle="bold"

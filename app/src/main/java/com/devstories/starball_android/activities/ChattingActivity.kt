@@ -38,8 +38,6 @@ class ChattingActivity : FragmentActivity() {
         override fun onReceive(context: Context, intent: Intent?) {
             if (intent != null) {
 
-                println("LOUNGE_COUNT::::::::::::::::::::::::::::::::::::::::::::::::::::::::::")
-
                 loadData()
             }
         }
@@ -161,9 +159,9 @@ class ChattingActivity : FragmentActivity() {
 
             override fun onStart() {
                 // show dialog
-                if (progressDialog != null) {
-                    progressDialog!!.show()
-                }
+//                if (progressDialog != null) {
+//                    progressDialog!!.show()
+//                }
             }
 
             override fun onFinish() {

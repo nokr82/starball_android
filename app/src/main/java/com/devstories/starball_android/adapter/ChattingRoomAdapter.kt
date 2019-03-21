@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.baoyz.swipemenulistview.SwipeMenuLayout
 import de.hdodenhof.circleimageview.CircleImageView
 import org.json.JSONObject
 import com.devstories.starball_android.R
@@ -30,6 +31,7 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 
         lateinit var retView: View
+        lateinit var layout: SwipeMenuLayout
 
         if (convertView == null) {
             retView = View.inflate(context, view, null)
@@ -223,9 +225,5 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
             newIV = v.findViewById(R.id.newIV)
 
         }
-    }
-
-    override fun isEnabled(position: Int): Boolean {
-        return super.isEnabled(position)
     }
 }
