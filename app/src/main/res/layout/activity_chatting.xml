@@ -65,13 +65,15 @@
                     android:src="@mipmap/lounge_menu_chat"/>
 
                 <ImageView
+                    android:id="@+id/newChattingIV"
                     android:layout_centerInParent="true"
                     android:layout_alignParentRight="true"
                     android:paddingRight="20dp"
                     android:paddingTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/lounge_dot"/>
+                    android:src="@mipmap/lounge_dot"
+                    android:visibility="gone"/>
 
             </RelativeLayout>
 
@@ -89,13 +91,15 @@
                     android:src="@mipmap/lounge_menu_match"/>
 
                 <ImageView
+                    android:id="@+id/newMatchIV"
                     android:layout_centerInParent="true"
                     android:layout_alignParentRight="true"
                     android:paddingRight="25dp"
                     android:paddingTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/lounge_dot"/>
+                    android:src="@mipmap/lounge_dot"
+                    android:visibility="gone"/>
 
             </RelativeLayout>
 
@@ -112,13 +116,15 @@
                     android:src="@mipmap/lounge_menu_send"/>
 
                 <ImageView
+                    android:id="@+id/newReceiveIV"
                     android:layout_centerInParent="true"
                     android:layout_alignParentRight="true"
                     android:paddingRight="25dp"
                     android:paddingTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/lounge_dot"/>
+                    android:src="@mipmap/lounge_dot"
+                    android:visibility="gone"/>
 
             </RelativeLayout>
 
@@ -135,13 +141,15 @@
                     android:src="@mipmap/lounge_menu_rece"/>
 
                 <ImageView
+                    android:id="@+id/newSendIV"
                     android:layout_centerInParent="true"
                     android:layout_alignParentRight="true"
                     android:paddingRight="25dp"
                     android:paddingTop="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/lounge_dot"/>
+                    android:src="@mipmap/lounge_dot"
+                    android:visibility="gone"/>
 
             </RelativeLayout>
             <RelativeLayout
