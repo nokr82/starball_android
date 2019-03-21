@@ -131,6 +131,15 @@ class Coomon {
                 } else if (PUSH_TYPE == "like") {
                     var intent1 = Intent(context, LikedNotiActivity::class.java)
                     context.startActivity(intent1)
+                } else if (PUSH_TYPE == "matching") {
+
+                    val man_url = intent.getStringExtra("man_url")
+                    val woman_url = intent.getStringExtra("woman_url")
+
+                    val intent = Intent(context, MatchedActivity::class.java)
+                    intent.putExtra("man_url", man_url)
+                    intent.putExtra("woman_url", woman_url)
+                    context.startActivity(intent)
                 }
 
             }

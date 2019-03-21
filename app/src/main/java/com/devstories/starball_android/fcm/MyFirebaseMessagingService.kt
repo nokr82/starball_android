@@ -91,6 +91,12 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 val broadcastIntent = Intent()
                 broadcastIntent.action = "LIKE_ANIMATION"
                 this.sendBroadcast(broadcastIntent)
+            } else if (push_type == "matching") {
+                val broadcastIntent = Intent()
+                broadcastIntent.putExtra("man_url", data["man_url"])
+                broadcastIntent.putExtra("woman_url", data["woman_url"])
+                broadcastIntent.action = "STARBALL_USE"
+                this.sendBroadcast(broadcastIntent)
             }
 
         }
@@ -103,6 +109,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             intent.putExtra("propose_id", data["propose_id"]!!.toInt())
         } else if (push_type == "like") {
             intent.putExtra("like_animation", true)
+        } else if (push_type == "matching") {
+            intent.putExtra("man_url", data["man_url"])
+            intent.putExtra("woman_url", data["woman_url"])
         }
 
         intent.putExtra("FROM_PUSH", true)

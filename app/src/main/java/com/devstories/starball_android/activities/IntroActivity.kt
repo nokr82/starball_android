@@ -33,6 +33,8 @@ class IntroActivity : RootActivity() {
     private var FROM_PUSH = false
     private var PUSH_TYPE = ""
     private var room_id = -1
+    private var man_url = ""
+    private var woman_url = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +58,8 @@ class IntroActivity : RootActivity() {
                 FROM_PUSH = buldle.getBoolean("FROM_PUSH", false)
                 PUSH_TYPE = buldle.getString("PUSH_TYPE", "")
                 room_id = buldle.getInt("room_id", -1)
+                man_url = buldle.getString("man_url", "")
+                woman_url = buldle.getString("woman_url", "")
 
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -170,6 +174,8 @@ class IntroActivity : RootActivity() {
             intent.putExtra("FROM_PUSH", FROM_PUSH)
             intent.putExtra("PUSH_TYPE", PUSH_TYPE)
             intent.putExtra("room_id", room_id)
+            intent.putExtra("man_url", man_url)
+            intent.putExtra("woman_url", woman_url)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         } else {
