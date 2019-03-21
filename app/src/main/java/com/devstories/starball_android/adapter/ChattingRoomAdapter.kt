@@ -18,10 +18,11 @@ import com.nostra13.universalimageloader.core.ImageLoader
 import java.text.SimpleDateFormat
 
 open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSONObject>, type: Int) :
-    ArrayAdapter<JSONObject>(context, view, data) {
+    BaseSwipeListAdapter() {
 
     private lateinit var item: ViewHolder
     var view: Int = view
+    var context: Context = context
     var data: ArrayList<JSONObject> = data
     var type: Int = type
 
@@ -222,5 +223,9 @@ open class ChattingRoomAdapter(context: Context, view: Int, data: ArrayList<JSON
             newIV = v.findViewById(R.id.newIV)
 
         }
+    }
+
+    override fun isEnabled(position: Int): Boolean {
+        return super.isEnabled(position)
     }
 }

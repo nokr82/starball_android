@@ -71,7 +71,13 @@ class MainActivity : RootActivity() {
     internal var usestarballreciver: BroadcastReceiver? = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent?) {
             if (intent != null) {
+
+                val man_url = intent.getStringExtra("man_url")
+                val woman_url = intent.getStringExtra("woman_url")
+
                 val intent = Intent(context, MatchedActivity::class.java)
+                intent.putExtra("man_url", man_url)
+                intent.putExtra("woman_url", woman_url)
                 startActivity(intent)
             }
         }

@@ -338,6 +338,7 @@ class DlgCrushActivity : RootActivity() {
             Toast.makeText(context, "스타볼이 부족합니다.", Toast.LENGTH_SHORT).show()
             return
         }
+
         val params = RequestParams()
         params.put("member_id", member_id)
         params.put("like_member_id", like_member_id)
@@ -357,6 +358,8 @@ class DlgCrushActivity : RootActivity() {
                     if ("ok" == result) {
 
                         var intent = Intent()
+                        intent.putExtra("man_url", Utils.getString(response, "man_url"))
+                        intent.putExtra("woman_url", Utils.getString(response, "woman_url"))
                         intent.action = "STARBALL_USE"
                         sendBroadcast(intent)
 
