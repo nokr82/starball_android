@@ -191,19 +191,6 @@ class MainActivity : RootActivity() {
             }
 
             override fun onViewSwipedToTop(position: Int) {
-                Log.d("멤버다",data[position].toString())
-                var like_member = data[position].getJSONObject("member")
-                var like_member_id = Utils.getInt(like_member,"id")
-                if (member_id!=like_member_id){
-                    dislike(like_member_id)
-                } else{
-
-                }
-
-                rightBottomAngle = 0.0f
-            }
-
-            override fun onViewSwipedToBottom(position: Int) {
 
                 var like_member = data[position].getJSONObject("member")
                 var like_member_id = Utils.getInt(like_member,"id")
@@ -215,6 +202,19 @@ class MainActivity : RootActivity() {
                 }else{
                     Toast.makeText(mContext,"스타볼이 부족합니다",Toast.LENGTH_SHORT).show()
                 }
+                rightBottomAngle = 0.0f
+            }
+
+            override fun onViewSwipedToBottom(position: Int) {
+                Log.d("멤버다",data[position].toString())
+                var like_member = data[position].getJSONObject("member")
+                var like_member_id = Utils.getInt(like_member,"id")
+                if (member_id!=like_member_id){
+                    dislike(like_member_id)
+                } else{
+
+                }
+
 
                 rightBottomAngle = 0.0f
             }
