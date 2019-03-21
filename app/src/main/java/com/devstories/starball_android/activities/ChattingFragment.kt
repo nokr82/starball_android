@@ -524,11 +524,12 @@ class ChattingFragment : Fragment() {
                 try {
                     val result = response!!.getString("result")
 
+                    if (page == 1) {
+                        roomAdapterData.clear()
+                        roomAdapter.notifyDataSetChanged()
+                    }
+
                     if ("ok" == result) {
-                        if (page == 1) {
-                            roomAdapterData.clear()
-                            roomAdapter.notifyDataSetChanged()
-                        }
                         val list = response.getJSONArray("list")
 
                         for (i in 0 until list.length()) {
