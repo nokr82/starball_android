@@ -1,7 +1,6 @@
 package com.devstories.starball_android.adapter
 
 import android.content.Context
-import android.graphics.Color
 import android.os.AsyncTask
 import android.util.Log
 import android.view.View
@@ -23,7 +22,6 @@ import de.hdodenhof.circleimageview.CircleImageView
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-import java.lang.ref.WeakReference
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -45,6 +43,8 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
                 retView = View.inflate(context, view, null)
                 item = ViewHolder(retView)
                 retView.tag = item
+            } else {
+                item = convertView.tag as ViewHolder
             }
         }
 
@@ -61,10 +61,6 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
 
         val type = Utils.getInt(chatting, "type")
         val contents = Utils.getString(chatting, "contents")
-        var translateInMy = Utils.getString(chatting, "translate_in_my")
-        if(translateInMy.isEmpty()) {
-            translateInMy = context.getString(R.string.in_translate)
-        }
         val createdAt = Utils.getString(chatting, "created_at")
 
         val createdDt = dateFormat.parse(createdAt)
@@ -78,6 +74,12 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
             item.otherCreatedTV.text = created
 
             if (activity.translation_yn == "Y") {
+
+                var translateInMy = Utils.getString(chatting, "translate_in_my")
+                if(contents.isNotEmpty() && translateInMy.isEmpty()) {
+                    translateInMy = context.getString(R.string.in_translate)
+                }
+
                 item.translationTV.visibility = View.VISIBLE
                 item.translationTV.text = translateInMy
 
@@ -272,10 +274,7 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
 
 
     companion object {
-        class TranslateAsyncTask internal constructor(context: Context, json: JSONObject, translatedTV: TextView) : AsyncTask<Void, String, Pair<String, String>>() {
-
-            private val jsonReference: WeakReference<JSONObject> = WeakReference(json)
-            private val translatedTVReference: WeakReference<TextView> = WeakReference(translatedTV)
+        class TranslateAsyncTask internal constructor(context: Context, val json: JSONObject, val translatedTV: TextView) : AsyncTask<Void, String, Pair<String, String>>() {
 
             override fun onPreExecute() {
                 println("onPreExecute onPreExecute")
@@ -284,7 +283,7 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
             override fun doInBackground(vararg params: Void?): Pair<String, String> {
                 val translate = TranslateOptions.newBuilder().setApiKey("AIzaSyAHMbqyG5pv-GEDv8K3ceD1xZBohrzO6aU").build().service
 
-                val contents = Utils.getString(jsonReference.get(),"contents")
+                val contents = Utils.getString(json,"contents")
 
                 println("contents : $contents")
 
@@ -304,12 +303,12 @@ open class ChattingAdapter (context: Context, val view:Int, val data:ArrayList<J
             }
 
             override fun onPostExecute(result: Pair<String, String>) {
-                jsonReference.get()!!.put("translate_in_my", result.first)
-                jsonReference.get()!!.put("translate_in_english", result.second)
+                json.put("translate_in_my", result.first)
+                json.put("translate_in_english", result.second)
 
-                translatedTVReference.get()!!.text = result.first
+                translatedTV.text = result.first
 
-                saveTranslate(jsonReference.get()!!)
+                saveTranslate(json)
             }
 
         }

@@ -9,8 +9,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.media.MediaRecorder
 import android.os.Build
@@ -21,9 +19,9 @@ import android.provider.MediaStore
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.View
-import android.widget.*
+import android.widget.AbsListView
+import android.widget.Toast
 import com.devstories.starball_android.R
 import com.devstories.starball_android.actions.ChattingAction
 import com.devstories.starball_android.adapter.AdverbAdapter
@@ -42,8 +40,8 @@ import java.io.ByteArrayInputStream
 import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
-import java.util.*
 import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.collections.ArrayList
 
 class FriendChattingActivity : RootActivity()
@@ -173,7 +171,7 @@ class FriendChattingActivity : RootActivity()
         emoticonGV.setOnItemClickListener { parent, view, position, id ->
 
             val emoticon = emoticonData2[position]
-//            val lid = context.resources.getIdentifier("@drawable/" + emoticon, "drawable", context.packageName)
+//            val lid = mContext.resources.getIdentifier("@drawable/" + emoticon, "drawable", mContext.packageName)
 
             selectedEmoticon = BitmapFactory.decodeResource(resources, emoticon)
 
@@ -214,7 +212,7 @@ class FriendChattingActivity : RootActivity()
         }
 
         listLV.setOnItemClickListener { parent, view, position, id ->
-//            val intent = Intent(context, DlgProposeActivity::class.java)
+//            val intent = Intent(mContext, DlgProposeActivity::class.java)
 //            startActivity(intent)
         }
 
@@ -643,7 +641,7 @@ class FriendChattingActivity : RootActivity()
         }
 
         timer = Timer()
-        timer!!.schedule(task, 0, 2000)
+        timer!!.schedule(task, 0, 1000)
 
     }
 
@@ -690,7 +688,7 @@ class FriendChattingActivity : RootActivity()
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -774,7 +772,7 @@ class FriendChattingActivity : RootActivity()
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -849,7 +847,7 @@ class FriendChattingActivity : RootActivity()
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -904,7 +902,7 @@ class FriendChattingActivity : RootActivity()
                     if ("ok" == result) {
 
 //                        if(like_yn == "Y") {
-//                            val intent = Intent(context, ChatNotiActivity::class.java)
+//                            val intent = Intent(mContext, ChatNotiActivity::class.java)
 //                            startActivity(intent)
 //                            overridePendingTransition(0, 0)
 //                        }
@@ -938,7 +936,7 @@ class FriendChattingActivity : RootActivity()
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -1057,7 +1055,7 @@ class FriendChattingActivity : RootActivity()
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -1135,7 +1133,7 @@ class FriendChattingActivity : RootActivity()
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -1221,18 +1219,21 @@ class FriendChattingActivity : RootActivity()
                                 val data = list.get(i) as JSONObject
                                 adapterData.add(data)
 
-                                listLV.setSelection(adapter.count - 1)
+                                listLV.post {
+                                    listLV.setSelection(adapter.count - 1)
+                                }
+
                             }
+                        }
+
+                        if (list.length() > 0) {
+                            adapter.notifyDataSetChanged()
                         }
 
                         if (adapterData.size > 0) {
                             val data = adapterData[adapterData.size - 1]
                             val chatting = data.getJSONObject("Chatting")
                             last_id = Utils.getInt(chatting, "id")
-                        }
-
-                        if (list.length() > 0) {
-                            (adapter as BaseAdapter).notifyDataSetChanged()
                         }
 
                     } else {
@@ -1243,13 +1244,15 @@ class FriendChattingActivity : RootActivity()
                     e.printStackTrace()
                 }
 
-//                val listViewHeight = Utils.getListViewHeightBasedOnItems(chatLV)
-//
-//                if (chatLV.height < listViewHeight) {
-//                    chatLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL
-//                } else {
-//                    chatLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_NORMAL
-//                }
+                /*
+                val listViewHeight = Utils.getListViewHeightBasedOnItems(listLV)
+
+                if (listLV.height < listViewHeight) {
+                    listLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_ALWAYS_SCROLL
+                } else {
+                    listLV.transcriptMode = AbsListView.TRANSCRIPT_MODE_NORMAL
+                }
+                */
             }
 
 
@@ -1259,7 +1262,7 @@ class FriendChattingActivity : RootActivity()
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -1402,7 +1405,7 @@ class FriendChattingActivity : RootActivity()
             }
 
             private fun error() {
-                // Utils.alert(context, "조회중 장애가 발생하였습니다.")
+                // Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
             override fun onFailure(
@@ -1529,7 +1532,7 @@ class FriendChattingActivity : RootActivity()
                 }
 
                 timer = Timer()
-                timer!!.schedule(task, 1000, 2000)
+                timer!!.schedule(task, 1000, 1000)
             }
 
         } else {
@@ -1546,10 +1549,10 @@ class FriendChattingActivity : RootActivity()
     }
 
     override fun finish() {
-        super.finish()
-
+        Utils.hideKeyboard(this)
         playStop()
 
+        super.finish()
     }
 
 }
