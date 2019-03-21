@@ -61,6 +61,8 @@ class MainActivity : RootActivity() {
 
     var page = 1
 
+    var rightBottomAngle = 0.0f
+
     private var my_membership = "member"
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -174,9 +176,11 @@ class MainActivity : RootActivity() {
                 var like_member_id = Utils.getInt(like_member,"id")
                 if (member_id!=like_member_id){
                     dislike(like_member_id)
-                }else{
-                    return
+                } else{
+
                 }
+
+                rightBottomAngle = 0.0f
             }
 
             override fun onViewSwipedToBottom(position: Int) {
@@ -187,13 +191,12 @@ class MainActivity : RootActivity() {
                 if (starball>0){
                     if (member_id!=like_member_id){
                         like(like_member_id)
-                    }else{
-                        return
                     }
                 }else{
                     Toast.makeText(mContext,"스타볼이 부족합니다",Toast.LENGTH_SHORT).show()
-                    return
                 }
+
+                rightBottomAngle = 0.0f
             }
 
             override fun onViewSwipedToLeft(position: Int) {
@@ -204,6 +207,21 @@ class MainActivity : RootActivity() {
 
             }
         })
+        swipeStack.setSwipeProgressListener(object : SwipeStack.SwipeProgressListener {
+            override fun onSwipeProgress(position: Int, progress: Float) {
+                swipeStackAdapter.showLikePassByProgress(swipeStack.yView, progress)
+            }
+
+            override fun onSwipeStart(position: Int) {
+
+            }
+
+            override fun onSwipeEnd(position: Int) {
+
+            }
+        })
+
+
 
         startAnimation()
 
@@ -467,14 +485,22 @@ class MainActivity : RootActivity() {
             }
         }, topLogoPeriod, topLogoPeriod)
 
+
+        val rightBottomStarballPeriod = 1000 * 20L
         rightBottomStarballTimer.scheduleAtFixedRate(object:TimerTask() {
             override fun run() {
+                if(swipeStack == null) {
+                    return
+                }
+
                 runOnUiThread {
-                    // val intent = Intent("ROTATE_RIGHT_BOTTOM_STARBALL")
-                    // sendBroadcast(intent)
+
+                    swipeStackAdapter.rotateSuperLike(swipeStack.yView, rightBottomAngle)
+
+                    rightBottomAngle += (360 / 5)
                 }
             }
-        }, 0, 1000 * 5)
+        }, rightBottomStarballPeriod, rightBottomStarballPeriod)
 
     }
 
@@ -965,7 +991,7 @@ class MainActivity : RootActivity() {
                 // show dialog
                 if (progressDialog != null) {
 
-                    progressDialog!!.show()
+                    // progressDialog!!.show()
                 }
             }
 
@@ -1064,7 +1090,7 @@ class MainActivity : RootActivity() {
                 // show dialog
                 if (progressDialog != null) {
 
-                    progressDialog!!.show()
+                    // progressDialog!!.show()
                 }
             }
 

@@ -1,12 +1,11 @@
 package com.devstories.starball_android.swipestack
 
-import android.app.Activity
+import android.animation.ObjectAnimator
 import android.content.Context
 import android.provider.MediaStore
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PagerSnapHelper
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +16,7 @@ import com.devstories.starball_android.adapter.SwipeStackItemAdapter
 import com.devstories.starball_android.base.Config
 import com.devstories.starball_android.base.NoScrollLinearLayoutManager
 import com.devstories.starball_android.base.Utils
+import kotlinx.android.synthetic.main.item_card.view.*
 import org.json.JSONObject
 
 class SwipeStackAdapter(private val context: Context, private val activity: MainActivity, private val data: ArrayList<JSONObject>, swipeHelper: SwipeHelper) : BaseAdapter() {
@@ -108,18 +108,20 @@ class SwipeStackAdapter(private val context: Context, private val activity: Main
                                 val holder = recyclerView.findViewHolderForAdapterPosition(position)
                                 if (holder is SwipeStackItemAdapter.MainSearchType1) {
                                     // holder.videoVV.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM)
-                                    holder.videoVV.player.playWhenReady = true
                                     holder.videoVV.player.seekTo(0)
+                                    holder.videoVV.player.playWhenReady = true
                                 } else if (holder is SwipeStackItemAdapter.MainSearchType2) {
                                     // holder.videoVV.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM)
-                                    holder.videoVV.player.playWhenReady = true
                                     holder.videoVV.player.seekTo(0)
+                                    holder.videoVV.player.playWhenReady = true
                                 } else if (holder is SwipeStackItemAdapter.MainSearchType3) {
                                     // holder.videoVV.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_ZOOM)
-                                    holder.videoVV.player.playWhenReady = true
                                     holder.videoVV.player.seekTo(0)
+                                    holder.videoVV.player.playWhenReady = true
                                 }
                             }
+
+                            activity.rightBottomAngle = 0f
                         }
                     }
                 }
@@ -153,9 +155,9 @@ class SwipeStackAdapter(private val context: Context, private val activity: Main
                             // lastX = curX
                             // lastY = curY
 
-                            // println("POS : $position, diff : ${Math.abs(xDistance - yDistance)}")
+                            println("POS : $position, diff : ${Math.abs(xDistance - yDistance)}")
 
-                            // println("mSwipeHelper.isFloating : ${mSwipeHelper.isFloating}")
+                            println("mSwipeHelper.isFloating : ${mSwipeHelper.isFloating}")
 
                             if(mSwipeHelper.isFloating) {
                                 mSwipeHelper.onTouch(rv, e)
@@ -204,5 +206,152 @@ class SwipeStackAdapter(private val context: Context, private val activity: Main
         }
 
         return convertView
+    }
+
+    fun showLikePassByProgress(yView:View, progress:Float) {
+
+        val recyclerView = yView.my_recycler_view
+
+        val screenWidth = Utils.getScreenWidth(context)
+        val position = (overallXScroll / screenWidth)
+
+        val view = recyclerView.findViewHolderForAdapterPosition(position) ?:return
+
+        when (view.itemViewType) {
+            0 -> {
+                val holder = view as SwipeStackItemAdapter.MainSearchType1
+
+                when {
+                    progress < 0 -> {
+                        holder.likeIV.alpha = Math.abs(progress) * 3
+                        holder.passIV.alpha = 0.0f
+                    }
+                    progress > 0 -> {
+                        holder.likeIV.alpha = 0.0f
+                        holder.passIV.alpha = Math.abs(progress) * 3
+                    }
+                    else -> {
+                        holder.likeIV.alpha = 0.0f
+                        holder.passIV.alpha = 0.0f
+                    }
+                }
+
+            }
+            1 -> {
+                val holder = view as SwipeStackItemAdapter.MainSearchType10
+
+                when {
+                    progress < 0 -> {
+                        holder.likeIV.alpha = Math.abs(progress) * 3
+                        holder.passIV.alpha = 0.0f
+                    }
+                    progress > 0 -> {
+                        holder.likeIV.alpha = 0.0f
+                        holder.passIV.alpha = Math.abs(progress) * 3
+                    }
+                    else -> {
+                        holder.likeIV.alpha = 0.0f
+                        holder.passIV.alpha = 0.0f
+                    }
+                }
+
+            }
+            2 -> {
+                val holder = view as SwipeStackItemAdapter.MainSearchType2
+
+                when {
+                    progress < 0 -> {
+                        holder.likeIV.alpha = Math.abs(progress) * 3
+                        holder.passIV.alpha = 0.0f
+                    }
+                    progress > 0 -> {
+                        holder.likeIV.alpha = 0.0f
+                        holder.passIV.alpha = Math.abs(progress) * 3
+                    }
+                    else -> {
+                        holder.likeIV.alpha = 0.0f
+                        holder.passIV.alpha = 0.0f
+                    }
+                }
+
+            }
+            else -> {
+                val holder = view as SwipeStackItemAdapter.MainSearchType3
+
+                when {
+                    progress < 0 -> {
+                        holder.likeIV.alpha = Math.abs(progress) * 3
+                        holder.passIV.alpha = 0.0f
+                    }
+                    progress > 0 -> {
+                        holder.likeIV.alpha = 0.0f
+                        holder.passIV.alpha = Math.abs(progress) * 3
+                    }
+                    else -> {
+                        holder.likeIV.alpha = 0.0f
+                        holder.passIV.alpha = 0.0f
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    fun rotateSuperLike(yView: View, rightBottomAngle: Float) {
+
+        val recyclerView = yView.my_recycler_view
+
+        val screenWidth = Utils.getScreenWidth(context)
+        val position = (overallXScroll / screenWidth)
+
+        val view = recyclerView.findViewHolderForAdapterPosition(position) ?:return
+
+        when (view.itemViewType) {
+            0 -> {
+                val holder = view as SwipeStackItemAdapter.MainSearchType1
+                val wingRotateAnimator = ObjectAnimator.ofFloat(
+                    holder.charmIV,
+                    "rotation", rightBottomAngle, rightBottomAngle + (360 / 5)
+                )
+
+                wingRotateAnimator.duration = 500
+                wingRotateAnimator.start()
+            }
+            1 -> {
+                val holder = view as SwipeStackItemAdapter.MainSearchType10
+                val wingRotateAnimator = ObjectAnimator.ofFloat(
+                    holder.charmIV,
+                    "rotation", rightBottomAngle, rightBottomAngle + (360 / 5)
+                )
+
+                wingRotateAnimator.duration = 500
+                wingRotateAnimator.start()
+
+            }
+            2 -> {
+                val holder = view as SwipeStackItemAdapter.MainSearchType2
+                val wingRotateAnimator = ObjectAnimator.ofFloat(
+                    holder.charmIV,
+                    "rotation", rightBottomAngle, rightBottomAngle + (360 / 5)
+                )
+
+                wingRotateAnimator.duration = 500
+                wingRotateAnimator.start()
+
+            }
+            else -> {
+                val holder = view as SwipeStackItemAdapter.MainSearchType3
+                val wingRotateAnimator = ObjectAnimator.ofFloat(
+                    holder.charmIV,
+                    "rotation", rightBottomAngle, rightBottomAngle + (360 / 5)
+                )
+
+                wingRotateAnimator.duration = 500
+                wingRotateAnimator.start()
+
+            }
+        }
+
     }
 }

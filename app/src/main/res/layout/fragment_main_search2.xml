@@ -187,5 +187,23 @@
         android:layout_marginRight="9.5dp"
         android:layout_marginBottom="178dp"/>
 
+    <ImageView
+        android:id="@+id/passIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/pass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="43.5dp"
+        android:alpha="0.0"/>
+
+    <ImageView
+        android:id="@+id/likeIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/like"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="53dp"
+        android:alpha="0.0"/>
 
 </RelativeLayout>

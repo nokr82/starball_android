@@ -17,8 +17,7 @@
         <ImageView
             android:id="@+id/imageIV"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/stic_001_15"/>
+            android:layout_height="wrap_content"/>
 
     </com.devstories.starball_android.base.RationalRelativeLayout>
 
