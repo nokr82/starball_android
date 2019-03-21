@@ -9,7 +9,7 @@
         android:id="@+id/imgIV"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:src="@mipmap/top"
+        android:src="@mipmap/liked"
         android:scaleType="centerCrop"
         android:translationY="-70dp"/>
 

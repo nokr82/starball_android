@@ -104,6 +104,17 @@ class MainActivity : RootActivity() {
         }
     }
 
+    internal var likeAnimationReceiver: BroadcastReceiver? = object : BroadcastReceiver() {
+        override fun onReceive(context: Context, intent: Intent?) {
+            if (intent != null) {
+
+                var intent = Intent(context, LikedNotiActivity::class.java)
+                startActivity(intent)
+
+            }
+        }
+    }
+
     var member_id = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -126,6 +137,9 @@ class MainActivity : RootActivity() {
         var filter3 = IntentFilter("CHATTING_ANIMATION")
         registerReceiver(chattingAnimationReceiver, filter3)
 
+        var filter4 = IntentFilter("LIKE_ANIMATION")
+        registerReceiver(likeAnimationReceiver, filter4)
+
         logoIV.setOnClickListener {
             val intent = Intent(mContext, StarballMemberShipActivity::class.java)
             startActivity(intent)
@@ -142,8 +156,8 @@ class MainActivity : RootActivity() {
         }
 
         prevIV.setOnClickListener {
-            /*val intent = Intent(this, StarballReceivedActivity::class.java)
-            startActivity(intent)*/
+            // val intent = Intent(mContext, ProposedActivity::class.java)
+            // startActivity(intent)
         }
 
         val swipeStack = swipeStack as SwipeStack
@@ -247,7 +261,6 @@ class MainActivity : RootActivity() {
         get_proposes()
 
         Coomon.pushCheck(mContext, intent)
-
     }
 
     override fun onResume() {
@@ -302,28 +315,18 @@ class MainActivity : RootActivity() {
                 Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                responseString: String?,
-                throwable: Throwable
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, responseString: String?, throwable: Throwable) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
 
-                // System.out.println(responseString);
+                System.out.println(responseString);
 
                 throwable.printStackTrace()
                 error()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONObject?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONObject?) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -331,12 +334,7 @@ class MainActivity : RootActivity() {
                 error()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONArray?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONArray?) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -348,7 +346,7 @@ class MainActivity : RootActivity() {
                 // show dialog
                 if (progressDialog != null) {
 
-                    progressDialog!!.show()
+                    // progressDialog!!.show()
                 }
             }
 
@@ -416,28 +414,18 @@ class MainActivity : RootActivity() {
                 Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                responseString: String?,
-                throwable: Throwable
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, responseString: String?, throwable: Throwable) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
 
-                // System.out.println(responseString);
+                System.out.println(responseString);
 
                 throwable.printStackTrace()
                 error()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONObject?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONObject?) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -445,12 +433,7 @@ class MainActivity : RootActivity() {
                 error()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONArray?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONArray?) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -674,28 +657,18 @@ class MainActivity : RootActivity() {
                 Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                responseString: String?,
-                throwable: Throwable
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, responseString: String?, throwable: Throwable) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
 
-                // System.out.println(responseString);
+                System.out.println(responseString);
 
                 throwable.printStackTrace()
                 error()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONObject?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONObject?) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -703,12 +676,7 @@ class MainActivity : RootActivity() {
                 error()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONArray?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONArray?) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -764,32 +732,29 @@ class MainActivity : RootActivity() {
 
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                responseString: String?,
-                throwable: Throwable
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, responseString: String?, throwable: Throwable) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
+
+                System.out.println(responseString);
+
                 throwable.printStackTrace()
                 error()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONObject?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONObject?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
                 throwable.printStackTrace()
                 error()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONArray?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONArray?) {
+                if (progressDialog != null) {
+                    progressDialog!!.dismiss()
+                }
                 throwable.printStackTrace()
                 error()
             }
@@ -810,7 +775,6 @@ class MainActivity : RootActivity() {
         params.put("receive_member_id",receive_member_id)
         params.put("score", score)
 
-        print("---------------------------pop"+score)
         MemberAction.popular_vote(params, object : JsonHttpResponseHandler() {
 
             override fun onSuccess(statusCode: Int, headers: Array<Header>?, response: JSONObject?) {
@@ -844,12 +808,7 @@ class MainActivity : RootActivity() {
 //                Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                responseString: String?,
-                throwable: Throwable
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, responseString: String?, throwable: Throwable) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -860,12 +819,7 @@ class MainActivity : RootActivity() {
                 error()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONObject?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONObject?) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -873,12 +827,7 @@ class MainActivity : RootActivity() {
                 error()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONArray?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONArray?) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -945,12 +894,7 @@ class MainActivity : RootActivity() {
                 Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                responseString: String?,
-                throwable: Throwable
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, responseString: String?, throwable: Throwable) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -961,12 +905,7 @@ class MainActivity : RootActivity() {
                 error()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONObject?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONObject?) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -974,12 +913,7 @@ class MainActivity : RootActivity() {
                 error()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONArray?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONArray?) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -1044,12 +978,7 @@ class MainActivity : RootActivity() {
                 Utils.alert(mContext, "조회중 장애가 발생하였습니다.")
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                responseString: String?,
-                throwable: Throwable
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, responseString: String?, throwable: Throwable) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -1060,12 +989,7 @@ class MainActivity : RootActivity() {
                 error()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONObject?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONObject?) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -1073,12 +997,7 @@ class MainActivity : RootActivity() {
                 error()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONArray?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONArray?) {
                 if (progressDialog != null) {
                     progressDialog!!.dismiss()
                 }
@@ -1138,33 +1057,18 @@ class MainActivity : RootActivity() {
                 // System.out.println(responseString);
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                responseString: String?,
-                throwable: Throwable
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, responseString: String?, throwable: Throwable) {
 
                 // System.out.println(responseString);
 
                 throwable.printStackTrace()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONObject?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONObject?) {
                 throwable.printStackTrace()
             }
 
-            override fun onFailure(
-                statusCode: Int,
-                headers: Array<Header>?,
-                throwable: Throwable,
-                errorResponse: JSONArray?
-            ) {
+            override fun onFailure(statusCode: Int, headers: Array<Header>?, throwable: Throwable, errorResponse: JSONArray?) {
                 throwable.printStackTrace()
             }
 
@@ -1198,6 +1102,13 @@ class MainActivity : RootActivity() {
         try {
             if (chattingAnimationReceiver != null) {
                 unregisterReceiver(chattingAnimationReceiver)
+            }
+        } catch (e: IllegalArgumentException) {
+        }
+
+        try {
+            if (likeAnimationReceiver != null) {
+                unregisterReceiver(likeAnimationReceiver)
             }
         } catch (e: IllegalArgumentException) {
         }
