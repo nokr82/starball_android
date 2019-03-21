@@ -140,11 +140,12 @@
             <RelativeLayout
                 android:layout_width="80dp"
                 android:layout_height="80dp">
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/manIV"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@mipmap/main_left"/>
+                    android:src="@mipmap/main_left"
+                    android:scaleType="centerCrop"/>
                 <ImageView
                     android:id="@+id/th17IV"
                     android:layout_width="match_parent"
@@ -162,11 +163,12 @@
             <RelativeLayout
                 android:layout_width="80dp"
                 android:layout_height="80dp">
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/womanIV"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@mipmap/main_left"/>
+                    android:src="@mipmap/main_left"
+                    android:scaleType="centerCrop"/>
                 <ImageView
                     android:id="@+id/th18IV"
                     android:layout_width="match_parent"

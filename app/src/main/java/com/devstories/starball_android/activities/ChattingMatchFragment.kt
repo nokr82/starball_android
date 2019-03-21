@@ -540,9 +540,15 @@ class ChattingMatchFragment : Fragment() {
 
                     val result =   Utils.getString(response,"result")
                     if ("ok" == result) {
-                        var intent = Intent(context, FriendChattingActivity::class.java)
-                        intent.putExtra("room_id", room_id)
-                        myContext.startActivity(intent)
+                        val room = response!!.getJSONObject("room")
+                        val room_id_real = Utils.getInt(room,"id")
+
+                        if (room_id_real>0){
+                            var intent = Intent(context, FriendChattingActivity::class.java)
+                            intent.putExtra("room_id", room_id_real)
+                            startActivity(intent)
+                        }
+
                     }
 
 
