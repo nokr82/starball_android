@@ -85,6 +85,8 @@ class SettingMainActivity : RootActivity() {
         timer()
 
 
+
+
         popularLL.setOnClickListener {
                 it.isSelected = !it.isSelected
 
@@ -165,6 +167,9 @@ class SettingMainActivity : RootActivity() {
                         val member = response.getJSONObject("member")
                         val name = Utils.getString(member, "name")
                         var profiles = response.getJSONArray("profiles")
+                        var popular_average =response.getDouble("popular_average")
+                        ratting_bar.rating = popular_average.toFloat()
+
 //                         like_count = response.getInt("like_count")
                         for (i in 0 until profiles.length()) {
                             profiledata.add(profiles[i] as JSONObject)

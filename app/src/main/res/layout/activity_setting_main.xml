@@ -181,6 +181,7 @@
 
 
                     <RatingBar
+                        android:id="@+id/ratting_bar"
                         android:layout_marginTop="6dp"
                         android:layout_width="80dp"
                         android:layout_height="14.5dp"
