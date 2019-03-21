@@ -54,7 +54,9 @@ class EmailConnectActivity : RootActivity() {
             }
         })
 
+        nextTV.setOnClickListener {
 
+        }
 
     }
 
